@@ -17,6 +17,10 @@ class SearchHit:
     weekly_downloads: int
 
 
+class NpmError(RuntimeError):
+    pass
+
+
 class NpmClient:
     def __init__(self, concurrency: int = 8) -> None:
         self._client = httpx.AsyncClient(
@@ -25,6 +29,8 @@ class NpmClient:
             headers={"User-Agent": "backstage-plugin-catalog"},
         )
         self._sem = asyncio.Semaphore(concurrency)
+        # On 429 every request waits until this loop time, not just the one that was refused.
+        self._resume_at = 0.0
 
     async def __aenter__(self) -> Self:
         return self
@@ -40,8 +46,11 @@ class NpmClient:
     async def _get(self, url: str, params: dict[str, Any] | None = None) -> Any | None:
         """GET JSON with retries. Returns None on 404."""
         last: int | str = ""
+        loop = asyncio.get_running_loop()
         for attempt in range(8):
             async with self._sem:
+                while (wait := self._resume_at - loop.time()) > 0:
+                    await asyncio.sleep(wait)
                 try:
                     resp: httpx.Response | None = await self._client.get(url, params=params)
                 except httpx.TransportError:
@@ -57,8 +66,11 @@ class NpmClient:
             backoff = 2**attempt + random.random()
             delay = max(float(retry_after), backoff) if retry_after.isdigit() else backoff
             last = resp.status_code if resp is not None else "transport error"
-            await asyncio.sleep(min(delay, 120))
-        raise RuntimeError(f"giving up on {url} {params}: {last}")
+            delay = min(delay, 120)
+            if last == 429:
+                self._resume_at = max(self._resume_at, loop.time() + delay)
+            await asyncio.sleep(delay)
+        raise NpmError(f"giving up on {url} {params}: {last}")
 
     async def search(self, text: str) -> dict[str, SearchHit]:
         hits: dict[str, SearchHit] = {}

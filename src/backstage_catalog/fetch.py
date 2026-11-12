@@ -1,11 +1,13 @@
 import asyncio
 import re
+import zlib
+from datetime import UTC, date, datetime
 from typing import Any
 
 from rich.console import Console
 from rich.progress import Progress
 
-from backstage_catalog.npm import NpmClient, SearchHit
+from backstage_catalog.npm import NpmClient, NpmError, SearchHit
 from backstage_catalog.store import Package, Store, Version
 
 # Broad text search catches official plugins that lack the `backstage` keyword.
@@ -88,8 +90,22 @@ def deprecation(manifest: dict[str, Any]) -> str:
     return value if isinstance(value, str) else ("deprecated" if value else "")
 
 
-async def fetch(store: Store, console: Console, full: bool = False) -> None:
-    async with NpmClient() as npm:
+def in_todays_slice(name: str, days: int, today: date) -> bool:
+    """Stable rotation: each package falls on one day out of every `days`."""
+    return zlib.crc32(name.encode()) % days == today.toordinal() % days
+
+
+async def fetch(
+    store: Store,
+    console: Console,
+    *,
+    full: bool = False,
+    full_every: int = 14,
+    check_every: int = 7,
+    concurrency: int = 8,
+) -> None:
+    today = datetime.now(UTC).date()
+    async with NpmClient(concurrency) as npm:
         found: dict[str, SearchHit] = {}
         for query in SEARCH_QUERIES:
             hits = await npm.search(query)
@@ -109,18 +125,28 @@ async def fetch(store: Store, console: Console, full: bool = False) -> None:
             for name, hit in found.items()
             if store.stored_version(name) != hit.version and ignored.get(name) != hit.version
         }
-        if full:
-            todo |= stored
+        new = len(todo)
+        # A rotating slice gets full metadata again, picking up README and maintainer changes.
+        todo |= {n for n in stored if full or in_todays_slice(n, full_every, today)}
         # Deprecation doesn't publish a new version, so check the small /latest manifest.
-        to_check = sorted(stored - todo)
-        console.log(f"{len(found)} candidates, {len(todo)} to fetch, {len(to_check)} to check")
+        to_check = sorted(n for n in stored - todo if in_todays_slice(n, check_every, today))
+        console.log(
+            f"{len(found)} candidates: {new} new or updated, "
+            f"{len(todo) - new} refreshed, {len(to_check)} deprecation checks"
+        )
 
+        failures: list[str] = []
         with Progress(console=console, transient=True) as progress:
             checking = progress.add_task("latest manifests", total=len(to_check))
 
             async def check(name: str) -> None:
-                manifest = await npm.latest(name)
                 progress.advance(checking)
+                try:
+                    manifest = await npm.latest(name)
+                except NpmError as err:
+                    # Keep stored data; tomorrow's run checks again.
+                    failures.append(f"{name}: {err}")
+                    return
                 pkg = store.load(name)
                 if manifest is None or manifest.get("version") != pkg["version"]:
                     todo.add(name)
@@ -136,7 +162,12 @@ async def fetch(store: Store, console: Console, full: bool = False) -> None:
 
             async def process(name: str) -> None:
                 nonlocal added, dropped
-                doc = await npm.packument(name)
+                try:
+                    doc = await npm.packument(name)
+                except NpmError as err:
+                    failures.append(f"{name}: {err}")
+                    progress.advance(fetching)
+                    return
                 pkg = to_package(doc) if doc else None
                 if pkg:
                     store.save(pkg)
@@ -153,6 +184,8 @@ async def fetch(store: Store, console: Console, full: bool = False) -> None:
             await asyncio.gather(*(process(n) for n in sorted(todo)))
 
         store.save_ignored(dict(sorted(ignored.items())))
+        if failures:
+            console.log(f"[yellow]{len(failures)} packages skipped after retries[/], e.g. {failures[0]}")
         console.log(f"saved {added}, dropped {dropped}, total {len(store.names())}")
 
         # Search results carry weekly downloads; keep the last value for packages search missed.

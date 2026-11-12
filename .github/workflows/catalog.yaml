@@ -32,6 +32,7 @@ jobs:
   publish:
     needs: lint
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v7
         with:
@@ -48,13 +49,12 @@ jobs:
         if: github.event_name != 'push'
         env:
           FULL: ${{ inputs.full }}
-        # Full refresh on the 1st and 15th picks up README and maintainer changes.
+        # Low concurrency: npm rate-limits GitHub's shared runner IPs.
         run: |
-          day=$(date -u +%d)
-          if [ "$FULL" = "true" ] || [ "$day" = 01 ] || [ "$day" = 15 ]; then
-            mise run fetch -- --full
+          if [ "$FULL" = "true" ]; then
+            mise run fetch -- --full --concurrency 3
           else
-            mise run fetch
+            mise run fetch -- --concurrency 3
           fi
 
       - name: Commit data
