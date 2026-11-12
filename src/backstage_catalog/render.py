@@ -33,6 +33,8 @@ UNSCOPED = "unscoped"
 # Filled by hooks.py after Markdown. <section>, not <div>: Material's search parser matches
 # excluded elements by tag name, and nh3 strips <section> from READMEs.
 README_PLACEHOLDER = '<section class="catalog-readme" data-search-exclude></section>'
+# nh3 drops disallowed tags but keeps their text, so links become plain text; <img> has none.
+CARD_TAGS = {"strong", "em", "b", "i", "code", "del", "s", "br"}
 README_EXTENSIONS = ["tables", "sane_lists", "pymdownx.superfences", "pymdownx.tasklist", "pymdownx.tilde"]
 README_ATTRIBUTES = {
     **{tag: set(attrs) for tag, attrs in nh3.ALLOWED_ATTRIBUTES.items()},
@@ -109,6 +111,13 @@ def clean_readme(pkg: Package) -> str:
     body = nh3.clean(body, attributes=README_ATTRIBUTES, attribute_filter=fix_url)
     # Demote headings so the README sits under our "## README" section.
     return re.sub(r"<(/?)h([1-6])(?=[\s>])", lambda m: f"<{m[1]}h{min(int(m[2]) + 2, 6)}", body)
+
+
+def card_description(text: str) -> str:
+    """Description as inline HTML for cards: no links (cards are links), no images."""
+    body = markdown.markdown(text, extensions=["pymdownx.tilde"])
+    body = nh3.clean(body, tags=CARD_TAGS, attributes={})
+    return re.sub(r"\s+", " ", body).strip()
 
 
 def front_matter(data: dict[str, object]) -> str:
@@ -188,6 +197,7 @@ def card(pkg: Package, now: datetime) -> dict[str, object]:
     return {
         "n": pkg["name"],
         "d": pkg["description"],
+        "dh": card_description(pkg["description"]),
         "r": pkg["role"],
         "rl": role_label(pkg["role"]),
         "s": pkg["scope"] or UNSCOPED,

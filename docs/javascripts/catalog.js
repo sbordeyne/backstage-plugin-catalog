@@ -24,12 +24,20 @@
     el("select", { name, "aria-label": label },
       ...options.map(([value, text]) => el("option", { value }, text)));
 
+  // p.dh is sanitized at build time (render.py), inline tags only.
+  const description = (p) => {
+    const node = el("p", { class: "catalog-card__desc" });
+    if (p.dh) node.innerHTML = p.dh;
+    else node.textContent = "No description.";
+    return node;
+  };
+
   const card = (p) =>
     el("a", { class: "catalog-card" + (p.dep || p.st ? " catalog-card--flagged" : ""), href: p.p },
       el("div", { class: "catalog-card__head" },
         el("span", { class: "catalog-card__name" }, p.n),
         el("span", { class: "catalog-card__version" }, p.v)),
-      el("p", { class: "catalog-card__desc" }, p.d || "No description."),
+      description(p),
       el("div", { class: "catalog-card__meta" },
         el("span", { class: "catalog-chip" }, p.rl),
         p.dep ? el("span", { class: "catalog-chip catalog-chip--danger" }, "deprecated") : null,
