@@ -1,6 +1,8 @@
 // Renders the searchable plugin card grid on the home page.
 (() => {
   const PAGE = 60;
+  // Start rendering the next page this many pixels before the user reaches the end.
+  const MARGIN = 800;
   const SORTS = {
     downloads: (a, b) => b.dl - a.dl,
     updated: (a, b) => b.u.localeCompare(a.u),
@@ -35,9 +37,25 @@
         el("span", { class: "catalog-card__stat", title: "Weekly downloads" }, `⬇ ${p.dl.toLocaleString()}`),
         el("span", { class: "catalog-card__stat", title: "Last release" }, p.u)));
 
+  const spinner = () => el("div", { class: "catalog-spinner", role: "status", "aria-label": "Loading" });
+
+  async function loadData(root) {
+    root.replaceChildren(spinner());
+    try {
+      const resp = await fetch(new URL(root.dataset.src, location.href));
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      return await resp.json();
+    } catch (err) {
+      console.error("catalog: failed to load data", err);
+      const retry = el("button", { class: "md-button", type: "button", onclick: () => init(root) }, "Retry");
+      root.replaceChildren(el("p", { class: "catalog-error" }, "Couldn't load the catalog."), retry);
+      return null;
+    }
+  }
+
   async function init(root) {
-    const base = new URL(root.dataset.src, location.href);
-    const data = await (await fetch(base)).json();
+    const data = await loadData(root);
+    if (!data) return;
     const params = new URLSearchParams(location.search);
 
     const uniq = (key, label) =>
@@ -50,18 +68,65 @@
     const hide = el("input", { type: "checkbox", name: "hide" });
     const count = el("p", { class: "catalog-count" });
     const grid = el("div", { class: "catalog-grid" });
+    const loader = spinner();
     const more = el("button", { class: "md-button", type: "button" }, "Show more");
+    const sentinel = el("div", { class: "catalog-sentinel", "aria-hidden": "true" });
 
     for (const input of [search, role, scope, sort]) input.value = params.get(input.name) ?? input.value;
     hide.checked = params.get("hide") === "1";
 
-    let shown = PAGE;
     let matches = [];
+    let shown = 0;
+    let loading = false;
+    let failed = false;
+    // Without IntersectionObserver, "Show more" is the only way to page.
+    const auto = "IntersectionObserver" in window;
 
-    const draw = () => {
-      grid.replaceChildren(...matches.slice(0, shown).map(card));
-      more.hidden = shown >= matches.length;
+    const renderPage = () =>
+      new Promise((resolve, reject) =>
+        requestAnimationFrame(() => {
+          try {
+            grid.append(...matches.slice(shown, shown + PAGE).map(card));
+            shown = Math.min(shown + PAGE, matches.length);
+            resolve();
+          } catch (err) {
+            reject(err);
+          }
+        }));
+
+    const nearBottom = () => sentinel.getBoundingClientRect().top < innerHeight + MARGIN;
+
+    const refresh = () => {
+      const done = shown >= matches.length;
+      loader.hidden = !loading;
+      more.hidden = done || loading || (auto && !failed);
+      sentinel.hidden = done;
     };
+
+    const loadMore = async () => {
+      if (loading || shown >= matches.length) return;
+      loading = true;
+      refresh();
+      try {
+        await renderPage();
+        failed = false;
+      } catch (err) {
+        console.error("catalog: failed to load next page", err);
+        failed = true;
+      }
+      loading = false;
+      refresh();
+      // The observer only fires on changes, so keep going while the sentinel is still on screen.
+      if (auto && !failed && nearBottom()) loadMore();
+    };
+
+    if (auto) {
+      new IntersectionObserver(
+        (entries) => { if (!failed && entries.some((e) => e.isIntersecting)) loadMore(); },
+        { rootMargin: `0px 0px ${MARGIN}px 0px` },
+      ).observe(sentinel);
+    }
+    more.addEventListener("click", () => { failed = false; loadMore(); });
 
     const update = () => {
       const terms = search.value.toLowerCase().split(/\s+/).filter(Boolean);
@@ -76,8 +141,10 @@
         // Flagged packages stay listed but sink to the bottom.
         .sort((a, b) => (a.dep || a.st) - (b.dep || b.st) || SORTS[sort.value](a, b));
       count.textContent = `${matches.length} plugin${matches.length === 1 ? "" : "s"}`;
-      shown = PAGE;
-      draw();
+      grid.replaceChildren();
+      shown = 0;
+      failed = false;
+      loadMore();
 
       const state = new URLSearchParams();
       for (const input of [search, role, scope]) if (input.value) state.set(input.name, input.value);
@@ -89,12 +156,11 @@
     let timer;
     search.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(update, 120); });
     for (const input of [role, scope, sort, hide]) input.addEventListener("change", update);
-    more.addEventListener("click", () => { shown += PAGE; draw(); });
 
     root.replaceChildren(
       el("div", { class: "catalog-controls" }, search, role, scope, sort,
         el("label", { class: "catalog-toggle" }, hide, " Hide deprecated & stale")),
-      count, grid, el("div", { class: "catalog-more" }, more));
+      count, grid, sentinel, el("div", { class: "catalog-more" }, loader, more));
     update();
   }
 
