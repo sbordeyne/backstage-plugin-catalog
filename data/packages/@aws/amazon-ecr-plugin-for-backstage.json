@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2025-02-06T00:30:27.719Z",
+  "deprecated": "",
+  "description": "This a frontend plugin package for Backstage related to Amazon Elastic Container Registry. For more information see the [documentation](../README.md).",
+  "homepage": "https://github.com/awslabs/backstage-plugins-for-aws#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "nialt"
+  ],
+  "name": "@aws/amazon-ecr-plugin-for-backstage",
+  "plugin_id": "amazon-ecr",
+  "readme": "# Amazon Elastic Container Registry plugin for Backstage - Frontend\n\nThis a frontend plugin package for Backstage related to Amazon Elastic Container Registry. For more information see the [documentation](../README.md).\n",
+  "repository": "https://github.com/awslabs/backstage-plugins-for-aws/tree/HEAD/plugins/ecr/frontend",
+  "role": "frontend-plugin",
+  "scope": "@aws",
+  "updated": "2026-08-06T03:37:45.663Z",
+  "version": "0.3.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-08-06T03:37:45.663Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-04-23T15:04:21.977Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2025-11-07T18:59:40.314Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-09-19T02:25:20.069Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-06-27T23:31:24.828Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-03-06T05:13:35.844Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-02-06T00:30:28.030Z",
+      "version": "0.1.0"
+    }
+  ]
+}

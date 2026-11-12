@@ -1,0 +1,91 @@
+{
+  "author": "Red Hat",
+  "created": "2025-07-03T11:44:08.757Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-quickstart",
+  "plugin_id": "quickstart",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/quickstart/plugins/quickstart",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-26T13:50:47.302Z",
+  "version": "2.3.0",
+  "version_count": 36,
+  "versions": [
+    {
+      "date": "2026-10-26T13:50:47.302Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2026-09-23T05:36:58.019Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2026-09-15T12:20:57.308Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2026-08-04T14:09:17.643Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2026-08-01T02:32:26.024Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-07-27T07:33:25.616Z",
+      "version": "1.12.2"
+    },
+    {
+      "date": "2026-07-21T22:09:17.390Z",
+      "version": "1.12.1"
+    },
+    {
+      "date": "2026-07-20T23:49:22.510Z",
+      "version": "1.12.0"
+    },
+    {
+      "date": "2026-07-19T22:10:28.211Z",
+      "version": "1.11.1"
+    },
+    {
+      "date": "2026-07-18T13:29:52.531Z",
+      "version": "1.11.0"
+    },
+    {
+      "date": "2026-06-22T21:01:36.091Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2026-06-11T08:40:16.057Z",
+      "version": "1.9.7"
+    },
+    {
+      "date": "2026-05-19T05:14:15.434Z",
+      "version": "1.9.6"
+    },
+    {
+      "date": "2026-05-18T15:17:08.144Z",
+      "version": "1.9.5"
+    },
+    {
+      "date": "2026-05-13T04:52:33.438Z",
+      "version": "1.9.4"
+    }
+  ]
+}

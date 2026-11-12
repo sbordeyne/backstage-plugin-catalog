@@ -1,0 +1,75 @@
+{
+  "author": "ITsyndicate",
+  "created": "2024-11-05T08:50:39.791Z",
+  "deprecated": "",
+  "description": "## Description The AWS Health backend plugin retrieves AWS Health event data, including open issues, scheduled changes, and notifications. It enhances monitoring by integrating AWS Health API data into the Backstage platform, allowing for efficient AWS ev",
+  "homepage": "https://itsyndicate.org",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "maksym_yemleninov",
+    "volodymyr.voitovych"
+  ],
+  "name": "@itsyndicate/backstage-plugin-aws-health-backend",
+  "plugin_id": "aws-health",
+  "readme": "# AWS Health Backend\n\n## Description\nThe AWS Health backend plugin retrieves AWS Health event data, including open issues, scheduled changes, and notifications. It enhances monitoring by integrating AWS Health API data into the Backstage platform, allowing for efficient AWS event tracking and management.\n\n## Installation\n\n1. Install the backend plugin:\n   ```bash\n   yarn --cwd packages/backend add @internal/backstage-plugin-aws-health-backend\n   ```\n\n2. Add AWS configuration to your environment or `app-config.yaml`:\n   ```yaml\n   aws:\n     regions:\n       - us-east-1\n       - us-west-2\n   ```\n\n3. Set AWS access credentials as environment variables:\n   ```bash\n   export AWS_ACCESS_KEY_ID=your-access-key-id\n   export AWS_SECRET_ACCESS_KEY=your-secret-access-key\n   ```\n\n4. Register the plugin in `packages/backend/src/index.ts`:\n   ```typescript\n   const backend = createBackend();\n   // ...\n   backend.add(import('@internal/backstage-plugin-aws-health-backend'));\n   ```\n",
+  "repository": "https://github.com/itsyndicate/itsyndicate-devops-platform-plugins/tree/HEAD/workspaces/aws-health/aws-health-backend",
+  "role": "backend-plugin",
+  "scope": "@itsyndicate",
+  "updated": "2024-11-15T11:19:50.533Z",
+  "version": "0.1.65",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2024-11-15T11:19:50.533Z",
+      "version": "0.1.65"
+    },
+    {
+      "date": "2024-11-15T11:07:27.522Z",
+      "version": "0.1.60"
+    },
+    {
+      "date": "2024-11-12T14:31:07.452Z",
+      "version": "0.1.55"
+    },
+    {
+      "date": "2024-11-12T12:31:30.174Z",
+      "version": "0.1.50"
+    },
+    {
+      "date": "2024-11-12T11:55:09.862Z",
+      "version": "0.1.45"
+    },
+    {
+      "date": "2024-11-12T11:50:34.495Z",
+      "version": "0.1.40"
+    },
+    {
+      "date": "2024-11-12T10:47:07.102Z",
+      "version": "0.1.35"
+    },
+    {
+      "date": "2024-11-12T10:20:06.959Z",
+      "version": "0.1.30"
+    },
+    {
+      "date": "2024-11-05T10:27:01.309Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2024-11-05T10:15:32.981Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2024-11-05T09:02:11.478Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2024-11-05T08:50:40.053Z",
+      "version": "0.1.5"
+    }
+  ]
+}

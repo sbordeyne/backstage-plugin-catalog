@@ -1,0 +1,91 @@
+{
+  "author": "Red Hat",
+  "created": "2024-11-04T20:00:16.294Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-bulk-import-backend",
+  "plugin_id": "bulk-import",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/bulk-import/plugins/bulk-import-backend",
+  "role": "backend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-04T16:01:12.801Z",
+  "version": "9.2.2",
+  "version_count": 62,
+  "versions": [
+    {
+      "date": "2026-11-04T16:01:12.801Z",
+      "version": "9.2.2"
+    },
+    {
+      "date": "2026-11-04T05:08:35.019Z",
+      "version": "9.2.1"
+    },
+    {
+      "date": "2026-10-26T14:09:41.963Z",
+      "version": "9.2.0"
+    },
+    {
+      "date": "2026-10-26T12:49:48.283Z",
+      "version": "9.1.2"
+    },
+    {
+      "date": "2026-09-23T10:27:32.527Z",
+      "version": "7.3.8"
+    },
+    {
+      "date": "2026-09-23T05:47:52.354Z",
+      "version": "9.1.1"
+    },
+    {
+      "date": "2026-09-16T09:16:00.049Z",
+      "version": "9.1.0"
+    },
+    {
+      "date": "2026-09-10T11:53:59.122Z",
+      "version": "9.0.1"
+    },
+    {
+      "date": "2026-09-08T12:57:40.273Z",
+      "version": "9.0.0"
+    },
+    {
+      "date": "2026-08-27T12:48:04.430Z",
+      "version": "8.0.3"
+    },
+    {
+      "date": "2026-08-07T18:26:54.282Z",
+      "version": "8.0.2"
+    },
+    {
+      "date": "2026-08-01T04:38:14.133Z",
+      "version": "8.0.1"
+    },
+    {
+      "date": "2026-07-27T05:44:57.276Z",
+      "version": "8.0.0"
+    },
+    {
+      "date": "2026-07-18T13:32:59.867Z",
+      "version": "7.3.7"
+    },
+    {
+      "date": "2026-06-26T06:32:17.476Z",
+      "version": "7.0.2"
+    }
+  ]
+}

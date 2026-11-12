@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2026-08-25T09:02:49.967Z",
+  "deprecated": "",
+  "description": "Browse and install shared Claude Code skills from a Claude Code marketplace repo.",
+  "homepage": "https://github.com/globallogicuki/globallogic-backstage-plugins/tree/main/plugins/skills-marketplace",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "billymichael",
+    "himeshladva"
+  ],
+  "name": "@globallogicuki/backstage-plugin-skills-marketplace",
+  "plugin_id": "skills-marketplace",
+  "readme": "# Skill Marketplace\n\nBrowse and install shared **Claude Code skills** from a\n[Claude Code marketplace](https://docs.anthropic.com/en/docs/claude-code) repo\n(a repo containing `.claude-plugin/marketplace.json`) inside Backstage.\n\n- Skill cards with name, description, category, and keywords; full-text search\n  plus category and repo filtering.\n- One marketplace repo, or several — skills from every configured repo are\n  listed together and filterable by repo name.\n- A detail drawer with the skill's rendered docs — its `SKILL.md`, or its\n  `README.md` where it has no `SKILL.md` — and copy-able Claude Code install\n  commands.\n- The repo is read server-side by\n  `@globallogicuki/backstage-plugin-skills-marketplace-backend` via Backstage's\n  `UrlReader`, so GitHub, GitLab, and Bitbucket all work — public or private,\n  cloud or self-hosted.\n- Uses the host app's default theme throughout.\n\n## Installation\n\n```sh\nyarn --cwd packages/app add @globallogicuki/backstage-plugin-skills-marketplace\nyarn --cwd packages/backend add @globallogicuki/backstage-plugin-skills-marketplace-backend\n```\n\nRegister the backend in `packages/backend/src/index.ts`:\n\n```ts\nbackend.add(\n  import('@globallogicuki/backstage-plugin-skills-marketplace-backend'),\n);\n```\n\n### New frontend system\n\n```tsx\n// packages/app/src/App.tsx\nimport skillsMarketplacePlugin from '@globallogicuki/backstage-plugin-skills-marketplace/alpha';\n\nexport default createApp({\n  features: [skillsMarketplacePlugin],\n});\n```\n\nThis registers a `/skills` page with a sidebar nav item.\n\n### Classic frontend system\n\n```tsx\nimport {\n  SkillsMarketplacePage,\n  SkillsMarketplaceClient,\n  skillsMarketplaceApiRef,\n} from '@globallogicuki/backstage-plugin-skills-marketplace';\n\n// packages/app/src/apis.ts\ncreateApiFactory({\n  api: skillsMarketplaceApiRef,\n  deps: { discoveryApi: discoveryApiRef, fetchApi: fetchApiRef },\n  factory: ({ discoveryApi, fetchApi }) =>\n    new SkillsMarketplaceClient({ discoveryApi, fetchApi }),\n});\n\n// inside <FlatRoutes>\n<Route path=\"/skills\" element={<SkillsMarketplacePage />} />;\n\n// packages/app/src/components/Root/Root.tsx\n<SidebarItem icon={StorefrontIcon} to=\"skills\" text=\"Skills\" />;\n```\n\n## Configuration\n\nRequired — there are no defaults. `url` is the web URL of the repo tree at the\nbranch to read:\n\n```yaml\nskillsMarketplace:\n  url: https://github.com/my-org/skills-marketplace/tree/main\n  installUrlFormat: https # optional: ssh (default) | https\n```\n\nOther providers:\n\n```\nhttps://gitlab.com/my-group/skills-marketplace/-/tree/main\nhttps://bitbucket.org/my-workspace/skills-marketplace/src/main\n```\n\n`installUrlFormat` sets the git URL shown in the `/plugin marketplace add`\ncommand: `git@host:owner/repo.git` (ssh) or `https://host/owner/repo.git`.\n\n### Multiple marketplaces\n\nAdd a `marketplaces` list to pull skills in from more than one repo. Each entry\ntakes the same `url`, and may override `installUrlFormat`; hosts can be mixed\nfreely:\n\n```yaml\nskillsMarketplace:\n  installUrlFormat: https\n  marketplaces:\n    - url: https://github.com/my-org/skills-marketplace/tree/main\n    - url: https://gitlab.com/my-group/team-skills/-/tree/main\n      installUrlFormat: ssh\n    - url: https://bitbucket.org/my-workspace/platform-skills/src/main\n```\n\n`url` and `marketplaces` can be used together — the single `url` is simply\nlisted first. Every skill is shown with the repo it came from, and a **Repo**\nfilter appears once more than one marketplace is configured; the repo name is\nsearchable too. Each skill's install commands use its own repo's git URL and\nmarketplace name, so installing from a mixed listing always points at the right\nplace.\n\nRepo names must be unique across all configured marketplaces — two repos with\nthe same name (in different orgs, say) cannot be told apart in the UI, and the\nplugin reports a config error rather than guessing. If one marketplace fails to\nload, the page still lists the others and warns about the one it skipped.\n\n### Private repos\n\nAdd credentials for the repo's host under\n[`integrations`](https://backstage.io/docs/integrations/) — the same config\nthe catalog uses. Public repos need nothing.\n\n```yaml\nintegrations:\n  github:\n    - host: github.com\n      token: ${GITHUB_TOKEN}\n  gitlab:\n    - host: gitlab.com\n      token: ${GITLAB_TOKEN}\n  bitbucketCloud:\n    - username: ${BITBUCKET_USERNAME} # Atlassian account email\n      appPassword: ${BITBUCKET_API_TOKEN} # scoped API token with repository read\n```\n\nSelf-hosted instances work the same way: declare the host under `integrations`\nand use its web URL in `skillsMarketplace.url`.\n",
+  "repository": "https://github.com/globallogicuki/globallogic-backstage-plugins/tree/HEAD/plugins/skills-marketplace",
+  "role": "frontend-plugin",
+  "scope": "@globallogicuki",
+  "updated": "2026-08-25T16:01:07.646Z",
+  "version": "0.2.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-08-25T16:01:07.646Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-25T14:09:27.102Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-08-25T09:02:50.319Z",
+      "version": "0.1.0"
+    }
+  ]
+}

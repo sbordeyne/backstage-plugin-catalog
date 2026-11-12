@@ -1,0 +1,53 @@
+{
+  "author": "",
+  "created": "2023-06-06T16:46:34.627Z",
+  "deprecated": "",
+  "description": "1. Install the plugin ```bash # In Backstage root directory yarn add --cwd packages/backend @echolayer/plugin-backstage-backend ```",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "karlclement",
+    "karlcodex",
+    "saumilp"
+  ],
+  "name": "@echolayer/plugin-backstage-backend",
+  "plugin_id": "",
+  "readme": "## Installing EchoLayer Backend Plugin\n1. Install the plugin\n```bash\n# In Backstage root directory\nyarn add --cwd packages/backend @echolayer/plugin-backstage-backend\n```\n\n2. Create an `echolayer.ts` file in the following location in Backstage: `packages/backend/src/plugins/echolayer.ts`\n```typescript\nimport { CatalogClient } from \"@backstage/catalog-client\";\nimport { createScheduler } from \"@echolayer/plugin-backstage-backend\";\nimport { PluginEnvironment } from \"../types\";\n\nexport default async function createPlugin(env: PluginEnvironment) {\n    const { logger, scheduler, tokenManager, config } = env;\n\n    const catalogClient = new CatalogClient({\n        discoveryApi: env.discovery,\n    });\n\n    await createScheduler({\n        logger, scheduler, catalogClient, tokenManager, config\n    });\n}\n\n```\n\n3. Update Backstage backend so it can run the EchoLayer backend plugin at `packages/backend/src/index.ts`\n```typescript #4,11,18\nimport { ServerPermissionClient } from '@backstage/plugin-permission-node';\nimport { DefaultIdentityClient } from '@backstage/plugin-auth-node';\n\nimport echolayer from './plugins/echolayer';\n\n// ...snip\n\nasync function main() {\n\t// ..snip\n\tconst appEnv = useHotMemoize(module, () => createEnv('app'));\n  const echolayerEnv = useHotMemoize(module, () => createEnv('echolayer'));\n\n\tconst apiRouter = Router();\n  // ...snip\n  apiRouter.use('/proxy', await proxy(proxyEnv));\n  apiRouter.use('/search', await search(searchEnv));\n\n  // Your code to start the backend\n  await service.start().catch(err => {\n    console.log(err);\n    process.exit(1);\n  });\n  \n  // create the EchoLayer plugin after the backend has started\n\tawait echolayer(echolayerEnv);\n\n\t// ...snip\n```\n\n4. Update your `app-config.yaml` to include the following:\n```yaml\necholayer:\n  apiKey: <your api key>\n```\n\n## License\n\nThis plugin is licensed under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).\n\nThe EchoLayer name and brand are copyright Codex Build Inc. 2023. They are excluded from the Apache 2.0 license.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@echolayer",
+  "updated": "2023-09-05T19:31:42.808Z",
+  "version": "0.4.2",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2023-09-05T19:31:42.808Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2023-07-28T14:30:54.217Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2023-07-21T22:20:45.737Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2023-07-18T18:07:37.920Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-07-14T17:54:11.963Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-06-08T18:25:07.079Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-06-06T16:46:34.915Z",
+      "version": "0.1.0"
+    }
+  ]
+}

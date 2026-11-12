@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2025-10-27T12:03:21.425Z",
+  "deprecated": "",
+  "description": "Welcome to the sg-library plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "naveen8801_sg",
+    "sg-user",
+    "sg_lurifos"
+  ],
+  "name": "@stackguardian/backstage-plugin-sg-library",
+  "plugin_id": "sg-library",
+  "readme": "# Overview\n\nWelcome to the sg-library plugin!\n\nThis plugin can be used to deploy stacks and workflows using templates present on SG platform directly from backstage app.\n\n# Installation & Usage\n\n1. To install this plugin into your backstage app run following command at root of your project.\n\n```bash\nyarn --cwd packages/app add @stackguardian/backstage-plugin-sg-library\n```\n\n2. In order to use this plugin please update config.yaml to have following information.\n\n```yaml\nintegrations:\n  stackguardian:\n    organization: '' # StackGuardian Organization name\nbackend:\n  baseUrl: '' # Backstage Backend URL\n  listen:\n    port: 7007\nproxy:\n  '/stackguardian':\n    target: 'https://api.app.stackguardian.io/api/v1'\n    headers:\n      Authorization: 'apikey {SG_API_KEY}'\n    allowedHeaders:\n      - x-sg-orgid\n    changeOrigin: true\n```\n\nSet SG_API_KEY env var by getting your API Key from StackGuardian platform. Please check our [docs](https://docs.stackguardian.io/docs/api/overview/#steps-to-generate-an-api-key) to view how to get API Token from stackguardian platform.\n\nNOTE - This plugin will use backstage proxy server to communicate to StackGuardian APIs (Mostly to avoid CORS error and to prevent exposing of API Key in the browser's network tab).\n\n\n3. Now you can import `SgLibraryPage` component from `@stackguardian/backstage-plugin-sg-library` and your APP will start showing SG Library plugin.\n\n# Screenshots\n\n![light-bg-1](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-1.png)\n\n![light-bg-2](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-2.png)\n\n![light-bg-3](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-3.png)\n\n![dark-bg-1](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-4.png)\n\n![dark-bg-2](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-5.png)\n\n![dark-bg-3](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-6.png)\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@stackguardian",
+  "updated": "2025-11-18T10:23:01.718Z",
+  "version": "0.1.2-beta.24",
+  "version_count": 28,
+  "versions": [
+    {
+      "date": "2025-11-18T10:23:01.718Z",
+      "version": "0.1.2-beta.24"
+    },
+    {
+      "date": "2025-11-18T08:47:00.916Z",
+      "version": "0.1.2-beta.23"
+    },
+    {
+      "date": "2025-11-17T13:33:28.698Z",
+      "version": "0.1.2-beta.22"
+    },
+    {
+      "date": "2025-11-14T08:52:41.444Z",
+      "version": "0.1.2-beta.21"
+    },
+    {
+      "date": "2025-11-07T08:44:13.389Z",
+      "version": "0.1.2-beta.20"
+    },
+    {
+      "date": "2025-11-06T14:02:27.736Z",
+      "version": "0.1.2-beta.19"
+    },
+    {
+      "date": "2025-11-06T09:08:42.094Z",
+      "version": "0.1.2-beta.18"
+    },
+    {
+      "date": "2025-11-06T06:24:44.421Z",
+      "version": "0.1.2-beta.17"
+    },
+    {
+      "date": "2025-11-05T14:53:23.132Z",
+      "version": "0.1.2-beta.16"
+    },
+    {
+      "date": "2025-11-05T14:50:54.081Z",
+      "version": "0.1.2-beta.15"
+    },
+    {
+      "date": "2025-11-04T14:46:03.549Z",
+      "version": "0.1.2-beta.14"
+    },
+    {
+      "date": "2025-11-04T12:16:18.623Z",
+      "version": "0.1.2-beta.13"
+    },
+    {
+      "date": "2025-11-03T11:53:56.601Z",
+      "version": "0.1.2-beta.12"
+    },
+    {
+      "date": "2025-10-31T08:42:24.656Z",
+      "version": "0.1.2-beta.11"
+    },
+    {
+      "date": "2025-10-30T08:01:53.299Z",
+      "version": "0.1.2-beta.10"
+    }
+  ]
+}

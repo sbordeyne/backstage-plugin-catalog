@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-11-13T13:46:45.331Z",
+  "deprecated": "",
+  "description": "The callback-provider-langfuse backend module for the ai-assistant plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sweetoburrito"
+  ],
+  "name": "@sweetoburrito/backstage-plugin-ai-assistant-backend-module-callback-provider-langfuse",
+  "plugin_id": "ai-assistant",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@sweetoburrito",
+  "updated": "2026-01-08T13:52:31.974Z",
+  "version": "0.2.5",
+  "version_count": 21,
+  "versions": [
+    {
+      "date": "2026-02-05T09:44:30.632Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2026-02-05T09:40:11.731Z",
+      "version": "0.0.0-snapshot-20260205093948"
+    },
+    {
+      "date": "2026-02-05T08:49:16.914Z",
+      "version": "0.0.0-snapshot-20260205084853"
+    },
+    {
+      "date": "2026-01-08T13:52:31.974Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2026-01-08T13:36:45.589Z",
+      "version": "0.0.0-snapshot-20260108133622"
+    },
+    {
+      "date": "2026-01-08T12:46:17.481Z",
+      "version": "0.0.0-snapshot-20260108124555"
+    },
+    {
+      "date": "2025-12-10T13:53:08.229Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2025-12-10T13:49:15.290Z",
+      "version": "0.0.0-snapshot-20251210134851"
+    },
+    {
+      "date": "2025-12-10T12:10:54.992Z",
+      "version": "0.0.0-snapshot-20251210121031"
+    },
+    {
+      "date": "2025-11-26T14:05:00.766Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2025-11-26T14:02:03.346Z",
+      "version": "0.0.0-snapshot-20251126140141"
+    },
+    {
+      "date": "2025-11-26T13:35:18.262Z",
+      "version": "0.0.0-snapshot-20251126133455"
+    },
+    {
+      "date": "2025-11-20T11:24:32.379Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2025-11-18T12:54:50.456Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-11-18T12:50:00.528Z",
+      "version": "0.0.0-snapshot-20251118124949"
+    }
+  ]
+}

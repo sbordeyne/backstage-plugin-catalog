@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-06-27T22:28:39.886Z",
+  "deprecated": "",
+  "description": "VeeCode Developer Hub Theme by RHDH",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "theme"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-theme-dynamic",
+  "plugin_id": "veecode-theme",
+  "readme": "# VeeCode Developer Hub Theme 🎨\n\nA set of theming options for [MUI Material UI](https://mui.com/material-ui/) and\n[Backstage](https://backstage.io/) that look more similar to [PatternFly](https://www.patternfly.org/).\n\nIt also includes a [Storybook](https://storybook.js.org/) and\na [Storybook test-runner](https://github.com/storybookjs/test-runner) for automatic visual regression tests.\n\n## API\n\nReturns all testable themes (incl. the backstage default color scheme and older RHDH versions):\n\n- `getAllThemes: () => AppTheme[]`\n- `useAllThemes: () => AppTheme[]`\n\nReturns the latest, not released RHDH light and dark theme for your backstage/RHDH instance:\n\n- `getThemes: () => AppTheme[]`\n- `useThemes: () => AppTheme[]`\n- `useLoaderTheme: () => MUIv5.Theme`\n\n## Install dependencies\n\n```shell\nnpm install @red-hat-developer-hub/backstage-plugin-theme\n```\n\nor\n\n```shell\nyarn add @red-hat-developer-hub/backstage-plugin-theme\n```\n\n## Use it with VeeCode app\n\n\n1. Install the dependency with\n\n   ```shell\n   yarn workspace app add @red-hat-developer-hub/backstage-plugin-theme\n   ```\n\n2. In `packages/app/src/components/DynamicRoot/DynamicRoot.tsx`\n\n   ```tsx\n   import { useThemes } from '@red-hat-developer-hub/backstage-plugin-theme';\n\n   // ...\n\n   const themes = useThemes();\n\n   // ...\n\n   app.current = createApp({\n     apis: [...staticApis, ...remoteApis],\n     // ... remove defaultThemes from here:\n     themes,\n     components: defaultAppComponents,\n   });\n   ```\n\n## Use it with any Backstage app\n\n1. Install the dependency with\n\n   ```shell\n   yarn workspace app add @red-hat-developer-hub/backstage-plugin-theme\n   ```\n\n2. Update `packages/app/src/App.tsx` and apply the themes to `createApp`:\n\n   ```tsx\n   import { getThemes } from '@red-hat-developer-hub/backstage-plugin-theme';\n\n   // ...\n\n   const app = createApp({\n     apis,\n     // ...\n     themes: getThemes(),\n   ```\n\n## Use it while developing a plugin\n\n1. Install the dependency with\n\n   ```shell\n   yarn workspace <plugin-root or plugin-name> add @red-hat-developer-hub/backstage-plugin-theme\n   ```\n\n2. Add to your `*/dev/index.tsx`:\n\n   ```tsx\n   import { getAllThemes } from '@red-hat-developer-hub/backstage-plugin-theme';\n\n   // ...\n\n   createDevApp()\n     .registerPlugin(...)\n     .addThemes(getAllThemes())\n     .addPage({\n       // ...\n     })\n     .render();\n   ```\n\n## Use `yarn link`\n\n1. Clone the rhdh theme and run `npm link` in it:\n\n   ```shell\n   cd red-hat-developer-hub-theme\n   yarn link\n   ```\n\n2. To use this link you can cd any other repository:\n\n   ```shell\n   cd ../backstage-plugins\n   yarn link @red-hat-developer-hub/backstage-plugin-theme\n   ```\n\n## Additional links\n\n- Backstage\n  - [Getting started > App custom theme](https://backstage.io/docs/getting-started/app-custom-theme/)\n  - [packages/theme/src/unified](https://github.com/backstage/backstage/tree/master/packages/theme/src/unified)\n  - [packages/theme/src/unified/types.ts](https://github.com/backstage/backstage/blob/master/packages/theme/src/unified/types.ts)\n  - [packages/theme/src/v4/baseTheme.ts](https://github.com/backstage/backstage/blob/master/packages/theme/src/v4/baseTheme.ts)\n  - [packages/theme/src/unified/UnifiedTheme.tsx](https://github.com/backstage/backstage/blob/master/packages/theme/src/unified/UnifiedTheme.tsx)\n- PatternFly\n  - [PatternFly design foundation](https://www.patternfly.org/design-foundations/colors)\n  - [PatternFly v6 design foundation](https://staging-v6.patternfly.org/design-foundations/colors)\n  - [Red Hat Brand standards/colors](https://www.redhat.com/en/about/brand/standards/color)\n- MUI v4:\n  - [Theming](https://v4.mui.com/customization/theming/)\n  - [Palette](https://v4.mui.com/customization/palette/)\n- MUI v5\n  - [Theming](https://mui.com/material-ui/customization/theming/)\n  - [Palette](https://mui.com/material-ui/customization/palette/)\n  - [Theme components](https://mui.com/material-ui/customization/theme-components/)\n  - [packages/mui-material/src/styles/adaptV4Theme.js](https://github.com/mui/material-ui/blob/master/packages/mui-material/src/styles/adaptV4Theme.js)\n\nBy: RHDH\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2025-06-27T23:54:47.077Z",
+  "version": "2.0.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-06-27T23:54:47.077Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2025-06-27T22:28:40.235Z",
+      "version": "1.1.1"
+    }
+  ]
+}

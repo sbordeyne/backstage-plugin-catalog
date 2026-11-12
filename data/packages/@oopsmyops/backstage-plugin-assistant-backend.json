@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2026-06-15T06:11:46.274Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin providing an AI assistant with catalog, scaffolder, and TechDocs tools",
+  "homepage": "https://github.com/oopsmyops/backstage-mcp#readme",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "oopsmyops"
+  ],
+  "name": "@oopsmyops/backstage-plugin-assistant-backend",
+  "plugin_id": "assistant",
+  "readme": "# Backstage Assistant Backend\n\nThe backend for the Backstage Assistant plugin — it orchestrates the LLM\nconversation, executes Backstage catalog/scaffolder/TechDocs tools, and streams\nresponses to the [frontend widget](../backstage-assistant/) over SSE.\n\nThis is the backend plugin. Pair it with the\n[`@oopsmyops/backstage-plugin-assistant`](../backstage-assistant/) frontend plugin.\n\n![Assistant answering a catalog question](./docs/assistant-backend.png)\n\n<!-- TODO: replace ./docs/assistant-backend.png with a real screenshot (e.g. the assistant resolving \"what do I own?\") -->\n\n## Features\n\n- Multi-provider LLM via the [Vercel AI SDK](https://ai-sdk.dev) — **Amazon Bedrock** and **Azure AI Foundry** natively, plus any **OpenAI-compatible** API, with no proxy.\n- Configurable model catalog (`assistant.llm.models[]`) selectable from the UI, plus an ordered **fallback chain** when a provider errors.\n- Multi-round tool-use orchestration (up to 10 rounds per request) with streaming SSE responses.\n- User-aware — resolves `userEntityRef` and group memberships from Backstage auth for ownership queries.\n- 12 built-in tools spanning catalog, API specs, scaffolder, and TechDocs.\n- Guided scaffolder template execution with an OAuth flow for VCS tokens (GitHub, GitLab, Azure DevOps).\n- Concurrency limiting and conversation-history sanitization.\n\n## Installation\n\nPublished to **npmjs.org** as a public package — no token needed. Add it to your\nBackstage backend:\n\n```bash\nyarn --cwd packages/backend add @oopsmyops/backstage-plugin-assistant-backend\n```\n\nRegister it in `packages/backend/src/index.ts`:\n\n```ts\nbackend.add(import('@oopsmyops/backstage-plugin-assistant-backend'));\n```\n\n## Configuration\n\nDefine the selectable models under `assistant.llm.models[]` in `app-config.yaml`.\nMark one as `default: true`; list fallback model ids under `assistant.llm.fallback`.\n\n```yaml\nassistant:\n  systemPrompt: 'Optional extra deployment-specific instructions.'\n  llm:\n    maxConcurrent: 5            # max concurrent LLM calls (default 5)\n    fallback: [groq-llama]      # tried, in order, if the selected model fails\n    models:\n      - id: claude-bedrock\n        label: Claude Sonnet (Bedrock)\n        provider: bedrock\n        model: anthropic.claude-sonnet-4-6\n        region: us-east-1\n        apiKey: ${AWS_BEARER_TOKEN_BEDROCK}   # optional; omit to use the AWS credential chain\n        default: true\n\n      - id: gpt-azure\n        label: GPT-5.1 (Azure AI Foundry)\n        provider: azure\n        model: gpt-5.1                         # your Azure deployment name\n        resourceName: my-foundry-resource      # https://my-foundry-resource.openai.azure.com\n        apiKey: ${AZURE_OPENAI_API_KEY}\n\n      - id: groq-llama\n        label: Llama 3.3 70B (Groq)\n        provider: openai-compatible            # any OpenAI-shaped API, no proxy\n        model: llama-3.3-70b-versatile\n        baseUrl: https://api.groq.com/openai/v1\n        apiKey: ${GROQ_API_KEY}\n```\n\nProvider keys:\n\n| Provider | Required | Optional |\n| --- | --- | --- |\n| `bedrock` | `model`, `region` | `apiKey` (a Bedrock API key / `AWS_BEARER_TOKEN_BEDROCK`; omit to use the AWS credential chain) |\n| `azure` | `model` (deployment name), `apiKey`, and one of `resourceName` / `baseUrl` | `apiVersion` |\n| `openai-compatible` | `model`, `baseUrl` | `apiKey` |\n\nIf `assistant.llm.models[]` is omitted, the plugin keeps reading the legacy\n`assistant.llm.provider` / `bedrock` / `litellm` keys for backward compatibility,\nand falls back to an offline mock model when nothing is configured.\n\n## API\n\n| Method | Path | Description |\n| --- | --- | --- |\n| GET | `/api/assistant/health` | Health check + tool count (unauthenticated) |\n| GET | `/api/assistant/tools` | List available tools (authenticated) |\n| GET | `/api/assistant/models` | List configured models for the picker (authenticated) |\n| POST | `/api/assistant/chat` | SSE streaming chat (authenticated) |\n\n### Chat request\n\n```json\n{\n  \"message\": \"What components do I own?\",\n  \"model\": \"claude-bedrock\",\n  \"conversationHistory\": [],\n  \"vcsTokens\": { \"github\": \"gho_...\" }\n}\n```\n\n### SSE events\n\n| Event | Payload | Description |\n| --- | --- | --- |\n| `text_delta` | `{ content }` | Streamed text chunk |\n| `tool_call` | `{ toolCallId, toolName, arguments }` | Tool invocation started |\n| `tool_result` | `{ toolName, content }` | Tool execution completed |\n| `ui_render` | `{ card }` | Structured result card to render |\n| `oauth_required` | `{ provider, scopes }` | VCS token needed |\n| `done` | `{ usage: { inputTokens, outputTokens } }` | Response complete |\n| `error` | `{ message }` | Error occurred |\n\n## Tools\n\n| Tool | Description |\n| --- | --- |\n| `check_connection` | Verify Backstage connectivity |\n| `search_catalog` | Full-text search with kind/tags/owner filters |\n| `get_entity` | Entity details with resolved relations |\n| `list_api_specs` | Browse API entities by type |\n| `get_api_spec` | Raw OpenAPI/AsyncAPI/GraphQL spec |\n| `list_templates` | Browse scaffolder templates |\n| `get_template` | Template parameters + lookup hints |\n| `run_template` | Execute with validation + VCS token injection |\n| `list_tasks` | Scaffolder task history |\n| `get_task_status` | Task progress + logs |\n| `get_techdocs` | Rendered docs as plain text |\n| `get_vcs_groups` | List the user's GitHub/GitLab orgs for repo creation |\n\n## Development\n\n```bash\nyarn start\n```\n\n## Related packages\n\n- [`@oopsmyops/backstage-plugin-assistant`](../backstage-assistant/) — the chat widget frontend.\n\n## License\n\nReleased under the [MIT](../../LICENSE) license.\n",
+  "repository": "https://github.com/oopsmyops/backstage-mcp/tree/HEAD/plugins/backstage-assistant-backend",
+  "role": "backend-plugin",
+  "scope": "@oopsmyops",
+  "updated": "2026-06-16T12:02:55.097Z",
+  "version": "0.2.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-06-16T12:02:55.097Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2026-06-16T04:41:28.930Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-06-15T11:01:16.674Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-06-15T06:11:46.738Z",
+      "version": "0.2.0"
+    }
+  ]
+}

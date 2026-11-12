@@ -1,0 +1,89 @@
+{
+  "author": "",
+  "created": "2023-10-14T12:54:34.088Z",
+  "deprecated": "",
+  "description": "A backstage plugin to render a developer themed quote",
+  "homepage": "https://github.com/Parsifal-M/backstage-dev-quotes#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "dev-quotes",
+    "plugin",
+    "quotes"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "parsifal-m"
+  ],
+  "name": "@parsifal-m/plugin-dev-quotes-homepage",
+  "plugin_id": "dev-quotes",
+  "readme": "# dev-quotes-homepage\n\nHello! :wave:\n\nThis is just a fun little plugin that I made to display some random coding/programming related quotes on the Backstage homepage. Although to be honest the card can be used anywhere you like! I hope you enjoy it!\n\nIf you want to leave a star, that would be awesome! :star:\n\nI don't expect much work to be done on this plugin as it was just a fun little project I made. But if you would like to contribute, please do! See [Would you like to contribute? or add more quotes?](#would-you-like-to-contribute-or-add-more-quotes) for more information.\n\n> **From v4.0.0 onwards, this plugin only supports the Backstage New Frontend System (NFS).** The legacy frontend system (`createApp` from `@backstage/app-defaults`) is no longer supported. If you are on an older app setup, stay on v3.x or migrate your app first using the [Backstage frontend system migration guide](https://backstage.io/docs/frontend-system/building-apps/migrating). See the [CHANGELOG](./CHANGELOG.md) for full details and migration steps.\n\n## Pre-requisites (if you want to use it on the homepage)\n\nIf you do want to use it on the homepage, first make sure you look over the official docs on how to configure the homepage [here](https://backstage.io/docs/getting-started/homepage/#composing-your-homepage). There is also the [homepage plugin](https://github.com/backstage/backstage/tree/master/plugins/home#readme) which might be better to read first.\n\n## Installation\n\n```bash\nyarn --cwd packages/app add @parsifal-m/plugin-dev-quotes-homepage\n```\n\nThen all you need to do is import the card as below, anywhere you like!\n\n```tsx\nimport { DevQuote } from '@parsifal-m/plugin-dev-quotes-homepage';\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    {entityWarningContent}\n    <Grid item md={6}>\n      <EntityAboutCard variant=\"gridItem\" />\n    </Grid>\n    <Grid item md={6} xs={12}>\n      <EntityCatalogGraphCard variant=\"gridItem\" height={400} />\n    </Grid>\n    <Grid item md={4} xs={12}>\n      <DevQuote />\n    </Grid>\n\n    <Grid item md={6} xs={12}>\n      <OpaMetadataAnalysisCard />\n    </Grid>\n\n    <Grid item md={4} xs={12}>\n      <EntityLinksCard />\n    </Grid>\n    <Grid item md={8} xs={12}>\n      <EntityHasSubcomponentsCard variant=\"gridItem\" />\n    </Grid>\n  </Grid>\n);\n```\n\n## Example\n\nAn example quote\n\n![Quote Image](static/img/quote.png)\n\nAn example quote on an entity page:\n\n![Quote Entity Page](static/img/quote2.png)\n\n## Would you like to contribute? or add more quotes?\n\nPlease do! I would love to see more quotes added to this plugin. If you would like to add some quotes, please open a pull request with your changes. If you would like to add a lot of quotes, please open an issue first so we can discuss it. And please keep them programming related, and keep it safe for work! Here is a short example of how to add a quote:\n\n- Clone the repository and run `yarn install --immutable`\n- Add the quote to the `quotes.ts` file in the `src` folder.\n- Run `yarn prettier:write`\n- Make sure to sign your commit with `git commit -s -m \"Added quote by <someone>\"`\n\n## When will my quote be added to the plugin?\n\nI will try and release a new version with the new quotes as soon as possible. Keep in mind this is a side project I made for fun!\n\n## License\n\nThis project is released under the Apache 2.0 License.\n",
+  "repository": "https://github.com/Parsifal-M/backstage-dev-quotes/tree/HEAD/.",
+  "role": "frontend-plugin",
+  "scope": "@parsifal-m",
+  "updated": "2026-07-14T13:12:16.017Z",
+  "version": "4.0.0",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2026-07-14T13:12:16.017Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2025-05-16T07:19:35.780Z",
+      "version": "3.0.8"
+    },
+    {
+      "date": "2024-10-30T13:18:00.374Z",
+      "version": "3.0.7"
+    },
+    {
+      "date": "2024-07-26T19:41:16.980Z",
+      "version": "3.0.6"
+    },
+    {
+      "date": "2024-05-26T18:28:26.651Z",
+      "version": "3.0.5"
+    },
+    {
+      "date": "2024-03-30T19:30:17.457Z",
+      "version": "3.0.4"
+    },
+    {
+      "date": "2023-12-13T22:41:17.910Z",
+      "version": "3.0.3"
+    },
+    {
+      "date": "2023-12-13T22:18:06.185Z",
+      "version": "3.0.2"
+    },
+    {
+      "date": "2023-11-26T15:40:48.454Z",
+      "version": "3.0.1"
+    },
+    {
+      "date": "2023-11-26T14:53:57.617Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2023-10-17T15:21:49.438Z",
+      "version": "2.1.3"
+    },
+    {
+      "date": "2023-10-17T15:05:54.226Z",
+      "version": "2.1.2"
+    },
+    {
+      "date": "2023-10-17T08:17:55.944Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2023-10-14T13:36:45.175Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2023-10-14T12:57:41.538Z",
+      "version": "1.0.1"
+    }
+  ]
+}

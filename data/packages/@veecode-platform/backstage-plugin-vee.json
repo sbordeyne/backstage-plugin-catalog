@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2025-02-14T21:44:36.532Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "ai",
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-vee",
+  "plugin_id": "vee",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2025-06-27T14:49:43.738Z",
+  "version": "0.4.0",
+  "version_count": 18,
+  "versions": [
+    {
+      "date": "2025-06-27T14:49:43.738Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-04-07T12:24:34.980Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2025-03-26T13:48:41.022Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2025-03-26T13:45:41.066Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-02-21T13:36:02.611Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2025-02-19T14:35:18.437Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2025-02-18T22:57:23.843Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-02-18T22:02:02.978Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-02-18T21:58:33.093Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2025-02-18T21:52:42.979Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2025-02-18T21:15:50.297Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2025-02-18T20:57:47.445Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2025-02-18T18:49:17.391Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2025-02-18T13:53:35.666Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-02-18T13:00:48.000Z",
+      "version": "0.1.3"
+    }
+  ]
+}

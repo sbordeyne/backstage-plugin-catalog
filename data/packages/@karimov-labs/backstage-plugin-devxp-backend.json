@@ -1,0 +1,58 @@
+{
+  "author": "karimov-labs",
+  "created": "2026-03-24T14:06:55.598Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin for developer intelligence — SHA-256 identity hashing, developer name mappings, and CSV ingestion.",
+  "homepage": "https://devxp.net",
+  "keywords": [
+    "backend",
+    "backstage",
+    "developer-intelligence",
+    "devxp",
+    "identity-masking",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "karimov-labs"
+  ],
+  "name": "@karimov-labs/backstage-plugin-devxp-backend",
+  "plugin_id": "devxp",
+  "readme": "# @karimov-labs/backstage-plugin-devxp-backend\n\nBackstage backend plugin that powers the **Developer Intelligence** dashboard. It persists masked developer identity mappings, exposes REST endpoints for hashing/unmasking, accepts bulk CSV uploads, and automatically syncs organization members from GitHub (github.com or GitHub Enterprise Server) using GitHub App credentials — all backed by the Backstage-managed database (SQLite or PostgreSQL).\n\nThis plugin is the backend counterpart to [`@karimov-labs/backstage-plugin-devxp`](https://www.npmjs.com/package/@karimov-labs/backstage-plugin-devxp).\n\nBuilt for use with the [DevXP](https://devxp.net) developer analytics platform.\n\n---\n\n## Features\n\n- Persists `masked_name ↔ real_name` pairs in the Backstage database using Knex\n- SHA-256 hashing compatible with [dev-xp-analyzer](https://github.com/karimov-labs/dev-xp-analyzer): `SHA-256(salt + realName)`, truncated to 16 hex characters\n- REST API for hashing, unmasking, bulk CSV upload, and listing/deleting mappings\n- **GitHub Organization Auto-Sync** — store GitHub App credentials per organization and sync all members on demand or automatically on frontend page load\n  - Supports **github.com** and **GitHub Enterprise Server** (any custom hostname)\n  - Uses GitHub App JWT authentication (RS256) — no OAuth token required\n  - Paginates through the full member list automatically\n  - Per-configuration active/inactive toggle\n  - Auto-sync throttled to at most once per 24 hours per backend process\n- Reads salt and API credentials from `app-config.yaml` (never exposes secrets to the browser)\n- Runs unauthenticated (`allow: 'unauthenticated'`) so the frontend can reach it without an extra auth token\n\n---\n\n## Requirements\n\n| Dependency | Version |\n|---|---|\n| Backstage | >= 1.30 |\n| Node.js | >= 22 (uses native `fetch` and `crypto`) |\n\n---\n\n## Installation\n\n### 1. Install the package\n\n```bash\n# yarn (Backstage default)\nyarn workspace backend add @karimov-labs/backstage-plugin-devxp-backend\n\n# npm\nnpm install @karimov-labs/backstage-plugin-devxp-backend\n```\n\n---\n\n### 2. Register the plugin\n\nEdit `packages/backend/src/index.ts`:\n\n```ts\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n\n// ... other plugins\n\nbackend.add(import('@karimov-labs/backstage-plugin-devxp-backend'));\n\nbackend.start();\n```\n\n---\n\n### 3. Configure app-config.yaml\n\n```yaml\ndevxp:\n  # Salt used for SHA-256 hashing — must match the salt used in dev-xp-analyzer\n  salt: ${DEVXP_SALT}\n\n  # Whether developer names are masked in the analytics tool\n  masked: true\n\n  # dev-xp-analyzer API credentials (optional)\n  apiToken: ${DEVXP_API_TOKEN}\n  apiEndpoint: ${DEVXP_API_ENDPOINT}\n  projectId: ${DEVXP_PROJECT_ID}\n```\n\nSet the corresponding environment variables before starting Backstage:\n\n```bash\nexport DEVXP_SALT=\"your-secret-salt\"\nexport DEVXP_API_TOKEN=\"your-api-token\"       # optional\nexport DEVXP_API_ENDPOINT=\"https://...\"        # optional\nexport DEVXP_PROJECT_ID=\"your-project-id\"     # optional\n```\n\n> **Security note:** `salt`, `apiToken`, and all GitHub App private keys are read only on the backend and are never serialised into any API response.\n\n---\n\n### 4. Database\n\nThe plugin uses the standard Backstage database service. Both tables are created automatically on startup — no manual migration is needed.\n\n#### `devxp_developer_mappings`\n\nStores the hashed identity pairs populated via CSV upload or GitHub sync.\n\n```\ndevxp_developer_mappings\n├── id          INTEGER   PRIMARY KEY AUTOINCREMENT\n├── masked_name TEXT      UNIQUE NOT NULL\n├── real_name   TEXT      NOT NULL\n└── created_at  DATETIME  DEFAULT CURRENT_TIMESTAMP\n```\n\n#### `devxp_github_sync_configs`\n\nStores GitHub App credentials and sync state per organization.\n\n```\ndevxp_github_sync_configs\n├── id              INTEGER   PRIMARY KEY AUTOINCREMENT\n├── org_name        TEXT      NOT NULL\n├── github_hostname TEXT      NOT NULL  DEFAULT 'github.com'\n├── app_client_id   TEXT      NOT NULL\n├── app_private_key TEXT      NOT NULL   ← stored server-side only, never returned by the API\n├── active          BOOLEAN   NOT NULL  DEFAULT true\n├── last_synced_at  DATETIME  NULLABLE\n└── created_at      DATETIME  DEFAULT CURRENT_TIMESTAMP\n```\n\nIf upgrading from a version that did not have `devxp_github_sync_configs`, the table is created fresh. If upgrading from an earlier version of the sync table that lacked the `github_hostname` column, the column is added automatically via an `ALTER TABLE` on startup.\n\nWorks with both **SQLite** (development) and **PostgreSQL** (production).\n\n---\n\n## REST API\n\nAll endpoints are mounted at `/api/devxp/`.\n\n### Developer mappings\n\n| Method | Path | Description |\n|---|---|---|\n| `GET` | `/health` | Health check — returns `{ status: 'ok' }` |\n| `GET` | `/config` | Non-sensitive configuration status (booleans only — never exposes secret values) |\n| `GET` | `/mappings` | List all stored `masked_name ↔ real_name` pairs |\n| `POST` | `/mappings/upload` | Upload CSV text; hashes each line and upserts mappings |\n| `POST` | `/mappings/delete` | Delete a single mapping by `maskedName` |\n| `POST` | `/unmask` | Look up a real name from a masked name |\n| `POST` | `/hash` | Compute the masked hash for a given real name |\n\n### GitHub sync configurations\n\n| Method | Path | Description |\n|---|---|---|\n| `GET` | `/github-sync` | List all sync configurations (private key excluded from response) |\n| `POST` | `/github-sync` | Register a new GitHub App sync configuration |\n| `POST` | `/github-sync/:id/toggle` | Activate or deactivate a configuration |\n| `DELETE` | `/github-sync/:id` | Delete a configuration |\n| `POST` | `/github-sync/:id/sync` | Manually trigger a member sync for a specific configuration |\n| `POST` | `/github-sync/auto` | Trigger auto-sync for all active configurations (throttled to 24 h server-side; fire-and-forget) |\n\n---\n\n### Request / response examples\n\n#### Upload CSV\n\n```bash\ncurl -X POST http://localhost:7007/api/devxp/mappings/upload \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"csvContent\": \"Alice Smith\\nBob Jones\\nCarol White\"}'\n# → { \"message\": \"Successfully processed 3 developer name mappings\", \"count\": 3 }\n```\n\n#### Unmask a developer name\n\n```bash\ncurl -X POST http://localhost:7007/api/devxp/unmask \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"maskedName\": \"a3f2c1d4e5b67890\"}'\n# → { \"maskedName\": \"a3f2c1d4e5b67890\", \"realName\": \"Alice Smith\" }\n```\n\n#### Register a GitHub sync configuration\n\n```bash\ncurl -X POST http://localhost:7007/api/devxp/github-sync \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"orgName\": \"acme-corp\",\n    \"githubHostname\": \"github.com\",\n    \"appClientId\": \"Iv1.a1b2c3d4e5f67890\",\n    \"appPrivateKey\": \"-----BEGIN RSA PRIVATE KEY-----\\n...\\n-----END RSA PRIVATE KEY-----\"\n  }'\n# → { \"id\": 1, \"message\": \"GitHub sync configuration registered for org \\\"acme-corp\\\" on \\\"github.com\\\"\" }\n```\n\nFor **GitHub Enterprise Server**, pass the GHES hostname instead:\n\n```bash\n\"githubHostname\": \"github.acme.com\"\n```\n\nThe backend resolves the API base URL automatically:\n- `github.com` → `https://api.github.com`\n- `<hostname>` → `https://<hostname>/api/v3`\n\n#### Manually trigger a sync\n\n```bash\ncurl -X POST http://localhost:7007/api/devxp/github-sync/1/sync\n# → { \"message\": \"Synced 42 members from \\\"acme-corp\\\"\", \"count\": 42, \"orgName\": \"acme-corp\" }\n```\n\n---\n\n## GitHub App setup\n\nThe sync feature requires a GitHub App installed in the target organization with **Read-only** access to **Organization members**.\n\n1. Create a GitHub App (see the in-plugin setup guide, or follow [GitHub's documentation](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app)).\n2. Under *Organization permissions*, set **Members → Read-only**.\n3. Note the **Client ID** from the General tab.\n4. Generate and download a **Private key** (`.pem` file).\n5. [Install the app](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app) in your organization.\n6. Register the credentials via the plugin UI or the `POST /api/devxp/github-sync` endpoint.\n\nThe backend authenticates as the GitHub App using an RS256-signed JWT (built with Node.js built-in `crypto` — no extra dependencies), locates the app's installation in the target organization, obtains an installation access token, then paginates through `/orgs/{org}/members`.\n\n---\n\n## Hashing algorithm\n\n```ts\nimport { createHash } from 'crypto';\n\nfunction hashUsername(salt: string, username: string): string {\n  return createHash('sha256')\n    .update(salt + username)\n    .digest('hex')\n    .substring(0, 16);\n}\n```\n\nThis matches the algorithm used in [dev-xp-analyzer](https://github.com/karimov-labs/dev-xp-analyzer). Ensure the same `salt` value is configured in both systems.\n\n---\n\n## License\n\nApache-2.0\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@karimov-labs",
+  "updated": "2026-04-10T11:02:53.273Z",
+  "version": "1.3.1",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-04-10T11:02:53.273Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2026-04-01T13:38:14.472Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-03-29T06:18:38.944Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-03-26T07:31:57.359Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-03-24T14:22:24.890Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-03-24T14:16:23.316Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-03-24T14:06:55.879Z",
+      "version": "1.0.0"
+    }
+  ]
+}

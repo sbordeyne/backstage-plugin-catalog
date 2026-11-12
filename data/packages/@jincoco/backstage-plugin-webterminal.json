@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-06-07T06:44:08.909Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates a web-based terminal into your Backstage application, enabling real-time terminal access through WebSockets.",
+  "homepage": "https://github.com/Jincoco88912/backstage-plugin-n8n#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jincoco"
+  ],
+  "name": "@jincoco/backstage-plugin-webterminal",
+  "plugin_id": "",
+  "readme": "\n# Backstage Plugin WebTerminal\n\nThis plugin seamlessly integrates a WebTerminal into your Backstage application, offering a convenient way for users to interact with a terminal interface within your app. Powered by xterm.js and WebSocket technology, it delivers a robust and responsive terminal experience.\n\n## Setup\n\n### 1. Add the plugin to your frontend app\n\nStart by installing the plugin package in your Backstage frontend app:\n\n```bash\ncd packages/app && yarn add @jincoco/backstage-plugin-webterminal\n```\n\n### 2. Configure the plugin in `app-config.yaml`\n\nNext, configure the plugin in your `app-config.yaml` file to specify the WebSocket server URL:\n\n```yaml\n# app-config.yaml, you can use wss:// or ws://\nwebterminal:\n  baseUrl: wss://your.websocket.server\n```\nEnsure you replace wss://your.websocket.server with the actual WebSocket server URL.\n\n### 3. Import and use the components\n\n- `TerminalPage`: This component represents the WebTerminal page.\n\nHere's an example of how to integrate these components into your Backstage app:\n\n```tsx\n// Example in your routes configuration file\n// App.tsx\nimport { WebTerminalPage } from '@jincoco/backstage-plugin-webterminal';\n\n// Adding WebTerminalPage to your routes\n<Route path=\"/web-terminal\" element={<WebTerminalPage />} />\n```\n\n### 4. Ensure that your websocket server setting\nEnsure your WebSocket server is correctly configured. Below is an example of setting up a simple terminal server using node-pty and WebSocket. This example uses Node.js to create the WebSocket server and manage the terminal sessions:\n\n```js\n// server.js\n// A example of a simple terminal server using node-pty and WebSocket\nconst express = require('express');\nconst WebSocket = require('ws');\nconst pty = require('node-pty');\n\nconst app = express();\nconst port = 3838;\n\n// Serve static files from the React app\napp.use(express.static('build'));\n\n// Start the server\nconst server = app.listen(port, () => {\n  console.log(`Server listening on port ${port}`);\n});\n\n// Create WebSocket server\nconst wss = new WebSocket.Server({ server });\n\nwss.on('connection', (ws) => {\n  // Create a new pty process\n  const shell = process.env.SHELL || 'bash';\n  const ptyProcess = pty.spawn(shell, [], {\n    name: 'xterm-color',\n    cols: 80,\n    rows: 30,\n    cwd: process.env.HOME,\n    env: process.env,\n  });\n\n  // Handle data from the pty process\n  ptyProcess.onData((data) => {\n    ws.send(data);\n  });\n\n  // Handle data from the WebSocket\n  ws.on('message', (msg) => {\n    ptyProcess.write(msg);\n  });\n\n  // Cleanup when the connection is closed\n  ws.on('close', () => {\n    ptyProcess.kill();\n  });\n});\n```\n### NGINX configuration for proxying with SSL\nIf you're using NGINX to proxy with SSL, ensure your configuration includes the necessary settings:\n```\nserver {\n    listen 443 ssl;\n\n    ssl_certificate /etc/nginx/ssl/certificate.crt;\n    ssl_certificate_key /etc/nginx/ssl/certificate.key;\n\n    server_name my.server.url;\n\n    location / {\n        proxy_pass http://my.websocket.ip:3838;\n        proxy_http_version 1.1;\n        proxy_set_header Upgrade $http_upgrade;\n        proxy_set_header Connection 'upgrade';\n        proxy_set_header Host $host;\n    }\n}\n```\n- `proxy_set_header Upgrade $http_upgrade`: This ensures that the WebSocket connection is upgraded from HTTP to WebSocket protocol.\n\n- `proxy_set_header Connection 'upgrade'`: This keeps the connection open and instructs NGINX to maintain the connection upgrade.\n\nMake sure to replace with your actual server name and update SSL certificate paths accordingly.\n\n## Features\nInteractive Terminal: Users can interact with a terminal interface directly within your Backstage app.\n\nWebSocket Integration: Utilizes WebSocket for real-time communication between the frontend and backend.WebSocket\n\nCustomizable Configuration: Easily configure the WebSocket server URL to suit your environment.\n\n## Screenshots\n![alt text](https://i.imgur.com/YvpebbO.png)\n\n## Contributing\n\nWe welcome contributions to improve this plugin. If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.",
+  "repository": "https://github.com/Jincoco88912/backstage-plugin-n8n",
+  "role": "frontend-plugin",
+  "scope": "@jincoco",
+  "updated": "2024-06-07T07:11:10.342Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-06-07T07:11:10.342Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-06-07T06:44:09.173Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "author": "",
+  "created": "2026-03-06T07:48:49.572Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for discovering and managing cloud resources through Resource ActionHub.",
+  "homepage": "https://github.com/Infosys/CloudServiceActionHub",
+  "keywords": [
+    "aws-ec2",
+    "backstage",
+    "backstage-plugin",
+    "cloud-management",
+    "cloud-operations",
+    "resource-actionhub",
+    "resource-management"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aditya_kr",
+    "ambrishr"
+  ],
+  "name": "@infosys_ltd/resource-actionhub-backend",
+  "plugin_id": "resource-actionhub",
+  "readme": "",
+  "repository": "https://github.com/Infosys/CloudServiceActionHub",
+  "role": "backend-plugin",
+  "scope": "@infosys_ltd",
+  "updated": "2026-06-02T11:11:48.279Z",
+  "version": "0.1.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-06-02T11:11:48.279Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2026-05-22T05:29:12.077Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-05-13T04:54:17.088Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-03-06T07:48:49.789Z",
+      "version": "0.1.0"
+    }
+  ]
+}

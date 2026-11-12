@@ -1,0 +1,38 @@
+{
+  "author": "officialplatformguy",
+  "created": "2023-10-20T23:08:13.599Z",
+  "deprecated": "",
+  "description": "Welcome to the tool-links backend plugin!",
+  "homepage": "https://github.com/platformnow/landscape#readme",
+  "keywords": [
+    "backend",
+    "backstage",
+    "homepage",
+    "links",
+    "plugin",
+    "tools"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "officialplatformguy"
+  ],
+  "name": "@platformnow/plugin-tool-links-backend",
+  "plugin_id": "",
+  "readme": "# tool-links\n\nWelcome to the tool-links backend plugin!\n\n## Installation\n\n### Install the package\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @platformnow/plugin-tool-links-backend\n```\n\n### Adding the plugin to your `packages/backend`\n\nYou'll need to add the plugin to the router in your `backend` package. You can do this by creating a file called `packages/backend/src/plugins/tool-links.ts`\n\n```tsx\nimport { createRouter } from '@platformnow/plugin-tool-links-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n    env: PluginEnvironment,\n): Promise<Router> {\n    return await createRouter({\n        database: env.database,\n        logger: env.logger,\n    });\n}\n```\n\nWith the `tool-links.ts` router setup in place, add the router to `packages/backend/src/index.ts`:\n\n```diff\n+import toolLinks from './plugins/tool-links';\n\nasync function main() {\n  ...\n  const createEnv = makeCreateEnv(config);\n\n  const catalogEnv = useHotMemoize(module, () => createEnv('catalog'));\n+ const toolLinksEnv = useHotMemoize(module, () => createEnv('tool-links'));\n\n  const apiRouter = Router();\n+ apiRouter.use('/tool-links', await toolLinks(toolLinksEnv));\n  ...\n  apiRouter.use(notFoundHandler());\n\n```\n\n### New Backend System\n\nThe Tool-Links backend plugin has support for the [new backend system](https://backstage.io/docs/backend-system/), here's how you can set that up:\n\nIn your `packages/backend/src/index.ts` make the following changes:\n\n```diff\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n\nbackend.add(import('@backstage/plugin-tool-links-backend'));\n// ... other feature additions\n\nbackend.start();\n```",
+  "repository": "https://github.com/platformnow/landscape/tree/HEAD/plugins/tool-links-backend",
+  "role": "backend-plugin",
+  "scope": "@platformnow",
+  "updated": "2023-10-21T16:18:31.593Z",
+  "version": "0.3.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-10-21T16:18:31.593Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-10-20T23:08:13.881Z",
+      "version": "0.2.0"
+    }
+  ]
+}

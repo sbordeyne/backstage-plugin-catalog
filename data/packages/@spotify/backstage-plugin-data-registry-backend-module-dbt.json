@@ -1,0 +1,63 @@
+{
+  "author": "",
+  "created": "2024-11-22T18:10:35.269Z",
+  "deprecated": "",
+  "description": "The dbt backend module for the data-registry plugin.",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-data-registry-backend-module-dbt",
+  "plugin_id": "data-registry",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2025-07-17T09:01:34.117Z",
+  "version": "0.12.7",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2025-07-17T09:01:34.117Z",
+      "version": "0.12.7"
+    },
+    {
+      "date": "2025-06-19T17:50:51.460Z",
+      "version": "0.12.6"
+    },
+    {
+      "date": "2025-05-29T17:08:42.883Z",
+      "version": "0.12.5"
+    },
+    {
+      "date": "2025-04-18T11:49:07.622Z",
+      "version": "0.12.4"
+    },
+    {
+      "date": "2025-03-20T15:37:17.590Z",
+      "version": "0.12.3"
+    },
+    {
+      "date": "2025-02-21T09:41:30.977Z",
+      "version": "0.12.2"
+    },
+    {
+      "date": "2025-01-16T14:40:56.831Z",
+      "version": "0.12.1"
+    },
+    {
+      "date": "2024-12-19T10:32:15.730Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2024-12-04T15:40:08.457Z",
+      "version": "0.11.1"
+    },
+    {
+      "date": "2024-11-22T18:10:35.567Z",
+      "version": "0.11.0"
+    }
+  ]
+}

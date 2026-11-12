@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:25.597Z",
+  "deprecated": "",
+  "description": "A module enabling usage of PostgreSQL as a storage solution for RAG AI Backstage backend plugin.",
+  "homepage": "https://github.com/kozmoai/glint-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/rag-ai-storage-pgvector",
+  "plugin_id": "",
+  "readme": "# GlintPgVectorStore - PostgreSQL RAG AI Vector Storage\n\nA module enabling usage of PostgreSQL as a storage solution for RAG AI Backstage backend plugin.\n\n> Note, you need to have `uuid-ossp` and `vector` PostgreSQL extensions available on your database to be able to use this module.\n\nThis module construct a database and needed database tables to support storing embeddings vectors into your PostgreSQL DB. You can control the name of the database with the configured environment name within your Backstage backend application.\n\n## How to initialize\n\nYou can use the exported `createGlintPgVectorStore` function to initialize the GlintPGVectorStore. This initialization function expects an instance of logger and a Knex DB connection.\n\nHere is a TypeScript example:\n\n```typescript\nconst config = {\n  logger: Logger, // logger instance\n  db: Knex, // database connection provided by Knex\n  options: {\n    chunkSize: number, // (optional) amount of documents to chunk when adding vectors, default is 500\n    tableName: string, // (optional) Table naming to use to store embeddings. Default is 'embeddings'\n  },\n};\n\nconst vectorStore = await createGlintPgVectorStore({\n  logger,\n  database,\n  options: { chunkSize, tableName },\n});\n```\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/backend/rag-ai-storage-pgvector",
+  "role": "backend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:20.382Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:20.382Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-03-25T22:14:25.834Z",
+      "version": "0.1.0"
+    }
+  ]
+}

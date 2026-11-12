@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2023-08-03T06:30:11.821Z",
+  "deprecated": "",
+  "description": "> :warning: **This plugin is WIP**. Today, this plugin will only lint > your OpenAPI Specification using our > [linter](https://konfigthis.com/docs/lint-rules) specifically built for ensuring > high quality SDK generation. If you are interested please rea",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "konfig-publisher"
+  ],
+  "name": "backstage-plugin-konfig",
+  "plugin_id": "",
+  "readme": "# Konfig Plugin\n\n> :warning: **This plugin is WIP**. Today, this plugin will only lint\n> your OpenAPI Specification using our\n> [linter](https://konfigthis.com/docs/lint-rules) specifically built for ensuring\n> high quality SDK generation. If you are interested please reach out to\n> dylan@konfigthis.com or schedule a time with us\n> [here](https://konfigthis.com/schedule-demo)!\n\nWelcome to the [Konfig](https://konfigthis.com) Backstage plugin!\n\nThis plugin allows you to generate SDKs for your APIs.\n\n![Konfig](https://raw.githubusercontent.com/konfig-dev/backstage-plugin-konfig/main/plugins/backstage-plugin-konfig/docs/konfig.png)\n\n## Setup\n\n1. Install this plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add backstage-plugin-konfig\n```\n\n### Entity Pages\n\n1. Add the plugin as a tab to your Entity pages:\n\n```jsx\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityApiDocsKonfigContent, isApiDocsKonfigAvailable } from 'backstage-plugin-konfig';\n\n...\n\nconst apiPage = (\n  <EntityLayout>\n    {/* other tabs... */}\n    <EntityLayout.Route if={isApiDocsKonfigAvailable} path=\"/konfig\" title=\"Konfig\">\n      <EntityApiDocsKonfigContent />\n    </EntityLayout.Route>\n  </EntityLayout>\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2023-08-03T22:58:44.939Z",
+  "version": "0.4.2",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2023-08-03T22:58:44.939Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2023-08-03T22:31:41.834Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2023-08-03T21:31:30.508Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2023-08-03T08:28:49.728Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-08-03T07:38:31.983Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-08-03T06:30:12.112Z",
+      "version": "0.1.0"
+    }
+  ]
+}

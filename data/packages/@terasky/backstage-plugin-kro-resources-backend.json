@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-09-25T23:20:09.277Z",
+  "deprecated": "",
+  "description": "Welcome to the kro-resources backend plugin!",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-kro-resources-backend",
+  "plugin_id": "kro",
+  "readme": "# kro-resources-backend\nWelcome to the kro-resources backend plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-kro-resources-backend/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-kro-resources-backend)\n\nThe `kro-resources` backend plugin for Backstage provides integration with KRO, enabling permission management and access control for KRO resources, as well as endpoints for pulling data from k8s clusters about kro resources. This plugin leverages Backstage's permission framework to enforce policies and manage access to KRO resources.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/kro/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/kro-resources-backend",
+  "role": "backend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:48:29.257Z",
+  "version": "0.20.0",
+  "version_count": 20,
+  "versions": [
+    {
+      "date": "2026-10-21T13:48:29.257Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-07-08T14:07:12.376Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-06-30T17:18:52.151Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-06-09T19:03:36.892Z",
+      "version": "0.15.1"
+    },
+    {
+      "date": "2026-04-16T08:19:03.423Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2026-03-22T16:59:36.073Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2026-03-09T16:51:14.621Z",
+      "version": "0.10.1"
+    },
+    {
+      "date": "2026-02-17T20:37:43.906Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-01-29T20:40:08.929Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-01-28T18:29:55.602Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-01-26T10:36:11.457Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2026-01-21T10:07:26.677Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-12-22T10:15:03.189Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-12-07T15:35:12.106Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2025-12-02T12:34:52.638Z",
+      "version": "0.5.0"
+    }
+  ]
+}

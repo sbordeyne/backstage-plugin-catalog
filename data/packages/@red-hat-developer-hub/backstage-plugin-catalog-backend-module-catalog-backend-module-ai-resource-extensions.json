@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2026-07-16T16:01:02.104Z",
+  "deprecated": "",
+  "description": "The catalog-backend-module-ai-resource-extensions backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-catalog-backend-module-catalog-backend-module-ai-resource-extensions",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/ai-integrations/plugins/catalog-backend-module-catalog-backend-module-ai-resource-extensions",
+  "role": "backend-plugin-module",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-07-16T16:01:02.473Z",
+  "version": "0.2.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-07-16T16:01:02.473Z",
+      "version": "0.2.0"
+    }
+  ]
+}

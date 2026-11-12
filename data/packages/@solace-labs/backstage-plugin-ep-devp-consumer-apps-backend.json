@@ -1,0 +1,91 @@
+{
+  "author": "Solace Corporation",
+  "created": "2023-02-18T12:13:46.703Z",
+  "deprecated": "",
+  "description": "> :warning: **experimental**",
+  "homepage": "https://github.com/solace-iot-team/backstage-ep-devp-plugins#readme",
+  "keywords": [
+    "api management",
+    "asyncapi",
+    "backstage",
+    "event portal",
+    "solace"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dishantlangayan",
+    "solacecommunity",
+    "tamimi65"
+  ],
+  "name": "@solace-labs/backstage-plugin-ep-devp-consumer-apps-backend",
+  "plugin_id": "",
+  "readme": "# Event Portal Consumer Apps Backend\n\n> :warning: **experimental**\n",
+  "repository": "https://github.com/solace-iot-team/backstage-ep-devp-plugins/tree/HEAD/plugins/ep-devp-consumer-apps-backend",
+  "role": "backend-plugin",
+  "scope": "@solace-labs",
+  "updated": "2023-09-20T10:33:49.297Z",
+  "version": "1.0.1",
+  "version_count": 40,
+  "versions": [
+    {
+      "date": "2023-09-20T10:33:49.297Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-09-06T11:47:11.416Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2023-05-31T05:09:00.914Z",
+      "version": "0.18.2"
+    },
+    {
+      "date": "2023-05-10T10:54:41.043Z",
+      "version": "0.18.1"
+    },
+    {
+      "date": "2023-05-04T07:30:22.788Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2023-05-02T05:50:49.995Z",
+      "version": "0.17.1"
+    },
+    {
+      "date": "2023-04-30T10:10:01.866Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2023-04-28T13:44:48.140Z",
+      "version": "0.16.2"
+    },
+    {
+      "date": "2023-04-28T10:19:50.668Z",
+      "version": "0.16.1"
+    },
+    {
+      "date": "2023-04-27T11:39:07.602Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2023-04-26T11:26:35.343Z",
+      "version": "0.15.3"
+    },
+    {
+      "date": "2023-04-26T06:04:12.266Z",
+      "version": "0.15.2"
+    },
+    {
+      "date": "2023-04-24T14:18:23.902Z",
+      "version": "0.15.1"
+    },
+    {
+      "date": "2023-04-21T12:08:05.741Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2023-04-19T10:01:19.316Z",
+      "version": "0.14.2"
+    }
+  ]
+}

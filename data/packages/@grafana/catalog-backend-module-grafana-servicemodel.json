@@ -1,0 +1,76 @@
+{
+  "author": "Grafana Labs",
+  "created": "2024-11-07T20:51:34.647Z",
+  "deprecated": "",
+  "description": "The grafana-service-model backend module for the catalog plugin.",
+  "homepage": "https://github.com/grafana/backstage-plugin-grafana-catalog",
+  "keywords": [
+    "backend",
+    "backstage",
+    "grafana",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "grafanabot"
+  ],
+  "name": "@grafana/catalog-backend-module-grafana-servicemodel",
+  "plugin_id": "catalog",
+  "readme": "# @grafana/backstage-plugin-grafana-catalog\n\nThe grafana-service-model backend module for the Backstage catalog.\n\nGrafana Cloud can track your Backstage catalog and use that data to control behavior of Grafana Cloud systems.\n\nInitially this integration will allow you to associate \"Services\" (Components of type: service) to objects in Grafana OnCall. In the future we will be able to use this data to track Team ownership and Service <-> Service dependencies.\n\nThe Grafana \"ServiceModel\" is basically a mirror of the Backstage Catalog model.\n\nThis work is very early. We are still exploring ways to utilize your Backstage Catalog. Please reach out if you have ideas!\n\n## Quick Start Guide\n\nFollow the [quick start guide](docs/quickstart.md) to test this plugin with a new Backstage install. The instructions should carry over to your production install.\n\n## Metrics\n\nThe processor emits metrics so you can tell whether a sync is healthy without\nreading logs. See [metrics](docs/metrics.md) for the full list and some example\nqueries.\n\n## Notes for developers\n\nTo create a backstage instance and install this plugin for local development, run the following:\n\n```\n> BACKSTAGE_APP_NAME=backstage-testing npx @backstage/create-app@0.5.25\n> cd backstage-testing\n> git clone https://github.com/grafana/backstage-plugin-grafana-catalog.git  plugins/catalog-backend-module-grafana-servicemodel\n> sed -i 's/\"name\": \"@grafana\\/catalog-backend-module-grafana-servicemodel\",/\"name\": \"@internal\\/catalog-backend-module-grafana-servicemodel\",/' plugins/catalog-backend-module-grafana-servicemodel/package.json\n\n> yarn --cwd packages/backend add @internal/catalog-backend-module-grafana-servicemodel\n```\n\nRun `yarn install-hooks` once after cloning. It installs a pre-commit hook that\nchecks for the `internal` name in `package.json`. This is no longer automatic:\nYarn 4 does not run the root workspace's `prepare` script on install, so\n`yarn install` alone will not set the hook up.\n\nadd this line to `packages/backend/src/index.ts`:\n\n```\nbackend.add(import('@internal/catalog-backend-module-grafana-servicemodel'));\n```\n\nThen to run:\n\n```\n> LOG_LEVEL=debug yarn dev\n```\n\nIf you want to run against the k8s cluster in your default context:\n\n```\n> LOG_LEVEL=debug DEV_MODE=true yarn dev\n\n```\n",
+  "repository": "https://github.com/grafana/backstage-plugin-grafana-catalog",
+  "role": "backend-plugin-module",
+  "scope": "@grafana",
+  "updated": "2026-11-12T00:12:09.405Z",
+  "version": "0.5.0",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-11-12T00:12:09.405Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-11-05T16:28:08.367Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-07-29T16:09:26.478Z",
+      "version": "0.3.41"
+    },
+    {
+      "date": "2026-07-28T21:08:09.533Z",
+      "version": "0.3.40"
+    },
+    {
+      "date": "2025-04-28T14:19:24.333Z",
+      "version": "0.3.28"
+    },
+    {
+      "date": "2025-04-18T16:08:56.063Z",
+      "version": "0.3.25"
+    },
+    {
+      "date": "2025-02-25T23:36:27.787Z",
+      "version": "0.3.24"
+    },
+    {
+      "date": "2025-01-21T19:26:41.902Z",
+      "version": "0.3.23"
+    },
+    {
+      "date": "2025-01-14T21:06:58.916Z",
+      "version": "0.3.22"
+    },
+    {
+      "date": "2025-01-06T23:55:55.203Z",
+      "version": "0.3.21"
+    },
+    {
+      "date": "2024-11-22T20:26:32.542Z",
+      "version": "0.3.20"
+    },
+    {
+      "date": "2024-11-07T20:51:34.940Z",
+      "version": "0.3.17"
+    }
+  ]
+}

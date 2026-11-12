@@ -1,0 +1,38 @@
+{
+  "author": "@hareeshmu",
+  "created": "2024-03-01T08:57:09.361Z",
+  "deprecated": "",
+  "description": "A frontend plugin that integrates a Dashboard feature into Backstage",
+  "homepage": "https://github.com/hareeshmu/backstage-plugin-dashboard#readme",
+  "keywords": [
+    "backstage",
+    "dashboard"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "hareeshmu"
+  ],
+  "name": "@hareeshmu/backstage-plugin-dashboard",
+  "plugin_id": "",
+  "readme": "# Backstage Plugin Dashboard\n",
+  "repository": "https://github.com/hareeshmu/backstage-plugin-dashboard",
+  "role": "frontend-plugin",
+  "scope": "@hareeshmu",
+  "updated": "2024-03-01T09:23:17.320Z",
+  "version": "0.0.3",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-03-01T09:23:17.320Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-03-01T08:59:23.517Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-03-01T08:57:09.629Z",
+      "version": "0.0.1"
+    }
+  ]
+}

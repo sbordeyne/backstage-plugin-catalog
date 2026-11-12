@@ -1,0 +1,56 @@
+{
+  "author": "Amazon Web Services",
+  "created": "2023-05-09T14:04:07.383Z",
+  "deprecated": "",
+  "description": "<!--  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved. SPDX-License-Identifier: Apache-2.0  --> # Harmonix on AWS Backend",
+  "homepage": "https://github.com/awslabs/harmonix#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "awsjim",
+    "z-sourcecode"
+  ],
+  "name": "@aws/plugin-aws-apps-backend-for-backstage",
+  "plugin_id": "harmonix-backend",
+  "readme": "<!-- \nCopyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: Apache-2.0 \n-->\n# Harmonix on AWS Backend\n\nThis is the backend part of the Harmonix on AWS plugin.  Its key responsibilities:\n\n1. **Catalog contributions** - the plugin provides the AWSEnvironment and AWSEnvironmentProvider entity Kinds, including processing and validation of the entities.\n2. **Authentication / Authorization** - the plugin assumes defined roles with permisisons for provisioning infrastructure resources for a target environment account.\n3. **Audit** - the plugin provides services to record requested actions, user id and IAM role, timestamps, success/failure results, and additional information for the purpose of capturing audit-level information about the actions performed by the AWS Apps Backstage plugin against AWS.\n4. **Proxying AWS requests** - the plugin provides API endpoints for specific AWS service actions.  It receives requests on these endpoints, validates the request, and proxies the request and response between Backstage and a specified AWS account and region.\n\n## Installation\n\n```sh\n# From your Backstage root directory\nyarn add --cwd packages/backend @aws/plugin-aws-apps-backend-for-backstage@0.2.0\n```\n\n## Configuration\n\nSetup for the AWS Apps backend requires a router for Backstage, making the catalog aware of the new entity kinds.\n\n### Configure a router\n\nCreate a `awsApps.ts` file in the `packages/backend/src/plugins/`directory.  This file creates a router for the Harmonix on AWS backend.\n\n```ts\n// packages/backend/src/plugins/awsApps.ts\n\nimport {createRouter} from '@aws/plugin-aws-apps-backend-for-backstage'\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\nimport {DefaultIdentityClient } from '@backstage/plugin-auth-node';\n\nexport default async function createPlugin({\n  logger,\n  discovery,\n  config,\n  permissions,\n}: PluginEnvironment): Promise<Router> {\n  return await createRouter({\n    logger: logger,\n    userIdentity: DefaultIdentityClient.create({\n      discovery,\n      issuer: await discovery.getExternalBaseUrl('auth'),\n    }),\n    config,\n    permissions,\n  });\n}\n```\n\nYou can now add the router to Backstage in the `packages/backend/src/plugins/index.ts` file\n\n```diff\n...\n+ import awsApps from './plugins/awsApps'\n\n...\n// add the environment and router\n  const catalogEnv = useHotMemoize(module, () => createEnv('catalog'));\n  const scaffolderEnv = useHotMemoize(module, () => createEnv('scaffolder'));\n  const authEnv = useHotMemoize(module, () => createEnv('auth'));\n  const proxyEnv = useHotMemoize(module, () => createEnv('proxy'));\n  const techdocsEnv = useHotMemoize(module, () => createEnv('techdocs'));\n  const searchEnv = useHotMemoize(module, () => createEnv('search'));\n  const appEnv = useHotMemoize(module, () => createEnv('app'));\n+  const awsAppsEnv = useHotMemoize(module, () => createEnv('aws-apps-backend'));\n\n  const apiRouter = Router();\n  apiRouter.use('/catalog', await catalog(catalogEnv));\n  apiRouter.use('/scaffolder', await scaffolder(scaffolderEnv));\n  apiRouter.use('/auth', await auth(authEnv));\n  apiRouter.use('/techdocs', await techdocs(techdocsEnv));\n  apiRouter.use('/proxy', await proxy(proxyEnv));\n  apiRouter.use('/search', await search(searchEnv));\n+ apiRouter.use('/aws-apps-backend', await awsApps(awsAppsEnv));\n\n...\n```\n\n### Configure the catalog\n\nAdd to the Backstage catalog so that it's aware of the processors for the AWSEnvironment and AWSEnvironmentProvider entity kinds.\n\n```diff\n// packages/backend/src/plugins/catalog.ts\n\nimport { CatalogBuilder } from '@backstage/plugin-catalog-backend';\nimport { ScaffolderEntitiesProcessor } from '@backstage/plugin-catalog-backend-module-scaffolder-entity-model';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n+ import { AWSEnvironmentEntitiesProcessor, AWSEnvironmentProviderEntitiesProcessor} from '@aws/plugin-aws-apps-backend-for-backstage';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const builder = await CatalogBuilder.create(env);\n  \n  builder.addProcessor(new ScaffolderEntitiesProcessor());\n\n+ // Custom processors\n+ builder.addProcessor(new AWSEnvironmentEntitiesProcessor());\n+ builder.addProcessor(new AWSEnvironmentProviderEntitiesProcessor());\n\n  const { processingEngine, router } = await builder.build();\n\n  await processingEngine.start();\n\n  return router;\n```\n\n### Permission Framework Policy\n\nThe Harmonix on AWS backend plugin leverages the [Backstage permissions framework](https://backstage.io/docs/permissions/overview) to contribute a permission decision for access to audit entries.  If you would like to implement a policy for your Backstage instance to control access to audit entries you will start with the [Permission framework getting started documentation](https://backstage.io/docs/permissions/getting-started) to set up the base framework.  \nWith the framework in place, you can leverage the `readOpaAppAuditPermission` permission in your policy definition to restrict access to audit entries.\n\n```ts\n// Example of policy decision in a policy\n\nimport { readOpaAppAuditPermission } from '@aws/plugin-aws-apps-common-for-backstage';\n...\n\nexport class permissionPolicy implements PermissionPolicy {\n  async handle(\n    request: PolicyQuery,\n    user?: BackstageIdentityResponse\n  ): Promise<PolicyDecision> {\n    ...\n    // restrict access to audit entries if the user is only a member of the Villians group\n    const VILLIANS_GROUP = stringifyEntityRef({ kind: 'Group', namespace: DEFAULT_NAMESPACE, name: \"villians\" });\n    const ownershipGroups = user?.identity.ownershipEntityRefs || [];\n    if (\n      isPermission(request.permission, readOpaAppAuditPermission) && \n      ownershipGroups.length === 1 && \n      ownershipGroups.includes(VILLIANS_GROUP)\n    ) {\n      return { result: AuthorizationResult.DENY };\n    }\n\n    ...\n  }\n}\n\n```\n\nAdditional permission decisions and resources are planned for future releases.",
+  "repository": "https://github.com/awslabs/harmonix/tree/HEAD/backstage-plugins/plugins/harmonix-backend",
+  "role": "backend-plugin",
+  "scope": "@aws",
+  "updated": "2025-04-18T19:44:27.731Z",
+  "version": "0.4.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2025-04-18T19:44:27.731Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-08-16T19:05:41.097Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2024-02-26T21:24:19.528Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2024-01-25T01:03:14.731Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-01-23T21:13:56.520Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-09-27T22:19:16.432Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-05-10T19:24:41.229Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-05-09T14:04:07.711Z",
+      "version": "0.1.0"
+    }
+  ]
+}

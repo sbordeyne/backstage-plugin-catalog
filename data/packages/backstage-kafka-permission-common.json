@@ -1,0 +1,69 @@
+{
+  "author": "iAmritMalviya",
+  "created": "2024-07-02T09:27:27.676Z",
+  "deprecated": "",
+  "description": "A plugin to use common permissions of Kafka in Backstage",
+  "homepage": "https://github.com/iAmritMalviya/backstage-kafka-permission-common#readme",
+  "keywords": [
+    "announcement-permissions",
+    "backstage",
+    "kafka",
+    "plugin",
+    "typescript"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "iamritmalviya"
+  ],
+  "name": "backstage-kafka-permission-common",
+  "plugin_id": "",
+  "readme": "# Backstage Kafka Permission Common\n\nA plugin to use common permissions of Kafka in Backstage.\n\n## Installation\n\nTo install the package, run:\n\n```bash\nnpm install backstage-kafka-permission-common\n```\n\n## Usage\n\nAfter installing the package, you can use it in your Backstage plugin to manage Kafka permissions. Here's a basic example:\n\n```typescript\nimport { topicCreatePermission } from 'backstage-kafka-permission-common';\n\n```\n\n## Building\n\nTo build the package, run:\n\n```bash\nnpm run build\n```\n\n## Contributing\n\nContributions are welcome! Please open an issue or submit a pull request.\n\n## License\n\nThis project is licensed under the MIT License.\n\n## Author\n\niAmritMalviya\n\n## Links\n\n- [Repository](https://github.com/iAmritMalviya/backstage-kafka-permission-common)\n- [Issues](https://github.com/iAmritMalviya/backstage-kafka-permission-common/issues)\n```\n",
+  "repository": "https://github.com/iAmritMalviya/backstage-kafka-permission-common",
+  "role": "",
+  "scope": "",
+  "updated": "2024-09-11T14:02:19.848Z",
+  "version": "0.0.11",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2024-09-11T14:02:19.848Z",
+      "version": "0.0.11"
+    },
+    {
+      "date": "2024-09-11T13:58:03.127Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2024-08-09T11:42:31.589Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2024-08-06T13:43:38.845Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2024-08-06T13:41:32.172Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2024-08-06T13:39:15.063Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2024-08-06T13:35:26.300Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2024-08-06T13:27:17.824Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-07-02T09:30:17.312Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-07-02T09:27:27.813Z",
+      "version": "0.0.1"
+    }
+  ]
+}

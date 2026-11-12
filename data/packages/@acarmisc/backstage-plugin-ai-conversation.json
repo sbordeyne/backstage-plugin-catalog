@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2026-08-27T15:33:24.730Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for LiteLLM RAG chat — streaming UI with model/KB/key pickers.",
+  "homepage": "https://github.com/acarmisc/backstage-plugin-ai-conversation#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "acarmisc"
+  ],
+  "name": "@acarmisc/backstage-plugin-ai-conversation",
+  "plugin_id": "ai-conversation",
+  "readme": "# @acarmisc/backstage-plugin-ai-conversation\n\nFrontend of [AI Conversation for Backstage](https://github.com/acarmisc/backstage-plugin-ai-conversation):\na chat page on top of a LiteLLM gateway, with team-bound keys, knowledge\nbases, skills, compare mode and conversation history.\n\n![The chat page](https://raw.githubusercontent.com/acarmisc/backstage-plugin-ai-conversation/main/docs/images/chat.png)\n\n## Install\n\nRequires the backend package `@acarmisc/backstage-plugin-ai-conversation-backend`\nand the [LiteLLM Governance plugin](https://github.com/acarmisc/backstage-plugin-litellm-govai)\nfrontend (`@acarmisc/backstage-plugin-litellm`), whose API provides teams and\nmodels.\n\n```bash\nyarn --cwd packages/app add @acarmisc/backstage-plugin-ai-conversation\n```\n\nFor the new frontend system, add the plugin to your app (or let feature\ndiscovery pick up the default export):\n\n```ts\nimport aiConversationPlugin from '@acarmisc/backstage-plugin-ai-conversation';\n\nconst app = createApp({ features: [aiConversationPlugin] });\n```\n\n## Extensions\n\n| Extension | Path |\n| --- | --- |\n| Chat page | `/ai-conversation` |\n| Analytics page | `/ai-conversation/analytics` |\n| `aiConversationApiRef` | API client for the backend routes |\n\n`ChatPage`, `AnalyticsPage` and `AiConversationApi` are also exported for\napps that wire pages themselves.\n\nThe page loads the KaTeX stylesheet from `cdn.jsdelivr.net`; allow it in\nyour Content Security Policy.\n\n## Documentation\n\n[User guide](https://github.com/acarmisc/backstage-plugin-ai-conversation/blob/main/docs/user-guide.md) ·\n[Configuration](https://github.com/acarmisc/backstage-plugin-ai-conversation/blob/main/docs/configuration.md) ·\n[Troubleshooting](https://github.com/acarmisc/backstage-plugin-ai-conversation/blob/main/docs/troubleshooting.md)\n",
+  "repository": "https://github.com/acarmisc/backstage-plugin-ai-conversation",
+  "role": "frontend-plugin",
+  "scope": "@acarmisc",
+  "updated": "2026-11-01T20:40:39.849Z",
+  "version": "0.20.3",
+  "version_count": 19,
+  "versions": [
+    {
+      "date": "2026-11-01T20:40:39.849Z",
+      "version": "0.20.3"
+    },
+    {
+      "date": "2026-11-01T13:39:11.862Z",
+      "version": "0.20.2"
+    },
+    {
+      "date": "2026-10-05T08:16:48.899Z",
+      "version": "0.20.1"
+    },
+    {
+      "date": "2026-10-05T07:09:32.307Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-10-05T05:46:03.585Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-09-22T07:04:18.294Z",
+      "version": "0.18.1"
+    },
+    {
+      "date": "2026-09-21T19:39:47.199Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-09-21T14:10:55.076Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-09-07T18:54:39.537Z",
+      "version": "0.16.1"
+    },
+    {
+      "date": "2026-09-05T12:28:22.439Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-09-04T13:14:18.835Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2026-09-04T08:47:48.696Z",
+      "version": "0.14.2"
+    },
+    {
+      "date": "2026-09-04T08:07:11.329Z",
+      "version": "0.14.1"
+    },
+    {
+      "date": "2026-09-04T07:03:43.017Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2026-09-03T16:33:50.085Z",
+      "version": "0.13.0"
+    }
+  ]
+}

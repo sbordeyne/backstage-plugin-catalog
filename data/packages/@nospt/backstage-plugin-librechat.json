@@ -1,0 +1,54 @@
+{
+  "author": "",
+  "created": "2026-06-25T09:12:56.831Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin adding an AI chat bubble powered by LibreChat Agents API",
+  "homepage": "https://github.com/nosportugal/backstage-plugin-librechat#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "calexandre",
+    "jfhs",
+    "kkthx",
+    "luiscga"
+  ],
+  "name": "@nospt/backstage-plugin-librechat",
+  "plugin_id": "librechat",
+  "readme": "# @nospt/backstage-plugin-librechat\n\n> Frontend plugin that adds an AI chat bubble to your Backstage app, powered by the [LibreChat](https://www.librechat.ai/) Agents API.\n\nThis is the **frontend** half of the LibreChat plugin. It renders a floating chat bubble across every page of your Backstage app, captures the context of the page you're viewing, streams responses in real time, and renders them as Markdown.\n\nIt must be paired with the backend plugin, [`@nospt/backstage-plugin-librechat-backend`](../librechat-backend/README.md), which proxies requests to LibreChat and keeps your API keys server-side.\n\n## Features\n\n- **Floating chat bubble** — persistent AI chat overlay on every Backstage page.\n- **Page context awareness** — automatically shares the current page title, path, and URL with the agent.\n- **Streaming responses** — real-time SSE streaming from the LibreChat Agents API.\n- **Markdown rendering** — full GitHub Flavored Markdown (code blocks, tables, lists).\n- **In-chat settings** — users can supply their own API key, validate it, and override the default.\n- **Local conversation history** — completed conversations are saved per signed-in user in the browser via Backstage's Storage API; the five most recently used conversations are retained.\n- **History controls** — reopen the last active chat, start a new chat, switch conversations, delete individual conversations, or delete all local history.\n\n## Prerequisites\n\n- A Backstage app using the **[new frontend system](https://backstage.io/docs/frontend-system/)** (`@backstage/frontend-defaults`).\n- The backend plugin [`@nospt/backstage-plugin-librechat-backend`](../librechat-backend/README.md) installed and configured.\n- A running [LibreChat](https://www.librechat.ai/) instance with the Agents API enabled.\n\n## Installation\n\nInstall the package in your Backstage app package (e.g. `packages/app`):\n\n```bash\nyarn --cwd packages/app add @nospt/backstage-plugin-librechat\n```\n\n## Setup\n\nRegister the plugin as a feature in your app entry point. With the new frontend system it is discovered automatically when listed in `package.json`, but you can also add it explicitly:\n\n```typescript\n// packages/app/src/App.tsx\nimport {createApp} from \"@backstage/frontend-defaults\";\nimport libreChatPlugin from \"@nospt/backstage-plugin-librechat\";\n\nconst app = createApp({\n  features: [libreChatPlugin],\n});\n\nexport default app.createRoot();\n```\n\nThe plugin contributes an app-root overlay (the chat bubble), so there is no route or page to mount — once registered, the bubble appears in the bottom-right corner of every page.\n\n## Configuration\n\nAll configuration for both the frontend and backend plugins lives under the `librechat` key in `app-config.yaml`:\n\n```yaml\nlibrechat:\n  # Required: URL of your LibreChat instance (used by frontend and backend)\n  baseUrl: https://your-librechat-instance.com\n  # Required: agent ID configured in LibreChat (used as the completion model)\n  agentId: agent_abc123\n  # Optional: default API key — users can override it in the chat Settings\n  apiKey: your-librechat-api-key\n  # Optional: display name shown in the chat header and message labels (default: \"AI\")\n  name: NOS-GPT\n  # Optional: custom chat bubble icon from a local image in your app's static assets (served path, relative to app.baseUrl)\n  iconPath: /chat-icon.png\n  # Optional: help text above the API key field in Settings (supports [label](url) links)\n  apiKeyDescription: \"You can set up your LibreChat key [here](https://example.com/key).\"\n  # Optional: show/hide the chat bubble (default: true)\n  enabled: true\n  # Optional: allow unauthenticated access to /api/librechat/* (default: false)\n  # WARNING: set true only if you intentionally want a public plugin route.\n  allowUnauthenticated: false\n```\n\n| Setting                | Required | Visibility | Description                                                                                                    |\n| ---------------------- | -------- | ---------- | -------------------------------------------------------------------------------------------------------------- |\n| `baseUrl`              | ✅       | frontend   | URL of your LibreChat instance                                                                                 |\n| `agentId`              | ✅       | backend    | Agent ID configured in LibreChat, used as the completion model                                                 |\n| `apiKey`               | ❌       | secret     | Default API key; users can override it per-request from the chat UI                                            |\n| `name`                 | ❌       | frontend   | Display name in the chat header and messages (default: `AI`)                                                   |\n| `iconPath`             | ❌       | frontend   | Custom bubble icon from a local image in static assets (e.g. `/chat-icon.png`, resolved against `app.baseUrl`) |\n| `apiKeyDescription`    | ❌       | frontend   | Help text above the API key field in Settings; supports `[label](url)` links                                   |\n| `enabled`              | ❌       | frontend   | Show or hide the chat bubble (default: `true`)                                                                 |\n| `allowUnauthenticated` | ❌       | backend    | Allow anonymous access to plugin backend routes (default: `false`; enable only for trusted/dev setups)         |\n\n> [!NOTE]\n> `agentId` and `apiKey` are only read server-side by the backend plugin and are never exposed to the browser. `baseUrl`, `name`, and `enabled` are visible to the frontend.\n\n> [!WARNING]\n> By default, plugin backend routes require Backstage authentication. Setting `librechat.allowUnauthenticated: true` makes `/api/librechat/*` publicly accessible for this plugin.\n\n## Endpoints\n\nThe backend plugin mounts under `/api/librechat`:\n\n| Method | Path     | Description                                                               |\n| ------ | -------- | ------------------------------------------------------------------------- |\n| `POST` | `/chat`  | Proxies a chat completion to LibreChat and streams the SSE response back. |\n| `POST` | `/check` | Validates an API key by sending a short test message to LibreChat.        |\n\nBoth accept optional `x-librechat-api-key` and `x-librechat-agent-id` headers to override the configured defaults.\n\n## How it works\n\n```\nFrontend bubble → POST /api/librechat/chat → LibreChat /api/agents/v1/chat/completions → SSE stream back\n```\n\nThe backend resolves the API key (a user-supplied header takes precedence over the configured default), validates the request, sanitizes the agent ID, and proxies it to `POST {baseUrl}/api/agents/v1/chat/completions`. The streamed response is piped back to the frontend untouched, where it is rendered as Markdown in real time.\n\n## Usage\n\n1. Open any page in Backstage.\n2. Click the **chat bubble** in the bottom-right corner.\n3. Open **Settings** to enter your LibreChat API key (or use the default configured by your admin).\n4. Click the **check** button to validate your key — a confirmation message appears in the chat.\n5. Start chatting — the AI automatically receives context about the page you're viewing.\n\nUser settings (the API key) are stored in the browser via Backstage's Storage API.\n\nCompleted chat conversations are also stored locally per signed-in Backstage user. Only the five most recently used conversations are retained; no conversation data is sent to the plugin backend except the active transcript needed for the current request. Page context is attached to requests without being stored in the transcript.\n\n## License\n\nApache-2.0. Made with ❤️ by [NOS Inovação](https://github.com/nosportugal).\n",
+  "repository": "https://github.com/nosportugal/backstage-plugin-librechat/tree/HEAD/plugins/librechat",
+  "role": "frontend-plugin",
+  "scope": "@nospt",
+  "updated": "2026-11-04T15:10:33.106Z",
+  "version": "0.5.1",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-11-04T15:10:33.106Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-09-28T15:55:35.922Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-07-08T14:04:44.849Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-06-26T10:06:40.508Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-06-25T21:11:20.027Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-06-25T10:02:17.300Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-06-25T09:12:57.266Z",
+      "version": "0.1.0"
+    }
+  ]
+}

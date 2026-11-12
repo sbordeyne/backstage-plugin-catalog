@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2024-04-30T07:34:58.088Z",
+  "deprecated": "",
+  "description": "The nunjucks-config-replace backend module for the scaffolder plugin.",
+  "homepage": "https://github.com/CubitsDev/backstage-nunjucks-replace#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cubitsdev"
+  ],
+  "name": "backstage-nunjucks-replace",
+  "plugin_id": "",
+  "readme": "# backstage-nunjucks-replace\n\nA Simple Plugin Module to create custom 'replacement' filters to use on the Backstage scaffolder. For example, accessing a private key from configuration in a step.\n\n## Usage\n\nAdd the following to your backstage config:\n\n```yaml\nnunjucks-replace:\n  replacements:\n    - placeholder: <placeholder>\n      replacement: <replacementString>\n    ...\n```\n\nIf using the new backend system, you can add the module by simply placing this into your backend:\n`backend.add(import('backstage-nunjucks-replace'))`\n\nIf using the old system, you will need to specify the config replacement in your scaffolder router like so:\n\n```ts\n    return await createRouter({\n        ...\n        additionalTemplateFilters: {\n            configReplace: configLookup(env.config)\n        }\n    })\n```\n\nYou can then use the filter like so in your scaffolder actions:\n`${{ placeholder | configReplace }}`\n",
+  "repository": "https://github.com/cubitsdev/backstage-nunjucks-replace",
+  "role": "backend-plugin-module",
+  "scope": "",
+  "updated": "2024-04-30T09:35:22.369Z",
+  "version": "0.1.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-04-30T09:35:22.369Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-04-30T07:46:49.873Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-04-30T07:39:37.067Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-04-30T07:34:58.403Z",
+      "version": "0.1.0"
+    }
+  ]
+}

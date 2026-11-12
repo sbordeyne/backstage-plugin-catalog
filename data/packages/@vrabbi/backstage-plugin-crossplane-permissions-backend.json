@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2024-12-15T20:57:53.957Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@vrabbi/backstage-plugin-crossplane-permissions-backend",
+  "plugin_id": "crossplane",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@vrabbi",
+  "updated": "2024-12-24T13:51:25.387Z",
+  "version": "1.0.1",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-12-24T13:51:25.387Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-12-19T11:37:50.046Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-12-18T10:35:52.589Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-12-15T21:01:25.282Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-12-15T20:57:54.251Z",
+      "version": "0.1.0"
+    }
+  ]
+}

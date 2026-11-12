@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2023-04-01T04:41:48.330Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "mathjax",
+    "techdocs"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "nwestninja"
+  ],
+  "name": "backstage-plugin-techdocs-addon-mathjax",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2023-04-03T20:17:51.455Z",
+  "version": "0.0.4-a",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2023-04-03T20:17:51.455Z",
+      "version": "0.0.4-a"
+    },
+    {
+      "date": "2023-04-03T17:49:23.467Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2023-04-02T02:03:44.701Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2023-04-01T04:41:48.610Z",
+      "version": "0.0.1"
+    }
+  ]
+}

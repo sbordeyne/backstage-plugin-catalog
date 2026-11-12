@@ -1,0 +1,41 @@
+{
+  "author": "Asyntai",
+  "created": "2026-10-14T09:26:02.220Z",
+  "deprecated": "",
+  "description": "Asyntai AI Assistant for Backstage: your engineers ask questions and get answers from your docs, guides and processes, inside your developer portal.",
+  "homepage": "https://asyntai.com/documentation/integrations/backstage/",
+  "keywords": [
+    "ai",
+    "ai-assistant",
+    "asyntai",
+    "backstage",
+    "backstage-plugin",
+    "chatbot",
+    "developer-portal",
+    "documentation",
+    "knowledge-base"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "asyntai"
+  ],
+  "name": "@asyntai/backstage-plugin-ai-assistant",
+  "plugin_id": "asyntai",
+  "readme": "# Asyntai AI Assistant for Backstage\n\nGive your engineers an AI assistant inside your Backstage developer portal.\nThey ask a question in plain words and get an answer from the content you gave\n[Asyntai](https://asyntai.com): your documentation site, your runbooks, your\ninternal guides. Answers come with links to the right page, in the language of\nthe question.\n\n![The AI Assistant page in Backstage](docs/screenshot.png)\n\n## What you get\n\n- An **AI Assistant** page with its own item in the sidebar\n- An **Ask AI** card for the Backstage home page\n- Follow-up questions in the same conversation, and a **New chat** button\n- A knowledge base picker when your Asyntai account has more than one website\n- Answers with headings, lists and links, in more than 80 languages\n- Works with the new frontend system and the legacy one\n\n## Requirements\n\n- Backstage with `@backstage/core-components` 0.18 or newer\n- An Asyntai account on the Starter plan or higher, because the plugin uses the\n  Asyntai API\n\n## Install\n\nFrom the root of your Backstage repository:\n\n```bash\nyarn --cwd packages/app add @asyntai/backstage-plugin-ai-assistant\n```\n\n### 1. Add the API key\n\nSign in to Asyntai, open **Settings**, then **API**, and copy your API key.\nStore it on your Backstage server as the environment variable\n`ASYNTAI_API_KEY`.\n\n### 2. Add the proxy entry\n\nAdd this to `app-config.yaml`. The Backstage backend adds the key to each\nrequest, so the key never reaches the browser.\n\n```yaml\nproxy:\n  endpoints:\n    /asyntai:\n      target: https://asyntai.com\n      headers:\n        Authorization: Bearer ${ASYNTAI_API_KEY}\n      allowedMethods: ['GET', 'POST']\n```\n\n### 3a. New frontend system\n\nNothing more to do when feature discovery is on (`app.packages: all`). The\n**AI Assistant** page appears in the sidebar at `/ai-assistant`.\n\nWithout feature discovery, add the plugin to `packages/app/src/App.tsx`:\n\n```tsx\nimport asyntaiPlugin from '@asyntai/backstage-plugin-ai-assistant';\n\nexport default createApp({\n  features: [/* your other features */, asyntaiPlugin],\n});\n```\n\nThe plugin also brings a home page widget called **Ask AI**\n(`AsyntaiAskAi`). Add it from the home page editor, or list it in the\n`page:home` default layout in `app-config.yaml`:\n\n```yaml\napp:\n  extensions:\n    - page:home:\n        config:\n          defaultConfig:\n            - component: AsyntaiAskAi\n              column: 0\n              row: 0\n              width: 6\n              height: 6\n```\n\n### 3b. Legacy frontend system\n\nAdd a route in `packages/app/src/App.tsx`:\n\n```tsx\nimport { AsyntaiAssistantPage } from '@asyntai/backstage-plugin-ai-assistant';\n\n<Route path=\"/ai-assistant\" element={<AsyntaiAssistantPage />} />\n```\n\nAdd a sidebar item in `packages/app/src/components/Root/Root.tsx`:\n\n```tsx\nimport { AsyntaiIcon } from '@asyntai/backstage-plugin-ai-assistant';\n\n<SidebarItem icon={AsyntaiIcon} to=\"ai-assistant\" text=\"AI Assistant\" />\n```\n\nTo put the card on your home page or any other page:\n\n```tsx\nimport { AsyntaiAssistantCard } from '@asyntai/backstage-plugin-ai-assistant';\n\n<AsyntaiAssistantCard />\n```\n\n## Options\n\nAll options are optional:\n\n```yaml\nasyntai:\n  websiteId: docs.example.com   # a website id or domain from your Asyntai account\n  title: Engineering Assistant  # the page title\n  proxyPath: /asyntai           # change it only if you renamed the proxy entry\n```\n\nWithout `websiteId`, the plugin uses your primary website and shows a picker\nwhen the account has more than one. The page and the card also take a\n`websiteId` prop, which wins over the config.\n\n## Documentation\n\nFull guide: https://asyntai.com/documentation/integrations/backstage/\n\n## Support\n\nhello@asyntai.com\n\n## License\n\nMIT\n",
+  "repository": "https://github.com/asyntai/backstage-plugin-ai-assistant",
+  "role": "frontend-plugin",
+  "scope": "@asyntai",
+  "updated": "2026-10-14T09:29:11.529Z",
+  "version": "1.0.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-10-14T09:29:11.529Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-10-14T09:26:02.220Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

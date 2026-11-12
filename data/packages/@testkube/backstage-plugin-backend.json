@@ -1,0 +1,89 @@
+{
+  "author": "",
+  "created": "2026-03-11T14:23:44.308Z",
+  "deprecated": "",
+  "description": "This is the **Testkube backend plugin** for [Backstage](https://backstage.io).",
+  "homepage": "https://github.com/kubeshop/testkube-backstage-plugin#readme",
+  "keywords": [
+    "backstage",
+    "testkube"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "caiomede-tk",
+    "catalinh",
+    "olensmar",
+    "oscar-tk"
+  ],
+  "name": "@testkube/backstage-plugin-backend",
+  "plugin_id": "testkube",
+  "readme": "# Testkube backend plugin for Backstage\n\nThis is the **Testkube backend plugin** for [Backstage](https://backstage.io).\n\nIt exposes a `testkube` backend service that:\n\n- Proxies requests from the Testkube UI plugin to the Testkube API.\n- Adds support for Testkube Enterprise organizations and environments.\n- Provides metadata endpoints used by the UI plugin (organizations, environments, configuration, redirect URLs).\n\nIt is intended to be used together with the **Testkube UI plugin** (`@testkube/backstage-plugin`).\n\n## Installation\n\nAdd the plugin to your Backstage backend:\n\n```bash\nyarn workspace packages/backend add @testkube/backstage-plugin-backend\n```\n\n## Wiring the plugin into the backend\n\nThis plugin uses the new Backstage backend system (`createBackend`). In your `packages/backend/src/index.ts`, register the plugin:\n\n```ts\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n\n// other backend plugins...\nbackend.add(import('@testkube/backstage-plugin-backend'));\n\nbackend.start();\n```\n\nIn this repository you can see a complete example in `packages/backend/src/index.ts`.\n\n## Configuration\n\nThe plugin reads its configuration from the `testkube` section of `app-config.yaml`.\n\n### OSS / local setup\n\nFor a local Testkube Standalone Agent (for example using `kubectl port-forward`), a minimal configuration looks like:\n\n```yaml\ntestkube:\n  apiUrl: 'http://localhost:8088'\n```\n\nThis should point to the HTTP endpoint of your Testkube API server.\n\n### Custom CA certificates\n\nIf your Testkube API uses a certificate signed by a private or internal CA, you can provide a path to a PEM file containing the CA certificate(s) instead of disabling TLS verification with `skipTlsVerify`:\n\n```yaml\ntestkube:\n  apiUrl: 'https://testkube.internal.example.com'\n  caFilePath: '/etc/ssl/certs/internal-ca.pem'\n```\n\n> **Note**\n>\n> If both `skipTlsVerify` and `caFilePath` are set, `skipTlsVerify` takes precedence and certificate validation is disabled entirely.\n\n### Enterprise setup (optional)\n\nWhen using Testkube Enterprise, you can configure multiple organizations and environments. The backend plugin will:\n\n- Use per‑organization API keys when proxying requests.\n- Resolve environments and redirect URLs via the Testkube Enterprise API.\n\nExample configuration:\n\n```yaml\ntestkube:\n  # Base URL of the Testkube API\n  apiUrl: 'https://api.testkube.io'\n\n  # Enable enterprise mode\n  enterprise: true\n\n  # Base URL of the Testkube UI (used to build redirect URLs)\n  uiUrl: 'https://app.testkube.io'\n\n  # List of organizations this Backstage instance should be able to access\n  organizations:\n    - id: <your-organization-id>\n      apiKey: ${TESTKUBE_ORG_1_API_KEY}\n    - id: <another-organization-id>\n      apiKey: ${TESTKUBE_ORG_2_API_KEY}\n```\n\n> **Note**\n>\n> For enterprise mode to work, `enterprise` must be set to `true`, `uiUrl` must be provided, and at least one organization with an `id` and `apiKey` must be configured.\n\n## HTTP endpoints\n\nThe backend plugin registers an HTTP router for the `testkube` service. The Testkube UI plugin uses the following endpoints:\n\n- `GET /config` – returns a summary of the Testkube configuration (enterprise enabled, organization count).\n- `GET /organizations` – returns the list of organizations that the UI can select from.\n- `GET /organizations/:index/environments` – returns the list of environments for the organization at the given index.\n- `GET /redirect` – returns a redirect URL into the Testkube UI for the selected organization and environment.\n- `ALL /*` – proxies all other paths to the configured Testkube API (`apiUrl`), optionally using organization/environment information and API keys in enterprise mode.\n\nAll routes are protected using Backstage’s `httpAuth` service, and incoming requests are logged.\n\n## Relationship with the UI plugin\n\nThe Testkube UI plugin (`@testkube/backstage-plugin`):\n\n- Discovers this backend using the Backstage discovery API with the service ID `testkube`.\n- Calls the metadata endpoints and proxy paths exposed by this backend plugin.\n\nMake sure you:\n\n1. Install and configure this backend plugin.\n2. Install and configure the UI plugin as described in `plugins/testkube/README.md`.\n\nWith both plugins configured, Backstage will provide a Testkube dashboard and entity pages powered by your Testkube instance.\n",
+  "repository": "https://github.com/kubeshop/testkube-backstage-plugin/tree/HEAD/plugins/testkube-backend",
+  "role": "backend-plugin",
+  "scope": "@testkube",
+  "updated": "2026-06-18T15:58:38.548Z",
+  "version": "0.4.5",
+  "version_count": 15,
+  "versions": [
+    {
+      "date": "2026-06-18T15:58:38.548Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2026-05-15T13:53:11.477Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2026-04-15T20:20:10.094Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2026-04-15T20:02:01.831Z",
+      "version": "0.4.3-rc.1"
+    },
+    {
+      "date": "2026-04-10T19:43:07.678Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2026-04-10T16:56:53.493Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-04-10T16:32:27.968Z",
+      "version": "0.4.1-rc.1"
+    },
+    {
+      "date": "2026-03-26T15:26:32.255Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-03-13T14:43:09.522Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-03-11T15:49:38.270Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-03-11T15:45:58.606Z",
+      "version": "0.2.1-rc.1"
+    },
+    {
+      "date": "2026-03-11T15:03:20.358Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-03-11T14:55:43.929Z",
+      "version": "0.2.0-rc.11"
+    },
+    {
+      "date": "2026-03-11T14:34:32.048Z",
+      "version": "0.2.0-rc.9"
+    },
+    {
+      "date": "2026-03-11T14:23:44.565Z",
+      "version": "0.2.0-rc.8"
+    }
+  ]
+}

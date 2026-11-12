@@ -1,0 +1,93 @@
+{
+  "author": "",
+  "created": "2023-01-23T09:48:41.399Z",
+  "deprecated": "",
+  "description": "> Backstage plugin to interact with GitLab",
+  "homepage": "https://github.com/immobiliare/backstage-plugin-gitlab#readme",
+  "keywords": [
+    "backend",
+    "backstage",
+    "ci/cd",
+    "gitlab",
+    "immobiliare",
+    "immobiliarelabs"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dnlup",
+    "immobiliare-labs-bot",
+    "jellybellydev",
+    "simonecorsi"
+  ],
+  "name": "@immobiliarelabs/backstage-plugin-gitlab-backend",
+  "plugin_id": "gitlab",
+  "readme": "",
+  "repository": "https://github.com/immobiliare/backstage-plugin-gitlab",
+  "role": "backend-plugin",
+  "scope": "@immobiliarelabs",
+  "updated": "2026-04-01T11:40:04.006Z",
+  "version": "7.0.1",
+  "version_count": 63,
+  "versions": [
+    {
+      "date": "2026-04-01T11:40:04.006Z",
+      "version": "7.0.1"
+    },
+    {
+      "date": "2026-04-01T10:39:56.746Z",
+      "version": "7.0.0"
+    },
+    {
+      "date": "2026-03-31T07:30:06.591Z",
+      "version": "7.0.0-alpha.2"
+    },
+    {
+      "date": "2026-03-31T07:23:57.062Z",
+      "version": "7.0.0-alpha.1"
+    },
+    {
+      "date": "2026-03-31T06:21:44.214Z",
+      "version": "7.0.0-alpha.0"
+    },
+    {
+      "date": "2025-09-08T10:11:50.870Z",
+      "version": "6.13.0"
+    },
+    {
+      "date": "2025-09-08T09:55:33.355Z",
+      "version": "6.13.0-alpha.0"
+    },
+    {
+      "date": "2025-06-11T08:27:13.500Z",
+      "version": "6.12.0"
+    },
+    {
+      "date": "2025-06-11T08:18:45.368Z",
+      "version": "6.12.0-alpha.0"
+    },
+    {
+      "date": "2025-03-31T12:48:25.041Z",
+      "version": "6.11.0"
+    },
+    {
+      "date": "2025-03-28T11:26:55.411Z",
+      "version": "6.11.0-alpha.0"
+    },
+    {
+      "date": "2025-03-19T11:55:07.082Z",
+      "version": "6.10.0"
+    },
+    {
+      "date": "2025-03-18T16:20:07.041Z",
+      "version": "6.10.0-alpha.0"
+    },
+    {
+      "date": "2025-03-03T16:51:45.662Z",
+      "version": "6.9.0"
+    },
+    {
+      "date": "2025-03-03T16:38:23.936Z",
+      "version": "6.9.0-alpha.0"
+    }
+  ]
+}

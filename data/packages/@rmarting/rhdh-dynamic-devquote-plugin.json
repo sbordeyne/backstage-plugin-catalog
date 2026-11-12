@@ -1,0 +1,31 @@
+{
+  "author": "Roman Martin Gil",
+  "created": "2024-06-15T19:46:19.351Z",
+  "deprecated": "",
+  "description": "This is an example of a dynamic public to use with Red Hat Developer Hub. It is basically a wrapper of the original [Dev Quotes plugin](https://github.com/Parsifal-M/backstage-dev-quotes)",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jromanmartin"
+  ],
+  "name": "@rmarting/rhdh-dynamic-devquote-plugin",
+  "plugin_id": "",
+  "readme": "# Dev Quote Dynamic Plugin for Red Hat Developer Hub\n\nThis is an example of a dynamic public to use with Red Hat Developer Hub.\nIt is basically a wrapper of the original [Dev Quotes plugin](https://github.com/Parsifal-M/backstage-dev-quotes)\n\n## Configuration\n\nThe main files to describe this plugin are:\n\n* `package.json` - Describe the module, dependencies, and scripts\n* `tsconfig.json` - Compiler and distribution options\n* `app-config.yaml` - Application configuration for publishing\n\n## Building and Publishing\n\nInstall dependencies: `yarn install`\n\nCompile the package: `yarn tsc`\n\nBuild the package: `yarn build`\n\nExport plugin: `yarn run export-dynamic`\n\nPublish plugin: `yarn publish`\n\n## Deploying into Red Hat Developer Hub\n\nAdd the configuration into the `global` section describing the package of this\nplugin and its configuration. It is needed to add the integrity for the version\ndeployed into Red Hat Developer Hub.\n\nThe integrity value is described with the command:\n\n`npm info @rmarting/rhdh-dynamic-devquote-plugin@0.0.3`\n\nAn example of that configuration can be:\n\n```yaml\nglobal:\n  dynamic:\n    includes:\n      - dynamic-plugins.default.yaml\n    plugins:\n      - package: '@rmarting/rhdh-dynamic-devquote-plugin@0.0.3'\n        integrity: sha512-Kmg6UnUp1q4ad6XQAylQRd5DWQSgE+kD1HB7XrO5r7B/63bddROkXfmw2zx6zoegI+6+spiM28GUjmsreyXEBA==\n        pluginConfig:\n          dynamicPlugins:\n            frontend:\n              rmarting.rhdh-dynamic-devquote-plugin:\n                mountPoints:\n                  - mountPoint: entity.page.overview/cards\n                    importName: DevQuote\n                    config:\n                      layout:\n                        gridColumnEnd:\n                          lg: span 4\n                          md: span 6\n                          xs: span 12\n                dynamicRoutes:\n                  - importName: DevQuote\n                    menuItem:\n                      text: Quote\n                    path: /devquote\n```\n\n## References\n\n* [Janus-IDP - Dynamic Plugins Support](https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/dynamic-plugins.md)\n* [Janus-IDP - Helm Chart](https://artifacthub.io/packages/helm/janus-idp/backstage)\n",
+  "repository": "https://github.com/rmarting/rhdh-dynamic-devquote-plugin",
+  "role": "frontend-plugin",
+  "scope": "@rmarting",
+  "updated": "2024-06-17T06:03:56.050Z",
+  "version": "0.0.4",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-06-17T06:03:56.050Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-06-15T19:46:19.689Z",
+      "version": "0.0.3"
+    }
+  ]
+}

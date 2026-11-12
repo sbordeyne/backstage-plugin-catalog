@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2025-10-20T23:30:40.002Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "christoph-jerolimov",
+    "jerolimov"
+  ],
+  "name": "@proberaum/backstage-plugin-env-viewer-backend",
+  "plugin_id": "env-viewer",
+  "readme": "",
+  "repository": "https://github.com/proberaum/backstage-plugins/tree/HEAD/workspaces/env-viewer/plugins/env-viewer-backend",
+  "role": "backend-plugin",
+  "scope": "@proberaum",
+  "updated": "2026-02-28T08:54:45.665Z",
+  "version": "0.3.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-02-28T08:54:45.665Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-11-18T17:46:27.060Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-10-20T23:30:40.329Z",
+      "version": "0.1.0"
+    }
+  ]
+}

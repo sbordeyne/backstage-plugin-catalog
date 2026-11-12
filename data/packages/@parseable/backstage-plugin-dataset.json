@@ -1,0 +1,34 @@
+{
+  "author": "Parseable",
+  "created": "2025-07-12T10:53:09.369Z",
+  "deprecated": "",
+  "description": "Backstage plugin for integrating with Parseable datasets",
+  "homepage": "https://parseable.com",
+  "keywords": [
+    "backstage",
+    "dataset",
+    "logs",
+    "monitoring",
+    "parseable",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "parseablehq"
+  ],
+  "name": "@parseable/backstage-plugin-dataset",
+  "plugin_id": "",
+  "readme": "# Parseable Dataset Plugin for Backstage\n\nThis plugin allows engineers to pull their own Parseable datasets directly onto an entity page in Backstage.\n\n## Features\n\n- View datasets from Parseable directly in Backstage\n- Select from available datasets the user has access to\n- Live tail support with pause/resume functionality\n- Copy log entries to clipboard\n- Advanced search page with:\n  - Time range selection\n  - Free-text search\n  - Export to CSV\n\n## Installation\n\n1. Install the plugin in your Backstage app:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @parseable/backstage-plugin-dataset\n```\n\n2. Configure the plugin in your `app-config.yaml`:\n\n```yaml\n# app-config.yaml\nparseable:\n  basicAuthCredential: ${PARSEABLE_B64_CRED}\n```\n\nYou need to set the `PARSEABLE_B64_CRED` environment variable with the Base64 encoded credentials for Parseable (in the format `username:password`).\n\n3. Add the plugin to your Backstage app:\n\n```tsx\n// packages/app/src/App.tsx\nimport { parseableDatasetPlugin } from '@parseable/backstage-plugin-dataset';\n\nconst app = createApp({\n  // ...\n  plugins: [\n    // ...\n    parseableDatasetPlugin,\n  ],\n});\n```\n\n4. Add the plugin to your entity page:\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityParseableDatasetContent,\n  isParseableDatasetAvailable,\n} from '@parseable/backstage-plugin-dataset';\n\n// Add to your entity page layout\nconst serviceEntityPage = (\n  <EntityLayout>\n    {/* ... other tabs ... */}\n    <EntityLayout.Route\n      path=\"/parseable\"\n      title=\"Logs\"\n      if={isParseableDatasetAvailable}\n    >\n      <EntityParseableDatasetContent />\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\n## Configuration\n\n### Entity Annotation\n\nTo enable the Parseable dataset for an entity, add the following annotation to your `catalog-info.yaml`:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: example-service\n  annotations:\n    parseable.io/base-url: https://demo.parseable.com\n  # ...\nspec:\n  type: service\n  # ...\n```\n\n### Environment Variables\n\n- `PARSEABLE_B64_CRED`: Base64 encoded credentials for Parseable in the format `username:password`\n\n## Example Entity YAML\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: example-service\n  description: An example service with Parseable logs\n  annotations:\n    parseable.io/base-url: https://demo.parseable.com\nspec:\n  type: service\n  lifecycle: production\n  owner: team-a\n  system: system-a\n```\n\n## Development\n\nTo start the plugin in development mode:\n\n```bash\n# From the plugin directory\nyarn start\n```\n\nTo build the plugin:\n\n```bash\n# From the plugin directory\nyarn build\n```\n\n## Publishing\n\nThis plugin is published to the npm registry under the `@parseable` organization. To publish a new version:\n\n```bash\n# From the plugin directory\nyarn build\nnpm publish\n```\n\nNote: You need to be a member of the @parseable organization on npm and logged in via `npm login` to publish.\n\n## Contributing\n\nContributions are welcome! Please feel free to submit a Pull Request.\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/parseablehq/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@parseable",
+  "updated": "2025-07-12T10:53:09.654Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-07-12T10:53:09.654Z",
+      "version": "0.1.0"
+    }
+  ]
+}

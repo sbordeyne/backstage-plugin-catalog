@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2024-04-28T16:06:52.167Z",
+  "deprecated": "",
+  "description": "The Postman plugin integrates Postman with Backstage, allowing you to link your APIs to their corresponding collections, published APIs, and monitors within Postman. It also enables you to discover and add APIs and collections tagged in your Postman Team ",
+  "homepage": "https://github.com/postman-solutions-eng/backstage-postman-plugin#readme",
+  "keywords": [
+    "backstage",
+    "postman",
+    "postman-solutions"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "alexisphanor-postman",
+    "aphanor",
+    "jonico",
+    "kdevakumaran",
+    "tilak-patel-postman"
+  ],
+  "name": "@postman-solutions/postman-backstage-plugin",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/postman-solutions-eng/backstage-postman-plugin",
+  "role": "frontend-plugin",
+  "scope": "@postman-solutions",
+  "updated": "2025-02-09T19:21:39.399Z",
+  "version": "1.1.4",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-02-09T19:21:39.399Z",
+      "version": "1.1.4"
+    },
+    {
+      "date": "2024-04-28T16:06:52.493Z",
+      "version": "1.0.5"
+    }
+  ]
+}

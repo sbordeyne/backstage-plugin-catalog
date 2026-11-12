@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2026-08-25T10:42:49.247Z",
+  "deprecated": "",
+  "description": "kagent (Kubernetes-native agent runtime) invocation module for the ai-agents Backstage backend plugin.",
+  "homepage": "https://github.com/acarmisc/backstage-plugin-ai-agents/tree/main/packages/plugin-ai-agents-backend-module-kagent#readme",
+  "keywords": [
+    "backstage",
+    "backstage-backend-plugin-module",
+    "backstage-plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "acarmisc"
+  ],
+  "name": "@acarmisc/backstage-plugin-ai-agents-backend-module-kagent",
+  "plugin_id": "ai-agents",
+  "readme": "# @acarmisc/backstage-plugin-ai-agents-backend-module-kagent\n\nRuntime module for the [AI Agents backend](https://github.com/acarmisc/backstage-plugin-ai-agents/tree/main/packages/plugin-ai-agents-backend): runs\nagents hosted on [kagent](https://kagent.dev) from the Hire dialog, through the\ncontroller's [A2A](https://a2a-protocol.org) endpoint.\n\nIt handles agents with `ai-agent.io/runtime: kagent`, or every agent when it is\nthe only runtime module installed.\n\n## Installation\n\n```bash\nyarn --cwd packages/backend add @acarmisc/backstage-plugin-ai-agents-backend-module-kagent\n```\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@acarmisc/backstage-plugin-ai-agents-backend'));\nbackend.add(\n  import('@acarmisc/backstage-plugin-ai-agents-backend-module-kagent'),\n);\n```\n\n## Configuration\n\n```yaml\nai-agents:\n  invocations:\n    kagent:\n      baseUrl: http://kagent-controller.kagent.svc.cluster.local:8083\n      # namespace: kagent\n      # authHeader: Bearer ${KAGENT_TOKEN}\n      # timeoutMs: 120000\n```\n\n| Key          | Description                                                                         |\n| ------------ | ----------------------------------------------------------------------------------- |\n| `baseUrl`    | URL of the kagent controller's HTTP server.                                         |\n| `namespace`  | Default namespace of the agents. Default `kagent`.                                  |\n| `authHeader` | `Authorization` header for the controller. Only sent to `baseUrl`'s origin. Secret. |\n| `timeoutMs`  | Timeout of one invocation. Default `120000`.                                        |\n\n## Agent annotations\n\n```yaml\nmetadata:\n  annotations:\n    ai-agent.io/runtime: kagent\n    ai-agent.io/runtime-handle: support-triage # name of the kagent Agent\n    ai-agent.io/namespace: agents # optional\n    # ai-agent.io/endpoint: https://kagent.other-cluster.example.com  # optional, other controller\n```\n\nAn `endpoint` annotation sends the request to another controller. It must share\nthe controller origin with `baseUrl`. `authHeader` is not sent there unless it\nhas the same origin as `baseUrl`.\n\n## Request\n\n`POST <baseUrl>/api/a2a/<namespace>/<runtime-handle>/` with a JSON-RPC\n`message/send` call. The message carries the prompt as one text part and the\nconversation's thread id as `contextId`, so follow-up turns keep the agent's\ncontext. Structured fields travel in the message `metadata`: `post` (always\nexplicit, so a dry run can't default agent-side into a write), `target`,\n`project`, `model`, `mode`, `knowledge_base_ids` (only when set),\n`litellm_tags` (`agent:<name>` plus the invocation tags) and `trace_user_id`\n(only when set). The answer is the text of the task's artifacts, or of the returned\nmessage.\n",
+  "repository": "https://github.com/acarmisc/backstage-plugin-ai-agents/tree/HEAD/packages/plugin-ai-agents-backend-module-kagent",
+  "role": "backend-plugin-module",
+  "scope": "@acarmisc",
+  "updated": "2026-10-11T18:54:02.316Z",
+  "version": "0.3.5",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2026-10-11T18:54:02.316Z",
+      "version": "0.3.5"
+    },
+    {
+      "date": "2026-10-11T09:03:34.611Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2026-10-04T17:28:03.571Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2026-10-03T20:20:34.610Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2026-10-03T18:36:29.958Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-10-01T09:25:56.828Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-09-19T12:46:16.715Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-25T10:42:49.563Z",
+      "version": "0.1.0"
+    }
+  ]
+}

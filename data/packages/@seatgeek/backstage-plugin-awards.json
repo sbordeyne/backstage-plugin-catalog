@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2024-01-31T18:21:25.971Z",
+  "deprecated": "",
+  "description": "This plugin offers a management system for awards that can be created and given to recipients in your Backstage deployment, and then displayed onto their Entity profile pages.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "seatgeek"
+  ],
+  "name": "@seatgeek/backstage-plugin-awards",
+  "plugin_id": "awards",
+  "readme": "# @seatgeek/backstage-plugin-awards\n\nThis plugin offers a management system for awards that can be created and given to recipients in your Backstage deployment, and then displayed onto their Entity profile pages.\n\n[![npm latest version](https://img.shields.io/npm/v/@seatgeek/backstage-plugin-awards/latest.svg)](https://www.npmjs.com/package/@seatgeek/backstage-plugin-awards)\n\nThe plugin offers a set of Page Components and an Information card to achieve\nthis. It also requires the installation of its dependency\n`@seatgeek/backstage-plugin-awards-backend`.\n\nBoth the backend and the frontend rely on\n[Backstage authentication](https://backstage.io/docs/auth/) in order to enforce\nownership of awards. Please follow the documentation to enable authentication\nbefore attempting to use this plugin!\n\n## Installation\n\n### Install the package\n\nInstall the `@seatgeek/backstage-plugin-awards` package in your frontend app package:\n\n```shell\n# From your Backstage root directory\nyarn add --cwd packages/app @seatgeek/backstage-plugin-awards\n```\n\n### Add routes for the plugin management pages\n\nOpen the file `packages/app/src/App.tsx` in your Backstage deployment and add\nthe following lines:\n\n```tsx\n// other imports\nimport { AwardsPage } from '@seatgeek/backstage-plugin-awards';\n\n// Add the routes for the plugin pages before the <FlatRoutes> block is closed.\n<FlatRoutes>\n  // Many routes\n  <Route path=\"/awards\" element={<AwardsPage />} />\n</FlatRoutes>;\n\n// Rest of the file\n```\n\n### Add the Entity Info Card for Awards\n\nInside the file `packages/app/src/components/catalog/EntityPage.tsx` file in\nyour Backstage deployment, add the following items:\n\n```tsx\nimport { UserAwardsCard } from '@seatgeek/backstage-plugin-awards';\n\n// Look for the const userPage and add the card to the Grid\nconst userPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <Grid container spacing={3}>\n        {entityWarningContent}\n        <Grid item xs={12} md={6}>\n          <EntityUserProfileCard variant=\"gridItem\" />\n        </Grid>\n        <Grid item xs={12} md={6}>\n          <EntityOwnershipCard\n            variant=\"gridItem\"\n            entityFilterKind={OWNERSHIP_KINDS}\n          />\n        </Grid>\n        {/* Add this here - BEGIN */}\n        <Grid item xs={12} md={6}>\n          <UserAwardsCard />\n        </Grid>\n        {/* Add this here - END */}\n      </Grid>\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\n### Add a sidebar entry (recommended)\n\nIn the file `packages/app/src/components/Root/Root.tsx` in your Backstage\ndeployment, add the following code:\n\n```tsx\n// Many imports\nimport EmojiEventsIcon from '@material-ui/icons/EmojiEvents';\n\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <NewAnnouncementBanner max={3} />\n    <Sidebar>\n      <SidebarLogo />\n      <SidebarSearch />\n      <SidebarDivider />\n      <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n        {/* Global nav, not org-specific */}\n        <SidebarItem icon={HomeIcon} to=\"catalog\" text=\"Home\" />\n        <SidebarItem icon={ExtensionIcon} to=\"api-docs\" text=\"APIs\" />\n        <SidebarItem icon={LibraryBooks} to=\"docs\" text=\"Docs\" />\n        <SidebarItem icon={CreateComponentIcon} to=\"create\" text=\"Create\" />\n        <SidebarItem icon={DoneAllIcon} to=\"soundcheck\" text=\"Soundcheck\" />\n        <SidebarItem icon={AnnouncementIcon} to=\"/announcements\" text=\"Announcements\" />\n        {/* End global nav */}\n        {/* Add this here - BEGIN */}\n        <SidebarItem icon={EmojiEventsIcon} to=\"awards\" text=\"Awards\" />\n        <SidebarDivider />\n        {/* Add this here - END */}\n        {/* Other imports... */}\n```\n\n## Developing this plugin\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/awards](http://localhost:3000/awards).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@seatgeek",
+  "updated": "2024-08-24T23:04:41.796Z",
+  "version": "2.0.1",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-08-24T23:04:41.796Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-02-28T14:23:33.104Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-01-31T18:42:14.867Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-01-31T18:21:26.303Z",
+      "version": "1.0.0"
+    }
+  ]
+}

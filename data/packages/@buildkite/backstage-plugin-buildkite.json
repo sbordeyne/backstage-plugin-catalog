@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2025-04-17T05:51:31.834Z",
+  "deprecated": "",
+  "description": "A Backstage plugin which integrates with Buildkite pipelines",
+  "homepage": "https://buildkite.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "blaknite",
+    "dev_buildkite",
+    "gordon_buildkite",
+    "mcncl",
+    "pda-bk"
+  ],
+  "name": "@buildkite/backstage-plugin-buildkite",
+  "plugin_id": "buildkite",
+  "readme": "# Buildkite Backstage Plugin\n\nA Buildkite plugin for Backstage that provides deep integration with your Buildkite CI/CD pipelines. This plugin allows you to monitor the status of your pipelines and manage their builds from a single interface.\n\n## Prerequisites\n\n- Buildkite account with API access\n- Required API token permissions:\n  - `read_pipelines`\n  - `read_builds`\n  - `read_user`\n  - `write_builds` (for rebuild functionality)\n\n## Installation\n\n### Plugin Installation\n\nIf the plugin is in your project's plugins directory:\n\n```bash\nyarn workspace app add @buildkite/backstage-plugin-buildkite\n```\n\nIf you're installing from an external package:\n\n```bash\nyarn workspace app add @buildkite/backstage-plugin-buildkite\n```\n\n### Configuration\n\n1. Add the proxy configuration to your `app-config.yaml`:\n\n```yaml\nproxy:\n  endpoints:\n    '/buildkite/api':\n      target: https://api.buildkite.com/v2\n      headers:\n        Authorization: Bearer ${BUILDKITE_API_TOKEN}\n        Accept: application/json\n      allowedHeaders: ['Authorization']\n```\n\n**Note:** The plugin uses the Backstage proxy for authentication. The organization and pipeline are specified per-entity via annotations (see Component Configuration below).\n\nOptional configuration can be added to `app-config.yaml`:\n\n```yaml\nbuildkite:\n  # Optional: Override the API base URL (default: https://api.buildkite.com/v2)\n  apiBaseUrl: https://api.buildkite.com/v2\n  # Optional: Set default page size for pagination (default: 25)\n  defaultPageSize: 25\n```\n\n2. Add routes in `packages/app/src/App.tsx`:\n\n```typescript\nimport { PipelinePage } from '@buildkite/backstage-plugin-buildkite';\n\nconst routes = (\n  <FlatRoutes>\n    {/* Other routes... */}\n\n    {/* Buildkite Plugin Routes */}\n    <Route path=\"/buildkite\" element={<PipelinePage />} />\n    <Route path=\"/buildkite/pipeline/:orgSlug/:pipelineSlug\" element={<PipelinePage />} />\n  </FlatRoutes>\n);\n```\n\n3. Add to your Entity Page in `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```typescript\nimport { isBuildkiteAvailable, BuildkiteWrapper } from '@buildkite/backstage-plugin-buildkite';\n\nconst cicdContent = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isBuildkiteAvailable}>\n      <BuildkiteWrapper />\n    </EntitySwitch.Case>\n    <EntitySwitch.Case>\n      <EmptyState\n        title=\"No CI/CD available for this entity\"\n        missing=\"info\"\n        description=\"Add a Buildkite annotation to enable CI/CD visualization\"\n      />\n    </EntitySwitch.Case>\n  </EntitySwitch>\n);\n\nconst defaultEntityPage = (\n  <EntityLayout>\n    {/* Other routes... */}\n\n    <EntityLayout.Route path=\"/ci-cd\" title=\"CI/CD\">\n      {cicdContent}\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\n### Component Configuration\n\nAdd the Buildkite annotation to your component's `catalog-info.yaml`:\n\n```yaml\nmetadata:\n  annotations:\n    buildkite.com/pipeline-slug: organization-slug/pipeline-slug\n```\n\n## Documentation\n\nFor further usage tips for the Buildkite plugin for Backstage, as well as deployment visibility overview and troubleshooting, see the the official Buildkite Documentation:\n- [Plugin overview](https://buildkite.com/docs/pipelines/integrations/other/backstage)\n- [Deployment tracking](https://buildkite.com/docs/pipelines/integrations/other/backstage#deployment-tracking)\n- [Deployment visibility with Backstage](https://buildkite.com/docs/pipelines/deployments/deployment-visibility-with-backstage)\n\n## Development\n\nFor guidelines and requirements regarding contributing to the Buildkite Agent Stack for Kubernetes controller, please see the [Contributing/Development Guide](docs/CONTRIBUTING.md).\n",
+  "repository": "https://github.com/buildkite/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@buildkite",
+  "updated": "2026-03-10T02:29:08.006Z",
+  "version": "1.4.0",
+  "version_count": 19,
+  "versions": [
+    {
+      "date": "2026-03-10T02:29:08.006Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2025-11-23T23:02:39.754Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2025-11-06T19:25:10.360Z",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2025-11-06T00:34:56.578Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2025-11-05T23:28:37.113Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2025-11-05T00:39:30.132Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2025-10-23T00:29:25.391Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2025-10-22T22:09:16.475Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-10-16T02:56:23.384Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-10-16T02:04:48.941Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-10-16T01:34:42.463Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2025-10-07T23:18:12.601Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2025-08-28T01:47:57.095Z",
+      "version": "0.6.3"
+    },
+    {
+      "date": "2025-07-10T00:35:15.043Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2025-07-04T05:58:12.578Z",
+      "version": "0.6.1"
+    }
+  ]
+}

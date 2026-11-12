@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-09-25T23:21:08.477Z",
+  "deprecated": "",
+  "description": "Welcome to the kyverno-policy-reports backend plugin!",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-kyverno-policy-reports-backend",
+  "plugin_id": "kyverno",
+  "readme": "# Kyverno policy reports\nWelcome to the kyverno-policy-reports backend plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-kyverno-policy-reports-backend/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-kyverno-policy-reports-backend)\n\n\nThe `kyverno-policy-reports` backend plugin for Backstage provides integration with Kyverno, enabling permission management and access control for Kyverno Policy Reports. This plugin leverages Backstage's permission framework to enforce policies and manage access to Kyverno Reports.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/kyverno/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/kyverno-policy-reports-backend",
+  "role": "backend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:49:55.840Z",
+  "version": "1.20.0",
+  "version_count": 23,
+  "versions": [
+    {
+      "date": "2026-10-21T13:49:55.840Z",
+      "version": "1.20.0"
+    },
+    {
+      "date": "2026-07-08T14:07:42.552Z",
+      "version": "1.17.0"
+    },
+    {
+      "date": "2026-06-30T17:19:54.808Z",
+      "version": "1.16.0"
+    },
+    {
+      "date": "2026-06-09T19:05:05.131Z",
+      "version": "1.15.1"
+    },
+    {
+      "date": "2026-04-16T08:20:02.406Z",
+      "version": "1.14.0"
+    },
+    {
+      "date": "2026-03-22T17:00:33.181Z",
+      "version": "1.12.0"
+    },
+    {
+      "date": "2026-03-09T16:52:09.175Z",
+      "version": "1.11.0"
+    },
+    {
+      "date": "2026-02-17T20:38:42.473Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2026-01-29T20:40:50.033Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2026-01-28T18:30:51.909Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2026-01-26T10:37:08.938Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2026-01-21T10:08:23.004Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2026-01-19T09:19:02.465Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2025-12-22T10:15:58.192Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2025-12-07T15:35:50.554Z",
+      "version": "1.4.1"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:07.973Z",
+  "deprecated": "",
+  "description": "![preview of Lambda Widget](./docs/lambda-widget.png)",
+  "homepage": "https://glint.io/backstage/plugins/aws-lambda/",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-aws-lambda",
+  "plugin_id": "",
+  "readme": "# AWS Lambda Plugin\n\n![preview of Lambda Widget](./docs/lambda-widget.png)\n\n## Features\n\n- AWS Lambda function overview card\n\n## Plugin Setup\n\n1. Install the plugin in the `packages/app` directory\n\n```bash\nyarn add @kozmoai/backstage-plugin-aws-lambda\n```\n\n2. Add widget component to your Backstage instance:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityAWSLambdaOverviewCard,\n  isAWSLambdaAvailable\n} from '@kozmoai/backstage-plugin-aws-lambda';\n\n...\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n   <EntitySwitch>\n      <EntitySwitch.Case if={e => Boolean(isAWSLambdaAvailable(e))}>\n        <Grid item md={6}>\n          <EntityAWSLambdaOverviewCard />\n        </Grid>\n      </EntitySwitch.Case>\n   </EntitySwitch>\n  </Grid>\n);\n```\n\n## Authentication\n\nIn order to perform requests to AWS lambda plugin first asks backend for temporary credentials via /api/aws/credentials\n\n(it uses @kozmoai/backstage-plugin-aws-auth backend plugin)\n\nOptionally, you can provide a Role ARN to the entity card to instruct it to request credentials for that particular role to pull the lambda information. The AWS user was have IAM permissions to `sts:AssumeRole` the providing role:\n\n```ts\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    <EntitySwitch>\n      <EntitySwitch.Case if={e => Boolean(isAWSLambdaAvailable(e))}>\n        <Grid item md={6}>\n          <EntityAWSLambdaOverviewCard\n            roleArn={'arn:aws:iam::000000000000:role/roleName'}\n          />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n  </Grid>\n);\n```\n\nRegardless of what auth method you use - you can also decide what function to show in the table (what function particular service uses) by annotating backstage.yaml with a name of the function, like:\n\n```yaml\nmetadata:\n  annotations:\n    aws.com/lambda-function-name: HelloWorld\n    aws.com/lambda-region: us-east-1\n```\n\nMake sure you have AWS auth backend plugin installed in your backstage backend (installation guide in the readme https://github.com/kozmoai/backstage-plugin-aws-auth)\n\n## Links\n\n- [Backstage](https://backstage.io)\n- Get hosted, managed Backstage for your company: https://glint.io\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-aws-lambda",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:11.702Z",
+  "version": "2.2.8",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:11.702Z",
+      "version": "2.2.8"
+    },
+    {
+      "date": "2024-03-25T22:14:08.186Z",
+      "version": "2.2.7"
+    }
+  ]
+}

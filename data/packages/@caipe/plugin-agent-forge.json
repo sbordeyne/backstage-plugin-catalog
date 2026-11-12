@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-09-27T19:55:28.614Z",
+  "deprecated": "",
+  "description": "This plugin is part of the [**CAIPE (Community AI Platform Engineering)**](https://cnoe-io.github.io/ai-platform-engineering/) initiative, providing seamless integration between Backstage and the multi-agentic AI systems developed by the CNOE (Cloud Nativ",
+  "homepage": "https://github.com/cnoe-io/community-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "caipe"
+  ],
+  "name": "@caipe/plugin-agent-forge",
+  "plugin_id": "agent-forge",
+  "readme": "# CAIPE AgentForge Backstage AI Chat Plugin\n\nThis plugin is part of the [**CAIPE (Community AI Platform Engineering)**](https://cnoe-io.github.io/ai-platform-engineering/) initiative, providing seamless integration between Backstage and the multi-agentic AI systems developed by the CNOE (Cloud Native Operational Excellence) community.\n\n![jarvis_1](https://raw.githubusercontent.com/cnoe-io/community-plugins/agent-forge/workspaces/agent-forge/plugins/agent-forge/images/jarvis_1.png)\n\n## What is CAIPE?\n\n**CAIPE (Community AI Platform Engineering)** (pronounced as `cape`) is an open-source, Multi-Agentic AI System (MAS) championed by the CNOE forum. CAIPE provides a secure, scalable, persona-driven reference implementation with built-in knowledge base retrieval that streamlines platform operations, accelerates workflows, and fosters innovation for modern engineering teams.\n\nAs Platform Engineering, SRE, and DevOps environments grow in complexity, traditional approaches often lead to delays, increased operational overhead, and developer frustration. By adopting Multi-Agentic Systems and Agentic AI, Platform Engineering teams can move from manual, task-driven processes to more adaptive and automated operations, better supporting development and business goals.\n\n## CAIPE Platform Agents\n\nCAIPE is empowered by a set of specialized sub-agents that integrate seamlessly with essential engineering tools. This Backstage plugin enables you to interact with these agents through an intuitive chat interface:\n\n- 🚀 **ArgoCD Agent** for continuous deployment\n- 🚨 **PagerDuty Agent** for incident management\n- 🐙 **GitHub Agent** for version control\n- 🗂️ **Jira/Confluence Agent** for project management\n- ☸ **Kubernetes Agent** for K8s operations\n- 💬 **Slack/Webex Agents** for team communication\n- ☁️ **AWS Agent** for cloud infrastructure management\n\n_...and many more platform agents are available for additional tools and use cases._\n\nFor detailed information on all available agents and their capabilities, visit: [https://cnoe-io.github.io/ai-platform-engineering/](https://cnoe-io.github.io/ai-platform-engineering/)\n\n## Key Features\n\n- **A curated prompt library**: A carefully evaluated collection of prompts designed for high accuracy and optimal workflow performance in multi-agent systems\n- **Multiple End-user interfaces**: Easily invoke agentic workflows programmatically using standard A2A protocol or through intuitive UIs\n- **End-to-end security**: Secure agentic communication and task execution across all agents, ensuring API RBACs to meet enterprise requirements\n- **Enterprise-ready cloud deployment architecture**: Reference deployment patterns for scalable, secure, and resilient multi-agent systems\n\n## Installation\n\nTo start using the Agent-Forge Plugin, follow these steps:\n\n1. **Install Dependencies**:\n\n   ```bash\n   # From your Backstage root directory\n   yarn --cwd packages/app add @caipe/plugin-agent-forge\n   ```\n\n2. **Configure App.tsx** (New Frontend System):\n\n   ```tsx\n   import agentForgePlugin from '@caipe/plugin-agent-forge/alpha';\n\n   const app = createApp({\n     features: [\n       // ... other features\n       agentForgePlugin,\n     ],\n   });\n   ```\n\n3. **Add Navigation**:\n\n   ```tsx\n   // In your Sidebar component\n   import ChatIcon from '@material-ui/icons/Chat';\n\n   <SidebarItem icon={ChatIcon} to=\"agent-forge\" text=\"Agent Forge\" />;\n   ```\n\n## Configuration\n\n### CAIPE Agent Integration\n\nTo configure the plugin to connect to CAIPE agents, add the base URL of your running CAIPE system to your Backstage config:\n\nThe plugin can display pre-defined options based on the agent's available skills. To enable this feature, set the `showOptions` configuration to true:\n\n```yaml\nagentForge:\n  showOptions: true\n  botName: Agent Forge # Optional: Customize the bot name\n  botIcon: url goes here # Optional: Customize the bot icon\n  initialSuggestions: # Optional: Customize initial suggestion prompts\n    - 'What can you do?'\n    - 'How do I configure agents?'\n    - 'Help me with platform engineering tasks'\n    - 'Show me the latest deployments'\n```\n\n### CAIPE Setup\n\nBefore using this plugin, you need to have CAIPE running locally or have access to a deployed CAIPE instance. Follow these steps to get CAIPE up and running:\n\n#### Prerequisites\n\n- Docker or Podman installed on your system\n- Access to LLM providers (OpenAI, Anthropic, etc.)\n- Agent secrets configured\n\n#### Quick Start with Docker\n\n1. **Configure Agent Secrets and LLM Providers**\n\n- Set up your API keys and credentials for the agents you plan to use\n- Configure your preferred LLM provider\n\n2. **Run CAIPE with Docker Compose**\n\n   ```bash\n   # Clone the CAIPE repository\n   git clone https://github.com/cnoe-io/ai-platform-engineering.git\n   cd ai-platform-engineering\n\n   # Run with Docker Compose\n   docker-compose up -d\n   ```\n\n3. **Verify CAIPE is Running**\n   - CAIPE will be available at `http://localhost:8000` (or your configured port)\n   - You can interact with agents using the Agent Chat CLI or this Backstage plugin\n\n#### Alternative Setup Options\n\n- **Kubernetes**: Use Kind or EKS for Kubernetes-based deployment\n- **Local Development**: Follow the [Local Development guide](https://cnoe-io.github.io/ai-platform-engineering/getting-started/local-development) for development setup\n\nFor detailed setup instructions, visit the [CAIPE Quick Start Guide](https://cnoe-io.github.io/ai-platform-engineering/getting-started/quick-start).\n\n## Usage\n\n### Getting Started with CAIPE\n\nOnce you have CAIPE running and the plugin configured, you can interact with the multi-agent system through the chat interface. The AI Platform Engineer will intelligently route your requests to the appropriate specialized agents.\n\nFor detailed information on agent capabilities, prompt examples, and advanced usage patterns, visit the [CAIPE Documentation](https://cnoe-io.github.io/ai-platform-engineering/).\n\n### Chat Interface\n\nUse the chat interface to ask questions or perform required tasks. The system supports a wide range of platform engineering operations including incident management, version control, project management, team communication, continuous deployment, and cloud infrastructure management.\n\n![jarvis_1](https://raw.githubusercontent.com/cnoe-io/community-plugins/agent-forge/workspaces/agent-forge/plugins/agent-forge/images/jarvis_1.png)\n\n## Community and Resources\n\n- **Documentation**: [https://cnoe-io.github.io/ai-platform-engineering/](https://cnoe-io.github.io/ai-platform-engineering/)\n- **GitHub Repository**: [https://github.com/cnoe-io/ai-platform-engineering](https://github.com/cnoe-io/ai-platform-engineering)\n- **Community**: Join the [CNOE Agentic AI SIG Community](https://cnoe-io.github.io/ai-platform-engineering/community/) for meetings, discussions, and collaboration\n- **Slack Channel**: Join #cnoe-sig-agentic-ai in CNCF Slack\n",
+  "repository": "https://github.com/cnoe-io/community-plugins/tree/HEAD/workspaces/agent-forge/plugins/agent-forge",
+  "role": "frontend-plugin",
+  "scope": "@caipe",
+  "updated": "2025-11-21T16:55:26.937Z",
+  "version": "0.3.47",
+  "version_count": 47,
+  "versions": [
+    {
+      "date": "2025-11-21T16:55:26.937Z",
+      "version": "0.3.47"
+    },
+    {
+      "date": "2025-11-19T18:42:13.707Z",
+      "version": "0.3.46"
+    },
+    {
+      "date": "2025-11-17T14:50:06.061Z",
+      "version": "0.3.45"
+    },
+    {
+      "date": "2025-11-14T11:39:40.207Z",
+      "version": "0.3.44"
+    },
+    {
+      "date": "2025-11-13T19:18:16.328Z",
+      "version": "0.3.43"
+    },
+    {
+      "date": "2025-11-10T21:19:41.610Z",
+      "version": "0.3.42"
+    },
+    {
+      "date": "2025-11-10T13:01:48.404Z",
+      "version": "0.3.41"
+    },
+    {
+      "date": "2025-11-07T17:35:15.893Z",
+      "version": "0.3.40"
+    },
+    {
+      "date": "2025-11-07T14:07:46.378Z",
+      "version": "0.3.39"
+    },
+    {
+      "date": "2025-11-06T16:47:51.545Z",
+      "version": "0.3.38"
+    },
+    {
+      "date": "2025-11-06T15:33:09.697Z",
+      "version": "0.3.37"
+    },
+    {
+      "date": "2025-11-06T15:23:58.689Z",
+      "version": "0.3.36"
+    },
+    {
+      "date": "2025-11-05T12:54:58.247Z",
+      "version": "0.3.35"
+    },
+    {
+      "date": "2025-11-04T15:34:34.682Z",
+      "version": "0.3.34"
+    },
+    {
+      "date": "2025-11-04T15:04:32.732Z",
+      "version": "0.3.33"
+    }
+  ]
+}

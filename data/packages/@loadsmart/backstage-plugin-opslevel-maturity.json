@@ -1,0 +1,88 @@
+{
+  "author": "Developer Productivity Team",
+  "created": "2023-02-02T22:24:41.495Z",
+  "deprecated": "",
+  "description": "This plugin helps you leverage OpsLevel's powerful maturity features with your existing Backstage catalog. An OpsLevel API Key is required to use this plugin.",
+  "homepage": "https://github.com/loadsmart/opslevel-backstage-plugin#readme",
+  "keywords": [
+    "backstage",
+    "maturity score",
+    "service maturity",
+    "service quality"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brennervaz",
+    "diogomafra",
+    "douglasklein2",
+    "felipe.asantos",
+    "giovannitoledo",
+    "gutofoletto",
+    "lenoir.zamboni",
+    "loadsmart-frontend",
+    "luiz.loadsmart",
+    "mwconceicao",
+    "raittes",
+    "welingtonms-loadsmart",
+    "yidi0912"
+  ],
+  "name": "@loadsmart/backstage-plugin-opslevel-maturity",
+  "plugin_id": "",
+  "readme": "# OpsLevel Maturity Plugin\n\nThis plugin helps you leverage OpsLevel's powerful maturity features with your existing Backstage catalog. An OpsLevel API Key is required to use this plugin.\n\n![](docs/rubric.png)\n![](docs/maturity.jpg)\n\n[OpsLevel](https://www.opslevel.com/) gives platform engineers and DevOps leaders the tools to drive service maturity for their teams. We understand that maturity features alongside your software catalog are critical to a culture of service ownership. Which is why we’ve made our maturity features available to Backstage users within their existing service catalog.\n\nOpsLevel uses [Checks](https://www.opslevel.com/docs/getting-started-with-checks) to measure Service Maturity. Checks let you explicitly define how you want your services to be built and operated.\nWith OpsLevel Checks, you can verify that services:\n\n- Are using a particular version of a library or framework\n- Have migrated to a new third-party tool (e.g., all services use Splunk)\n- Meet certain operational requirements (e.g., all Tier-1 services have an on-call schedule)\n\nAnd a whole lot more.\n\nPaired with our [Rubric](https://www.opslevel.com/docs/getting-started-with-rubrics), Checks allow you to get a holistic view of the health of your software ecosystem. This allows you to not just catalog and create new services but also take action to prevent outages and vulnerabilities.\n\nWith the plugin, you can view maturity progress in context with the rest of your service information in Backstage. If you want to dig deeper, you can toggle back to OpsLevel from Backstage to see more health metrics through our Rubric or Check Reports.\n\n## Install Plugin\n\n```bash\nyarn add --cwd packages/app @loadsmart/backstage-plugin-opslevel-maturity\n```\n\nUpdate `app-config.yaml` to add a proxy for OpsLevel. Replace `<your_OpsLevel_API_token>` with a token from https://app.opslevel.com/api_tokens.\n\n```yaml\nproxy:\n  \"/opslevel\":\n    target: \"https://app.opslevel.com\"\n    headers:\n      X-Custom-Source: backstage\n      Authorization: Bearer <your_OpsLevel_API_token>\n```\n\nIf you're running Self-Hosted OpsLevel, replace `target` with your URL.\n\n## Configuration\n\nUpdate `app-config.yaml` to add a framework list and extend the export functionality.\n\n```yaml\nopslevel:\n  frameworks: [\"django\", \"fastapi\", \"spring\"]\n```\n\nBackstage components that contain any tag value listed on `opslevel.frameworks` are exported to the framework field into Opslevel.\n\n## Add Route & Global nav\n\nUpdate `packages/app/src/App.tsx`\n\n```jsx\nimport { OpslevelMaturityPage } from \"@loadsmart/backstage-plugin-opslevel-maturity\";\n```\n\n```jsx\n<Route path=\"/opslevel-maturity\" element={<OpslevelMaturityPage />} />\n```\n\nUpdate `packages/app/src/components/Root/Root.tsx`\n\n```tsx\nimport CheckCircleOutlineIcon from \"@material-ui/icons/CheckCircleOutline\";\n```\n\n```tsx\n<SidebarItem\n  icon={CheckCircleOutlineIcon}\n  to=\"opslevel-maturity\"\n  text=\"Maturity\"\n/>\n```\n\n## Add Tab for Maturity to Components\n\nIn `packages/app/src/components/catalog/EntityPage.tsx` import the plugin and add it to `serviceEntityPage`. Optionally, you can also add it to `defaultEntityPage` and `websiteEntityPage`\n\n```tsx\nimport { EntityOpsLevelMaturityContent } from \"@loadsmart/backstage-plugin-opslevel-maturity\";\n```\n\n```tsx\n<EntityLayout.Route path=\"/maturity\" title=\"Service Maturity\">\n  <EntityOpsLevelMaturityContent />\n</EntityLayout.Route>\n```\n\n## Next Steps\n\nVisit the Maturity tab in Backstage to get started.\n\n### Maturity of this Plugin\n\n[![Overall](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fapp.opslevel.com%2Fapi%2Fservice_level%2FSX_5tBBV3PXtQcTEe4j6kGw_Sm0ys-piO0swtoWKCwo)](https://app.opslevel.com/services/backstage_plugin/maturity-report)\n",
+  "repository": "https://github.com/loadsmart/opslevel-backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@loadsmart",
+  "updated": "2024-04-23T15:07:52.579Z",
+  "version": "0.5.18",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2024-04-23T15:07:52.579Z",
+      "version": "0.5.18"
+    },
+    {
+      "date": "2023-12-12T18:40:10.446Z",
+      "version": "0.5.17"
+    },
+    {
+      "date": "2023-02-24T18:19:36.463Z",
+      "version": "0.5.15"
+    },
+    {
+      "date": "2023-02-14T23:41:31.469Z",
+      "version": "0.5.14"
+    },
+    {
+      "date": "2023-02-09T18:57:52.409Z",
+      "version": "0.5.13"
+    },
+    {
+      "date": "2023-02-09T18:47:03.643Z",
+      "version": "0.5.12"
+    },
+    {
+      "date": "2023-02-09T17:53:16.235Z",
+      "version": "0.5.11"
+    },
+    {
+      "date": "2023-02-09T17:47:01.452Z",
+      "version": "0.5.10"
+    },
+    {
+      "date": "2023-02-09T17:42:40.911Z",
+      "version": "0.5.8"
+    },
+    {
+      "date": "2023-02-09T15:38:38.235Z",
+      "version": "0.5.7"
+    },
+    {
+      "date": "2023-02-02T22:54:43.183Z",
+      "version": "0.5.3"
+    },
+    {
+      "date": "2023-02-02T22:44:00.800Z",
+      "version": "0.5.2"
+    }
+  ]
+}

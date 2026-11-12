@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2023-09-29T11:42:16.173Z",
+  "deprecated": "",
+  "description": "This plugin seamlessly integrates with the [Backstage permission framework](https://backstage.io/docs/permissions/overview/) to empower you with robust role-based access control capabilities within your Backstage environment.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-rbac-backend",
+  "plugin_id": "",
+  "readme": "# RBAC backend plugin for Backstage\n\nThis plugin seamlessly integrates with the [Backstage permission framework](https://backstage.io/docs/permissions/overview/) to empower you with robust role-based access control capabilities within your Backstage environment.\n\nThe Backstage permission framework is a core component of the Backstage project, designed to provide meticulous control over resource and action access. Our RBAC plugin harnesses the power of this framework, allowing you to tailor access permissions without the need for coding. Instead, you can effortlessly manage your access policies through User interface embedded within Backstage or via the configuration files.\n\nWith the RBAC plugin, you'll have the means to efficiently administer permissions within your Backstage instance by assigning them to users and groups.\n\n## Prerequisites\n\nBefore you dive into utilizing the RBAC plugin for Backstage, there are a few essential prerequisites to ensure a seamless experience. Please review the following requirements to make sure your environment is properly set up\n\n### Setup Permision Framework\n\nTo effectively utilize the RBAC plugin, you must have the Backstage permission framework in place. If you're using the Red Hat Developer Hub, some of these steps may have already been completed for you. However, for other Backstage application instances, please verify that the following prerequisites are satisfied:\n\nYou need to [set up the permission framework in Backstage](https://backstage.io/docs/permissions/getting-started/).Since this plugin provides a dynamic policy that replaces the traditional one, there's no need to create a policy manually. Please note that one of the requirements for permission framework is enabling the [service-to-service authentication](https://backstage.io/docs/auth/service-to-service-auth/#setup). Ensure that you complete these authentication setup steps as well.\n\n### Identity resolver\n\nThe permission framework, and consequently, this RBAC plugin, rely on the concept of group membership. To ensure smooth operation, please follow the [Sign-in identities and resolvers](https://backstage.io/docs/auth/identity-resolver/) documentation. It's crucial that when populating groups, you include any groups that you plan to assign permissions to.\n\n## Installation\n\nTo integrate the RBAC plugin into your Backstage instance, follow these steps.\n\n### Installing the plugin\n\nAdd the RBAC plugin packages as dependencies by running the following command.\n\n```SHELL\nyarn workspace backend add @janus-idp/backstage-plugin-rbac-backend\n```\n\n**NOTE**: If you are using Red Hat Developer Hub backend plugin is pre-installed and you do not need this step.\n\n### Configuring the Backend\n\n#### Old Backend System\n\nTo connect the RBAC framework to your backend use the `PolicyBuilder` class in your backend permissions plugin (typically `packages/backend/src/plugins/permissions.ts`) as follows:\n\n```ts\n/* highlight-add-start */\nimport { Router } from 'express';\n\nimport {\n  PluginIdProvider,\n  PolicyBuilder,\n} from '@janus-idp/backstage-plugin-rbac-backend';\n\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n  pluginIdProvider: PluginIdProvider,\n): Promise<Router> {\n  return PolicyBuilder.build(\n    {\n      config: env.config,\n      logger: env.logger,\n      discovery: env.discovery,\n      identity: env.identity,\n      permissions: env.permissions,\n    },\n    pluginIdProvider,\n  );\n}\n/* highlight-add-end */\n```\n\nSecondly, in your backend router (typically `packages/backend/src/index.ts`) add a route for `/permission` specifying the list of plugin id's that support permissions:\n\n```ts\n// ...\n/* highlight-add-next-line */\nimport permission from './plugins/permissions';\n\nasync function main() {\n  // ...\n  /* highlight-add-next-line */\n  const permissionEnv = useHotMemoize(module, () => createEnv('permission'));\n\n  // ...\n  /* highlight-add-start */\n  apiRouter.use(\n    '/permission',\n    await permission(permissionEnv, {\n      // return list static plugin which supports Backstage permissions.\n      getPluginIds: () => ['catalog', 'scaffolder', 'permission'],\n    }),\n  );\n  /* highlight-add-end */\n}\n```\n\n#### New Backend System\n\nThe RBAC plugin supports the integration with the new backend system.\n\nAdd the RBAC plugin to the `packages/backend/src/index.ts` file.\n\n```ts\nbackend.add(import('@janus-idp/backstage-plugin-rbac-backend'));\n```\n\n### Configure policy admins\n\nThe RBAC plugin empowers you to manage permission policies for users and groups with a designated group of individuals known as policy administrators. These administrators are granted access to the RBAC plugin's REST API and user interface as well as the ability to read from the catalog.\n\nYou can specify the policy administrators in your application configuration as follows:\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    admin:\n      users:\n        - name: user:default/alice\n        - name: group:default/admins\n```\n\nThe RBAC plugin also enables you to grant users the title of 'super user,' which provides them with unrestricted access throughout the Backstage instance.\n\nYou can specify the super users in your application configuration as follows:\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    admin:\n      superUsers:\n        - name: user:default/alice\n        - name: user:default/mike\n```\n\nFor more information on the available API endpoints accessible to the policy administrators, refer to the [API documentation](./docs/apis.md).\n\n### Configuring policies via file\n\nThe RBAC plugin also allows you to import policies from an external file. These policies are defined in the [Casbin rules format](https://casbin.org/docs/category/the-basics), known for its simplicity and clarity. For a quick start, please refer to the format details in the provided link.\n\nHere's an example of an external permission policies configuration file named `rbac-policy.csv`:\n\n```CSV\np, role:default/team_a, catalog-entity, read, deny\np, role:default/team_b, catalog.entity.create, create, deny\n\ng, user:default/bob, role:default/team_a\n\ng, group:default/team_b, role:default/team_b\n```\n\n---\n\n**NOTE**: When you add a role in the permission policies configuration file, ensure that the role is associated with at least one permission policy with the `allow` effect.\n\n---\n\nYou can specify the path to this configuration file in your application configuration:\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    policies-csv-file: /some/path/rbac-policy.csv\n```\n\nAlso, there is an additional configuration value that allows for the reloading of the CSV file without the need to restart.\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    policies-csv-file: /some/path/rbac-policy.csv\n    policyFileReload: true\n```\n\nFor more information on the available permissions within Showcase and RHDH, refer to the [permissions documentation](./docs/permissions.md).\n\nWe also have a fairly strict validation for permission policies and roles based on the originating role's source information, refer to the [api documentation](./docs/apis.md).\n\n### Configuring Database Storage for policies\n\nThe RBAC plugin offers the option to store policies in a database. It supports two database storage options:\n\n- sqlite3: Suitable for development environments.\n- postgres: Recommended for production environments.\n\nEnsure that you have already configured the database backend for your Backstage instance, as the RBAC plugin utilizes the same database configuration.\n\n### Optional maximum depth\n\nThe RBAC plugin also includes an option max depth feature for organizations with potentially complex group hierarchy, this configuration value will ensure that the RBAC plugin will stop at a certain depth when building user graphs.\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    maxDepth: 1\n```\n\nThe maxDepth must be greater than 0 to ensure that the graphs are built correctly. Also the graph will be built with a hierarchy of 1 + maxDepth.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/rbac-backend",
+  "role": "backend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-14T21:33:37.066Z",
+  "version": "4.2.1",
+  "version_count": 99,
+  "versions": [
+    {
+      "date": "2024-11-14T21:33:37.066Z",
+      "version": "4.2.1"
+    },
+    {
+      "date": "2024-11-04T12:24:41.543Z",
+      "version": "5.2.2"
+    },
+    {
+      "date": "2024-10-31T13:34:44.054Z",
+      "version": "5.2.1"
+    },
+    {
+      "date": "2024-10-30T20:18:59.059Z",
+      "version": "5.2.0"
+    },
+    {
+      "date": "2024-10-29T18:59:35.930Z",
+      "version": "5.1.2"
+    },
+    {
+      "date": "2024-10-23T21:22:59.565Z",
+      "version": "4.10.7"
+    },
+    {
+      "date": "2024-10-22T21:37:00.796Z",
+      "version": "5.1.0"
+    },
+    {
+      "date": "2024-10-10T15:36:58.606Z",
+      "version": "5.0.3"
+    },
+    {
+      "date": "2024-10-09T20:46:05.063Z",
+      "version": "5.0.2"
+    },
+    {
+      "date": "2024-10-05T07:52:01.594Z",
+      "version": "5.0.1"
+    },
+    {
+      "date": "2024-10-04T05:08:19.922Z",
+      "version": "5.0.0"
+    },
+    {
+      "date": "2024-10-01T13:33:48.037Z",
+      "version": "4.12.1"
+    },
+    {
+      "date": "2024-09-25T18:55:51.027Z",
+      "version": "4.12.0"
+    },
+    {
+      "date": "2024-09-20T03:51:50.174Z",
+      "version": "4.11.0"
+    },
+    {
+      "date": "2024-09-17T18:42:05.956Z",
+      "version": "4.10.6"
+    }
+  ]
+}

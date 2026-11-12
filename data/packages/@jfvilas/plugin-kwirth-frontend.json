@@ -1,0 +1,63 @@
+{
+  "author": "Julio Fernandez",
+  "created": "2025-11-02T10:46:49.212Z",
+  "deprecated": "",
+  "description": "Frontend common artifacts for viewing real-time Kubernetes logs in Backstage",
+  "homepage": "https://github.com/jfvilas/plugin-kwirth-frontend#readme",
+  "keywords": [
+    "backstage",
+    "kubernetes",
+    "kwirth",
+    "log",
+    "metrics",
+    "observability",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jfvilas"
+  ],
+  "name": "@jfvilas/plugin-kwirth-frontend",
+  "plugin_id": "kwirth",
+  "readme": "# Backstage frontend common package\r\nThis package contains common artifacts for using with Kwirth BAckstage front plugins like:\r\n\r\n  - KwirthLog\r\n  - KwirthMetrics\r\n\r\n## Version compatibility\r\nKwirthFrontend is compatible with Kwirth core server versions according to following table.\r\n\r\n| Plugin Kwirth version | Kwirth version |\r\n|-|-|\r\n|0.13.0|0.4.131|\r\n",
+  "repository": "https://github.com/jfvilas/plugin-kwirth-frontend",
+  "role": "frontend-plugin",
+  "scope": "@jfvilas",
+  "updated": "2026-03-27T15:37:01.715Z",
+  "version": "0.14.2",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2026-03-27T15:37:01.715Z",
+      "version": "0.14.2"
+    },
+    {
+      "date": "2025-11-23T12:33:17.557Z",
+      "version": "0.13.10"
+    },
+    {
+      "date": "2025-11-20T20:37:19.554Z",
+      "version": "0.13.5"
+    },
+    {
+      "date": "2025-11-08T11:24:25.329Z",
+      "version": "0.13.4"
+    },
+    {
+      "date": "2025-11-08T10:35:43.903Z",
+      "version": "0.13.3"
+    },
+    {
+      "date": "2025-11-02T11:59:20.302Z",
+      "version": "0.13.2"
+    },
+    {
+      "date": "2025-11-02T11:44:02.824Z",
+      "version": "0.13.1"
+    },
+    {
+      "date": "2025-11-02T10:46:49.542Z",
+      "version": "0.13.0"
+    }
+  ]
+}

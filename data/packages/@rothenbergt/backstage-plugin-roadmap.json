@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-04-06T16:07:56.068Z",
+  "deprecated": "",
+  "description": "Backstage Roadmap plugin frontend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "rothenbergt"
+  ],
+  "name": "@rothenbergt/backstage-plugin-roadmap",
+  "plugin_id": "roadmap",
+  "readme": "# @rothenbergt/backstage-plugin-roadmap\n\nThe frontend for the [Backstage Roadmap Plugin](https://github.com/rothenbergt/backstage-roadmap-plugin): a public roadmap board inside Backstage where your developers, the customers of your platform, can suggest features, vote on ideas, and comment. Your platform team shares what's coming, and feedback flows in right where everyone already works.\n\n## Features\n\n- Visual roadmap board with configurable columns\n- Voting, comments, and a suggestion form\n- Deep links: `/roadmap?feature=<id>` opens a feature's details drawer directly\n- Live board updates via Backstage signals when installed (votes and status changes appear without a refresh)\n- Admin actions (status changes, edits, reordering) gated by the permission framework or a config list\n\n## Installation\n\n```\nyarn add @rothenbergt/backstage-plugin-roadmap --cwd packages/app\n```\n\nThe plugin uses the new Backstage [frontend system](https://backstage.io/docs/frontend-system/) and is discovered automatically. No wiring needed; visit `/roadmap` in your app.\n\nIt talks to [`@rothenbergt/backstage-plugin-roadmap-backend`](https://www.npmjs.com/package/@rothenbergt/backstage-plugin-roadmap-backend), which must be installed in your backend.\n\n## Documentation\n\nSetup, configuration (permissions, board columns, notifications, search, GitLab datasource), and screenshots live in the [main README](https://github.com/rothenbergt/backstage-roadmap-plugin#readme).\n\n## Local development\n\nRun `yarn dev` at the repository root for a full dev environment (frontend, backend, catalog, notifications, signals, and search), or `yarn start` in this directory to serve the plugin in isolation using the setup in [/dev](./dev).\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@rothenbergt",
+  "updated": "2026-07-11T22:35:42.218Z",
+  "version": "2.3.0",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2026-07-11T22:35:42.218Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2026-07-11T18:48:42.941Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2026-07-05T18:18:36.025Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2026-07-05T11:05:25.168Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-07-04T16:24:55.156Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2026-07-04T15:18:31.113Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2026-04-25T22:37:12.495Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-04-20T12:01:20.316Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-04-17T21:19:58.730Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-04-16T20:39:56.887Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-02-26T23:07:42.567Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-02-26T22:26:29.768Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2025-10-11T19:25:50.234Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-04-06T17:32:41.388Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-04-06T16:36:13.285Z",
+      "version": "0.1.1"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2023-10-01T19:12:27.416Z",
+  "deprecated": "",
+  "description": "Welcome to the Tips plugin!",
+  "homepage": "https://github.com/dweber019/backstage-plugins/tree/main/plugins/tips",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "dweber019"
+  ],
+  "name": "@dweber019/backstage-plugin-tips",
+  "plugin_id": "tips",
+  "readme": "# Tips Plugin\n\nWelcome to the Tips plugin!\n\nThis plugin will show tips for entities. You can even extend the plugin with your own tips.\n\n![Closed state](https://raw.githubusercontent.com/dweber019/backstage-plugins/main/plugins/tips/docs/closed-state.png)\n![Open state](https://raw.githubusercontent.com/dweber019/backstage-plugins/main/plugins/tips/docs/open-state.png)\n\n## Setup\n\n1. Install this plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @dweber019/backstage-plugin-tips\n```\n\n### Entity Pages\n\nAdd the `EntityTipsDialog` to the EntityPage\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport { EntityTipsDialog } from '@dweber019/backstage-plugin-tips';\n\nconst entityWarningContent = (\n  <>\n    <EntitySwitch>\n      <EntitySwitch.Case if={isOrphan}>\n        <Grid item xs={12}>\n          <EntityOrphanWarning />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n\n    <EntitySwitch>\n      <EntitySwitch.Case if={hasRelationWarnings}>\n        <Grid item xs={12}>\n          <EntityRelationWarning />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n\n    <EntitySwitch>\n      <EntitySwitch.Case if={hasCatalogProcessingErrors}>\n        <Grid item xs={12}>\n          <EntityProcessingErrorsPanel />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n\n    <EntityTipsDialog />\n  </>\n);\n```\n\n### Custom tips\n\nYou can add custom tips.\n\n```tsx\n// packages/app/src/apis.tsx\n\nimport { tipsConfigRef, systemModelTips, extraTips } from '@dweber019/backstage-plugin-tips';\nimport { YourTip } from '...';\n\n// ...\n\nexport const apis: AnyApiFactory[] = [\n  // ...\n  createApiFactory({\n    api: tipsConfigRef,\n    deps: {},\n    factory: () => {\n      return {\n        tips: [...systemModelTips, ...extraTips, YourTip],\n      };\n    },\n  }),\n];\n```\n\nA custom tip has to satisfy the following interface\n\n```tsx\nexport interface Tip {\n  content: string | React.ReactElement;\n  title: string;\n  activate: (options: { entity?: Entity }) => boolean;\n}\n```\n\nThe tip will be displayed on the entity page when `activate` evaluates to `true`.  \nThe `content` of type `string` will be rendered with the builtin Backstage `Markdown` component.\n\nYou can have a look at `plugins/tips/src/lib/systemModelTips.ts` or `plugins/tips/src/lib/extraTips.tsx` for some inspiration.\n",
+  "repository": "https://github.com/dweber019/backstage-plugins/tree/HEAD/plugins/tips",
+  "role": "frontend-plugin",
+  "scope": "@dweber019",
+  "updated": "2025-12-19T07:45:29.595Z",
+  "version": "0.1.2",
+  "version_count": 26,
+  "versions": [
+    {
+      "date": "2025-12-19T07:45:29.595Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-08-15T06:55:21.860Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-06-27T07:33:15.155Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-03-17T20:39:59.358Z",
+      "version": "0.0.23"
+    },
+    {
+      "date": "2025-01-20T10:42:59.362Z",
+      "version": "0.0.22"
+    },
+    {
+      "date": "2024-12-28T22:35:40.158Z",
+      "version": "0.0.21"
+    },
+    {
+      "date": "2024-10-21T10:45:02.812Z",
+      "version": "0.0.20"
+    },
+    {
+      "date": "2024-09-25T06:28:33.428Z",
+      "version": "0.0.19"
+    },
+    {
+      "date": "2024-09-02T07:21:23.564Z",
+      "version": "0.0.18"
+    },
+    {
+      "date": "2024-08-29T20:39:37.207Z",
+      "version": "0.0.17"
+    },
+    {
+      "date": "2024-08-24T21:59:07.190Z",
+      "version": "0.0.16"
+    },
+    {
+      "date": "2024-07-29T00:33:07.244Z",
+      "version": "0.0.15"
+    },
+    {
+      "date": "2024-07-20T21:52:31.391Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2024-07-06T08:23:26.370Z",
+      "version": "0.0.13"
+    },
+    {
+      "date": "2024-06-02T10:36:04.564Z",
+      "version": "0.0.12"
+    }
+  ]
+}

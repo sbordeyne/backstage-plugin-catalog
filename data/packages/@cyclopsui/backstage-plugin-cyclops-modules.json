@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2024-12-19T14:45:31.653Z",
+  "deprecated": "",
+  "description": "Shows Cyclops module data as part of the Backstage catalog. This plugin allows you to add the page for Module details and edit your Modules through a new tab in your Component details page.",
+  "homepage": "https://github.com/cyclops-ui/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "petar-cvit"
+  ],
+  "name": "@cyclopsui/backstage-plugin-cyclops-modules",
+  "plugin_id": "cyclops-modules",
+  "readme": "## Module plugin\n\nShows Cyclops module data as part of the Backstage catalog. This plugin allows you to add the page for Module details and edit your Modules through a new tab in your Component details page.\n\n<img width=\"1496\" alt=\"Screenshot 2024-12-23 at 13 59 50\" src=\"https://github.com/user-attachments/assets/c4174393-1a2b-451e-ab6b-f39b52dbd1cb\" />\n\nYou can view Kubernetes resources deployed for a Module (check status, list logs) as well as perform actions like reconciling Modules or restarting workloads.\n\nIf you click the `Edit` button, you will be able to see the UI for editing that specific Module.\n\n<img width=\"1494\" alt=\"Screenshot 2024-12-23 at 14 01 51\" src=\"https://github.com/user-attachments/assets/76b554fd-ec88-4484-b2b9-d6ce25f6a2d2\" />\n\nModule plugin communicates with an existing Cyclops backend instance running in your cluster. All requests going from your Backstage app to the Cyclops backend are proxied through the Backstage backend, so all of the requests are authenticated.\n\nBy default, the Module plugin will fetch the Module called the same as the component. In this case, the component is called `example-website`, and the Cyclops plugin will fetch a Module called `example-website`.\n\nIn case your Module is called differently from the Backstage component, you can set the `cyclops-ui.com/module-name-override` annotation that would override the Module fetched for your component. In the example below, the component is called `my-component`, but the Module that would be fetched is the `demo-module`.\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-component\n  annotations:\n    cyclops-ui.com/module-name-override: demo-module # specify which Cyclops module should be fetched\nspec:\n  type: website\n  lifecycle: experimental\n  owner: guests\n  system: examples\n  providesApis: [example-grpc-api]\n```\n\n### Install\nSteps for setting up the plugin on your Backstage app:\n\n1. Have a running Cyclops instance:\n    - If you don't have a running instance, you can install one by following [this two-command tutorial](https://cyclops-ui.com/docs/installation/install/manifest/)\n    - Make sure that Cyclops backend (`cyclops-ctrl` pod) is running and is reachable. If you installed with the commands above, your Cyclops instance would be reachable from within the same Kubernetes cluster on `http://cyclops-ctrl.cyclops:8080`\n2. Add the plugin to your Backstage instance, you need to add to `packages/app`:\n\n    ```bash\n    yarn --cwd packages/app add @cyclopsui/backstage-plugin-cyclops-modules\n    ```\n\n3. Add proxy configuration to your Backstage configuration in `app-config.yaml`\n\n    ```yaml\n    proxy:\n      endpoints:\n        '/cyclops':\n          target: 'http://cyclops-ctrl.cyclops:8080'\n          changeOrigin: true\n    ```\n\n4. Add Module plugin component to your catalog. Go to file `packages/app/src/components/catalog/EntityPage.tsx` and import Cyclops component:\n\n    ```tsx\n    import {ModuleDetailsComponent} from \"@cyclopsui/backstage-plugin-cyclops-modules\";\n    ```\n\n   Now you just need to add the Cyclops component to the entity. For example, if you want to add Cyclops tab for a Website component, find `websiteEntityPage` and the Cyclops tab by pasting the code below:\n\n    ```tsx\n    <EntityLayout.Route path={\"/cyclops\"} title={\"Cyclops\"}>\n    \t<ModuleDetailsComponent/>\n    </EntityLayout.Route>\n    ```\n\n\nYour Backstage catalog can now view and edit deployed Modules in your cluster.\n\nThis plugin can't deploy new Modules and can only give you an overview of existing ones.\n",
+  "repository": "https://github.com/cyclops-ui/backstage-plugins/tree/HEAD/plugins/cyclops-modules",
+  "role": "frontend-plugin",
+  "scope": "@cyclopsui",
+  "updated": "2025-01-06T09:37:27.608Z",
+  "version": "0.2.5",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2025-01-06T09:37:27.608Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2025-01-03T17:59:43.264Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2025-01-02T18:31:09.208Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2025-01-02T18:26:11.390Z",
+      "version": "0.2.3-rc.auto.2"
+    },
+    {
+      "date": "2025-01-02T17:42:44.253Z",
+      "version": "0.2.3-rc.2"
+    },
+    {
+      "date": "2025-01-02T13:21:40.332Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2025-01-02T13:19:02.810Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-12-19T16:14:05.595Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-12-19T14:45:31.977Z",
+      "version": "0.1.0"
+    }
+  ]
+}

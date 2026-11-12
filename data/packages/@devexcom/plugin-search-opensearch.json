@@ -1,0 +1,33 @@
+{
+  "author": "",
+  "created": "2025-09-22T20:38:56.580Z",
+  "deprecated": "",
+  "description": "Modern OpenSearch-powered search interface for Backstage with facets, highlighting, and enhanced UX",
+  "homepage": "https://github.com/devexcom/backstage-plugins#readme",
+  "keywords": [
+    "backstage",
+    "frontend",
+    "opensearch",
+    "search",
+    "ui"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "devexcom"
+  ],
+  "name": "@devexcom/plugin-search-opensearch",
+  "plugin_id": "search-opensearch",
+  "readme": "# OpenSearch Frontend Plugin\n\nGoogle-like search interface for Backstage with faceted filtering, highlighting, and enterprise performance.\n\n**📦 Backend:** [`@devexcom/plugin-search-backend-module-opensearch`](../search-opensearch-backend/README.md)\n\n![alt text](assets/search-page.png)\n\n## Solves Open Backstage Issues\n\n| **Issue**                    | **GitHub**                                                    | **Our Solution**                        |\n| ---------------------------- | ------------------------------------------------------------- | --------------------------------------- |\n| Search filters not clearing  | [#27959](https://github.com/backstage/backstage/issues/27959) | ✅ Proper state management with chips   |\n| Limited search customization | [#25292](https://github.com/backstage/backstage/issues/25292) | ✅ Fully customizable filter components |\n| Static filter options        | [#3344](https://github.com/backstage/backstage/issues/3344)   | ✅ Dynamic loading from OpenSearch      |\n\n**Quick compare**\n\n| Feature             | Official Plugin          | This plugin                              |\n| ------------------- | ------------------------ | ---------------------------------------- |\n| Aggregations/Facets | ❌ Not supported         | ✅ kinds, lifecycles, namespaces, owners |\n| Pagination Method   | ❌ Broken from/size      | ✅ Production-ready cursor-based         |\n| Query Intelligence  | ❌ Basic query_string    | ✅ Multi-match + boosting + fuzzy        |\n| Data Quality        | ❌ Returns empty results | ✅ Filters invalid content               |\n| Response Format     | ❌ Simple array          | ✅ Rich metadata + pagination info       |\n\n**Production Readiness**\n\n| Aspect             | Official Plugin           | This plugin                          |\n| ------------------ | ------------------------- | ------------------------------------ |\n| Error Handling     | Basic propagation         | ✅ Comprehensive with fallbacks      |\n| Performance        | Standard queries          | ✅ Optimized aggregation queries     |\n| Scalability        | Fails with large catalogs | ✅ Handles 30K+ entities efficiently |\n| OpenSearch Support | ❌ Elasticsearch 7.x only | ✅ Native OpenSearch 1.x/2.x         |\n\n## Key Improvements\n\n| Feature            | **Default**           | **This Plugin**                           |\n| ------------------ | --------------------- | ----------------------------------------- |\n| **UI**             | Basic dropdowns       | ✅ Google-style faceted search with chips |\n| **Performance**    | 500ms+ filter queries | ✅ ~50ms OpenSearch aggregations          |\n| **Search Quality** | Simple text matching  | ✅ Smart highlighting + relevance scoring |\n| **Filters**        | Static, hard-coded    | ✅ Dynamic from backend aggregations      |\n| **State**          | Local component state | ✅ Centralized with `useSearch` hook      |\n\n## Technical Implementation\n\n### Filter State Management (Fixes #27959)\n\n```typescript\nconst handleFilterRemove = useCallback(\n  (filterName: string, value?: string) => {\n    const currentFilter = filters[filterName];\n    if (Array.isArray(currentFilter) && value) {\n      const newValues = currentFilter.filter((v) => v !== value);\n      setFilters({\n        ...filters,\n        [filterName]: newValues.length > 0 ? newValues : undefined,\n      });\n    }\n  },\n  [filters, setFilters],\n);\n```\n\n### Component Architecture\n\n```\nSearchPage\n├── SearchBar (Enhanced with filter chips)\n├── SearchFilters (Accordion-based faceted search)\n└── SearchResults (Highlighting + metadata)\n```\n\n## When to Use\n\n**Required if:**\n\n- Using OpenSearch backend plugin\n- Need faceted search with dynamic filters\n- Want to fix documented GitHub issues above\n\n**Recommended for:**\n\n- Catalogs with 500+ entities\n- Teams expecting Google-quality search UX\n- Mobile-responsive search interface\n\n## Installation\n\n```bash\nyarn add @devexcom/plugin-search-opensearch\n```\n\n**Prerequisite : Backend Setup:** [`@devexcom/plugin-search-backend-module-opensearch`](https://github.com/devexcom/backstage-plugins/blob/main/workspaces/search-opensearch-backend/README.md)\n\n## Setup\n\nReplace your search page in `packages/app/src/App.tsx`:\n\n```tsx\nimport { Route } from 'react-router-dom';\nimport { SearchPage } from '@devexcom/plugin-search-opensearch';\n\n<Route path=\"/search\" element={<SearchPage />} />;\n```\n\nAdd navigation link in `packages/app/src/components/Root/Root.tsx`:\n\n```tsx\nimport { SidebarItem } from '@backstage/core-components';\nimport SearchIcon from '@material-ui/icons/Search';\n\n<SidebarItem icon={SearchIcon} to=\"search\" text=\"Search\" />;\n```\n",
+  "repository": "https://github.com/devexcom/backstage-plugins/tree/HEAD/workspaces/search-opensearch",
+  "role": "frontend-plugin",
+  "scope": "@devexcom",
+  "updated": "2025-09-22T20:38:56.835Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-09-22T20:38:56.835Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2026-08-25T09:02:50.522Z",
+  "deprecated": "",
+  "description": "Backend for the Skills Marketplace plugin: reads Claude Code marketplace repos via Backstage integrations, including private repos.",
+  "homepage": "https://github.com/globallogicuki/globallogic-backstage-plugins/tree/main/plugins/skills-marketplace-backend",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "billymichael",
+    "himeshladva"
+  ],
+  "name": "@globallogicuki/backstage-plugin-skills-marketplace-backend",
+  "plugin_id": "skills-marketplace",
+  "readme": "# Skill Marketplace Backend\n\nBackend for the\n[Skill Marketplace](https://github.com/globallogicuki/globallogic-backstage-plugins/tree/main/plugins/skills-marketplace)\nplugin. Reads the marketplace repo via Backstage's `UrlReader` and the standard\n[`integrations`](https://backstage.io/docs/integrations/) config — GitHub,\nGitLab, and Bitbucket, public or private, cloud or self-hosted. Responses are\ncached for five minutes.\n\n## Endpoints\n\n- `GET /api/skills-marketplace/marketplace` — every configured marketplace as\n  `{ marketplaces: [{ repo, url, installUrl, marketplace }], errors: [] }`.\n  Marketplaces that fail to load are reported in `errors` so the rest still\n  render; the request only fails when none could be read.\n- `GET /api/skills-marketplace/skill-doc?source=./skills/foo&repo=my-repo` —\n  the raw docs for one skill: its `SKILL.md`, falling back to its `README.md`\n  (404 when it has neither). `repo` names the marketplace to read from and\n  defaults to the first configured one.\n\n## Installation\n\n```sh\nyarn --cwd packages/backend add @globallogicuki/backstage-plugin-skills-marketplace-backend\n```\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(\n  import('@globallogicuki/backstage-plugin-skills-marketplace-backend'),\n);\n```\n\n## Configuration\n\n```yaml\nskillsMarketplace:\n  url: https://github.com/my-org/skills-marketplace/tree/main\n  installUrlFormat: https # optional: ssh (default) | https\n  # optional: pull skills in from more repos as well\n  marketplaces:\n    - url: https://gitlab.com/my-group/team-skills/-/tree/main\n      installUrlFormat: ssh # optional per-entry override\n```\n\nRepo names must be unique across `url` and `marketplaces` — the repo name\nidentifies a marketplace in the API and in the UI filter.\n\nSee the frontend plugin's README for the full reference, including private\nrepos.\n",
+  "repository": "https://github.com/globallogicuki/globallogic-backstage-plugins/tree/HEAD/plugins/skills-marketplace-backend",
+  "role": "backend-plugin",
+  "scope": "@globallogicuki",
+  "updated": "2026-08-25T16:01:07.810Z",
+  "version": "0.2.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-08-25T16:01:07.810Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-25T14:09:28.373Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-08-25T09:02:50.945Z",
+      "version": "0.1.0"
+    }
+  ]
+}

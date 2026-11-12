@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-07-23T11:20:34.345Z",
+  "deprecated": "",
+  "description": "This is a backend plugin for the Security metrics Backstage plugin. The backend plugin works as a proxy for the frontend plugin, and allows the system to communicate with the security metrics API. The backend plugin has two roles:",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "backstage-kartverket"
+  ],
+  "name": "@kartverket/backstage-plugin-security-metrics-backend",
+  "plugin_id": "security-metrics",
+  "readme": "# Security metrics (backend-plugin)\n\nThis is a backend plugin for the Security metrics Backstage plugin. The backend plugin works as a proxy for the frontend\nplugin, and allows the system to communicate with the security metrics API. The backend plugin has two roles:\n\n- Handle the on-behalf-of flow to acquire JWT for the backend API\n- Provide the user with a scope to aquire the Entra ID JWT that was used to log into backstage\n\n### Kartverket.dev configuration\n\n> **_NOTE:_** Ensure that you have installed\n> the [frontend plugin](https://www.npmjs.com/package/@kartverket/backstage-plugin-security-metrics-frontend) aswell\n>\n> In `app-config.production.yaml` add the following under the `sikkerhetsmetrikker` config-block:\n\n```yaml\nclientId: ${SMAPI_CLIENT_ID}\nbaseUrl: http://sikkerhetsmetrikker.sikkerhetsmetrikker-main:8080/api\n```\n\nIn `packages/backend/src/index.ts` add the following line in order add the backend plugin:\n\n```typescript\n// Security metrics\nbackend.add(import(\"@kartverket/backstage-plugin-security-metrics-backend\"))\n```\n\nand in `packages/backend/package.json` add the following dependency.\n\n```json\n\"@kartverket/backstage-plugin-security-metrics-backend\": \"^1.0.0\"\n```\n\nIt may be better to use `yarn add @kartverket/backstage-plugin-security-metrics-backend` from the `packages/backend`\ndirectory\n\n### Links\n\n- [Github repository for both plugins](https://github.com/kartverket/sikkerhetsmetrikker-plugin)\n- [Github repository for backend](https://github.com/kartverket/sikkerhetsmetrikker-plugin-backend)\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@kartverket",
+  "updated": "2025-09-19T13:49:49.594Z",
+  "version": "3.18.1",
+  "version_count": 56,
+  "versions": [
+    {
+      "date": "2025-09-19T13:49:49.594Z",
+      "version": "3.18.1"
+    },
+    {
+      "date": "2025-09-17T13:36:14.182Z",
+      "version": "3.18.0"
+    },
+    {
+      "date": "2025-09-09T07:31:38.525Z",
+      "version": "3.17.5"
+    },
+    {
+      "date": "2025-09-08T12:00:56.623Z",
+      "version": "3.17.4"
+    },
+    {
+      "date": "2025-09-05T13:06:33.288Z",
+      "version": "3.17.3"
+    },
+    {
+      "date": "2025-09-05T09:38:19.287Z",
+      "version": "3.17.2"
+    },
+    {
+      "date": "2025-09-04T13:48:13.020Z",
+      "version": "3.17.1"
+    },
+    {
+      "date": "2025-08-19T12:01:42.720Z",
+      "version": "3.16.1"
+    },
+    {
+      "date": "2025-08-19T08:24:46.925Z",
+      "version": "3.16.0"
+    },
+    {
+      "date": "2025-08-14T10:08:10.858Z",
+      "version": "3.15.1"
+    },
+    {
+      "date": "2025-08-07T10:42:10.415Z",
+      "version": "3.15.0"
+    },
+    {
+      "date": "2025-08-04T10:42:46.825Z",
+      "version": "3.14.1"
+    },
+    {
+      "date": "2025-08-01T11:46:23.379Z",
+      "version": "3.14.0"
+    },
+    {
+      "date": "2025-07-30T14:47:03.403Z",
+      "version": "3.13.4"
+    },
+    {
+      "date": "2025-07-30T11:33:32.943Z",
+      "version": "3.13.3"
+    }
+  ]
+}

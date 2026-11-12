@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-10-02T21:51:58.443Z",
+  "deprecated": "",
+  "description": "The SonarQube Plugin displays code statistics from [SonarCloud](https://sonarcloud.io) or [SonarQube](https://sonarqube.com).",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "sonarcloud",
+    "sonarqube"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fabz26"
+  ],
+  "name": "@fabz26/plugin-sonarqube",
+  "plugin_id": "sonarqube",
+  "readme": "# SonarQube Plugin\n\nThe SonarQube Plugin displays code statistics from [SonarCloud](https://sonarcloud.io) or [SonarQube](https://sonarqube.com).\n\n![Sonar Card](./docs/sonar-card.png)\n\n## Getting Started\n\n1. Install the SonarQube Plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @backstage-community/plugin-sonarqube\n```\n\n2. Add the `EntitySonarQubeCard` to the EntityPage:\n\n```diff\n  // packages/app/src/components/catalog/EntityPage.tsx\n+ import { EntitySonarQubeCard } from '@backstage-community/plugin-sonarqube';\n\n ...\n\n const overviewContent = (\n   <Grid container spacing={3} alignItems=\"stretch\">\n     <Grid item md={6}>\n       <EntityAboutCard variant=\"gridItem\" />\n     </Grid>\n+    <Grid item md={6}>\n+      <EntitySonarQubeCard variant=\"gridItem\" />\n+    </Grid>\n   </Grid>\n );\n```\n\nThe \"Read more\" link that shows in the MissingAnnotationEmptyState is also configurable.\n\n```diff\n  // packages/app/src/components/catalog/EntityPage.tsx\n+ import { EntitySonarQubeCard } from '@backstage-community/plugin-sonarqube';\n\n+ const MISSING_ANNOTATION_READ_MORE_URL = 'https://backstage.io/docs/features/software-catalog/descriptor';\n\n ...\n\n const overviewContent = (\n   <Grid container spacing={3} alignItems=\"stretch\">\n     <Grid item md={6}>\n       <EntityAboutCard variant=\"gridItem\" />\n     </Grid>\n+    <Grid item md={6}>\n+      <EntitySonarQubeCard variant=\"gridItem\" readMoreUrl={MISSING_ANNOTATION_READ_MORE_URL} />\n+    </Grid>\n   </Grid>\n );\n```\n\n3. Run the following commands in the root folder of the project to install and compile the changes.\n\n```yaml\nyarn install\nyarn tsc\n```\n\n4. Add the `sonarqube.org/project-key` annotation to the `catalog-info.yaml` file of the target repo for which code quality analysis is needed.\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: backstage\n  description: |\n    Backstage is an open-source developer portal that puts the developer experience first.\n  annotations:\n    sonarqube.org/project-key: YOUR_INSTANCE_NAME/YOUR_PROJECT_KEY\nspec:\n  type: library\n  owner: CNCF\n  lifecycle: experimental\n```\n\n`YOUR_INSTANCE_NAME/` is optional and will query the default instance if not provided.\n\n### Integrating with `EntityPage` (New Frontend System)\n\nFollow this section if you are using Backstage's [new frontend system](https://backstage.io/docs/frontend-system/).\n\n1. Import `githubActionsPlugin` in your `App.tsx` and add it to your app's `features` array:\n\n```typescript\nimport sonarQubePlugin from '@backstage-community/plugin-sonarqube/alpha';\n\n// ...\n\nexport const app = createApp({\n  features: [\n    // ...\n    sonarQubePlugin,\n    // ...\n  ],\n});\n```\n\n2. Next, enable your desired extensions in `app-config.yaml`\n\n```yaml\napp:\n  extensions:\n    - entity-content:sonarqube/entity\n    - entity-card:sonarqube/card\n```\n\n3. Whichever extensions you've enabled should now appear in your entity page.\n\nYou can also control which [entity kinds](https://backstage.io/docs/features/software-catalog/system-model) the sonarqube card appears on by adding a config underneath the entity-content, like so:\n\n```yaml\n# app-config.yaml\napp:\n  extensions:\n    - entity-content:sonarqube/entity\n        config:\n          filter: kind:component,system\n```\n\n## Links\n\n- [Sonarqube Backend](../sonarqube-backend/README.md)\n",
+  "repository": "https://github.com/TRANZACT/DevOps.SITH2.Backstage.Plugins.Sonarqube/tree/HEAD/plugins/sonarqube",
+  "role": "frontend-plugin",
+  "scope": "@fabz26",
+  "updated": "2024-10-02T21:51:58.777Z",
+  "version": "0.8.2",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-10-02T21:51:58.777Z",
+      "version": "0.8.2"
+    }
+  ]
+}

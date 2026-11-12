@@ -1,0 +1,47 @@
+{
+  "author": "Red Hat",
+  "created": "2023-12-05T08:38:39.941Z",
+  "deprecated": "",
+  "description": "odo custom actions for Backstage (Backend Plugin)",
+  "homepage": "https://odo.dev",
+  "keywords": [
+    "backend-plugin",
+    "backstage",
+    "custom-actions",
+    "devfile",
+    "odo"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "adietish",
+    "dgolovin",
+    "fbricon",
+    "jeffmaury",
+    "jrichter1",
+    "mohitsuman",
+    "odockal",
+    "rhdevelopers-ci",
+    "robstryker",
+    "sudhirverma",
+    "yvydolob"
+  ],
+  "name": "@redhat-developer/plugin-scaffolder-odo-actions",
+  "plugin_id": "",
+  "readme": "# scaffolder-odo-actions\n\nThis is a [Backend Plugin](https://backstage.io/docs/plugins/backend-plugin/) containing a set of [Custom Actions](https://backstage.io/docs/features/software-templates/writing-custom-actions) using the [`odo`](https://odo.dev/) CLI.\nIt contains the following actions:\n\n- `devfile:odo:command`: a generic action that can execute any `odo` command from the scaffolder workspace.\n\n- `devfile:odo:component:init`: allows to execute the [`odo init`](https://odo.dev/docs/command-reference/init) command from the Scaffolder workspace. The goal of this action is to generate a starter project for a given Devfile that can be customized later on.\n\n## Preview\n\n![Preview](https://github.com/rm3l/backstage-odo-devfile-plugin/assets/593208/ee3192cd-b44b-4d7f-9b27-451574e8cf8c)\n\n## Installation\n\nFrom your Backstage instance root folder:\n```shell\nyarn add --cwd packages/backend @redhat-developer/plugin-scaffolder-odo-actions\n```\n\nThis will download the right `odo` binary for the current operating system and architecture from the Red Hat servers at https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/odo/.\n\nThis behavior can be customized by adding a new `\"odo\"` field in your `packages/backend/package.json` file, like so:\n\n```json\n// packages/backend/package.json\n\n{\n  \"odo\": {\n    // specifying the version is optional.\n    // You can also specify \"latest\" to use the latest version of odo, or \"nightly\" to use the latest nightly build of odo.\n    \"version\": \"3.15.0\",\n    \"skipDownload\": false\n  }\n}\n```\n\nNote that the custom actions here do require an `odo` binary to work properly.\nSo if you choose to skip the download (using the `odo.skipDownload`  property above), you need to make sure to meet any of the requirements below:\n- either you can explicitly set the path to the `odo` binary in your `app-config.yaml` (see [below](#app-configyaml));\n- or `odo` is already [installed](https://odo.dev/docs/overview/installation) and available globally in the system paths of the environment the Backstage instance is running in.\n\n## Configuration\n\n### Code\n\n1. Import the actions into your `packages/backend/src/plugins/scaffolder.ts` on the Scaffolder Backend Plugin of your Backstage instance:\n\n```js\n// packages/backend/src/plugins/scaffolder.ts\n\nimport { createBuiltinActions } from '@backstage/plugin-scaffolder-backend';\nimport { ScmIntegrations } from '@backstage/integration';\nimport { odoInitAction, odoAction } from '@redhat-developer/plugin-scaffolder-odo-actions';\n```\n\n2. Then pass the imported actions along with the built-in ones to the `createRouter` function. You should end up with something like this in the end:\n\n```js\n// packages/backend/src/plugins/scaffolder.ts\n\nconst integrations = ScmIntegrations.fromConfig(env.config);\n\nconst builtInActions = createBuiltinActions({\n  integrations,\n  catalogClient,\n  config: env.config,\n  reader: env.reader,\n});\n\nconst actions = [\n  ...builtInActions,\n  odoInitAction(env.config.getOptionalConfig(\"odo\")),\n  odoAction(env.config.getOptionalConfig(\"odo\")),\n];\n\nreturn await createRouter({\n  logger: env.logger,\n  config: env.config,\n  database: env.database,\n  reader: env.reader,\n  catalogClient,\n  actions,\n});\n```\n\n### app-config.yaml\n\nOptionally, the behavior of these custom actions can be customized by adding the following section to your `app-config.yaml` file:\n\n```yaml\n# app-config.yaml\n\nodo:\n  # When adding this plugin to your Backstage instance, it will automatically try to download the right odo binary and use it.\n  # But if you already have odo installed, you can override the path below.\n  # binaryPath: '/path/to/odo'\n  telemetry:\n    # Disable the odo telemetry.\n    # Default: false\n    disabled: false\n  devfileRegistry:\n    # Used for calling `odo init` and any other custom actions relying on a Devfile registry.\n    # If you are using the Devfile Selector Custom Field Extension in your template,\n    # you need to also add this URL to the 'proxy.endpoints' field under a '/devfile-registry' field.\n    # Default: 'https://registry.devfile.io'\n    url: 'https://registry.devfile.io'\n```\n\n\nYou should now see the custom `devfile:odo:*` actions if you navigate to the Actions page at http://localhost:3000/create/actions.\n\n![List of Actions](https://github.com/rm3l/backstage-odo-devfile-plugin/assets/593208/850437d3-f5a8-4544-b93e-95e3de218b90)\n\n## Usage\n\nYou can use the action in any of the steps of your [Software Template](https://backstage.io/docs/features/software-templates/). \nSee https://github.com/ododev/odo-backstage-software-template for an example of a Software Template making use of the Actions here.\n\n### Example with the `odo init` action\n\nThis action can be used in conjunction with the [devfile-field-extension](../devfile-field-extension) Custom Field Extension to get the Devfile input data from the end-user, e.g.:\n\n```yaml\nspec:\n  parameters:\n\n    - title: Provide details about the Devfile\n      required:\n        - devfile_data\n      properties:\n        devfile_data:\n          type: object\n          required:\n            - devfile\n            - version\n          properties:\n            devfile:\n              type: string\n            version:\n              type: string\n            starter_project:\n              type: string\n          ui:field: DevfileSelectorExtension\n\n  steps:\n    - id: odo-init\n      name: Generate\n      action: devfile:odo:component:init\n      input:\n        name: ${{ parameters.name }}\n        devfile: ${{ parameters.devfile_data.devfile }}\n        version: ${{ parameters.devfile_data.version }}\n        starter_project: ${{ parameters.devfile_data.starter_project }}\n```\n\n### Example with the generic `odo` action\n\n```yaml\nspec:\n  # [...]\n\n  steps:\n    - id: generic-odo-command\n      name: Execute odo command\n      action: devfile:odo:command\n      input:\n        command: ${{ parameters.command }} # e.g.: 'analyze'\n        args: ${{ parameters.args }} # e.g.: ['-o', 'json']\n```\n\n",
+  "repository": "https://github.com/redhat-developer/backstage-odo-devfile-plugin",
+  "role": "backend-plugin",
+  "scope": "@redhat-developer",
+  "updated": "2023-12-20T23:08:21.053Z",
+  "version": "0.20.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-12-20T23:08:21.053Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2023-12-05T08:38:40.280Z",
+      "version": "0.18.0"
+    }
+  ]
+}

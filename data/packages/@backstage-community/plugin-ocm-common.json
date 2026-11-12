@@ -1,0 +1,86 @@
+{
+  "author": "Red Hat",
+  "created": "2024-11-04T21:55:28.279Z",
+  "deprecated": "",
+  "description": "Common functionalities for the Open Cluster Management plugin",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-ocm-common",
+  "plugin_id": "ocm",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/ocm/plugins/ocm-common",
+  "role": "common-library",
+  "scope": "@backstage-community",
+  "updated": "2026-09-23T16:32:09.426Z",
+  "version": "5.22.0",
+  "version_count": 29,
+  "versions": [
+    {
+      "date": "2026-09-23T16:32:09.426Z",
+      "version": "5.22.0"
+    },
+    {
+      "date": "2026-09-15T00:05:00.319Z",
+      "version": "5.21.2"
+    },
+    {
+      "date": "2026-09-04T11:43:35.699Z",
+      "version": "5.21.1"
+    },
+    {
+      "date": "2026-08-28T20:46:41.641Z",
+      "version": "3.24.0"
+    },
+    {
+      "date": "2026-07-21T19:42:58.596Z",
+      "version": "3.23.0"
+    },
+    {
+      "date": "2026-05-16T22:49:49.822Z",
+      "version": "3.22.0"
+    },
+    {
+      "date": "2026-04-26T05:32:06.581Z",
+      "version": "3.21.0"
+    },
+    {
+      "date": "2026-03-25T15:43:07.692Z",
+      "version": "3.20.0"
+    },
+    {
+      "date": "2026-03-15T20:48:21.373Z",
+      "version": "3.19.1"
+    },
+    {
+      "date": "2026-03-10T22:02:39.494Z",
+      "version": "3.19.0"
+    },
+    {
+      "date": "2026-02-18T17:33:43.083Z",
+      "version": "3.18.0"
+    },
+    {
+      "date": "2026-01-30T21:59:00.038Z",
+      "version": "3.17.0"
+    },
+    {
+      "date": "2026-01-27T13:03:05.512Z",
+      "version": "3.16.0"
+    },
+    {
+      "date": "2025-12-19T13:18:59.187Z",
+      "version": "3.15.0"
+    },
+    {
+      "date": "2025-11-03T10:20:16.414Z",
+      "version": "3.14.0"
+    }
+  ]
+}

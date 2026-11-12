@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-06-23T04:31:01.704Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "skitamura7446"
+  ],
+  "name": "@skitamura7446/backstage-plugin-sysdig-dynamic",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@skitamura7446",
+  "updated": "2024-06-23T10:07:29.422Z",
+  "version": "1.0.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-06-23T10:07:29.422Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-06-23T04:31:02.072Z",
+      "version": "1.0.0"
+    }
+  ]
+}

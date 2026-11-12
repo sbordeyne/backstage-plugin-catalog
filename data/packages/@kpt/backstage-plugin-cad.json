@@ -1,0 +1,45 @@
+{
+  "author": "",
+  "created": "2022-05-10T22:20:58.278Z",
+  "deprecated": "",
+  "description": "Welcome to the Configuration as Data plugin! This plugin powers the WYSIWYG Configuration GUI over GitOps using [kpt](https://kpt.dev/) and its new Package Orchestrator, [porch](https://github.com/GoogleContainerTools/kpt/tree/main/porch).",
+  "homepage": "https://github.com/GoogleContainerTools/kpt-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bgrant0607",
+    "christopherfry2022",
+    "google-wombot"
+  ],
+  "name": "@kpt/backstage-plugin-cad",
+  "plugin_id": "",
+  "readme": "# Configuration as Data Plugin\n\nWelcome to the Configuration as Data plugin! This plugin powers the WYSIWYG\nConfiguration GUI over GitOps using [kpt](https://kpt.dev/) and its new\nPackage Orchestrator,\n[porch](https://github.com/GoogleContainerTools/kpt/tree/main/porch).\n\n_New to Configuration as Data?_\n\n_Configuration as Data_ is an approach to management of configuration (incl.\nconfiguration of infrastructure, policy, services, applications, etc.) which:\n\n- makes configuration data the source of truth, stored separately from the\n  live state\n- uses a uniform, serializable data model to represent configuration\n- separates code that acts on the configuration from the data and from\n  packages / bundles of the data\n- abstracts configuration file structure and storage from operations that act\n  upon the configuration data; clients manipulating configuration data don’t\n  need to directly interact with storage (git, container images)\n\nRead\n[Configuration as Data Design Document](https://github.com/GoogleContainerTools/kpt/blob/main/docs/design-docs/06-config-as-data.md)\nto learn more.\n\n## Installation\n\nTo install Configuration as Data Plugin to Backstage, you will need to install\nboth the Frontend and Backend plugins. Once completed, you will be able to\naccess the UI by browsing to `/config-as-data`.\n\n### Adding the frontend plugin\n\nThe first step is to add the Configuration as Data plugin to your Backstage\napplication.\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @kpt/backstage-plugin-cad\n```\n\nOnce the package is installed, import the plugin in your app by adding the\n`config-as-data` route to `App.tsx`.\n\n```tsx\nimport { CadPage } from '@kpt/backstage-plugin-cad';\n// ...\n\nconst routes = (\n  <FlatRoutes>\n    // ...\n    <Route path=\"/config-as-data\" element={<CadPage />} />\n  </FlatRoutes>\n);\n```\n\n### Adding the backend plugin\n\nAdd and configure the [cad-backend](../cad-backend) plugin according to its\ninstructions.\n\n### Optional: Adding a link to the plugin on the Sidebar\n\nAdd a link to the Sidebar to easily access Configuration as Data. In\n`packages/app/src/components/Root.tsx` add:\n\n```tsx\nimport LibraryBooks from '@material-ui/icons/LibraryBooks';\n\n<SidebarScrollWrapper>\n  <SidebarItem icon={LibraryBooks} to=\"config-as-data\" text=\"Config as Data\" />\n  // Other sidebar items...\n</SidebarScrollWrapper>;\n```\n",
+  "repository": "https://github.com/GoogleContainerTools/kpt-backstage-plugins/tree/HEAD/plugins/cad",
+  "role": "frontend-plugin",
+  "scope": "@kpt",
+  "updated": "2022-12-08T03:38:48.123Z",
+  "version": "0.4.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2022-12-08T03:38:48.123Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2022-09-29T00:22:02.212Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2022-06-15T19:39:50.988Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2022-05-25T19:08:26.431Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2022-05-10T22:20:58.572Z",
+      "version": "0.0.0"
+    }
+  ]
+}

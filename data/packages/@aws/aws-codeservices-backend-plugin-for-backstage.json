@@ -1,0 +1,27 @@
+{
+  "author": "Amazon Web Services",
+  "created": "2023-03-14T21:34:50.268Z",
+  "deprecated": "",
+  "description": "AWS Code Services Backend Plugin for Backstage",
+  "homepage": "https://github.com/awslabs/aws-codeservices-plugins-for-backstage#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "nialt"
+  ],
+  "name": "@aws/aws-codeservices-backend-plugin-for-backstage",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/awslabs/aws-codeservices-plugins-for-backstage/tree/HEAD/plugins/aws-codeservices-backend",
+  "role": "backend-plugin",
+  "scope": "@aws",
+  "updated": "2023-03-14T22:17:41.118Z",
+  "version": "0.1.3",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-03-14T22:17:41.118Z",
+      "version": "0.1.3"
+    }
+  ]
+}

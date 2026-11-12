@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:50:43.442Z",
+  "deprecated": "",
+  "description": "The codacy backend module for the scaffolder plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "alerizzo",
+    "codacy-ci"
+  ],
+  "name": "@codacy/backstage-plugin",
+  "plugin_id": "",
+  "readme": "# Backstage Scaffolder Module for Codacy Integration\n\nThis module for the Backstage Scaffolder plugin allows users to automatically add repositories to Codacy during the scaffolding process. It leverages the Codacy API to add new repositories for continuous code quality analysis.\n\n## Features\n\n- **Codacy Integration**: Automatically add new repositories to Codacy as part of the Backstage scaffolding process.\n- **Configurable**: Easy to configure through Backstage's `app-config.yaml`.\n\n## Getting Started\n\n### Prerequisites\n\n- A Backstage instance where you have permissions to add plugins.\n- An API key from Codacy, which will be used to authenticate API requests.\n\n### Installation\n\n1. From your Backstage root directory\n\n   ```bash\n   yarn --cwd packages/app add @codacy/backstage-plugin\n   ```\n\n2. Add a `codacy.apiKey` entry in your `app-config.yaml` file with your Codacy API key.\n\n   ```yaml\n   codacy:\n     apiKey: 'your_codacy_api_key_here'\n   ```\n\n3. Add the following line to your `packages/backend/src/index.ts` to register the Codacy integration module with the scaffolder:\n\n   ```typescript\n   backend.add(import('@codacy/backstage-plugin'));\n   ```\n\n### Usage\n\nOnce installed and configured, the `codacy:add-repo` action can be used in your scaffolder templates. Here is an example step using the action in a template:\n\n```yaml\nsteps:\n  - id: add-repo\n    name: Add Repository to Codacy\n    action: codacy:add-repo\n    input:\n      provider: gh|gl|bb\n      owner: your-organization-or-username\n      repository: ${{ parameters.repoName }}\n```\n\nThis action takes three inputs:\n\nprovider: The source code provider (e.g., github).\nowner: The owner of the repository on the provider's platform.\nrepository: The name of the repository to be added.",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@codacy",
+  "updated": "2024-04-19T10:33:50.903Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-04-19T10:33:50.903Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-04-19T10:30:22.776Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-04-19T09:50:43.725Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2026-06-26T20:12:13.957Z",
+  "deprecated": "",
+  "description": "This plugin integrates Kikplate into your Backstage developer portal. Kikplate is an open source marketplace for project templates and boilerplates. See https://kikplate.dev and https://github.com/kikplate/kikplate.",
+  "homepage": "https://github.com/kikplate/kikplate-backstage-plugin#readme",
+  "keywords": [],
+  "license": "UNLICENSED",
+  "maintainers": [
+    "corpobitorg"
+  ],
+  "name": "@corpobit/backstage-plugin-kikplate",
+  "plugin_id": "kikplate",
+  "readme": "# Kikplate Backstage Plugin\n\nThis plugin integrates Kikplate into your Backstage developer portal. Kikplate is an open source marketplace for project templates and boilerplates. See https://kikplate.dev and https://github.com/kikplate/kikplate.\n\n## What It Does\n\nThe Kikplate plugin provides a dedicated page in Backstage where organizations and users can explore plates from any Kikplate server (cloud or self-hosted). Users can browse templates, read detailed information, provide custom values for parameters, and generate starter projects directly.\n\n## Screenshots\n\n<p align=\"center\">\n  <img src=\"public/screenshot-1.png\" alt=\"Kikplate plugin screenshot 1\" width=\"48%\" />\n  <img src=\"public/screenshot-2.png\" alt=\"Kikplate plugin screenshot 2\" width=\"48%\" />\n</p>\n<p align=\"center\">\n  <img src=\"public/screenshot-3.png\" alt=\"Kikplate plugin screenshot 3\" width=\"48%\" />\n  <img src=\"public/screenshot-4.png\" alt=\"Kikplate plugin screenshot 4\" width=\"48%\" />\n</p>\n\n## Features\n\n- Browse and search plates from a Kikplate instance\n- View plate details, schemas, and metadata\n- Support for custom parameter input\n- Project generation workflow\n- Works with public or organization-scoped plates\n\n## Links\n\n- Project website: https://kikplate.dev\n- Main repository and documentation: https://github.com/kikplate/kikplate\n- Plugin source: https://github.com/kikplate/kikplate-backstage-plugin\n\n## Configuration\n\nThe plugin uses Backstage's proxy to communicate with the Kikplate API.\n\nAdd this configuration to your app-config.yaml (or app-config.production.yaml):\n\n```yaml\nproxy:\n  endpoints:\n    '/kikplate-api':\n      target: ${KIKPLATE_API_BASE_URL:-https://kikplate.dev/api}\n      changeOrigin: true\n```\n\nSet the KIKPLATE_API_BASE_URL environment variable to point to any compatible Kikplate server.\n\n## Installation and Getting Started\n\nAdd the plugin to your Backstage application following standard plugin installation steps.\n\nAfter configuration, run yarn start in the root directory and navigate to the Kikplate page (usually /kikplate).\n\nFor isolated plugin development, use the setup in the dev/ directory.\n\nThis plugin is built with Backstage's frontend system. See https://backstage.io/docs/frontend-system/building-plugins/index for more details on plugin development.\n\n## About Kikplate\n\nKikplate allows teams to publish, discover, and scaffold projects from reusable GitHub-backed templates. It features verification workflows, badges, organizations, and a CLI for local use. Full documentation is available in the main repository.",
+  "repository": "https://github.com/kikplate/kikplate-backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@corpobit",
+  "updated": "2026-07-12T19:26:24.752Z",
+  "version": "0.1.5",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-07-12T19:26:24.752Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2026-06-28T22:35:25.464Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2026-06-28T22:32:11.445Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2026-06-27T20:00:33.475Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-06-26T20:28:59.662Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-06-26T20:12:14.206Z",
+      "version": "0.1.0"
+    }
+  ]
+}

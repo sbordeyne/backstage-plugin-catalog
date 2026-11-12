@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-04-15T11:02:05.157Z",
+  "deprecated": "",
+  "description": "Welcome to the report-portal plugin!",
+  "homepage": "https://github.com/mrackoa/community-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mrackoa"
+  ],
+  "name": "@mrackoa/plugin-report-portal-saas",
+  "plugin_id": "report-portal",
+  "readme": "# Report Portal Plugin\n\nWelcome to the report-portal plugin!\n\n[ReportPortal](https://reportportal.io) is an open-source test automation dashboard that allows teams to manage and analyze test results from various test automation frameworks. It provides a centralized platform for aggregating test reports, offering real-time insights into test execution and helping to identify and address issues quickly.\n\nThe plugin integrates report portal instances to show projects and launches directly in backstage. This will be helpful for not just developers but also QEs\n\n### Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/report-portal](http://localhost:3000/report-portal).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n\n### Prequisite\n\n- To make this plugin work you need to install [report-portal-backend](../report-portal-backend/) plugin to backend package.\n- To make the search bar work you need to install [search-module-report-portal](../search-backend-module-report-portal-collator/) plugin to backend package.\n\n### Screenshots:\n\n- Dashboard for each entity in backstage:\n\n  - A card for overall statistics panel / donut on overview tab\n    ![image](./docs/images/overview-card.png)\n\n  - **[WIP]** An entity tab that will show more detailed statistics for a specific launch.\n\n- A page to show details for each instance such as projects and launches\n  ![file](./docs/images/global-page.gif)\n\n## Installation:\n\n- Run the following command in your backstage project\n\n  ```shell\n  yarn workspace app add @backstage-community/plugin-report-portal\n  ```\n\n- Now import the components\n\n  - open `/packages/app/src/App.tsx` and add the following code\n\n    ```ts\n    import { ReportPortalGlobalPage } from '@backstage-community/plugin-report-portal';\n\n    export const AppBase = () => {\n      // In <FlatRoutes> add the following route\n      <Route path=\"/report-portal\" element={<ReportPortalGlobalPage />} />;\n    };\n    ```\n\n  - open `/packages/app/src/components/Root/Root.tsx` and add the following code\n\n    ```ts\n    import { ReportPortalIcon } from '@backstage-community/plugin-report-portal';\n    import { IconComponent } from '@backstage/core-plugin-api';\n    //...\n    //...\n    export const Root = ({ children }: PropsWithChildren<{}>) => (\n      <SidebarPage>\n\n        <!-- Add the link to route in your sidebar component -->\n        <SidebarItem icon={ReportPortalIcon as IconComponent} to=\"report-portal\" text=\"Report Portal\" />\n      </SidebarPage>\n    )\n    ```\n\n  - To add a card on overview tab of entity page, open `/packages/app/src/components/catalog/EntityPage.tsx` and add the following code:\n\n    ```js\n    import { ReportPortalOverviewCard } from '@backstage-community/plugin-report-portal';\n    //...\n    const overviewContent = (\n      <Grid>\n\n        <!-- add your card on overview -->\n        <Grid item lg={4} md={6} xs={12}>\n          <ReportPortalOverviewCard variant=\"gridItem\" />\n        </Grid>\n      </Grid>\n    );\n    ```\n\n- Add the below configuration to your `app-config.yaml` file\n\n  ```yaml\n  reportPortal:\n    # Contact email template for support\n    #  for example \"mailto://example@company.com?subject=${subject}&body=${body}\"\n    #  where 'subject' and 'body' must be in url-encoded format\n    supportEmailTemplate: ${REPORT_PORTAL_SUPPORT_MAIL}\n\n    # Under integrations you can configure\n    # multiple instances of report portal\n    integrations:\n      # host address of your instance\n      # for e.g: report-portal.mycorp.com\n      - host: ${REPORT_PORTAL_HOST}\n\n        # Baser API url of your instance\n        # for e.g: https://report-portal.mycorp.com/api/\n        baseUrl: ${REPORT_PORTAL_BASE_URL}\n\n        # Get the API key from profile page of your instance\n        # for e.g: Bearer fae22be1-0000-0000-8392-de1635eed9f4\n        token: ${REPORT_PORTAL_TOKEN}\n\n        # (optional) Filter the projects by type\n        # Default: \"INTERNAL\"\n        filterType: 'INTERNAL'\n  ```\n\n## Annotations:\n\nAdd the below annotations to `catalog-info.yaml`\n\n```yaml\nmetadata:\n  annotations:\n    reportportal.io/project-name: <your-project-name>\n    reportportal.io/launch-name: <your-launch-name>\n\n    # (optional) if host is not added in annotaions, first entry from app-config will be used\n    reportportal.io/host: <your-report-portal-host>\n```\n\n## Acknowledgments\n\nThis project wouldn't have been possible without the help of the following contributors:\n\n- Swapnil Jadhav\n- Nancy Jain\n- Shiwani Tummulwar\n- Suriya Prakash\n- Veerkumar Patil\n\nThank you for your invaluable contributions!\n",
+  "repository": "https://github.com/mrackoa/community-plugins/tree/HEAD/workspaces/report-portal/plugins/report-portal-saas",
+  "role": "frontend-plugin",
+  "scope": "@mrackoa",
+  "updated": "2025-04-15T12:10:32.266Z",
+  "version": "2.0.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-04-15T12:10:32.266Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2025-04-15T11:20:27.747Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2025-04-15T11:02:05.550Z",
+      "version": "1.3.0"
+    }
+  ]
+}

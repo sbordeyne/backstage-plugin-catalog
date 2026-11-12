@@ -1,0 +1,64 @@
+{
+  "author": "",
+  "created": "2022-04-15T19:13:31.717Z",
+  "deprecated": "",
+  "description": "The Backstage front-end plugin for Cloud Carbon Footprint.",
+  "homepage": "https://www.cloudcarbonfootprint.org/",
+  "keywords": [
+    "backstage",
+    "carbon-emissions",
+    "carbon-footprint",
+    "climate",
+    "cloud",
+    "sustainability",
+    "thoughtworks"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ccasher",
+    "jyothirmai.m"
+  ],
+  "name": "@cloud-carbon-footprint/backstage-plugin-frontend",
+  "plugin_id": "",
+  "readme": "# cloud-carbon-footprint-frontend\n\n### Configuration\n\nOptionally, add config to `app-config.local.yaml`. See the [client config schema](./config.d.ts) for more details. Note that long date ranges and/or granular groupings can result in long load times. The default values are:\n```yaml\ncloudCarbonFootprint:\n  client:\n    dateRangeType: months\n    dateRangeValue: 1\n    groupBy: week\n```\n\n---\n\n© 2022 Thoughtworks, Inc.\n",
+  "repository": "https://github.com/cloud-carbon-footprint/ccf-backstage-plugin/tree/HEAD/plugins/frontend",
+  "role": "frontend-plugin",
+  "scope": "@cloud-carbon-footprint",
+  "updated": "2023-06-30T21:18:22.382Z",
+  "version": "0.1.1",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2023-06-30T21:18:22.382Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-01-17T23:01:58.821Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2022-11-21T22:07:06.237Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2022-10-19T15:28:03.459Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2022-10-03T23:27:54.782Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2022-06-22T00:28:01.918Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2022-04-19T19:05:20.692Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2022-04-15T19:13:31.919Z",
+      "version": "0.0.1"
+    }
+  ]
+}

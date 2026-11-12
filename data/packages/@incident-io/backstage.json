@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2023-06-23T14:47:16.187Z",
+  "deprecated": "",
+  "description": "[incident]: https://incident.io",
+  "homepage": "https://github.com/incident-io/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "incident-io"
+  ],
+  "name": "@incident-io/backstage",
+  "plugin_id": "incident-io",
+  "readme": "# incident.io\n\n[incident]: https://incident.io\n\nUse this plugin to display ongoing and historic incidents against Backstage\ncomponents, and to provide quick links to open new incidents for that service\ninside of [incident.io][incident].\n\n## How it works\n\n[importer]: https://github.com/incident/catalog-importer\n\nOnce you've configured the [catalog-importer][importer] to sync your Backstage\ncatalog into incident.io, you can visit your incident.io dashboard to create a\ncustom field that is powered by the Backstage Component catalog type.\n\nWe recommend creating a multi-select field called something like \"Affected\nservices\" or \"Impacted components\".\n\nRemember the custom field ID (taken from the incident.io dashboard) as you'll\nneed it later -- you'll find it after `custom-field` in the URL (e.g.\nhttps://app.incident.io/~/settings/custom-fields/01GD0ECMPR9WF330S1PHSRDVB7/edit)\nor in the responses from our API.\n\n## Install the plugin\n\nThe file paths mentioned in the following steps are relative to your app's root\ndirectory — for example, the directory created by following the [Getting\nStarted](https://backstage.io/docs/getting-started/) guide and creating your app\nwith `npx @backstage/create-app`.\n\nFirst, install the incident plugin via a CLI:\n\n```bash\n# From your Backstage app root directory\nyarn --cwd packages/app add @incident-io/backstage\n```\n\n### Using the new extension-based architecture\n\nNext, enable the plugin's extensions in `app-config.yaml`. No other code changes are needed:\n\n```yaml\napp:\n  ...\n  extensions:\n    - entity-card:incident/EntityIncidentCard: true\n    - entity-card:incident/EntityAlertCard: true\n    - entity-card:incident/EntityOnCallCard: true\n    ...\n```\n\n\n### Using the legacy Backstage system \n\nNext, add the plugin to `EntityPage.tsx` in\n`packages/app/src/components/catalog` by adding the following code snippets.\n\nAdd the following imports to the top of the file:\n\n```ts\nimport { EntityIncidentCard, EntityAlertCard, EntityOnCallCard } from \"@incident-io/backstage\";\n```\n\nFind `const overviewContent` in `EntityPage.tsx`, and add the following snippet\ninside the outermost `Grid` defined there, just before the closing `</Grid>`\ntag:\n\n```ts\n<Grid item md={6}>\n  <EntityIncidentCard />\n</Grid>\n<Grid item md={6}>\n  <EntityAlertCard />\n</Grid>\n<Grid item md={6}>\n  <EntityOnCallCard />\n</Grid>\n```\n\nIf you want to include the list of incidents in places like the page for a\nsystem, it's worth noting that `overviewContent` isn't reused on every page.\nYou may find you need to make more edits to `EntityPage`, based on your setup.\n\n## Configure the plugin\n\n[api-keys]: https://app.incident.io/settings/api-keys/\n[api-docs]: https://api-docs.incident.io/\n\nFirst, provide the [API key][api-keys] that the client will use to make\nrequests to the [incident.io API][api-docs].\n\nAdd the proxy configuration in `app-config.yaml`:\n\n```yaml\nproxy:\n  ...\n  '/incident/api':\n    target: https://api.incident.io\n    headers:\n      Authorization: Bearer ${INCIDENT_API_KEY}\n```\n\nFinally, for any of the custom fields you've configured in incident that are\npowered by Backstage catalog types, fill out the following details within\n`app-config.yaml`:\n\n```yaml\nincident:\n  fields:\n    api: \"<id-of-api-custom-field>\"\n    component: \"<id-of-component-custom-field>\"\n    system: \"<id-of-system-custom-field>\"\n    domain: \"<id-of-domain-custom-field>\"\n    group: \"<id-of-group-custom-field>\"\n```\n\nIf you don't have a custom field set up for one of these entities, then you\ncan omit that field completely. If you try and include the `EntityIncidentCard`\non the page for an entity which doesn't have the configuration, we'll show you\nan error that directs you to update your config.\n\nIf you are using the on-call card, you must also provide the ID of the\nincident.io catalog type that maps to your Backstage components. You can find\nthis in the URL when viewing the type \n(e.g. `https://app.incident.io/~/catalog/01ABC...`):\n\n```yaml\nincident:\n  onCall:\n    catalogTypeId: \"<id-of-backstage-component-catalog-type>\"\n```\n\n### Matching entities to catalog entries\n\nThe plugin finds an entity's incident.io catalog entry by its external ID.\nBy default that's `<namespace>/<name>`, which is what the catalog-importer uses\nwhen it syncs from Backstage. If your incident.io catalog is managed some other\nway, set the entity's external ID with an annotation:\n\n```yaml\nmetadata:\n  annotations:\n    incident.io/external-id: payments-service\n```\n",
+  "repository": "https://github.com/incident-io/backstage-plugins/tree/HEAD/incident",
+  "role": "frontend-plugin",
+  "scope": "@incident-io",
+  "updated": "2026-10-06T15:23:15.333Z",
+  "version": "0.3.0",
+  "version_count": 17,
+  "versions": [
+    {
+      "date": "2026-10-06T15:23:15.333Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-05-18T15:37:12.856Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-04-13T16:38:30.510Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-04-06T16:48:28.379Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-02-02T09:01:50.494Z",
+      "version": "0.0.15"
+    },
+    {
+      "date": "2024-11-25T12:27:07.014Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2024-09-25T10:12:08.979Z",
+      "version": "0.0.13"
+    },
+    {
+      "date": "2024-07-19T15:52:36.532Z",
+      "version": "0.0.12"
+    },
+    {
+      "date": "2024-06-27T16:03:30.968Z",
+      "version": "0.0.11"
+    },
+    {
+      "date": "2023-11-17T10:57:46.058Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2023-09-12T13:49:19.814Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2023-09-12T10:50:35.003Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2023-06-26T11:42:12.524Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2023-06-26T08:03:48.330Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2023-06-26T07:46:09.038Z",
+      "version": "0.0.4"
+    }
+  ]
+}

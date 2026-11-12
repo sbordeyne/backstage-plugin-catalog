@@ -1,0 +1,46 @@
+{
+  "author": "",
+  "created": "2024-01-02T17:40:05.570Z",
+  "deprecated": "",
+  "description": "A backend plugin implementation to connect to the Oracle Cloud API.",
+  "homepage": "https://github.com/adityasinghal26/backstage-plugins#readme",
+  "keywords": [
+    "backend",
+    "backstage",
+    "oracle",
+    "oracle-cloud",
+    "oracle-cloud-infrastructure",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "adityasinghal26"
+  ],
+  "name": "@adityasinghal26/plugin-oracle-cloud-backend",
+  "plugin_id": "",
+  "readme": "# Oracle Cloud Backend Plugin\r\n\r\nA backend plugin implementation to connect to the Oracle Cloud API.\r\n\r\n## Setup into a Backstage Instance\r\n\r\nThe plugin needs to be configured and then installed as per the steps in following section. \r\n\r\n### Configuration\r\n\r\nThe Oracle Cloud plugin allows either single or multiple Oracle Cloud tenancies, allowing to trigger REST APIs with the tenancy and profile name. The tenancy name (tenancyName) and the profile name (profile) in the API query parameters is optional, which if not provided, will utilise the default tenancy and the profile in the configuration.\r\n\r\n#### Oracle Configuration File\r\n\r\nBelow is a sample reference for Oracle configuration file. Here, the profile name is in square brackets '[]' and other details such as user ID, tenancy ID and region can be configured. You will also need to provide a path to your private PEM file for authentication.\r\n\r\n**Note:** It is advised to create one config file for each tenancy where different profiles such as DEFAULT, and test (in this example) can be configured with different users and regions.\r\n\r\n```\r\n[DEFAULT]\r\nuser=ocid1.user.oc1..<your_unique_id>\r\nfingerprint=<your_fingerprint>\r\ntenancy=ocid1.tenancy.oc1..<your_unique_id>\r\nregion=<your_region>\r\nkey_file=~/.oci/oci_api_key.pem\r\n\r\n[test]\r\nuser=ocid1.user.oc1..<your_unique_id_test>\r\nfingerprint=<your_fingerprint_test>\r\ntenancy=ocid1.tenancy.oc1..<your_unique_id>\r\nregion=<your_region>\r\nkey_file=~/.oci/oci_api_key.pem\r\n```\r\n\r\n#### Single Configuration\r\n\r\n```yaml\r\noracleCloud:\r\n  configFilePath: ./config\r\n  defaultProfile: test\r\n```\r\n\r\n#### Multiple Configurations\r\n\r\n```yaml\r\noracleCloud:\r\n  configFilePath: ./config\r\n  defaultProfile: test\r\n  tenancies:\r\n  - tenancyName: companyA\r\n    configFilePath: ./configA\r\n    defaultProfile: profileA1\r\n  - tenancyName: companyB\r\n    configFilePath: ./configB\r\n    defaultProfile: profileB1\r\n```\r\n\r\n#### Sample API to get tenancy details based on tenancy and profile configurations\r\n\r\nIf the query parameters tenancyName and profile are omitted or left empty, the plugin will consider the default values for both tenancy and profile configuration.\r\n\r\n```bash\r\ncurl --location 'http://localhost:7007/api/oracle-cloud/identity/tenancy?tenancyName=companyA&profile=profileA1'\r\n```\r\n\r\n### Up and Running\r\n\r\nFollow the below steps and integrate Oracle Cloud Backend plugin into your Backstage instance.\r\n\r\n1. First we need to add the `@backstage/plugin-oracle-cloud-backend` package to your backend:\r\n\r\n   ```sh\r\n   # From your Backstage root directory\r\n   yarn add --cwd packages/backend @adityasinghal26/plugin-oracle-cloud-backend\r\n   ```\r\n\r\n2. Then we will create a new file named `packages/backend/src/plugins/oracle-cloud.ts`, and add the\r\n   following to it:\r\n\r\n   ```ts\r\n   import { createRouter } from '@adityasinghal26/plugin-oracle-cloud-backend';\r\n   import { Router } from 'express';\r\n   import type { PluginEnvironment } from '../types';\r\n\r\n   export default function createPlugin(\r\n     env: PluginEnvironment,\r\n   ): Promise<Router> {\r\n     return createRouter({\r\n       logger: env.logger,\r\n       config: env.config,\r\n     });\r\n   }\r\n   ```\r\n\r\n3. Next we wire this into the overall backend router, edit `packages/backend/src/index.ts`:\r\n\r\n   ```ts\r\n   import oracleCloud from './plugins/oracle-cloud';\r\n   // ...\r\n   async function main() {\r\n     // ...\r\n     // Add this line under the other lines that follow the useHotMemoize pattern\r\n     const oracleEnv = useHotMemoize(module, () => createEnv('oracleCloud'));\r\n     // ...\r\n     // Insert this line under the other lines that add their routers to apiRouter in the same way\r\n     apiRouter.use('/oracle-cloud', await oracleCloud(oracleEnv));\r\n   ```\r\n\r\n4. Now run `yarn start-backend` from the repo root\r\n5. Finally open `http://localhost:7007/api/oracle-cloud/health` in a browser/or from Postman and it should return `{\"status\":\"ok\"}`\r\n\r\n### New Backend System\r\n\r\nThe Oracle Cloud Backend plugin does not support the [new backend system](https://backstage.io/docs/backend-system/) currently. The plugin will be extended to support the same in upcoming versions.\r\n",
+  "repository": "https://github.com/adityasinghal26/backstage-plugins/tree/HEAD/plugins/oracle-cloud-backend",
+  "role": "backend-plugin",
+  "scope": "@adityasinghal26",
+  "updated": "2024-01-03T17:18:34.203Z",
+  "version": "0.3.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-01-03T17:18:34.203Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-01-02T18:17:44.393Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-01-02T18:08:52.217Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-01-02T17:40:05.915Z",
+      "version": "0.1.0"
+    }
+  ]
+}

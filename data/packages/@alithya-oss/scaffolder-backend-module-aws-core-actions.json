@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-08-29T02:07:52.082Z",
+  "deprecated": "",
+  "description": "Scaffolder actions related to the AWS core plugin for Backstage",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fjudith"
+  ],
+  "name": "@alithya-oss/scaffolder-backend-module-aws-core-actions",
+  "plugin_id": "aws-core",
+  "readme": "",
+  "repository": "https://github.com/awslabs/backstage-plugins-for-aws/tree/HEAD/plugins/core/scaffolder-actions",
+  "role": "backend-plugin-module",
+  "scope": "@alithya-oss",
+  "updated": "2024-08-29T02:07:52.380Z",
+  "version": "0.2.7",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-08-29T02:07:52.380Z",
+      "version": "0.2.7"
+    }
+  ]
+}

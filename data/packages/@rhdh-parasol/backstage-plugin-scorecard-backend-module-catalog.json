@@ -1,0 +1,30 @@
+{
+  "author": "Red Hat",
+  "created": "2026-09-03T11:37:50.383Z",
+  "deprecated": "",
+  "description": "The catalog backend module for the scorecard plugin.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "durandom"
+  ],
+  "name": "@rhdh-parasol/backstage-plugin-scorecard-backend-module-catalog",
+  "plugin_id": "scorecard",
+  "readme": "",
+  "repository": "https://github.com/rhdh-parasol/rhdh-plugins/tree/HEAD/workspaces/scorecard/plugins/scorecard-backend-module-catalog",
+  "role": "backend-plugin-module",
+  "scope": "@rhdh-parasol",
+  "updated": "2026-09-03T11:37:50.656Z",
+  "version": "1.0.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-09-03T11:37:50.656Z",
+      "version": "1.0.1"
+    }
+  ]
+}

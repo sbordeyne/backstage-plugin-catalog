@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-06-26T19:07:30.132Z",
+  "deprecated": "",
+  "description": "A standalone Backstage frontend plugin example",
+  "homepage": "https://github.com/prashant65018/backstage/tree/main#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pbhatt18"
+  ],
+  "name": "@pbhatt18/backstage-my-hello-plugin",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/prashant65018/backstage.git#main",
+  "role": "frontend-plugin",
+  "scope": "@pbhatt18",
+  "updated": "2025-06-30T17:55:12.865Z",
+  "version": "1.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-06-30T17:55:12.865Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-06-26T19:07:30.386Z",
+      "version": "1.0.0"
+    }
+  ]
+}

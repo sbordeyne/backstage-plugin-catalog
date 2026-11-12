@@ -1,0 +1,49 @@
+{
+  "author": "",
+  "created": "2026-07-13T22:41:34.303Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin for Massdriver: authenticated GraphQL relay and realtime SSE bridge — the browser never holds a Massdriver token",
+  "homepage": "https://www.massdriver.cloud/",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "massdriver"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "christensenjoe",
+    "dwill-md",
+    "will.schoenberger"
+  ],
+  "name": "@massdriver/backstage-plugin-backend",
+  "plugin_id": "massdriver",
+  "readme": "",
+  "repository": "https://github.com/massdriver-cloud/massdriver-backstage/tree/HEAD/plugins/massdriver-backend",
+  "role": "backend-plugin",
+  "scope": "@massdriver",
+  "updated": "2026-07-23T15:53:54.103Z",
+  "version": "1.0.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-07-23T15:53:54.103Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2026-07-20T18:20:26.970Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-07-17T18:39:56.407Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-07-13T23:04:50.996Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-07-13T22:41:34.604Z",
+      "version": "1.0.0"
+    }
+  ]
+}

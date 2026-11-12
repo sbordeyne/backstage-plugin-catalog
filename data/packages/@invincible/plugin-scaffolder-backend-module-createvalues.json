@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-05-17T18:08:48.480Z",
+  "deprecated": "",
+  "description": "The createvalues module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "invincible"
+  ],
+  "name": "@invincible/plugin-scaffolder-backend-module-createvalues",
+  "plugin_id": "createvalues",
+  "readme": "# @internal/plugin-scaffolder-backend-module-createvalues\n\nThe `create:values` module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend).\n\n## Description\n\nThis plugin provides a custom action called `create:values` that can be used in Backstage templates to generate computed values like timestamps, UUIDs, and formatted strings.\n\n## Installation\n\nInstall the package in your Backstage backend:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @internal/plugin-scaffolder-backend-module-createvalues\n```\n\nRegister the module in your backstage backend:\n\n```typescript\n// packages/backend/src/index.ts\nimport createValues from '@internal/plugin-scaffolder-backend-module-createvalues';\n\nconst backend = createBackend();\n// ... other register calls\nbackend.add(createValues);\n```\n\n## Usage\n\nYou can use the `create:values` action in your template YAML files:\n\n```yaml\nsteps:\n  - id: createvalues\n    name: Create Computed Values\n    action: create:values\n    # Optional: you can provide input values\n    input:\n      values:\n        customPrefix: my-app\n        environment: production\n\n  - id: template\n    name: Fetch Skeleton\n    action: fetch:template\n    input:\n      url: ./skeleton\n      values:\n        # Use any of the computed values\n        name: ${{ steps.createvalues.output.values.customPrefix }}-${{ steps.createvalues.output.values.shortId }}\n        deploymentTime: ${{ steps.createvalues.output.values.formattedDateTime }}\n        resourceId: ${{ steps.createvalues.output.values.uuid }}\n```\n\n## Available Computed Values\n\nThe `create:values` action provides the following computed values:\n\n| Value | Description | Example |\n|-------|-------------|---------|\n| `timestamp` | Current timestamp in milliseconds | `1699537269571` |\n| `datetime` | ISO 8601 datetime | `2023-11-09T14:01:09.571Z` |\n| `date` | ISO 8601 date | `2023-11-09` |\n| `time` | ISO 8601 time | `14:01:09.571Z` |\n| `formattedDate` | Formatted date (yyyy-MM-dd) | `2023-11-09` |\n| `formattedTime` | Formatted time (HH:mm:ss) | `14:01:09` |\n| `formattedDateTime` | Formatted datetime (yyyy-MM-dd HH:mm:ss) | `2023-11-09 14:01:09` |\n| `uuid` | A UUID v4 | `550e8400-e29b-41d4-a716-446655440000` |\n| `shortId` | First segment of a UUID | `550e8400` |\n\nPlus any values you provide in the input.\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@invincible",
+  "updated": "2025-05-18T05:53:14.107Z",
+  "version": "0.3.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-05-18T05:53:14.107Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-05-17T20:25:17.912Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-05-17T18:08:48.731Z",
+      "version": "0.1.0"
+    }
+  ]
+}

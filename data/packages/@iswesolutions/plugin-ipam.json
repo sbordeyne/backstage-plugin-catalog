@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-10-06T23:36:50.721Z",
+  "deprecated": "",
+  "description": "A Backstage front end for [phpIPAM](https://phpipam.net): subnets, IP addresses, VLANs, a subnet map, usage history, DNS checks and a \"needs attention\" view, plus a card that shows an entity's addresses on its catalog page.",
+  "homepage": "https://github.com/ISWE-Solutions/backstage-plugins/tree/main/plugins/ipam#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "csiwale"
+  ],
+  "name": "@iswesolutions/plugin-ipam",
+  "plugin_id": "ipam",
+  "readme": "# @iswesolutions/plugin-ipam\n\nA Backstage front end for [phpIPAM](https://phpipam.net): subnets, IP\naddresses, VLANs, a subnet map, usage history, DNS checks and a \"needs\nattention\" view, plus a card that shows an entity's addresses on its catalog\npage.\n\nRequires [`@iswesolutions/plugin-ipam-backend`](../ipam-backend), which talks\nto phpIPAM and enforces permissions.\n\n## Installation\n\n```sh\nyarn --cwd packages/app add @iswesolutions/plugin-ipam\n```\n\n```tsx\n// packages/app/src/App.tsx\nimport { IPAMPage } from '@iswesolutions/plugin-ipam';\n\n<Route path=\"/ipam\" element={<IPAMPage />} />;\n```\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityIpamCard } from '@iswesolutions/plugin-ipam';\n\n<Grid item md={6}>\n  <EntityIpamCard />\n</Grid>;\n```\n\n`EntityIpamCard` looks up addresses whose hostname matches the entity name, or\nthe comma-separated hostnames in the `ipam.iswesolutions.com/hostnames`\nannotation. It renders nothing when no address matches.\n\n## Configuration\n\n```yaml\nipam:\n  # phpIPAM section that subnets added from the IPAM page go into\n  # (default: the first section)\n  subnetSection: Datacenter\n```\n\nEverything else is configured on the backend.\n",
+  "repository": "https://github.com/ISWE-Solutions/backstage-plugins/tree/HEAD/plugins/ipam",
+  "role": "frontend-plugin",
+  "scope": "@iswesolutions",
+  "updated": "2026-10-15T11:33:14.610Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-10-15T11:33:14.610Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-10-06T23:39:29.890Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-06T23:36:50.721Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

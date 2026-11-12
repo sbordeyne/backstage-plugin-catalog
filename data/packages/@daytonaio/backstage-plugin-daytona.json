@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2024-09-09T08:58:13.304Z",
+  "deprecated": "",
+  "description": "Welcome to the daytona plugin!",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "daytona",
+    "frontend",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "gdraganic",
+    "mdzaja",
+    "vedran.jukic",
+    "zzorica"
+  ],
+  "name": "@daytonaio/backstage-plugin-daytona",
+  "plugin_id": "",
+  "readme": "# daytona\n\nWelcome to the daytona plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Description\n\nThe Daytona plugin provides frontend components to connect to the Daytona API backend and view the workspaces for the authenticated user. You can create new Daytona workspaces directly from Backstage.\n\n### Features\n\n- Authenticate the user with Daytona Keycloak\n- List all the workspaces for the authenticated user\n- List workspaces of a specific repository for the authenticated user with appropriate annotations\n- Create a new workspace by navigating to the Daytona instance\n\n## Installation\n\nThe package shall be installed in the Backstage root directory as below.\n\n```sh\nyarn --cwd packages/app add @daytonaio/backstage-plugin-daytona\n```\n\n## Setup\n\n### Authentication\n\nBackstage requires ApiFactory to interact with Daytona OAuth library and a sign-in provider. Follow the below steps:\n\n1. In Backstage folder `packages/app/src`, add the below snippet in `apis.ts` file.\n\n    ```ts\n    // In packages/app/src/apis.ts\n    import { daytonaApiFactory } from '@daytonaio/backstage-plugin-daytona';\n\n    // Add the Daytona ApiFactory to the list of available APIs\n    export const apis: AnyApiFactory[] = [\n        {/* other ApiFactory here */}\n        daytonaApiFactory\n    ];\n    ```\n\n2. Add the following to Backstage `App.tsx` file.\n\n    ```tsx\n\n    // In packages/app/src/App.tsx\n    import { daytonaSignInProvider } from '@daytonaio/backstage-plugin-daytona';\n\n    // Add the Daytona Sign-In Provider to the available sign-in providers\n    const app = createApp({\n        {/* other api, bind routes here */}\n        components: {\n            SignInPage: props => <SignInPage {...props} auto providers={['guest',daytonaSignInProvider]} />,\n        },\n    });\n    ```\n\n\n### Standalone App requirements\n\n1. Install the plugin dependency in your Backstage app package:\n\n    ```bash\n    # From your Backstage root directory\n    yarn add --cwd packages/app @daytonaio/backstage-plugin-daytona\n    ```\n\n2. Add to the app `EntityPage` component. Make sure to add `DaytonaOverviewComponent` right after `EntityAboutCard` under `overviewContent`. This will get the repository URL automatically from the entity location metadata to create the Daytona workspaces. Along with that, it will also list all the workspaces, specific to the repository.\n\n    ```tsx\n    import { DaytonaOverviewContent } from '@daytonaio/backstage-plugin-daytona';\n\n    // Add the DaytonaOverviewContent to show the workspaces for that entity\n    const overviewContent = (\n      <Grid container spacing={3} alignItems=\"stretch\">\n        <Grid item md={6}>\n          <EntityAboutCard variant=\"gridItem\" />\n        </Grid>\n        <Grid item md={6}>\n          <DaytonaOverviewContent />\n        </Grid>\n        {/* other grid items here*/}\n      </Grid>\n    );\n    ```\n\n3. Annotate your component with a valid Git repository if you wish to override the automatically configured repository URL for creating Daytona workspaces.\n\n   The annotation key is `daytona.io/repo-url`.\n\n   Example:\n\n   ```yaml\n   apiVersion: backstage.io/v1alpha1\n   kind: Component\n   metadata:\n     name: backstage\n     description: backstage.io\n     annotations:\n       daytona.io/repo-url: https://github.com/daytonaio-templates/go\n   spec:\n     type: website\n     lifecycle: production\n     owner: user:guest\n   ```\n\n### App Menu requirements\n\nEnsure that the package is installed as mentioned in the Installation section.\n\n1. Add to the app `App.tsx` component:\n\n    ```tsx\n\n    // In packages/app/src/App.tsx\n    import { DaytonaPage } from '@daytonaio/backstage-plugin-daytona';\n\n    // Add the route to the App path routes\n    const routes = (\n      <FlatRoutes>\n      {/* other routes here */}\n          <Route path=\"/daytona\" element={<DaytonaPage />} />\n      </FlatRoutes>\n    );\n    ```\n\n2. Add to the app `Root.tsx` component:\n\n    ```tsx\n    // In packages/app/src/components/Root/App.tsx\n    import { DaytonaIcon } from '@daytonaio/backstage-plugin-daytona';\n\n    // Add the menu to the Root menu sidebar\n    export const Root = ({ children }: PropsWithChildren<{}>) => (\n      <SidebarPage>\n        <Sidebar>\n        {/* other sidebar items here */}\n        {/* add inside \"Menu\" SidebarGroup */}\n          <SidebarItem icon={DaytonaIcon} to=\"daytona\" text=\"Daytona\" />\n        {/* other sidebar items here */}\n        </Sidebar>\n        {children}\n      </SidebarPage>\n    );\n    ```\n\n## Configuration\n\nThis plugin requires the domain URL for your Daytona instance. This can be configured in `app-config.yaml` file as per below snippet.\n\n```yaml\ndaytona:\n  domain: daytona.domain.com\n```\n\n### CORS Configuration for connecting Daytona APIs with Backstage\n\nBelow configurations need to be added in the 'watkins' ingress YAML which allows CORS connectivity. It allows Daytona URL along with Backstage URL for CORS policy.\n\n```yaml\n    nginx.ingress.kubernetes.io/cors-allow-credentials: \"true\"\n    nginx.ingress.kubernetes.io/cors-allow-headers: Authorization, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Origin, Content-Type, Accept, X-Requested-With\n    nginx.ingress.kubernetes.io/cors-allow-methods: PUT, GET, POST, OPTIONS, DELETE\n    nginx.ingress.kubernetes.io/cors-allow-origin: https://<backstage-app-url>, https://<daytona-domain-url>\n    nginx.ingress.kubernetes.io/enable-cors: \"true\"\n```\n\n## Setup Backstage Auth with Keycloak\n\nBackstage shall be registered as a Keycloak client in the default realm. Once the client is created, client ID and secret can be configured in the Backstage instance.\n\n1. Create Keycloak client in the `default` realm using [`backstage.json`](./backstage.json) file.\n2. Register the newly created client for authentication in backstage.\n\n   ```yaml\n   auth:\n    environment: production\n    providers:\n      daytona:\n        production:\n          clientId: <daytona-client-id>\n          clientSecret: <daytona-client-secret>\n          metadataUrl: https://id.<daytona-domain-url>/realms/default/.well-known/openid-configuration\n          prompt: auto\n   ```\n",
+  "repository": "https://github.com/daytonaio/backstage-plugins/tree/HEAD/plugins/daytona",
+  "role": "frontend-plugin",
+  "scope": "@daytonaio",
+  "updated": "2024-10-18T10:19:39.760Z",
+  "version": "0.2.10",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-10-18T10:19:39.760Z",
+      "version": "0.2.10"
+    },
+    {
+      "date": "2024-09-30T09:28:35.596Z",
+      "version": "0.2.9"
+    },
+    {
+      "date": "2024-09-10T15:32:38.180Z",
+      "version": "0.2.8"
+    },
+    {
+      "date": "2024-09-09T08:58:13.610Z",
+      "version": "0.2.7"
+    }
+  ]
+}

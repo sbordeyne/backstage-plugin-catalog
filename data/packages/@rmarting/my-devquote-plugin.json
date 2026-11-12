@@ -1,0 +1,31 @@
+{
+  "author": "Roman Martin Gil",
+  "created": "2024-01-09T14:55:17.395Z",
+  "deprecated": "",
+  "description": "This is an example of dynamic public to use with Red Hat Developer Hub. It is basically a wrapper of the original [Dev Quotes plugin](https://github.com/Parsifal-M/backstage-dev-quotes)",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jromanmartin"
+  ],
+  "name": "@rmarting/my-devquote-plugin",
+  "plugin_id": "",
+  "readme": "# My Dev Quote Plugin for Red Hat Developer Hub\n\nThis is an example of dynamic public to use with Red Hat Developer Hub. It is\nbasically a wrapper of the original [Dev Quotes plugin](https://github.com/Parsifal-M/backstage-dev-quotes)\n\n## Configuration\n\nThe main files to describe this plugin are:\n\n* `package.json` - Describe the module, dependencies, and scripts\n* `tsconfig.json` - Compiler and distribution options\n* `app-config.yaml` - Application configuration for publishing\n\n## Building and Publishing\n\nInstall dependencies: `yarn install`\n\nCompile the package: `yarn tsc`\n\nBuild the package: `yarn build`\n\nExport plugin: `yarn run export-dynamic`\n\nPublish plugin: `yarn publish`\n\n## Deploying into Red Hat Developer Hub\n\nAdd the configuration into the `global` section describing the package of this\nplugin and its configuration. It is needed to add the integrity for the version\ndeployed into Red Hat Developer Hub.\n\nThe integrity value is described with the command:\n\n`npm info @rmarting/my-devquote-plugin@0.0.1`\n\nAn example of that configuration can be:\n\n```yaml\nglobal:\n  dynamic:\n    includes:\n      - dynamic-plugins.default.yaml\n    plugins:\n      - package: '@rmarting/my-devquote-plugin@0.0.1'\n        integrity: sha512-nFo7JLUe5qyPw8Gv6sK1kqZfLczs4tAcqVjSM3RUeTZwmUZqoXBv31FtrprhIJHng2W8XflxwLqjZ119pwQpaQ==\n        pluginConfig:\n          dynamicPlugins:\n            frontend:\n              rmarting.my-devquote-plugin:\n                mountPoints:\n                  - config:\n                      layout:\n                        gridColumnEnd:\n                          lg: span 4\n                          md: span 6\n                          xs: span 12\n                    importName: DevQuote\n                    mountPoint: entity.page.overview/cards\n                dynamicRoutes:\n                  - importName: DevQuote\n                    menuItem:\n                      text: Quote\n                    path: /devquote\n```\n",
+  "repository": "https://github.com/rmarting/my-devquote-plugin",
+  "role": "frontend-plugin",
+  "scope": "@rmarting",
+  "updated": "2024-01-09T16:19:46.423Z",
+  "version": "0.0.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-01-09T16:19:46.423Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-01-09T14:55:17.769Z",
+      "version": "0.0.1"
+    }
+  ]
+}

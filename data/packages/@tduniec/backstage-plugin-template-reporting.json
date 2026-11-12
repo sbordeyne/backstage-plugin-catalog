@@ -1,0 +1,49 @@
+{
+  "author": "tduniec",
+  "created": "2024-05-30T08:28:59.643Z",
+  "deprecated": "",
+  "description": "Provides with functionality to generate customisable reports from Scaffolder template executions",
+  "homepage": "https://github.com/tduniec/backstage-template-reporting-plugin#readme",
+  "keywords": [
+    "backstage",
+    "reporting",
+    "scaffolder",
+    "scaffolder-reporting",
+    "template-reporting"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "tduniec"
+  ],
+  "name": "@tduniec/backstage-plugin-template-reporting",
+  "plugin_id": "template-reporting",
+  "readme": "# Template Reporting\n\nThe Backstage Template-Reporting Plugin is designed to generate reports from template executions within Backstage. It offers high customization, allowing any template to be used with the Nunjucks templating engine. The plugin renders the final reports in a visually appealing format using Markdown, making it versatile for various reporting needs. This part of plugin `frontend` is responsible of providing views from dara coming of `backend` part of plugin.\n\n## Dependencies\n\n- [template-reporting-backend](https://github.com/tduniec/backstage-template-reporting-plugin/tree/main/plugins/template-reporting-backend)\n\n## Code\n\nhttps://github.com/tduniec/backstage-template-reporting-plugin.git\n\n## Screens\n\n![Screenshot of the SingleReportPage](https://raw.githubusercontent.com/tduniec/backstage-template-reporting-plugin/main/plugins/template-reporting/docs/SingleReportView.png)\n![Screenshot of TemplateOutputs](https://raw.githubusercontent.com/tduniec/backstage-template-reporting-plugin/main/plugins/template-reporting/docs/TemplateOutput.png)\n![Screenshot of ReportListPage](https://raw.githubusercontent.com/tduniec/backstage-template-reporting-plugin/main/plugins/template-reporting/docs/ReportListPageAll.png)\n\n## Installation\n\n1. Install the plugin package in your Backstage app:\n\n```sh\n# From your Backstage root directory\nyarn add --cwd packages/app @tduniec/backstage-plugin-template-reporting\n```\n\n2. Now open the `packages/app/src/App.tsx` file\n3. Then after all the import statements add the following line:\n\n   ```ts\n   import {\n     TemplateReportsPage,\n     TemplateReportPage,\n   } from '@tduniec/backstage-plugin-template-reporting';\n   ```\n\n4. In this same file just before the closing `</ FlatRoutes>`, this will be near the bottom of the file, add this line:\n\n   ```ts\n      <Route path=\"/template-reporting\" element={<TemplateReportsPage />} />\n      <Route path=\"/template-reporting/:id\" element={<TemplateReportPage />} />\n   ```\n\n5. Next open the `packages/app/src/components/Root/Root.tsx` file\n6. We want to add this icon import after all the existing import statements:\n\n   ```ts\n   import Pages from '@material-ui/icons/Pages';\n   ```\n\n7. Then add this line just after the `<SidebarSettings />` line:\n\n   ```ts\n   <SidebarItem icon={Pages} to=\"template-reporting\" text=\"templateReporting\" />\n   ```\n\n8. Now run `yarn dev` from the root of your project and you should see the DevTools option show up just below Settings in your sidebar and clicking on it will get you to the [Info tab](#info)\n9. Install [template-reporting-backend](../template-reporting-backend/README.md) part if not installed already\n",
+  "repository": "https://github.com/tduniec/backstage-template-reporting-plugin",
+  "role": "frontend-plugin",
+  "scope": "@tduniec",
+  "updated": "2025-06-25T13:33:42.906Z",
+  "version": "0.1.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2025-06-25T13:33:42.906Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-09-11T09:53:58.186Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-07-09T11:15:06.356Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-06-07T12:16:02.707Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-05-30T08:28:59.900Z",
+      "version": "0.1.0"
+    }
+  ]
+}

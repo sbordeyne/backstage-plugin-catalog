@@ -1,0 +1,38 @@
+{
+  "author": "",
+  "created": "2026-10-19T17:54:53.039Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin with a monitoring overview: live service health from the catalog and Prometheus, plus Grafana dashboards, security alerts and cost insights (sample data)",
+  "homepage": "https://github.com/ISWE-Solutions/backstage-plugins/tree/main/plugins/monitoring#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "grafana",
+    "monitoring",
+    "observability",
+    "prometheus"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "csiwale"
+  ],
+  "name": "@iswesolutions/plugin-monitoring",
+  "plugin_id": "monitoring",
+  "readme": "# Monitoring plugin\n\nA Backstage frontend plugin with one **Monitoring** page and four tabs:\n\n| Tab                     | Shows                                                                                                                                      |\n| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |\n| **Prometheus / Health** | **Live:** catalog Components with their site check, 24-hour uptime, response time, certificate expiry, and CPU and memory, from Prometheus |\n| **Grafana Dashboards**  | A catalogue of Grafana dashboards with links to open them                                                                                  |\n| **Security Insights**   | Security alerts by severity, with the affected service and repository                                                                      |\n| **Cost Insights**       | Infrastructure cost by category and service, with the month's trend                                                                        |\n\n> **System Health is live; the other tabs are sample data.** Grafana\n> Dashboards, Security Insights and Cost Insights still come from\n> `src/services/monitoringService.ts`, which returns fixed sample values\n> (`https://grafana.example.org` links, `example-org/…` repositories).\n\n## Live System Health\n\nThe tab lists every catalog **Component** with an\n`iswesolutions.com/health-url` annotation:\n\n```yaml\nmetadata:\n  annotations:\n    # the URL the site checks probe (exactly as in the http_url label)\n    iswesolutions.com/health-url: https://sso.example.org/\n    # optional: Proxmox guests the service runs in, for CPU and memory\n    iswesolutions.com/proxmox-guests: keycloak, keycloak-db\n```\n\nIt queries Prometheus through the Backstage proxy, every minute:\n\n| Shown                 | Metric                                                                              |\n| --------------------- | ----------------------------------------------------------------------------------- |\n| Status, uptime (24 h) | `httpcheck_status` (OpenTelemetry `httpcheckreceiver`), 2xx/3xx counts as up        |\n| Response time         | `httpcheck_duration_milliseconds`                                                   |\n| Certificate           | `tlscheck_time_left_seconds` (`tlscheckreceiver`), matched on the URL's host name   |\n| CPU and memory        | `pve_guest_cpu_ratio`, `pve_guest_memory_used_bytes` / `_max_bytes` by guest `name` |\n\n- **Down:** no probe got a 2xx/3xx in the last 5 minutes.\n- **Degraded:** slower than 3 s, a certificate under 14 days, CPU or memory\n  over 90% (the busiest guest), or under 99% uptime over 24 hours. The card\n  says which.\n- **No data:** no site check series for that URL.\n\nBy default the requests go through Grafana's datasource proxy, so the proxy\nroute that the Grafana plugin uses is enough (a Viewer service-account token,\nGET only):\n\n```yaml\nproxy:\n  endpoints:\n    /grafana/api:\n      target: https://grafana.example.org/\n      allowedMethods: [GET]\n      headers:\n        Authorization: Bearer ${GRAFANA_TOKEN}\n```\n\nwith a Prometheus datasource whose uid is `prometheus`. To use another route,\nset the path under the proxy (without `/api/v1/query`):\n\n```yaml\nmonitoring:\n  prometheusProxyPath: /prometheus\n```\n\n## Installation\n\n```sh\nyarn --cwd packages/app add @iswesolutions/plugin-monitoring\n```\n\nAdd a route in `packages/app/src/App.tsx`:\n\n```tsx\nimport { MonitoringPage } from '@iswesolutions/plugin-monitoring';\n\n<Route path=\"/monitoring\" element={<MonitoringPage />} />;\n```\n\nAnd, optionally, a sidebar entry in `packages/app/src/components/Root/Root.tsx`:\n\n```tsx\nimport MonitorIcon from '@material-ui/icons/Timeline';\n\n<SidebarItem icon={MonitorIcon} to=\"monitoring\" text=\"Monitoring\" />;\n```\n\n## Exports\n\n- `monitoringPlugin`, `MonitoringPage`\n- Types: `PrometheusMetric`, `ServiceHealth`, `GrafanaDashboard`,\n  `SecurityAlert`, `CostSummary`\n\n## Requirements\n\nBackstage 1.51 or later (`@backstage/core-plugin-api` 1.12,\n`@backstage/core-components` 0.18, `@backstage/plugin-catalog-react` 3), React 16.13–18, and React Router 6.\n",
+  "repository": "https://github.com/ISWE-Solutions/backstage-plugins/tree/HEAD/plugins/monitoring",
+  "role": "frontend-plugin",
+  "scope": "@iswesolutions",
+  "updated": "2026-10-19T18:02:13.978Z",
+  "version": "0.2.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-10-19T18:02:13.978Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-10-19T17:54:53.039Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

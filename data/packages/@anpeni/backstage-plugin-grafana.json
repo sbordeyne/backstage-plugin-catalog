@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2023-07-24T16:36:37.369Z",
+  "deprecated": "",
+  "description": "The Grafana plugin is a frontend plugin that lists Grafana alerts and dashboards. It includes two components that can be integrated into Backstage:",
+  "homepage": "https://github.com/anpeni/backstage-plugin-grafana",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "anpeni"
+  ],
+  "name": "@anpeni/backstage-plugin-grafana",
+  "plugin_id": "",
+  "readme": "# Grafana plugin for Backstage\r\n\r\nThe Grafana plugin is a frontend plugin that lists Grafana alerts and dashboards. It includes two components that can be integrated into Backstage:\r\n\r\n* The `EntityGrafanaDashboardsCard` component which can display dashboards for a specific entity\r\n* The `EntityGrafanaAlertsCard` component which can display recent alerts for a specific entity\r\n* The `EntityOverviewDashboardViewer` component which can embed an \"overview\" dashboard for a specific entity\r\n* The `DashboardViewer` component which can embed any dashboard\r\n\r\n## Setup\r\n\r\nFind [installation instructions](./docs/index.md#installation) in our documentation.\r\n\r\n## How does it look?\r\n\r\nEntity alerts card:\r\n\r\n![Alerts card](./docs/alerts_card.png)\r\n\r\nEntity dashboards card:\r\n\r\n![Dashboards card](./docs/dashboards_card.png)\r\n\r\n## License\r\n\r\nThis library is under the [Apache 2.0](LICENSE) license.\r\n",
+  "repository": "https://github.com/anpeni/backstage-plugin-grafana",
+  "role": "frontend-plugin",
+  "scope": "@anpeni",
+  "updated": "2023-07-25T09:48:30.200Z",
+  "version": "0.1.27",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2023-07-25T09:48:30.200Z",
+      "version": "0.1.27"
+    },
+    {
+      "date": "2023-07-25T09:34:58.327Z",
+      "version": "0.1.26"
+    },
+    {
+      "date": "2023-07-24T16:36:37.723Z",
+      "version": "0.1.2-2.1"
+    }
+  ]
+}

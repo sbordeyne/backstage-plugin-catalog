@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-06T09:56:37.945Z",
+  "deprecated": "",
+  "description": "Welcome to the relations plugin.",
+  "homepage": "https://github.com/dweber019/backstage-plugins/tree/main/plugins/relations",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "dweber019"
+  ],
+  "name": "@dweber019/backstage-plugin-relations",
+  "plugin_id": "relations",
+  "readme": "# Relations Plugin\n\nWelcome to the relations plugin.\n\nThis plugin improves the experience when using the [relations processor plugin](../relations-backend/README.md) by:\n\n- Providing a custom component for visualizing relations\n- Provide [catalog graph](https://github.com/backstage/backstage/blob/master/plugins/catalog-graph/README.md) wrappers for\n  - Better defaults\n  - Add new relations to filter als options\n\n![](./docs/graph.png)\n![](./docs/relations-card.png)\n\n## Setup\n\nInstall this plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @dweber019/backstage-plugin-relations\n```\n\n### Configuration\n\nYou need to have the [relations processor plugin](../relations-backend/README.md) configured.\n\nAdditionally, make sure to use at least Backstage version `1.27.0`.\n\n### Entity Pages\n\nAs you introduced new relations you either have to manually add the relation to the `EntityCatalogGraphCard` or the replacement\n`EntityRelationsCatalogGraphCard`. This new card will add all newly configured relation pairs and enable arrows as default.\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport { EntityRelationsCatalogGraphCard } from '@dweber019/backstage-plugin-relations';\n\nconst groupPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <Grid container spacing={3}>\n        {entityWarningContent}\n        ...\n        <Grid item md={6} xs={12}>\n          <EntityRelationsCatalogGraphCard variant=\"gridItem\" height={400} />\n        </Grid>\n        ...\n      </Grid>\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\nAdditionally, there is a custom card called `EntityRelationsCard` to show additional relations.\n\n```tsx\nconst userPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <Grid container spacing={3}>\n        {entityWarningContent}\n        ...\n        <Grid item md={6} xs={12}>\n          <EntityRelationsCard relations={relationLabels} />\n        </Grid>\n      </Grid>\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\nYou can define a list of relations incl. labels to show like above with `relationLabels`, which look like\n\n```ts\nexport const relationLabels = [\n  {\n    name: 'applicationOwnerOf',\n    label: 'Application owner of',\n  },\n  {\n    name: 'applicationOwnerBy',\n    label: 'Application owner',\n  },\n];\n```\n\nIf you don't define this, only the custom relations (e.g. no owner) will be displayed.\n\n### Root catalog graph\n\nThe catalog graph at `/catalog-graph` can be changed to by using the `RelationsCatalogGraphPage` like\n\n```tsx\n// packages/app/src/App.tsx\n\nimport { RelationsCatalogGraphPage } from '@dweber019/backstage-plugin-relations';\n\nconst routes = (\n  <FlatRoutes>\n    ...\n    <Route path=\"/catalog-graph\" element={<RelationsCatalogGraphPage />} />\n  </FlatRoutes>\n);\n```\n",
+  "repository": "https://github.com/dweber019/backstage-plugins/tree/HEAD/plugins/relations",
+  "role": "frontend-plugin",
+  "scope": "@dweber019",
+  "updated": "2025-12-19T07:45:30.540Z",
+  "version": "0.1.2",
+  "version_count": 17,
+  "versions": [
+    {
+      "date": "2025-12-19T07:45:30.540Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-08-15T06:55:23.256Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-06-27T07:33:16.617Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-03-17T20:40:00.598Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2025-01-20T10:43:00.090Z",
+      "version": "0.0.13"
+    },
+    {
+      "date": "2024-12-28T22:35:40.215Z",
+      "version": "0.0.12"
+    },
+    {
+      "date": "2024-10-21T10:45:03.087Z",
+      "version": "0.0.11"
+    },
+    {
+      "date": "2024-09-25T06:28:33.334Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2024-08-29T20:39:37.086Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2024-08-24T21:59:05.300Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2024-07-29T00:33:07.528Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2024-07-20T21:52:29.368Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2024-07-06T08:23:26.223Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2024-06-02T10:36:03.108Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-05-15T20:15:33.520Z",
+      "version": "0.0.3"
+    }
+  ]
+}

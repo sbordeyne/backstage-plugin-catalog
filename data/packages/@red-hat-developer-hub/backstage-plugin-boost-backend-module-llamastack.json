@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2026-06-30T00:40:58.247Z",
+  "deprecated": "",
+  "description": "Llama Stack provider module for the boost AI platform",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-boost-backend-module-llamastack",
+  "plugin_id": "boost",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/boost/plugins/boost-backend-module-llamastack",
+  "role": "backend-plugin-module",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-07-02T12:52:14.597Z",
+  "version": "0.1.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-07-02T12:52:14.597Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-06-30T00:40:58.576Z",
+      "version": "0.1.1"
+    }
+  ]
+}

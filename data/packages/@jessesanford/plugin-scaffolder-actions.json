@@ -1,0 +1,35 @@
+{
+  "author": "Amazon Web Services",
+  "created": "2024-03-07T03:30:45.393Z",
+  "deprecated": "",
+  "description": "A custom Backstage scaffolder action to do CNOE verifications",
+  "homepage": "https://github.com/cnoe-io/plugin-scaffolder-actions#readme",
+  "keywords": [
+    "backstage",
+    "backstage-custom-action",
+    "backstage-plugin",
+    "backstage-scaffolder",
+    "backstage-template",
+    "cnoe-io",
+    "sanitize"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jessesanford"
+  ],
+  "name": "@jessesanford/plugin-scaffolder-actions",
+  "plugin_id": "",
+  "readme": "# CNOE Scaffolder Actions Plugin\n\n## Getting Started\n\nAdd to your Backstage app.\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @cnoe-io/scaffolder-actions-plugin\n```\n```bash\n# To be able to keep using the built-in actions.\nyarn add --cwd packages/backend @backstage/integration\n```\n\nAppend it to your existing actions in `packages/backend/src/plugins/scaffolder.ts`\n```typescript\nimport { CatalogClient } from '@backstage/catalog-client';\nimport { createRouter, createBuiltinActions } from '@backstage/plugin-scaffolder-backend';\nimport { ScmIntegrations } from '@backstage/integration';\nimport { Router } from 'express';\nimport type { PluginEnvironment } from '../types';\nimport {\n  createSanitizeResource,\n  createVerifyDependency,\n  createKubernetesApply,\n} from \"@cnoe-io/scaffolder-actions\";\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const catalogClient = new CatalogClient({ discoveryApi: env.discovery });\n  const integrations = ScmIntegrations.fromConfig(env.config);\n\n  const builtInActions = createBuiltinActions({\n    integrations,\n    catalogClient,\n    config: env.config,\n    reader: env.reader,\n  });\n  \n  const cnoeActions = [\n    createSanitizeResource(),\n    createVerifyDependency(),\n    createKubernetesApply(env.config),\n  ]\n\n  const actions = [\n      ...builtInActions,\n      ...cnoeActions,\n  ]\n\n  return await createRouter({\n    actions,\n    catalogClient,\n    logger: env.logger,\n    config: env.config,\n    database: env.database,\n    reader: env.reader,\n    identity: env.identity,\n  });\n}\n```\n\nDone! You can now use any of the action in your software templates.\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: hello-world-on-kubernetes\n  title: Hello World on Kubernetes\nspec:\n  steps:\n    - id: sanitize-resource\n      name: Sanitize Resource\n      action: cnoe:utils:sanitize\n      input:\n        resource: ${{ serialize.output }}\n```\n\n## List of Actions\n\nHere is a list of running actions.\n\n| Action                 | id                     | Description                                                        | Reference                            |\n|------------------------|------------------------|--------------------------------------------------------------------|--------------------------------------|\n| createKubernetesApply  | `cnoe:kubernetes:apply`  | Apply Kubernetes manifest to a template                            | [k8s-apply](src/actions/k8s-apply.ts) |\n| createVerifyDependency | `cnoe:verify:dependency` | Verify resource dependencies for CNOE                              | [verify](src/actions/verify.ts)      |\n| createSanitizeResource | `cnoe:utils:sanitize`    | Sanitize resources (remove empty fields) before further processing | [sanitize](src/actions/sanitize.ts)  |\n\nFor more detailed information about these actions, go to `/create/actions` endpoint of your Backstage instance after installing these actions. \nIf you are running this locally, the endpoint should be `http://localhost:3000/create/actions`\n",
+  "repository": "https://github.com/cnoe-io/plugin-scaffolder-actions",
+  "role": "backend-plugin-module",
+  "scope": "@jessesanford",
+  "updated": "2024-03-07T03:30:45.654Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-03-07T03:30:45.654Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2026-06-15T06:13:52.819Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin providing an AI chat assistant widget with auto-discovery support",
+  "homepage": "https://github.com/oopsmyops/backstage-mcp#readme",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "oopsmyops"
+  ],
+  "name": "@oopsmyops/backstage-plugin-assistant",
+  "plugin_id": "assistant",
+  "readme": "# Backstage Assistant\n\nThe frontend for the Backstage Assistant plugin — a floating AI chat widget that\nlets users explore the catalog, read docs, and run scaffolder templates in\nnatural language, right inside Backstage.\n\nThis is the frontend plugin. It requires the\n[`@oopsmyops/backstage-plugin-assistant-backend`](../backstage-assistant-backend/)\nbackend plugin to be installed and configured.\n\n![Backstage Assistant chat widget](./docs/assistant-widget.png)\n\n<!-- TODO: replace ./docs/assistant-widget.png with a real screenshot of the open chat widget -->\n\n## Features\n\n- Floating, draggable chat panel — resize from any edge or corner, fullscreen toggle, translucent backdrop that inherits the Backstage theme.\n- Streaming responses (SSE) rendered token-by-token.\n- **Model picker** — switch between the models configured in the backend; the choice is remembered per browser.\n- Structured result cards (tables, details, forms, documents, status) instead of raw JSON.\n- Entity references auto-linked to catalog pages with internal SPA navigation.\n- Tool-call status indicators (spinner while running, check on completion).\n- Conversation persistence across page navigation (localStorage).\n- Guided scaffolder template execution, including an OAuth popup for VCS-authenticated templates.\n\n## Installation\n\nPublished to **npmjs.org** as a public package — no token needed. Add it to your\nBackstage app:\n\n```bash\nyarn --cwd packages/app add @oopsmyops/backstage-plugin-assistant\n```\n\n### New Frontend System (default)\n\nThe plugin auto-discovers via `AppRootElementBlueprint`, so the widget renders as\na fixed overlay on every page — no route or sidebar registration needed. Add it to\nyour app features in `packages/app/src/App.tsx`:\n\n```ts\nimport assistantPlugin from '@oopsmyops/backstage-plugin-assistant';\n\nexport const app = createApp({\n  features: [\n    // ...other features\n    assistantPlugin,\n  ],\n});\n```\n\nMake sure the [backend plugin](../backstage-assistant-backend/) is installed too —\nthe widget talks to it via `discoveryApi.getBaseUrl('assistant')`.\n\n## Configuration\n\nNo frontend configuration is required. The available models and the default\nselection come from the backend (`assistant.llm.models[]`), surfaced through\n`GET /api/assistant/models`. When more than one model is configured, the picker\nappears in the widget header.\n\n## Screenshots\n\n<!-- TODO: capture and add these screenshots under ./docs/ -->\n\n| | |\n| --- | --- |\n| ![Chat with streaming response](./docs/assistant-streaming.png) | ![Model picker](./docs/assistant-model-picker.png) |\n| ![Catalog result card](./docs/assistant-card.png) | ![Template OAuth prompt](./docs/assistant-oauth.png) |\n\n## Development\n\nThis plugin can be served in isolation for fast iteration:\n\n```bash\nyarn start\n```\n\nOr run it inside a Backstage app via the app's `yarn dev`.\n\n## Related packages\n\n- [`@oopsmyops/backstage-plugin-assistant-backend`](../backstage-assistant-backend/) — the required backend plugin (LLM orchestration + tools).\n\n## License\n\nReleased under the [MIT](../../LICENSE) license.\n",
+  "repository": "https://github.com/oopsmyops/backstage-mcp/tree/HEAD/plugins/backstage-assistant",
+  "role": "frontend-plugin",
+  "scope": "@oopsmyops",
+  "updated": "2026-06-22T07:38:37.194Z",
+  "version": "0.2.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-06-22T07:38:37.194Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2026-06-16T04:41:25.571Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-06-15T11:01:10.790Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-06-15T06:13:53.098Z",
+      "version": "0.2.0"
+    }
+  ]
+}

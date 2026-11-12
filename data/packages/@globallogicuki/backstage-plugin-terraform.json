@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2024-02-16T13:06:09.307Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin showing Terraform runs, health assessments, and validation checks for catalog entities",
+  "homepage": "https://github.com/globallogicuki/globallogic-backstage-plugins/tree/main/plugins/terraform",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "billymichael",
+    "himeshladva"
+  ],
+  "name": "@globallogicuki/backstage-plugin-terraform",
+  "plugin_id": "terraform",
+  "readme": "# Terraform Frontend Plugin for Backstage\n\nYou can use this plugin to display a list of terraform runs for one or more workspaces.\n\n![Terraform Runs - Single Workspace](./docs/terraform-plugin-content.png)\n\n![Terraform Runs - Multiple Workspaces](./docs/terraform-plugin-content-multiple.png)\n\n## Install\n\n```shell\nyarn add @globallogicuki/backstage-plugin-terraform\n```\n\n## Setup\n\nThis plugin is designed to work in its own tab within an entity. You will need to add the `<EntityTerraformContent />` component to the entity page in the frontend app.\n\nThere is a `isTerraformAvailable` helper function and a `<EntityTerraformCard />` component available should you wish to use this within an existing tab.\n\nEdit the `packages/app/src/components/catalog/EntityPage.tsx` and add the imports:\n\n```typescript\nimport { EntityTerraformContent } from '@globallogicuki/backstage-plugin-terraform';\n```\n\nThen add the following route and component to the desired entity page:\n\n```typescript\n<EntityLayout.Route path=\"/terraform\" title=\"Terraform\">\n  <EntityTerraformContent />\n</EntityLayout.Route>\n```\n\nThere are two annotations that you should add to your `catalog-info.yaml` file:\n\n```yaml\nannotations:\n  terraform/organization: orgName\n  terraform/workspaces: workspaceName1,workspaceName2,workspaceName3\n```\n\nYou will also need to have the [terraform backend plugin](https://www.npmjs.com/package/@globallogicuki/backstage-plugin-terraform-backend) installed and running.\n\n## Configuration\n\nThe plugin reads the optional `integrations.terraform.baseUrl` value from your `app-config.yaml` to build links to the Terraform web UI:\n\n```yaml\nintegrations:\n  terraform:\n    baseUrl: https://tfe.enterprise.com # Optional, the web origin of your Terraform instance. Defaults to https://app.terraform.io\n```\n\nThis is the same value used by the backend plugin, which derives the Terraform API root from it by appending `/api/v2`.\n\n## Terraform Latest Run card\n\n![Latest Run card - Single Workspace](./docs/terraform-plugin-latest-run-content.png)\n\n![Latest Run card - Multiple Workspaces](./docs/terraform-plugin-latest-run-content-multiple.png)\n\nThis is an additional component that can be referenced with `<EntityTerraformLatestRunCard>` and imported and added to the `EntityPage.tsx` file for routing.\n\n## Terraform Workspace Health card\n\n![Workspace Health card - Light mode](./docs/terraform-plugin-workspace-health.png)\n\nThis is an additional component that can be referenced with `<EntityTerraformWorkspaceHealthAssessmentsCard>` and imported and added to the `EntityPage.tsx` file for routing from the plugin root.\n\nAlternatively it can be referenced from within another component, using the `<TerraformWorkspaceHealthAssessments>` tag.\n\nIt will render a Health Card for each workspace defined in your `catalog-info.yaml` file, with each Health Card containing child cards for Drift Metrics and Validation Checks for a particular workspace.\n\n### Terraform Drift Metrics\n\n![Workspace Health card - Drift Only](./docs/terraform-plugin-workspace-health-drift-only.png)\n\nThe Drift card is visible within the Workspace Health component by default, but can be optionally hidden using the `showDrift` property on the `<TerraformWorkspaceHealthAssessments>` tag, eg:\n\n    <TerraformWorkspaceHealthAssessments showDrift={false}>\n\nThe Drift card further incorporates a navigational element, providing a direct link to the dedicated Drift view for the Workspace within your Terraform deployment if a more granular breakdown is required.\n\n### Terraform Validation Checks\n\n![Workspace Health card - Validation Checks Only](./docs/terraform-plugin-workspace-health-checks-only.png)\n\nThe Validation Checks card is also visible within the Workspace Health component by default, but can be optionally hidden using the `showValidationChecks` property on the `<TerraformWorkspaceHealthAssessments>` tag, eg:\n\n    <TerraformWorkspaceHealthAssessments showValidationChecks={false}>\n\nThe Validation Checks card also incorporates a direct link to the Continuous Validation view for the Workspace within your Terraform deployment if a more detailed breakdown is needed.\n",
+  "repository": "https://github.com/globallogicuki/globallogic-backstage-plugins/tree/HEAD/plugins/terraform",
+  "role": "frontend-plugin",
+  "scope": "@globallogicuki",
+  "updated": "2026-08-25T14:09:28.795Z",
+  "version": "0.12.0",
+  "version_count": 25,
+  "versions": [
+    {
+      "date": "2026-08-25T14:09:28.795Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-08-25T08:11:25.001Z",
+      "version": "0.11.7"
+    },
+    {
+      "date": "2026-06-23T07:38:54.182Z",
+      "version": "0.11.6"
+    },
+    {
+      "date": "2025-12-05T09:22:29.441Z",
+      "version": "0.11.5"
+    },
+    {
+      "date": "2025-12-02T22:20:30.472Z",
+      "version": "0.11.4"
+    },
+    {
+      "date": "2025-09-02T12:48:16.311Z",
+      "version": "0.11.3"
+    },
+    {
+      "date": "2025-09-02T09:49:37.444Z",
+      "version": "0.11.2"
+    },
+    {
+      "date": "2025-09-02T07:18:24.163Z",
+      "version": "0.11.1"
+    },
+    {
+      "date": "2025-07-29T14:42:05.498Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-06-22T15:32:19.598Z",
+      "version": "0.10.1"
+    },
+    {
+      "date": "2025-06-10T15:44:16.688Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-06-05T07:27:48.407Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-05-05T18:24:10.405Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-04-18T19:01:18.496Z",
+      "version": "0.7.6"
+    },
+    {
+      "date": "2025-03-24T11:28:07.433Z",
+      "version": "0.7.5"
+    }
+  ]
+}

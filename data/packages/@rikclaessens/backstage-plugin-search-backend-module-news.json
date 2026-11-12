@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-03-16T15:52:31.840Z",
+  "deprecated": "",
+  "description": "The news backend module for the search plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "rikclaessens"
+  ],
+  "name": "@rikclaessens/backstage-plugin-search-backend-module-news",
+  "plugin_id": "search",
+  "readme": "# @rikclaessens/backstage-plugin-search-backend-module-news\n\nThe News plugin retrieves markdown files with frontmatter and displays them as news articles in Backstage, Spotify's IDP framework. This is the search backend module that retrieves news items stored in the database and indexes them in the configured search service.\n\n## Installation\n\nTo install this plugin to your backend package, run the following command:\n\n```bash\n# From your root directory\nyarn --cwd packages/backend add @rikclaessens/backstage-plugin-search-backend-module-news\n```\n\nThen add the plugin to your backend in `packages/backend/src/index.ts`:\n\n```ts\nconst backend = createBackend();\n// ...\nbackend.add(import('@rikclaessens/backstage-plugin-search-backend-module-news'));\n```\n\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@rikclaessens",
+  "updated": "2025-03-17T16:07:41.405Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-03-17T16:07:41.405Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-03-17T07:39:31.867Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-03-16T15:52:32.112Z",
+      "version": "0.1.0"
+    }
+  ]
+}

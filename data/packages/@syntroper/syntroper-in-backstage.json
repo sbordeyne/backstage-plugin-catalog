@@ -1,0 +1,42 @@
+{
+  "author": "",
+  "created": "2026-05-07T23:21:40.455Z",
+  "deprecated": "",
+  "description": "Interactive diagram visualization plugin for Syntroper inside Backstage. ",
+  "homepage": "",
+  "keywords": [
+    "architecture",
+    "backstage",
+    "diagrams",
+    "plugin",
+    "sequence-diagrams",
+    "syntroper"
+  ],
+  "license": "SEE LICENSE IN LICENSE",
+  "maintainers": [
+    "hassanasifsyntroper"
+  ],
+  "name": "@syntroper/syntroper-in-backstage",
+  "plugin_id": "syntroper",
+  "readme": "# @syntroper/syntroper-in-backstage\n\nView and browse your Syntroper architecture and sequence diagrams directly inside Backstage.\n\n## Installation\n\n```bash\nyarn --cwd packages/app add @syntroper/syntroper-in-backstage\nyarn --cwd packages/backend add @syntroper/syntroper-in-backstage\n```\n\n## Setup\n\n### Backend\n\nAdd to `packages/backend/src/index.ts`:\n\n```typescript\nbackend.add(import('@syntroper/syntroper-in-backstage/backend'));\n```\n\n### Frontend\n\nAdd to `packages/app/src/App.tsx`:\n\n```tsx\nimport { SyntroperPage } from '@syntroper/syntroper-in-backstage';\n\n// Inside <FlatRoutes>\n<Route path=\"/syntroper\" element={<SyntroperPage />} />\n```\n\n### Sidebar (optional)\n\nAdd to `packages/app/src/components/Root/Root.tsx`:\n\n```tsx\nimport { SyntroperIcon } from '@syntroper/syntroper-in-backstage';\n\n<SidebarItem icon={SyntroperIcon} to=\"syntroper\" text=\"Syntroper\" />\n```\n\n### Content Security Policy\n\nAdd to `app-config.yaml` to enable diagram previews:\n\n```yaml\nbackend:\n  csp:\n    frame-src: [\"'self'\", \"https://*.syntroper.ai\"]\n```\n\nThat's it. No environment variables, no API keys, no extra database setup.\n\n## Usage\n\n1. Go to `/syntroper` in your Backstage instance\n2. Click **Sign in with Syntroper**\n3. Authorize on Syntroper\n4. Browse and preview your diagrams\n\n## How It Works\n\nThe plugin uses a Backend-For-Frontend (BFF) pattern for security:\n\n- **OAuth with PKCE** -- no client secret is ever exposed\n- **Tokens stay server-side** -- nothing stored in the browser\n- **Refresh tokens are encrypted** -- AES-256-CBC using your Backstage `backend.auth.keys` secret\n- **Diagram previews use one-time tickets** -- 60-second TTL, single use\n- **Works with any database** -- PostgreSQL, SQLite, or whatever your Backstage instance uses\n\n```\nUser clicks login\n  -> Frontend redirects to backend /api/syntroper/auth/start\n  -> Backend starts OAuth + PKCE with Syntroper\n  -> User authorizes on Syntroper\n  -> Backend stores encrypted tokens\n  -> User redirected back to Backstage\n```\n\n## Requirements\n\n- Backstage instance with `backend.auth.keys` configured (standard Backstage setup)\n- That's it\n\n## Register Your Backstage Instance\n\nBefore using the plugin, register your Backstage instance on the Syntroper dashboard:\n\n1. Go to https://app.syntroper.ai/dashboard/integrations/backstage\n2. Click **Add Backstage Instance**\n3. Fill in the fields:\n\n| Field | Description | Example |\n|---|---|---|\n| **Instance Name** | A unique identifier for your instance | `my-company-prod` |\n| **Description** | A note to identify this instance | `Production Environment deployed on-prem` |\n| **Redirect URL** | Your Backstage backend callback URL | `https://backstage.yourcompany.com/api/syntroper/auth/callback` |\n\n4. Click **Save**\n\nFor local development, use `http://localhost:7007/api/syntroper/auth/callback` as the Redirect URL.\n\n\n## Troubleshooting\n\n**\"Encryption secret is required\"**\nYour Backstage instance needs `backend.auth.keys` in `app-config.yaml`:\n```yaml\nbackend:\n  auth:\n    keys:\n      - secret: your-secret-min-32-chars\n```\n\n**Diagrams not rendering**\nAdd the CSP rule from the setup section above.\n\n**OAuth redirect fails**\nMake sure the callback URL in Syntroper matches `{backend.baseUrl}/api/syntroper/auth/callback`.\n\n## Support\n\n- Email: support@syntroper.ai\n\n\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@syntroper",
+  "updated": "2026-05-12T05:57:50.438Z",
+  "version": "2.0.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-05-12T05:57:50.438Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-05-08T12:27:17.593Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-05-07T23:21:40.698Z",
+      "version": "1.0.0"
+    }
+  ]
+}

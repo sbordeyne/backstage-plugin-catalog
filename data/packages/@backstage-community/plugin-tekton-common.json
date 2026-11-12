@@ -1,0 +1,88 @@
+{
+  "author": "Red Hat",
+  "created": "2024-11-14T15:40:37.708Z",
+  "deprecated": "",
+  "description": "Common functionalities for the tekton plugin",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "kubernetes",
+    "plugin",
+    "tekton"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-tekton-common",
+  "plugin_id": "tekton",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/tekton/plugins/tekton-common",
+  "role": "common-library",
+  "scope": "@backstage-community",
+  "updated": "2026-09-15T00:07:49.867Z",
+  "version": "1.24.1",
+  "version_count": 27,
+  "versions": [
+    {
+      "date": "2026-09-15T00:07:49.867Z",
+      "version": "1.24.1"
+    },
+    {
+      "date": "2026-09-04T13:21:11.979Z",
+      "version": "1.24.0"
+    },
+    {
+      "date": "2026-07-21T19:52:23.203Z",
+      "version": "1.23.0"
+    },
+    {
+      "date": "2026-06-19T23:01:22.979Z",
+      "version": "1.22.0"
+    },
+    {
+      "date": "2026-05-16T22:49:21.980Z",
+      "version": "1.21.0"
+    },
+    {
+      "date": "2026-03-27T13:01:51.241Z",
+      "version": "1.20.0"
+    },
+    {
+      "date": "2026-03-15T20:48:56.787Z",
+      "version": "1.19.1"
+    },
+    {
+      "date": "2026-03-04T12:13:30.414Z",
+      "version": "1.19.0"
+    },
+    {
+      "date": "2026-02-24T15:33:54.187Z",
+      "version": "1.18.1"
+    },
+    {
+      "date": "2026-02-03T11:20:00.227Z",
+      "version": "1.18.0"
+    },
+    {
+      "date": "2026-01-14T12:27:11.671Z",
+      "version": "1.17.0"
+    },
+    {
+      "date": "2026-01-09T10:52:56.354Z",
+      "version": "1.16.0"
+    },
+    {
+      "date": "2025-12-15T16:59:38.820Z",
+      "version": "1.15.0"
+    },
+    {
+      "date": "2025-10-28T13:03:24.254Z",
+      "version": "1.14.0"
+    },
+    {
+      "date": "2025-10-10T19:19:54.272Z",
+      "version": "1.13.0"
+    }
+  ]
+}

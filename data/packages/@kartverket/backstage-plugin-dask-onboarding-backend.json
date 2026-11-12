@@ -1,0 +1,67 @@
+{
+  "author": "",
+  "created": "2024-05-13T08:13:11.465Z",
+  "deprecated": "",
+  "description": "This plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dataplattform-kartverket"
+  ],
+  "name": "@kartverket/backstage-plugin-dask-onboarding-backend",
+  "plugin_id": "dask-onboarding-backend",
+  "readme": "# dask-onboarding-backend\n\nThis plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.\n\n## Installation\n\nThis plugin is installed via the `@internal/plugin-dask-onboarding-backend` package. To install it to your backend package, run the following command:\n\n```bash\n# From your root directory\nyarn --cwd packages/backend add @internal/plugin-dask-onboarding-backend\n```\n\nThen add the plugin to your backend in `packages/backend/src/index.ts`:\n\n```ts\nconst backend = createBackend();\n// ...\nbackend.add(import('@internal/plugin-dask-onboarding-backend'));\n```\n\n## Development\n\nThis plugin backend can be started in a standalone mode from directly in this\npackage with `yarn start`. It is a limited setup that is most convenient when\ndeveloping the plugin backend itself.\n\nIf you want to run the entire project, including the frontend, run `yarn dev` from the root directory.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@kartverket",
+  "updated": "2025-03-20T12:26:47.032Z",
+  "version": "0.1.16",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2025-03-20T12:26:47.032Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2025-01-29T13:18:21.297Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2024-07-01T10:45:35.208Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2024-06-25T09:30:54.971Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2024-06-24T13:33:00.717Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2024-06-18T08:56:06.861Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2024-06-14T08:09:41.340Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2024-06-13T13:47:41.962Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2024-06-13T11:01:52.662Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-06-13T07:06:44.955Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-05-13T08:13:11.754Z",
+      "version": "0.1.3"
+    }
+  ]
+}

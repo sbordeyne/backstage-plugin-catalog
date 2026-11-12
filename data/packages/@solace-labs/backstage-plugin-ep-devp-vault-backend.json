@@ -1,0 +1,85 @@
+{
+  "author": "Solace Corporation",
+  "created": "2023-02-18T12:13:50.106Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/solace-iot-team/backstage-ep-devp-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dishantlangayan",
+    "solacecommunity",
+    "tamimi65"
+  ],
+  "name": "@solace-labs/backstage-plugin-ep-devp-vault-backend",
+  "plugin_id": "",
+  "readme": "# Event Portal Developer Portal Sample Vault Backend\n",
+  "repository": "https://github.com/solace-iot-team/backstage-ep-devp-plugins/tree/HEAD/plugins/ep-devp-vault-backend",
+  "role": "backend-plugin",
+  "scope": "@solace-labs",
+  "updated": "2023-09-20T10:34:00.306Z",
+  "version": "1.0.1",
+  "version_count": 24,
+  "versions": [
+    {
+      "date": "2023-09-20T10:34:00.306Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-09-06T11:47:19.682Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2023-05-31T05:09:12.986Z",
+      "version": "0.3.6"
+    },
+    {
+      "date": "2023-05-04T07:30:31.767Z",
+      "version": "0.3.5"
+    },
+    {
+      "date": "2023-04-30T10:10:15.072Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2023-04-28T10:20:02.959Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2023-04-26T11:26:41.499Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2023-04-21T12:08:11.217Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2023-04-06T06:53:13.371Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-04-05T09:43:19.906Z",
+      "version": "0.2.14"
+    },
+    {
+      "date": "2023-04-04T08:32:43.897Z",
+      "version": "0.2.13"
+    },
+    {
+      "date": "2023-04-03T13:12:43.086Z",
+      "version": "0.2.12"
+    },
+    {
+      "date": "2023-03-29T13:50:25.782Z",
+      "version": "0.2.11"
+    },
+    {
+      "date": "2023-03-22T07:22:23.322Z",
+      "version": "0.2.10"
+    },
+    {
+      "date": "2023-03-17T05:41:41.857Z",
+      "version": "0.2.9"
+    }
+  ]
+}

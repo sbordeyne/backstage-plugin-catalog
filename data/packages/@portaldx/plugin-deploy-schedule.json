@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2022-04-25T21:19:17.719Z",
+  "deprecated": "",
+  "description": "List the Deploys scheduled in Cronhooks in a simple way.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "accezar"
+  ],
+  "name": "@portaldx/plugin-deploy-schedule",
+  "plugin_id": "",
+  "readme": "![img](https://github.com/madeiramadeirabr/portaldx/blob/feat-cronhooks-plugin/images/banner.svg)\n\n# @portaldx/plugin-deploy-schedule\n\nList the Deploys scheduled in Cronhooks in a simple way.\n\n_This plugin was created through the Backstage CLI_\n\n## Requirements\n\n- [Backstage](https://backstage.io/) Project;\n- Node.js v16.14.x\n\n## Use\n\n### app-config.yaml\n\n```yaml\n[...]\n\nproxy:\n  '/chronhooks':\n    target: 'https://api.cronhooks.io/'\n    changeOrigin: true\n    allowedMethods: [GET, POST, PUT, DELETE]\n    allowedHeaders: ['Authorization']\n    pathRewrite:\n      '^/api/proxy/chronhooks/': '/'\n    headers:\n      Authorization: ${TOKEN_CRONHOOKS}\n\n[...]\n```\n\n### routes.tsx\n\n`packages/app/src/routes.tsx`\n\n```tsx\nimport { DeploySchedulePage } from '@portaldx/plugin-deploy-schedule'\n\n[...]\n\nconst routes = (\n  <FlatRoutes>\n  [...]\n    <Route path=\"/deploy-schedule\" element={<DeploySchedulePage />} />\n  </FlatRoutes>\n);\n```\n\n_Developed with ❤️ by the [MadeiraMadeira](https://github.com/madeiramadeirabr) SRE Team_\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@portaldx",
+  "updated": "2023-02-14T13:05:46.443Z",
+  "version": "2.0.3",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2023-02-14T13:05:46.443Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2023-01-19T16:50:45.904Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2023-01-16T16:49:32.210Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2023-01-16T16:44:46.906Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2022-08-22T13:41:25.994Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2022-04-25T21:19:18.010Z",
+      "version": "1.1.0"
+    }
+  ]
+}

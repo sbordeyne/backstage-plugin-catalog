@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-08-18T14:37:05.878Z",
+  "deprecated": "",
+  "description": "Custom node/edge styling and spec.extendedRelations merging for the catalog-graph plugin's entity card and standalone graph page.",
+  "homepage": "https://github.com/racooncorp/backstage-plugins/tree/main/plugins/catalog-graph-module-extended-relations",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "michael-todorovic"
+  ],
+  "name": "@racooncorp/backstage-plugin-catalog-graph-module-extended-relations",
+  "plugin_id": "catalog-graph",
+  "readme": "# @racooncorp/backstage-plugin-catalog-graph-module-extended-relations\n\nA frontend module (`pluginId: 'catalog-graph'`) that overrides two extensions\nfrom `@backstage/plugin-catalog-graph`:\n\n- `entity-card:catalog-graph/relations` — merges `spec.extendedRelations`\n  (written by `catalog-backend-module-extended-relations`) into the graph\n  alongside native catalog relations.\n- `page:catalog-graph` — the standalone `/catalog-graph` page, with the same\n  custom node/edge rendering as the entity card.\n\nIt also mounts a global fix for `DependencyGraph`'s zoom/pan reset-on-render\nbehaviour.\n\n## Installation\n\nAdd the package to your app:\n\n```sh\nyarn --cwd packages/app add @racooncorp/backstage-plugin-catalog-graph-module-extended-relations\n```\n\nRegister it in `packages/app/src/App.tsx`'s `features` array, alongside the\nupstream `catalogGraphPlugin` — this module overrides two of that plugin's\nextensions, it doesn't replace it:\n\n```tsx\nimport catalogGraphPlugin from '@backstage/plugin-catalog-graph/alpha';\nimport catalogGraphModuleExtendedRelations from '@racooncorp/backstage-plugin-catalog-graph-module-extended-relations';\n\nexport const app = createApp({\n  features: [\n    catalogGraphPlugin,\n    catalogGraphModuleExtendedRelations,\n    // ...your other features\n  ],\n});\n```\n\nNo further configuration is required. The relations card and the standalone\n`/catalog-graph` page will pick up `spec.extendedRelations` on any entity that\nhas it, and fall back to native catalog relations otherwise.\n\nSee `CLAUDE.md` for the file layout and implementation notes.\n",
+  "repository": "https://github.com/racooncorp/backstage-plugins/tree/HEAD/plugins/catalog-graph-module-extended-relations",
+  "role": "frontend-plugin-module",
+  "scope": "@racooncorp",
+  "updated": "2026-08-18T17:13:30.133Z",
+  "version": "0.2.3",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-08-18T17:13:30.133Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2026-08-18T15:27:25.576Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-08-18T14:37:06.210Z",
+      "version": "0.2.0"
+    }
+  ]
+}

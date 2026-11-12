@@ -1,0 +1,91 @@
+{
+  "author": "Red Hat",
+  "created": "2024-11-04T16:45:42.450Z",
+  "deprecated": "",
+  "description": "A Backend backend plugin for Keycloak",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin",
+    "works-with:keycloak:~18",
+    "works-with:keycloak:~24",
+    "works-with:keycloak:~26",
+    "works-with:rhbk:^26",
+    "works-with:rhsso:^7.6"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-catalog-backend-module-keycloak",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/keycloak/plugins/catalog-backend-module-keycloak",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-09-17T12:54:44.542Z",
+  "version": "3.23.1",
+  "version_count": 47,
+  "versions": [
+    {
+      "date": "2026-09-17T12:54:44.542Z",
+      "version": "3.23.1"
+    },
+    {
+      "date": "2026-09-16T12:15:02.465Z",
+      "version": "3.23.0"
+    },
+    {
+      "date": "2026-08-26T18:35:53.392Z",
+      "version": "3.22.1"
+    },
+    {
+      "date": "2026-08-19T11:24:26.663Z",
+      "version": "3.22.0"
+    },
+    {
+      "date": "2026-07-03T03:26:40.164Z",
+      "version": "3.21.0"
+    },
+    {
+      "date": "2026-07-01T02:24:39.025Z",
+      "version": "3.20.0"
+    },
+    {
+      "date": "2026-06-18T00:22:26.866Z",
+      "version": "3.19.4"
+    },
+    {
+      "date": "2026-05-23T23:42:06.840Z",
+      "version": "3.19.3"
+    },
+    {
+      "date": "2026-05-05T18:06:16.778Z",
+      "version": "3.19.2"
+    },
+    {
+      "date": "2026-04-08T13:02:26.135Z",
+      "version": "3.19.1"
+    },
+    {
+      "date": "2026-04-02T11:31:40.467Z",
+      "version": "3.19.0"
+    },
+    {
+      "date": "2026-04-02T08:32:55.614Z",
+      "version": "3.18.0"
+    },
+    {
+      "date": "2026-02-24T16:03:35.092Z",
+      "version": "3.17.2"
+    },
+    {
+      "date": "2026-02-12T10:05:12.348Z",
+      "version": "3.17.1"
+    },
+    {
+      "date": "2026-02-06T15:49:50.702Z",
+      "version": "3.17.0"
+    }
+  ]
+}

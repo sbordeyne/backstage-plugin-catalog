@@ -1,0 +1,93 @@
+{
+  "author": "The Backstage Community",
+  "created": "2023-05-31T17:15:28.391Z",
+  "deprecated": "",
+  "description": "This plugin provides a frontend for [`webterminal proxy`](https://github.com/janus-idp/webterminal-proxy) and shows a terminal for catalog entities with an Kubernetes API-Server annotation (`kubernetes.io/api-server`).",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-web-terminal",
+  "plugin_id": "web-terminal",
+  "readme": "# Web Terminal plugin for Backstage\n\nThis plugin provides a frontend for [`webterminal proxy`](https://github.com/janus-idp/webterminal-proxy) and shows a terminal for catalog entities with an Kubernetes API-Server annotation (`kubernetes.io/api-server`).\n\nUsers first enter their user token from the cluster, and then the plugin setups environment. Once it is set up, it connects to `webterminal-proxy`, which finishes setups and passes data between the frontend plugin and pod.\n\nThis plugin uses [`xterm.js`](http://xtermjs.org/) to simulate a regular terminal.\n\n## Prerequisites\n\nBefore we can install this plugin, we need to fulfill the following requirements:\n\n1. Installed [Web Terminal operator](https://docs.openshift.com/container-platform/latest/web_console/web_terminal/installing-web-terminal.html)\n2. Deployed [`webterminal-proxy`](https://github.com/janus-idp/webterminal-proxy)\n\n## Installation\n\n1. Install the Web Terminal plugin using the following command:\n\n   ```console\n   yarn workspace app add @janus-idp/backstage-plugin-web-terminal\n   ```\n\n2. Enable an additional tab on the entity view page using the `packages/app/src/components/catalog/EntityPage.tsx` file as follows:\n\n   ```tsx title=\"packages/app/src/components/catalog/EntityPage.tsx\"\n   /* highlight-add-start */\n   import {\n     isWebTerminalAvailable,\n     WebTerminal,\n   } from '@janus-idp/backstage-plugin-web-terminal';\n\n   /* highlight-add-end */\n\n   const serviceEntityPage = (\n     <EntityLayout>\n       // ...\n       {/* highlight-add-start */}\n       <EntityLayout.Route\n         if={isWebTerminalAvailable}\n         path=\"/webterminal\"\n         title=\"Web Terminal\"\n       >\n         <WebTerminal />\n       </EntityLayout.Route>\n       {/* highlight-add-end */}\n     </EntityLayout>\n   );\n   ```\n\n3. Alternative you can add the WebTerminal to an existing page:\n\n   ```tsx title=\"packages/app/src/components/catalog/EntityPage.tsx\"\n   /* highlight-add-start */\n   import {\n     isWebTerminalAvailable,\n     WebTerminal,\n   } from '@janus-idp/backstage-plugin-web-terminal';\n\n   /* highlight-add-end */\n\n   <Grid container spacing={3}>\n     {/* highlight-add-start */}\n     <EntitySwitch>\n       <EntitySwitch.Case if={isWebTerminalAvailable}>\n         <Grid item md={6}>\n           <WebTerminal />\n         </Grid>\n       </EntitySwitch.Case>\n     </EntitySwitch>\n     {/* highlight-add-end */}\n   </Grid>;\n   ```\n\n4. Annotate your entity using the following annotations:\n\n   ```yaml\n   metadata:\n     annotations:\n       'kubernetes.io/api-server': `<CLUSTER-URL>',\n   ```\n\n## Configuration\n\nYou have to define the location of the `webterminal-proxy` in `app-config.yaml`:\n\n```yaml\nwebTerminal:\n  webSocketUrl: 'wss://example.com:3000/webterminal'\n  restServerUrl: 'https://example.com:3000/webterminal/rest'\n```\n\nOptionally, you can also define the default namespace for the terminal; otherwise, `openshift-terminal` will be used:\n\n```yaml\nwebTerminal:\n  webSocketUrl: 'wss://example.com:3000/webterminal'\n  restServerUrl: 'https://example.com:3000/webterminal/rest'\n  defaultNamespace: 'default'\n```\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/web-terminal",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2025-04-03T13:23:52.551Z",
+  "version": "1.15.0",
+  "version_count": 70,
+  "versions": [
+    {
+      "date": "2025-04-03T13:23:52.551Z",
+      "version": "1.15.0"
+    },
+    {
+      "date": "2025-03-07T12:01:31.878Z",
+      "version": "1.14.0"
+    },
+    {
+      "date": "2025-01-30T21:26:23.679Z",
+      "version": "1.13.0"
+    },
+    {
+      "date": "2024-12-04T16:08:01.375Z",
+      "version": "1.12.0"
+    },
+    {
+      "date": "2024-11-04T12:24:49.598Z",
+      "version": "1.11.1"
+    },
+    {
+      "date": "2024-10-30T20:19:05.469Z",
+      "version": "1.11.0"
+    },
+    {
+      "date": "2024-10-29T18:59:38.656Z",
+      "version": "1.10.1"
+    },
+    {
+      "date": "2024-10-22T21:37:11.904Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2024-10-09T20:50:38.508Z",
+      "version": "1.9.5"
+    },
+    {
+      "date": "2024-10-08T18:41:55.978Z",
+      "version": "1.9.4"
+    },
+    {
+      "date": "2024-10-08T06:36:31.188Z",
+      "version": "1.9.3"
+    },
+    {
+      "date": "2024-10-01T18:40:34.949Z",
+      "version": "1.9.2"
+    },
+    {
+      "date": "2024-09-25T13:01:57.457Z",
+      "version": "1.9.1"
+    },
+    {
+      "date": "2024-09-20T03:59:47.472Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2024-09-19T17:03:02.597Z",
+      "version": "1.8.3"
+    }
+  ]
+}

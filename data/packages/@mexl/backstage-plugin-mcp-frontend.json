@@ -1,0 +1,89 @@
+{
+  "author": "mexl",
+  "created": "2025-08-01T06:37:19.696Z",
+  "deprecated": "",
+  "description": "Enhanced Backstage frontend plugin for MCP (Model Context Protocol) entity visualization with JSON/Text toggle, syntax highlighting, and VSCode integration",
+  "homepage": "https://github.com/automationpi/backstage-plugin-mcp-frontend#readme",
+  "keywords": [
+    "backstage",
+    "catalog",
+    "frontend",
+    "mcp",
+    "model-context-protocol",
+    "plugin",
+    "react",
+    "ui",
+    "visualization"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mexl"
+  ],
+  "name": "@mexl/backstage-plugin-mcp-frontend",
+  "plugin_id": "",
+  "readme": "# @mexl/backstage-plugin-mcp-frontend\n\n🎨 **Backstage MCP Frontend plugin** for MCP (Model Context Protocol) entities in Backstage - enabling organizations to centrally manage, discover and share MCP servers across teams. Streamline MCP adoption, improve collaboration, and maintain governance through a unified interface for your organization's MCP infrastructure.\n\n[![NPM Version](https://img.shields.io/npm/v/@mexl/backstage-plugin-mcp-frontend)](https://www.npmjs.com/package/@mexl/backstage-plugin-mcp-frontend)\n[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)\n\n> **⚠️ Prerequisites**: This plugin requires the backend plugin [@mexl/backstage-plugin-catalog-backend-module-mcp](https://www.npmjs.com/package/@mexl/backstage-plugin-catalog-backend-module-mcp) to be installed first.\n\n<div align=\"center\">\n  <img src=\"docs/screenshots/mcp-import-entity.png\" alt=\"MCP Import\" width=\"800\"/>\n  <p><em>Import new MCP entitiy interface</em></p>\n\n  <img src=\"docs/screenshots/mcp-overview-cards.png\" alt=\"MCP Kind\" width=\"800\"/>\n  <p><em>Showing MCP kind in catalog</em></p>\n\n  <img src=\"docs/screenshots/mcp-overview-entity.png\" alt=\"MCP Entity List\" width=\"800\"/>\n  <p><em>Browse and manage your MCP entities backstage view</em></p>\n\n  <img src=\"docs/screenshots/mcp-overview-page.png\" alt=\"MCP Overview Page\" width=\"800\"/>\n  <p><em>Comprehensive MCP entity overview with interactive components</em></p>\n</div>\n\n\n## ✨ Features\n\n<img src=\"docs/screenshots/vscode-integration.png\" alt=\"VSCode Integration\" width=\"800\"/>\nOpen and edit MCP server configurations directly in VSCode.\n\n## 🚀 Quick Setup\n\n### Prerequisites\n\n1. **Install Backend Plugin First**:\n   ```bash\n   yarn --cwd packages/backend add @mexl/backstage-plugin-catalog-backend-module-mcp\n   ```\n   \n   See [backend setup guide](https://www.npmjs.com/package/@mexl/backstage-plugin-catalog-backend-module-mcp) for complete instructions.\n\n### Step 1: Install Frontend Plugin\n\n```bash\n# Install the frontend plugin\nyarn --cwd packages/app add @mexl/backstage-plugin-mcp-frontend\n```\n\n### Step 2: Add to EntityPage\n\nIn `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```typescript\n// Add this import\nimport { MCPEntityPage } from '@mexl/backstage-plugin-mcp-frontend';\n\n// Add to your existing entityPage switch (isKind should already be imported)\nexport const entityPage = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isKind('component')} children={componentPage} />\n    <EntitySwitch.Case if={isKind('api')} children={apiPage} />\n    {/* Add this line */}\n    <EntitySwitch.Case if={isKind('MCP')} children={<MCPEntityPage />} />\n    \n    <EntitySwitch.Case>{defaultEntityPage}</EntitySwitch.Case>\n  </EntitySwitch>\n);\n```\n\n### Step 3: Restart Backstage\n\n```bash\nyarn start\n```\n\n![Setup Complete](docs/screenshots/setup-complete.png)\n*MCP entities now display with enhanced UI cards*\n\n## 🎯 Usage\n\n### Complete Setup Example\n\n🌟 **New!** Try our [complete setup example](examples/complete-setup/) that includes a full organizational catalog with systems, components, users, groups, and MCP entities working together:\n\n```bash\n# Import the complete example\ncp examples/complete-setup/catalog-info.yaml catalog-info/complete-example.yaml\n```\n\nThis demonstrates:\n- **Real-world integration** patterns with existing Backstage entities\n- **System relationships** showing how MCP servers fit into your architecture  \n- **Enhanced UI features** with rich descriptions and interactive components\n- **Multiple transport types** (stdio, HTTP, SSE) and configurations\n\n### Adding Individual MCP Entities\n\nTo add specific MCP entities to your catalog:\n\n1. Choose from our [example configurations](examples/)\n2. Copy to your catalog directory\n3. Import through Backstage UI or configuration\n\n### Using Individual Components\n\nFor custom entity pages, import components individually:\n\n```typescript\nimport {\n  MCPOverviewCard,\n  MCPCapabilitiesCard,\n  MCPConfigurationCard,\n  MCPClientConfigCard,\n} from '@mexl/backstage-plugin-mcp-frontend';\n\n// Use in your custom layouts\n<Grid container spacing={3}>\n  <Grid item md={6}>\n    <MCPOverviewCard />\n  </Grid>\n  <Grid item md={6}>\n    <MCPCapabilitiesCard />\n  </Grid>\n</Grid>\n```\n\n## 🤝 Contributing\n\nContributions welcome! Please:\n\n1. Fork the repository\n2. Create a feature branch  \n3. Add tests for new functionality\n4. Ensure all tests pass\n5. Submit a pull request\n\n## 📄 License\n\nApache-2.0\n\n## 🔗 Related Packages\n\n- **Backend**: [@mexl/backstage-plugin-catalog-backend-module-mcp](https://www.npmjs.com/package/@mexl/backstage-plugin-catalog-backend-module-mcp)\n- **Backstage**: [backstage.io](https://backstage.io/)\n- **MCP Protocol**: [modelcontextprotocol.io](https://modelcontextprotocol.io/)\n\n---\n\n**Made with ❤️ for the Backstage community**",
+  "repository": "https://github.com/automationpi/backstage-plugin-mcp-frontend",
+  "role": "frontend-plugin",
+  "scope": "@mexl",
+  "updated": "2025-08-03T21:07:24.775Z",
+  "version": "1.1.14",
+  "version_count": 14,
+  "versions": [
+    {
+      "date": "2025-08-03T21:07:24.775Z",
+      "version": "1.1.14"
+    },
+    {
+      "date": "2025-08-03T20:38:03.863Z",
+      "version": "1.1.13"
+    },
+    {
+      "date": "2025-08-03T20:35:34.089Z",
+      "version": "1.1.12"
+    },
+    {
+      "date": "2025-08-03T14:50:26.970Z",
+      "version": "1.1.11"
+    },
+    {
+      "date": "2025-08-03T13:14:19.757Z",
+      "version": "1.1.10"
+    },
+    {
+      "date": "2025-08-03T13:10:07.909Z",
+      "version": "1.1.9"
+    },
+    {
+      "date": "2025-08-03T12:51:20.442Z",
+      "version": "1.1.8"
+    },
+    {
+      "date": "2025-08-03T12:32:45.865Z",
+      "version": "1.1.7"
+    },
+    {
+      "date": "2025-08-02T22:37:55.354Z",
+      "version": "1.1.6"
+    },
+    {
+      "date": "2025-08-02T22:24:49.256Z",
+      "version": "1.1.5"
+    },
+    {
+      "date": "2025-08-02T22:09:42.155Z",
+      "version": "1.1.4"
+    },
+    {
+      "date": "2025-08-02T21:55:37.869Z",
+      "version": "1.1.3"
+    },
+    {
+      "date": "2025-08-02T20:47:42.292Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2025-08-01T06:37:19.976Z",
+      "version": "1.1.1"
+    }
+  ]
+}

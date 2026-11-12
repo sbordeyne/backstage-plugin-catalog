@@ -1,0 +1,38 @@
+{
+  "author": "",
+  "created": "2025-03-29T20:56:11.958Z",
+  "deprecated": "",
+  "description": "A minimal backend plugin for GitHub and Gitlab pull request integration",
+  "homepage": "",
+  "keywords": [
+    "backend",
+    "backstage",
+    "github",
+    "gitlab",
+    "infraweave",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "infinitetabs"
+  ],
+  "name": "@infraweave/backstage-plugin-backend",
+  "plugin_id": "infraweave",
+  "readme": "\n# InfraWeave Backstage Backend Plugin\n\nThis is the backend plugin which has access to more sensitive things like the github access token server-side.\n\nYou can configure settings in `app-config.yaml`:\n\n```yaml\ninfraweave-backend:\n  authPolicy:\n    allow: user-cookie # either user-cookie or unauthenticated\n  github:\n    url: https://api.github.com\n    accessToken:\n      $env: GITHUB_ACCESS_TOKEN\n  gitlab:\n    url: https://gitlab.com/api/v4\n    accessToken:\n      $env: GITLAB_ACCESS_TOKEN\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@infraweave",
+  "updated": "2025-04-27T08:33:32.444Z",
+  "version": "0.0.7",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-04-27T08:33:32.444Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2025-04-26T20:52:40.079Z",
+      "version": "0.0.6"
+    }
+  ]
+}

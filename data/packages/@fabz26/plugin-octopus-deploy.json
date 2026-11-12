@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2024-09-12T17:39:20.010Z",
+  "deprecated": "",
+  "description": "Welcome to the octopus-deploy plugin!",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fabz26"
+  ],
+  "name": "@fabz26/plugin-octopus-deploy",
+  "plugin_id": "octopus-deploy",
+  "readme": "# Octopus Deploy Plugin\n\nWelcome to the octopus-deploy plugin!\n\n## Features\n\n- Display the deployment status of the most recent releases for a project in Octopus Deploy straight from the Backstage catalog\n\n## Getting started\n\n### Installing\n\nTo get started, first install the plugin with the following command:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @backstage-community/plugin-octopus-deploy\n```\n\n### Setup\n\nThis plugin (currently) uses the Backstage proxy to securely communicate with the Octopus Deploy API.\n\nTo use it, you will need to generate an [API Key](https://octopus.com/docs/octopus-rest-api/how-to-create-an-api-key) within Octopus Deploy.\n\nAdd the following to your app-config.yaml to enable the proxy:\n\n```\n// app-config.yaml\nproxy:\n  endpoints:\n    '/octopus-deploy':\n      target: 'https://<your-octopus-server-instance>/api'\n      headers:\n        X-Octopus-ApiKey: ${OCTOPUS_API_KEY}\n```\n\nOptionally, also add the following section to your app-config.yaml if you wish to enable linking to the Project Release page in the Octopus Deploy UI from the footer of the Backstage Release Table. Typically this will be the server URL above without the /api postfix.\n\n```\noctopusdeploy:\n  webBaseUrl: \"<your-octopus-web-url>\"\n```\n\n#### Adding the Entities\n\nAdd the following to `EntityPage.tsx` to display Octopus Releases\n\n```\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  isOctopusDeployAvailable,\n  EntityOctopusDeployContent\n} from '@backstage-community/plugin-octopus-deploy';\n\nconst cicdContent = (\n    <EntitySwitch>\n      {/* other components... */}\n      <EntitySwitch.Case if={isOctopusDeployAvailable}>\n        <EntityOctopusDeployContent defaultLimit={25} />\n      </EntitySwitch.Case>\n    </EntitySwitch>\n)\n```\n\nAdd `octopus.com/project-id` annotation in the catalog descriptor file.\n\nTo obtain a projects ID you will have to query the Octopus API. In the future we'll add support for using a projects slug as well.\n\n```\n// catalog-info.yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    octopus.com/project-id: Projects-102\nspec:\n  type: service\n```\n\nIf your project is not part of the default space you can add the space ID to the annotation as a prefix. For example:\n\n```\n// catalog-info.yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    octopus.com/project-id: Spaces-2/Projects-102\nspec:\n  type: service\n```\n\nYou can get the ID of the space from the URL in the Octopus Deploy UI.\n\nAll set, you will be able to see the plugin in action!\n\n### Adding Scaffolder field extensions\n\nTo add the Octopus Deploy custom fields extensions, add the following to your `App.tsx`:\n\n```tsx\n// In packages/app/src/App.tsx\nimport { OctopusDeployDropdownFieldExtension } from '@backstage-community/plugin-octopus-deploy';\nconst routes = (\n  <FlatRoutes>\n    ...\n    <Route path=\"/create\" element={<ScaffolderPage />}>\n      <ScaffolderFieldExtensions>\n        <OctopusDeployDropdownFieldExtension />\n      </ScaffolderFieldExtensions>\n    </Route>\n    ...\n  </FlatRoutes>\n```\n\nTo use the Octopus Deploy custom field extensions, add the following to your `template.yaml`:\n\n```yaml\n# In the template.yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  # ...\n  parameters:\n    - title: Octopus Project Group\n      properties:\n        projectName:\n          title: Octopus Project Group\n          type: string\n          ui:field: OctopusDeployProjectGroupDropdown\n```\n",
+  "repository": "https://github.com/TRANZACT/DevOps.SITH2.Backstage.Plugins.Octopus/tree/HEAD/",
+  "role": "frontend-plugin",
+  "scope": "@fabz26",
+  "updated": "2024-09-12T21:23:37.397Z",
+  "version": "0.2.21",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-09-12T21:23:37.397Z",
+      "version": "0.2.21"
+    },
+    {
+      "date": "2024-09-12T17:53:08.928Z",
+      "version": "0.2.20"
+    },
+    {
+      "date": "2024-09-12T17:39:20.430Z",
+      "version": "0.2.19"
+    }
+  ]
+}

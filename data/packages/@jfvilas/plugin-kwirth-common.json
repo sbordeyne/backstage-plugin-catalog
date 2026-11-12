@@ -1,0 +1,89 @@
+{
+  "author": "Julio Fernandez",
+  "created": "2025-04-05T15:51:29.017Z",
+  "deprecated": "",
+  "description": "Common functionalities for the Backstage Kwirth plugins",
+  "homepage": "https://github.com/jfvilas/plugin-kwirth-common#readme",
+  "keywords": [
+    "backstage",
+    "kubernetes",
+    "kwirth",
+    "observability",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jfvilas"
+  ],
+  "name": "@jfvilas/plugin-kwirth-common",
+  "plugin_id": "kwirth",
+  "readme": "# Kwirth Backstage Common\r\nThis repo contains common objects for use both at frontend and backend Backstage Kwirth plugins.",
+  "repository": "https://github.com/jfvilas/plugin-kwirth-common",
+  "role": "common-library",
+  "scope": "@jfvilas",
+  "updated": "2026-03-27T15:36:54.353Z",
+  "version": "0.14.2",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2026-03-27T15:36:54.353Z",
+      "version": "0.14.2"
+    },
+    {
+      "date": "2025-11-23T12:33:12.955Z",
+      "version": "0.13.10"
+    },
+    {
+      "date": "2025-11-20T20:37:16.152Z",
+      "version": "0.13.5"
+    },
+    {
+      "date": "2025-11-08T11:24:21.458Z",
+      "version": "0.13.4"
+    },
+    {
+      "date": "2025-11-08T10:35:40.352Z",
+      "version": "0.13.3"
+    },
+    {
+      "date": "2025-11-02T11:59:06.495Z",
+      "version": "0.13.2"
+    },
+    {
+      "date": "2025-11-02T11:44:40.540Z",
+      "version": "0.13.1"
+    },
+    {
+      "date": "2025-11-02T10:51:04.047Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-08-28T18:28:47.825Z",
+      "version": "0.12.8"
+    },
+    {
+      "date": "2025-08-27T19:23:48.699Z",
+      "version": "0.12.7"
+    },
+    {
+      "date": "2025-07-28T19:27:58.950Z",
+      "version": "0.12.6"
+    },
+    {
+      "date": "2025-07-28T19:02:26.167Z",
+      "version": "0.12.5"
+    },
+    {
+      "date": "2025-04-05T19:14:53.740Z",
+      "version": "0.12.4"
+    },
+    {
+      "date": "2025-04-05T18:56:11.144Z",
+      "version": "0.12.3"
+    },
+    {
+      "date": "2025-04-05T15:56:35.763Z",
+      "version": "0.12.2"
+    }
+  ]
+}

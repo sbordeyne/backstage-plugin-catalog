@@ -1,0 +1,29 @@
+{
+  "author": "Etienne Dubois",
+  "created": "2024-02-15T13:07:27.152Z",
+  "deprecated": "",
+  "description": "The test module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend).",
+  "homepage": "https://github.com/edubois/test-plugin#readme",
+  "keywords": [
+    "test"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "etiennedubois1991"
+  ],
+  "name": "@etiennedubois1991/test-plugin",
+  "plugin_id": "",
+  "readme": "# @edubois/backstage-plugin-scaffolder-backend-module-test\n\nThe test module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend).\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "https://github.com/edubois/test-plugin",
+  "role": "frontend-plugin",
+  "scope": "@etiennedubois1991",
+  "updated": "2024-02-15T13:07:27.487Z",
+  "version": "0.2.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-02-15T13:07:27.487Z",
+      "version": "0.2.1"
+    }
+  ]
+}

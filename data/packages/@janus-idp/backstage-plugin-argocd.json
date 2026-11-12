@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2024-05-07T07:08:33.988Z",
+  "deprecated": "",
+  "description": "Welcome to the argocd plugin!",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-argocd",
+  "plugin_id": "",
+  "readme": "# Argocd plugin for Backstage\n\nWelcome to the argocd plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/argocd/deployment-lifecycle](http://localhost:3000/argocd/deployment-lifecycle).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n\n## For Administrators\n\n### Installation and configuration\n\n#### Prerequisites\n\n- Install `@roadiehq/backstage-plugin-argo-cd-backend` plugin using the following command from the root directory\n<!-- configure it by following [Argo CD Backend Plugin docs](https://www.npmjs.com/package/@roadiehq/backstage-plugin-argo-cd-backend) -->\n\n```bash\nyarn workspace app add @roadiehq/backstage-plugin-argo-cd-backend\n```\n\n- Create plugin file for ArgoCD backend in your `packages/backend/src/plugins/` directory.\n\n```ts\n// packages/backend/src/plugins/argocd.ts\n\nimport { createRouter } from '@roadiehq/backstage-plugin-argo-cd-backend';\n\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin({\n  logger,\n  config,\n}: PluginEnvironment) {\n  return await createRouter({ logger, config });\n}\n```\n\n- Modify your backend router to expose the APIs for ArgoCD backend\n\n```ts\n// packages/backend/src/index.ts\n\nimport argocd from './plugins/argocd';\n...\n\nconst argocdEnv = useHotMemoize(module, () => createEnv('argocd'));\n...\napiRouter.use('/argocd', await argocd(argocdEnv));\n```\n\n- add argocd instance information in app.config.yaml\n\n```ts\nargocd:\n  appLocatorMethods:\n    - type: 'config'\n      instances:\n        - name: argoInstance1\n          url: https://argoInstance1.com\n          username: ${ARGOCD_USERNAME}\n          password: ${ARGOCD_PASSWORD}\n        - name: argoInstance2\n          url: https://argoInstance2.com\n          username: ${ARGOCD_USERNAME}\n          password: ${ARGOCD_PASSWORD}\n```\n\n#### How to add argocd frontend plugin to Backstage app\n\n1. Install the Argocd plugin using the following command:\n\n```bash\nyarn workspace app add @janus-idp/backstage-plugin-argocd\n```\n\n2. Add deployment summary and deployment lifecycle compoennt to the `entityPage.tsx` source file:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  ArgocdDeploymentSummary,\n  ArgocdDeploymentLifecycle,\n  isArgocdConfigured,\n} from '@janus-idp/backstage-plugin-argocd';\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={e => Boolean(isArgocdConfigured(e))}>\n        <Grid item sm={12}>\n          <ArgocdDeploymentSummary />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n    ...\n  </Grid>\n);\n\n\nconst cicdcontent = (\n    <EntitySwitch>\n        {/* ... */}\n        {/* highlight-add-start */}\n        ...\n          <EntitySwitch.Case if={e => Boolean(isArgocdConfigured(e))}>\n            <Grid item sm={12}>\n              <ArgocdDeploymentLifecycle />\n            </Grid>\n          </EntitySwitch.Case>\n        {/* highlight-add-end */}\n    </EntitySwitch>\n);\n```\n\n- The following annotation is added to the entity's `catalog-info.yaml` file to enable argocd features in the backstage instance:\n\n  ```yaml\n  annotations:\n    ...\n\n    argocd/app-selector: 'rht-gitops.com/janus-argocd=quarkus-app'\n\n  ```\n\n- To switch between argocd instances, you can use the following annotation\n\n```yaml\n annotations:\n   ...\n    argocd/instance-name: 'argoInstance2'\n```\n\n**_Note: If this annotation is not set, the plugin will defaultto the first argocd instance configured in the `app.config.yaml`_**\n\n## Loading as Dynamic Plugin\n\nTo install this plugin into Red Hat Developer Hub or Janus IDP via Helm use this configuration:\n\n```yaml\nglobal:\n dynamic:\n   includes:\n     - dynamic-plugins.default.yaml\n   plugins:\n      - package: ./dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd-backend-dynamic\n        disabled: false\n        pluginConfig:\n          argocd:\n            username: \"${ARGOCD_USERNAME}\"\n            password: \"${ARGOCD_PASSWORD}\"\n            appLocatorMethods:\n              - type: 'config'\n                instances:\n                  - name: argoInstance1\n                    url: \"${ARGOCD_INSTANCE1_URL}\"\n                    token: \"${ARGOCD_AUTH_TOKEN}\"\n        - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-argocd\n          disabled: false\n          pluginConfig:\n            dynamicPlugins:\n              frontend:\n                janus-idp.backstage-plugin-argocd:\n                  mountPoints:\n                    - mountPoint: entity.page.overview/cards\n                      importName: ArgocdDeploymentSummary\n                      config:\n                        layout:\n                          gridColumnEnd:\n                            lg: \"span 8\"\n                            xs: \"span 12\"\n                        if:\n                          allOf:\n                            - isArgocdAvailable\n                    - mountPoint: entity.page.cd/cards\n                      importName: ArgocdDeploymentLifecycle\n                      config:\n                        layout:\n                          gridColumn: '1 / -1'\n                        if:\n                          allOf:\n                            - isArgocdConfigured\n\n```\n\nThis plugin can be loaded in backstage showcase application as a dynamic plugin.\n\nFollow the below steps -\n\n- Export dynamic plugin assets. This will build and create the static assets for the plugin and put it inside dist-scalprum folder.\n\n`yarn install`\n\n`yarn tsc`\n\n`yarn build`\n\n`yarn export-dynamic`\n\n- Package and copy dist-scalprum folder assets to dynamic-plugins-root folder in showcase application.\n\n```sh\npkg=../plugins/argocd\narchive=$(npm pack $pkg)\ntar -xzf \"$archive\" && rm \"$archive\"\nmv package $(echo $archive | sed -e 's:\\.tgz$::')\n```\n\n- Add the extension point inside the `app-config.yaml` or `app-config.local.yaml` file.\n\n```yaml\ndynamicPlugins:\n  frontend:\n    janus-idp.backstage-plugin-argocd:\n      mountPoints:\n        - mountPoint: entity.page.overview/cards\n          importName: ArgocdDeploymentSummary\n          config:\n            layout:\n              gridColumnEnd:\n                lg: 'span 8'\n                xs: 'span 12'\n            if:\n              allOf:\n                - isArgocdAvailable\n        - mountPoint: entity.page.cd/cards\n          importName: ArgocdDeploymentLifecycle\n          config:\n            layout:\n              gridColumn: '1 / -1'\n            if:\n              allOf:\n                - isArgocdConfigured\n```\n\nFor more detailed explanation on dynamic plugins follow this [doc](https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/dynamic-plugins.md).\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/argocd",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-14T21:33:36.782Z",
+  "version": "1.2.5",
+  "version_count": 36,
+  "versions": [
+    {
+      "date": "2024-11-14T21:33:36.782Z",
+      "version": "1.2.5"
+    },
+    {
+      "date": "2024-08-16T18:46:02.037Z",
+      "version": "1.6.2"
+    },
+    {
+      "date": "2024-08-15T16:10:36.490Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2024-08-09T12:29:41.744Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-08-02T14:45:22.406Z",
+      "version": "1.5.7"
+    },
+    {
+      "date": "2024-08-02T10:30:25.572Z",
+      "version": "1.5.6"
+    },
+    {
+      "date": "2024-08-01T19:25:03.933Z",
+      "version": "1.5.5"
+    },
+    {
+      "date": "2024-07-31T19:43:26.744Z",
+      "version": "1.5.4"
+    },
+    {
+      "date": "2024-07-31T13:36:15.227Z",
+      "version": "1.5.3"
+    },
+    {
+      "date": "2024-07-31T12:03:49.590Z",
+      "version": "1.5.2"
+    },
+    {
+      "date": "2024-07-31T08:28:43.132Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2024-07-30T13:20:13.418Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-07-26T13:39:04.431Z",
+      "version": "1.4.1"
+    },
+    {
+      "date": "2024-07-25T23:12:19.377Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2024-07-23T22:30:48.263Z",
+      "version": "1.3.0"
+    }
+  ]
+}

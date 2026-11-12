@@ -1,0 +1,51 @@
+{
+  "author": "Austin",
+  "created": "2025-11-06T20:10:15.065Z",
+  "deprecated": "",
+  "description": "Backstage plugin to display GitHub organization members",
+  "homepage": "https://github.com/New-Goblins/austin-plugin#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "anorquist"
+  ],
+  "name": "@anorquist/backstage-plugin-austin",
+  "plugin_id": "austin-plugin",
+  "readme": "# Org List Plugin\n\nA Backstage frontend plugin that displays GitHub organization members using inherited authentication.\n\n[![npm version](https://badge.fury.io/js/@anorquist%2Fbackstage-plugin-austin.svg)](https://www.npmjs.com/package/@anorquist/backstage-plugin-austin)\n\n## Features\n\n- Display GitHub organization members in a searchable table\n- Uses inherited GitHub authentication from your Backstage instance\n- No additional configuration required beyond GitHub auth setup\n\n## Installation\n\n### 1. Install the package\n\n```bash\nyarn add @anorquist/backstage-plugin-austin\n```\n\n### 2. Add the plugin to your Backstage app\n\nIn your `packages/app/src/App.tsx`:\n\n```tsx\nimport { AustinPluginPage } from '@anorquist/backstage-plugin-austin';\n\n// Add to your routes:\n<Route path=\"/austin-plugin\" element={<AustinPluginPage />} />\n```\n\n### 3. Add navigation (optional)\n\nIn your `packages/app/src/components/Root/Root.tsx`:\n\n```tsx\nimport ExtensionIcon from '@material-ui/icons/Extension';\n\n// Add to your sidebar:\n<SidebarItem icon={ExtensionIcon} to=\"austin-plugin\" text=\"Org List Plugin\" />\n",
+  "repository": "https://github.com/New-Goblins/austin-plugin",
+  "role": "frontend-plugin",
+  "scope": "@anorquist",
+  "updated": "2025-11-07T19:37:41.802Z",
+  "version": "2.2.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2025-11-07T19:37:41.802Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2025-11-07T18:16:08.193Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2025-11-07T00:03:05.468Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2025-11-06T22:56:39.647Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2025-11-06T21:18:45.389Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2025-11-06T20:10:15.425Z",
+      "version": "0.1.0"
+    }
+  ]
+}

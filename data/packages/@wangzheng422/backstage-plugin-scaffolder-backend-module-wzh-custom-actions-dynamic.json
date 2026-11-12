@@ -1,0 +1,63 @@
+{
+  "author": "",
+  "created": "2024-09-25T12:41:24.393Z",
+  "deprecated": "",
+  "description": "The wzh-custom-actions module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "wangzheng422"
+  ],
+  "name": "@wangzheng422/backstage-plugin-scaffolder-backend-module-wzh-custom-actions-dynamic",
+  "plugin_id": "scaffolder",
+  "readme": "# backstage-plugin-scaffolder-backend-module-wzh-custom-actions\n\nThe wzh-custom-actions module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend).\n\n_This plugin was created through the Backstage CLI_\n\nreference:\n- https://github.com/janus-idp/backstage-plugins/tree/main/plugins/scaffolder-annotator-action\n- https://github.com/janus-idp/backstage-showcase/tree/main/dynamic-plugins/wrappers/backstage-plugin-dynatrace\n- https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/dynamic-plugins.md\n- https://github.com/janus-idp/backstage-plugins/tree/main/plugins/quay-actions\n\n```bash\n\nyarn add --dev @backstage/cli\n\nyarn backstage-cli new\n\n\nyarn add --dev @janus-idp/cli\n\n# yarn add @backstage/cli\n# yarn add @janus-idp/cli\n\nyarn global add @backstage/cli\nyarn global add @janus-idp/cli\n\n# yarn install\n\n\nyarn backstage-cli repo fix --publish\n\nnpm pkg fix\n\n\nyarn tsc\nyarn export-dynamic --no-install --clean\nyarn install --production\n\nnpx \n\nnpm login\n\ncd dist-dynamic \n\nnpm publish\n\ncd ..\n\n```\n\n`@wangzheng422/backstage-plugin-scaffolder-backend-module-wzh-custom-actions-dynamic`",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@wangzheng422",
+  "updated": "2024-09-30T02:46:51.470Z",
+  "version": "0.1.9",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2024-09-30T02:46:51.470Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2024-09-26T12:39:59.696Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2024-09-26T05:20:35.713Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2024-09-26T03:17:22.395Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2024-09-26T02:55:04.439Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-09-26T02:21:26.987Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-09-25T16:01:23.733Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-09-25T15:03:41.530Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-09-25T13:37:45.260Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-09-25T12:41:25.146Z",
+      "version": "0.1.0"
+    }
+  ]
+}

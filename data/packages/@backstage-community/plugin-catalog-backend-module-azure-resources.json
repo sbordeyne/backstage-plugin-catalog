@@ -1,0 +1,82 @@
+{
+  "author": "",
+  "created": "2025-11-06T17:19:44.830Z",
+  "deprecated": "",
+  "description": "The azure-resources backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [
+    "azure",
+    "backstage",
+    "backstage-plugin",
+    "catalog",
+    "plugin",
+    "resources"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-catalog-backend-module-azure-resources",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/azure-resources/plugins/catalog-backend-module-azure-resources",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-10-21T05:52:43.652Z",
+  "version": "0.12.1",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2026-10-21T05:52:43.652Z",
+      "version": "0.12.1"
+    },
+    {
+      "date": "2026-09-29T19:07:27.214Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-07-22T10:36:43.683Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2026-06-23T15:19:33.892Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-06-07T17:38:36.654Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-05-21T16:55:16.189Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-04-20T20:27:31.043Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-04-17T12:45:50.295Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-02-06T12:50:06.090Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-01-28T13:49:19.828Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-01-16T20:17:54.429Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-11-25T17:31:08.735Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-11-06T17:19:45.124Z",
+      "version": "0.2.1"
+    }
+  ]
+}

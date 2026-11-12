@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-09-03T11:25:11.037Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "durandom"
+  ],
+  "name": "@rhdh-parasol/backstage-plugin-scorecard",
+  "plugin_id": "scorecard",
+  "readme": "",
+  "repository": "https://github.com/rhdh-parasol/rhdh-plugins/tree/HEAD/workspaces/scorecard/plugins/scorecard",
+  "role": "frontend-plugin",
+  "scope": "@rhdh-parasol",
+  "updated": "2026-09-03T11:37:39.619Z",
+  "version": "5.0.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-09-03T11:37:39.619Z",
+      "version": "5.0.1"
+    },
+    {
+      "date": "2026-09-03T11:25:11.370Z",
+      "version": "5.0.0"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2025-01-17T09:22:57.113Z",
+  "deprecated": "",
+  "description": "Backstage ChatBot back end plugin",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "allegrotech",
+    "bgalek"
+  ],
+  "name": "@allegro/backstage-plugin-chat-bot-backend",
+  "plugin_id": "chat-bot",
+  "readme": "",
+  "repository": "https://github.com/allegro/backstage-plugins/tree/HEAD/plugins/chat-bot/chat-bot-backend",
+  "role": "backend-plugin",
+  "scope": "@allegro",
+  "updated": "2025-01-17T10:52:58.938Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-01-17T10:52:58.938Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-01-17T09:22:57.405Z",
+      "version": "0.1.0"
+    }
+  ]
+}

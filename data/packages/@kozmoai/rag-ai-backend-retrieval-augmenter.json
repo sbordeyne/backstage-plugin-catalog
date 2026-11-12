@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:24.915Z",
+  "deprecated": "",
+  "description": "This is a base module providing default functionality related to RAG AI indexing embeddings and retrieval of augmentation context. It enables a pluggable AI model initialization in a submodule and provides default, extendable functionality to create, mana",
+  "homepage": "https://github.com/kozmoai/glint-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/rag-ai-backend-retrieval-augmenter",
+  "plugin_id": "",
+  "readme": "# rag-ai-backend-retrieval-augmenter\n\nThis is a base module providing default functionality related to RAG AI indexing embeddings and retrieval of augmentation context. It enables a pluggable AI model initialization in a submodule and provides default, extendable functionality to create, manage, and search embeddings.\n\nIt also contains logic to use the default Backstage search to search for additional context that can be added to the query prompts sent to configured LLMs.\n\nThis module should be configured to be used by injecting use-case specific embeddings, retrieval, post processing and routing implementations.\n\nThe Glint RAG AI backend expects a retrieval pipeline that is used to retrieve augmentation context when querying information from the LLM. This retrieval pipeline retrieves, processes and sorts information based on queries and other information, providing data that can be used to augment the query sent to the LLM.\n\nThis repository provides default retrieval pipeline implementations that can be configured to retrieve as much (or as little ) data as is needed. The pipeline can also be run in a pass-through mode where additional context is not added to the queries and users can interact with the configured LLMs directly.\n\nA bare-bones implementation of the pipeline can be initialized by calling the `DefaultRetrievalPipeline` constructor with an empty configuration object (`{}`).\n\nTo start appending important functionality to the RAG pipeline, it is recommended to start implementing and using routers to define correct augmentation information retrievers and to use post processor with enough logic to rerank, sort, and manipulate the retrieved information. The initial starting point, to use a vector store with optional search functionality, is provided by Glint within this repository. You can get a naive RAG pipeline running this way and start tweaking and configuring the optimal embeddings configuration to provide relevant context for your queries.\n\n```typescript\nconst retrievalPipeline = createDefaultRetrievalPipeline({\n  discovery,\n  logger,\n  vectorStore: augmentationIndexer.vectorStore,\n});\n```\n\n> You are able to get the vector store implementation from your constructed augmentation indexer. See embeddings submodules or `@kozmoai/rag-ai-backend` README for more information\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/backend/rag-ai-backend-embeddings",
+  "role": "backend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:20.206Z",
+  "version": "0.2.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:20.206Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-03-25T22:14:25.171Z",
+      "version": "0.1.0"
+    }
+  ]
+}

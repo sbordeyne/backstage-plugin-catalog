@@ -1,0 +1,63 @@
+{
+  "author": "",
+  "created": "2026-01-21T10:09:14.217Z",
+  "deprecated": "",
+  "description": "Backstage Kubernetes cluster supplier for SpectroCloud Palette",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-spectrocloud-cluster-provider",
+  "plugin_id": "spectrocloud-cluster-provider",
+  "readme": "# spectrocloud-cluster-provider\n\nWelcome to the SpectroCloud Kubernetes cluster provider plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-spectrocloud-cluster-provider/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-spectrocloud-cluster-provider)\n\nThe `spectrocloud-cluster-provider` plugin for Backstage is a Kubernetes cluster supplier that automatically discovers and configures clusters from SpectroCloud Palette. It works alongside existing cluster suppliers (config, catalog, gke, localKubectlProxy) and automatically sets up secure read-only access using service accounts with minimal RBAC permissions.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/spectrocloud-cluster-provider/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.\n",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/spectrocloud-cluster-provider",
+  "role": "backend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:56:41.101Z",
+  "version": "0.15.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2026-10-21T13:56:41.101Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2026-06-30T17:21:55.678Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-06-09T19:08:42.795Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2026-04-16T08:21:38.589Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-03-22T17:02:09.050Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-02-17T20:40:20.953Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-01-28T18:32:16.075Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-01-26T10:38:19.988Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-01-22T15:44:30.915Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-01-21T10:09:14.445Z",
+      "version": "0.2.0"
+    }
+  ]
+}

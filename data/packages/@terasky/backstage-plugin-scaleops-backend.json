@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2026-01-22T15:44:12.631Z",
+  "deprecated": "",
+  "description": "Welcome to the scaleops-backend plugin!",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-scaleops-backend",
+  "plugin_id": "scaleops",
+  "readme": "# scaleops-backend\n\nWelcome to the scaleops-backend plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-scaleops-backend/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-scaleops-backend)\n\nThe `scaleops-backend` plugin for Backstage provides backend API integration with ScaleOps, handling authentication, API proxying, and exposing Model Context Protocol (MCP) actions for AI agents and automation tools. This plugin eliminates the need for frontend CORS configuration and provides secure server-side authentication with ScaleOps.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/scaleops/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.\n",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/scaleops-backend",
+  "role": "backend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:53:06.898Z",
+  "version": "1.11.0",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-10-21T13:53:06.898Z",
+      "version": "1.11.0"
+    },
+    {
+      "date": "2026-07-08T14:08:17.759Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2026-06-30T17:21:03.082Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2026-06-09T19:07:13.788Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2026-04-16T08:20:55.125Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2026-03-22T17:01:25.321Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-03-09T16:52:37.867Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-02-17T20:39:34.840Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-01-28T18:31:33.819Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-01-26T11:05:21.474Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-01-26T10:37:52.262Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-01-22T15:44:12.846Z",
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2023-07-12T16:20:58.314Z",
+  "deprecated": "",
+  "description": "Shared code for utils, types, and React components for the Janus frontend plugins.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/shared-react",
+  "plugin_id": "shared-react",
+  "readme": "# Janus React Common\n\nShared code for utils, types, and React components for the Janus frontend plugins.\n\n## Version bump history\n\n- Bumped to 2.5.5 to re-release changes meant for 2.5.4, which failed due to timeout - see https://github.com/janus-idp/backstage-plugins/issues/1467\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/shared-react",
+  "role": "common-library",
+  "scope": "@janus-idp",
+  "updated": "2025-04-03T13:23:51.259Z",
+  "version": "2.18.0",
+  "version_count": 49,
+  "versions": [
+    {
+      "date": "2025-04-03T13:23:51.259Z",
+      "version": "2.18.0"
+    },
+    {
+      "date": "2025-03-07T12:01:30.555Z",
+      "version": "2.17.0"
+    },
+    {
+      "date": "2025-02-11T13:24:58.687Z",
+      "version": "2.16.0"
+    },
+    {
+      "date": "2025-01-30T21:26:22.090Z",
+      "version": "2.15.0"
+    },
+    {
+      "date": "2024-12-13T07:59:14.527Z",
+      "version": "2.14.1"
+    },
+    {
+      "date": "2024-12-04T16:07:57.552Z",
+      "version": "2.14.0"
+    },
+    {
+      "date": "2024-11-14T21:33:37.098Z",
+      "version": "2.6.5"
+    },
+    {
+      "date": "2024-11-04T12:24:41.411Z",
+      "version": "2.13.1"
+    },
+    {
+      "date": "2024-10-31T22:18:34.809Z",
+      "version": "2.10.4"
+    },
+    {
+      "date": "2024-10-30T20:18:55.723Z",
+      "version": "2.13.0"
+    },
+    {
+      "date": "2024-10-29T18:59:37.547Z",
+      "version": "2.12.1"
+    },
+    {
+      "date": "2024-10-22T21:37:05.854Z",
+      "version": "2.12.0"
+    },
+    {
+      "date": "2024-09-25T12:58:17.347Z",
+      "version": "2.11.1"
+    },
+    {
+      "date": "2024-09-20T03:55:05.905Z",
+      "version": "2.11.0"
+    },
+    {
+      "date": "2024-09-11T06:37:32.466Z",
+      "version": "2.10.3"
+    }
+  ]
+}

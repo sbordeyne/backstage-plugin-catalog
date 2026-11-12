@@ -1,0 +1,112 @@
+{
+  "author": "",
+  "created": "2026-05-20T19:33:03.626Z",
+  "deprecated": "",
+  "description": "This package is part of the BC Data Catalogue Backstage integration.",
+  "homepage": "https://github.com/bcgov/csit-backstage-poc#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "akroon3r",
+    "bc-gov-common-services",
+    "bradenmitchell",
+    "citzcodemvp",
+    "danebenal",
+    "danilomeireles",
+    "dgboss",
+    "fbarreta",
+    "galen.gray",
+    "irfan.charania",
+    "jimmypalelil",
+    "jleach",
+    "jujaga",
+    "kolezhannochka",
+    "mgranbois",
+    "michael.nelson.gov.bc.ca",
+    "mkernohanbc",
+    "nicoledegreef",
+    "omprakashmishra",
+    "parcjason",
+    "paul.howells",
+    "qqnluaq",
+    "sahejmundi",
+    "sheaphillips",
+    "shellyxuehan",
+    "sidmclaughlin",
+    "stoews",
+    "supriya-arora",
+    "taylorfries",
+    "ty2k"
+  ],
+  "name": "@bcgov/plugin-catalog-openapi",
+  "plugin_id": "catalog-openapi",
+  "readme": "# catalog-openapi\n\nThis package is part of the BC Data Catalogue Backstage integration.\n\n👉 **Please refer to the main project README at the root of this repository for installation and usage instructions.**\n\nThis plugin is one part of a multi-package integration and is not intended to be used independently.\n\n---\n\n## Purpose\n\nThe `@bcgov/catalog-openapi` package provides the frontend UI for rendering `OpenAPI` entities in Backstage.\n\nIt is intended to be used from the Backstage **entity page**, not as a standalone route.\n\n---\n\n## How It Is Accessed\n\nThis plugin uses the Backstage entity context and is expected to be rendered through an entity page configuration such as:\n\n```tsx\n<EntitySwitch.Case if={isKind('openapi')} children={<CatalogRestApiPage />} />\n```\n\nIn normal usage, users access this page by opening a `Rest Api` entity from the Backstage catalog.\n\nA direct route such as `/catalog-openapi` does **not** provide entity context and will fail unless additional context wiring is added.\n\n---\n\n## Local Development\n\nThis plugin can still be developed locally, but the standard Backstage usage is through a openapi entity in the catalog.\n\nSee the `./dev` directory for local plugin development setup.\n\n---\n\n## Notes\n\n- This plugin depends on:\n  - `@bcgov/plugin-catalog-common-bc-data-catalogue`\n  - `@bcgov/plugin-catalog-backend-module-bc-data-catalogue`\n- Always follow the main project README when adding this to a Backstage instance\n- Do not document `/catalog-openapi` as the normal access path unless you intentionally add entity context for that route",
+  "repository": "https://github.com/bcgov/csit-backstage-poc/tree/HEAD/plugins/catalog-openapi",
+  "role": "frontend-plugin",
+  "scope": "@bcgov",
+  "updated": "2026-06-03T21:47:12.461Z",
+  "version": "0.2.11-main.893f0530",
+  "version_count": 18,
+  "versions": [
+    {
+      "date": "2026-06-03T21:47:12.461Z",
+      "version": "0.2.11-main.893f0530"
+    },
+    {
+      "date": "2026-06-01T18:14:48.002Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.935bcaf2"
+    },
+    {
+      "date": "2026-06-01T17:03:53.633Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.3140a64f"
+    },
+    {
+      "date": "2026-06-01T16:57:58.034Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.884422b5"
+    },
+    {
+      "date": "2026-05-29T16:47:01.365Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.49bf3524"
+    },
+    {
+      "date": "2026-05-27T19:15:00.737Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.76f29cfa"
+    },
+    {
+      "date": "2026-05-27T18:45:41.520Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.5336a157"
+    },
+    {
+      "date": "2026-05-27T18:16:54.339Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.84605942"
+    },
+    {
+      "date": "2026-05-27T15:39:07.505Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.cb2d711a"
+    },
+    {
+      "date": "2026-05-22T19:44:52.357Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.91b201f2"
+    },
+    {
+      "date": "2026-05-22T18:26:28.782Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.ba12fc56"
+    },
+    {
+      "date": "2026-05-22T16:30:58.822Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.a8871ee9"
+    },
+    {
+      "date": "2026-05-22T15:57:22.423Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.418ebc71"
+    },
+    {
+      "date": "2026-05-21T16:13:01.337Z",
+      "version": "0.2.11-main.bc7f58ec"
+    },
+    {
+      "date": "2026-05-21T16:08:27.403Z",
+      "version": "0.2.10-feature.aps-4589-bump-version.44523cb0"
+    }
+  ]
+}

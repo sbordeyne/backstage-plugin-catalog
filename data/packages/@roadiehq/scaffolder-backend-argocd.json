@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2022-04-19T06:29:14.105Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brianfletcher",
+    "roadie-bot",
+    "roadiehq-david",
+    "xantier"
+  ],
+  "name": "@roadiehq/scaffolder-backend-argocd",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/RoadieHQ/roadie-backstage-plugins/tree/HEAD/plugins/scaffolder-actions/scaffolder-backend-argocd",
+  "role": "backend-plugin-module",
+  "scope": "@roadiehq",
+  "updated": "2026-09-29T13:28:27.758Z",
+  "version": "1.9.0",
+  "version_count": 50,
+  "versions": [
+    {
+      "date": "2026-09-29T13:28:27.758Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2025-10-31T10:42:30.044Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2025-10-31T09:34:09.937Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2025-09-12T09:18:34.876Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2025-07-23T10:21:43.622Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2025-04-01T10:42:39.404Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2025-03-07T13:54:09.402Z",
+      "version": "1.5.2"
+    },
+    {
+      "date": "2025-03-05T08:12:53.620Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2025-01-21T13:55:57.411Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-12-06T08:29:39.036Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2024-11-29T12:47:07.142Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2024-11-20T14:59:19.360Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2024-10-08T07:12:30.336Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2024-09-26T11:00:32.416Z",
+      "version": "1.1.29"
+    },
+    {
+      "date": "2024-08-28T09:41:35.924Z",
+      "version": "1.1.28"
+    }
+  ]
+}

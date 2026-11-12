@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2024-04-25T20:08:18.631Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "bartgolsteijn",
+    "gertjanmaas",
+    "herberttn",
+    "jeroenknoops",
+    "mfklauberg",
+    "nadavsinai",
+    "npalm",
+    "philips-software-fa",
+    "scottguymer"
+  ],
+  "name": "@philips-software/backstage-plugin-upptime-frontend",
+  "plugin_id": "upptime-frontend",
+  "readme": "",
+  "repository": "https://github.com/philips-software/philips-backstage-plugins/tree/HEAD/workspaces/upptime/plugins/upptime-frontend",
+  "role": "frontend-plugin",
+  "scope": "@philips-software",
+  "updated": "2025-01-28T14:17:38.385Z",
+  "version": "2.5.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2025-01-28T14:17:38.385Z",
+      "version": "2.5.0"
+    },
+    {
+      "date": "2025-01-10T10:08:01.761Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2024-12-17T13:03:31.904Z",
+      "version": "2.3.1"
+    },
+    {
+      "date": "2024-08-27T09:14:16.500Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-08-22T15:14:48.574Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-06-24T11:57:09.415Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2024-06-11T18:45:42.558Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-04-26T10:40:12.023Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-04-26T07:15:13.263Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-04-25T20:08:18.882Z",
+      "version": "0.1.0"
+    }
+  ]
+}

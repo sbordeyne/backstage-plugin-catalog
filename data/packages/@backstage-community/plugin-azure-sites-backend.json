@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:20:54.708Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "azure",
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-azure-sites-backend",
+  "plugin_id": "azure-sites",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/azure-sites/plugins/azure-sites-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-04-24T20:29:06.227Z",
+  "version": "0.16.0",
+  "version_count": 24,
+  "versions": [
+    {
+      "date": "2026-04-24T20:29:06.227Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-01-16T09:37:57.550Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2026-01-14T08:35:38.077Z",
+      "version": "0.14.1"
+    },
+    {
+      "date": "2025-12-08T19:03:54.822Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-11-20T12:22:10.827Z",
+      "version": "0.13.1"
+    },
+    {
+      "date": "2025-10-31T14:03:02.614Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-10-06T15:26:11.705Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-08-14T14:12:39.233Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-07-04T10:42:30.364Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-05-11T06:20:38.194Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2025-05-05T13:57:28.389Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-04-11T19:30:35.419Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-02-28T23:40:50.169Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-02-18T13:47:35.979Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2025-02-01T18:26:36.246Z",
+      "version": "0.6.0"
+    }
+  ]
+}

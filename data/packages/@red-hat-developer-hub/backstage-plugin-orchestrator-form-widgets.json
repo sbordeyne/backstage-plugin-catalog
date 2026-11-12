@@ -1,0 +1,95 @@
+{
+  "author": "",
+  "created": "2025-05-20T12:33:59.257Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "orchestrator",
+    "plugin",
+    "rjsf",
+    "widgets",
+    "workflows"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-orchestrator-form-widgets",
+  "plugin_id": "orchestrator-form-widgets",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/orchestrator/plugins/orchestrator-form-widgets",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-10T13:06:30.591Z",
+  "version": "2.4.1",
+  "version_count": 66,
+  "versions": [
+    {
+      "date": "2026-11-10T13:06:30.591Z",
+      "version": "2.4.1"
+    },
+    {
+      "date": "2026-11-04T05:07:48.576Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2026-10-26T16:01:18.330Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2026-10-14T10:50:59.926Z",
+      "version": "2.2.2"
+    },
+    {
+      "date": "2026-09-22T17:10:29.397Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2026-09-08T14:46:38.858Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2026-08-31T14:01:58.248Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2026-08-13T10:29:01.113Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-08-11T22:56:41.810Z",
+      "version": "1.12.1"
+    },
+    {
+      "date": "2026-07-27T06:11:30.189Z",
+      "version": "1.12.0"
+    },
+    {
+      "date": "2026-07-17T12:54:45.546Z",
+      "version": "1.11.3"
+    },
+    {
+      "date": "2026-07-06T15:41:05.863Z",
+      "version": "1.11.2"
+    },
+    {
+      "date": "2026-06-23T08:30:49.053Z",
+      "version": "1.11.1"
+    },
+    {
+      "date": "2026-06-22T08:50:32.889Z",
+      "version": "1.6.10"
+    },
+    {
+      "date": "2026-06-18T05:27:27.543Z",
+      "version": "1.11.0"
+    }
+  ]
+}

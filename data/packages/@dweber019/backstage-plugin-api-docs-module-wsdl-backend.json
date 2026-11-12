@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2023-12-22T10:03:30.155Z",
+  "deprecated": "",
+  "description": "Additional functionalities for the api-docs plugin that renders the output of WSDL",
+  "homepage": "https://github.com/dweber019/backstage-plugins/tree/main/plugins/api-docs-module-wsdl",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "dweber019"
+  ],
+  "name": "@dweber019/backstage-plugin-api-docs-module-wsdl-backend",
+  "plugin_id": "api-docs-module-wsdl",
+  "readme": "# @dweber019/backstage-plugin-api-docs-module-wsdl-doc-backend\n\nBackend for the `@dweber019/backstage-plugin-api-docs-module-wsdl` frontend plugin. Assists in converting WSDL to HTML.\n\n## Setup\n\n```\nyarn --cwd packages/backend add @dweber019/backstage-plugin-api-docs-module-wsdl-backend\n```\n\nThen integrate the plugin using the following default setup for `src/plugins/apiDocsModuleWsdl.ts`:\n\n```ts\nimport { Router } from 'express';\nimport { createRouter } from '@dweber019/backstage-plugin-api-docs-module-wsdl-backend';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter(env);\n}\n```\n\nAnd then add to `packages/backend/src/index.ts`:\n\n```ts\n// In packages/backend/src/index.ts\nimport apiDocsModuleWsdlDoc from './plugins/apiDocsModuleWsdl';\n// ...\nasync function main() {\n  // ...\n  const apiDocsModuleWsdlDocEnv = useHotMemoize(module, () => createEnv('apiDocsModuleWsdl'));\n  // ...\n  apiRouter.use('/api-docs-module-wsdl', await apiDocsModuleWsdlDoc(apiDocsModuleWsdlDocEnv));\n```\n\n### New Backend System\n\nThe backend plugin has support for the [new backend system](https://backstage.io/docs/backend-system/), here's how you can set that up:\n\nIn your `packages/backend/src/index.ts` make the following changes:\n\n```ts\nimport { createBackend } from '@backstage/backend-defaults';\n\nbackend.add(import('@dweber019/backstage-plugin-api-docs-module-wsdl-backend'));\n\nbackend.start();\n```\n\n## Development\n\nThis plugin is based on the work of the [wsdl-viewer](https://github.com/tomi-vanek/wsdl-viewer) and uses\n[SaxonJS](https://www.saxonica.com/saxon-js/index.xml) for the `XSLT` transformation.\n\nIf you like to future improve the `XSLT` you have to make changes to `./wsdl-viewer.xsl` and convert it to a `SEF` file.\n\n```shell\nxslt3 -t -xsl:./wsdl-viewer.xsl -export:./src/stylesheet.sef.json -nogo\n```\n\n## Local development\n\nThere is a local setup at `plugins/api-docs-module-wsdl-backend/dev` which can be started with `yarn --cwd plugins/api-docs-module-wsdl-backend start` from the root.\n\n## License\n\nSaxonJS is free of charge but not open source, you can find the license [here](https://www.saxonica.com/saxon-js/documentation2/index.html#!conditions/public-license).\n",
+  "repository": "https://github.com/dweber019/backstage-plugins/tree/HEAD/plugins/api-docs-module-wsdl-backend",
+  "role": "backend-plugin",
+  "scope": "@dweber019",
+  "updated": "2025-12-19T07:45:21.659Z",
+  "version": "1.1.2",
+  "version_count": 24,
+  "versions": [
+    {
+      "date": "2025-12-19T07:45:21.659Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2025-08-15T06:55:13.942Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2025-06-27T07:33:08.019Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-03-17T20:39:52.155Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2025-01-20T10:42:51.502Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-12-28T22:35:32.541Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-10-21T10:44:55.283Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-09-25T06:28:31.141Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-08-29T20:39:34.778Z",
+      "version": "0.0.15"
+    },
+    {
+      "date": "2024-08-24T21:59:05.361Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2024-07-20T21:52:29.577Z",
+      "version": "0.0.13"
+    },
+    {
+      "date": "2024-07-06T08:23:26.524Z",
+      "version": "0.0.12"
+    },
+    {
+      "date": "2024-06-02T10:36:02.901Z",
+      "version": "0.0.11"
+    },
+    {
+      "date": "2024-05-15T20:15:33.740Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2024-05-04T17:06:26.715Z",
+      "version": "0.0.9"
+    }
+  ]
+}

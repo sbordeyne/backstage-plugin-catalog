@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:24:47.094Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that shows XCode build metrics for your components",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-xcmetrics",
+  "plugin_id": "xcmetrics",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/xcmetrics/plugins/xcmetrics",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-31T16:34:48.709Z",
+  "version": "0.22.0",
+  "version_count": 27,
+  "versions": [
+    {
+      "date": "2026-10-31T16:34:48.709Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-09-23T15:36:35.680Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-09-23T11:18:16.466Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-04-24T18:01:44.528Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-04-03T16:23:19.213Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-02-27T17:49:15.396Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-01-28T22:26:24.101Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-12-24T16:35:03.846Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-11-26T13:15:42.170Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-10-15T18:25:17.501Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-10-06T07:58:47.927Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-08-30T13:48:47.493Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-07-24T12:17:40.139Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-07-04T09:31:38.283Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-05-30T19:57:15.105Z",
+      "version": "0.8.0"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2024-02-27T22:37:21.593Z",
+  "deprecated": "",
+  "description": "The actions module for parse, stringify and quering data from json, yaml and xml.",
+  "homepage": "https://github.com/kode3tech/k3t-backstage-plugin-scaffolder-backend-module-parsings/wiki",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "alansferreira",
+    "kode3tech"
+  ],
+  "name": "@k3tech/backstage-plugin-scaffolder-backend-module-parsings",
+  "plugin_id": "scaffolder",
+  "readme": "# Plugin for scaffolder backend `parsings`\n\nThe parsings module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend).\n\nThis package make you able to parse and extract from `Yaml`, `Xml` and `Json` formats.\n\n## Features\n\n* Parse `Json` from `raw`, `base64`, `file` and `url` sources.\n* Get `Json` results from multiple queries with `Json Path-plus`.\n* Parse and transform `Yaml` and `Xml` files to `Json`.\n\n> You can see all available examples [here](./exemples.md).\n\n## Get Started\n\njust \n```bash\nyarn add @k3tech/backstage-plugin-scaffolder-backend-module-parsings\n```\nand import module on backend\n\n`packages/backend/src/index.ts`\n```ts\n...\nbackend.add(import('@k3tech/backstage-plugin-scaffolder-backend-module-parsings'));\n\n```\n\nyou can check if all actions and examples in is ready on http://localhost:3000/create/actions\n\n\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "http://github.com/kode3tech/k3t-backstage-plugin-scaffolder-backend-module-parsings",
+  "role": "backend-plugin-module",
+  "scope": "@k3tech",
+  "updated": "2025-05-28T22:51:23.763Z",
+  "version": "0.2.38",
+  "version_count": 21,
+  "versions": [
+    {
+      "date": "2025-05-28T22:51:23.763Z",
+      "version": "0.2.38"
+    },
+    {
+      "date": "2025-01-08T12:40:47.865Z",
+      "version": "0.2.33"
+    },
+    {
+      "date": "2024-09-28T01:39:45.829Z",
+      "version": "0.2.30"
+    },
+    {
+      "date": "2024-09-28T01:38:06.589Z",
+      "version": "0.2.29"
+    },
+    {
+      "date": "2024-09-28T01:34:31.902Z",
+      "version": "0.2.28"
+    },
+    {
+      "date": "2024-03-05T13:35:56.048Z",
+      "version": "0.2.27"
+    },
+    {
+      "date": "2024-03-04T17:25:01.194Z",
+      "version": "0.2.26"
+    },
+    {
+      "date": "2024-03-04T17:18:10.761Z",
+      "version": "0.2.25"
+    },
+    {
+      "date": "2024-03-03T18:34:42.699Z",
+      "version": "0.2.23"
+    },
+    {
+      "date": "2024-03-03T18:21:12.982Z",
+      "version": "0.2.22"
+    },
+    {
+      "date": "2024-03-03T18:10:52.990Z",
+      "version": "0.2.20"
+    },
+    {
+      "date": "2024-03-01T14:59:39.109Z",
+      "version": "0.2.19"
+    },
+    {
+      "date": "2024-03-01T14:50:28.444Z",
+      "version": "0.2.18"
+    },
+    {
+      "date": "2024-02-29T15:08:23.005Z",
+      "version": "0.2.17"
+    },
+    {
+      "date": "2024-02-28T15:05:11.867Z",
+      "version": "0.2.16"
+    }
+  ]
+}

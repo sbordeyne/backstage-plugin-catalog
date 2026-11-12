@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2024-04-04T13:20:46.575Z",
+  "deprecated": "",
+  "description": "The veecode-extensions backend module for the scaffolder plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-scaffolder-backend-module-veecode-extensions",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@veecode-platform",
+  "updated": "2025-01-23T14:17:57.111Z",
+  "version": "0.4.4",
+  "version_count": 66,
+  "versions": [
+    {
+      "date": "2025-01-23T14:17:57.111Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2025-01-23T14:09:24.600Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2025-01-22T19:21:00.239Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2024-11-06T16:13:29.779Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2024-11-06T15:07:54.835Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-09-20T14:44:52.577Z",
+      "version": "0.3.18"
+    },
+    {
+      "date": "2024-07-10T17:08:44.590Z",
+      "version": "0.3.17"
+    },
+    {
+      "date": "2024-07-08T20:31:42.333Z",
+      "version": "0.3.16"
+    },
+    {
+      "date": "2024-07-02T19:47:18.653Z",
+      "version": "0.3.15"
+    },
+    {
+      "date": "2024-07-02T12:56:05.894Z",
+      "version": "0.3.14"
+    },
+    {
+      "date": "2024-07-02T12:27:09.125Z",
+      "version": "0.3.13"
+    },
+    {
+      "date": "2024-07-01T15:03:21.520Z",
+      "version": "0.3.12"
+    },
+    {
+      "date": "2024-07-01T13:03:33.857Z",
+      "version": "0.3.11"
+    },
+    {
+      "date": "2024-06-24T15:00:15.486Z",
+      "version": "0.3.10"
+    },
+    {
+      "date": "2024-06-21T19:50:20.549Z",
+      "version": "0.3.9"
+    }
+  ]
+}

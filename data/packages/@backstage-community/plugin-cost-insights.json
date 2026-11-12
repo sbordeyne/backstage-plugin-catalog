@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:19:34.947Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that helps you keep track of your cloud spend",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-cost-insights",
+  "plugin_id": "cost-insights",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/cost-insights/plugins/cost-insights",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:33:19.389Z",
+  "version": "0.33.0",
+  "version_count": 32,
+  "versions": [
+    {
+      "date": "2026-11-03T14:33:19.389Z",
+      "version": "0.33.0"
+    },
+    {
+      "date": "2026-09-24T17:37:10.742Z",
+      "version": "0.32.0"
+    },
+    {
+      "date": "2026-09-23T11:20:18.739Z",
+      "version": "0.31.0"
+    },
+    {
+      "date": "2026-08-29T15:17:54.482Z",
+      "version": "0.30.0"
+    },
+    {
+      "date": "2026-07-03T17:38:23.939Z",
+      "version": "0.29.1"
+    },
+    {
+      "date": "2026-06-24T13:26:09.873Z",
+      "version": "0.29.0"
+    },
+    {
+      "date": "2026-04-17T18:37:24.608Z",
+      "version": "0.28.0"
+    },
+    {
+      "date": "2026-02-20T20:53:36.449Z",
+      "version": "0.27.0"
+    },
+    {
+      "date": "2026-01-28T22:59:12.728Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-01-27T00:47:27.057Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-01-20T16:20:40.901Z",
+      "version": "0.24.1"
+    },
+    {
+      "date": "2025-12-24T23:00:26.611Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2025-11-28T21:03:35.407Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2025-11-13T15:16:26.223Z",
+      "version": "0.22.1"
+    },
+    {
+      "date": "2025-10-17T20:42:43.171Z",
+      "version": "0.22.0"
+    }
+  ]
+}

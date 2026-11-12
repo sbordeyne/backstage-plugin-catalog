@@ -1,0 +1,93 @@
+{
+  "author": "The Backstage Community",
+  "created": "2023-10-17T10:09:58.267Z",
+  "deprecated": "",
+  "description": "This plugin provides an opinionated implementation of the Backstage Analytics API for Matomo Analytics. Once installed and configured, analytics events will be sent to Matomo as your users navigate and use your Backstage instance.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-analytics-module-matomo",
+  "plugin_id": "analytics-module-matomo",
+  "readme": "# Analytics Module: Matomo Analytics\n\nThis plugin provides an opinionated implementation of the Backstage Analytics\nAPI for Matomo Analytics. Once installed and configured, analytics events will\nbe sent to Matomo as your users navigate and use your Backstage instance.\n\nThis module is made to work with backstage's built-in analytics plugin. The usage guide to start tracking analytics for your plugins can be found here: https://backstage.io/docs/plugins/analytics/\n\n## Installation\n\n1. Install the plugin package in your Backstage app:\n\n```sh\n# From your Backstage root directory\nyarn add --cwd packages/app @janus-idp/backstage-plugin-analytics-module-matomo\n```\n\n2. Wire up the API implementation to your App:\n\n```tsx\n// packages/app/src/apis.ts\nimport {\n  analyticsApiRef,\n  configApiRef,\n  identityApiRef,\n} from '@backstage/core-plugin-api';\n\nimport { MatomoAnalytics } from '@janus-idp/backstage-plugin-analytics-module-matomo';\n\nexport const apis: AnyApiFactory[] = [\n  // Instantiate and register the Matomo Analytics API Implementation.\n  createApiFactory({\n    api: analyticsApiRef,\n    deps: { configApi: configApiRef },\n    factory: ({ configApi }) => MatomoAnalytics.fromConfig(configApi),\n  }),\n];\n```\n\n3. Configure the plugin in your `app-config.yaml`:\n\nThe following is the minimum configuration required to start sending analytics\nevents to Matomo. All that's needed is your Matomo Host and Site Id:\n\n```yaml\n# app-config.yaml\napp:\n  analytics:\n    matomo:\n      host: ${ANALYTICS_MATOMO_INSTANCE_URL}\n      siteId: ${ANALYTICS_MATOMO_SITE_ID}\n```\n\n4. Update CSP in your `app-config.yaml`:(optional)\n\nThe following is the minimal content security policy required to load scripts from your Matomo Instance.\n\n```yaml\nbackend:\n  csp:\n    connect-src: [\"'self'\", 'http:', 'https:']\n    # Add these two lines below\n    script-src: [\"'self'\", \"'unsafe-eval'\", '<matomo-instance-url>']\n```\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/analytics-module-matomo",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-04T12:24:08.864Z",
+  "version": "1.8.1",
+  "version_count": 48,
+  "versions": [
+    {
+      "date": "2024-11-04T12:24:08.864Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2024-10-30T20:18:24.130Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2024-10-29T18:59:28.898Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2024-10-22T21:36:44.464Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2024-10-09T17:19:54.726Z",
+      "version": "1.6.5"
+    },
+    {
+      "date": "2024-10-08T18:22:51.548Z",
+      "version": "1.6.4"
+    },
+    {
+      "date": "2024-10-08T06:25:38.295Z",
+      "version": "1.6.3"
+    },
+    {
+      "date": "2024-10-01T18:20:49.640Z",
+      "version": "1.6.2"
+    },
+    {
+      "date": "2024-09-25T12:42:37.890Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2024-09-20T03:33:12.236Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-09-19T16:44:14.975Z",
+      "version": "1.5.3"
+    },
+    {
+      "date": "2024-08-16T18:44:36.444Z",
+      "version": "1.5.2"
+    },
+    {
+      "date": "2024-08-15T16:09:11.599Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2024-07-25T23:10:37.427Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-07-23T22:29:04.435Z",
+      "version": "1.4.0"
+    }
+  ]
+}

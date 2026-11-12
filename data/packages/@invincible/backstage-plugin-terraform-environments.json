@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-05-15T12:59:41.063Z",
+  "deprecated": "",
+  "description": "This plugin allows managing ephemeral Terraform environments using GitHub Issues and Actions.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "invincible"
+  ],
+  "name": "@invincible/backstage-plugin-terraform-environments",
+  "plugin_id": "terraform-environments",
+  "readme": "# Backstage Terraform Environments Plugin\n\nThis plugin allows managing ephemeral Terraform environments using GitHub Issues and Actions.\n\n## Features\n\n- List all Terraform environments\n- View environment details and status\n- Destroy environments that are no longer needed\n- Integration with GitHub Issues for tracking\n- Integration with GitHub Actions for provisioning and destruction\n\n## Installation\n\n1. Install the plugin in your Backstage app:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @invincible/backstage-plugin-terraform-environments\n```\n\n2. Configure the plugin in your `app-config.yaml`:\n\n```yaml\nterraformenvironments:\n  defaultowner: your-github-org-name\n  defaultrepo: your-repo-name\n```\n\n3. Add the plugin API factory to your `packages/app/src/apis.ts`:\n\n```typescript\nimport { \n  createApiFactory,\n  configApiRef,\n} from '@backstage/core-plugin-api';\nimport { scmAuthApiRef } from '@backstage/integration-react';\nimport { \n  terraformEnvironmentsApiRef,\n  createTerraformEnvironmentsApi \n} from '@invincible/backstage-plugin-terraform-environments';\n\nexport const apis = [\n  // ... existing API factories\n  \n  // Add the Terraform Environments API\n  createApiFactory({\n    api: terraformEnvironmentsApiRef,\n    deps: { scmAuthApi: scmAuthApiRef },\n    factory: ({ scmAuthApi }) => createTerraformEnvironmentsApi(scmAuthApi),\n  }),\n];\n```\n\n4. Add the plugin page to your `packages/app/src/App.tsx`:\n\n```typescript\nimport { TerraformEnvironmentsPage } from '@invincible/backstage-plugin-terraform-environments';\n\n// In your routes:\n<Route path=\"/terraform-environments\" element={<TerraformEnvironmentsPage />} />\n```\n\n## GitHub Configuration\n\nThe plugin requires GitHub authentication to be set up in your Backstage instance:\n\n1. Create a GitHub App or Personal Access Token with the following permissions:\n   - `repo` (full access to repositories)\n   - `workflow` (ability to trigger workflows)\n\n2. Configure GitHub authentication in your `app-config.yaml`:\n\n```yaml\nintegrations:\n  github:\n    - host: github.com\n      token: ${GITHUB_TOKEN}\n```\n\n## GitHub Action Workflows\n\nThe plugin works with two GitHub Action workflows:\n\n1. **terraform-pr.yml**: Creates environments when PR is opened\n2. **destroy-environment.yml**: Destroys environments when requested\n\nThese workflows should be placed in `.github/workflows/` in your infrastructure repository.\n\n## Troubleshooting\n\nIf you encounter any issues with the plugin:\n\n1. Check your browser console for error messages\n2. Verify that the GitHub token has the required permissions\n3. Make sure your `app-config.yaml` has the correct configuration\n4. Check that the GitHub repository exists and is accessible\n\n## Contributing\n\nContributions are welcome! Please feel free to submit a Pull Request. ",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@invincible",
+  "updated": "2025-05-19T12:07:14.644Z",
+  "version": "0.44.0",
+  "version_count": 40,
+  "versions": [
+    {
+      "date": "2025-05-19T12:07:14.644Z",
+      "version": "0.44.0"
+    },
+    {
+      "date": "2025-05-19T11:55:55.056Z",
+      "version": "0.43.0"
+    },
+    {
+      "date": "2025-05-19T11:50:56.807Z",
+      "version": "0.42.0"
+    },
+    {
+      "date": "2025-05-19T11:41:50.144Z",
+      "version": "0.41.0"
+    },
+    {
+      "date": "2025-05-19T11:27:24.296Z",
+      "version": "0.40.0"
+    },
+    {
+      "date": "2025-05-19T11:23:24.589Z",
+      "version": "0.39.0"
+    },
+    {
+      "date": "2025-05-19T11:18:17.989Z",
+      "version": "0.38.0"
+    },
+    {
+      "date": "2025-05-19T11:13:40.976Z",
+      "version": "0.37.0"
+    },
+    {
+      "date": "2025-05-19T11:05:29.017Z",
+      "version": "0.35.0"
+    },
+    {
+      "date": "2025-05-19T11:03:35.175Z",
+      "version": "0.34.0"
+    },
+    {
+      "date": "2025-05-19T10:54:57.017Z",
+      "version": "0.33.0"
+    },
+    {
+      "date": "2025-05-19T10:51:28.047Z",
+      "version": "0.32.0"
+    },
+    {
+      "date": "2025-05-19T10:45:26.194Z",
+      "version": "0.31.0"
+    },
+    {
+      "date": "2025-05-19T10:43:17.586Z",
+      "version": "0.30.0"
+    },
+    {
+      "date": "2025-05-19T10:36:03.217Z",
+      "version": "0.29.0"
+    }
+  ]
+}

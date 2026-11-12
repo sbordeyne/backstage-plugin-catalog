@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-07-04T16:24:54.711Z",
+  "deprecated": "",
+  "description": "Search backend module that indexes roadmap features in Backstage search",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "rothenbergt"
+  ],
+  "name": "@rothenbergt/backstage-plugin-search-backend-module-roadmap",
+  "plugin_id": "search",
+  "readme": "# @rothenbergt/backstage-plugin-search-backend-module-roadmap\n\nA search backend module that indexes roadmap features from\n[`@rothenbergt/backstage-plugin-roadmap-backend`](https://www.npmjs.com/package/@rothenbergt/backstage-plugin-roadmap-backend)\ninto Backstage global search. Searching for a feature title or description\ntakes you straight to that feature's details drawer on the roadmap board.\n\n## Installation\n\n```\nyarn add @rothenbergt/backstage-plugin-search-backend-module-roadmap --cwd packages/backend\n```\n\nAdd the module to your `packages/backend/src/index.ts`:\n\n```typescript\nbackend.add(import('@backstage/plugin-search-backend'));\nbackend.add(\n  import('@rothenbergt/backstage-plugin-search-backend-module-roadmap'),\n);\n```\n\nThe roadmap backend plugin must also be installed.\n\n## Configuration\n\nThe collator runs every 10 minutes by default. Override the schedule in\n`app-config.yaml` if you like:\n\n```yaml\nsearch:\n  collators:\n    roadmap:\n      schedule:\n        frequency: { minutes: 30 }\n        timeout: { minutes: 5 }\n        initialDelay: { seconds: 10 }\n```\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@rothenbergt",
+  "updated": "2026-07-05T11:05:24.647Z",
+  "version": "0.2.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-07-05T11:05:24.647Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-07-04T16:24:54.934Z",
+      "version": "0.2.0"
+    }
+  ]
+}

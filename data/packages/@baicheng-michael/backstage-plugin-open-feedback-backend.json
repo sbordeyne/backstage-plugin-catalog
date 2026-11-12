@@ -1,0 +1,50 @@
+{
+  "author": "",
+  "created": "2024-07-09T16:54:38.148Z",
+  "deprecated": "",
+  "description": "This plugin serves as the backend for OpenFeedback.",
+  "homepage": "https://github.com/Baicheng-MiQ/backstage-open-feedback#readme",
+  "keywords": [
+    "backend",
+    "backstage",
+    "backstage-plugin",
+    "feedback",
+    "open-source",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "baicheng-michael"
+  ],
+  "name": "@baicheng-michael/backstage-plugin-open-feedback-backend",
+  "plugin_id": "open-feedback",
+  "readme": "# OpenFeedback Backend\n\nThis plugin serves as the backend for OpenFeedback.\n\n## Adding the OpenFeedback Backend to your Backstage Application\n\nTo add the OpenFeedback backend to your Backstage application, you need to add the following code to your `packages/backend/src/plugins/index.ts` file:\n\n```typescript\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n\n// Other plugins\nbackend.add(import('@baicheng-michael/backstage-plugin-open-feedback-backend'));\n\nbackend.start();\n```\n",
+  "repository": "https://github.com/Baicheng-MiQ/backstage-open-feedback",
+  "role": "backend-plugin",
+  "scope": "@baicheng-michael",
+  "updated": "2024-07-16T13:05:26.992Z",
+  "version": "0.2.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-07-16T13:05:26.992Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2024-07-12T21:20:04.776Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2024-07-10T12:27:36.818Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2024-07-10T12:20:18.133Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-07-09T16:54:38.502Z",
+      "version": "0.2.0"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2026-04-19T10:51:44.354Z",
+  "deprecated": "",
+  "description": "A Backstage scaffolder field extension that validates form input against any backend API before submission.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "thecodingsheikh"
+  ],
+  "name": "@thecodingsheikh/backstage-plugin-scaffolder-field-validator",
+  "plugin_id": "scaffolder-field-validator",
+  "readme": "# scaffolder-field-validator\n\nA Backstage scaffolder field extension that validates form input against any backend API before submission.\n\nIt works as a hidden field that watches another form field, calls an API when the value changes, and blocks submission if the validation fails.\n\n## Install\n\n```bash\nyarn add @thecodingsheikh/backstage-plugin-scaffolder-field-validator\n```\n\nRegister the extension in your `App.tsx`:\n\n```tsx\nimport { ScaffolderFieldValidatorExtension } from '@thecodingsheikh/backstage-plugin-scaffolder-field-validator';\n\n<Route path=\"/create\" element={<ScaffolderPage />}>\n  <ScaffolderFieldValidatorExtension />\n</Route>\n```\n\n## Config\n\n| Field | Required | Description |\n|---|---|---|\n| `watchField` | yes | The form field to watch for changes |\n| `apiPath` | yes | Backend API path. First segment is the plugin ID (e.g. `catalog/entities` calls `discoveryApi.getBaseUrl('catalog')` + `/entities`) |\n| `params` | no | Query parameters. Values support `{{value}}` (watched field) and `{{fieldName}}` (other form fields) |\n| `jmesPath` | no | [JMESPath](https://jmespath.org/) expression evaluated against the API response. Truthy result = validation fails. If omitted, fails when response is a non-empty array or truthy value |\n| `errorMessage` | no | Error message shown on failure. Supports `{{value}}` |\n| `skipIfUnchanged` | no | For use in the embedded form provided by [`@thecodingsheikh/backstage-plugin-entity-scaffolder`](https://www.npmjs.com/package/@thecodingsheikh/backstage-plugin-entity-scaffolder) |\n\n## Examples\n\n### Check if a component already exists in the catalog\n\n```yaml\nparameters:\n  - title: Component Info\n    properties:\n      name:\n        type: string\n        title: Component Name\n      nameValidator:\n        type: string\n        ui:field: ScaffolderFieldValidator\n        ui:options:\n          watchField: name\n          apiPath: catalog/entities\n          params:\n            filter: \"kind=Component,metadata.name={{value}}\"\n          jmesPath: \"length(@) > `0`\"\n          errorMessage: \"Component '{{value}}' already exists\"\n```\n\n### Check if a group exists before using it as owner\n\n```yaml\nparameters:\n  - title: Ownership\n    properties:\n      owner:\n        type: string\n        title: Owner Group\n      ownerValidator:\n        type: string\n        ui:field: ScaffolderFieldValidator\n        ui:options:\n          watchField: owner\n          apiPath: catalog/entities\n          params:\n            filter: \"kind=Group,metadata.name={{value}}\"\n          jmesPath: \"length(@) == `0`\"\n          errorMessage: \"Group '{{value}}' does not exist\"\n```\n\n### Validate against an external API via proxy\n\n```yaml\nparameters:\n  - title: Project Setup\n    properties:\n      projectName:\n        type: string\n        title: Project Name\n      projectValidator:\n        type: string\n        ui:field: ScaffolderFieldValidator\n        ui:options:\n          watchField: projectName\n          apiPath: proxy/my-api/projects/{{value}}\n          jmesPath: \"status == 'archived'\"\n          errorMessage: \"Project '{{value}}' is archived\"\n```\n\n### Numeric comparison\n\n```yaml\nparameters:\n  - title: Resources\n    properties:\n      replicas:\n        type: number\n        title: Replicas\n      replicaValidator:\n        type: string\n        ui:field: ScaffolderFieldValidator\n        ui:options:\n          watchField: replicas\n          apiPath: proxy/cluster-api/capacity\n          jmesPath: \"available < `{{value}}`\"\n          errorMessage: \"Not enough cluster capacity for {{value}} replicas\"\n```\n\n### Check if a name is in a reserved list\n\n```yaml\nparameters:\n  - title: Details\n    properties:\n      name:\n        type: string\n        title: Name\n      reservedCheck:\n        type: string\n        ui:field: ScaffolderFieldValidator\n        ui:options:\n          watchField: name\n          apiPath: proxy/my-api/reserved-names\n          jmesPath: \"contains(@, '{{value}}')\"\n          errorMessage: \"'{{value}}' is a reserved name\"\n```\n\n### Use other form fields in the API call\n\n```yaml\nparameters:\n  - title: Details\n    properties:\n      environment:\n        type: string\n        title: Environment\n        enum: [dev, staging, prod]\n      name:\n        type: string\n        title: Service Name\n      nameValidator:\n        type: string\n        ui:field: ScaffolderFieldValidator\n        ui:options:\n          watchField: name\n          apiPath: proxy/my-api/services\n          params:\n            env: \"{{environment}}\"\n            name: \"{{value}}\"\n          jmesPath: \"length(@) > `0`\"\n          errorMessage: \"'{{value}}' already exists in this environment\"\n```\n\n### Multiple validations on the same field\n\nAdd multiple hidden validator fields, each with its own rule:\n\n```yaml\nparameters:\n  - title: Details\n    properties:\n      name:\n        type: string\n        title: Component Name\n      nameExistsCheck:\n        type: string\n        ui:field: ScaffolderFieldValidator\n        ui:options:\n          watchField: name\n          apiPath: catalog/entities\n          params:\n            filter: \"kind=Component,metadata.name={{value}}\"\n          jmesPath: \"length(@) > `0`\"\n          errorMessage: \"Component '{{value}}' already exists\"\n      nameReservedCheck:\n        type: string\n        ui:field: ScaffolderFieldValidator\n        ui:options:\n          watchField: name\n          apiPath: proxy/my-api/reserved-names\n          jmesPath: \"contains(@, '{{value}}')\"\n          errorMessage: \"'{{value}}' is reserved\"\n```\n\n## How it works\n\n1. The hidden field watches `watchField` for changes\n2. When the value changes, it calls `GET <apiPath>?<params>`\n3. If `jmesPath` is set, it evaluates the expression against the response\n4. If the result is truthy (`true`, non-empty array, non-null value), validation fails\n5. On form submission, the error message is shown and submission is blocked\n\nThe API path is resolved using Backstage's `discoveryApi` — the first path segment is treated as the plugin ID. For example, `catalog/entities` resolves to `discoveryApi.getBaseUrl('catalog')` + `/entities`.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@thecodingsheikh",
+  "updated": "2026-10-26T07:15:24.959Z",
+  "version": "1.4.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-10-26T07:15:24.959Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2026-10-26T06:50:35.950Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-04-21T17:38:24.042Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-04-21T08:05:33.080Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-04-20T00:48:33.035Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-04-19T10:51:44.645Z",
+      "version": "1.0.0"
+    }
+  ]
+}

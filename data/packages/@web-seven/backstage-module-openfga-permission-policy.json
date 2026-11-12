@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-01-27T17:41:26.734Z",
+  "deprecated": "",
+  "description": "The permission-policy backend module for the permission plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "evgheni"
+  ],
+  "name": "@web-seven/backstage-module-openfga-permission-policy",
+  "plugin_id": "backstage-module-openfga-permission-policy",
+  "readme": "# @web-seven/backstage-plugin-permission-backend-module-permission-policy\n\nThe permission-policy backend module for the permission plugin.\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@web-seven",
+  "updated": "2026-11-10T13:02:04.822Z",
+  "version": "0.2.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-11-10T13:02:04.822Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-01-27T17:41:27.036Z",
+      "version": "0.1.2"
+    }
+  ]
+}

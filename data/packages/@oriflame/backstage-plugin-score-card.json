@@ -1,0 +1,91 @@
+{
+  "author": "",
+  "created": "2022-09-20T15:46:08.944Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/Oriflame/backstage-plugins/tree/main/plugins/score-card",
+  "keywords": [
+    "backstage",
+    "scoring"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cfmano",
+    "jakubmazanec",
+    "jan.novotny.oriflame",
+    "ondrej_langr.oriflame",
+    "ori-development",
+    "samanekm"
+  ],
+  "name": "@oriflame/backstage-plugin-score-card",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/Oriflame/backstage-plugins/tree/HEAD/plugins/score-card",
+  "role": "frontend-plugin",
+  "scope": "@oriflame",
+  "updated": "2024-10-03T18:23:09.078Z",
+  "version": "0.9.1",
+  "version_count": 19,
+  "versions": [
+    {
+      "date": "2024-10-03T18:23:09.078Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2024-04-26T20:58:49.782Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2024-01-22T20:36:45.215Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2023-12-09T15:59:33.221Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2023-04-24T06:56:33.204Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2023-03-13T14:45:39.613Z",
+      "version": "0.6.3"
+    },
+    {
+      "date": "2023-01-23T13:18:37.185Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2023-01-11T17:51:48.956Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2023-01-10T12:34:52.756Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2022-12-06T22:01:32.903Z",
+      "version": "0.5.7"
+    },
+    {
+      "date": "2022-12-06T19:01:46.986Z",
+      "version": "0.5.6"
+    },
+    {
+      "date": "2022-12-06T13:30:38.416Z",
+      "version": "0.5.5"
+    },
+    {
+      "date": "2022-10-20T09:33:55.622Z",
+      "version": "0.5.4"
+    },
+    {
+      "date": "2022-09-29T16:28:27.391Z",
+      "version": "0.5.3"
+    },
+    {
+      "date": "2022-09-27T12:09:56.367Z",
+      "version": "0.5.2"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "author": "Gibson Smith",
+  "created": "2024-12-05T00:37:09.072Z",
+  "deprecated": "",
+  "description": "Sharing Fish Space Telescope",
+  "homepage": "https://github.com/sharing-fish/SFST#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "gibsmith619"
+  ],
+  "name": "@sharing-fish/sfst",
+  "plugin_id": "sfst",
+  "readme": "# sfst\n\nWelcome to the sfst plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/sfst](http://localhost:3000/sfst).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/sharing-fish/SFST/tree/HEAD/.",
+  "role": "frontend-plugin",
+  "scope": "@sharing-fish",
+  "updated": "2024-12-06T22:39:30.787Z",
+  "version": "0.0.5",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-12-06T22:39:30.787Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2024-12-06T02:29:41.811Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-12-06T01:24:41.871Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2024-12-05T00:37:09.403Z",
+      "version": "0.1.0"
+    }
+  ]
+}

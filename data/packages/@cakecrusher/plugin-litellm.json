@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2025-03-05T06:56:34.691Z",
+  "deprecated": "",
+  "description": "Integrates LiteLLM's key management system into Backstage, enabling teams to generate, track, and manage API keys for LLM services with budget controls and usage monitoring in a centralized interface.",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "cakecrusher"
+  ],
+  "name": "@cakecrusher/plugin-litellm",
+  "plugin_id": "litellm",
+  "readme": "# LiteLLM Plugin for Backstage\n\nThis plugin integrates LiteLLM key management functionality into your Backstage instance, allowing users to generate and manage API keys for LiteLLM services directly from the Backstage UI.\n\nhttps://youtu.be/V9RXk5SJcCo\n\n![image](https://github.com/user-attachments/assets/bcd3daed-029c-42c0-90d6-43996d7bf127)\n\n\n## Features\n\n- Generate LiteLLM API keys with custom names\n- Support for budget/profile selection for generated keys\n- Configurable budget requirement setting\n- Instant code samples for different programming languages\n- Copy-to-clipboard functionality for keys and code samples\n\n## Installation\n\nFrom your Backstage root directory:\n```bash\nyarn add --cwd packages/app @cakecrusher/plugin-litellm\n```\n\n## Configuration\n\nAdd the following to your `app-config.yaml`:\n```yaml\napp:\n  litellm:\n    apiKey: 'your-organization-api-key' # Your LiteLLM admin/organization API key\n    baseUrl: 'https://your-litellm-instance.com' # URL to your LiteLLM instance\n    budgetRequired: false # Set to true if budget selection should be mandatory\n```\n\n## Adding to your Backstage application\n\n### Add the plugin to your app\n\nAdd the LiteLLM page to your Backstage application by modifying your `packages/app/src/App.tsx` file:\n\n```tsx\nimport { LitellmPage } from '@cakecrusher/plugin-litellm';\n\n// Inside your App component's route definitions:\n<Route path=\"/litellm\" element={<LitellmPage />} />\n```\n\n### Add a navigation item (optional)\n\nModify your `packages/app/src/components/Root/Root.tsx` to add a navigation item:\n\n```tsx\nimport SmartToyIcon from '@material-ui/icons/Train';\n\n// Inside your sidebar items:\n<SidebarItem icon={SmartToyIcon} to=\"litellm\" text=\"LiteLLM Keys\" />\n```\n\n## Usage\n\nOnce installed and configured, users can:\n\n1. Navigate to the LiteLLM page\n2. Enter a name for their API key\n3. Select a budget/profile (if applicable)\n4. Generate a key\n5. Copy the generated key\n6. Use provided code samples to integrate with their applications\n\n## License\n\nApache-2.0\n\n## Additional Resources\n\n- [LiteLLM Documentation](https://docs.litellm.ai/)\n- [Backstage Plugin Documentation](https://backstage.io/docs/plugins/)\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@cakecrusher",
+  "updated": "2025-03-05T07:47:43.047Z",
+  "version": "0.1.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2025-03-05T07:47:43.047Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-03-05T07:34:16.139Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-03-05T07:33:06.390Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-03-05T07:15:20.570Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-03-05T06:56:34.985Z",
+      "version": "0.1.0"
+    }
+  ]
+}

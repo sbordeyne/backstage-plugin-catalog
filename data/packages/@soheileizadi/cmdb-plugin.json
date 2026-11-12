@@ -1,0 +1,33 @@
+{
+  "author": "Soheil Eizadi",
+  "created": "2021-02-18T00:11:33.249Z",
+  "deprecated": "",
+  "description": "Backstage CMDB Plugin",
+  "homepage": "https://github.com/seizadi/cmdb-plugin#readme",
+  "keywords": [
+    "backstage",
+    "cd",
+    "ci",
+    "cmdb",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "seizadi"
+  ],
+  "name": "@soheileizadi/cmdb-plugin",
+  "plugin_id": "",
+  "readme": "# @backstage/plugin-cmdb\n\nA frontend for [CMDB-service](https://github.com/seizadi/cmdb), this plugin allows you to \napplications that are managed by CMDB backend.\n\nThis is an experimental plugin to understand how to integrate with\nbackstage echo system.\n\n## Introduction\n\n\n## Getting Started\n\nTo get started, you will need a running instance \nof [`CMDB-service`](https://github.com/seizadi/cmdb).\nIt's likely you will need to [enable CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) \nto integrate with Backstage. I am hoping that I can use the\nbackend proxy and avoid this need.\n\nWhen you have an instance running that Backstage can hook into, \nfirst install the plugin into your app:\n\n***For now I am building the plugin into the tree, later I will play\naround with building it as a package and try the following:***\n```sh\n$ yarn add @backstage/plugin-cmdb\n```\n\nThen make sure to export the plugin in\nyour app's [`plugins.ts`](https://github.com/backstage/backstage/blob/master/packages/app/src/plugins.ts)\nto enable the plugin:\n\n```js\nexport { plugin as CmdbPlugin } from 'cmdb-plugin';\n```\n\nSo for now since I don't have the package I will reference it directly\nand see if things work:\n```js\nexport { plugin as CmdbPlugin } from '../../../plugins/cmdb/src';\n```\n\nModify your app routes in `App.tsx` to include the Router component exported from the plugin, for example:\n\nSimilarly reference the CMDB Router directly:\n```js\nexport { Router as CmdbRouter } from '../../../plugins/cmdb/src';\n```\n```tsx\n// At the top imports\nimport { Router as LighthouseRouter } from '@backstage/plugin-lighthouse';\n\n// Inside App component\n<Routes>\n  // ...\n  <Route path=\"/cmdb/*\" element={<CmdbRouter />} />\n  // ...\n</Routes>;\n```\n\nThen configure the `cmdb-service` URL in your [`app-config.yaml`](https://github.com/backstage/backstage/blob/master/app-config.yaml).\n\n```yaml\ncmdb:\n  baseUrl: http://your-service-url\n```\n\n## Integration with the Catalog\n\nThe Lighthouse plugin can be integrated into the catalog so that Lighthouse audit information relating to a component\ncan be displayed within that component's entity page. In order to link an Entity to its Lighthouse audits, the entity\nmust be annotated as follows:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    # ...\n    lighthouse.com/website-url: # A single website url e.g. https://backstage.io/\n```\n\n> NOTE: The plugin only supports one website URL per component at this time.\n\nAdd a **Cmdb tab** to the EntityPage:\n\nSimilarly reference the CMDB Router directly:\n```js\nexport { EmbeddedRouter as CmdbRouter } from '../../../plugins/cmdb/src';\n````\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { EmbeddedRouter as CmdbRouter } from '@backstage/plugin-cmdb';\n\n// ...\nconst WebsiteEntityPage = ({ entity }: { entity: Entity }) => (\n  <EntityPageLayout>\n    // ...\n    <EntityPageLayout.Content\n      path=\"/lighthouse/*\"\n      title=\"Lighthouse\"\n      element={<LighthouseRouter entity={entity} />}\n    />\n  </EntityPageLayout>\n);\n```\n\n> NOTE: The embedded router renders page content without a header section allowing it to be rendered within a\n> catalog plugin page.\n\nAdd a **Lighthouse card** to the overview tab on the EntityPage:\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  LastCmdbhouseAuditCard,\n  isPluginApplicableToEntity as isCmdbAvailable,\n} from '@backstage/plugin-lighthouse';\n\n// ...\n\nconst OverviewContent = ({ entity }: { entity: Entity }) => (\n  <Grid container spacing={3}>\n    // ...\n    {isCmdbAvailable(entity) && (\n      <Grid item sm={4}>\n        <LastCmdbAuditCard />\n      </Grid>\n    )}\n  </Grid>\n);\n```\n\n## Development\n\n```bash\nnpm publish\n```\n",
+  "repository": "https://github.com/seizadi/cmdb-plugin",
+  "role": "",
+  "scope": "@soheileizadi",
+  "updated": "2021-02-18T00:11:33.617Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2021-02-18T00:11:33.617Z",
+      "version": "0.1.0"
+    }
+  ]
+}

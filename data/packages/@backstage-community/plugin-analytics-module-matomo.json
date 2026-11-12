@@ -1,0 +1,83 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-11-15T12:43:38.628Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-analytics-module-matomo",
+  "plugin_id": "analytics-module-matomo",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/analytics/plugins/analytics-module-matomo",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-06T09:02:35.123Z",
+  "version": "1.32.0",
+  "version_count": 34,
+  "versions": [
+    {
+      "date": "2026-11-06T09:02:35.123Z",
+      "version": "1.32.0"
+    },
+    {
+      "date": "2026-09-23T11:14:40.450Z",
+      "version": "1.31.1"
+    },
+    {
+      "date": "2026-08-28T20:07:05.641Z",
+      "version": "1.31.0"
+    },
+    {
+      "date": "2026-07-21T17:22:44.382Z",
+      "version": "1.30.0"
+    },
+    {
+      "date": "2026-06-20T06:37:05.036Z",
+      "version": "1.29.0"
+    },
+    {
+      "date": "2026-05-11T13:44:28.560Z",
+      "version": "1.28.2"
+    },
+    {
+      "date": "2026-05-05T18:14:18.256Z",
+      "version": "1.28.1"
+    },
+    {
+      "date": "2026-04-26T05:43:17.056Z",
+      "version": "1.28.0"
+    },
+    {
+      "date": "2026-04-22T07:15:18.605Z",
+      "version": "1.27.0"
+    },
+    {
+      "date": "2026-04-02T10:53:56.693Z",
+      "version": "1.26.0"
+    },
+    {
+      "date": "2026-03-10T21:11:52.939Z",
+      "version": "1.25.1"
+    },
+    {
+      "date": "2026-03-10T19:03:49.308Z",
+      "version": "1.25.0"
+    },
+    {
+      "date": "2026-01-31T06:15:10.249Z",
+      "version": "1.24.0"
+    },
+    {
+      "date": "2026-01-08T23:00:45.127Z",
+      "version": "1.23.0"
+    },
+    {
+      "date": "2026-01-03T21:44:31.003Z",
+      "version": "1.22.0"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "author": "joshuagenders",
+  "created": "2024-11-12T12:37:43.248Z",
+  "deprecated": "",
+  "description": "A Backstage plugin to generate new UUIDs",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin",
+    "uuid"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "joshuagenders"
+  ],
+  "name": "@joshuagenders/backstage-plugin-new-uuid",
+  "plugin_id": "new-uuid",
+  "readme": "# New UUID Plugin\n\nBackstage plugin which exposes a Component for generating new UUIDs",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@joshuagenders",
+  "updated": "2024-11-12T12:53:09.407Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-11-12T12:53:09.407Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-11-12T12:37:43.560Z",
+      "version": "0.1.0"
+    }
+  ]
+}

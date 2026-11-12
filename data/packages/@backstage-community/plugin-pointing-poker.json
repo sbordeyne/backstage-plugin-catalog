@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2026-10-28T02:26:42.721Z",
+  "deprecated": "",
+  "description": "A Backstage plugin for planning poker / story point estimation",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "estimation",
+    "planning-poker",
+    "pointing-poker",
+    "scrum"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-pointing-poker",
+  "plugin_id": "pointing-poker",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/pointing-poker/plugins/pointing-poker",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-28T02:28:19.327Z",
+  "version": "0.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-10-28T02:28:19.327Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-28T02:26:42.721Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

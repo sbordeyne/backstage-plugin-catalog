@@ -1,0 +1,91 @@
+{
+  "author": "Red Hat",
+  "created": "2026-07-16T08:58:36.746Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-intelligent-assistant",
+  "plugin_id": "intelligent-assistant",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/intelligent-assistant/plugins/intelligent-assistant",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-15T14:19:22.003Z",
+  "version": "5.3.10",
+  "version_count": 26,
+  "versions": [
+    {
+      "date": "2026-10-15T14:19:22.003Z",
+      "version": "5.3.10"
+    },
+    {
+      "date": "2026-10-13T17:23:45.051Z",
+      "version": "5.3.9"
+    },
+    {
+      "date": "2026-10-13T09:53:21.753Z",
+      "version": "5.3.8"
+    },
+    {
+      "date": "2026-10-12T17:23:31.076Z",
+      "version": "5.3.7"
+    },
+    {
+      "date": "2026-10-01T09:16:36.008Z",
+      "version": "5.3.6"
+    },
+    {
+      "date": "2026-09-30T09:16:03.651Z",
+      "version": "5.3.5"
+    },
+    {
+      "date": "2026-09-29T18:53:27.681Z",
+      "version": "5.3.4"
+    },
+    {
+      "date": "2026-09-24T21:26:43.330Z",
+      "version": "5.3.3"
+    },
+    {
+      "date": "2026-09-23T06:19:50.284Z",
+      "version": "5.3.2"
+    },
+    {
+      "date": "2026-09-22T10:11:20.321Z",
+      "version": "5.3.1"
+    },
+    {
+      "date": "2026-09-21T23:53:39.549Z",
+      "version": "5.3.0"
+    },
+    {
+      "date": "2026-09-16T14:07:45.189Z",
+      "version": "5.2.0"
+    },
+    {
+      "date": "2026-09-15T14:42:04.987Z",
+      "version": "5.1.0"
+    },
+    {
+      "date": "2026-09-11T14:47:09.074Z",
+      "version": "5.0.2"
+    },
+    {
+      "date": "2026-09-09T14:01:08.091Z",
+      "version": "5.0.1"
+    }
+  ]
+}

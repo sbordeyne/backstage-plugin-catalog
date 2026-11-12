@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-06-11T08:26:33.584Z",
+  "deprecated": "",
+  "description": "The Event Mesh plugin is a Backstage plugin that allows you to view and manage Knative Eventing resources.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aliok"
+  ],
+  "name": "@knative-tmp/backstage-plugins-no-fork-test-dynamic",
+  "plugin_id": "",
+  "readme": "# Knative Event Mesh plugin (dynamic)\n\nThe Event Mesh plugin is a Backstage plugin that allows you to view and manage Knative Eventing resources.\n\nThe Backstage plugin talks to a special backend that runs in the Kubernetes cluster and communicates with the Kubernetes\nAPI server.\n\nA demo setup for this plugin is available at https://github.com/aliok/knative-backstage-demo.\n\nFor more information about the plugin, please see\nthe [GitHub repository](https://github.com/knative-extensions/backstage-plugins/blob/main/backstage/plugins/knative-event-mesh-backend/README.md).\n\nThis distribution of the plugin is a dynamic plugin that can be installed in a Backstage instance that supports dynamic\nplugins.\n\nBackstage has a [WIP proposal](https://github.com/backstage/backstage/tree/master/beps/0002-dynamic-frontend-plugins) to\nallow plugins to be loaded dynamically. While this is not done in upstream Backstage\nyet, [Janus IDP](https://janus-idp.io/) has implemented this feature.\nThe benefit of the dynamic plugin is it can be used without changing the source code of Backstage.\n\n## Installation\n\n### Prerequisites\n\n- A Kubernetes cluster with Knative Eventing installed\n- Knative Event Mesh plugin backend installed\n- A Backstage instance with dynamic plugin support (e.g. [Janus IDP](https://janus-idp.io/))\n- A service account for the Backstage backend to access the Kubernetes API\n\nInstall Knative Eventing by following the [official documentation](https://knative.dev/docs/install/).\n\nInstall the backend and the relevant configuration in the Kubernetes cluster\n\n```bash\nkubectl apply -f https://github.com/knative-extensions/backstage-plugins/releases/download/v0.1.0/eventmesh.yaml\n```\n\n## Janus Configuration\n\nYou need to follow the Janus IDP dynamic plugin installation instructions\nhere: https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/dynamic-plugins.md#installing-a-dynamic-plugin-package-in-the-showcase\n\nFor a quick test, download the plugin package and extract it to the `dynamic-plugins-root` directory in Janus IDP:\n\n```bash\ncd <path-to-Janus-IDP>/dynamic-plugins-root\npkg=@knative-extensions/plugin-knative-event-mesh-backend-dynamic\npkg=@knative-extensions/plugin-knative-event-mesh-backend-dynamic\npkg=@aliok/plugin-knative-event-mesh-backend-dynamic\narchive=$(npm pack $pkg)\ntar -xzf \"$archive\" && rm \"$archive\"\nmv package $(echo $archive | sed -e 's:\\.tgz$::')\n```\n\n> **NOTE**: The backend needs to be accessible from the Backstage instance. If you are running the backend without\n> exposing it, you can use `kubectl port-forward` to forward the port of the backend service to your local machine.\n> ```bash\n> kubectl port-forward -n knative-eventing svc/eventmesh-backend 8080:8080\n> ```\n\n\nThe plugin needs to be configured to talk to the backend. It can be configured in the `app-config.yaml` file of the\nBackstage instance and allows configuration of one or multiple providers.\n\nUse a `knativeEventMesh` marker to start configuring the `app-config.yaml` file of Backstage:\n\n```yaml\ncatalog:\n  ...\n  providers:\n    knativeEventMesh:\n      dev:\n        baseUrl: 'http://localhost:8080' # URL of the backend installed in the cluster\n        schedule: # optional; same options as in TaskScheduleDefinition\n          # supports cron, ISO duration, \"human duration\" as used in code\n          frequency: { minutes: 1 }\n          # supports ISO duration, \"human duration\" as used in code\n          timeout: { minutes: 1 }\n```\n\nStart your Janus IDP instance!\n\n> **NOTE**: If you have made any changes to the schedule in the `app-config.yaml` file, then restart to apply the\n> changes.\n\n## Troubleshooting\n\nWhen you start your Backstage application, you can see some log lines as follows:\n\n```text\n[1] 2024-01-04T09:38:08.707Z knative-event-mesh-backend info Found 1 knative event mesh provider configs with ids: dev type=plugin\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@knative-tmp",
+  "updated": "2024-06-11T08:26:33.967Z",
+  "version": "0.0.0-snapshot.e5e7d0f",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-06-11T08:26:33.967Z",
+      "version": "0.0.0-snapshot.e5e7d0f"
+    }
+  ]
+}

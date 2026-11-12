@@ -1,0 +1,52 @@
+{
+  "author": "",
+  "created": "2026-08-04T18:48:56.568Z",
+  "deprecated": "",
+  "description": "OGX provider module for the boost AI platform",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-boost-backend-module-ogx",
+  "plugin_id": "boost",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/boost/plugins/boost-backend-module-ogx",
+  "role": "backend-plugin-module",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-09-08T21:28:26.076Z",
+  "version": "0.2.5",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-09-08T21:28:26.076Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2026-09-08T17:50:28.863Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2026-08-17T21:11:44.697Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2026-08-14T21:00:22.140Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-08-13T14:40:52.161Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-08-04T18:48:56.902Z",
+      "version": "0.2.0"
+    }
+  ]
+}

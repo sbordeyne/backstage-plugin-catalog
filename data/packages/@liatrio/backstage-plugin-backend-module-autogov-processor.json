@@ -1,0 +1,73 @@
+{
+  "author": "",
+  "created": "2024-11-08T18:54:33.006Z",
+  "deprecated": "",
+  "description": "The autogov-processor backend module for the catalog plugin.",
+  "homepage": "https://github.com/liatrio/backstage-plugin-autogov#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "acramsay",
+    "amber-beasley-liatrio",
+    "casey.wilson",
+    "damien.storm",
+    "dbhagen",
+    "jgaither",
+    "jphayes-liatrio",
+    "misterc500",
+    "robertkelly",
+    "ssmathistad",
+    "wolftousen"
+  ],
+  "name": "@liatrio/backstage-plugin-backend-module-autogov-processor",
+  "plugin_id": "autogov-processor",
+  "readme": "# @liatrio/backstage-plugin-backend-module-autogov-processor\n\nThis is the backend plugin for the `@liatrio/backstage-plugin-backend-module-autogov-processor` plugin. It provides the necessary backend services and integrations for the frontend plugin.\n\nSee the [root plugin documentation](https://github.com/liatrio/backstage-plugin-autogov) for additional information.\n\n## Installation\n\nTo install the backend plugin, use the following command from a Backstage environment:\n\n```bash\nyarn add @liatrio/backstage-plugin-backend-module-autogov-processor\n```\n\n## Integration\n\nTo integrate the backend plugin with the frontend plugin, follow these steps:\n\n1. Install both the backend and frontend plugins using the commands above.\n1. Configure the backend plugin in your Backstage application.\n1. Configure the frontend plugin in your Backstage application. Refer to the Backstage documentation for details on how to add frontend plugins.\n\n## Usage\n\nAfter installation and integration, you need to configure the plugin in your Backstage application. Refer to the Backstage documentation for details on how to add and configure plugins.\n\n## Contributing\n\nWe welcome contributions to improve this plugin. Please follow our [contributing guidelines](CONTRIBUTING.md).\n\n## License\n\nThis project is licensed under the terms of the APACHE-2.0 license. See the [LICENSE](LICENSE) file for details.\n\n## Support\n\nIf you have any questions or need support, please open an issue in our [GitHub repository](https://github.com/liatrio/backstage-plugin-autogov/issues).\n",
+  "repository": "https://github.com/liatrio/backstage-plugin-autogov/tree/HEAD/packages/backstage-plugin-backend-module-autogov-processor",
+  "role": "backend-plugin-module",
+  "scope": "@liatrio",
+  "updated": "2025-02-11T21:35:14.185Z",
+  "version": "1.6.4",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2025-02-11T21:35:14.185Z",
+      "version": "1.6.4"
+    },
+    {
+      "date": "2025-02-11T03:52:57.921Z",
+      "version": "1.6.3"
+    },
+    {
+      "date": "2024-11-09T22:53:03.133Z",
+      "version": "1.6.2"
+    },
+    {
+      "date": "2024-11-09T02:39:03.551Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2024-11-09T02:23:01.032Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-11-09T01:23:02.923Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-11-09T00:30:20.035Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2024-11-08T21:55:47.721Z",
+      "version": "1.3.2"
+    },
+    {
+      "date": "2024-11-08T19:19:26.932Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2024-11-08T18:54:33.359Z",
+      "version": "1.3.0"
+    }
+  ]
+}

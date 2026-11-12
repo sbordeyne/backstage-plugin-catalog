@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2026-03-22T17:04:20.162Z",
+  "deprecated": "",
+  "description": "Backstage Kubernetes cluster supplier for VCF Automation VKS clusters",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-vcfa-vks-cluster-provider",
+  "plugin_id": "vcfa-vks-cluster-provider",
+  "readme": "ERROR: No README data found!",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/vcfa-vks-cluster-provider",
+  "role": "backend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:57:49.395Z",
+  "version": "0.9.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-10-21T13:57:49.395Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-06-30T17:24:17.029Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-06-09T19:11:46.581Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-04-16T08:23:49.919Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-03-22T17:04:20.397Z",
+      "version": "0.2.0"
+    }
+  ]
+}

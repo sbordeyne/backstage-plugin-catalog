@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-09-04T16:13:54.938Z",
+  "deprecated": "",
+  "description": "The PingOne backend module for the catalog plugin. Ingests organization data (users and groups) from Ping Identity's cloud offering.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-catalog-backend-module-pingidentity",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/pingidentity/plugins/catalog-backend-module-pingidentity",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-09-02T21:44:41.109Z",
+  "version": "0.15.0",
+  "version_count": 22,
+  "versions": [
+    {
+      "date": "2026-09-02T21:44:41.109Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2026-07-29T12:31:30.193Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2026-06-24T19:52:01.237Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2026-06-23T15:34:02.542Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-05-05T18:06:42.512Z",
+      "version": "0.11.1"
+    },
+    {
+      "date": "2026-04-15T12:20:54.722Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2026-02-05T14:40:30.680Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-01-05T14:56:03.896Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-10-23T07:49:42.582Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-09-11T15:01:48.359Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-08-12T14:30:49.098Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-06-24T13:20:22.142Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-05-02T13:11:52.858Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-03-17T14:33:47.118Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-02-25T18:32:00.235Z",
+      "version": "0.2.1"
+    }
+  ]
+}

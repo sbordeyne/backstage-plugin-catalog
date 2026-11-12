@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2025-03-07T00:16:45.411Z",
+  "deprecated": "",
+  "description": "The amplication module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-scaffolder-backend-module-amplication",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/amplication/plugins/scaffolder-backend-module-amplication",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-04-02T23:31:46.510Z",
+  "version": "0.4.1",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-04-02T23:31:46.510Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-08-14T14:11:06.678Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-07-24T12:18:01.347Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-03-07T00:16:45.710Z",
+      "version": "0.2.0"
+    }
+  ]
+}

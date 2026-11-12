@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:18.252Z",
+  "deprecated": "",
+  "description": "This plugin is the frontend for RAG AI Backstage plugin. You can see the corresponding backend plugin in [here](/plugins/backend/rag-ai-backend/README.md).",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/rag-ai",
+  "plugin_id": "",
+  "readme": "# Glint RAG AI Frontend plugin for Backstage\n\nThis plugin is the frontend for RAG AI Backstage plugin. You can see the corresponding backend plugin in [here](/plugins/backend/rag-ai-backend/README.md).\n\n![docs/petstore-rag-openapi-example.gif](docs/petstore-rag-openapi-example.gif)\n\n## Getting started\n\nThe plugin exposes a single Modal React component which can be triggered on the application UI by pressing `ctrl+,` (control + comma).\n![docs/empty-modal.png](docs/empty-modal.png)\n\nYou can ask the plugin information about your catalog and request assistance on how to better interact with the catalog entities that have been configured to your system. The plugin provides functionality to call the RAG AI backend, which enhances your queries with additional context and requests responses from configured LLMs to provide answers based on that context.\n\n![docs/simple-q-a.png](docs/simple-q-a.png)\n\nDepending on how you implement your Embeddings providers and retrieval functionality, you can use the LLM, for example, to construct specific code samples from your Catalog Entity API endpoints, while using the wider knowledge of specific best practices from various programming languages and frameworks.\n\n![docs/api-spec-query.png](docs/api-spec-query.png)\n\n## Configuration\n\nTo configure the frontend plugin, you need to do two things:\n\n- Create an API client for the frontend plugin\n- Add the exposed UI element into the application\n\n### Creating an API client\n\nThe RAG AI plugin exposes an API client which needs to be configured for your Backstage application frontend to be able to use the RAG AI functionality. You can do that by adding a new API factory into your `apis.ts` file. See configuration example below:\n\n```ts\n// packages/app/src/apis.ts\n\nimport {\n  AnyApiFactory,\n  configApiRef,\n  createApiFactory,\n  discoveryApiRef,\n  fetchApiRef,\n  identityApiRef,\n} from '@backstage/core-plugin-api';\nimport fetch from 'cross-fetch';\nimport { ragAiApiRef, GlintRagAiClient } from '@kozmoai/rag-ai';\n\nexport const apis: AnyApiFactory[] = [\n  // ... Other APIs\n  createApiFactory({\n    api: ragAiApiRef,\n    deps: {\n      configApi: configApiRef,\n      discoveryApi: discoveryApiRef,\n      fetchApi: fetchApiRef,\n      identityApi: identityApiRef,\n    },\n    factory: ({ discoveryApi, fetchApi, configApi, identityApi }) => {\n      return new GlintRagAiClient({\n        discoveryApi,\n        fetchApi,\n        configApi,\n        identityApi,\n      });\n    },\n  }),\n];\n```\n\n### Adding the UI components into the application\n\nThe plugin exposes a single UI component which is used to communicate with the application Backend. You can register this\n\nApp.tsx\n\n```tsx\n\n// packages/app/src/App.tsx\nimport { RagModal } from '@kozmoai/rag-ai';\n\n...\nconst App = () => (\n  <AppProvider>\n    <AlertDisplay />\n    <OAuthRequestDialog />\n    <AppRouter>\n      <RagModal />\n      <Root>{routes}</Root>\n    </AppRouter>\n  </AppProvider>\n);\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:17.007Z",
+  "version": "0.2.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:17.007Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-03-25T22:14:18.558Z",
+      "version": "0.1.0"
+    }
+  ]
+}

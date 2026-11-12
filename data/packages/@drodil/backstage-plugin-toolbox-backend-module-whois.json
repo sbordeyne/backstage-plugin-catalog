@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2024-03-30T12:43:35.433Z",
+  "deprecated": "",
+  "description": "The whois backend module for the toolbox plugin.",
+  "homepage": "https://github.com/drodil/backstage-plugin-toolbox",
+  "keywords": [
+    "backend-module",
+    "backstage",
+    "backstage.io",
+    "plugin"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "drodil"
+  ],
+  "name": "@drodil/backstage-plugin-toolbox-backend-module-whois",
+  "plugin_id": "toolbox",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@drodil",
+  "updated": "2026-09-01T06:45:12.050Z",
+  "version": "2.1.1",
+  "version_count": 44,
+  "versions": [
+    {
+      "date": "2026-09-01T06:45:12.050Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2026-08-19T12:12:40.631Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2026-08-04T07:16:30.116Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-07-29T07:35:58.727Z",
+      "version": "1.36.11"
+    },
+    {
+      "date": "2026-05-27T14:31:22.702Z",
+      "version": "1.36.10"
+    },
+    {
+      "date": "2026-04-15T11:21:08.332Z",
+      "version": "1.36.8"
+    },
+    {
+      "date": "2026-04-15T06:54:11.833Z",
+      "version": "1.36.7"
+    },
+    {
+      "date": "2026-02-18T11:21:05.907Z",
+      "version": "1.36.6"
+    },
+    {
+      "date": "2025-12-18T13:15:10.904Z",
+      "version": "1.36.5"
+    },
+    {
+      "date": "2025-12-08T12:01:45.790Z",
+      "version": "1.36.4"
+    },
+    {
+      "date": "2025-10-24T06:31:56.549Z",
+      "version": "1.35.1"
+    },
+    {
+      "date": "2025-10-21T07:04:11.164Z",
+      "version": "1.35.0"
+    },
+    {
+      "date": "2025-10-15T10:49:35.513Z",
+      "version": "1.34.0"
+    },
+    {
+      "date": "2025-10-15T08:23:44.887Z",
+      "version": "1.33.4"
+    },
+    {
+      "date": "2025-10-15T07:17:27.264Z",
+      "version": "1.33.3"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "author": "",
+  "created": "2023-06-26T12:48:15.854Z",
+  "deprecated": "",
+  "description": "## Introduction",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jkleinlercher",
+    "phac"
+  ],
+  "name": "@suxess-it/backstage-plugin-kubecost",
+  "plugin_id": "",
+  "readme": "# Kubecost\n## Introduction\n\nKubecost is a plugin to help engineers get information about cost usage/prediction of their deployment.\n\n# Setup\n\n## Kubecost Installation:\n\nIn order to use this Backstage Plugin you have to [install Kubecost](https://docs.kubecost.com/install-and-configure/install/getting-started)\n\n- Activate [Annotation Emission](https://docs.kubecost.com/install-and-configure/advanced-configuration/annotations)\n- Add Cost Model [Cloud](https://docs.kubecost.com/install-and-configure/install/cloud-integration) or [onPremises](https://docs.kubecost.com/install-and-configure/install/provider-installations/air-gapped#how-do-i-configure-prices-for-my-on-premise-assets)\n\nOptional: For Network Cost gathering you will need to [Network Traffic Cost Allocation network transfer](https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui/cost-allocation/network-allocation) to pods.\n\n## Plugin Installation:\nAdd the plugin to your frontend app:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @suxess-it/backstage-plugin-kubecost\n```\n\n# Configure Backstage \nAdapt `app-config.yaml`:\n\nKubecost requires configuration field: `kubecost` with valid `baseUrl` to kubecost API.\n\nOptional Settings:\n- `sharedNamespaces` // add shared namespaces, from  which cost will be shared across client namespaces\n- `queryframes` // add Duration of time over which to query. Accepts words like today, week, month, yesterday, lastweek, lastmonth; durations like 30m, 12h, 7d ... {more details from official API Reference}(https://docs.kubecost.com/apis/apis-overview/allocation)\n- `unitprefix` // add Currency. Accepts $, €, ...\n- `fractionDigits` // number of fraction digits to show in costs and average values, default is 4.\n- `annotationDeploymentName` // annotation name of the entity's metadata that refers to the Kubernetes label to identify the deployment related to the entity, default is ' kubecost.com/deployment-name'.\n- `shareTenancyCosts` // include shared tenancy costs in the cost calculation, true or false. Default is false.\n- `aggregate` // aggregate costs by controller, true or false. Default is false.\n- `showDashboardLink` // show a message with the direct link to the Kubecost website configured in `baseUrl` option, true or false . Default is false.\n\n```yaml\n## ./app-config.yaml\nkubecost:\n  baseUrl: https://<base URL to Kubecost> \n  sharedNamespaces: <comma-separated list of namespaces>\n  queryframes: <comma-separated list of queries>(e.g. week,yesterday,month,today,lastweek)\n  unitprefix: '<unit>' (e.g. $, €(=default) )\n  annotationDeploymentName: 'backstage.io/kubernetes-id'\n  shareTenancyCosts: true\n  aggregate: true\n  showDashboardLink: true\n```\n\n# Import Plugin and embed in the entities page:\n```typescript\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport { \n  BackstagePluginKubecostPage,\n  isKubecostAvailable\n} from '@suxess-it/backstage-plugin-kubecost';\n\n// ...\n\n// add this section to the place where the serviceEntityPage gets defined\n// const serviceEntityPage = (\n// ...\n    <EntityLayout.Route if={isKubecostAvailable} path=\"/kubecost\" title=\"Kubecost\">\n      <BackstagePluginKubecostPage/>\n    </EntityLayout.Route>\n```\n\n# Display cost information on a component page\nAdding the `EntityKubecostCard` component to an entity's page will display usage to cost of last week.\n```typescript\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport { \n  EntityKubecostCard,\n  isKubecostAvailable\n} from '@suxess-it/backstage-plugin-kubecost';\n\n// ...\n\n// add this section to the place where the overviewContent gets defined\n// const overviewContent = (\n// ... \n    <EntitySwitch>\n      <EntitySwitch.Case if={isKubecostAvailable}>\n        <EntityKubecostCard />\n      </EntitySwitch.Case>\n    </EntitySwitch>\n```\n# Configuration\nKubecost Plugin are correlated to Backstage entities using an annotation added in the entity's `catalog-info.yaml` file:\n\n```yml\nannotations:\n  <annotationDeploymentName>: my-kubernetes-deployment-name\n```\n\nPlease add Label `<annotationDeploymentName>:<my-kubernetes-deployment-name>` to deployment, then this annotation accepts any valid deploymentname on your k8s Clusters.\nIf the deployment is deployed in multiple kubernetes clusters, the plugin will show the costs of the deployment in every cluster.\n\n![Screenshot](./docs/screenshot.png)\n![Multi-Cluster](./docs/multi-cluster.png)\n\n# TODO\nStill a lot of work to be done:\n- add additional annotation for namespaces\n  ...\n",
+  "repository": "https://github.com/suxess-it/backstage-plugin-kubecost",
+  "role": "frontend-plugin",
+  "scope": "@suxess-it",
+  "updated": "2024-04-22T06:39:28.844Z",
+  "version": "0.4.0",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2024-04-22T06:39:28.844Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-02-23T07:34:14.857Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-02-22T20:42:28.778Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-11-22T16:22:45.718Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2023-06-29T07:23:59.655Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2023-06-27T15:48:44.578Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-06-27T15:39:19.476Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-06-27T15:18:00.928Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2023-06-26T13:20:27.796Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2023-06-26T13:07:01.369Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2023-06-26T12:48:16.092Z",
+      "version": "0.1.5"
+    }
+  ]
+}

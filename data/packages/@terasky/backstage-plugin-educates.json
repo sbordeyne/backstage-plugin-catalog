@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-06-25T18:56:54.953Z",
+  "deprecated": "",
+  "description": "Welcome to the educates plugin!",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-educates",
+  "plugin_id": "educates",
+  "readme": "# educates\n\nWelcome to the educates plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-educates/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-educates)\n\nThe `educates` plugin for Backstage provides a frontend interface for browsing and accessing Educates workshops within Backstage. It enables users to discover, view, and launch educational workshops from multiple training portals, all integrated seamlessly into the Backstage interface.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/educates/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/educates",
+  "role": "frontend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:47:29.125Z",
+  "version": "1.16.0",
+  "version_count": 25,
+  "versions": [
+    {
+      "date": "2026-10-21T13:47:29.125Z",
+      "version": "1.16.0"
+    },
+    {
+      "date": "2026-06-30T17:18:00.392Z",
+      "version": "1.13.0"
+    },
+    {
+      "date": "2026-06-09T19:02:46.127Z",
+      "version": "1.12.1"
+    },
+    {
+      "date": "2026-05-04T07:09:44.400Z",
+      "version": "1.11.1"
+    },
+    {
+      "date": "2026-04-16T08:18:18.531Z",
+      "version": "1.11.0"
+    },
+    {
+      "date": "2026-03-22T16:58:51.625Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2026-03-09T16:50:34.648Z",
+      "version": "1.8.2"
+    },
+    {
+      "date": "2026-02-17T20:37:07.865Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2026-01-28T18:29:21.558Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2026-01-26T10:35:35.681Z",
+      "version": "1.6.2"
+    },
+    {
+      "date": "2026-01-22T15:43:11.220Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2026-01-21T10:06:51.764Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2025-12-22T10:14:29.907Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2025-12-02T12:34:17.635Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2025-11-05T16:56:03.364Z",
+      "version": "1.3.3"
+    }
+  ]
+}

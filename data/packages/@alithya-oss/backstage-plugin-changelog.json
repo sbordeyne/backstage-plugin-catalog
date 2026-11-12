@@ -1,0 +1,48 @@
+{
+  "author": "",
+  "created": "2025-02-02T21:59:37.409Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "alithya",
+    "backstage",
+    "changelog",
+    "frontend",
+    "javascript",
+    "plugin",
+    "rsc-labs",
+    "typescript"
+  ],
+  "license": "MPL-2.0",
+  "maintainers": [
+    "fjudith"
+  ],
+  "name": "@alithya-oss/backstage-plugin-changelog",
+  "plugin_id": "changelog",
+  "readme": "",
+  "repository": "https://github.com/alithya-oss/backstage-plugins/tree/HEAD/workspaces/changelog/plugins/changelog",
+  "role": "frontend-plugin",
+  "scope": "@alithya-oss",
+  "updated": "2025-05-21T04:14:49.663Z",
+  "version": "1.0.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-05-21T04:14:49.663Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2025-05-10T03:57:34.509Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-02-04T03:05:47.989Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-02-02T21:59:37.711Z",
+      "version": "1.0.0"
+    }
+  ]
+}

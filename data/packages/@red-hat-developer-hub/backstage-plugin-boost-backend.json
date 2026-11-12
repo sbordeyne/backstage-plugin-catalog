@@ -1,0 +1,76 @@
+{
+  "author": "",
+  "created": "2026-06-30T00:40:49.672Z",
+  "deprecated": "",
+  "description": "Backend plugin for the boost AI platform",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-boost-backend",
+  "plugin_id": "boost",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/boost/plugins/boost-backend",
+  "role": "backend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-09-08T21:28:18.852Z",
+  "version": "0.8.2",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-09-08T21:28:18.852Z",
+      "version": "0.8.2"
+    },
+    {
+      "date": "2026-09-08T17:50:20.068Z",
+      "version": "0.8.1"
+    },
+    {
+      "date": "2026-09-03T13:53:28.482Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-08-19T13:58:42.342Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-08-18T13:15:15.978Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-08-17T21:11:36.996Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-08-14T21:00:14.388Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-08-14T18:03:13.453Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-08-13T14:40:45.502Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-04T18:48:52.505Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2026-07-02T12:52:05.276Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2026-06-30T00:40:50.046Z",
+      "version": "0.1.2"
+    }
+  ]
+}

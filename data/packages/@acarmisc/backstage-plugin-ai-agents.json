@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2026-07-25T12:37:57.208Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for managing AI Agents stored as catalog Components.",
+  "homepage": "https://github.com/acarmisc/backstage-plugin-ai-agents/tree/main/packages/plugin-ai-agents#readme",
+  "keywords": [
+    "backstage",
+    "backstage-frontend-plugin",
+    "backstage-plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "acarmisc"
+  ],
+  "name": "@acarmisc/backstage-plugin-ai-agents",
+  "plugin_id": "ai-agents",
+  "readme": "# @acarmisc/backstage-plugin-ai-agents\n\nFrontend of the AI Agents plugin for Backstage: an **AI Agents** page, entity\npage cards and an Activity tab for catalog components with\n`spec.type: ai-agent`.\n\nSee the [repository README](https://github.com/acarmisc/backstage-plugin-ai-agents#readme)\nfor the catalog model and the annotation reference.\n\n![The AI Agents page](https://raw.githubusercontent.com/acarmisc/backstage-plugin-ai-agents/main/docs/images/agents-page.png)\n\n![The Activity view](https://raw.githubusercontent.com/acarmisc/backstage-plugin-ai-agents/main/docs/images/activity.png)\n\n## Requirements\n\n- Backstage 1.53 or later, on the\n  [new frontend system](https://backstage.io/docs/frontend-system/).\n- `@acarmisc/backstage-plugin-ai-agents-backend` for status, invocations,\n  reviews, spend and activity. Without it the page lists agents only.\n\n## Installation\n\n```bash\nyarn --cwd packages/app add @acarmisc/backstage-plugin-ai-agents\n```\n\nApps with feature discovery pick the plugin up automatically. Otherwise add it\nto `createApp`:\n\n```ts\nimport aiAgentsPlugin from '@acarmisc/backstage-plugin-ai-agents';\n\nexport default createApp({ features: [aiAgentsPlugin] });\n```\n\n## Extensions\n\n| Extension                           | What it adds                                                      |\n| ----------------------------------- | ----------------------------------------------------------------- |\n| `page:ai-agents`                    | The `/ai-agents` page: Agents and Activity as header tabs         |\n| `api:ai-agents`                     | `aiAgentsApiRef`, the client for the catalog and `/api/ai-agents` |\n| `entity-card:ai-agents/overview`    | Agent overview card on `ai-agent` entity pages                    |\n| `entity-card:ai-agents/invocations` | Recent invocations card on `ai-agent` entity pages                |\n| `entity-content:ai-agents/activity` | Activity tab on `ai-agent` entity pages                           |\n\nThe entity extensions only show on components with `spec.type: ai-agent`.\nDisable or configure any of them under `app.extensions`:\n\n```yaml\napp:\n  extensions:\n    - entity-card:ai-agents/invocations: false\n```\n\nThe page registers the route; add a navigation item if your sidebar is not\ngenerated from the nav extensions. The UI is built with `@backstage/ui`\n(Backstage's design system), so it follows your theme; the page has two\nsub-pages, `/ai-agents/agents` and `/ai-agents/activity`.\n\n## Development\n\n```bash\nnpm start   # from this directory: dev app with sample agents, no backend\nnpm run start:legacy   # the same in the legacy frontend system\n```\n",
+  "repository": "https://github.com/acarmisc/backstage-plugin-ai-agents/tree/HEAD/packages/plugin-ai-agents",
+  "role": "frontend-plugin",
+  "scope": "@acarmisc",
+  "updated": "2026-10-13T16:48:55.540Z",
+  "version": "0.18.2",
+  "version_count": 33,
+  "versions": [
+    {
+      "date": "2026-10-13T16:48:55.540Z",
+      "version": "0.18.2"
+    },
+    {
+      "date": "2026-10-11T09:03:51.256Z",
+      "version": "0.18.1"
+    },
+    {
+      "date": "2026-10-07T13:47:09.476Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-10-07T10:56:00.543Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-10-04T17:28:38.051Z",
+      "version": "0.16.5"
+    },
+    {
+      "date": "2026-10-04T08:39:50.352Z",
+      "version": "0.16.4"
+    },
+    {
+      "date": "2026-10-04T07:25:53.029Z",
+      "version": "0.16.3"
+    },
+    {
+      "date": "2026-10-03T20:19:12.190Z",
+      "version": "0.16.2"
+    },
+    {
+      "date": "2026-10-03T18:36:52.243Z",
+      "version": "0.16.1"
+    },
+    {
+      "date": "2026-10-03T17:09:16.508Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-10-03T09:15:22.577Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2026-10-01T09:14:07.706Z",
+      "version": "0.14.1"
+    },
+    {
+      "date": "2026-09-28T11:20:09.057Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2026-09-25T20:35:37.214Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2026-09-25T17:23:57.439Z",
+      "version": "0.12.0"
+    }
+  ]
+}

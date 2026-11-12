@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2023-03-10T21:15:35.435Z",
+  "deprecated": "",
+  "description": "Welcome to the parodos plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "lshannon",
+    "marek.libra",
+    "paulfrontside",
+    "richard98",
+    "taras"
+  ],
+  "name": "@parodos/plugin-parodos",
+  "plugin_id": "",
+  "readme": "# Parodos\n\nWelcome to the parodos plugin!\n\n## Setup\n\n1. Install the plugin into the Backstage app in `packages/app`\n\n```bash\nyarn add --cwd packages/app @parodos/plugin-parodos\n```\n\n2. Add the `/parodos/` route in `/packages/app/src/App.tsx`\n\n```ts\nimport { ParodosPage } from '@parodos/plugin-parodos';\n\nconst routes = (\n  <FlatRoutes>\n    // ...\n    <Route path=\"/parodos\" element={<ParodosPage />} />\n  </FlatRoutes>\n```\n\n3. Add `Parodos` link to the sidebar in `packages/app/src/components/Root.tsx`\n\n   3.1. Add `MeetingRoomIcon` import to the top of the file\n\n   ```tsx\n   import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';\n   ```\n\n   3.2. Add `<SidebarItem icon={MeetingRoomIcon} to=\"/parodos\" text=\"Parodos\" />` after `Create...` icon. The result will look like this.\n\n   ```tsx\n   <SidebarItem icon={CreateComponentIcon} to=\"create\" text=\"Create...\" />\n   <SidebarItem icon={MeetingRoomIcon} to=\"/parodos\" text=\"Parodos\" />\n   ```\n\n1. Add `/parodos` endpoint to the proxy config in `app-config.yaml`.\n\n```yaml\n'/parodos':\n  target: 'http://localhost:8080/api/v1'\n  changeOrigin: true\n  redirect: follow\n  cache: 'no-cache'\n  headers:\n    Content-Type: 'application/json'\n    accept: 'application/json'\n\n'/parodos-notifications':\n  target: 'http://localhost:8081/api/v1'\n  changeOrigin: true\n  redirect: follow\n  cache: 'no-cache'\n  headers:\n    Content-Type: 'application/json'\n    accept: 'application/json'\n```\n\n## Local development\n\nFor local development, the application username is `test`, password `test`.\n\nIn addition, the [Parodos services](https://github.com/parodos-dev/parodos) need to be running. Please refer up-to-date instructions there, but as a short-cut:\n\n```\ngit clone https://github.com/parodos-dev/parodos.git\ncd parodos\nmvn clean install\ncd ./workflow-examples\n\nIf the action is failing on an expired token, it can be updated here: https://github.com/organizations/parodos-dev/settings/secrets/actions\n./start_workflow_service.sh &\n./start_notification_service.sh &\n```\n\nBy doing that, there will be two services running at `http://localhost:8080` and `http://localhost:8081`.\n\n## Node and package manager versions\n\nWhile developing the plugin, it is recommended to use [volta](https://volta.sh/) to ensure the same node and package manager versions are maintained across environments.\n\nIntallation instructions can be found [here](https://docs.volta.sh/guide/getting-started).\n\n## Release\n\nThe project is published to the NPM JS Registry on release: https://www.npmjs.com/package/@parodos/plugin-parodos.\n\nTo do a release:\n\n- go to the project release page: https://github.com/parodos-dev/backstage-parodos/releases\n- click **Create a new release**\n- as a tag, use format **vX.Y.Z** (mind the **v** prefix!)\n- as a title, use the same value as for the tag\n- let the release notes to be generated, adjust\n- click **Publish release**\n\nThe on-release GitHub action is triggered, leading to publishing the new version to the NPM registry.\n\nTo watch progress: https://github.com/parodos-dev/backstage-parodos/actions/workflows/on-release.yaml\n\nIf the action is failing on an expired token, it can be updated here: https://github.com/organizations/parodos-dev/settings/secrets/actions\n\nAs a side-effect of the action, a PR bumping the plugin version is created. Do not forget to merge it: https://github.com/parodos-dev/backstage-parodos/pulls\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@parodos",
+  "updated": "2023-08-24T13:52:53.129Z",
+  "version": "0.4.21",
+  "version_count": 28,
+  "versions": [
+    {
+      "date": "2023-08-24T13:52:53.129Z",
+      "version": "0.4.21"
+    },
+    {
+      "date": "2023-07-21T13:07:17.339Z",
+      "version": "0.4.20"
+    },
+    {
+      "date": "2023-07-20T19:31:26.570Z",
+      "version": "0.4.19"
+    },
+    {
+      "date": "2023-07-05T14:29:01.036Z",
+      "version": "0.4.18"
+    },
+    {
+      "date": "2023-06-19T20:50:58.620Z",
+      "version": "0.4.17"
+    },
+    {
+      "date": "2023-06-16T13:12:04.690Z",
+      "version": "0.4.16"
+    },
+    {
+      "date": "2023-06-12T13:11:26.322Z",
+      "version": "0.4.15"
+    },
+    {
+      "date": "2023-06-06T20:28:53.608Z",
+      "version": "0.4.14"
+    },
+    {
+      "date": "2023-06-05T13:29:08.612Z",
+      "version": "0.4.13"
+    },
+    {
+      "date": "2023-05-19T19:25:34.113Z",
+      "version": "0.4.12"
+    },
+    {
+      "date": "2023-05-10T14:41:45.294Z",
+      "version": "0.4.11"
+    },
+    {
+      "date": "2023-04-26T21:31:40.184Z",
+      "version": "0.4.10"
+    },
+    {
+      "date": "2023-04-21T22:07:51.701Z",
+      "version": "0.4.9"
+    },
+    {
+      "date": "2023-04-19T15:56:38.999Z",
+      "version": "0.4.8"
+    },
+    {
+      "date": "2023-04-12T18:02:21.871Z",
+      "version": "0.4.7"
+    }
+  ]
+}

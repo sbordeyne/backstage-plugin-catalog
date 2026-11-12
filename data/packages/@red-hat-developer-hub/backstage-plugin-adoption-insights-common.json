@@ -1,0 +1,91 @@
+{
+  "author": "",
+  "created": "2025-03-28T15:16:43.356Z",
+  "deprecated": "",
+  "description": "Common functionalities for the adoption-insights plugin",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-adoption-insights-common",
+  "plugin_id": "adoption-insights",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/adoption-insights/plugins/adoption-insights-common",
+  "role": "common-library",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-04T05:11:59.308Z",
+  "version": "1.1.1",
+  "version_count": 25,
+  "versions": [
+    {
+      "date": "2026-11-04T05:11:59.308Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-10-26T14:08:14.395Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-09-25T08:50:56.947Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2026-09-23T15:08:22.984Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-09-23T05:29:21.088Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-09-11T12:49:24.608Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-09-09T14:01:12.813Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-08-01T03:55:59.299Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2026-07-21T22:49:50.117Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-07-18T13:11:28.038Z",
+      "version": "0.8.4"
+    },
+    {
+      "date": "2026-06-23T11:04:50.199Z",
+      "version": "0.8.3"
+    },
+    {
+      "date": "2026-05-18T15:24:35.546Z",
+      "version": "0.8.2"
+    },
+    {
+      "date": "2026-05-05T15:10:45.288Z",
+      "version": "0.8.1"
+    },
+    {
+      "date": "2026-04-21T13:22:51.025Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-04-15T12:12:04.170Z",
+      "version": "0.7.1"
+    }
+  ]
+}

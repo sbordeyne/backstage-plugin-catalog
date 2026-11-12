@@ -1,0 +1,65 @@
+{
+  "author": "",
+  "created": "2022-09-06T12:41:42.612Z",
+  "deprecated": "",
+  "description": "Thanks for using our plugin created for retrieving OWASP's Dependencytrack information in Backstage. This plugin is still in development.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "hbrinkman-trimm",
+    "mwienk",
+    "ronaldtb"
+  ],
+  "name": "@trimm/plugin-dependencytrack",
+  "plugin_id": "dependencytrack",
+  "readme": "# Dependencytrack plugin\n\nThanks for using our plugin created for retrieving OWASP's Dependencytrack information in Backstage. This plugin is still in development.\n\n## Installation\n\nRun this command from the `app` package directory:\n\n```shell\nyarn add @trimm/plugin-dependencytrack\n```\n\n### New frontend system\n\nInstall the alpha entry point in apps that use Backstage's new frontend system:\n\n```tsx\nimport dependencytrackPlugin from '@trimm/plugin-dependencytrack/alpha';\n\nconst app = createApp({\n  features: [\n    dependencytrackPlugin,\n    // other plugins\n  ],\n});\n```\n\nThe alpha entry point auto-registers:\n\n- the Dependencytrack API client\n- the summary entity card on compatible catalog entities\n- the `Dependencytrack` entity tab at `/dependencytrack`\n\nUse the root entry point if you still need the legacy app-wired extensions.\n\n## Configuration\n\n### Configuring the service\n\nAdd config in `app-config.yaml`.\n\nIntegration:\n\n```yaml\ndependencytrack:\n  baseUrl: ${DEPENDENCYTRACK_BASE_URL}\n```\n\nProxy:\n\n```yaml\nproxy:\n  endpoints:\n    '/dependencytrack':\n      target: ${DEPENDENCYTRACK_BASE_URL}\n      allowedMethods: ['GET']\n      headers:\n        X-Api-Key: ${DEPENDENCYTRACK_API_KEY}\n```\n\nDon't forget to replace the variables with the values for your specific environment.\n\n### Add cards to overview tab\n\n```tsx\n// packages\\app\\src\\components\\catalog\\EntityPage.tsx\nimport { EntityDependencytrackSummaryCard, EntityDependencytrackFindingCard, isDependencytrackAvailable } from '@trimm/plugin-dependencytrack';\n\n// In the overviewContent. You can add one or both.\n\n// Metrics card\n<EntitySwitch>\n    <EntitySwitch.Case if={isDependencytrackAvailable}>\n    <Grid item md={6}>\n        <EntityDependencytrackSummaryCard/>\n    </Grid>\n    </EntitySwitch.Case>\n</EntitySwitch>\n\n// Findings card\n<EntitySwitch>\n    <EntitySwitch.Case if={isDependencytrackAvailable}>\n    <Grid item md={12}>\n        <EntityDependencytrackFindingCard/>\n    </Grid>\n    </EntitySwitch.Case>\n</EntitySwitch>\n```\n\n### New frontend system customization\n\nIf you want to install only selected Dependencytrack entity extensions in a new frontend system app, import the named exports from the alpha entry point instead of the default plugin:\n\n```tsx\nimport {\n  EntityDependencytrackSummaryCard,\n  EntityDependencytrackFindingCard,\n  EntityDependencytrackContent,\n} from '@trimm/plugin-dependencytrack/alpha';\n```\n\n### Add to catalog-info.yaml\n\nReference the DependencyTrack project from your `catalog-info.yaml` in one of two ways.\n\n**By project name (recommended when the project carries one version per build).** The plugin resolves the project's latest version through DependencyTrack's `isLatest` flag at read time, so the link always follows the current build and never needs re-pinning:\n\n```yaml\n# Example catalog-info.yaml entity definition file\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    dependencytrack/project-name: my-service # the DependencyTrack project name\n```\n\n**By project id (a fixed version UUID).** Pins one specific project version:\n\n```yaml\nmetadata:\n  # ...\n  annotations:\n    dependencytrack/project-id: e63d5397-5e9e-494a-4755-368c2b1dc446\n```\n\nIf both annotations are present, `dependencytrack/project-id` takes precedence. The name lookup calls `GET /api/v1/project/latest/{name}`, so make sure the proxy `allowedMethods` permits `GET` (it does in the example above).\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@trimm",
+  "updated": "2026-09-28T13:57:05.724Z",
+  "version": "0.5.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2026-09-28T13:57:05.724Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-06-25T06:45:27.503Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-03-31T11:24:46.073Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2024-06-04T05:24:12.072Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-06-04T05:05:06.844Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-06-03T07:19:11.749Z",
+      "version": "0.3.0-next.0"
+    },
+    {
+      "date": "2022-11-07T12:29:05.151Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2022-09-07T08:14:42.176Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2022-09-06T13:25:23.290Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2022-09-06T12:41:42.916Z",
+      "version": "0.1.1"
+    }
+  ]
+}

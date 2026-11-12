@@ -1,0 +1,90 @@
+{
+  "author": "Julio Fernandez",
+  "created": "2025-04-05T15:58:15.938Z",
+  "deprecated": "",
+  "description": "Frontend plugin for viewing real-time Kubernetes logs in Backstage",
+  "homepage": "https://github.com/jfvilas/plugin-kwirth-log#readme",
+  "keywords": [
+    "backstage",
+    "kubernetes",
+    "kwirth",
+    "log",
+    "observability",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jfvilas"
+  ],
+  "name": "@jfvilas/plugin-kwirth-log",
+  "plugin_id": "kwirth",
+  "readme": "# Backstage frontend KwirthLog plugin\r\nThis package is a Backstage frontend plugin for **viewing Kubernetes logs** in real-time (live-streaming) via Kwirth.\r\n\r\nThis Backstage plugin allows you to live-stream Kubernetes logs associated to your Backstage entities directly inside your Backstage instance. It's very important to understand that for this plugin to work...:\r\n\r\n  - You need to install the Kwirth [Backstage backend plugin](https://www.npmjs.com/package/@jfvilas/plugin-kwirth-backend).\r\n  - You need to install Kwirth on your Kubernetes cluster, that is, this plugin is just another frontend for [Kwirth](https://jfvilas.github.io/kwirth).\r\n\r\nKwirth is a really-easy-to-use data-exporting system for Kubernetes that runs in only one pod (*no database is needed*). Refer to Kwirth GitHub project for [info on installation](https://github.com/jfvilas/kwirth?tab=readme-ov-file#installation). Kwirth installation is *one command away* from you.\r\n\r\nYou can access [Kwirth project here](https://github.com/jfvilas/kwirth).\r\n\r\n\r\n## Version compatibility\r\nFollowing table shows version compatibility between this Kwirth Backstage plugin and Kwirth Core server.\r\n\r\n| Plugin Kwirth version | Kwirth version |\r\n|-|-|\r\n|0.13.0|0.4.131|\r\n|0.12.8|0.4.45|\r\n|0.12.5|0.4.20|\r\n|0.11.3|0.3.160|\r\n\r\n\r\n## What is this plugin for?\r\nThis Backstage plugin adds Backstage a feature for viewing real-time Kubernetes logs of your Backstage entities directly inside Backstage frontend application. The plugin will be enabled for any entity that is correctly tagged (according to Backstage Kubernetes core feature) and its correpsonding Kubernetes resources are found on any of the clusters that have been added to Backstage.\r\n\r\nWhen KwirthLog is correctly installed and configured, it is possible to view Kubernetes logs on your Backstage like in this sample:\r\n\r\n![kwirth-running](https://raw.githubusercontent.com/jfvilas/plugin-kwirth-log/master/images/kwirthlog-running.png)\r\n\r\nThis frontend plugin includes just the visualization of log information. All needed configuration, and specially **permission settings**, are done in the backend plugin and the app-config.yaml. You can restrict access to pods, namespaces, clusters, etc... by configuring permissions to be applied on the backend plugin.\r\n\r\n## How does it work?\r\nLet's explain this by following a user working sequence:\r\n\r\n1. A Backstage user searchs for an entity in the Backstage.\r\n2. In the entity page there will be a new tab named 'KWIRTHLOG'.\r\n3. When the user clicks on KWIRTHLOG the frontend plugin sends a request to the backend Kiwrth plugin asking for logging information on all Kubernetes clusters available.\r\n4. Next step is to identify the Kubernetes objects that match requested entity. As well as it occurs with other Backstage Kwirth plugins, Kwirth implements two strategies for getting the listo of kubernetes objects that match:\r\n  - Option 1. Your catalog-info contains an annotation of this type: **backstage.io/kubernetes-id**. In this case, the Backstage Kwirth backend plugin sends requests to the Kwirth instances that are running inside all the clusters added to Backstage. These requests ask for the following: *'Tell me all the pods that are labeled with the kubernetes-id label and do correspond with the entity I'm looking for'*. In response to this query, each Kwirth instance answers with a list of pods and the namespaces where they are running.\r\n  - Option 2. Your catalog-info contains an annotation of this type: **backstage.io/kubernetes-label-selector**. In this case, the Backstage Kwirth backend plugin sends requests to the Kwirth instances that are running inside all the clusters added to Backstage. These requests ask for the following: *'Tell me all the pods whose labels match with the kubernetes-label-selector label selector*. In response to this query, each Kwirth instance answers with a list of pods and the namespaces where they are running.\r\n5. The Kwirth backend plugin checks then the permissions of the connected user and prunes the pods list removing the ones that the user has not access to.\r\n6. With the final pod list, the backend plugin sends requests to the Kwirth instances on the clusters asking for API Keys specific for streaming pod logs.\r\n7. With all this information, the backend builds a unique response containing all the pods the user have access to, and all the API keys needed to access those logs.\r\n\r\nIf everyting is correctly configured and tagged, the user should see a list of clusters. When selecting a cluster, the user should see a list of namespaces where the entity is running.\r\n\r\n\r\n## Installation\r\nIt's very simple and straightforward, it is in fact very similar to any other forntend Backstage plugin.\r\n\r\n1. Install corresponding Backstage backend plugin [more information here](https://www.npmjs.com/package/@jfvilas/plugin-kwirth-backend).\r\n\r\n2. Install this Backstage frontend plugin:\r\n\r\n    ```sh\r\n    # From your Backstage root directory\r\n    yarn --cwd packages/app add @jfvilas/plugin-kwirth-log @jfvilas/plugin-kwirth-frontend @jfvilas/plugin-kwirth-common @jfvilas/kwirth-common\r\n    ```\r\n\r\n3. Make sure the [Kwirth backend plugin](https://www.npmjs.com/package/@jfvilas/plugin-kwirth-backend#configure) is installed and configured.\r\n\r\n4. Restart your Backstage instance.\r\n\r\n\r\n## Configuration: Entity Pages\r\nFor Kwirth plugin to be usable on the frontend, you must tailor your Entity Page to include the Kwirth components.\r\n\r\n#### 1. Add the plugin as a tab in your Entity pages:\r\n\r\nFirstly, import the plugin module.\r\n\r\n```typescript\r\n// In packages/app/src/components/catalog/EntityPage.tsx\r\nimport { EntityKwirthLogContent } from '@jfvilas/plugin-kwirth-log';\r\nimport { isKwirthAvailable } from '@jfvilas/plugin-kwirth-common';\r\n```\r\n\r\nThen, add a tab to your EntityPage (the 'if' is optional, you can keep the 'KwirthLog' tab always visible if you prefer to do it that way).\r\n\r\n```jsx\r\n// Note: Add to any other Pages as well (e.g. defaultEntityPage or webSiteEntityPage, for example)\r\nconst serviceEntityPage = (\r\n  <EntityLayout>\r\n    {/* other tabs... */}\r\n    <EntityLayout.Route if={isKwirthAvailable} path=\"/kwirthlog\" title=\"KwirthLog\">\r\n      <EntityKwirthLogContent enableRestart={false} />\r\n    </EntityLayout.Route>\r\n  </EntityLayout>\r\n)\r\n```\r\n\r\nYou can setup some default *viewing* options on the `EntityKwirthLogContent` component, so, when the entity loads the default options will be set. These options are:\r\n- `fromStart`\r\n- `showNames`\r\n- `showTimestamp`\r\n- `followLog`\r\n- `wrapLines`\r\n\r\nFor example, you could setup your default log stream like this (The meaning of these properties are explained at the end of this document):\r\n\r\n```jsx\r\n  ...\r\n  <EntityLayout.Route if={isKwirthAvailable} path=\"/kwirthlog\" title=\"KwirthLog\">\r\n    <EntityKwirthLogContent enableRestart={false} fromStrat={true} showTimestamp={true} wrapLines={true} />\r\n  </EntityLayout.Route>\r\n  ...\r\n```\r\n\r\nYou can also set some behaviour options for the plugin:\r\n  - `hideVersion` (optional `boolean`) if set to `true`, version information updates will not be shown.\r\n  - `excludeContainers` (optional `string[]`), an array of container names that will be excluded from visualization. For example, if you have pods that include sidecars, you can exclude sidecard log messages using this property. What follows is an example on how to use these properties:\r\n\r\n  ```jsx\r\n    ...\r\n    <EntityLayout.Route if={isKwirthAvailable} path=\"/kwirthlog\" title=\"KwirthLog\">\r\n      <EntityKwirthLogContent hideVersion excludeContainers={['istio-proxy', 'nginx']} />\r\n    </EntityLayout.Route>\r\n    ...\r\n  ```\r\n  \r\n#### 2. Label your catalog-info\r\nUse one of these two startegies:\r\n\r\n- **Strategy 1: one-to-one**. Add `backstage.io/kubernetes-id` annotation to your `catalog-info.yaml` for the entities deployed to Kubernetes you want to work with on Backstage. This is the same annotation that the Kubernetes core plugin uses, so, maybe you already have added it to your components. Exmaple:\r\n\r\n    ```yaml\r\n    metadata:\r\n      annotations:\r\n        backstage.io/kubernetes-id: entity001\r\n    ```\r\n\r\n- **Strategy 2: use selectors**. Add `backstage.io/kubernetes-label-selector` annotation to your `catalog-info.yaml` for the entities you want to work with. This is the same annotation that the Kubernetes core plugin uses, so, maybe you already have added it to your components. The label selector value follows Kubernetes [label selector semantics](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). Example:\r\n\r\n    ```yaml\r\n    metadata:\r\n      annotations:\r\n        backstage.io/kubernetes-id: 'app=core,artifact=backend'\r\n    ```\r\n\r\n3. Add proper **labels** to your Kubernetes objects so Backstage can *link* forward and backward the Backstage entities with the Kubernetes objects. To do this, you need to add `labels` to your Kubernetes YAML objects (please, don't get confused: **annotations in Backstage YAML, labels in Kubernetes YAML**).\r\n\r\n- ***VERY IMPORTANT NOTE:*** If you opted for using label selectors **you have nothing new to add to your pods**.\r\n\r\n- If you use labels (no label selectors), please note that the kubernetes-id label is **on the deployment** and on the **spec pod template** also. This is an example of a typical Kubernetes deployment with the required label:\r\n\r\n\r\n    ```yaml\r\n    apiVersion: apps/v1\r\n    kind: Deployment\r\n    metadata:\r\n      name: ijkl\r\n      labels:\r\n        backstage.io/kubernetes-id: ijkl\r\n    spec:\r\n      selector:\r\n        matchLabels:\r\n          app: ijkl\r\n      template:\r\n        metadata:\r\n          name: 'ijkl-pod'\r\n          labels:\r\n            app: ijkl\r\n            backstage.io/kubernetes-id: ijkl\r\n        spec:\r\n          containers:\r\n            - name: ijkl\r\n              image: your-OCI-image\r\n        ...    \r\n    ```\r\n\r\n## Ready, set, go!\r\nIf you followed all these steps and our work is well done (not sure on this), you would see a 'KwirthLog' tab in your **Entity Page**, like this one:\r\n\r\n![kwirthlog-tab](https://raw.githubusercontent.com/jfvilas/plugin-kwirth-log/master/images/kwirthlog-tab.png)\r\n\r\nWhen you access the tab, if you have not yet tagged your entities you would see a message like this one explaning how to do that:\r\n\r\n![notfound](https://raw.githubusercontent.com/jfvilas/plugin-kwirth-log/master/images/kwirthlog-notfound.png)\r\n\r\nBut, if the component is found on some of the clusters configured in Backstage, your screen will look like following one, showing some cluster that can be selected and some others that can't.\r\n\r\n![notfound-some](https://raw.githubusercontent.com/jfvilas/plugin-kwirth-log/master/images/kwirthlog-notfound-on-cluster.png)\r\n\r\nOnce you tagged your entities and your Kubernetes objects correctly, you should see something similar to this:\r\n\r\n![available](https://raw.githubusercontent.com/jfvilas/plugin-kwirth-log/master/images/kwirthlog-available.png)\r\n\r\nKwirthLog is ready to show logs!!\r\n\r\nJust *select the cluster* on the cluster card and eventually set the *options* you want for the log streaming. On the card on right, you will see all the Kubernetes namespaces available and a stream control (download, play, pause and stop). *Select a namespace*, and two selectros for 'pod' and 'conatiner' will become available just under the namespace chips.\r\n\r\nSelect the pod/pods and container/containers you want to stream log, *click PLAY* button and the party starts!!\r\n\r\nNow you will see your log refreshing in real-time. If you selected more than one namespace/pod/contianer, the log stream will contain all the source log lines streamed following time line.\r\n\r\n![running](https://raw.githubusercontent.com/jfvilas/plugin-kwirth-log/master/images/kwirthlog-running.png)\r\n\r\n### Filtering\r\nWhen the log stream starts you will see a filter text field you can use for filtering messages. The use is as follows:\r\n  - If you type something, the messages (or the pod names or the container names) are expected to match that text.\r\n  - If you select `Aa`, the text match will be performed taking **casing** into account.\r\n  - If you select `.*` then the text entered will be treated as a regular expression.\r\n  - You can select *casing* and *regex* if you want regexes to match taking casing into account.\r\n\r\nFeel free to open issues and ask for more features.\r\n\r\n## Status information\r\nWhen the log stream starts, and all along the life of the stream (until it gets stopped or the window is closed), you will receive status information regarding the kubernetes objects you are watching. This status information is shown on the top of the card (just at the immediate right of the cluster name) including 3 kinds of information:\r\n\r\n  - **Info**. Informaiton regarding pod management at Kubernetes cluster level (new pod, pod ended or pod modified).\r\n  - **Warning**. Warnings related to the log stream.\r\n  - **Error**. If there is an error in the stream, like invalid key use, or erroneous pod tagging, erros will be shown here.\r\n\r\nThe icons will light up in its corresponding color when a new message arrives.\r\n\r\nThis is how it feels:\r\n![status info](https://raw.githubusercontent.com/jfvilas/plugin-kwirth-log/master/images/kwirthlog-status-info.png)\r\n\r\nIf you click on one of the status icons when theyr are enableds (coloured), you will see the detail of the status.\r\n![status detail](https://raw.githubusercontent.com/jfvilas/plugin-kwirth-log/master/images/kwirthlog-status-detail.png)\r\n\r\n## Log stream options\r\nThe log streaming system implemented in KwirthLog has some configuration options whose meaning is explained below.\r\n\r\n### From start (`fromStart`)\r\nIf checked, the log streams will be retieved since pod start time. Please be careful with this option, it may impact your browser performance.\r\n\r\n### Show message time (`showTimestamp`)\r\nDecide whether to show timestamps next to messages or not. Usually your application logs messages with timestamp, but it this doesn't occur you can add message time (as provided by Kubernetes) to your messages.\r\n\r\n### Show pod names (`showNames`)\r\nShow pod names and container names next to messages. You may need to use this option if you are showing messages from different sources.\r\n\r\n### Follow log stream (`followLog`)\r\nIf you activate this option, the log stream wil move to the end wehn a new messages arrives (it's like a `tail -f`).\r\n\r\n### Wrap log lines (`wrapLines`)\r\nNormally, KwirthLog will add hotizontal and vertical scrollers as needed in order to preserve original log lines, but you can activate this option to wrap lines and not to show horizontal scroller.",
+  "repository": "https://github.com/jfvilas/plugin-kwirth-log",
+  "role": "frontend-plugin",
+  "scope": "@jfvilas",
+  "updated": "2026-03-27T15:37:11.046Z",
+  "version": "0.14.2",
+  "version_count": 15,
+  "versions": [
+    {
+      "date": "2026-03-27T15:37:11.046Z",
+      "version": "0.14.2"
+    },
+    {
+      "date": "2025-11-23T12:33:22.265Z",
+      "version": "0.13.10"
+    },
+    {
+      "date": "2025-11-20T20:37:23.486Z",
+      "version": "0.13.5"
+    },
+    {
+      "date": "2025-11-08T11:24:28.404Z",
+      "version": "0.13.4"
+    },
+    {
+      "date": "2025-11-08T10:35:47.932Z",
+      "version": "0.13.3"
+    },
+    {
+      "date": "2025-11-02T11:59:28.958Z",
+      "version": "0.13.2"
+    },
+    {
+      "date": "2025-11-02T11:45:08.324Z",
+      "version": "0.13.1"
+    },
+    {
+      "date": "2025-11-02T10:48:48.695Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-08-28T18:29:08.950Z",
+      "version": "0.12.8"
+    },
+    {
+      "date": "2025-08-27T19:24:09.829Z",
+      "version": "0.12.7"
+    },
+    {
+      "date": "2025-07-28T19:28:25.221Z",
+      "version": "0.12.6"
+    },
+    {
+      "date": "2025-07-28T19:02:47.259Z",
+      "version": "0.12.5"
+    },
+    {
+      "date": "2025-04-05T19:15:15.207Z",
+      "version": "0.12.4"
+    },
+    {
+      "date": "2025-04-05T18:56:52.862Z",
+      "version": "0.12.3"
+    },
+    {
+      "date": "2025-04-05T15:58:16.205Z",
+      "version": "0.12.2"
+    }
+  ]
+}

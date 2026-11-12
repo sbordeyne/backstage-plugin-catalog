@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2025-12-17T12:06:19.721Z",
+  "deprecated": "",
+  "description": "Embeds the **Capacitor Kubernetes Dashboard** inside Backstage via an iframe.",
+  "homepage": "",
+  "keywords": [],
+  "license": "",
+  "maintainers": [
+    "gimlet-io"
+  ],
+  "name": "@gimlet-io/backstage-plugin-capacitor",
+  "plugin_id": "",
+  "readme": "# Backstage Capacitor Plugin\n\nEmbeds the **Capacitor Kubernetes Dashboard** inside Backstage via an iframe.\n\nThe iframe loads from **`/api/capacitor/`**, which is served by our **custom Capacitor backend proxy plugin** (not the built-in Backstage proxy-backend config). That backend plugin reverse-proxies your standalone Capacitor service (including websockets).\n\n---\n\n## Install (frontend)\n\nAdd the plugin dependency to your Backstage app:\n\n```sh\n# from your Backstage repo root\nyarn add @gimlet-io/backstage-plugin-capacitor --cwd packages/app\n```\n\nAdd the route in `packages/app/src/App.tsx`:\n\n```tsx\nimport { CapacitorPage } from '@gimlet-io/backstage-plugin-capacitor';\n\n// inside <FlatRoutes>:\n<Route path=\"/capacitor\" element={<CapacitorPage />} />\n```\n\nAdd a sidebar item in `packages/app/src/components/Root/Root.tsx`:\n\n```tsx\nimport DashboardIcon from '@material-ui/icons/Dashboard';\n\n// inside your <SidebarGroup>:\n<SidebarItem icon={DashboardIcon} to=\"capacitor\" text=\"Capacitor\" />\n```\n\n---\n\n## Backend setup (required)\n\nThis frontend plugin expects the **Capacitor backend proxy module** to be installed in your Backstage backend. It serves:\n\n- `GET /api/capacitor/*` (reverse proxy to the standalone service)\n- websocket upgrades under `/api/capacitor/*`\n- `GET /api/capacitor/.backstage/auth/v1/cookie` (Backstage auth “cookie mint” endpoint used by the page before rendering the iframe)\n\nThe backend proxy plugin is shipped by this npm package at:\n\n- `@gimlet-io/backstage-plugin-capacitor/backend`\n\n### Minimal wiring example\n\n1) Add the dependency to your Backstage backend package:\n\n```sh\n# from your Backstage repo root\nyarn add @gimlet-io/backstage-plugin-capacitor --cwd packages/backend\n```\n\n2) Register it in `packages/backend/src/index.ts`:\n\n```ts\nbackend.add(import('@gimlet-io/backstage-plugin-capacitor/backend'));\n```\n\n---\n\n## Configuration\n\nAdd the proxy target to your Backstage `app-config.yaml`:\n\n```yaml\n# Capacitor Kubernetes Dashboard\ncapacitor:\n  proxy:\n    # Where the standalone service actually runs\n    target: http://localhost:8181\n```\n\n### Proxy auth modes\n\nThe `/api/capacitor/*` backend proxy has **two modes**:\n\n- **Unauthenticated mode (default)**:\n  - **When**: neither `CAPACITOR_PROXY_SHARED_SECRET` nor `capacitor.proxy.sharedSecret` is set\n  - **Backstage route policy**: `allow: 'unauthenticated'` (set automatically by the proxy)\n  - **Behavior**: requests are proxied to `capacitor.proxy.target` without identity forwarding (no `X-Onurl-*` headers)\n  - **Upstream requirement**: the standalone service must allow unauthenticated access (e.g. `AUTH=noauth`)\n\n- **Authenticated / trusted-proxy mode**:\n  - **When**: either `CAPACITOR_PROXY_SHARED_SECRET` **or** `capacitor.proxy.sharedSecret` is set (non-empty)\n  - **Backstage route policy**: `allow: 'user-cookie'` (set automatically by the proxy)\n  - **Behavior**: Backstage signs and forwards the current user identity to the upstream via `X-Onurl-*` headers\n  - **Upstream requirement**: start the standalone service with `AUTH=trusted_proxy` and the same shared secret\n\n**Config precedence**: `CAPACITOR_PROXY_SHARED_SECRET` (env) is used if set; otherwise `capacitor.proxy.sharedSecret` (app-config) is used.\n\nAdd the shared secret (optional) in `app-config.yaml`:\n\n```yaml\ncapacitor:\n  proxy:\n    sharedSecret: ${CAPACITOR_PROXY_SHARED_SECRET}\n```\n\n### Backstage backend auth key (recommended)\n\nIf you run the proxy in **authenticated / user-cookie** mode (i.e. you set `CAPACITOR_PROXY_SHARED_SECRET` / `capacitor.proxy.sharedSecret`), Backstage will mint a `backstage-auth` cookie for the `/api/capacitor/*` routes.\n\nFor local/dev setups, make sure your Backstage backend has a **stable** `backend.auth.keys` secret; otherwise you may see warnings like `ERR_JWKS_NO_MATCHING_KEY` after restarts and the Capacitor iframe/proxy auth flow can fail until cookies are cleared.\n\nAdd this to your Backstage `app-config.yaml`:\n\n```yaml\nbackend:\n  auth:\n    keys:\n      - secret: ${BACKEND_SECRET}\n```\n\nAnd set `BACKEND_SECRET` to a stable value (same value across restarts).\n\n### Development notes (ports & `/api` proxy)\n\nWhen you run Backstage locally using `yarn start` / `npm run start`, Backstage typically runs **two servers**:\n\n- **Frontend (port 3000)**: the UI dev server (what your browser loads)\n- **Backend (port 7007)**: the Backstage backend (serves `/api/*`, including this plugin’s `/api/capacitor/*` route)\n\nThis plugin’s UI renders an iframe pointing at **`/api/capacitor/`** (same origin as the frontend). In dev, that means the browser requests: `http://localhost:3000/api/capacitor/...`\n\nWithout a frontend dev-server proxy, those requests **never reach the backend** and will instead hit the frontend server (often returning the Backstage HTML app again — “Backstage inside Backstage”).\n\nTo forward `/api/*` from the frontend dev server to the backend dev server, add this to **your Backstage app** at `packages/app/package.json`:\n\n```json\n{\n  \"proxy\": [\n    {\n      \"context\": [\"/api\"],\n      \"target\": \"http://localhost:7007\",\n      \"changeOrigin\": true,\n      \"secure\": false,\n      \"ws\": true\n    }\n  ]\n}\n```\n\nIn production you usually don’t need this setting, because your ingress/reverse-proxy (or deployment) routes `/api/*` to the backend.\n\n### Note on direct access\n\nIf authenticated mode is enabled, hitting `http://localhost:3000/api/capacitor/` directly in a fresh browser session can 401 until the cookie is minted. Visiting the Backstage page at `/capacitor` mints it automatically via: `GET /api/capacitor/.backstage/auth/v1/cookie`\n\nIf you still see `ERR_JWKS_NO_MATCHING_KEY`, clear the `backstage-auth` cookie for `localhost` (or open an incognito window) and refresh.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@gimlet-io",
+  "updated": "2025-12-19T09:45:10.465Z",
+  "version": "0.3.4",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2025-12-19T09:45:10.465Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2025-12-19T09:43:19.811Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2025-12-19T09:41:43.016Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2025-12-17T13:04:43.071Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2025-12-17T12:52:08.258Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-12-17T12:41:26.829Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-12-17T12:06:20.037Z",
+      "version": "0.1.0"
+    }
+  ]
+}

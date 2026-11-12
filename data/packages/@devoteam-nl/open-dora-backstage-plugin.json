@@ -1,0 +1,45 @@
+{
+  "author": "",
+  "created": "2023-11-22T12:01:58.457Z",
+  "deprecated": "",
+  "description": "Welcome to the OpenDORA plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "GPL-3.0",
+  "maintainers": [
+    "djelicdevoteam",
+    "fishbowl",
+    "opendora"
+  ],
+  "name": "@devoteam-nl/open-dora-backstage-plugin",
+  "plugin_id": "",
+  "readme": "# OpenDORA Plugin for Backstage\n\nWelcome to the OpenDORA plugin!\n\nThis plugin allows you to see DORA metrics for the teams within Backstage.\n\n## Setup\n\n1. Install this plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @devoteam-nl/open-dora-backstage-plugin\n```\n\n2. Make sure the [OpenDORA backend](https://github.com/DevoteamNL/opendora/blob/main/devlake-go/DEPLOYMENT.md) is deployed.\n\n3. Configure the url from which the OpenDORA API is accessible.\n\n```yaml\n# app-config.yaml\nopen-dora:\n  apiBaseUrl: http://localhost:10666\n```\n\n### Entity Pages\n\n1. Add a route to the plugin page:\n\n```jsx\n// In packages/app/src/App.tsx\nimport { OpenDoraPluginPage } from '@devoteam-nl/open-dora-backstage-plugin';\n\n...\nconst routes = (\n  <FlatRoutes>\n    {/* other routes... */}\n    <Route path=\"/open-dora\" element={<OpenDoraPluginPage />} />\n  </FlatRoutes>\n);\n```\n\n2. Add the plugin as a tab to your side-navigation:\n\n```jsx\n// In packages/app/src/components/Root/Root.tsx\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n      {/* other sidebar groups... */}\n      <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n        {/* other sidebar items... */}\n        <SidebarItem icon={ExtensionIcon} to=\"open-dora\" text=\"OpenDORA\" />\n      </SidebarGroup>\n\n      {/* other sidebar groups... */}\n    </Sidebar>\n    {children}\n  </SidebarPage>\n);\n```\n",
+  "repository": "https://github.com/DevoteamNL/opendora",
+  "role": "frontend-plugin",
+  "scope": "@devoteam-nl",
+  "updated": "2024-04-16T07:10:10.226Z",
+  "version": "0.4.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-04-16T07:10:10.226Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-02-09T10:30:57.879Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2024-02-08T17:57:14.223Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-02-07T14:55:47.319Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-11-22T12:01:58.757Z",
+      "version": "0.1.2"
+    }
+  ]
+}

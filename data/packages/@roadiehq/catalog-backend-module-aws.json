@@ -1,0 +1,92 @@
+{
+  "author": "",
+  "created": "2022-04-21T14:19:39.723Z",
+  "deprecated": "",
+  "description": "A set of Backstage catalog providers for AWS",
+  "homepage": "https://roadie.io",
+  "keywords": [
+    "aws",
+    "backend",
+    "backstage",
+    "catalog",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brianfletcher",
+    "roadie-bot",
+    "roadiehq-david",
+    "xantier"
+  ],
+  "name": "@roadiehq/catalog-backend-module-aws",
+  "plugin_id": "catalog-backend-module-aws",
+  "readme": "",
+  "repository": "https://github.com/RoadieHQ/roadie-backstage-plugins/tree/HEAD/plugins/catalog-backend-module-aws",
+  "role": "backend-plugin-module",
+  "scope": "@roadiehq",
+  "updated": "2026-09-29T13:24:06.923Z",
+  "version": "5.12.0",
+  "version_count": 87,
+  "versions": [
+    {
+      "date": "2026-09-29T13:24:06.923Z",
+      "version": "5.12.0"
+    },
+    {
+      "date": "2025-12-08T09:10:14.164Z",
+      "version": "5.11.0"
+    },
+    {
+      "date": "2025-11-26T09:51:39.403Z",
+      "version": "5.10.1"
+    },
+    {
+      "date": "2025-10-31T09:31:06.347Z",
+      "version": "5.10.0"
+    },
+    {
+      "date": "2025-10-13T13:47:05.050Z",
+      "version": "5.9.0"
+    },
+    {
+      "date": "2025-08-07T10:40:29.760Z",
+      "version": "5.8.3"
+    },
+    {
+      "date": "2025-07-24T15:42:27.615Z",
+      "version": "5.8.2"
+    },
+    {
+      "date": "2025-07-23T11:16:49.468Z",
+      "version": "5.8.1"
+    },
+    {
+      "date": "2025-07-23T09:40:22.417Z",
+      "version": "5.8.0"
+    },
+    {
+      "date": "2025-06-11T15:41:38.211Z",
+      "version": "5.7.1"
+    },
+    {
+      "date": "2025-04-29T11:04:10.970Z",
+      "version": "5.7.0"
+    },
+    {
+      "date": "2025-03-26T14:48:12.253Z",
+      "version": "5.6.0"
+    },
+    {
+      "date": "2025-03-07T13:53:55.466Z",
+      "version": "5.5.1"
+    },
+    {
+      "date": "2024-12-26T18:32:11.755Z",
+      "version": "5.5.0"
+    },
+    {
+      "date": "2024-12-25T14:55:36.859Z",
+      "version": "5.4.4"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "author": "Spreadshirt",
+  "created": "2022-09-22T13:14:13.087Z",
+  "deprecated": "",
+  "description": "This plugin creates a new page in Backstage where the user can view the stored elements in AWS S3. The user will be able to pick a bucket from a certain endpoint and then navigate inside it similarly to a file explorer.  The buckets and objects informatio",
+  "homepage": "https://github.com/spreadshirt/backstage-plugin-s3#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "hseffler",
+    "lunarluna"
+  ],
+  "name": "@spreadshirt/backstage-plugin-s3-viewer",
+  "plugin_id": "s3-viewer",
+  "readme": "# @spreadshirt/backstage-plugin-s3-viewer\n\nThis plugin creates a new page in Backstage where the user can view the stored elements in AWS S3. The user will be able to pick a bucket from a certain endpoint and then navigate inside it similarly to a file explorer. \nThe buckets and objects information will be also displayed to the user, and the objects will be possible to be downloaded or preview (if they are an image of a small size).\n\n![S3 Viewer Plugin Overview](../../demo/examples/img1.png)\n\n## Introduction\n\nAmazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance.\n\nWith this plugin, you will be able to navigate around your internal AWS S3 storage using a table view, get information about a certain bucket or object, preview the object and download it.\n\n## Getting started\n\n1. Install the plugin by running this command:\n\n    ```bash\n    # From your Backstage root directory\n    yarn --cwd packages/app add @spreadshirt/backstage-plugin-s3-viewer\n    ```\n\n2. Add the configuration to the `app-config.yaml` file. This is described in the backend plugin.\n\n3. Optionally set a cookie after sign-in so downloads and previews work. This belongs in the **app**, not the plugin:\n\n    ```typescript\n    import { S3ApiRef } from '@spreadshirt/backstage-plugin-s3-viewer';\n    import { IdentityApi, useApi } from '@backstage/core-plugin-api';\n\n    // Inside a React component (for example the SignInPageBlueprint loader):\n    const s3ViewerApi = useApi(S3ApiRef);\n\n    async function onSignInSuccess(identityApi: IdentityApi) {\n      props.onSignInSuccess(identityApi);\n      await s3ViewerApi.setCookie();\n    }\n    ```\n\n    Wire that into your sign-in page (New Frontend System `SignInPageBlueprint`, or the legacy `components.SignInPage` option).\n\n### New Frontend System\n\nInstall the plugin as a feature. The page is served at `/s3-viewer` by default and appears in the sidebar from the page `title` and `icon`.\n\n```typescript\n// In packages/app/src/App.tsx\nimport { createApp } from '@backstage/frontend-defaults';\nimport s3ViewerPlugin from '@spreadshirt/backstage-plugin-s3-viewer/alpha';\n\nconst app = createApp({\n  features: [\n    s3ViewerPlugin,\n    // ...other features\n  ],\n});\n\nexport default app.createRoot();\n```\n\nYou can override the path in configuration if needed:\n\n```yaml\napp:\n  extensions:\n    - page:s3-viewer:\n        config:\n          path: /s3-viewer\n```\n\n### Legacy frontend system\n\nIf your app still uses the legacy frontend system:\n\n```typescript\n// In packages/app/src/App.tsx\nimport { S3ViewerPage } from '@spreadshirt/backstage-plugin-s3-viewer';\n\nconst routes = (\n  <FlatRoutes>\n    {/* ...other routes */}\n    <Route path=\"/s3-viewer\" element={<S3ViewerPage />} />\n  </FlatRoutes>\n)\n```\n\nAdd a sidebar item:\n\n```typescript\n// In packages/app/src/components/Root/Root.tsx\nimport { SiAmazons3 } from 'react-icons/si';\n\n<SidebarPage>\n  {/* ...other contents */}\n  <SidebarItem icon={SiAmazons3} to=\"s3-viewer\" text=\"S3 Viewer\" />\n</SidebarPage>\n```\n\n## Features\n\n- Available endpoints and buckets are displayed in a tree view. By clicking them you can select one bucket or another.\n- List objects for a bucket using a file explorer style.\nDisplay information about the selected bucket, as well as for a selected object.\n- Preview of the object content (if possible) and the possibility to download it.\n  - If the object is not an image, it won't be loaded.\n  - For performance reasons, only images with a size below 2MB will be loaded.\n- Custom URL generated depending on the selected item, this allows you to share a link with someone else pointing to a concrete endpoint, bucket and even object.\n- Authenticated requests, can be authorized or rejected on the backend side depending on the user permissions.\n",
+  "repository": "https://github.com/spreadshirt/backstage-plugin-s3/tree/HEAD/plugins/s3-viewer",
+  "role": "frontend-plugin",
+  "scope": "@spreadshirt",
+  "updated": "2026-09-08T16:27:59.105Z",
+  "version": "0.10.1",
+  "version_count": 47,
+  "versions": [
+    {
+      "date": "2026-09-08T16:27:59.105Z",
+      "version": "0.10.1"
+    },
+    {
+      "date": "2026-09-08T07:41:39.636Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-03-18T11:21:37.580Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-12-15T14:38:53.190Z",
+      "version": "0.8.1"
+    },
+    {
+      "date": "2025-10-30T13:02:15.033Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-09-22T11:35:32.385Z",
+      "version": "0.6.3"
+    },
+    {
+      "date": "2025-09-01T13:41:15.880Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2025-07-28T14:39:31.988Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2025-07-16T07:11:40.224Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-07-09T08:31:47.124Z",
+      "version": "0.5.17"
+    },
+    {
+      "date": "2025-06-24T08:01:25.010Z",
+      "version": "0.5.16"
+    },
+    {
+      "date": "2025-05-22T12:11:50.585Z",
+      "version": "0.5.15"
+    },
+    {
+      "date": "2025-04-23T09:31:42.717Z",
+      "version": "0.5.14"
+    },
+    {
+      "date": "2025-03-25T08:10:11.761Z",
+      "version": "0.5.13"
+    },
+    {
+      "date": "2025-01-21T10:47:00.750Z",
+      "version": "0.5.12"
+    }
+  ]
+}

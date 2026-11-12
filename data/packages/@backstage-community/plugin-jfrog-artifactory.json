@@ -1,0 +1,86 @@
+{
+  "author": "Red Hat",
+  "created": "2024-10-08T19:24:21.617Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-jfrog-artifactory",
+  "plugin_id": "jfrog-artifactory",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/jfrog-artifactory/plugins/jfrog-artifactory",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-06T07:45:32.990Z",
+  "version": "2.1.0",
+  "version_count": 53,
+  "versions": [
+    {
+      "date": "2026-11-06T07:45:32.990Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2026-09-23T05:21:31.463Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2026-09-21T14:56:52.117Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2026-09-15T00:02:05.312Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2026-09-14T23:36:35.690Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-09-04T13:21:54.766Z",
+      "version": "1.31.1"
+    },
+    {
+      "date": "2026-08-28T20:47:14.657Z",
+      "version": "1.31.0"
+    },
+    {
+      "date": "2026-07-22T11:28:08.208Z",
+      "version": "1.30.2"
+    },
+    {
+      "date": "2026-07-21T20:57:26.425Z",
+      "version": "1.30.1"
+    },
+    {
+      "date": "2026-06-25T13:37:14.534Z",
+      "version": "1.30.0"
+    },
+    {
+      "date": "2026-05-16T22:21:39.787Z",
+      "version": "1.29.0"
+    },
+    {
+      "date": "2026-03-25T10:36:31.281Z",
+      "version": "1.28.0"
+    },
+    {
+      "date": "2026-03-10T21:44:37.719Z",
+      "version": "1.27.2"
+    },
+    {
+      "date": "2026-03-04T12:14:17.412Z",
+      "version": "1.27.1"
+    },
+    {
+      "date": "2026-02-24T20:09:38.434Z",
+      "version": "1.27.0"
+    }
+  ]
+}

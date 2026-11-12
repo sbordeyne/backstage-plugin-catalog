@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2026-02-19T17:01:50.632Z",
+  "deprecated": "",
+  "description": "Backstage backend module for exporting Soundcheck metrics to BigQuery",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-soundcheck-metrics-backend",
+  "plugin_id": "soundcheck",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2026-10-23T12:30:17.236Z",
+  "version": "0.2.8",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2026-10-23T12:30:17.236Z",
+      "version": "0.2.8"
+    },
+    {
+      "date": "2026-09-17T14:11:39.024Z",
+      "version": "0.2.7"
+    },
+    {
+      "date": "2026-08-20T15:32:57.915Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2026-07-17T16:18:03.556Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2026-06-19T07:54:04.430Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2026-05-26T11:53:10.706Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2026-04-17T09:05:16.857Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-03-19T22:29:55.923Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-02-19T17:01:50.934Z",
+      "version": "0.2.0"
+    }
+  ]
+}

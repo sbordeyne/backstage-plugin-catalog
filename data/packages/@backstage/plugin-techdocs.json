@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2020-07-10T14:54:49.752Z",
+  "deprecated": "",
+  "description": "The Backstage plugin that renders technical documentation for your components",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "techdocs"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-techdocs",
+  "plugin_id": "techdocs",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/techdocs",
+  "role": "frontend-plugin",
+  "scope": "@backstage",
+  "updated": "2026-10-20T17:08:24.428Z",
+  "version": "1.19.0",
+  "version_count": 2061,
+  "versions": [
+    {
+      "date": "2026-11-11T03:16:47.947Z",
+      "version": "1.19.1-next.2"
+    },
+    {
+      "date": "2026-11-07T03:09:07.926Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T03:12:36.993Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T03:06:22.966Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-11-03T18:59:14.595Z",
+      "version": "1.19.1-next.1"
+    },
+    {
+      "date": "2026-10-31T02:59:16.694Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:56:58.132Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T03:11:50.990Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T03:10:03.541Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:45:33.958Z",
+      "version": "1.19.1-next.0"
+    },
+    {
+      "date": "2026-10-27T03:06:18.541Z",
+      "version": "0.0.0-nightly-20261027023041"
+    },
+    {
+      "date": "2026-10-20T17:08:24.428Z",
+      "version": "1.19.0"
+    },
+    {
+      "date": "2026-10-13T16:21:40.139Z",
+      "version": "1.19.0-next.2"
+    },
+    {
+      "date": "2026-10-06T19:39:53.230Z",
+      "version": "1.19.0-next.1"
+    },
+    {
+      "date": "2026-09-28T03:26:52.694Z",
+      "version": "0.0.0-nightly-20260928023907"
+    }
+  ]
+}

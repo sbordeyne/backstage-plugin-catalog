@@ -1,0 +1,49 @@
+{
+  "author": "",
+  "created": "2026-10-03T09:15:08.878Z",
+  "deprecated": "",
+  "description": "Langfuse telemetry provider for the ai-agents Backstage backend plugin: live/recent agent runs derived from the Langfuse public observations API.",
+  "homepage": "https://github.com/acarmisc/backstage-plugin-ai-agents/tree/main/packages/plugin-ai-agents-backend-module-langfuse#readme",
+  "keywords": [
+    "backstage",
+    "backstage-backend-plugin-module",
+    "backstage-plugin",
+    "langfuse",
+    "opentelemetry"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "acarmisc"
+  ],
+  "name": "@acarmisc/backstage-plugin-ai-agents-backend-module-langfuse",
+  "plugin_id": "ai-agents",
+  "readme": "# @acarmisc/backstage-plugin-ai-agents-backend-module-langfuse\n\nTelemetry module for the [AI Agents backend](https://github.com/acarmisc/backstage-plugin-ai-agents/tree/main/packages/plugin-ai-agents-backend):\nreads agent runs and tool calls from [Langfuse](https://langfuse.com) for the\nActivity view and the run timelines. The provider contract is described in\n[docs/activity.md](https://github.com/acarmisc/backstage-plugin-ai-agents/blob/main/docs/activity.md).\n\n## Installation\n\n```bash\nyarn --cwd packages/backend add @acarmisc/backstage-plugin-ai-agents-backend-module-langfuse\n```\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@acarmisc/backstage-plugin-ai-agents-backend'));\nbackend.add(\n  import('@acarmisc/backstage-plugin-ai-agents-backend-module-langfuse'),\n);\n```\n\n## Configuration\n\n```yaml\nai-agents:\n  telemetry:\n    langfuse:\n      baseUrl: https://langfuse.example.com\n      publicKey: ${LANGFUSE_PUBLIC_KEY}\n      secretKey: ${LANGFUSE_SECRET_KEY}\n      # servicePrefix: ''\n      # serviceAttribute: resourceAttributes.service.name\n      # targetAttribute: attributes.agent.target\n      # projectAttribute: attributes.agent.project\n      # lookbackHours: 24\n      # runningWindowSeconds: 90\n      # cacheTtlMs: 4000\n```\n\n| Key                    | Default                           | Description                                                                      |\n| ---------------------- | --------------------------------- | -------------------------------------------------------------------------------- |\n| `baseUrl`              |                                   | Langfuse URL.                                                                    |\n| `publicKey`            |                                   | Project public key.                                                              |\n| `secretKey`            |                                   | Project secret key. Secret.                                                      |\n| `servicePrefix`        | `''`                              | Prepended to the telemetry id to match the agent's service name.                 |\n| `serviceAttribute`     | `resourceAttributes.service.name` | Observation metadata key holding the OTel service name.                          |\n| `targetAttribute`      | none                              | Metadata key of the invoke span shown as the run's target.                       |\n| `projectAttribute`     | none                              | Metadata key of the invoke span shown as the run's project.                      |\n| `lookbackHours`        | `24`                              | How far back runs are searched.                                                  |\n| `runningWindowSeconds` | `90`                              | How recent the last tool call must be for an unfinished run to count as running. |\n| `cacheTtlMs`           | `4000`                            | Cache of Langfuse responses.                                                     |\n\nWithout the `langfuse` block the module does nothing.\n\nLangfuse keys are project-wide and read/write. Give Backstage its own pair so it\ncan be rotated on its own; the module only reads.\n\nOpt an agent in with its name in the traces:\n\n```yaml\nmetadata:\n  annotations:\n    ai-agent.io/telemetry-id: support-triage\n```\n\n## What the traces must look like\n\nThe module expects the OpenTelemetry GenAI conventions, as emitted by agent\nSDKs such as Strands:\n\n- One AGENT observation named `<telemetry-id>-invoke` per run. Runs with\n  `level: ERROR` are failed.\n- One TOOL observation per tool call, with `attributes.gen_ai.tool.name` and\n  `attributes.gen_ai.tool.status`, whose service attribute contains\n  `<servicePrefix><telemetry-id>`.\n- Optionally a `review_quality` metadata object on the invoke span\n  (`risk_tier`, `posted`, `completed`, `incomplete_reason`), shown as the run's\n  verdict.\n\nThe invoke span is exported when the run ends, so a trace that has tool calls\nbut no invoke span yet is shown as running while its last tool call is within\n`runningWindowSeconds`, and as `unknown` after that.\n\n## What it reads\n\n`GET /api/public/v2/observations` with `fields=core,basic,metadata`. It never\nrequests `io`, so prompts, model output and tool arguments are not fetched.\nToken and cost data are not shown.\n\n## Troubleshooting: no runs\n\n- The entity has no `ai-agent.io/telemetry-id`, or the catalog has not\n  refreshed it yet.\n- The keys belong to another Langfuse project.\n- `servicePrefix` + telemetry id does not match the value at\n  `serviceAttribute`.\n- The last run is older than `lookbackHours`.\n- Langfuse answers 401/403: the keys are wrong or revoked (see the backend\n  log).\n",
+  "repository": "https://github.com/acarmisc/backstage-plugin-ai-agents/tree/HEAD/packages/plugin-ai-agents-backend-module-langfuse",
+  "role": "backend-plugin-module",
+  "scope": "@acarmisc",
+  "updated": "2026-10-04T17:27:55.001Z",
+  "version": "0.3.1",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-10-04T17:27:55.001Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-10-03T20:21:49.530Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-10-03T18:34:25.518Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-10-03T17:09:18.903Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-10-03T09:15:09.123Z",
+      "version": "0.1.0"
+    }
+  ]
+}

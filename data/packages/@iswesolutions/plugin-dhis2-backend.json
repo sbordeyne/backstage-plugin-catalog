@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-10-06T23:34:29.907Z",
+  "deprecated": "",
+  "description": "Backend for [`@iswesolutions/plugin-dhis2`](../dhis2). It runs the DHIS2 lifecycle on a Proxmox VE cluster: provisioning, cloning, editing, upgrading, backups, restores, database moves and decommissioning. Each change runs as a background job whose saniti",
+  "homepage": "https://github.com/ISWE-Solutions/backstage-plugins/tree/main/plugins/dhis2-backend#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "csiwale"
+  ],
+  "name": "@iswesolutions/plugin-dhis2-backend",
+  "plugin_id": "dhis2",
+  "readme": "# @iswesolutions/plugin-dhis2-backend\n\nBackend for [`@iswesolutions/plugin-dhis2`](../dhis2). It runs the DHIS2\nlifecycle on a Proxmox VE cluster: provisioning, cloning, editing, upgrading,\nbackups, restores, database moves and decommissioning. Each change runs as a\nbackground job whose sanitised log the page streams. Instances are recorded in\nthe plugin's database.\n\n## How provisioning works\n\n```\nBackstage backend ──► orchestrator host (local exec, or SSH when remote)\n                      scripts/create-instance.sh\n                        └─ ansible-playbook site.yml\n                             pve_lxc        create + start the LXC (Proxmox REST API)\n                             lxc_bootstrap  python, sudo, `ansible` user, SSH key\n                             postgres       per-instance or shared PostgreSQL\n                             dhis2          Java, Tomcat, DHIS2 WAR, dhis.conf\n                        └─ scripts/configure-proxy.sh\n                             central nginx vhost + Let's Encrypt certificate\n```\n\n> **The scripts and playbooks are not part of this npm package.** They live in\n> [`plugins/dhis2/scripts`](https://github.com/ISWE-Solutions/backstage-plugins/tree/main/plugins/dhis2/scripts)\n> and\n> [`plugins/dhis2/ansible`](https://github.com/ISWE-Solutions/backstage-plugins/tree/main/plugins/dhis2/ansible)\n> in the GitHub repository. Check them out on the orchestrator host and point\n> `dhis2.orchestrator.scriptPath` at `create-instance.sh`.\n\nThe orchestrator host needs:\n\n- `ansible-core` 2.13 or later, plus the collections in\n  `ansible/requirements.yml`:\n  `ansible-galaxy collection install -r ansible/requirements.yml`\n- Python `proxmoxer` 2.x and `requests`\n- An SSH key pair; the public half is installed in each new container\n\n## Installation\n\n```sh\nyarn --cwd packages/backend add @iswesolutions/plugin-dhis2-backend\n```\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@iswesolutions/plugin-dhis2-backend'));\n```\n\n## Configuration\n\n```yaml\ndhis2:\n  orchestrator:\n    # 'localhost' runs create-instance.sh on the backend host; any other\n    # host is reached over SSH.\n    host: localhost\n    port: 22\n    user: ${DHIS2_ORCHESTRATOR_USER}\n    privateKeyFile: ${DHIS2_ORCHESTRATOR_KEY}\n    # passphrase: ${DHIS2_ORCHESTRATOR_KEY_PASSPHRASE}\n    scriptPath: /opt/backstage-plugins/plugins/dhis2/scripts/create-instance.sh\n    # Proxmox node that hosts the central nginx (used by configure-proxy.sh)\n    pveHost: pve1\n    skipCertbot: false\n    # Proxmox REST API used to create and manage containers. The token's\n    # user needs PVEVMAdmin (or equivalent) on /.\n    apiUrl: ${PROXMOX_API_URL}\n    apiUser: ${PROXMOX_USER} # e.g. root@pam\n    apiTokenId: ${PROXMOX_TOKEN_ID} # the part after the !\n    apiTokenSecret: ${PROXMOX_TOKEN_SECRET}\n    validateApiCerts: false\n    # Where uploaded database dumps are staged before a restore\n    # (default: a directory under the system temp dir)\n    restoreStagingDir: /var/lib/backstage/dhis2/restore-staging\n\n  # Optional: give new and cloned containers a static IP from\n  # @iswesolutions/plugin-ipam-backend (ipam.allocation must be configured)\n  ipamAllocation:\n    enabled: true\n```\n\nWith `host: localhost`, anything left out of `user`, `privateKeyFile` and\n`scriptPath` falls back to the current user, the first key in `~/.ssh`, and\ncommon checkout locations of `create-instance.sh`. A remote orchestrator needs\nall three.\n\n## API\n\nRoutes are under `/api/dhis2` and need a signed-in user. Changes also need a\npermission from [`@iswesolutions/plugin-dhis2-common`](../dhis2-common):\n\n| Route                                                                              | Permission               |\n| ---------------------------------------------------------------------------------- | ------------------------ |\n| `GET /instances`, `GET /instances/reconcile`, `GET /instances/jobs/:id`            | —                        |\n| `POST /instances/:id/logs`, `GET /databases/transfers/:id`                         | —                        |\n| `POST /instances/provision`, `/instances/next-vmid`, `/restore/upload`             | `dhis2.instance.create`  |\n| `POST /databases/test`, `/databases/list`, `/databases/check-compatibility`        | `dhis2.instance.create`  |\n| `POST /instances/:id/clone`                                                        | `dhis2.instance.clone`   |\n| `POST /instances/:id/edit`, `/instances/:id/upgrade`                               | `dhis2.instance.update`  |\n| `POST /instances/:id/lifecycle`, `/instances/:id/backup`, `…/reconcile-live`       | `dhis2.instance.operate` |\n| `POST /instances/:id/restore`, `/instances/:id/transfer-database`                  | `dhis2.instance.restore` |\n| `POST /instances/:id/decommission`                                                 | `dhis2.instance.delete`  |\n| `POST /instances/:id/proxy-files/read`, `…/proxy-files/write`, `…/proxy-logs/tail` | `dhis2.proxy.manage`     |\n\nDatabase credentials sent to these routes are used for the job and are never\nwritten to job logs.\n",
+  "repository": "https://github.com/ISWE-Solutions/backstage-plugins/tree/HEAD/plugins/dhis2-backend",
+  "role": "backend-plugin",
+  "scope": "@iswesolutions",
+  "updated": "2026-10-15T11:32:36.579Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-10-15T11:32:36.579Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-10-06T23:36:37.921Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-06T23:34:29.907Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

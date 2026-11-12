@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2026-01-12T14:01:14.310Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-extensions",
+  "plugin_id": "extensions",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/extensions/plugins/extensions",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-06T11:42:22.320Z",
+  "version": "1.1.2",
+  "version_count": 24,
+  "versions": [
+    {
+      "date": "2026-11-06T11:42:22.320Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2026-11-04T05:10:56.342Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-10-26T14:09:56.681Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-10-26T12:48:19.183Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-10-13T12:26:55.844Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-09-25T08:50:40.160Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-09-17T10:50:47.103Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-09-17T03:28:38.786Z",
+      "version": "0.17.2"
+    },
+    {
+      "date": "2026-09-15T12:56:46.827Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-07-27T07:33:14.985Z",
+      "version": "0.19.1"
+    },
+    {
+      "date": "2026-07-22T07:58:55.003Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-07-18T13:34:00.379Z",
+      "version": "0.18.1"
+    },
+    {
+      "date": "2026-06-11T08:49:55.310Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-05-08T14:32:37.189Z",
+      "version": "0.17.1"
+    },
+    {
+      "date": "2026-05-06T13:07:17.194Z",
+      "version": "0.17.0"
+    }
+  ]
+}

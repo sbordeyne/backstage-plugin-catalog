@@ -1,0 +1,71 @@
+{
+  "author": "Muvaffak Onus",
+  "created": "2022-10-23T07:35:17.141Z",
+  "deprecated": "",
+  "description": "A custom Backstage scaffolder action to create ArgoCD `Application` custom resource in the cluster Backstage is running.",
+  "homepage": "https://github.com/muvaf/create-argocd-application#readme",
+  "keywords": [
+    "argo",
+    "argocd",
+    "backstage",
+    "backstage-plugin",
+    "backstage-scaffolder",
+    "backstage-template",
+    "kubernetes"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "muvaf"
+  ],
+  "name": "@muvaf/create-argocd-application",
+  "plugin_id": "",
+  "readme": "# Create ArgoCD Application in Backstage\n\nThis custom scaffolder action allows you to create ArgoCD `Application` as part\nof your software template.\n\nI wrote this for a [KubeCon talk](https://kccncna2022.sched.com/event/b0d8e5d397fe9a2e61ff0434524d3af2) without knowing much TypeScript. Be careful if\nyou decide to use it.\n\n## Getting Started\n\nAdd to your Backstage app.\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @muvaf/create-argocd-application\n```\n```bash\n# To be able to keep using the built-in actions.\nyarn add --cwd packages/backend @backstage/integration\n```\n\n**IMPORTANT NOTE**: This custom action uses `POD_NAMESPACE` environment variable\nto determine the namespace of the ArgoCD `Application` resource. Make sure you\nset it when you deploy your Backstage app. An example addition to your container\ncould be like the following:\n```yaml\nenv:\n  - name: POD_NAMESPACE\n    valueFrom:\n      fieldRef:\n        fieldPath: metadata.namespace\n```\n\nAppend it to your existing actions in `packages/backend/src/plugins/scaffolder.ts`\n```typescript\nimport { CatalogClient } from '@backstage/catalog-client';\nimport { createRouter, createBuiltinActions } from '@backstage/plugin-scaffolder-backend';\nimport { ScmIntegrations } from '@backstage/integration';\nimport { Router } from 'express';\nimport type { PluginEnvironment } from '../types';\nimport { argocdCreateHelmApplication, githubWaitLastWorkflow } from \"@muvaf/create-argocd-application\";\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const catalogClient = new CatalogClient({ discoveryApi: env.discovery });\n  const integrations = ScmIntegrations.fromConfig(env.config);\n\n  const builtInActions = createBuiltinActions({\n    integrations,\n    catalogClient,\n    config: env.config,\n    reader: env.reader,\n  });\n\n  const actions = [\n      ...builtInActions,\n      argocdCreateHelmApplication(),\n      githubWaitLastWorkflow({ integrations })\n  ]\n\n  return await createRouter({\n    actions,\n    catalogClient,\n    logger: env.logger,\n    config: env.config,\n    database: env.database,\n    reader: env.reader,\n    identity: env.identity,\n  });\n}\n```\n\nDone! You can now use the action in your software templates.\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: chart-with-argocd\n  title: Chart with ArgoCD\nspec:\n  steps:\n    - id: argocd-create\n      name: Create ArgoCD Application\n      action: argocd:create-helm-application\n      input:\n        name: ${{ parameters.serviceName }}\n        chart:\n          name: ${{ (parameters.repoUrl | parseRepoUrl).repo }}\n          repo: ghcr.io/${{ (parameters.repoUrl | parseRepoUrl).owner }}\n          version: 9.9.9\n```",
+  "repository": "https://github.com/muvaf/create-argocd-application",
+  "role": "backend-plugin-module",
+  "scope": "@muvaf",
+  "updated": "2022-10-25T18:12:25.136Z",
+  "version": "0.4.1",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2022-10-25T18:12:25.136Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2022-10-25T17:41:29.890Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2022-10-23T14:21:49.375Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2022-10-23T13:41:17.518Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2022-10-23T11:05:10.593Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2022-10-23T10:36:53.911Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2022-10-23T08:25:07.759Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2022-10-23T08:12:59.387Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2022-10-23T07:55:55.814Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2022-10-23T07:35:17.383Z",
+      "version": "0.1.3"
+    }
+  ]
+}

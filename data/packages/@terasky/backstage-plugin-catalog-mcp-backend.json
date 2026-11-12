@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2025-12-07T15:45:48.438Z",
+  "deprecated": "",
+  "description": "Welcome to the catalog-mcp-backend plugin!",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-catalog-mcp-backend",
+  "plugin_id": "catalog-mcp",
+  "readme": "# Catalog MCP Backend\n\nWelcome to the catalog-mcp-backend plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-catalog-mcp-backend/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-catalog-mcp-backend)\n\n## Description\n\nThe `catalog-mcp-backend` plugin for Backstage provides Model Context Protocol (MCP) actions for querying the Backstage Catalog. This plugin enables AI agents and automation tools to discover and query catalog entities programmatically through flexible and powerful query interfaces.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/catalog-mcp/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.\n",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/catalog-mcp-backend",
+  "role": "backend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:45:34.108Z",
+  "version": "0.14.0",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-10-21T13:45:34.108Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2026-07-08T14:06:06.931Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2026-06-30T17:16:54.966Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-06-09T19:00:12.788Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2026-04-16T08:17:17.145Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-03-22T16:57:50.978Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-02-17T20:36:05.137Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-01-28T18:28:23.600Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-01-26T10:34:36.618Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-01-21T10:05:54.846Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-12-22T10:13:33.413Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-12-07T15:45:48.783Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2022-10-14T04:16:07.129Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates towards Kubernetes",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "diorahman"
+  ],
+  "name": "@rockybars/backstage-plugin-kubernetes",
+  "plugin_id": "",
+  "readme": "# kubernetes\n\nWelcome to the kubernetes plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/kubernetes](http://localhost:3000/kubernetes).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@rockybars",
+  "updated": "2022-10-14T04:24:18.047Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2022-10-14T04:24:18.047Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2022-10-14T04:16:07.407Z",
+      "version": "0.1.0"
+    }
+  ]
+}

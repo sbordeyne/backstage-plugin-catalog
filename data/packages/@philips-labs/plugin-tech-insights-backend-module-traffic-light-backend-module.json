@@ -1,0 +1,29 @@
+{
+  "author": "",
+  "created": "2025-06-20T18:38:10.462Z",
+  "deprecated": "",
+  "description": "The traffic-light-backend-module backend module for the tech-insights plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "npalm",
+    "rjaegers",
+    "scottguymer"
+  ],
+  "name": "@philips-labs/plugin-tech-insights-backend-module-traffic-light-backend-module",
+  "plugin_id": "tech-insights",
+  "readme": "",
+  "repository": "https://github.com/philips-labs/argus-panoptes/tree/HEAD/workspaces/semaphore/plugins/tech-insights-backend-module-traffic-light-backend-module",
+  "role": "backend-plugin-module",
+  "scope": "@philips-labs",
+  "updated": "2025-06-20T18:38:10.829Z",
+  "version": "0.2.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-06-20T18:38:10.829Z",
+      "version": "0.2.1"
+    }
+  ]
+}

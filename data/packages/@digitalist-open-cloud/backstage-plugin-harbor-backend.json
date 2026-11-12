@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-07-18T20:36:28.840Z",
+  "deprecated": "",
+  "description": "This plugin will show information about your docker images within Harbor.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ewert-the-dragon"
+  ],
+  "name": "@digitalist-open-cloud/backstage-plugin-harbor-backend",
+  "plugin_id": "harbor",
+  "readme": "# Backstage Harbor Backend plugin\n\nThis plugin will show information about your docker images within Harbor.\n\nThis is a fork, and no promises for backwards compatibility. But have been tested on Backstage 1.29.x (version 0.4.2 of this plugin) and 1.37.x (0.6.0).\n\nFor the original code, please see the [GitHub repo](https://github.com/container-registry/backstage-plugin-harbor-backend)\n\n## Getting started\n\nFirst [install frontend](https://github.com/Digitalist-Open-Cloud/backstage-plugin-harbor)\n\n### Enabling backend\n\n### Backend\n\n```bash\nyarn --cwd packages/backend add @digitalist-open-cloud/backstage-plugin-harbor-backend\n```\n\nAdd to `packages/backend/src/index.ts`:\n\n```ts\nbackend.add(import('@digitalist-open-cloud/backstage-plugin-harbor-backend'))\n```\n\nNow, jump to configuration step.\n\n## Configuration\n\nThe plugin requires configuration in the Backstage app-config.yaml to connect to Harbor API.\n\n```yaml\nharbor:\n  # This is the traditional way of configuring the Harbor plugin.\n  baseUrl: https://harbor.yourdomain.com\n  username: ${HARBOR_USERNAME}\n  password: ${HARBOR_PASSWORD}\n\n  # This is the way to go if you need to connect to multiple Harbor instances. You can also combine those approaches.\n  instances:\n    - host: harbor2.yourdomain.com\n      baseUrl: https://harbor2.yourdomain.com\n      username: ${HARBOR_USERNAME}\n      password: ${HARBOR_PASSWORD}\n```\n\nAdding annotations and values to your component file.\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: System\nmetadata:\n  name: sample-system\n  description: \"A sample system\"\n  annotations:\n    # This will use harbor.baseUrl\n    goharbor.io/repository-slug: project/repository\n    # OR\n    # This will use harbor.instances[].baseUrl based on the matching host\n    goharbor.io/repository-slug: harbor.yourdomain.com/project/repository\n    # OR\n    # This will fetch the first image from harbor.baseUrl and the second image from harbor.instances[].baseUrl\n    goharbor.io/repository-slug: project/repository, harbor.yourdomain.com/project/repository\n```\n\n## Contributing\n\nPlease contribute back to the [original repo](https://github.com/container-registry/), and you are free to use any code from this repo to contribute back to the original repo without giving us credit.\n\n## History\n\nThis Backstage plugin was initially created by [BESTSELLER](https://github.com/BESTSELLER) and transferred to [Container Registry](https://github.com/container-registry/). This fork was started because of an acute need, and to keep code up to date with Backstage.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@digitalist-open-cloud",
+  "updated": "2025-09-04T14:22:03.075Z",
+  "version": "0.9.0",
+  "version_count": 25,
+  "versions": [
+    {
+      "date": "2025-09-04T14:22:03.075Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-07-18T07:32:27.673Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-06-19T21:19:37.507Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2025-06-04T11:30:03.511Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-05-05T13:37:43.098Z",
+      "version": "0.6.3"
+    },
+    {
+      "date": "2025-04-15T15:23:45.328Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2025-04-15T15:17:43.486Z",
+      "version": "0.6.2-alpha2"
+    },
+    {
+      "date": "2025-04-15T15:02:17.032Z",
+      "version": "0.6.2-alpha1"
+    },
+    {
+      "date": "2025-04-15T13:26:10.699Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2025-04-15T12:13:10.999Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-04-15T12:02:55.453Z",
+      "version": "0.6.0-alpha2"
+    },
+    {
+      "date": "2025-04-15T11:33:45.177Z",
+      "version": "0.6.0-alpha1"
+    },
+    {
+      "date": "2025-04-15T08:07:10.090Z",
+      "version": "0.5.5"
+    },
+    {
+      "date": "2025-04-15T07:39:13.009Z",
+      "version": "0.5.4"
+    },
+    {
+      "date": "2025-04-15T07:35:24.396Z",
+      "version": "0.5.3"
+    }
+  ]
+}

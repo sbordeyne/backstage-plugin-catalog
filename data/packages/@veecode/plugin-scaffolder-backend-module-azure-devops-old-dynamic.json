@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-12-01T18:39:23.227Z",
+  "deprecated": "",
+  "description": "This is a wrapper for the [@backstage-community/plugin-scaffolder-backend-module-azure-devops](https://www.npmjs.com/package/@backstage-community/plugin-scaffolder-backend-module-azure-devops?activeTab=readme) plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "",
+  "maintainers": [
+    "andrevtg"
+  ],
+  "name": "@veecode/plugin-scaffolder-backend-module-azure-devops-old-dynamic",
+  "plugin_id": "scaffolder",
+  "readme": "# @veecode/plugin-scaffolder-backend-module-azure-devops\n\nThis is a wrapper for the [@backstage-community/plugin-scaffolder-backend-module-azure-devops](https://www.npmjs.com/package/@backstage-community/plugin-scaffolder-backend-module-azure-devops?activeTab=readme) plugin.\n\nPlease follow the docs from the original plugin.\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@veecode",
+  "updated": "2025-12-01T18:39:23.575Z",
+  "version": "0.14.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-12-01T18:39:23.575Z",
+      "version": "0.14.0"
+    }
+  ]
+}

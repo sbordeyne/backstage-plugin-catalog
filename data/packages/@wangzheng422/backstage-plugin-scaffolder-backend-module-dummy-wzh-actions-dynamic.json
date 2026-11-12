@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-09-26T15:47:22.703Z",
+  "deprecated": "",
+  "description": "The dummy-wzh-actions module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "wangzheng422"
+  ],
+  "name": "@wangzheng422/backstage-plugin-scaffolder-backend-module-dummy-wzh-actions-dynamic",
+  "plugin_id": "scaffolder",
+  "readme": "# backstage-plugin-scaffolder-backend-module-dummy-wzh-actions\n\nThe dummy-wzh-actions module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend).\n\n_This plugin was created through the Backstage CLI_\n\n```bash\n\nyarn add --dev @backstage/cli\n\nyarn backstage-cli new\n\n\nyarn add --dev @janus-idp/cli\n\n\n\n# yarn install\n\n\nyarn backstage-cli repo fix --publish\n\nnpm pkg fix\n\n\nyarn tsc\nyarn export-dynamic --no-install\n\nnpm login\n\ncd dist-dynamic \n\nnpm publish\n\ncd ..\n\n```",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@wangzheng422",
+  "updated": "2024-09-26T16:14:39.291Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-09-26T16:14:39.291Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-09-26T15:47:23.585Z",
+      "version": "0.1.0"
+    }
+  ]
+}

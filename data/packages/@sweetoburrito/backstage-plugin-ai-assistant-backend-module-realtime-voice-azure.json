@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-10-30T12:47:32.218Z",
+  "deprecated": "",
+  "description": "The realtime-voice-azure backend module for the ai-assistant plugin providing WebRTC-based voice conversion via Azure OpenAI Realtime API.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sweetoburrito"
+  ],
+  "name": "@sweetoburrito/backstage-plugin-ai-assistant-backend-module-realtime-voice-azure",
+  "plugin_id": "ai-assistant",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@sweetoburrito",
+  "updated": "2025-10-30T12:47:32.501Z",
+  "version": "0.0.0-snapshot-20251030124702",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-10-30T15:47:31.681Z",
+      "version": "0.0.0-snapshot-20251030154701"
+    },
+    {
+      "date": "2025-10-30T15:26:24.325Z",
+      "version": "0.0.0-snapshot-20251030152553"
+    },
+    {
+      "date": "2025-10-30T12:47:32.501Z",
+      "version": "0.0.0-snapshot-20251030124702"
+    }
+  ]
+}

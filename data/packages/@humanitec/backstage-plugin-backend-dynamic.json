@@ -1,0 +1,61 @@
+{
+  "author": "",
+  "created": "2024-05-14T10:34:01.035Z",
+  "deprecated": "",
+  "description": "---",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aziz.haddad",
+    "humanitec2",
+    "louisbennett"
+  ],
+  "name": "@humanitec/backstage-plugin-backend-dynamic",
+  "plugin_id": "humanitec",
+  "readme": "# @humanitec/backstage-plugin-backend-dynamic\n\n---\n\n:warning: __This is the dynamic version of a Backstage plugin intended for [Red Hat Developer Hub](https://developers.redhat.com/rhdh/overview). If you are interest in the regular Humanitec Backstage plugins, checkout the [README](https://github.com/humanitec/humanitec-backstage-plugins?tab=readme-ov-file#humanitec-backstage-plugins).__ :warning:\n\n---\n\n# @humanitec/backstage-plugin-backend\n\n`@humanitec/backstage-plugin-backend` is a plugin for the Backstage backend app. It provides a route that `@humanitec/backstage-plugin` will use to connect to Humanitec API.\n\n## Installation\n\n1. Install `@humanitec/backstage-plugin-backend` plugin with,\n\n```bash\nyarn workspace backend add @humanitec/backstage-plugin-backend\n```\n\n1. Add the plugin in `./packages/backend/src/index.ts` to your backend,\n\n```diff\n+ backend.add(import('@humanitec/backstage-plugin-backend'));\n\nbackend.start();\n```\n\n1. Add configuration to `app-config.yaml`\n\n```diff\nhumanitec:\n  orgId: the-frontside-software-inc\n  token: ${HUMANITEC_TOKEN}\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@humanitec",
+  "updated": "2025-04-08T19:17:29.387Z",
+  "version": "0.8.6",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2025-04-08T19:17:29.387Z",
+      "version": "0.8.6"
+    },
+    {
+      "date": "2024-12-16T15:20:38.057Z",
+      "version": "0.8.5"
+    },
+    {
+      "date": "2024-10-25T13:57:44.148Z",
+      "version": "0.8.4"
+    },
+    {
+      "date": "2024-10-21T14:27:50.896Z",
+      "version": "0.8.3"
+    },
+    {
+      "date": "2024-09-19T11:32:05.512Z",
+      "version": "0.8.2"
+    },
+    {
+      "date": "2024-09-19T08:49:58.449Z",
+      "version": "0.8.1"
+    },
+    {
+      "date": "2024-08-23T14:10:48.638Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2024-06-26T12:35:58.394Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2024-05-14T10:34:01.502Z",
+      "version": "0.6.3"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2023-10-14T10:02:23.902Z",
+  "deprecated": "",
+  "description": "Welcome to the Unofficial [Elastic](https://www.elastic.co/) backend plugin for Backstage.",
+  "homepage": "https://github.com/p1llus/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "p1llus"
+  ],
+  "name": "@p1llus/backstage-plugin-elastic-backend",
+  "plugin_id": "",
+  "readme": "# Elastic Backstage Plugin (Backend)\n\nWelcome to the Unofficial [Elastic](https://www.elastic.co/) backend plugin for Backstage.\n\nThis is **NOT** covered by any official support agreements with Elastic.\n\nThe scope of this plugin is currently to provide a backend proxy layer for the frontend plugin to communicate with.\n\nFor more information about how to setup and configure the Elastic stack or similar, please visit the [Elastic Documentation](https://www.elastic.co/guide/index.html).\n\nThe backend plugin is also dependant on the [elastic frontend](../elastic-frontend) plugin.\n\n## Setup\n\n### General\n\n1. Add your plugin to your current backstage backend:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @p1llus/backstage-plugin-elastic-backend\n```\n\n2. Reference your backend plugin by creating a new file called `packages/backend/src/plugins/elastic.ts`\n\nExample:\n\n```tsx\n// New file: packages/backend/src/plugins/elastic.ts\nimport {\n  createRouter,\n  DefaultElasticInfoProvider,\n} from '@p1llus/backstage-plugin-elastic-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\nimport { CatalogClient } from '@backstage/catalog-client';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const catalogApi = new CatalogClient({ discoveryApi: env.discovery });\n  return await createRouter({\n    logger: env.logger,\n    elasticInfoProvider: DefaultElasticInfoProvider.fromConfig(env.config),\n    identity: env.identity,\n    catalogApi,\n    allowGuests: DefaultElasticInfoProvider.getAllowedGuests(env.config),\n  });\n}\n```\n\n3. Reference this in `packages/backend/src/index.ts`\n\n```diff\ndiff --git a/packages/backend/src/index.ts b/packages/backend/src/index.ts\nindex 1c08288..6ff3807 100644\n--- a/packages/backend/src/index.ts\n+++ b/packages/backend/src/index.ts\n@@ -28,6 +28,7 @@ import scaffolder from './plugins/scaffolder';\n import proxy from './plugins/proxy';\n import techdocs from './plugins/techdocs';\n import search from './plugins/search';\n+import elastic from './plugins/elastic';\n import { PluginEnvironment } from './types';\n import { ServerPermissionClient } from '@backstage/plugin-permission-node';\n import { DefaultIdentityClient } from '@backstage/plugin-auth-node';\n@@ -85,6 +86,7 @@ async function main() {\n   const techdocsEnv = useHotMemoize(module, () => createEnv('techdocs'));\n   const searchEnv = useHotMemoize(module, () => createEnv('search'));\n   const appEnv = useHotMemoize(module, () => createEnv('app'));\n+  const elasticEnv = useHotMemoize(module, () => createEnv('elastic'));\n\n   const apiRouter = Router();\n   apiRouter.use('/catalog', await catalog(catalogEnv));\n@@ -93,6 +95,7 @@ async function main() {\n   apiRouter.use('/techdocs', await techdocs(techdocsEnv));\n   apiRouter.use('/proxy', await proxy(proxyEnv));\n   apiRouter.use('/search', await search(searchEnv));\n+  apiRouter.use('/elastic', await elastic(elasticEnv));\n\n   // Add backends ABOVE this line; this 404 handler is the catch-all fallback\n   apiRouter.use(notFoundHandler());\n```\n\n### Configuration Files\n\nThe backend plugin exposes a few different config parameters under the top field `elastic`. These are meant to be added in your app-config.yaml or similar.\n\n- `elastic.allow_guests`: An optional setting that default is `true`, when set to `false` the API exposed by the backend plugin will only allow requests from authenticated backstage users. By default all Backstage backend plugins do not verify requests, so the default on the plugin is then also to allow.\n- `elastic.instances`: An array of the different cluster instances that should be communicated with.\n- `elastic.instances[].name`: A unique name, should not be the same as any other instance. This is only used so the `annotations` can specify which cluster to communicate with\n- `elastic.instances[].kibana.baseUrl`: Only the base URL used to access the Kibana API, without any trailing slashes, will default to port 80/443 if port number is not included.\n- `elastic.instances[].kibana.apiKey`: The API Key used to authenticate with the Kibana instance.\n- `elastic.instances[].elasticsearch.baseUrl`: Only the base URL used to access the Elasticsearch API without any trailing slashes, will default to port 80/443 if port number is not included.\n- `elastic.instances[].elasticsearch.apiKey`: The API Key used to authenticate with the Kibana instance.\n\nExample:\n\n```yaml\nelastic:\n  allow_guests: true\n  instances:\n    - name: somecluster\n      kibana:\n        baseUrl: https://testkibana.com:5601\n        apiKey: ${KIBANA1_KEY}\n      elasticsearch:\n        baseUrl: https://testes.com:9200\n        apiKey: APIKEY\n    - name: someothercluster\n      kibana:\n        baseUrl: https://testkibana2.com\n        apiKey: APIKEY\n      elasticsearch:\n        baseUrl: https://testes2.com\n        apiKey: APIKEY\n```\n",
+  "repository": "https://github.com/p1llus/backstage-plugins/tree/HEAD/plugins/elastic-backend",
+  "role": "backend-plugin",
+  "scope": "@p1llus",
+  "updated": "2023-10-14T11:34:52.355Z",
+  "version": "0.0.5",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2023-10-14T11:34:52.355Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2023-10-14T11:28:15.335Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2023-10-14T10:52:43.468Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2023-10-14T10:20:12.038Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2023-10-14T10:02:24.216Z",
+      "version": "0.0.1"
+    }
+  ]
+}

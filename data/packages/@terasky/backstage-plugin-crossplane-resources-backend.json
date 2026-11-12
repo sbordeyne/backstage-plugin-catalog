@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-09-25T23:18:51.672Z",
+  "deprecated": "",
+  "description": "Welcome to the crossplane-resources backend plugin!",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-crossplane-resources-backend",
+  "plugin_id": "crossplane",
+  "readme": "# crossplane-resource-backend\nWelcome to the crossplane-resources backend plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-crossplane-resources-backend/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-crossplane-resources-backend)\n\nThe `crossplane-resources` backend plugin for Backstage provides integration with Crossplane, enabling permission management and access control for Crossplane resources, as well as the needed API endpoints for the frontend to be able to visualize live data about crossplane related resources. This plugin leverages Backstage's permission framework to enforce policies and manage access to Crossplane resources.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/crossplane/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/crossplane-resources-backend",
+  "role": "backend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:46:25.795Z",
+  "version": "1.21.0",
+  "version_count": 21,
+  "versions": [
+    {
+      "date": "2026-10-21T13:46:25.795Z",
+      "version": "1.21.0"
+    },
+    {
+      "date": "2026-07-08T14:06:23.555Z",
+      "version": "1.18.0"
+    },
+    {
+      "date": "2026-06-30T17:17:13.453Z",
+      "version": "1.17.0"
+    },
+    {
+      "date": "2026-06-09T19:00:58.906Z",
+      "version": "1.16.1"
+    },
+    {
+      "date": "2026-04-16T08:17:34.581Z",
+      "version": "1.15.0"
+    },
+    {
+      "date": "2026-03-22T16:58:07.856Z",
+      "version": "1.13.0"
+    },
+    {
+      "date": "2026-03-09T16:49:54.671Z",
+      "version": "1.12.1"
+    },
+    {
+      "date": "2026-02-17T20:36:22.941Z",
+      "version": "1.11.0"
+    },
+    {
+      "date": "2026-01-29T20:39:35.352Z",
+      "version": "1.10.1"
+    },
+    {
+      "date": "2026-01-28T18:28:39.582Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2026-01-26T10:34:53.292Z",
+      "version": "1.9.1"
+    },
+    {
+      "date": "2026-01-21T10:06:10.941Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2026-01-19T09:17:43.333Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2025-12-22T10:13:48.941Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2025-12-07T15:34:38.000Z",
+      "version": "1.5.2"
+    }
+  ]
+}

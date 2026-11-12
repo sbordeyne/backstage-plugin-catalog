@@ -1,0 +1,86 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-12-05T16:42:31.703Z",
+  "deprecated": "",
+  "description": "The annotator module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-scaffolder-backend-module-annotator",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/scaffolder-backend-module-annotator/plugins/scaffolder-backend-module-annotator",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-09-04T11:11:47.328Z",
+  "version": "2.20.0",
+  "version_count": 24,
+  "versions": [
+    {
+      "date": "2026-09-04T11:11:47.328Z",
+      "version": "2.20.0"
+    },
+    {
+      "date": "2026-09-03T13:45:23.684Z",
+      "version": "2.19.1"
+    },
+    {
+      "date": "2026-08-26T18:52:14.417Z",
+      "version": "2.19.0"
+    },
+    {
+      "date": "2026-07-14T17:39:51.141Z",
+      "version": "2.18.1"
+    },
+    {
+      "date": "2026-07-08T08:13:40.666Z",
+      "version": "2.18.0"
+    },
+    {
+      "date": "2026-06-18T20:19:41.964Z",
+      "version": "2.17.0"
+    },
+    {
+      "date": "2026-04-10T14:35:36.103Z",
+      "version": "2.16.1"
+    },
+    {
+      "date": "2026-04-08T13:44:16.959Z",
+      "version": "2.16.0"
+    },
+    {
+      "date": "2026-03-10T13:08:14.186Z",
+      "version": "2.15.0"
+    },
+    {
+      "date": "2026-02-06T17:32:01.325Z",
+      "version": "2.14.0"
+    },
+    {
+      "date": "2026-01-15T12:21:46.599Z",
+      "version": "2.13.0"
+    },
+    {
+      "date": "2025-12-09T14:11:41.013Z",
+      "version": "2.12.0"
+    },
+    {
+      "date": "2025-10-17T08:59:54.322Z",
+      "version": "2.11.0"
+    },
+    {
+      "date": "2025-09-23T14:09:59.861Z",
+      "version": "2.10.0"
+    },
+    {
+      "date": "2025-09-17T09:54:39.085Z",
+      "version": "2.9.0"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "author": "Cassidy Marble",
+  "created": "2026-08-28T23:20:13.539Z",
+  "deprecated": "",
+  "description": "Node-side library for the Grafana Backstage plugins: the Grafana HTTP client, instance configuration, and filtering helpers shared by the backend plugin and catalog module",
+  "homepage": "https://github.com/marble-sh/backstage-plugins-grafana/tree/main/plugins/grafana-node",
+  "keywords": [
+    "backstage",
+    "grafana",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "marble-sh"
+  ],
+  "name": "@marble-sh/backstage-plugin-grafana-node",
+  "plugin_id": "grafana",
+  "readme": "# @marble-sh/backstage-plugin-grafana-node\n\nNode-side library shared by the Grafana Backstage plugins. It contains the\npieces that the [backend plugin](../grafana-backend/README.md), the\n[catalog module](../catalog-backend-module-grafana/README.md), and the\n[scaffolder module](../scaffolder-backend-module-grafana/README.md) all need,\nso none of them has to depend on another plugin package:\n\n- **`GrafanaHttpClient`** — a read-only client for a single Grafana instance.\n  Dashboards are read from the App Platform `dashboard.grafana.app/v1` API\n  (following its Kubernetes-style `metadata.continue` pagination; or, opt-in,\n  the classic `/api/search` endpoint), with folder titles and links resolved\n  via `/api/folders`; alerts come from the Grafana-managed Prometheus rules\n  API, enriched with rule uid, health, active instances, and annotations. It\n  can also read a single dashboard's model to list its panels (`getPanels`)\n  and query a panel's data (`getPanelData`) through `POST /api/ds/query`,\n  interpolating the dashboard's template variables from their current values\n  (honoring a custom `allValue`, and resolving auto-interval placeholders to\n  the computed query interval) and normalizing the returned data frames into\n  plain time series. Datasource refs are checked against `/api/datasources`\n  before querying: refs carrying a datasource _name_ in the uid field — as\n  Grafana Cloud's provisioned dashboards do — are resolved to the real uid,\n  and unknown refs are skipped with a warning instead of failing the whole\n  query batch. Valueless `datasource`-type template variables — which the\n  Grafana UI evaluates on every dashboard load, so stored dashboards carry no\n  selection — default to the first datasource of the variable's declared\n  type (narrowed by its name regex when set), mirroring the UI. Targets\n  still referencing a template variable that has no saved value are likewise\n  skipped with a warning, since the datasource would reject the raw `$var`\n  text. The `fetch` implementation is injectable for testing.\n- **`readGrafanaInstances` / `readGrafanaInstance`** — parse the shared\n  `grafana.instances` configuration into resolved `GrafanaInstanceConfig`s,\n  deriving the App Platform namespace for Grafana Cloud and self-hosted\n  deployments.\n- **`filterDashboards` / `filterAlerts` / `parseLabelSelector`** — pure helpers\n  for narrowing results by tag, title, or label selector.\n\nThis package is a plain node library (no Backstage runtime dependencies beyond\nconfig), which is why it is safe to import from both a backend plugin and a\nbackend module.\n\nIt also carries the config schema for the shared `grafana.instances` list (see\n[`config.d.ts`](./config.d.ts)) — including the `@visibility secret` marking on\ntokens — so that schema is present whichever combination of the backend plugin,\ncatalog module, and scaffolder module an app installs.\n\n## Testing\n\n```sh\nyarn workspace @marble-sh/backstage-plugin-grafana-node test\n```\n",
+  "repository": "https://github.com/marble-sh/backstage-plugins-grafana/tree/HEAD/plugins/grafana-node",
+  "role": "node-library",
+  "scope": "@marble-sh",
+  "updated": "2026-09-24T21:58:59.053Z",
+  "version": "1.2.2",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2026-09-24T21:58:59.053Z",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2026-08-31T19:31:06.779Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-08-31T04:10:08.140Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-08-30T04:44:50.728Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-08-29T03:18:13.944Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-08-29T02:54:54.865Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-08-29T01:46:46.843Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-08-28T23:20:13.871Z",
+      "version": "0.2.0"
+    }
+  ]
+}

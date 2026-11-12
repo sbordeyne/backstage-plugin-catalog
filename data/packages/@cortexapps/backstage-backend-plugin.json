@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2021-08-17T06:03:10.669Z",
+  "deprecated": "",
+  "description": "See the [Cortex Scorecard Plugin](https://www.npmjs.com/package/@cortexapps/backstage-plugin) for more details. The backend plugin will allow you to sync your Backstage services with Cortex asynchronously, set to any cron schedule of your choosing.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "browniefed",
+    "dan_cortex",
+    "nikhilunni"
+  ],
+  "name": "@cortexapps/backstage-backend-plugin",
+  "plugin_id": "cortex-backend",
+  "readme": "# Cortex Backend Plugin for Backstage\n\nSee the [Cortex Scorecard Plugin](https://www.npmjs.com/package/@cortexapps/backstage-plugin) for more details.\nThe backend plugin will allow you to sync your Backstage services with Cortex asynchronously, set\nto any cron schedule of your choosing.\n\nTo start using the Backstage plugin and see a demo, please [book a demo](https://www.cortex.io/demo)!\n\n## Setup and Integration ([old backend model](https://backstage.io/docs/backend-system/building-backends/migrating))\n\n1. In the [packages/backend](https://github.com/backstage/backstage/blob/master/packages/backend/) directory of your Backstage\n   instance, add the plugin as a package.json dependency:\n\n```shell\n$ yarn add @cortexapps/backstage-backend-plugin\n```\n\n2. Create a new file: `packages/backend/src/plugins/cortex.ts`:\n\n```ts\nimport { PluginEnvironment } from '../types';\nimport { createRouter } from '@cortexapps/backstage-backend-plugin';\n\nexport default async function createPlugin(env: PluginEnvironment) {\n  return await createRouter({\n    discoveryApi: env.discovery,\n    logger: env.logger,\n    cronSchedule:\n      env.config.getOptionalString('cortex.backend.cron') ??\n      '0 3,7,11,15,19,23 * * *',\n  });\n}\n```\n\n3. Update `packages/backend/src/index.ts`:\n\n```tsx\nimport cortex from './plugins/cortex';\n...\nconst cortexEnv = useHotMemoize(module, () => createEnv('cortex'));\n...\napiRouter.use('/cortex', await cortex(cortexEnv));\n```\n\n4. Update [app-config.yaml](https://github.com/backstage/backstage/blob/master/app-config.yaml#L54) to add a new config under\n   the `proxy` section:\n\n```yaml\n'/cortex':\n  target: ${CORTEX_BACKEND_HOST_URL}\n  headers:\n    Authorization: Bearer ${CORTEX_TOKEN}\n```\n\n5. (Optional) You can choose to have the entity sync cron job use gzip to compress the entities by updating `cortex.ts` from step 2. You must also update the Backstage HTTP proxy to allow the `Content-Encoding` header.\n\n```ts\nimport { PluginEnvironment } from '../types';\nimport { createRouter } from '@cortexapps/backstage-backend-plugin';\n\nexport default async function createPlugin(env: PluginEnvironment) {\n  return await createRouter({\n    discoveryApi: env.discovery,\n    logger: env.logger,\n    syncWithGzip: true,\n    cronSchedule:\n      env.config.getOptionalString('cortex.backend.cron') ??\n      '0 3,7,11,15,19,23 * * *',\n  });\n}\n```\n\n```yaml\nproxy:\n  '/cortex':\n    target: ${CORTEX_BACKEND_HOST_URL}\n    headers:\n      Authorization: Bearer ${CORTEX_TOKEN}\n    allowedHeaders:\n      - Content-Encoding\n```\n\n## Setup and Integration ([new backend model](https://backstage.io/docs/backend-system/building-backends/migrating))\n\n1. In the [packages/backend](https://github.com/backstage/backstage/blob/master/packages/backend/) directory of your Backstage\n   instance, add the plugin as a package.json dependency:\n\n```shell\n$ yarn add @cortexapps/backstage-backend-plugin\n```\n\n2. Update `packages/backend/src/index.ts`:\n\n```tsx\nimport cortexPlugin from '@cortexapps/backstage-backend-plugin';\n...\nconst backend = createBackend();\n...\nbackend.add(cortexPlugin)\n...\nbackend.start()\n```\n\n3. Update [app-config.yaml](https://github.com/backstage/backstage/blob/master/app-config.yaml#L54) to add a new config under\n   the `proxy.endpoints` section:\n\n```yaml\nproxy:\n  endpoints:\n    '/cortex':\n      target: ${CORTEX_BACKEND_HOST_URL}\n      headers:\n        Authorization: Bearer ${CORTEX_TOKEN}\n```\n\n4. (Optional) You may further configure entity sync cron job to set a custom schedule or use gzip to compress the entities by adding appropriate configuration properties. If enabling gzip, you must also update the Backstage HTTP proxy to allow the `Content-Encoding` header.\n\n```yaml\ncortex:\n  syncWithGzip: true\n  backend:\n    cron: 0 * * * * # every hour\n---\nproxy:\n  endpoints:\n    '/cortex':\n      target: ${CORTEX_BACKEND_HOST_URL}\n      headers:\n        Authorization: Bearer ${CORTEX_TOKEN}\n      allowedHeaders:\n        - Content-Encoding\n```\n\n5. (Optional) If you wish to make use of custom mappings via the `ExtensionsApi` in `@cortexapps/backstage-plugin-extensions`, you must configure a module to supply an implementation of this API to the Cortex plugin.\n   <br><br>Implementing the `ExtensionsApi` interface is discussed further in the [`cortexapps/backstage-plugin` repo](https://github.com/cortexapps/backstage-plugin?tab=readme-ov-file#advanced).\n   <br><br>The official [Backstage documentation](https://backstage.io/docs/backend-system/building-plugins-and-modules/index) suggests first creating a new package for the module using `yarn new` and selecting `backend-module`. With a moduleId of `extension-api` the full package should be created at `/modules/cortex-backend-module-extension-api`.\n   <br><br>In `module.ts` of the new package, create a module which supplies your custom implementation of `ExtensionApi`:\n\n```ts\n// src/module.ts\nimport { createBackendModule } from '@backstage/backend-plugin-api';\nimport { cortexExtensionApiExtensionPoint } from '@cortexapps/backstage-plugin-extensions';\nimport { MyExtensionApiImpl } from `./MyExtensionApiImpl`;\n\nexport const cortexModuleExtensionApiProvider = createBackendModule({\n  pluginId: 'cortex-backend',\n  moduleId: 'my-extension-api',\n  register(env) {\n    env.registerInit({\n      deps: {\n        cortexBackend: cortexExtensionApiExtensionPoint,\n      },\n      async init({ cortexBackend }) {\n        cortexBackend.setExtensionApi(new MyExtensionApiImpl());\n      },\n    });\n  },\n});\n```\n\nExport the module from `index.ts`:\n\n```ts\n// src/index.ts\nexport { cortexModuleExtensionApiProvider as default } from './module';\n```\n\nAnd finally add the extension to the backend in `packages/backend/src/index.ts` after the Cortex plugin itself:\n\n```ts\nbackend.add(cortexPlugin); // should already be present from step 2\nbackend.add(import('<your-module-package>'));\n```\n\nAlternatively, if you do not wish to separate the module into its own package, you can instantiate `cortexModuleExtensionApiProvider` as shown above and add it to the backend directly:\n\n```ts\nconst cortexModuleExtensionApiProvider = createBackendModule({...})\n...\nbackend.add(cortexModuleExtensionApiProvider);\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@cortexapps",
+  "updated": "2024-08-02T21:31:16.898Z",
+  "version": "1.6.7",
+  "version_count": 41,
+  "versions": [
+    {
+      "date": "2024-08-02T21:31:16.898Z",
+      "version": "1.6.7"
+    },
+    {
+      "date": "2024-07-31T16:26:42.238Z",
+      "version": "1.6.6"
+    },
+    {
+      "date": "2024-07-29T22:45:38.610Z",
+      "version": "1.6.5"
+    },
+    {
+      "date": "2024-07-26T20:08:49.162Z",
+      "version": "1.6.5-a"
+    },
+    {
+      "date": "2024-07-25T19:31:59.348Z",
+      "version": "1.6.4-a"
+    },
+    {
+      "date": "2024-07-23T20:46:02.632Z",
+      "version": "1.6.4"
+    },
+    {
+      "date": "2024-07-04T13:33:39.373Z",
+      "version": "1.6.3"
+    },
+    {
+      "date": "2023-12-04T21:10:02.934Z",
+      "version": "1.6.2"
+    },
+    {
+      "date": "2023-11-21T14:47:10.534Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2023-09-27T19:30:19.923Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2023-08-23T18:12:10.508Z",
+      "version": "1.5.4"
+    },
+    {
+      "date": "2023-05-01T14:42:27.734Z",
+      "version": "1.5.3"
+    },
+    {
+      "date": "2023-03-28T22:44:19.197Z",
+      "version": "1.5.2"
+    },
+    {
+      "date": "2023-03-28T22:22:23.179Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2023-03-28T18:59:13.016Z",
+      "version": "1.5.0"
+    }
+  ]
+}

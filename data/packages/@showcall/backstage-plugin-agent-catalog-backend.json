@@ -1,0 +1,34 @@
+{
+  "author": "",
+  "created": "2026-07-12T17:56:04.500Z",
+  "deprecated": "",
+  "description": "Backstage catalog module: ingest kagent agents, model configs, and A2A cards as catalog entities",
+  "homepage": "https://github.com/Showcall/agent-catalog",
+  "keywords": [
+    "a2a",
+    "ai-agents",
+    "backstage",
+    "backstage-plugin",
+    "catalog",
+    "kagent"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brett-showcall"
+  ],
+  "name": "@showcall/backstage-plugin-agent-catalog-backend",
+  "plugin_id": "agent-catalog",
+  "readme": "# @showcall/backstage-plugin-agent-catalog-backend\n\n> _It's 10 PM. Do you know where your agents are?_\n\nThe backend discovery module for\n[Showcall Agent Catalog](https://github.com/Showcall/agent-catalog), an\ninventory of AI agents running across Kubernetes runtimes and A2A services in\nBackstage.\n\nThis package discovers and catalogs:\n\n- kagent agents, model configurations, tools, and live A2A cards\n- ARK agents, teams, and models\n- arbitrary Kubernetes Services labeled as A2A agents\n- unlabeled workloads that exhibit configurable agent and LLM signals\n- optional audit-sweep discovery of unlabeled Services serving valid A2A cards\n- optional LiteLLM gateway usage and traction\n\nAgent Catalog is currently a **technical preview**. Package APIs and\nconfiguration may change before `1.0`.\n\n## Install\n\nFrom the root of your Backstage app:\n\n```bash\nyarn --cwd packages/backend add @showcall/backstage-plugin-agent-catalog-backend\n```\n\nRegister the module in `packages/backend/src/index.ts`:\n\n```ts\nbackend.add(\n  import('@showcall/backstage-plugin-agent-catalog-backend'),\n);\n```\n\n## Configure\n\nAdd at least one cluster to `app-config.yaml`:\n\n```yaml\nagentCatalog:\n  defaultOwner: group:default/platform-team\n  excludeNamespaces:\n    - kube-system\n  clusters:\n    - name: production\n      inCluster: true\n```\n\nFor a Backstage backend running outside Kubernetes, point the module at a\nkubeconfig instead:\n\n```yaml\nagentCatalog:\n  clusters:\n    - name: production\n      kubeconfigPath: /home/backstage/.kube/config\n      context: production\n```\n\nThe module uses credentials provided by Kubernetes or the kubeconfig. Bind the\nincluded\n[read-only RBAC policy](https://github.com/Showcall/agent-catalog/blob/main/deploy/rbac.yaml)\nto the identity used by your Backstage backend; do not use an administrator\nkubeconfig.\n\n### Optional audit sweep\n\nThe audit sweep probes unlabeled Services for valid A2A cards and emits\nfindings with `agentcatalog.io/discovery: probe`. It is disabled by default\nbecause it performs bounded GET requests through the Kubernetes API server:\n\n```yaml\nagentCatalog:\n  sweep:\n    enabled: true\n    maxPorts: 3\n    scheduleMinutes: 60\n```\n\nSystem namespaces are skipped by default. Add `agentcatalog.io/a2a: \"false\"`\nto a Service when it should be explicitly suppressed. See\n[ADR 0007](https://github.com/Showcall/agent-catalog/blob/main/docs/adr/0007-audit-sweep.md)\nand the [shadow-agent demo playbook](https://github.com/Showcall/agent-catalog/blob/main/demo/playbooks/shadow-agent/README.md)\nfor the operator workflow.\n\nRuntime discovery, live-card enrichment, heuristics, scheduling, and LiteLLM\nusage are configurable under `agentCatalog`. See the\n[complete configuration example](https://github.com/Showcall/agent-catalog#quick-start-into-an-existing-backstage-app).\n\n## Add the UI\n\nInstall\n[`@showcall/backstage-plugin-agent-catalog`](https://www.npmjs.com/package/@showcall/backstage-plugin-agent-catalog)\nto add the Agents navigation item, `/agents` fleet page, and per-agent entity\ncard.\n\nThe backend module can also run without the frontend package; discovered agents\nwill still be ordinary Backstage catalog entities.\n\n## Related packages\n\n- [`@showcall/backstage-plugin-agent-catalog-backend`](https://www.npmjs.com/package/@showcall/backstage-plugin-agent-catalog-backend)\n  provides this discovery module.\n- [`@showcall/backstage-plugin-agent-catalog`](https://www.npmjs.com/package/@showcall/backstage-plugin-agent-catalog)\n  provides the fleet and entity UI.\n\n## Documentation\n\n- [Project overview and complete setup](https://github.com/Showcall/agent-catalog#readme)\n- [Local demo](https://github.com/Showcall/agent-catalog/blob/main/demo/README.md)\n- [Entity model](https://github.com/Showcall/agent-catalog#entity-model)\n- [Governance](https://github.com/Showcall/agent-catalog/blob/main/docs/governance.md)\n- [Issues](https://github.com/Showcall/agent-catalog/issues)\n\nApache-2.0 licensed. See the\n[project license](https://github.com/Showcall/agent-catalog/blob/main/LICENSE).\n",
+  "repository": "https://github.com/Showcall/agent-catalog/tree/HEAD/plugins/plugin-agent-catalog-backend",
+  "role": "backend-plugin",
+  "scope": "@showcall",
+  "updated": "2026-07-12T17:56:04.798Z",
+  "version": "0.5.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-07-12T17:56:04.798Z",
+      "version": "0.5.0"
+    }
+  ]
+}

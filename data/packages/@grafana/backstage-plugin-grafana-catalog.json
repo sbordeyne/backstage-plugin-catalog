@@ -1,0 +1,88 @@
+{
+  "author": "Grafana Labs",
+  "created": "2024-01-26T00:05:38.482Z",
+  "deprecated": "",
+  "description": "The grafana-service-model backend module for the catalog plugin.",
+  "homepage": "https://github.com/grafana/backstage-plugin-grafana-catalog",
+  "keywords": [
+    "backend",
+    "backstage",
+    "grafana",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "grafanabot"
+  ],
+  "name": "@grafana/backstage-plugin-grafana-catalog",
+  "plugin_id": "",
+  "readme": "# @grafana/backstage-plugin-grafana-catalog\n\nThe grafana-service-model backend module for the Backstage catalog.\n\nGrafana Cloud can track your Backstage catalog and use that data to control behavior of Grafana Cloud systems.\n\nInitially this integration will allow you to associate \"Services\" (Components of type: service) to objects in Grafana OnCall. In the future we will be able to use this data to track Team ownership and Service <-> Service dependencies.\n\nThe Grafana \"ServiceModel\" is basically a mirror of the Backstage Catalog model.\n\nThis work is very early. We are still exploring ways to utilize your Backstage Catalog. Please reach out if you have ideas!\n\n## Quick Start Guide\n\nFollow the [quick start guide](docs/quickstart.md) to test this plugin with a new Backstage install. The instructions should carry over to your production install.\n\n## Notes for developers\n\nTo create a backstage instance, and install this plugin run the following:\n\n```\n> BACKSTAGE_APP_NAME=backstage npx @backstage/create-app@0.5.10\n> cd backstage\n> yarn add --cwd packages/backend file:<path to this repo>/backstage-plugin-grafana-catalog && LOG_LEVEL=debug yarn dev\n\n```\n",
+  "repository": "github.com/grafana/backstage-plugin-grafana-catalog",
+  "role": "backend-plugin-module",
+  "scope": "@grafana",
+  "updated": "2024-07-02T20:12:46.728Z",
+  "version": "0.3.15",
+  "version_count": 23,
+  "versions": [
+    {
+      "date": "2024-07-02T20:12:46.728Z",
+      "version": "0.3.15"
+    },
+    {
+      "date": "2024-03-06T00:27:49.774Z",
+      "version": "0.3.14"
+    },
+    {
+      "date": "2024-03-02T16:34:32.590Z",
+      "version": "0.3.13"
+    },
+    {
+      "date": "2024-02-29T17:37:38.627Z",
+      "version": "0.3.12"
+    },
+    {
+      "date": "2024-02-23T21:26:13.078Z",
+      "version": "0.3.11"
+    },
+    {
+      "date": "2024-02-23T21:17:49.387Z",
+      "version": "0.3.10"
+    },
+    {
+      "date": "2024-02-23T18:43:29.197Z",
+      "version": "0.3.9"
+    },
+    {
+      "date": "2024-02-23T18:04:48.495Z",
+      "version": "0.3.8"
+    },
+    {
+      "date": "2024-02-23T17:42:47.008Z",
+      "version": "0.3.7"
+    },
+    {
+      "date": "2024-02-22T19:40:14.547Z",
+      "version": "0.3.6"
+    },
+    {
+      "date": "2024-02-22T14:12:48.490Z",
+      "version": "0.3.5"
+    },
+    {
+      "date": "2024-02-22T14:11:36.158Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2024-02-22T14:11:20.801Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2024-02-21T17:16:42.102Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2024-02-21T03:16:07.056Z",
+      "version": "0.3.1"
+    }
+  ]
+}

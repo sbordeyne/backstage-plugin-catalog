@@ -1,0 +1,90 @@
+{
+  "author": "",
+  "created": "2026-07-22T19:44:26.480Z",
+  "deprecated": "",
+  "description": "Optional Anyshift resource and relationship synchronization for the Backstage catalog",
+  "homepage": "https://github.com/anyshift-io/backstage-plugins#readme",
+  "keywords": [
+    "anyshift",
+    "backstage",
+    "catalog",
+    "infrastructure"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pcholl22",
+    "safwentrabelsi",
+    "sjourdan"
+  ],
+  "name": "@anyshift/backstage-plugin-catalog-backend-module-anyshift",
+  "plugin_id": "catalog",
+  "readme": "# `@anyshift/backstage-plugin-catalog-backend-module-anyshift`\n\nOptional catalog module for synchronizing Anyshift infrastructure Resources and runtime relations.\nGitHub remains authoritative for Components and ownership. The module never creates or replaces a\nComponent.\n\n```ts\nbackend.add(\n  import('@anyshift/backstage-plugin-catalog-backend-module-anyshift'),\n);\n```\n\nUse `anyshift.catalog.mode: shadow` before enabling `active` synchronization. Matching prioritizes\n`anyshift.io/target` and falls back to the repository name from `github.com/project-slug`. See the\n[integration guide](../../README.md) for the ownership and failure-handling contract.\n\nProjects whose graph inventory is not Kubernetes-based should configure `inventoryTypes` explicitly.\nUse `resourceNamePatterns` to scope generated Resources and `activeTargets` to roll out Component\nenrichment through a reviewed, non-empty allowlist. Omit `activeTargets` only when every matched\nComponent is intentionally eligible. Generated cloud Resources are type-prefixed, include a stable\ngraph-identity suffix when available, and carry `anyshift.io/managed-by: catalog-provider`.\nAWS ARN-backed Resources also carry provider, account, region, and ARN annotations plus a\nread-only AWS Console link. Lambda functions are exposed as workloads, S3 buckets as datastores,\nand SQS queues as topics so their entity-specific Anyshift content is available.\n\nIn active mode the module persists the latest reconciliation outcome as\n`resource:default/anyshift-catalog-sync`. It also mounts\n`POST /api/catalog/anyshift/reconcile`; callers need an authenticated Backstage user identity and\nthe `anyshift.catalog.sync` permission. Concurrent scheduled and manual requests are coalesced into\none provider run.\n",
+  "repository": "https://github.com/anyshift-io/backstage-plugins/tree/HEAD/plugins/anyshift-backend-module-catalog",
+  "role": "backend-plugin-module",
+  "scope": "@anyshift",
+  "updated": "2026-09-23T08:07:35.989Z",
+  "version": "0.1.0-beta.20",
+  "version_count": 20,
+  "versions": [
+    {
+      "date": "2026-09-23T08:07:35.989Z",
+      "version": "0.1.0-beta.20"
+    },
+    {
+      "date": "2026-09-22T16:42:53.734Z",
+      "version": "0.1.0-beta.19"
+    },
+    {
+      "date": "2026-09-22T15:25:38.886Z",
+      "version": "0.1.0-beta.18"
+    },
+    {
+      "date": "2026-09-22T13:38:15.791Z",
+      "version": "0.1.0-beta.17"
+    },
+    {
+      "date": "2026-08-31T15:38:52.324Z",
+      "version": "0.1.0-beta.16"
+    },
+    {
+      "date": "2026-08-31T15:04:59.875Z",
+      "version": "0.1.0-beta.15"
+    },
+    {
+      "date": "2026-08-21T14:56:24.058Z",
+      "version": "0.1.0-beta.14"
+    },
+    {
+      "date": "2026-08-07T13:43:46.787Z",
+      "version": "0.1.0-beta.13"
+    },
+    {
+      "date": "2026-08-07T11:55:17.181Z",
+      "version": "0.1.0-beta.12"
+    },
+    {
+      "date": "2026-08-07T05:38:47.401Z",
+      "version": "0.1.0-beta.11"
+    },
+    {
+      "date": "2026-08-05T10:54:19.879Z",
+      "version": "0.1.0-beta.10"
+    },
+    {
+      "date": "2026-07-31T15:15:10.267Z",
+      "version": "0.1.0-beta.9"
+    },
+    {
+      "date": "2026-07-31T13:59:48.724Z",
+      "version": "0.1.0-beta.8"
+    },
+    {
+      "date": "2026-07-31T10:15:59.451Z",
+      "version": "0.1.0-beta.7"
+    },
+    {
+      "date": "2026-07-23T15:20:28.543Z",
+      "version": "0.1.0-beta.6"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-05-04T12:46:51.498Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ritzy0717"
+  ],
+  "name": "@rk-apim-1/backstage-plugin-catalog-backend-module-wso2-apim",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@rk-apim-1",
+  "updated": "2026-05-04T13:21:57.502Z",
+  "version": "0.0.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-05-04T13:21:57.502Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2026-05-04T12:46:51.776Z",
+      "version": "0.0.1"
+    }
+  ]
+}

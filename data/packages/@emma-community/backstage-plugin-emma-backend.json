@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2024-09-06T11:04:03.633Z",
+  "deprecated": "",
+  "description": "Backend for the emma plugin",
+  "homepage": "https://emma.ms",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "anton-ustyugov",
+    "luebken",
+    "zaradarbh"
+  ],
+  "name": "@emma-community/backstage-plugin-emma-backend",
+  "plugin_id": "emma",
+  "readme": "# emma-backend plugin\n\n## Overview\n\nThe `emma-backend` plugin provides the backend services for the emma application. It includes API implementations, routing, and testing logic.\n\n## Getting started\n\nThe plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/emma/health](http://localhost:7007/api/emma/health).\n\n## Key files\n\n- **`index.ts`**: Main entry point for the backend plugin.\n- **`plugin.ts`**: Contains the initialization logic for the backend plugin.\n- **`EmmaApiImpl.ts`**: Provides the implementation of the backend API.\n- **`router.ts`**: Defines the routing logic for the backend services.\n- **`router.test.ts`**: Contains tests for the routing logic.\n\n## Installation\n\nTo install the dependencies, run:\n\n```sh\nyarn install\n```\n\n## Running the plugin\n\nTo start the development server, run:\n\n```sh\nyarn dev\n```\n\n## Testing\n\nTo run the tests, use:\n\n```sh\nyarn test\n```\n\n## License\n\nThis project is licensed under the Apache 2.0 License.\n",
+  "repository": "https://github.com/emma-community/emma-backstage-plugins/tree/HEAD/plugins/emma-backstage-plugins",
+  "role": "backend-plugin",
+  "scope": "@emma-community",
+  "updated": "2024-09-27T04:27:51.642Z",
+  "version": "1.1.9",
+  "version_count": 35,
+  "versions": [
+    {
+      "date": "2024-09-27T04:27:51.642Z",
+      "version": "1.1.9"
+    },
+    {
+      "date": "2024-09-24T15:42:30.192Z",
+      "version": "1.1.7"
+    },
+    {
+      "date": "2024-09-20T14:05:41.785Z",
+      "version": "1.1.6"
+    },
+    {
+      "date": "2024-09-20T13:41:33.098Z",
+      "version": "1.1.5"
+    },
+    {
+      "date": "2024-09-20T12:57:57.778Z",
+      "version": "1.1.4"
+    },
+    {
+      "date": "2024-09-20T11:54:27.143Z",
+      "version": "1.1.3"
+    },
+    {
+      "date": "2024-09-20T09:28:03.374Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2024-09-19T15:29:17.071Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2024-09-18T13:16:47.054Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-09-16T13:19:11.838Z",
+      "version": "1.0.24"
+    },
+    {
+      "date": "2024-09-16T12:26:33.670Z",
+      "version": "1.0.23"
+    },
+    {
+      "date": "2024-09-16T10:24:16.575Z",
+      "version": "1.0.22"
+    },
+    {
+      "date": "2024-09-16T01:51:17.128Z",
+      "version": "1.0.21"
+    },
+    {
+      "date": "2024-09-15T20:54:25.636Z",
+      "version": "1.0.20"
+    },
+    {
+      "date": "2024-09-13T15:10:45.673Z",
+      "version": "1.0.19"
+    }
+  ]
+}

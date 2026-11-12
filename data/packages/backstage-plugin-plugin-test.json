@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-02-04T13:27:17.858Z",
+  "deprecated": "",
+  "description": "Welcome to the plugin-test plugin!",
+  "homepage": "https://github.com/straystreyk/backstage-plugin-plugin-test#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "straystreyk"
+  ],
+  "name": "backstage-plugin-plugin-test",
+  "plugin_id": "app",
+  "readme": "# plugin-test\n\nWelcome to the plugin-test plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/plugin-test](http://localhost:3000/plugin-test).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/straystreyk/backstage-plugin-plugin-test/tree/HEAD/.",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2025-02-04T13:27:18.147Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-02-04T13:27:18.147Z",
+      "version": "0.1.0"
+    }
+  ]
+}

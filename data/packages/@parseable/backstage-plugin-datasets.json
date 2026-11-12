@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2025-09-16T17:13:20.089Z",
+  "deprecated": "",
+  "description": "Backstage plugin for viewing and searching Parseable datasets and logs with support for both legacy and new frontend systems",
+  "homepage": "https://github.com/parseablehq/backstage-plugin",
+  "keywords": [
+    "backstage",
+    "datasets",
+    "logs",
+    "monitoring",
+    "observability",
+    "parseable",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "parseablehq"
+  ],
+  "name": "@parseable/backstage-plugin-datasets",
+  "plugin_id": "parseable-datasets",
+  "readme": "# @parseable/backstage-plugin-datasets\n\nA Backstage plugin for viewing and searching Parseable datasets and logs.\n\n## 🎉 New Frontend System Support\n\nThis plugin now supports **both** the legacy Backstage system and the **new frontend system**! See [MIGRATION.md](./MIGRATION.md) for details.\n\n## Features\n\n- View all available Parseable datasets\n- Search and filter logs within datasets\n- Dynamic column generation based on log structure\n- Pagination and sorting support\n- Expandable view for long log entries\n- Real-time log fetching\n- ✨ **Dual system support** - works with both legacy and new Backstage frontend systems\n\n## Installation\n\nAdd the plugin to your Backstage app:\n\n```bash\nyarn add @parseable/backstage-plugin-datasets\n```\n\n## Setup\n\n### Legacy System (Current)\n\n#### 1. Add the plugin to your app\n\nIn your `packages/app/src/App.tsx`:\n\n```tsx\nimport { ParseableDatasetsPage } from '@parseable/backstage-plugin-datasets';\n\n// Add to your routes\n<Route path=\"/parseable-datasets\" element={<ParseableDatasetsPage />} />\n```\n\n### New Frontend System (Optional)\n\nIf your app uses the new frontend system:\n\n```typescript\n// In your app's features array\nimport parseablePlugin from '@parseable/backstage-plugin-datasets';\n\nconst app = createApp({\n  features: [\n    parseablePlugin,\n    // ... other plugins\n  ],\n});\n```\n\nThe plugin will automatically register its route at `/parseable-datasets`.\n\n> **Note**: See [MIGRATION.md](./MIGRATION.md) for complete migration instructions.\n\n### 2. Add navigation\n\nIn your `packages/app/src/components/Root/Root.tsx`:\n\n```tsx\nimport StorageIcon from '@material-ui/icons/Storage';\n\n// Add to your sidebar\n<SidebarItem icon={StorageIcon} to=\"parseable-datasets\" text=\"Parseable Datasets\" />\n```\n\n### 3. Configure the API\n\nThe plugin connects to Parseable at `https://demo.parseable.com` by default. To configure a different endpoint, you can modify the base URL in the component or extend the API client.\n\n## Usage\n\n1. Navigate to \"Parseable Datasets\" in your Backstage sidebar\n2. Select a dataset from the dropdown\n3. View and search through the logs\n4. Click \"See more\" on truncated entries to view full content\n5. Use the table's built-in search, sort, and pagination features\n\n## Development\n\n```bash\n# Install dependencies\nyarn install\n\n# Run in development\nyarn start\n\n# Build the plugin\nyarn build\n\n# Run tests\nyarn test\n```\n\n## API\n\nThe plugin provides the following API:\n\n- `parseableApiRef` - Reference to the Parseable API client\n- `ParseableClient` - API client implementation\n  - `getUserInfo(baseUrl)` - Fetch user info and available datasets\n  - `getLogs(baseUrl, dataset, limit)` - Fetch logs from a specific dataset\n\n## Contributing\n\nContributions are welcome! Please feel free to submit a Pull Request.\n\n## License\n\nThis project is licensed under the Apache-2.0 License.\n",
+  "repository": "https://github.com/parseablehq/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@parseable",
+  "updated": "2025-10-09T06:10:53.853Z",
+  "version": "1.2.1",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2025-10-09T06:10:53.853Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2025-10-09T06:01:42.543Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2025-10-08T06:17:39.427Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-09-18T16:18:32.987Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2025-09-18T16:16:20.093Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2025-09-18T16:13:51.663Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2025-09-18T16:00:15.961Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2025-09-16T17:28:45.143Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-09-16T17:20:32.791Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-09-16T17:13:20.396Z",
+      "version": "1.0.0"
+    }
+  ]
+}

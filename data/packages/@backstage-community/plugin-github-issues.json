@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T08:59:15.919Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-github-issues",
+  "plugin_id": "github-issues",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/github/plugins/github-issues",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:33:46.226Z",
+  "version": "1.6.0",
+  "version_count": 39,
+  "versions": [
+    {
+      "date": "2026-11-03T14:33:46.226Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2026-10-12T19:19:26.840Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2026-09-24T17:23:16.780Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2026-09-14T16:31:06.034Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2026-08-26T13:21:43.031Z",
+      "version": "1.3.2"
+    },
+    {
+      "date": "2026-08-21T18:07:36.245Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2026-07-21T23:06:53.584Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-07-03T17:24:24.413Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-06-24T13:18:01.223Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-05-27T12:15:45.777Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-04-29T13:41:32.736Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-04-28T19:38:23.661Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-04-03T00:28:48.788Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-03-25T07:35:38.908Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-03-04T18:53:34.054Z",
+      "version": "0.19.1"
+    }
+  ]
+}

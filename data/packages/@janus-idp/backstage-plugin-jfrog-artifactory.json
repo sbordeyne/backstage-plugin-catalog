@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2023-04-13T12:51:53.728Z",
+  "deprecated": "",
+  "description": "The Jfrog Artifactory plugin displays information about your container images within the Jfrog Artifactory registry.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-jfrog-artifactory",
+  "plugin_id": "",
+  "readme": "# Jfrog Artifactory plugin for Backstage\n\nThe Jfrog Artifactory plugin displays information about your container images within the Jfrog Artifactory registry.\n\n## For administrators\n\n### Installation and configuration\n\n#### Procedure\n\n1. Run the following command to install the Jfrog Artifactory plugin:\n\n   ```console\n   yarn workspace app add @janus-idp/backstage-plugin-jfrog-artifactory\n   ```\n\n1. Set the proxy to the desired Artifactory server in the `app-config.yaml` file as follows:\n\n   ```yaml title=\"app-config.yaml\"\n   proxy:\n     endpoints:\n       '/jfrog-artifactory/api':\n         target: 'http://<hostname>:8082' # or https://<customer>.jfrog.io\n         headers:\n           # Authorization: 'Bearer <YOUR TOKEN>'\n         # Change to \"false\" in case of using self hosted artifactory instance with a self-signed certificate\n         secure: true\n   ```\n\n1. Enable the **JFROG ARTIFACTORY** tab on the entity view page in `packages/app/src/components/catalog/EntityPage.tsx`:\n\n   ```ts title=\"packages/app/src/components/catalog/EntityPage.tsx\"\n   /* highlight-add-start */\n   import {\n     isJfrogArtifactoryAvailable,\n     JfrogArtifactoryPage,\n   } from '@janus-idp/backstage-plugin-jfrog-artifactory';\n\n   /* highlight-add-end */\n\n   const serviceEntityPage = (\n     <EntityLayout>\n       // ...\n       {/* highlight-add-start */}\n       <EntityLayout.Route\n         if={isJfrogArtifactoryAvailable}\n         path=\"/jfrog-artifactory\"\n         title=\"Jfrog Artifactory\"\n       >\n         <JfrogArtifactoryPage />\n       </EntityLayout.Route>\n       {/* highlight-add-end */}\n     </EntityLayout>\n   );\n   ```\n\n1. Annotate your entity with the following annotations:\n\n   ```yaml title=\"catalog-info.yaml\"\n   metadata:\n     annotations:\n       'jfrog-artifactory/image-name': '<IMAGE-NAME>'\n   ```\n\n## For users\n\n### Using the Jfrog Artifactory plugin in Backstage\n\nJfrog Artifactory is a front-end plugin that enables you to view the information about the container images that are available in your Jfrog Artifactory registry.\n\n#### Prerequisites\n\n- Your Backstage application is installed and running.\n- You have installed the Jfrog Artifactory plugin. For installation and configuration steps, see [Installation and configuration](#installation-and-configuration).\n\n#### Procedure\n\n1. Open your Backstage application and select a component from the **Catalog** page.\n\n1. Go to the **JFROG ARTIFACTORY** tab.\n\n   ![jfrog-tab](./images/jfrog-plugin-user1.png)\n\n   The **JFROG ARTIFACTORY** tab contains a list of container images and related information, such as **VERSION**, **REPOSITORIES**, **MANIFEST**, **MODIFIED**, and **SIZE**.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/jfrog-artifactory",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-14T21:33:36.751Z",
+  "version": "1.4.13",
+  "version_count": 103,
+  "versions": [
+    {
+      "date": "2024-11-14T21:33:36.751Z",
+      "version": "1.4.13"
+    },
+    {
+      "date": "2024-11-04T12:24:08.951Z",
+      "version": "1.10.1"
+    },
+    {
+      "date": "2024-10-31T22:18:36.220Z",
+      "version": "1.7.10"
+    },
+    {
+      "date": "2024-10-30T20:18:24.438Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2024-10-29T18:59:29.060Z",
+      "version": "1.9.1"
+    },
+    {
+      "date": "2024-10-22T21:36:45.291Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2024-10-09T17:22:50.679Z",
+      "version": "1.8.5"
+    },
+    {
+      "date": "2024-10-08T18:25:49.304Z",
+      "version": "1.8.4"
+    },
+    {
+      "date": "2024-10-08T06:26:57.836Z",
+      "version": "1.8.3"
+    },
+    {
+      "date": "2024-10-01T18:23:20.069Z",
+      "version": "1.8.2"
+    },
+    {
+      "date": "2024-09-25T12:45:01.412Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2024-09-20T03:38:05.263Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2024-09-19T16:46:36.557Z",
+      "version": "1.7.9"
+    },
+    {
+      "date": "2024-09-11T06:33:11.140Z",
+      "version": "1.7.8"
+    },
+    {
+      "date": "2024-09-10T09:14:39.134Z",
+      "version": "1.7.7"
+    }
+  ]
+}

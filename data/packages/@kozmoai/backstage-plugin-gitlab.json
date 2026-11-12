@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2024-03-26T21:00:47.243Z",
+  "deprecated": "",
+  "description": "> Backstage plugin to interact with GitLab",
+  "homepage": "https://github.com/kozmoai/backstage-plugin-gitlab#readme",
+  "keywords": [
+    "backstage",
+    "ci/cd",
+    "gitlab",
+    "kozmoai"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-gitlab",
+  "plugin_id": "",
+  "readme": "# @kozmoai/backstage-plugin-gitlab\n\n> Backstage plugin to interact with GitLab\n\nThis plugin is coupled with [@kozmoai/backstage-plugin-gitlab-backend](https://github.com/kozmoai/backstage-plugin-gitlab), read the [docs](https://github.com/kozmoai/backstage-plugin-gitlab) to use it.\n\n## Screenshots\n\n<img src=\"https://raw.githubusercontent.com/kozmoai/backstage-plugin-gitlab/main/assets/backstage_gitlab_pipeline_information.png\"  alt=\"Contributors Languages Pipeline Status\"/>\n<img src=\"https://raw.githubusercontent.com/kozmoai/backstage-plugin-gitlab/main/assets/backstage_gitlab_mr_and_issues.png\"  alt=\"Merge Request Information\"/>\n",
+  "repository": "https://github.com/kozmoai/backstage-plugin-gitlab",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-03-26T21:00:47.461Z",
+  "version": "6.4.1-alpha.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-03-26T21:00:47.461Z",
+      "version": "6.4.1-alpha.0"
+    }
+  ]
+}

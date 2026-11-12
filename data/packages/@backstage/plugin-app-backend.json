@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2020-09-08T20:43:09.563Z",
+  "deprecated": "",
+  "description": "A Backstage backend plugin that serves the Backstage frontend app",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-app-backend",
+  "plugin_id": "app",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/app-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage",
+  "updated": "2026-10-20T16:45:42.025Z",
+  "version": "0.5.19",
+  "version_count": 1740,
+  "versions": [
+    {
+      "date": "2026-11-11T02:54:18.016Z",
+      "version": "0.5.20-next.1"
+    },
+    {
+      "date": "2026-11-07T02:49:03.822Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T02:53:41.081Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T02:46:15.569Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-10-31T02:44:35.454Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:41:26.782Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T02:50:07.676Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T02:54:19.558Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:27:55.557Z",
+      "version": "0.5.20-next.0"
+    },
+    {
+      "date": "2026-10-27T02:54:18.260Z",
+      "version": "0.0.0-nightly-20261027023041"
+    },
+    {
+      "date": "2026-10-20T16:45:42.025Z",
+      "version": "0.5.19"
+    },
+    {
+      "date": "2026-10-06T19:38:03.575Z",
+      "version": "0.5.19-next.2"
+    },
+    {
+      "date": "2026-09-29T12:23:51.324Z",
+      "version": "0.5.19-next.1"
+    },
+    {
+      "date": "2026-09-28T03:06:28.458Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:00:19.180Z",
+      "version": "0.0.0-nightly-20260927023342"
+    }
+  ]
+}

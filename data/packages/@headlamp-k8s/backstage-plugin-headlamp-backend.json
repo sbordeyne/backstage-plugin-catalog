@@ -1,0 +1,42 @@
+{
+  "author": "",
+  "created": "2024-11-11T20:03:34.592Z",
+  "deprecated": "",
+  "description": "The Headlamp Backend plugin provides endpoints for  starting the headlamp server binary with the kubernetes context specified in the `app-config.yaml` file. It also provides an endpoint for refreshing the kubeconfig file used by the headlamp server.",
+  "homepage": "https://github.com/backstage/backstage#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "illume",
+    "joaquimrocha",
+    "sniok",
+    "yolossn"
+  ],
+  "name": "@headlamp-k8s/backstage-plugin-headlamp-backend",
+  "plugin_id": "headlamp",
+  "readme": "# Headlamp Backend Plugin (beta)\n\nThe Headlamp Backend plugin provides endpoints for \nstarting the headlamp server binary with the kubernetes context specified in the `app-config.yaml` file. It also provides an endpoint for refreshing the kubeconfig file used by the headlamp server.\n\n## Configuration\n\nThe Headlamp Backend plugin is configured by setting the `headlampBackend.binaryPath` in the `app-config.yaml` file. For example:\n\n### 1. Install the plugin\n```bash\nyarn --cwd packages/backend add @headlamp-k8s/backstage-plugin-headlamp-backend\n```\n\n### 2. Add backend plugin to `packages/backend/src/index.ts`\n\n```\n...\nbackend.add(import('@headlamp-k8s/backstage-plugin-headlamp-backend'));\n```\n\n### 3. Configure Headlamp Backend (Optional)\n\nIf you want to use a custom headlamp binary or custom plugins you can set the `headlampBackend.binaryPath` and `headlampBackend.pluginsPath` parameters in the `app-config.yaml` file.\n\nexample:\n```yaml\nheadlampBackend:\n  binaryPath: /path/to/headlamp/binary\n  pluginsPath: /path/to/headlamp/plugins\n```\n",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/headlamp-backend",
+  "role": "backend-plugin",
+  "scope": "@headlamp-k8s",
+  "updated": "2025-10-21T06:49:04.340Z",
+  "version": "0.1.0-beta-5",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-10-21T06:49:04.340Z",
+      "version": "0.1.0-beta-5"
+    },
+    {
+      "date": "2025-01-22T10:48:29.452Z",
+      "version": "0.1.0-beta-3"
+    },
+    {
+      "date": "2024-11-11T21:01:54.707Z",
+      "version": "0.1.0-beta-2"
+    },
+    {
+      "date": "2024-11-11T20:03:34.933Z",
+      "version": "0.1.0-beta-1"
+    }
+  ]
+}

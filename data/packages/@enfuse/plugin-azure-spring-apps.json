@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2022-11-16T19:18:27.098Z",
+  "deprecated": "",
+  "description": "The Azure Spring App plugin displays status and configuration information about your Azure Spring Apps  cluster to Backstage.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ajw-enfuse",
+    "chr-enfuse",
+    "yo-enfuse"
+  ],
+  "name": "@enfuse/plugin-azure-spring-apps",
+  "plugin_id": "",
+  "readme": "# Azure Spring Apps (ASAE) Plugin\nThe Azure Spring App plugin displays status and configuration information about your Azure Spring Apps  cluster to Backstage. \n\n\n> Plugin has only been tested using Enterprise tier\n\n# Releases\n\n## v2.0.1 - Current\n- App list tab now includes a view to see endpoints exposed by Spring applications deployed to ASAE (requires actuator configuration)\n-External Configuration view\n## v1.1.1 \n- App list tab describes all apps on cluster including the identity, routing, storage and security information\n## v1.0.0 \n- Display all the builders available to compile your applications source code. \n\n# Features\n* Buildpacks\n  * List all build packs available on cluster for use\n  * Supported languages/frameworks\n\n![Azure Buildpacks](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/buildpacks.png?raw=true)\n\n* App List which displays:\n  * list of apps\n  * route and endpoints\n  * HTTPS/Public/end-to-end TLS status\n  * Temporary / Permanent Storage Location\n  * Identity information (if applicable)\n\n![ASAE Apps list](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/asae-app-list.png?raw=true)\n\n* External Configuration\n  * Instance status information (provisioning state, # insances, memory, cpu)\n  * List of repos \n  * Repos' name, patterns, label, Uri\n\n![Azure External Configuration](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/external-config.png?raw=true)\n# Requirements\nIn order to use the Azure Spring Application plugin, you must have a working Azure Spring Application cluster.\n\n1. An active [Azure Subscription](https://azure.microsoft.com/en-us/free/)\n2. An [Azure Spring Apps Cluster](https://learn.microsoft.com/en-us/azure/spring-apps/) under your subscription\n3. A [Backstage](https://backstage.io/docs/getting-started/) application instance\n\n# Installation\nFollow the installation process below. Using `yarn add` causes the plugin to fail\n\n1. Add the dependency to your package.json in packages/app\n\n```json\n    \"@enfuse/plugin-azure-spring-apps\": \"^1.1.3\"\n```\nand run \n```sh\n    yarn install\n```\n\n2. Import and use the plugin in your catalog page. Example code below:\n\n``` js\n/*  packages/app/src/components/catalog/EntityPage.tsx  */\n...\nimport { AzureBuildpacksPage , AsaeAppsListPage} from '@enfuse/plugin-azure-spring-apps';\n\nconst systemPage = (\n...\n    //Buildpacks\n    <EntityLayout.Route \n       path=\"/azure-buildpacks\" title=\"Azure Buildpacks\">\n        <AzureBuildpacksPage></AzureBuildpacksPage>\n    </EntityLayout.Route>\n\n    //Apps List\n    <EntityLayout.Route \n      path=\"/asae-apps-list\" title=\"App List\">\n        <AsaeAppsListPage></AsaeAppsListPage>\n     </EntityLayout.Route>\n    // or wherever your heart desires\n```\n# Configuration\n1. This plugin requires credential details. This should be provided in the backstage configuration as shown below:\n\n```yml\n//app-config.yml or app-config-local.yml\nazureBuildpacks:\n  credentials:\n    tenantId: <tenant-id>\n    clientId: <client-id>\n```\n \n> You also need to provide a tenantId and a clientId from an AD app registration in order for our app to be able to authenticate users [(guide to generate can be found here)](https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). The plugin will authenticate the user in a popup window. Whoever signs in should have the appropriate permissions (READ) on the cluster.\n\n## Entity\nThe entity you choose to represent your ASAE cluster shouold include the following anotations\n\n1. Create the entity using this template:\n```yml\n//asae-entity.yml \n...\nmetadata:\n  name: asae-entity-sample\n  annotations:\n    dev.azure.com/resource-group: <resource-group>\n    dev.azure.com/service-name: <asae-service-name>\n    dev.azure.com/build-service-name: default // this can only be default for now\n    dev.azure.com/subscription-id: <subscription-id>\n```\n\n2. Point to the entity in your application catalog file. E.g.:\n```yaml\ncatalog:\n  // [...]\n\n  locations:\n    // [...]\n\n    // ASAE entities\n    - type: file\n      target: ../../examples/asae-entity.yaml\n      rules:\n        - allow: [ System ]\n```\n\n> You can find this information on the Azure Spring App cluster overview page, see screenshot below:\n![ASAE INFO](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/asae-info.png?raw=true)\n\nBuild service name refers to the buils service that provided the builder, which is the Tanzu Build Service in ASAE. ",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@enfuse",
+  "updated": "2022-12-26T20:47:11.880Z",
+  "version": "2.0.3",
+  "version_count": 25,
+  "versions": [
+    {
+      "date": "2022-12-26T20:47:11.880Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2022-12-23T19:34:20.957Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2022-12-17T02:12:47.662Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2022-12-17T01:52:16.711Z",
+      "version": "1.1.3"
+    },
+    {
+      "date": "2022-11-30T19:51:16.139Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2022-11-30T19:44:46.009Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2022-11-30T19:14:56.088Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2022-11-21T16:41:32.109Z",
+      "version": "1.0.17"
+    },
+    {
+      "date": "2022-11-21T08:00:16.895Z",
+      "version": "1.0.16"
+    },
+    {
+      "date": "2022-11-21T07:51:32.990Z",
+      "version": "1.0.15"
+    },
+    {
+      "date": "2022-11-21T07:47:34.903Z",
+      "version": "1.0.14"
+    },
+    {
+      "date": "2022-11-21T06:06:57.549Z",
+      "version": "1.0.13"
+    },
+    {
+      "date": "2022-11-21T06:04:33.618Z",
+      "version": "1.0.12"
+    },
+    {
+      "date": "2022-11-21T05:44:36.105Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2022-11-21T04:41:41.541Z",
+      "version": "1.0.10"
+    }
+  ]
+}

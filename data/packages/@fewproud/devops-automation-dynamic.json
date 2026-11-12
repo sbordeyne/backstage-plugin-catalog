@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-03-10T04:34:45.460Z",
+  "deprecated": "",
+  "description": "Welcome to the ibm-devops-automation plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fewproud"
+  ],
+  "name": "@fewproud/devops-automation-dynamic",
+  "plugin_id": "",
+  "readme": "# ibm-devops-automation\n\nWelcome to the ibm-devops-automation plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/ibm-devops-automation](http://localhost:3000/ibm-devops-automation).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@fewproud",
+  "updated": "2025-03-10T04:34:45.768Z",
+  "version": "0.1.12",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-03-10T04:34:45.768Z",
+      "version": "0.1.12"
+    }
+  ]
+}

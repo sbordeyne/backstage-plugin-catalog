@@ -1,0 +1,35 @@
+{
+  "author": "Amazon Web Services",
+  "created": "2025-02-05T04:22:43.010Z",
+  "deprecated": "",
+  "description": "The aws-apps-entities-processor backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fjudith"
+  ],
+  "name": "@alithya-oss/backstage-plugin-catalog-backend-module-aws-apps-entities-processor",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/awslabs/app-development-for-backstage-io-on-aws/tree/HEAD/backstage-plugins/plugins/catalog-backend-module-aws-apps-entities-processor",
+  "role": "backend-plugin-module",
+  "scope": "@alithya-oss",
+  "updated": "2025-05-21T04:17:14.076Z",
+  "version": "0.3.12",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-05-21T04:17:14.076Z",
+      "version": "0.3.12"
+    },
+    {
+      "date": "2025-05-10T03:59:57.495Z",
+      "version": "0.3.11"
+    },
+    {
+      "date": "2025-02-05T04:22:43.294Z",
+      "version": "0.3.10"
+    }
+  ]
+}

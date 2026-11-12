@@ -1,0 +1,48 @@
+{
+  "author": "",
+  "created": "2024-03-10T19:20:57.286Z",
+  "deprecated": "",
+  "description": "Backstage.io Library Check plugin frontend",
+  "homepage": "https://github.com/anakzr/backstage-plugin-library-check",
+  "keywords": [
+    "backstage",
+    "backstage.io",
+    "frontend",
+    "plugin"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "accezar"
+  ],
+  "name": "@anakz/backstage-plugin-library-check",
+  "plugin_id": "",
+  "readme": "# Library Check Frontend\n\nWelcome to the library-check plugin!\n\n_This plugin was created through the Backstage CLI_\n\n\n### Setup instructions:\n\nAdd the plugin to your frontend app:\n\n```bash\ncd packages/app && yarn add @anakz/backstage-plugin-library-check\n```\n\nExpose the main plugin page:\n\n```ts\n// packages/app/src/App.tsx\n\nimport { LibraryCheckIndexPage } from '@anakz/backstage-plugin-library-check';\n\n// ...\n\nconst AppRoutes = () => (\n  <FlatRoutes>\n    // ...\n    <Route path=\"/library-check\" element={<LibraryCheckIndexPage />} />\n    // ...\n  </FlatRoutes>\n);\n```\n\n\nAdd it to sidebar:\n\n```ts\n // packages/app/src/components/Root/Root.tsx\n\n // ...\n \n <SidebarItem\n   icon={ExtensionIcon}\n   to=\"library-check\"\n   text=\"Libraries\"\n />\n\n // ...\n```\n\nExpose the entity plugin tab:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  LibraryCheckPage,\n  useIsProjectLibrariesAvailable,\n} from '@anakz/backstage-plugin-library-check';\n\n// ...\n\nconst serviceEntityPage = (\n// ...\n\n    <EntityLayout.Route\n      path=\"/library-check\"\n      title=\"Libraries\"\n      if={useIsProjectLibrariesAvailable}\n    >\n      <LibraryCheckPage />\n    </EntityLayout.Route>\n\n// ...    \n)\n\n```\n\nThe plugin interface now available if any supported project descriptor file is present. \n",
+  "repository": "https://github.com/anakzr/backstage-plugin-library-check",
+  "role": "frontend-plugin",
+  "scope": "@anakz",
+  "updated": "2024-04-30T20:17:25.065Z",
+  "version": "0.1.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-04-30T20:17:25.065Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2024-04-02T12:47:38.680Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-03-20T14:55:01.149Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-03-10T20:14:23.825Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-03-10T19:20:57.587Z",
+      "version": "0.0.1"
+    }
+  ]
+}

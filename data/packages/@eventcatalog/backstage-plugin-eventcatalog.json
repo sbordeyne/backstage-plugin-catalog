@@ -1,0 +1,63 @@
+{
+  "author": "",
+  "created": "2024-10-30T10:17:01.193Z",
+  "deprecated": "",
+  "description": "<div align=\"center\">",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "boyney123"
+  ],
+  "name": "@eventcatalog/backstage-plugin-eventcatalog",
+  "plugin_id": "eventcatalog",
+  "readme": "<div align=\"center\">\n\n<h1>⚡️ EventCatalog plugin for Backstage</h1>\n<p>Embed EventCatalog documentation and architecture visualizations in Backstage.</p>\n\n[![PRs Welcome][prs-badge]][prs]\n<img src=\"https://img.shields.io/github/actions/workflow/status/event-catalog/backstage-plugin-eventcatalog/verify-build.yml\" alt=\"Build status\" />\n[![Discord](https://dcbadge.limes.pink/api/server/https://discord.gg/3rjaZMmrAm?style=flat)](https://discord.gg/3rjaZMmrAm)\n[![License: Dual License](https://img.shields.io/badge/license-Dual--License-brightgreen)](./LICENSE.md)\n\n<img alt=\"EventCatalog embedded in Backstage\" src=\"./images/backstage.png\" />\n\n[Documentation](https://www.eventcatalog.dev/docs/plugins/backstage/overview) | [Explore the EventCatalog demo](https://demo.eventcatalog.dev)\n\n</div>\n\n## Features\n\nUse EventCatalog as a frontend integration inside Backstage entity pages. The plugin can embed:\n\n- resource documentation and visualizers\n- discovery tables for services and messages\n- entity maps and the schema explorer\n- the catalog-wide Architecture Graph, optionally focused on an entity with a relationship depth\n- the System Context Map overview or the context map for a specific system\n- flow visualizers\n\nEvery page and card component supports `theme=\"light\"` and `theme=\"dark\"`. The embedded view uses the visitor's saved EventCatalog theme when this prop is omitted.\n\n## Get started\n\nYou will need a Backstage app, an EventCatalog instance that the user's browser can reach, and an EventCatalog Scale license for commercial use.\n\n### 1. Enable the integration in EventCatalog\n\nAdd your Scale license key to the `.env` file in the EventCatalog project:\n\n```bash\nEVENTCATALOG_SCALE_LICENSE_KEY=your-scale-license-key\n```\n\nBuild and deploy EventCatalog with this environment variable. Existing Backstage-specific keys can continue to use `EVENTCATALOG_LICENSE_KEY_BACKSTAGE`, but new deployments should use `EVENTCATALOG_SCALE_LICENSE_KEY`.\n\nSee [Getting a license key for integrations](https://www.eventcatalog.dev/docs/development/license-keys/integrations).\n\n### 2. Install the plugin\n\nFrom the root of your Backstage app:\n\n```bash\nyarn add @eventcatalog/backstage-plugin-eventcatalog\n```\n\n### 3. Configure the EventCatalog URL\n\nAdd the public base URL of your EventCatalog instance to `app-config.yaml`:\n\n```yaml\neventcatalog:\n  URL: https://demo.eventcatalog.dev\n```\n\nUse the base URL only. Do not add a view path such as `/docs` or `/visualiser`; the plugin builds the embed URL for each component.\n\n### 4. Map a Backstage entity\n\nAdd EventCatalog annotations to the Backstage catalog entity:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: order-service\n  description: Handles customer orders\n  annotations:\n    eventcatalog.dev/id: order-service\n    eventcatalog.dev/version: 1.0.0\n    eventcatalog.dev/collection: services\nspec:\n  type: service\n  lifecycle: production\n  owner: team-orders\n```\n\n| Annotation | Required | Description |\n| --- | --- | --- |\n| `eventcatalog.dev/id` | Usually | EventCatalog resource ID. The catalog-wide System Context Map overview does not require one. |\n| `eventcatalog.dev/version` | Depends on the view | EventCatalog resource version. Entity maps, flows, and system-specific context maps require a version. |\n| `eventcatalog.dev/collection` | Sometimes | EventCatalog collection, such as `services`, `domains`, `events`, `commands`, or `queries`. |\n\nThe plugin infers `services` for Backstage service components and APIs, and `domains` for Backstage domains. Other entity kinds should provide `eventcatalog.dev/collection` or an explicit `collection`/`type` prop.\n\nAnnotations are used by default. Components that expose selection props can override them with `id`, `version`, `collection`, `type`, `system`, or `flow`.\n\n### 5. Add an entity tab\n\nImport the general-purpose page component and add it to an `EntityLayout`:\n\n```tsx\nimport { EventCatalogDocumentationEntityPage } from '@eventcatalog/backstage-plugin-eventcatalog';\n\n<EntityLayout.Route path=\"/eventcatalog-docs\" title=\"EventCatalog: Docs\">\n  <EventCatalogDocumentationEntityPage page=\"docs\" />\n</EntityLayout.Route>\n```\n\nOpen a mapped entity and select **EventCatalog: Docs**. If a mapping message appears, check the annotations and make sure Backstage has re-ingested the entity.\n\n## Add entity tabs\n\nThe general-purpose component supports these `page` values:\n\n| Value | Embedded view | Selection requirements |\n| --- | --- | --- |\n| `docs` | Resource documentation | Mapped resource or explicit overrides |\n| `visualiser` | Resource visualizer | Mapped resource or explicit overrides |\n| `discover` | Discovery table for the mapped collection | Mapped resource |\n| `entity-map` | Resource entity map | ID, collection, and version |\n| `schema-explorer` | Catalog schema explorer | Global view rendered from a mapped entity page |\n| `architecture-graph` | Architecture Graph | Prefer the dedicated component below |\n| `system-context-map` | System Context Map | Prefer the dedicated component below |\n| `flow` | Flow visualizer | Prefer the dedicated component below |\n\nFor example:\n\n```tsx\n<EntityLayout.Route path=\"/eventcatalog-visualizer\" title=\"EventCatalog: Visualizer\">\n  <EventCatalogDocumentationEntityPage page=\"visualiser\" />\n</EntityLayout.Route>\n\n<EntityLayout.Route path=\"/eventcatalog-messages\" title=\"EventCatalog: Messages\">\n  <EventCatalogDocumentationEntityPage page=\"discover\" />\n</EntityLayout.Route>\n\n<EntityLayout.Route path=\"/eventcatalog-entity-map\" title=\"EventCatalog: Entity Map\">\n  <EventCatalogDocumentationEntityPage page=\"entity-map\" />\n</EntityLayout.Route>\n\n<EntityLayout.Route path=\"/eventcatalog-schema-explorer\" title=\"EventCatalog: Schema Explorer\">\n  <EventCatalogDocumentationEntityPage page=\"schema-explorer\" />\n</EntityLayout.Route>\n```\n\nUse the dedicated components for the Architecture Graph, System Context Map, and flows:\n\n```tsx\nimport {\n  EventCatalogArchitectureGraphEntityPage,\n  EventCatalogFlowEntityPage,\n  EventCatalogSystemContextMapEntityPage,\n} from '@eventcatalog/backstage-plugin-eventcatalog';\n\n<EntityLayout.Route path=\"/eventcatalog-architecture\" title=\"EventCatalog: Architecture\">\n  <EventCatalogArchitectureGraphEntityPage type=\"service\" depth={2} />\n</EntityLayout.Route>\n\n{/* Omit system and version to show the catalog-wide overview. */}\n<EntityLayout.Route path=\"/eventcatalog-system-context\" title=\"EventCatalog: System Context\">\n  <EventCatalogSystemContextMapEntityPage />\n</EntityLayout.Route>\n\n<EntityLayout.Route path=\"/eventcatalog-order-system\" title=\"EventCatalog: Order System\">\n  <EventCatalogSystemContextMapEntityPage\n    system=\"order-management-system\"\n    version=\"1.0.0\"\n  />\n</EntityLayout.Route>\n\n<EntityLayout.Route path=\"/eventcatalog-checkout-flow\" title=\"EventCatalog: Checkout Flow\">\n  <EventCatalogFlowEntityPage flow=\"checkout-saga\" version=\"1.0.0\" />\n</EntityLayout.Route>\n```\n\nArchitecture Graph depth can be `1`, `2`, or `3` and defaults to `2`. The graph uses the latest version of each resource, so the `version` prop does not change its graph data.\n\n## Add overview cards\n\nCard components render the same EventCatalog views inside a Backstage grid:\n\n| Component | View |\n| --- | --- |\n| `EventCatalogEntityVisualiserCard` | Resource visualizer |\n| `EventCatalogEntityMessageCard` | Discovery table |\n| `EventCatalogEntityEntityMapCard` | Entity map |\n| `EventCatalogEntitySchemaExplorerCard` | Schema explorer |\n| `EventCatalogEntityArchitectureGraphCard` | Architecture Graph |\n| `EventCatalogEntitySystemContextMapCard` | System Context Map |\n| `EventCatalogEntityFlowCard` | Flow visualizer |\n\nThe cards use `height: 100%`, so give each parent grid item a concrete height:\n\n```tsx\nimport {\n  EventCatalogEntityArchitectureGraphCard,\n  EventCatalogEntityFlowCard,\n  EventCatalogEntitySchemaExplorerCard,\n} from '@eventcatalog/backstage-plugin-eventcatalog';\n\n<Grid container spacing={3} alignItems=\"stretch\">\n  <Grid item xs={12} style={{ height: 'calc(100vh - 240px)', minHeight: 600 }}>\n    <EventCatalogEntityArchitectureGraphCard\n      type=\"service\"\n      depth={2}\n      theme=\"dark\"\n    />\n  </Grid>\n\n  <Grid item md={6} xs={12} style={{ height: 700 }}>\n    <EventCatalogEntitySchemaExplorerCard theme=\"dark\" />\n  </Grid>\n\n  <Grid item md={6} xs={12} style={{ height: 700 }}>\n    <EventCatalogEntityFlowCard\n      flow=\"checkout-saga\"\n      version=\"1.0.0\"\n      theme=\"dark\"\n    />\n  </Grid>\n</Grid>\n```\n\nAvoid percentage heights unless every ancestor has a defined height. Full-page components fill the height supplied by `EntityLayout.Route`; give any custom route wrapper an explicit height if it collapses.\n\n## Component props\n\nThe general-purpose and dedicated components expose these selection and display props where applicable:\n\n| Prop | Type | Description |\n| --- | --- | --- |\n| `id` | `string` | Override the EventCatalog resource ID. It also aliases `system` and `flow` on their dedicated components. |\n| `version` | `string` | Override the EventCatalog resource version. |\n| `collection` | `string` | Override the EventCatalog collection. |\n| `type` | `string` | Alias for `collection`; known singular types are converted to plural collections. |\n| `theme` | `'light' \\| 'dark'` | Force the theme for this embed. |\n| `depth` | `1 \\| 2 \\| 3` | Set the Architecture Graph relationship depth. |\n| `system` | `string` | Select a system for a system-specific context map. |\n| `flow` | `string` | Select a flow. A version is also required. |\n\nFor the complete API and task-oriented examples, read the [Backstage plugin documentation](https://www.eventcatalog.dev/docs/plugins/backstage/overview).\n\n## Contributing and support\n\nRead the [contributing guidelines](https://www.eventcatalog.dev/docs/contributing/overview), [raise a GitHub issue](https://github.com/event-catalog/backstage-plugin-eventcatalog/issues), or contact the community on [Discord](https://discord.gg/3rjaZMmrAm).\n\nFor enterprise support, priority assistance, feature development, and custom integrations, see [EventCatalog services](https://www.eventcatalog.dev/services).\n\nTo run the project locally:\n\n1. Clone the repository.\n2. Run `yarn install`.\n3. Run `yarn start`.\n\n## License\n\nThis project uses a [dual-license model](./LICENSE.md): AGPL-3.0 for qualifying open-source use and a [commercial license](./LICENSE-COMMERCIAL.md) for proprietary or internal use. Contact `hello@eventcatalog.dev` with licensing questions.\n\n[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square\n[prs]: http://makeapullrequest.com\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@eventcatalog",
+  "updated": "2026-09-04T10:41:12.319Z",
+  "version": "1.2.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2026-09-04T10:41:12.319Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2025-11-05T12:28:28.470Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-07-03T09:13:21.021Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2025-07-03T08:44:04.767Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-07-03T08:29:34.610Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-04-16T14:46:52.646Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-10-30T13:02:01.225Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2024-10-30T12:34:14.402Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2024-10-30T10:27:31.844Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-10-30T10:17:01.504Z",
+      "version": "0.0.3"
+    }
+  ]
+}

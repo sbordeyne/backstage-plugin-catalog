@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2026-01-12T14:01:09.021Z",
+  "deprecated": "",
+  "description": "The extensions backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-catalog-backend-module-extensions",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/extensions/plugins/catalog-backend-module-extensions",
+  "role": "backend-plugin-module",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-06T11:40:53.876Z",
+  "version": "1.1.2",
+  "version_count": 24,
+  "versions": [
+    {
+      "date": "2026-11-06T11:40:53.876Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2026-11-04T05:11:11.227Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-10-26T14:09:51.303Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-10-26T12:47:29.715Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-10-13T12:26:07.320Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-09-25T08:54:26.758Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-09-17T10:52:03.164Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-09-17T03:27:22.358Z",
+      "version": "0.17.2"
+    },
+    {
+      "date": "2026-09-15T12:57:13.574Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-07-27T07:33:10.526Z",
+      "version": "0.19.1"
+    },
+    {
+      "date": "2026-07-22T07:58:51.023Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-07-18T13:33:55.350Z",
+      "version": "0.18.1"
+    },
+    {
+      "date": "2026-06-11T08:49:50.531Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-05-08T14:32:32.336Z",
+      "version": "0.17.1"
+    },
+    {
+      "date": "2026-05-06T13:07:12.268Z",
+      "version": "0.17.0"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "author": "",
+  "created": "2026-02-12T21:25:47.939Z",
+  "deprecated": "",
+  "description": "Backend plugin for the Socket.dev security integration. This plugin provides a REST API for fetching Socket.dev security reports with server-side caching.",
+  "homepage": "https://github.com/sanity-labs/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bjoerge",
+    "colepeters-sanity",
+    "hermanw",
+    "joshbrand",
+    "jw-sanity",
+    "jwoods-sanity",
+    "kmelve",
+    "laurenashpolesanity",
+    "mariuslundgard",
+    "mttdnt-sanity",
+    "nicholasklem",
+    "rexxars",
+    "robinpyon",
+    "rostimelk",
+    "samhem",
+    "sanitykev",
+    "sergeisarviro",
+    "shapirodaniel",
+    "simen.svale",
+    "snorreeb",
+    "stipsan",
+    "tbeseda"
+  ],
+  "name": "@sanity-labs/backstage-plugin-socket-backend",
+  "plugin_id": "socket",
+  "readme": "# Socket Backend Plugin\n\nBackend plugin for the Socket.dev security integration. This plugin provides a REST API for fetching Socket.dev security reports with server-side caching.\n\n> **Note:** This is the backend companion to [@sanity-labs/backstage-plugin-socket](../socket). Both packages are required for full functionality.\n\n## Installation\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/backend add @sanity-labs/backstage-plugin-socket-backend\n```\n\n## Setup\n\n1. Add the plugin to your backend in `packages/backend/src/index.ts`:\n\n```typescript\nbackend.add(import('@sanity-labs/backstage-plugin-socket-backend'));\n```\n\n2. Configure in `app-config.yaml`:\n\n```yaml\nsocket:\n  apiToken: ${SOCKET_API_TOKEN}  # Required - Socket.dev API token\n  cacheTime: 5                    # Optional - Backend cache TTL in minutes (default: 5)\n  apiBaseUrl: https://api.socket.dev  # Optional - Socket API base URL (default: https://api.socket.dev)\n  defaultBranch: main                 # Optional - Branch whose scans are reported (default: main)\n```\n\n3. Set environment variable:\n\n**Option 1: Using .env file (recommended for local development)**\n\nCreate a `.env` file in the root of your project:\n```bash\nSOCKET_API_TOKEN=your-socket-api-token\n```\n\nThen run the development servers with the dotenv wrapper:\n```bash\nyarn dev\n```\n\nThe `dev` script uses `dotenv-cli` to automatically load variables from `.env`.\n\n**Option 2: Export environment variable**\n```bash\nexport SOCKET_API_TOKEN=your-socket-api-token\nyarn start-backend\n```\n\n**Note:** A `.env.example` file is provided in the repository root as a template.\n\n## API Endpoints\n\n### GET /api/socket/health\n\nHealth check endpoint with cache statistics.\n\n**Response:**\n```json\n{\n  \"status\": \"ok\",\n  \"cache\": {\n    \"size\": 3,\n    \"keys\": [\"report-owner/repo\"]\n  },\n  \"config\": {\n    \"apiBaseUrl\": \"https://api.socket.dev\",\n    \"cacheTime\": 5,\n    \"defaultBranch\": \"main\",\n    \"hasApiToken\": true\n  }\n}\n```\n\n### GET /api/socket/reports/:repo/latest\n\nGet the latest security report for a repository.\n\n**Parameters:**\n- `repo` (path): Repository in format `owner/repo` (URL-encoded)\n\n**Example:**\n```bash\ncurl http://localhost:7007/api/socket/reports/owner%2Frepo/latest\n```\n\n**Response:**\n```json\n{\n  \"repository\": \"owner/repo\",\n  \"branch\": \"main\",\n  \"scanStatus\": \"resolved\",\n  \"findings\": [...],\n  \"totalFindings\": 10,\n  \"criticalFindings\": 2,\n  \"highFindings\": 3,\n  \"mediumFindings\": 5,\n  \"lowFindings\": 0,\n  \"scannedAt\": \"2024-01-01T00:00:00Z\",\n  \"cachedAt\": \"2024-01-01T00:05:00Z\"\n}\n```\n\nReports describe the newest completed (`scan_state: resolve`) scan of the\nconfigured branch. `scanStatus` says whether the counts can be trusted:\n\n| `scanStatus` | Meaning |\n| --- | --- |\n| `resolved` | Counts come from the completed scan identified by `scannedAt`. |\n| `no-resolved-scan` | The branch has scans, but none has finished. Findings are unknown, and `scannedAt` is omitted. |\n| `no-scans` | Socket has no scans of the branch for this repository. Findings are unknown, and `scannedAt` is omitted. |\n\nZero counts alongside a non-`resolved` status mean \"unknown\", not \"clean\";\nconsumers must not present them as a clean bill of health.\n\n## Caching\n\nThe backend implements TTL-based in-memory caching to reduce Socket.dev API calls:\n- Default cache TTL: 5 minutes\n- Cache key format: `report-{repository}`\n- Cache automatically expires stale entries\n\n## Development\n\nBuild:\n```bash\nyarn tsc\nyarn build\n```\n\nTest:\n```bash\nyarn test\n```\n\nLint:\n```bash\nyarn lint\n```\n",
+  "repository": "https://github.com/sanity-labs/backstage-plugins/tree/HEAD/plugins/socket-backend",
+  "role": "backend-plugin",
+  "scope": "@sanity-labs",
+  "updated": "2026-11-10T15:10:06.815Z",
+  "version": "1.3.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-11-10T15:10:06.815Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-11-10T13:33:40.718Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-08-14T07:56:19.966Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-05-08T00:03:15.346Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-02-13T23:51:11.631Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-02-13T21:27:31.742Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-02-12T21:25:48.385Z",
+      "version": "1.0.0"
+    }
+  ]
+}

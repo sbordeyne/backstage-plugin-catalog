@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:03.962Z",
+  "deprecated": "",
+  "description": "Backend plugin that generates temporary credentials in order to perform requests to aws services from backstage's frontend",
+  "homepage": "https://github.com/kozmoai/glint-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-aws-auth",
+  "plugin_id": "",
+  "readme": "# aws-backend\n\nBackend plugin that generates temporary credentials in order to perform requests to aws services from backstage's frontend\n\n## Example usage\n\nThis is an example how you set api keys in your frontend application when using aws sdk:\n\n```js\nasync function generateCredentials(backendUrl: string) {\n  const resp = await (await fetch(`${backendUrl}/aws/credentials`)).json();\n  return new AWS.Credentials({\n    accessKeyId: resp.AccessKeyId,\n    secretAccessKey: resp.SecretAccessKey,\n    sessionToken: resp.SessionToken,\n  });\n}\nAWS.config.credentials = await generateCredentials(backendUrl);\n```\n\n### Using an IAM Role for Cross-account\n\nYou can specify an AWS IAM Role Arn in the body of the request to facilitate cross-account lookups via the Assume Role methodology. You will need to ensure the IAM credentials made available to Backstage have the `sts:AssumeRole` in its attached IAM policy. Note that this request must be a POST due to the requiring a body. It also requires an additional header as shown below.\n\n```js\nasync function generateCredentials(backendUrl: string) {\n  const reqBody = JSON.stringify({\n    RoleArn: 'arn:aws:iam::0123456789012:role/Example',\n  });\n  const resp = await (\n    await fetch(`${backendUrl}/aws/credentials`, {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: reqBody,\n    })\n  ).json();\n  return new AWS.Credentials({\n    accessKeyId: resp.AccessKeyId,\n    secretAccessKey: resp.SecretAccessKey,\n    sessionToken: resp.SessionToken,\n  });\n}\nAWS.config.credentials = await generateCredentials(backendUrl);\n```\n\n## Starting the Auth Backend\n\nPlease create an IAM user (with api keys capabilities) with permissions as little as possible to perform actions from backstage (e.g. only operation lambda:GetFunction with specified resource list)\n\nthen, please set environment variables with api keys from previously create IAM user. The plugin will use default AWS credential provider chain if environment variables are not set. You can find more information about credential provider chain from [AWS docs](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-credentials-node.html).\n\nYou can run plugin locally as standalone by:\n\n```bash\nexport AWS_ACCESS_KEY_ID=x\nexport AWS_ACCESS_KEY_SECRET=x\nyarn start\n```\n\nTo add plugin to the backstage app, you have to install it in the `packages/backend` directory:\n\n```bash\nyarn add @kozmoai/backstage-plugin-aws-auth\n```\n\nAnd paste following code snippets:\n\n```js\n// packages/backend/src/plugins/aws.ts\n\nimport { createRouter } from '@kozmoai/backstage-plugin-aws-auth';\nimport type { PluginEnvironment } from '../types';\n\nexport default async function createPlugin({ logger }: PluginEnvironment) {\n  return await createRouter(logger);\n}\n```\n\n```js\n// packages/backend/src/index.ts\n\nimport aws from './plugins/aws';\n...\nconst awsEnv = useHotMemoize(module, () => createEnv('aws'));\n...\nconst apiRouter = Router();\n...\napiRouter.use('/aws', await aws(awsEnv));\n```\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/backend/backstage-plugin-argo-cd-backend",
+  "role": "backend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:10.467Z",
+  "version": "0.4.22",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:10.467Z",
+      "version": "0.4.22"
+    },
+    {
+      "date": "2024-03-25T22:14:04.277Z",
+      "version": "0.4.21"
+    }
+  ]
+}

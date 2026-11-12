@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2023-04-19T16:32:12.499Z",
+  "deprecated": "",
+  "description": "The Enfuse ChatGPT Plugin for Backstage takes user-inputted description of a desired file of any format and returns the file.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ajw-enfuse",
+    "chr-enfuse",
+    "yo-enfuse"
+  ],
+  "name": "@enfuse/chatgpt-plugin-frontend",
+  "plugin_id": "",
+  "readme": "# Enfuse ChatGPT Plugin for Backstage\nThe Enfuse ChatGPT Plugin for Backstage takes user-inputted description of a desired file of any format and returns the file.\n\n![ChatGPT Playground](https://github.com/enfuse/backstage-chatgpt-plugin/blob/main/docs/Frontpage.jpeg.png)\n\nThe more descriptive the prompt, the better the response! Note that the response will require additional time the larger the prompt, but the response's quality will increase.\n\n# Features\n* Temperature: Temperature will determine how creative the response will be, with a lower temperature returning a more focused and conservative output. A higher temperature will return a more creative response, but has the potential to be less coherent. \n* Max Tokens: Determines the length of the input + output.\n\n# Requirements\n1. A [Backstage](https://backstage.io/docs/getting-started/) application instance\n2. The [backend](https://github.com/enfuse/backstage-chatgpt-backend) part of this plugin installed.\n\n# Installation\nNavigate to root of Backstage installation and run\n```sh\n# From root directory of your Backstage installation\nyarn add --cwd packages/app @enfuse/chatgpt-plugin-frontend\n```\n\n2. Navigate to your packages/app/src/App.tsx and include the following \n\n``` javascript \nimport { ChatGPTFrontendPage } from '@enfuse/chatgpt-plugin-frontend';\n....\n<FlatRoutes>\n        ....\n        <Route path=\"/chatgpt\" element={<ChatGPTFrontendPage />} />\n</FlatRoutes>\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@enfuse",
+  "updated": "2023-08-03T01:08:02.823Z",
+  "version": "1.1.1",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2023-08-03T01:08:02.823Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2023-08-03T00:58:09.899Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2023-07-21T23:19:00.921Z",
+      "version": "1.0.14"
+    },
+    {
+      "date": "2023-04-25T19:37:46.455Z",
+      "version": "1.0.13"
+    },
+    {
+      "date": "2023-04-21T17:51:34.723Z",
+      "version": "1.0.12"
+    },
+    {
+      "date": "2023-04-21T17:43:44.380Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2023-04-21T16:52:35.549Z",
+      "version": "1.0.10"
+    },
+    {
+      "date": "2023-04-20T22:31:36.143Z",
+      "version": "1.0.9"
+    },
+    {
+      "date": "2023-04-20T18:48:49.804Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2023-04-20T18:38:51.589Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2023-04-20T18:20:21.056Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2023-04-20T18:05:30.540Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2023-04-20T17:56:40.980Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2023-04-19T23:46:52.882Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2023-04-19T23:44:28.373Z",
+      "version": "1.0.1"
+    }
+  ]
+}

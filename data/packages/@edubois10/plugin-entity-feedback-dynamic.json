@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-01-13T12:28:25.898Z",
+  "deprecated": "",
+  "description": "Welcome to the entity-feedback plugin!",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "edubois10"
+  ],
+  "name": "@edubois10/plugin-entity-feedback-dynamic",
+  "plugin_id": "entity-feedback",
+  "readme": "# Entity Feedback Plugin\n\nWelcome to the entity-feedback plugin!\n\nThis plugin allows you give and view feedback on entities available in the Backstage catalog.\n\n## Features\n\n### Rate entities\n\n#### Like/Dislike rating\n\n![Like dislike rating example](./docs/like-dislike-rating.png)\n\n#### Starred rating\n\n![Starred rating example](./docs/starred-rating.png)\n\n### Request additional feedback when poorly rated\n\n![Response dialog example](./docs/feedback-response-dialog.png)\n\n### View entity feedback responses\n\n![Feedback responses example](./docs/feedback-response-table.png)\n\n### View aggregated ratings on owned entities\n\n#### Total likes/dislikes\n\n![Like dislike table example](./docs/like-dislike-table.png)\n\n#### Star breakdowns\n\n![Starred rating table example](./docs/starred-rating-table.png)\n\n## Setup\n\nThe following sections will help you get the Entity Feedback plugin setup and running.\n\nNote: this plugin requires authentication and identity configured so Backstage can identify\nwhich user has rated the entity. If you are using the guest identity provider which comes\nout of the box, this plugin will not work when you test it.\n\n### Backend\n\nYou need to setup the [Entity Feedback backend plugin](https://github.com/backstage/backstage/tree/master/plugins/entity-feedback-backend) before you move forward with any of these steps if you haven't already\n\n### Installation\n\nInstall this plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @backstage-community/plugin-entity-feedback\n```\n\n### Entity Pages\n\nAdd rating and feedback components to your `EntityPage.tsx` to hook up UI so that users\ncan rate your entities and for owners to view feedback/responses.\n\nTo allow users to apply \"Like\" and \"Dislike\" ratings add the following to each kind/type of\nentity in your `EntityPage.tsx` you want to be rated (if you prefer to use star ratings, replace\n`EntityLikeDislikeRatingsCard` with `EntityStarredRatingsCard` and `LikeDislikeButtons` with\n`StarredRatingButtons`):\n\n```diff\nimport {\n  ...\n+ InfoCard,\n  ...\n} from '@backstage/core-components';\n+import {\n+ EntityFeedbackResponseContent,\n+ EntityLikeDislikeRatingsCard,\n+ LikeDislikeButtons,\n+} from '@backstage-community/plugin-entity-feedback';\n\n// Add to each applicable kind/type of entity as desired\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    ...\n+   <Grid item md={2}>\n+     <InfoCard title=\"Rate this entity\">\n+       <LikeDislikeButtons />\n+     </InfoCard>\n+   </Grid>\n    ...\n  </Grid>\n);\n\n...\n\n// Add to each applicable kind/type of entity as desired\nconst serviceEntityPage = (\n  <EntityLayoutWrapper>\n    ...\n+   <EntityLayout.Route path=\"/feedback\" title=\"Feedback\">\n+     <EntityFeedbackResponseContent />\n+   </EntityLayout.Route>\n    ...\n  </EntityLayoutWrapper>\n);\n\n...\n\n// Add ratings card component to user/group entities to view ratings of owned entities\nconst userPage = (\n  <EntityLayoutWrapper>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <Grid container spacing={3}>\n        ...\n+       <Grid item xs={12}>\n+         <EntityLikeDislikeRatingsCard />\n+       </Grid>\n        ...\n        </Grid>\n      </Grid>\n    </EntityLayout.Route>\n  </EntityLayoutWrapper>\n);\n\nconst groupPage = (\n  <EntityLayoutWrapper>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <Grid container spacing={3}>\n        ...\n+       <Grid item xs={12}>\n+         <EntityLikeDislikeRatingsCard />\n+       </Grid>\n        ...\n        </Grid>\n      </Grid>\n    </EntityLayout.Route>\n  </EntityLayoutWrapper>\n);\n```\n\nNote: For a full example of this you can look at [this EntityPage](../../packages/app/src/components/catalog/EntityPage.tsx).\n\n## Local Development\n\nTo start the mocked example you need to run the front and backend.\nStart the backend from `workspaces/entity-feedback/plugins/entity-feedback-backend`\n\n```sh\nyarn install\nyarn start\n```\n\nThen start the frontend example from `workspaces/entity-feedback/plugins/entity-feedback`\n\n```sh\nyarn install\nyarn start\n```\n\nOnce that is running you can navigate to `http://localhost:3000/feedback`\n",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/entity-feedback/plugins/entity-feedback",
+  "role": "frontend-plugin",
+  "scope": "@edubois10",
+  "updated": "2025-01-13T12:28:26.366Z",
+  "version": "0.3.3",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-01-13T12:28:26.366Z",
+      "version": "0.3.3"
+    }
+  ]
+}

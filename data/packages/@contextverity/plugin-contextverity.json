@@ -1,0 +1,34 @@
+{
+  "author": "",
+  "created": "2026-10-08T12:17:28.023Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for inspecting context receipts, provenance and drift",
+  "homepage": "https://contextverity.github.io/",
+  "keywords": [
+    "backstage",
+    "contextverity"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sandeepbazar"
+  ],
+  "name": "@contextverity/plugin-contextverity",
+  "plugin_id": "contextverity",
+  "readme": "# @contextverity/plugin-contextverity\n\nBackstage frontend plugin (new frontend system) with a receipts list and a receipt\ndetail view: current verdict and drift, source provenance, permission decisions and\nverification history.\n\n```ts\nimport contextverityPlugin from '@contextverity/plugin-contextverity';\ncreateApp({ features: [contextverityPlugin] });\n```\n\nThe page is mounted at `/contextverity`.\n",
+  "repository": "https://github.com/contextverity/contextverity/tree/HEAD/plugins/contextverity",
+  "role": "frontend-plugin",
+  "scope": "@contextverity",
+  "updated": "2026-10-08T12:21:39.782Z",
+  "version": "0.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-10-08T12:21:39.782Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-08T12:17:28.023Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

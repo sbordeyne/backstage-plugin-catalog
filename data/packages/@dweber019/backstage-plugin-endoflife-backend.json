@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-01-16T21:03:25.061Z",
+  "deprecated": "",
+  "description": "This backend plugin provides an endpoint for getting source files used in the [End of Life frontend plugin](../endoflife/README.md).",
+  "homepage": "https://github.com/dweber019/backstage-plugins/tree/main/plugins/endoflife",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "dweber019"
+  ],
+  "name": "@dweber019/backstage-plugin-endoflife-backend",
+  "plugin_id": "endoflife",
+  "readme": "# # End of life Plugin Backend\n\nThis backend plugin provides an endpoint for getting source files used in the [End of Life frontend plugin](../endoflife/README.md).\n\n## Install\n\n## Setup your `integrations` config\n\nFirst you'll need to setup your `integrations` config inside your `app-config.yaml`. You can skip this step if it's already setup, and if you need help configuring this you can read the [integrations documentation](https://backstage.io/docs/integrations/)\n\n### Setup plugin\n\nFirst we need to add the `@dweber019/backstage-plugin-endoflife-backend` package:\n\n```sh\n# From your Backstage root directory\nyarn --cwd packages/backend add @dweber019/backstage-plugin-endoflife-backend\n```\n\nThen we will create a new file named `packages/backend/src/plugins/endoflife.ts`, and add the following to it:\n\n```ts\nimport { createRouter } from '@dweber019/backstage-plugin-endoflife-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    reader: env.reader,\n    cacheClient: env.cache.getClient(),\n    logger: env.logger,\n  });\n}\n```\n\nNext we wire this into the overall backend router, edit `packages/backend/src/index.ts`:\n\n```ts\nimport endOfLife from './plugins/endoflife';\n// ...\nasync function main() {\n  // ...\n  // Add this line under the other lines that follow the useHotMemoize pattern\n  const endOfLifeEnv = useHotMemoize(module, () => createEnv('endoflife'));\n  // ...\n  // Insert this line under the other lines that add their routers to apiRouter in the same way\n  apiRouter.use('/endoflife', await endOfLife(endOfLifeEnv));\n```\n\n### New Backend System\n\nThe backend plugin has support for the [new backend system](https://backstage.io/docs/backend-system/), here's how you can set that up:\n\nIn your `packages/backend/src/index.ts` make the following changes:\n\n```ts\nconst backend = createBackend();\n\nbackend.add(import('@dweber019/backstage-plugin-endoflife-backend'));\n\n// ... other feature additions\n\nbackend.start();\n```\n\n## Local development\n\nThere is a local setup at `plugins/endoflife-backend/dev` which can be started with `yarn --cwd plugins/endoflife-backend start` from the root.\n",
+  "repository": "https://github.com/dweber019/backstage-plugins/tree/HEAD/plugins/endoflife-backend",
+  "role": "backend-plugin",
+  "scope": "@dweber019",
+  "updated": "2025-12-19T07:45:21.197Z",
+  "version": "0.1.2",
+  "version_count": 18,
+  "versions": [
+    {
+      "date": "2025-12-19T07:45:21.197Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-08-15T06:55:13.695Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-06-27T07:33:07.607Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-03-17T20:39:52.050Z",
+      "version": "0.0.15"
+    },
+    {
+      "date": "2025-01-20T10:42:51.288Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2024-12-28T22:35:32.553Z",
+      "version": "0.0.13"
+    },
+    {
+      "date": "2024-10-21T10:44:54.477Z",
+      "version": "0.0.12"
+    },
+    {
+      "date": "2024-09-25T06:28:30.910Z",
+      "version": "0.0.11"
+    },
+    {
+      "date": "2024-08-29T20:39:34.680Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2024-08-24T21:59:05.408Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2024-07-20T21:52:29.429Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2024-07-06T08:23:26.310Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2024-06-02T10:36:02.834Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2024-05-15T20:15:33.418Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2024-05-04T17:06:26.527Z",
+      "version": "0.0.4"
+    }
+  ]
+}

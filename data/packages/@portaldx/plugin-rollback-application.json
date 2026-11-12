@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2023-02-09T18:46:40.535Z",
+  "deprecated": "",
+  "description": "Imagine you have an application that takes 20 minutes to deploy and you need to make an URGENT fix, waiting that time wouldn't be a good idea.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "accezar"
+  ],
+  "name": "@portaldx/plugin-rollback-application",
+  "plugin_id": "",
+  "readme": "# @portaldx/plugin-rollback-application\n\nImagine you have an application that takes 20 minutes to deploy and you need to make an URGENT fix, waiting that time wouldn't be a good idea.\n\nThis plugin was developed to simplify the process of rolling back your ECS application. By using it, you can easily revert to a previous version of your taskDefinition in case of errors or problems with the current version, bypassing the deploy phase. Additionally, it also allows you to view and compare the differences between versions before performing the rollback. All of this with just a few clicks!\n\n_This plugin was created through the Backstage CLI_\n\n## Requirements\n\n- [Backstage](https://backstage.io/) Project;\n- Node.js v16.14.x\n- AWS Credentials with permissions to read and alter taskDefinitions\n\n## Use\n\n### app-config.yaml\n\n```yaml\n[...]\nrollbackApplication:\n  accessKeyId: {{ ACCESS_KEY_ID }}\n  accessSecretKey: {{ SECRET_ACCESS_KEY_ID }}\n  region: {{ AWS_REGION }}\n[...]\n```\n\n### catalog-info.yaml\n\n_This file is located at the root of each of your remote repositories. The plugin will only work with the settings as described_\n\n```yaml\n[...]\nmetadata:\n  [...]\n  annotations:\n    [...]\n    aws.amazon.com/service: name-you-application-aws-staging\n    aws.amazon.com/cluster: your-application-cluster\n[...]\n```\n\n### catalog/EntityPage.tsx\n`packages/app/src/components/catalog/EntityPage.tsx`\n\n```diff\n+ import { RollbackApplicationComponent, isRollbackAvaliable } from '@portaldx/plugin-rollback-application';\n\n[...]\n\nconst serviceEntityPage = (\n  <EntityLayout>\n+   <EntityLayout.Route if={isRollbackAvaliable} path=\"/rollback\" title=\"Rollback\">\n+      <RollbackApplicationComponent />\n+    </EntityLayout.Route>\n  </EntityLayout>\n); \n```\n\n_Developed with ❤️ by the [MadeiraMadeira](https://github.com/madeiramadeirabr) SRE Team_\n\n\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@portaldx",
+  "updated": "2023-03-08T13:49:29.371Z",
+  "version": "0.1.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2023-03-08T13:49:29.371Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-02-27T17:23:23.509Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-02-09T18:52:09.513Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-02-09T18:46:40.764Z",
+      "version": "0.1.0"
+    }
+  ]
+}

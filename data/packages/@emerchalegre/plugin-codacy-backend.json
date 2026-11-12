@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-02-28T17:29:33.311Z",
+  "deprecated": "",
+  "description": "Welcome to the codacy backend plugin!",
+  "homepage": "https://backstage.io/",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "emerchalegre"
+  ],
+  "name": "@emerchalegre/plugin-codacy-backend",
+  "plugin_id": "",
+  "readme": "# codacy\n\nWelcome to the codacy backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/codacy](http://localhost:3000/codacy).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n",
+  "repository": "https://github.com/emerchalegre/backstage-plugins/tree/HEAD/plugins/codacy-backend",
+  "role": "backend-plugin",
+  "scope": "@emerchalegre",
+  "updated": "2024-02-28T17:56:43.884Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-02-28T17:56:43.884Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-02-28T17:29:33.572Z",
+      "version": "0.1.0"
+    }
+  ]
+}

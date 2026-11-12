@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2025-02-26T13:02:27.266Z",
+  "deprecated": "",
+  "description": "A Backstage catalog backend module that helps integrate towards GitHub",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pfrybar"
+  ],
+  "name": "@pfrybar/plugin-catalog-backend-module-github-resource",
+  "plugin_id": "catalog",
+  "readme": "# Catalog Backend Module for GitHub\n\nThis is an extension module to the plugin-catalog-backend plugin, providing extensions targeted at GitHub offerings.\n\n## Getting started\n\nSee [Backstage documentation](https://backstage.io/docs/integrations/github/discovery) for details on how to install\nand configure the plugin.\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@pfrybar",
+  "updated": "2025-02-27T19:26:44.472Z",
+  "version": "0.0.6",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2025-02-27T19:26:44.472Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2025-02-26T15:07:03.931Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2025-02-26T14:50:33.606Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2025-02-26T14:31:12.632Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2025-02-26T13:51:53.946Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-02-26T13:02:27.560Z",
+      "version": "0.0.1"
+    }
+  ]
+}

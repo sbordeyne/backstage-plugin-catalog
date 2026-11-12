@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-12-12T16:11:31.866Z",
+  "deprecated": "",
+  "description": "The azure-devops backend module for the search plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-search-backend-module-azure-devops",
+  "plugin_id": "search",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/azure-devops/plugins/search-backend-module-azure-devops",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:20:29.687Z",
+  "version": "0.12.0",
+  "version_count": 17,
+  "versions": [
+    {
+      "date": "2026-11-03T14:20:29.687Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-09-23T15:59:55.680Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2026-09-08T13:04:51.063Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-08-27T11:53:47.999Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-07-21T22:58:38.036Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-06-24T13:04:24.854Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-04-24T18:09:30.854Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-04-11T21:17:11.079Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-03-04T18:50:43.384Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-02-28T01:05:24.702Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-01-28T23:01:14.416Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-01-27T21:40:43.970Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-01-07T15:56:41.794Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-01-07T02:28:26.666Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-12-24T16:33:21.307Z",
+      "version": "0.1.2"
+    }
+  ]
+}

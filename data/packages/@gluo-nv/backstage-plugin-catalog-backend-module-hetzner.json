@@ -1,0 +1,84 @@
+{
+  "author": "Gluo NV",
+  "created": "2025-06-03T19:11:10.888Z",
+  "deprecated": "",
+  "description": "Backstage catalog module for Hetzner Cloud integration.",
+  "homepage": "https://github.com/gluobe/hetzner-backstage-plugin",
+  "keywords": [],
+  "license": "AGPL-3.0",
+  "maintainers": [
+    "boosterl",
+    "gluobe"
+  ],
+  "name": "@gluo-nv/backstage-plugin-catalog-backend-module-hetzner",
+  "plugin_id": "catalog",
+  "readme": "# Backstage Catalog Backend Module for Hetzner\n\nThe Hetzner Cloud Catalog Backend Module is a Backstage backend module that connects to the Hetzner backend plugin to automatically discover and import Hetzner Cloud resources into the catalog. It creates entities for servers, volumes, and primary IPs, enabling centralized visibility of your Hetzner infrastructure within Backstage.\n\n## Table of Contents\n\n- [Backstage Catalog Backend Module for Hetzner](#backstage-catalog-backend-module-for-hetzner)\n  - [Table of Contents](#table-of-contents)\n  - [Features](#features)\n  - [Dependencies](#dependencies)\n    - [1. Hetzner Backend Plugin](#1-hetzner-backend-plugin)\n    - [2. Frontend Plugin (Optional)](#2-frontend-plugin-optional)\n    - [Installation](#installation)\n    - [Backend Plugin](#backend-plugin)\n    - [Frontend Plugin](#frontend-plugin)\n    - [Catalog Backend Module Plugin](#catalog-backend-module-plugin)\n  - [Configuration](#configuration)\n  - [Development](#development)\n    - [Getting Started](#getting-started)\n  - [Contributing](#contributing)\n  - [License](#license)\n    - [Attribution](#attribution)\n\n## Features\n\nThis backend catalog module provides the following key functionalities for Backstage:\n\n- **Entity Creation for Backstage Catalog**: Automatically discovers and creates entities for Hetzner Cloud resources (such as servers, volumes, and primary IPs) in the Backstage catalog.\n- **Resource Synchronization**: Periodically fetches the latest state of Hetzner Cloud resources and keeps the Backstage catalog up to date.\n- **Custom Metadata and Annotations**: Enriches catalog entities with Hetzner-specific metadata and annotations for better traceability and management.\n- **Extensible Resource Support**: Easily extendable to support additional Hetzner Cloud resource types as needed.\n\n## Dependencies\n\n### 1. Hetzner Backend Plugin\n\nThe main Hetzner backend plugin provides the API endpoints and backend logic for Hetzner Cloud integration.  \nRepository:  \n[Backstage Plugin Hetzner Backend](../hetzner-backend/README.md)\n\n### 2. Frontend Plugin (Optional)\n\nAn optional frontend plugin is available for integrating with the backend plugin. The frontend plugin provides a user interface in Backstage to visualize Hetzner Cloud resources. It includes:\n\n- **Hetzner Cloud Page**: An overview of the Hetzner Cloud platform.\n- **Hetzner Resource Card**: A card component that displays detailed information about a specific Hetzner Cloud resource directly within the entity page in the Backstage catalog.\n\nThe frontend plugin can be found at:\n\n[Backstage Plugin Hetzner](../hetzner/README.md)\n\nAlternatively, you can create your own frontend plugin to suit your specific needs. The backend plugin is designed to support custom frontend implementations, so installing this provided frontend plugin is not mandatory.\n\nHowever, it is strongly recommended to either install the provided frontend plugin or create your own. Without a frontend plugin, you will not have a user interface in Backstage to visualize Hetzner Cloud resources, which significantly limits the usability of this backend plugin. A frontend plugin is essential for providing insights into your Hetzner Cloud infrastructure and enabling effective management of your resources.\n\n### Installation\n\n### Backend Plugin\n\nThis frontend plugin requires the corresponding backend plugin to be installed. Please follow the instructions in the [backend plugin directory](../hetzner-backend/README.md).\n\n### Frontend Plugin\n\nThis backend plugin requires the corresponding frontend plugin to be installed. Please follow the instructions in the [frontend plugin directory](../hetzner/README.md).\n\n### Catalog Backend Module Plugin\n\n```bash\n# From the Backstage root directory\nyarn --cwd packages/backend add @gluo-nv/backstage-plugin-catalog-backend-module-hetzner\n```\n\n## Configuration\n\nAdd the plugin to the backend in `packages/backend/src/index.ts`:\n\n```typescript\nbackend.add(import('@gluo-nv/backstage-plugin-catalog-backend-module-hetzner'));\n```\n\n## Development\n\n### Getting Started\n\n1. Clone the repository\n2. Install dependencies:\n\n```bash\nyarn install\n```\n\n3. Run the plugin in isolation\n\n```bash\nyarn start\n```\n\n## Contributing\n\nWe welcome contributions to improve this module! If you’d like to contribute, please follow these steps:\n\n1. Fork the repository.\n2. Create a new branch for your feature or bugfix.\n3. Submit a pull request with a clear description of your changes.\n\nFor major changes, please open an issue first to discuss your ideas.\n\n## License\n\nThis plugin is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).\n\n### Attribution\n\nThis plugin was created by [Gluo NV](https://gluo.be).  \nAny use or distribution must include proper attribution to the original author.\n",
+  "repository": "https://github.com/gluobe/hetzner-backstage-plugin",
+  "role": "backend-plugin-module",
+  "scope": "@gluo-nv",
+  "updated": "2026-10-09T12:54:03.735Z",
+  "version": "0.1.19",
+  "version_count": 20,
+  "versions": [
+    {
+      "date": "2026-10-09T12:54:03.735Z",
+      "version": "0.1.19"
+    },
+    {
+      "date": "2026-08-27T13:35:55.827Z",
+      "version": "0.1.18"
+    },
+    {
+      "date": "2026-07-01T12:24:22.068Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2026-06-17T14:05:09.373Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2026-06-03T08:20:36.554Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2026-05-20T08:59:40.493Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2026-05-06T07:20:20.095Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2026-04-22T11:53:01.521Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2026-01-28T12:45:40.412Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2026-01-28T12:07:40.168Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2026-01-28T11:56:51.428Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2026-01-14T14:06:06.402Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2025-12-08T16:19:03.087Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2025-10-23T09:31:26.159Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2025-10-03T15:32:42.414Z",
+      "version": "0.1.5"
+    }
+  ]
+}

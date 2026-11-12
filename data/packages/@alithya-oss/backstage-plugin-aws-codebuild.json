@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-02-05T04:21:50.585Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fjudith"
+  ],
+  "name": "@alithya-oss/backstage-plugin-aws-codebuild",
+  "plugin_id": "aws-codebuild",
+  "readme": "",
+  "repository": "https://github.com/awslabs/backstage-plugins-for-aws/tree/HEAD/plugins/codebuild/frontend",
+  "role": "frontend-plugin",
+  "scope": "@alithya-oss",
+  "updated": "2025-05-21T04:16:18.769Z",
+  "version": "0.5.11",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-05-21T04:16:18.769Z",
+      "version": "0.5.11"
+    },
+    {
+      "date": "2025-05-10T03:59:00.664Z",
+      "version": "0.5.10"
+    },
+    {
+      "date": "2025-02-05T04:21:50.887Z",
+      "version": "0.5.9"
+    }
+  ]
+}

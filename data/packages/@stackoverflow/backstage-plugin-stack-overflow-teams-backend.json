@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2025-10-15T14:52:06.886Z",
+  "deprecated": "",
+  "description": "Backend counterpart of the Stack Internal Plugin.",
+  "homepage": "https://github.com/StackExchange/backstage-stackoverflow#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "abovedave",
+    "dancormier",
+    "estoesmoises",
+    "giamir",
+    "itstoragesvc",
+    "stacks-bot"
+  ],
+  "name": "@stackoverflow/backstage-plugin-stack-overflow-teams-backend",
+  "plugin_id": "stack-overflow-teams",
+  "readme": "# Stack Internal Backend Plugin\n\nBackend counterpart of the Stack Internal Plugin.\n\n## Areas of Responsibility\n\nThe **Stack Internal Backend plugin** is responsible for:\n\n- **Indexing all questions** from the private Stack Overflow Internal instance (an enhanced version of the existing community plugins in the Backstage repository).\n- **Handling API requests** via ``createStackOverflowApi`` and ``createStackOverflowService`` to the Stack Overflow Internal instance for retrieving:\n  - `/users`\n  - `/tags`\n  - `/questions`\n  - Posting new questions via `/questions`\n- **Managing OAuth authentication flow** to securely access Stack Overflow Internal private instances via ``createStackOverflowAuth``\n- **HTTP-only cookie** the Stack Overflow Internal Token is set as a secure http-only cookie to the frontend with 24 hours expiration.\n\n## OAuth Authentication Flow\n\nThe backend is the only component that directly utilizes the **encrypted Stack Overflow Internal access tokens** for requests.\n\n### **Authorization Flow Details**\n\n#### **`/auth/start`**\n\n- Generates **PKCE Code Verifier**.\n- Hashes Code Verifier to obtain **Code Challenge**.\n- Generates a **state** (random string).\n- Stores **Code Verifier** and **State** in a **secure, HTTP-only cookie** accessible only to the server.\n\n#### **`/callback`**\n\n- Retrieves the stored **Code Verifier** and **State**.\n- Validates that the received **state** matches the one from Stack Overflow Internal's query string parameter.\n- The backend requests an **Access Token** using the stored **Code Verifier**.\n- Stores the **Stack Overflow Internal Access Token** in a **secure, HTTP-only cookie**.\n\n## Installation\n\nThis plugin is installed via the `@stackoverflow/backstage-plugin-stack-overflow-teams-backend` package. To install it to your backend package, run the following command:\n\n```bash\nyarn --cwd packages/backend add @stackoverflow/backstage-plugin-stack-overflow-teams-backend\n```\n\nThen add the plugin to your backend in `packages/backend/src/index.ts`:\n\n```ts\nconst backend = createBackend();\n\n// ...\n\nbackend.add(import('@stackoverflow/backstage-plugin-stack-overflow-teams-backend'));\n```\n\n## Development\n\nThis plugin backend can be started in a standalone mode from directly in this package with `yarn start`. It is a limited setup that is most convenient when developing the plugin backend itself.\n\nIf you want to run the entire project, including the frontend, run `yarn dev` from the root directory.",
+  "repository": "https://github.com/StackExchange/backstage-stackoverflow",
+  "role": "backend-plugin",
+  "scope": "@stackoverflow",
+  "updated": "2026-08-11T20:27:28.761Z",
+  "version": "1.6.4",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-08-11T20:27:28.761Z",
+      "version": "1.6.4"
+    },
+    {
+      "date": "2026-01-19T16:42:13.561Z",
+      "version": "1.6.3"
+    },
+    {
+      "date": "2026-01-12T01:51:43.219Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2025-10-15T14:52:07.203Z",
+      "version": "1.5.0"
+    }
+  ]
+}

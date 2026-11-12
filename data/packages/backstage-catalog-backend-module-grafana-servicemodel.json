@@ -1,0 +1,32 @@
+{
+  "author": "Grafana Labs",
+  "created": "2025-04-24T20:51:44.721Z",
+  "deprecated": "",
+  "description": "The grafana-service-model backend module for the catalog plugin.",
+  "homepage": "https://github.com/YOUR_GITHUB_USERNAME/backstage-catalog-backend-module-grafana-servicemodel",
+  "keywords": [
+    "backend",
+    "backstage",
+    "grafana",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "grafanabot"
+  ],
+  "name": "backstage-catalog-backend-module-grafana-servicemodel",
+  "plugin_id": "catalog",
+  "readme": "# @grafana/backstage-plugin-grafana-catalog\n\nThe grafana-service-model backend module for the Backstage catalog.\n\nGrafana Cloud can track your Backstage catalog and use that data to control behavior of Grafana Cloud systems.\n\nInitially this integration will allow you to associate \"Services\" (Components of type: service) to objects in Grafana OnCall. In the future we will be able to use this data to track Team ownership and Service <-> Service dependencies.\n\nThe Grafana \"ServiceModel\" is basically a mirror of the Backstage Catalog model.\n\nThis work is very early. We are still exploring ways to utilize your Backstage Catalog. Please reach out if you have ideas!\n\n## Quick Start Guide\n\nFollow the [quick start guide](docs/quickstart.md) to test this plugin with a new Backstage install. The instructions should carry over to your production install.\n\n## Notes for developers\n\nTo create a backstage instance and install this plugin for local development, run the following:\n\n```\n> BACKSTAGE_APP_NAME=backstage-testing npx @backstage/create-app@0.5.25\n> cd backstage-testing\n> git clone https://github.com/grafana/backstage-plugin-grafana-catalog.git  plugins/catalog-backend-module-grafana-servicemodel\n> sed -i 's/\"name\": \"@grafana\\/catalog-backend-module-grafana-servicemodel\",/\"name\": \"@internal\\/catalog-backend-module-grafana-servicemodel\",/' plugins/catalog-backend-module-grafana-servicemodel/package.json\n\n> yarn --cwd packages/backend add @internal/catalog-backend-module-grafana-servicemodel\n```\n\n`yarn prepare` will install a pre-commit hook to check for the `internal` name in `package.json`\n\nadd this line to `packages/backend/src/index.ts`:\n\n```\nbackend.add(import('@internal/catalog-backend-module-grafana-servicemodel'));\n```\n\nThen to run:\n\n```\n> LOG_LEVEL=debug yarn dev\n```\n\nIf you want to run against the k8s cluster in your default context:\n\n```\n> LOG_LEVEL=debug DEV_MODE=true yarn dev\n\n```\n",
+  "repository": "github.com/YOUR_GITHUB_USERNAME/backstage-catalog-backend-module-grafana-servicemodel",
+  "role": "backend-plugin-module",
+  "scope": "",
+  "updated": "2025-04-24T20:51:45.122Z",
+  "version": "0.3.27",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-04-24T20:51:45.122Z",
+      "version": "0.3.27"
+    }
+  ]
+}

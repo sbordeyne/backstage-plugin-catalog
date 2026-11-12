@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:08:05.689Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates towards ilert",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-ilert",
+  "plugin_id": "ilert",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/ilert/plugins/ilert",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-09-24T17:22:45.437Z",
+  "version": "0.25.0",
+  "version_count": 32,
+  "versions": [
+    {
+      "date": "2026-09-24T17:22:45.437Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-09-18T18:50:15.064Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-07-22T00:16:21.432Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-06-24T13:13:04.180Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-06-01T15:23:12.878Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-04-24T20:00:37.370Z",
+      "version": "0.20.1"
+    },
+    {
+      "date": "2026-04-24T18:02:24.071Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-04-03T00:30:19.183Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-02-27T17:43:10.373Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-01-28T22:42:42.835Z",
+      "version": "0.17.1"
+    },
+    {
+      "date": "2026-01-28T22:30:58.790Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2025-12-24T22:05:56.097Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-11-26T13:16:33.353Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-10-17T17:31:43.026Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-10-08T09:05:38.197Z",
+      "version": "0.13.0"
+    }
+  ]
+}

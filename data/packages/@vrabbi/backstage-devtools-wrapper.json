@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2023-11-08T16:30:07.902Z",
+  "deprecated": "",
+  "description": "Welcome to the dev-tools-wrapper plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@vrabbi/backstage-devtools-wrapper",
+  "plugin_id": "",
+  "readme": "# dev-tools-wrapper\n\nWelcome to the dev-tools-wrapper plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/dev-tools-wrapper](http://localhost:3000/dev-tools-wrapper).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@vrabbi",
+  "updated": "2023-11-09T10:47:52.795Z",
+  "version": "0.2.1",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2023-11-09T10:47:52.795Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-11-09T09:27:45.048Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-11-08T17:37:01.117Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-11-08T17:09:54.401Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-11-08T16:30:08.234Z",
+      "version": "0.1.0"
+    }
+  ]
+}

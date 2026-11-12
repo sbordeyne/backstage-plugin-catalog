@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2024-02-06T16:35:14.325Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-notifications-backend",
+  "plugin_id": "notifications",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/notifications-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage",
+  "updated": "2026-10-20T17:01:15.054Z",
+  "version": "0.6.10",
+  "version_count": 879,
+  "versions": [
+    {
+      "date": "2026-11-11T03:06:44.443Z",
+      "version": "0.6.11-next.2"
+    },
+    {
+      "date": "2026-11-07T03:00:43.336Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T03:05:18.840Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T03:00:00.031Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-11-03T18:58:11.898Z",
+      "version": "0.6.11-next.1"
+    },
+    {
+      "date": "2026-10-31T02:53:13.863Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:51:09.629Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T03:04:47.189Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T03:02:21.422Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:36:00.867Z",
+      "version": "0.6.11-next.0"
+    },
+    {
+      "date": "2026-10-27T03:02:38.662Z",
+      "version": "0.0.0-nightly-20261027023041"
+    },
+    {
+      "date": "2026-10-20T17:01:15.054Z",
+      "version": "0.6.10"
+    },
+    {
+      "date": "2026-10-13T16:19:02.959Z",
+      "version": "0.6.10-next.2"
+    },
+    {
+      "date": "2026-09-29T12:36:00.724Z",
+      "version": "0.6.10-next.1"
+    },
+    {
+      "date": "2026-09-28T03:19:50.470Z",
+      "version": "0.0.0-nightly-20260928023907"
+    }
+  ]
+}

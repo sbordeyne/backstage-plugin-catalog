@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2025-01-11T10:36:31.032Z",
+  "deprecated": "",
+  "description": "The opa-entity-checker backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [
+    "backend",
+    "backstage",
+    "catalog",
+    "opa",
+    "open policy agent",
+    "plugin",
+    "processor"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "parsifal-m"
+  ],
+  "name": "@parsifal-m/backstage-plugin-opa-entity-checker-processor",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/Parsifal-M/backstage-opa-plugins",
+  "role": "backend-plugin-module",
+  "scope": "@parsifal-m",
+  "updated": "2026-10-07T08:07:24.909Z",
+  "version": "2.0.2",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-10-07T08:07:24.909Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2026-01-17T12:44:32.012Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2025-08-08T10:41:52.819Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2025-06-05T07:11:45.353Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2025-05-09T11:45:58.001Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2025-01-11T11:05:15.529Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-01-11T10:36:31.300Z",
+      "version": "1.0.1"
+    }
+  ]
+}

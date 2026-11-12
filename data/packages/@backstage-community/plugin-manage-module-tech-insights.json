@@ -1,0 +1,78 @@
+{
+  "author": "",
+  "created": "2025-02-25T11:20:20.116Z",
+  "deprecated": "",
+  "description": "Manage plugin - Tech Insights module",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "insights",
+    "manage",
+    "page",
+    "tech",
+    "tech-insights"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-manage-module-tech-insights",
+  "plugin_id": "manage",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/manage/plugins/manage-module-tech-insights",
+  "role": "frontend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-03-02T16:26:18.557Z",
+  "version": "0.8.0",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-03-02T16:26:18.557Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-02-19T18:32:39.522Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-12-19T09:18:31.422Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-12-08T16:30:28.031Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-10-15T16:14:58.160Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-10-08T09:07:18.532Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-08-15T14:23:25.134Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2025-05-02T19:53:46.866Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-03-22T22:34:41.772Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-03-22T19:39:28.530Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-03-11T10:10:12.796Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-02-25T11:20:20.469Z",
+      "version": "0.1.0"
+    }
+  ]
+}

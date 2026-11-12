@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2022-08-05T11:29:32.524Z",
+  "deprecated": "",
+  "description": "The Grafana plugin is a frontend plugin that lists Grafana alerts and dashboards. It includes two components that can be integrated into Backstage:",
+  "homepage": "https://github.com/ivangonzalezacuna/backstage-plugin-grafana",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ivangonzalezacuna"
+  ],
+  "name": "@ivangonzalezacuna/backstage-plugin-grafana",
+  "plugin_id": "",
+  "readme": "# Grafana plugin for Backstage\n\nThe Grafana plugin is a frontend plugin that lists Grafana alerts and dashboards. It includes two components that can be integrated into Backstage:\n\n* The `EntityGrafanaDashboardsCard` component which can display dashboards for a specific entity\n* The `EntityGrafanaAlertsCard` component which can display recent alerts for a specific entity\n\n## Setup\n\nFind [installation instructions](./docs/index.md#installation) in our documentation.\n\n## How does it look?\n\nEntity alerts card:\n\n![Alerts card](./docs/alerts_card.png)\n\nEntity dashboards card:\n\n![Dashboards card](./docs/dashboards_card.png)\n\n## License\n\nThis library is under the [Apache 2.0](LICENSE) license.",
+  "repository": "https://github.com/ivangonzalezacuna/backstage-plugin-grafana",
+  "role": "frontend-plugin",
+  "scope": "@ivangonzalezacuna",
+  "updated": "2022-08-05T11:29:32.846Z",
+  "version": "0.1.13",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2022-08-05T11:29:32.846Z",
+      "version": "0.1.13"
+    }
+  ]
+}

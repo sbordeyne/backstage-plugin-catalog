@@ -1,0 +1,56 @@
+{
+  "author": "",
+  "created": "2026-02-16T16:59:18.341Z",
+  "deprecated": "",
+  "description": "The x2a module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-scaffolder-backend-module-x2a",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/x2a/plugins/scaffolder-backend-module-x2a",
+  "role": "backend-plugin-module",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-07-30T12:05:48.626Z",
+  "version": "1.0.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-07-30T12:05:48.626Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-05-29T08:07:11.568Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-05-27T19:22:08.372Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-04-17T06:25:15.937Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-04-05T19:49:13.042Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-03-27T09:11:14.737Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-02-16T16:59:18.600Z",
+      "version": "0.1.1"
+    }
+  ]
+}

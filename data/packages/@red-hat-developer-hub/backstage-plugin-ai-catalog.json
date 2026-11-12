@@ -1,0 +1,58 @@
+{
+  "author": "Red Hat",
+  "created": "2026-09-22T10:07:25.979Z",
+  "deprecated": "",
+  "description": "Frontend plugin for AI Catalog discovery and entity-page extensions for Red Hat Developer Hub.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "ai",
+    "ai-catalog",
+    "backstage",
+    "plugin",
+    "rhdh"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-ai-catalog",
+  "plugin_id": "ai-catalog",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/boost/plugins/ai-catalog",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-11T18:15:37.846Z",
+  "version": "1.2.1",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-11-11T18:15:37.846Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-11-09T17:26:20.411Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-10-26T14:37:26.364Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-09-29T13:10:59.631Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-09-22T23:12:58.451Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-09-22T10:07:26.323Z",
+      "version": "0.8.0"
+    }
+  ]
+}

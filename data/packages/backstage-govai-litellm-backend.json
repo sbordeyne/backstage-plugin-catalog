@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-05-07T18:39:24.134Z",
+  "deprecated": "",
+  "description": "The Backstage backend plugin for LiteLLM governance",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "acarmisc"
+  ],
+  "name": "backstage-govai-litellm-backend",
+  "plugin_id": "litellm",
+  "readme": "ERROR: No README data found!",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "",
+  "updated": "2026-05-14T10:06:54.753Z",
+  "version": "0.1.9",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-05-14T10:06:54.753Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2026-05-08T10:56:54.508Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-05-07T18:39:24.425Z",
+      "version": "0.0.1"
+    }
+  ]
+}

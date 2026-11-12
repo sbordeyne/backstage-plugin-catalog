@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-04-15T11:01:29.445Z",
+  "deprecated": "",
+  "description": "Welcome to the report-portal backend plugin!",
+  "homepage": "https://github.com/mrackoa/community-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mrackoa"
+  ],
+  "name": "@mrackoa/plugin-report-portal-saas-backend",
+  "plugin_id": "report-portal",
+  "readme": "# report-portal\n\nWelcome to the report-portal backend plugin!\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/report-portal](http://localhost:3000/report-portal).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n\n## Installation\n\n### Install backend plugin\n\n- Install the plugin\n  ```shell\n  yarn workspace backend add @backstage-community/plugin-report-portal-backend\n  ```\n- Update the following files\n\n  - Create `/packages/backend/src/index.ts` and add following code:\n\n    ```ts\n    import { createBackend } from '@backstage/backend-defaults';\n    const backend = createBackend();\n    // All other plugins\n    //...\n    // add report portal plugin\n    backend.add(import('@backstage-community/plugin-report-portal-backend'));\n    backend.start();\n    ```\n\n- Add below configuration to `app-config.yaml`:\n\n  ```yaml\n  reportPortal:\n    # Contact email for support\n    supportEmail: ${REPORT_PORTAL_SUPPORT_MAIL}\n\n    # under integrations you can configure\n    # multiple instances of report portal\n    integrations:\n      # host address of your instance\n      # for e.g: report-portal.mycorp.com\n      - host: ${REPORT_PORTAL_HOST}\n\n        # Baser API url of your instance\n        # for e.g: https://report-portal.mycorp.com/api/\n        baseUrl: ${REPORT_PORTAL_BASE_URL}\n\n        # Get the API key from profile page of your instance\n        # for e.g: Bearer fae22be1-0000-0000-8392-de1635eed9f4\n        token: ${REPORT_PORTAL_TOKEN}\n\n        # (optional) Filter the projects by type\n        # Default: \"INTERNAL\"\n        filterType: 'INTERNAL'\n  ```\n\n### Installing [frontend plugin](../report-portal/)\n\n- Install the plugin using following command\n  ```shell\n  yarn workspace app add @backstage-community/plugin-report-portal\n  ```\n",
+  "repository": "https://github.com/mrackoa/community-plugins/tree/HEAD/workspaces/report-portal/plugins/report-portal-saas-backend",
+  "role": "backend-plugin",
+  "scope": "@mrackoa",
+  "updated": "2025-04-15T12:09:50.387Z",
+  "version": "2.0.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-04-15T12:09:50.387Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2025-04-15T11:01:29.734Z",
+      "version": "1.0.7"
+    }
+  ]
+}

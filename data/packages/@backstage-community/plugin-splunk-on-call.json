@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:37:19.917Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates towards Splunk On-Call",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "splunk-on-call"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-splunk-on-call",
+  "plugin_id": "splunk-on-call",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/splunk/plugins/splunk-on-call",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T15:02:47.987Z",
+  "version": "0.28.0",
+  "version_count": 31,
+  "versions": [
+    {
+      "date": "2026-11-03T15:02:47.987Z",
+      "version": "0.28.0"
+    },
+    {
+      "date": "2026-09-24T17:09:10.889Z",
+      "version": "0.27.0"
+    },
+    {
+      "date": "2026-08-27T14:25:47.854Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-07-22T00:20:54.472Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-06-24T13:07:21.798Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-05-31T22:48:44.333Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-04-24T18:01:53.220Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-04-03T16:23:23.650Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-02-27T13:20:19.936Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-02-08T21:58:44.972Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-01-28T22:25:04.669Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-01-07T02:55:07.533Z",
+      "version": "0.17.1"
+    },
+    {
+      "date": "2025-12-24T22:08:04.589Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2025-11-26T13:23:52.732Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-10-17T17:38:46.189Z",
+      "version": "0.15.0"
+    }
+  ]
+}

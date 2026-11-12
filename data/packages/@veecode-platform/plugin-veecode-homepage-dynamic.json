@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2025-06-30T09:16:29.284Z",
+  "deprecated": "",
+  "description": "A comprehensive homepage plugin for Backstage that provides a customizable landing page with greeting components, content sections, and header functionality. This plugin serves as the main entry point for users accessing your developer portal.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/plugin-veecode-homepage-dynamic",
+  "plugin_id": "veecode-homepage",
+  "readme": "# VeeCode Homepage Plugin\n\nA comprehensive homepage plugin for Backstage that provides a customizable landing page with greeting components, content sections, and header functionality. This plugin serves as the main entry point for users accessing your developer portal.\n\n## What it does\n\nThe VeeCode Homepage plugin creates a modern, responsive homepage that includes:\n\n- **Header Component**: Customizable header with navigation and branding\n- **Home Greeting**: Personalized welcome section for users\n- **Home Content**: Flexible content area for displaying relevant information, metrics, and quick access to tools\n- **Visit Tracking**: Built-in API for tracking user visits and popular content\n\nThe plugin integrates seamlessly with Backstage's core components and theming system, providing a cohesive user experience.\n\n## Installation\n\n### Standard Installation\n\nTo install the plugin in your Backstage app:\n\n```bash\n# Install the plugin\nyarn add @veecode-platform/plugin-veecode-homepage\n```\n\nThen add it to your app by importing it in your `App.tsx`:\n\n```tsx\nimport { VeecodeHomepagePage } from '@veecode-platform/plugin-veecode-homepage';\n\n// In your routes\n<Route path=\"/\" element={<VeecodeHomepagePage />} />\n```\n\n### Dynamic Plugin Installation\n\nThis plugin also supports dynamic loading and comes with a `-dynamic` version for Red Hat Developer Hub and other dynamic plugin environments.\n\nInstall the dynamic version:\n\n```bash\nyarn add @veecode-platform/plugin-veecode-homepage-dynamic\n```\n\n## Configuration\n\n### Basic Configuration\n\nAdd the following to your `app-config.yaml`:\n\n```yaml\ndynamicPlugins:\n  frontend:\n    veecode-platform.plugin-veecode-homepage:\n      dynamicRoutes:\n        - path: /\n          importName: VeecodeHomepagePage\n          config:\n            props:\n              width: 1500\n              height: 800\n```\n\n### Advanced Configuration\n\nYou can customize various aspects of the homepage:\n\n```yaml\nhomepage:\n  # Enable/disable components\n  components:\n    header: true\n    greeting: true\n    content: true\n  \n  # Customize greeting\n  greeting:\n    title: \"Welcome to Your Developer Portal\"\n    subtitle: \"Everything you need to build great software\"\n  \n  # Content sections\n  content:\n    showMetrics: true\n    showQuickAccess: true\n    showRecentActivity: true\n```\n\n## Development\n\n### Local Development\n\nYou can serve the plugin in isolation by running:\n\n```bash\nyarn start\n```\n\nThis provides quicker iteration speed and faster startup with hot reloads. The development setup can be found in the [/dev](./dev) directory.\n\n### Testing\n\nRun the test suite:\n\n```bash\nyarn test\n```\n\n### Building\n\nBuild the plugin:\n\n```bash\nyarn build\n```\n\nFor dynamic plugin builds:\n\n```bash\nyarn build-dynamic-plugin\n```\n\n## API Integration\n\nThe plugin includes a visits tracking API that integrates with Backstage's storage and identity APIs to track user interactions and popular content.\n\n## License\n\nApache-2.0\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2026-03-20T12:46:26.150Z",
+  "version": "1.1.0",
+  "version_count": 18,
+  "versions": [
+    {
+      "date": "2026-03-20T12:46:26.150Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-03-06T18:18:29.333Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-10-16T06:50:32.611Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-10-07T10:39:01.606Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2025-09-26T11:24:49.106Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2025-09-26T10:04:08.540Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-09-26T01:16:22.304Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-09-25T18:37:32.763Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2025-07-04T13:39:09.639Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2025-07-04T13:32:52.964Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2025-07-04T13:29:15.575Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2025-07-02T17:08:53.705Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2025-07-01T21:13:20.150Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2025-07-01T21:06:46.603Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-07-01T20:36:12.406Z",
+      "version": "0.1.3"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2024-01-31T18:11:45.605Z",
+  "deprecated": "",
+  "description": "This common package provides shared types and utility functions used by the frontend and backend awards plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "seatgeek"
+  ],
+  "name": "@seatgeek/backstage-plugin-awards-common",
+  "plugin_id": "awards-common",
+  "readme": "# @seatgeek/backstage-plugin-awards-common\n\nThis common package provides shared types and utility functions used by the frontend and backend awards plugin.\n\n[![npm latest version](https://img.shields.io/npm/v/@seatgeek/backstage-plugin-awards-common/latest.svg)](https://www.npmjs.com/package/@seatgeek/backstage-plugin-awards-common)\n\nEvery time we find the need to change the awards type or to add common utilities\nfor testing, we added it to this plugin.\n\nThis allows us to keep a consistent representation of awards across our frontend\nand backend.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@seatgeek",
+  "updated": "2024-08-24T22:15:58.452Z",
+  "version": "1.0.5",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-08-24T22:15:58.452Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2024-02-28T14:19:49.968Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-01-31T18:39:29.740Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-01-31T18:11:45.802Z",
+      "version": "1.0.0"
+    }
+  ]
+}

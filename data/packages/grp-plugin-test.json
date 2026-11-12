@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2022-11-21T19:50:35.974Z",
+  "deprecated": "",
+  "description": "A basic Backstage plugin",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dmunoz14"
+  ],
+  "name": "grp-plugin-test",
+  "plugin_id": "",
+  "readme": "# backstage-plugins-poc\n\nA basic Backstage plugin\n\n## Quickstart\n\nTo create your own Backstage plugin and publish it to Artifactory, follow these steps:\n\n1. Click \"Use this template\"\n\n2. Create the repository in your team's organization\n\n3. Develop your plugin (See [\"Plugin Development\"](https://backstage.io/docs/plugins/plugin-development))\n\n4. Run `yarn package` to build your plugin\n\n5. Update the publish config in `package.json`:\n\n```json\n\"publishConfig\": {\n  \"registry\": \"https://gapinc.jfrog.io/artifactory/api/npm/npm-repos/\"\n}\n```\n\n6. Run `yarn publish` to publish your plugin to Artifactory\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2022-11-22T21:32:44.111Z",
+  "version": "1.0.1-alpha.2",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2022-11-22T21:32:44.111Z",
+      "version": "1.0.1-alpha.2"
+    },
+    {
+      "date": "2022-11-22T21:25:44.321Z",
+      "version": "1.0.1-alpha.1"
+    },
+    {
+      "date": "2022-11-21T20:16:23.496Z",
+      "version": "1.0.1-alpha.0"
+    },
+    {
+      "date": "2022-11-21T19:50:36.248Z",
+      "version": "1.0.0"
+    }
+  ]
+}

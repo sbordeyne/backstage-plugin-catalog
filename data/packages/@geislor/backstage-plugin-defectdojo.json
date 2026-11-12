@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2023-02-06T20:37:42.468Z",
+  "deprecated": "",
+  "description": "Welcome to the `backstage-plugin-defectdojo` plugin!",
+  "homepage": "https://github.com/geislor/backstage-plugin-defectdojo",
+  "keywords": [
+    "backstage",
+    "defectdojo",
+    "vulnerability"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "geislor"
+  ],
+  "name": "@geislor/backstage-plugin-defectdojo",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-defectdojo\n\nWelcome to the `backstage-plugin-defectdojo` plugin!\n\n\n## Getting started\n\n#### Overview Page - defectdojo Vulnerability Chart\n![defectdojo Chart Example](./docs/defectdojo-chart.png)\n\n#### Service Entiry Page - defectdojo Vulnerability Table List\n![defectdojo Table Example](./docs/defectdojo-table.png)\n\nThe following sections will help you get the defectdojo plugin setup and running\n\n### defectdojo Backend\nYou need to setup the [defectdojo backend plugin](https://github.com/geislor/backstage-plugin-defectdojo-backend) before you move forward with any of these steps if you haven't already\n\n## Installation\nThis plugin needs to be added to an existing backstage instance.\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @geislor/backstage-plugin-defectdojo\n```\n\n`Note: You have 2 Options, you can setup both too`\n\n### Option 1\nAdd defectdojo Vulnerability chart in to Overview page\n\nImport the plugin to `packages/app/src/components/catalog/EntityPage.tsx`.\n### EntityPage.tsx\n```typescript\n// ...\nimport { DefectDojoCard } from '@geislor/backstage-plugin-defectdojo';\n// ...\nconst overviewContent = (\n    <Grid container spacing={3} alignItems=\"stretch\">\n    {entityWarningContent}\n    <Grid item md={6}>\n      <EntityAboutCard variant=\"gridItem\" />\n    </Grid>\n    //...\n    <Grid item md={4} xs={12}>\n      <DefectDojoCard />\n    </Grid>\n    <Grid item md={8} xs={12}>\n      <EntityHasSubcomponentsCard variant=\"gridItem\" />\n    </Grid>    \n  </Grid>\n);\n```\n\n### Option 2\nAdd defectdojo Vulnerability Table List in to Service Entity\n\nImport the plugin to `packages/app/src/components/catalog/EntityPage.tsx` and add the following.\n\n### EntityPage.tsx\n```typescript\n// ...\nimport { DefectDojoPage } from '@geislor/backstage-plugin-defectdojo';\n// ...\nconst serviceEntityPage = (\n    <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      {overviewContent}\n    </EntityLayout.Route>\n\n    <EntityLayout.Route path=\"/ci-cd\" title=\"CI/CD\">\n      {cicdContent}\n    </EntityLayout.Route>\n    //...\n    <EntityLayout.Route path=\"/defectdojo\" title=\"Security\">      \n        <DefectDojoPage />    \n    </EntityLayout.Route>\n    // ...    \n  </EntityLayout>\n);\n```\n`Note: If you dont want to display the Service page if no annotation specified in catalog.`\n```typescript\n//...\nimport { DefectDojoPage, isdefectdojoAvailable } from '@geislor/backstage-plugin-defectdojo';\n//...\n<EntityLayout.Route if={isdefectdojoAvailable} path=\"/defectdojo\" title=\"Security\">      \n    <DefectDojoPage />    \n</EntityLayout.Route>\n// ...    \n\n```\n## Configuration\n\nAdd the following into your `app-config.yaml`\n### Config\n```yaml\ndefectdojo:\n  host: https://defectdojo.yourcompany.com/api\n  token: YOUR_API_TOKEN\n```\n\nAdd the following into your catalog\n### Catalog\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: backstage\n  annotations:\n    defectdojo/project: YOUR_PROJECT_NAME/YOUR_PROJECT_VERSION\n```\n",
+  "repository": "https://github.com/geislor/backstage-plugin-defectdojo",
+  "role": "frontend-plugin",
+  "scope": "@geislor",
+  "updated": "2023-02-06T20:37:42.694Z",
+  "version": "1.0.2",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-02-06T20:37:42.694Z",
+      "version": "1.0.2"
+    }
+  ]
+}

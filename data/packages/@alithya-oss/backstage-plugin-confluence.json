@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-02-05T04:20:19.162Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fjudith"
+  ],
+  "name": "@alithya-oss/backstage-plugin-confluence",
+  "plugin_id": "confluence",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/confluence/plugins/confluence",
+  "role": "frontend-plugin",
+  "scope": "@alithya-oss",
+  "updated": "2025-05-21T04:14:38.779Z",
+  "version": "0.1.4",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-05-21T04:14:38.779Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-02-05T04:20:19.487Z",
+      "version": "0.1.3"
+    }
+  ]
+}

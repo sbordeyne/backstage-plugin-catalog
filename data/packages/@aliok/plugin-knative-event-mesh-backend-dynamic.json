@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-05-31T07:52:05.976Z",
+  "deprecated": "",
+  "description": "The Event Mesh plugin is a Backstage plugin that allows you to view and manage Knative Eventing resources.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aliok"
+  ],
+  "name": "@aliok/plugin-knative-event-mesh-backend-dynamic",
+  "plugin_id": "",
+  "readme": "# Knative Event Mesh plugin\n\nThe Event Mesh plugin is a Backstage plugin that allows you to view and manage Knative Eventing resources.\n\nThe Backstage plugin talks to a special backend that runs in the Kubernetes cluster and communicates with the Kubernetes\nAPI server.\n\nA demo setup for this plugin is available at https://github.com/aliok/knative-backstage-demo.\n\n## Installation\n\nInstall the backend and the relevant configuration in the Kubernetes cluster\n\n```bash\nkubectl apply -f https://github.com/knative-extensions/backstage-plugins/releases/download/v0.1.0/eventmesh.yaml\n```\n\nIn your Backstage directory, run the following command to install the plugin:\n\n```bash\nyarn workspace backend add @knative-extensions/plugin-knative-event-mesh-backend\n```\n\n## Configuration\n\n> **NOTE**: The backend needs to be accessible from the Backstage instance. If you are running the backend without\n> exposing it, you can use `kubectl port-forward` to forward the port of the backend service to your local machine.\n> ```bash\n> kubectl port-forward -n knative-eventing svc/eventmesh-backend 8080:8080\n> ```\n\n\nThe plugin needs to be configured to talk to the backend. It can be configured in the `app-config.yaml` file of the\nBackstage instance and allows configuration of one or multiple providers.\n\nUse a `knativeEventMesh` marker to start configuring the `app-config.yaml` file of Backstage:\n\n```yaml\ncatalog:\n  providers:\n    knativeEventMesh:\n      dev:\n        baseUrl: 'http://localhost:8080' # URL of the backend installed in the cluster\n        schedule: # optional; same options as in TaskScheduleDefinition\n          # supports cron, ISO duration, \"human duration\" as used in code\n          frequency: { minutes: 1 }\n          # supports ISO duration, \"human duration\" as used in code\n          timeout: { minutes: 1 }\n```\n\nConfigure the scheduler for the entity provider and enable the processor. Add the following code\nto `packages/backend/src/plugins/catalog.ts` file:\n\n```ts\nimport {CatalogClient} from \"@backstage/catalog-client\";\nimport {\n    KnativeEventMeshProcessor,\n    KnativeEventMeshProvider\n} from '@knative-extensions/plugin-knative-event-mesh-backend';\n\nexport default async function createPlugin(\n    env:PluginEnvironment,\n):Promise<Router> {\n    const builder = await CatalogBuilder.create(env);\n\n    /* ... other processors and/or providers ... */\n\n    // ADD THESE\n    builder.addEntityProvider(\n        KnativeEventMeshProvider.fromConfig(env.config, {\n            logger: env.logger,\n            scheduler: env.scheduler,\n        }),\n    );\n    const catalogApi = new CatalogClient({\n        discoveryApi: env.discovery,\n    });\n    const knativeEventMeshProcessor = new KnativeEventMeshProcessor(catalogApi, env.logger);\n    builder.addProcessor(knativeEventMeshProcessor);\n\n    /* ... other processors and/or providers ... */\n\n    const {processingEngine, router} = await builder.build();\n    await processingEngine.start();\n    return router;\n}\n```\n\n> **NOTE**: If you have made any changes to the schedule in the `app-config.yaml` file, then restart to apply the\n> changes.\n\n## Troubleshooting\n\nWhen you start your Backstage application, you can see some log lines as follows:\n\n```text\n[1] 2024-01-04T09:38:08.707Z knative-event-mesh-backend info Found 1 knative event mesh provider configs with ids: dev type=plugin\n```\n\n## Usage\n\nThe plugin will register a few entities in the Backstage catalog.\n\nScreenshots:\n\n- ![Event Mesh plugin](./event-mesh-plugin-components-view.png)\n\n- ![Event Mesh plugin](./event-mesh-plugin-apis-view.png)\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@aliok",
+  "updated": "2024-05-31T07:52:06.292Z",
+  "version": "0.0.0-nightly",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-05-31T07:52:06.292Z",
+      "version": "0.0.0-nightly"
+    }
+  ]
+}

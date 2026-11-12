@@ -1,0 +1,52 @@
+[tools]
+python = "3.13"
+uv = "latest"
+actionlint = "latest"
+"pipx:yamllint" = "latest"
+
+[env]
+UV_PROJECT_ENVIRONMENT = ".venv"
+UV_PYTHON_PREFERENCE = "only-system"
+_.python.venv = { path = ".venv", create = true }
+
+[tasks.install]
+description = "Install Python deps into .venv"
+run = "uv sync --locked"
+
+[tasks.lint]
+description = "Run all linters"
+depends = ["lint:*"]
+
+[tasks."lint:ruff"]
+run = ["uv run ruff check .", "uv run ruff format --check ."]
+
+[tasks."lint:mypy"]
+run = "uv run mypy src"
+
+[tasks."lint:yaml"]
+run = "yamllint -s ."
+
+[tasks."lint:actions"]
+run = "test -d .github/workflows && actionlint || echo 'no workflows yet'"
+
+[tasks.fmt]
+description = "Autofix lint + format"
+run = ["uv run ruff check --fix .", "uv run ruff format ."]
+
+[tasks.build]
+description = "Build the static site"
+depends = ["render"]
+run = "uv run properdocs build --strict"
+
+[tasks.serve]
+description = "Serve the site locally with live reload"
+depends = ["render"]
+run = "uv run properdocs serve"
+
+[tasks.fetch]
+description = "Refresh data/ from npm"
+run = "uv run backstage-catalog fetch"
+
+[tasks.render]
+description = "Generate plugin pages from data/"
+run = "uv run backstage-catalog render"

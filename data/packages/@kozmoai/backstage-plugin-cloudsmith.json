@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:10.527Z",
+  "deprecated": "",
+  "description": "This plugin allows you to display statistics about a Cloudsmith repository to the homepage of Backstage.",
+  "homepage": "https://glint.io/backstage/plugins/cloudsmith/",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-cloudsmith",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-cloudsmith\n\nThis plugin allows you to display statistics about a Cloudsmith repository to the homepage of Backstage.\n\n![homepage-cloudsmith.png](homepage-cloudsmith.png)\n\nTo use this plugin, you will need to add the card to the home page in the frontend app and also set up a backend proxy for the\n\nfrontend plugin to communicate with Cloudsmith.\n\nCloudsmith hosts artifact repositories. Each repository is assigned an `owner` and a `repo` name when it is created. You will need\n\nthese values when you are configuring the homepage card. You will also need a [Cloudsmith API Key](https://help.cloudsmith.io/reference/authentication).\n\nEdit the `packages/app/src/components/home/Homepage.tsx`.\n\nImport the cloudsmith component:\n\n```typescript jsx\nimport {\n  CloudsmithStatsCard,\n  CloudsmithQuotaCard,\n  CloudsmithRepositoryAuditLogCard,\n  CloudsmithRepositorySecurityCard,\n} from '@kozmoai/backstage-plugin-cloudsmith';\n```\n\nThen add the component to the homepage content component, wherever you prefer.\n\n```typescript jsx\n\n<Grid  item  xs={12}  md={6}>\n   <CloudsmithStatsCard  repo=\"repo-name\"  owner=\"org-name\"  />\n</Grid>\n\n<Grid  item  xs={12}  md={6}>\n   <CloudsmithQuotaCard  owner='org-name'/>\n</Grid>\n\n<Grid  item  xs={12}  md={6}>\n   <CloudsmithRepositoryAuditLogCard  owner='org-name'  repo='repo-name'/>\n</Grid>\n\n<Grid  item  xs={12}  md={6}>\n   <CloudsmithRepositorySecurityCard  owner='org-name'  repo='repo-name'/>\n</Grid>\n\n```\n\nThen you can edit the `app-config.yaml` for the backstage backend application, adding the following proxy configuration.\n\n```yaml\n...\nproxy:\n  ...\n  '/cloudsmith':\n    target: 'https://api.cloudsmith.io/v1'\n    headers:\n      X-Api-Key: ${CLOUDSMITH_API_KEY}\n      User-Agent: 'Backstage'\n```\n\nWhen you run the backstage backend, you will need to set the `CLOUDSMITH_API_KEY` environment variable.\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-cloudsmith",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:12.964Z",
+  "version": "1.0.21",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:12.964Z",
+      "version": "1.0.21"
+    },
+    {
+      "date": "2024-03-25T22:14:10.779Z",
+      "version": "1.0.20"
+    }
+  ]
+}

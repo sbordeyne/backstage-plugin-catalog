@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:11:46.751Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates with Allure",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-allure",
+  "plugin_id": "allure",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/allure/plugins/allure",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:19:27.413Z",
+  "version": "0.24.0",
+  "version_count": 30,
+  "versions": [
+    {
+      "date": "2026-11-03T14:19:27.413Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-09-23T16:15:44.400Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-08-27T11:45:33.036Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-07-21T23:00:06.892Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-06-24T13:05:29.069Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-06-04T07:26:26.535Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-04-24T18:05:42.424Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-04-03T00:34:58.890Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-02-27T17:47:07.673Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-01-28T22:33:36.345Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2026-01-16T21:02:27.617Z",
+      "version": "0.14.1"
+    },
+    {
+      "date": "2025-12-24T16:33:34.556Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-11-26T13:24:32.374Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-10-17T17:41:39.722Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-10-10T10:38:46.565Z",
+      "version": "0.11.0"
+    }
+  ]
+}

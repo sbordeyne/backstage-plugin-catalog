@@ -1,0 +1,85 @@
+{
+  "author": "Solace Corporation",
+  "created": "2022-12-18T15:27:01.386Z",
+  "deprecated": "",
+  "description": "Solace Event Portal Developer Portal Frontend Plugin for Backstage",
+  "homepage": "https://github.com/solace-iot-team/backstage-ep-devp-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dishantlangayan",
+    "solacecommunity",
+    "tamimi65"
+  ],
+  "name": "@solace-labs/backstage-plugin-ep-devp",
+  "plugin_id": "",
+  "readme": "# Solace Event Portal: Developer Portal UI Plugin for Backstage\n",
+  "repository": "https://github.com/solace-iot-team/backstage-ep-devp-plugins/tree/HEAD/plugins/ep-devp",
+  "role": "frontend-plugin",
+  "scope": "@solace-labs",
+  "updated": "2023-09-20T10:33:49.316Z",
+  "version": "1.0.1",
+  "version_count": 48,
+  "versions": [
+    {
+      "date": "2023-09-20T10:33:49.316Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-09-06T11:47:06.507Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2023-05-31T05:09:00.656Z",
+      "version": "0.11.6"
+    },
+    {
+      "date": "2023-05-04T07:30:22.301Z",
+      "version": "0.11.5"
+    },
+    {
+      "date": "2023-04-30T10:10:01.802Z",
+      "version": "0.11.4"
+    },
+    {
+      "date": "2023-04-28T10:19:50.531Z",
+      "version": "0.11.3"
+    },
+    {
+      "date": "2023-04-26T11:26:32.137Z",
+      "version": "0.11.2"
+    },
+    {
+      "date": "2023-04-21T12:08:00.667Z",
+      "version": "0.11.1"
+    },
+    {
+      "date": "2023-04-06T06:53:00.146Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2023-04-05T09:43:07.805Z",
+      "version": "0.10.6"
+    },
+    {
+      "date": "2023-04-04T08:32:27.500Z",
+      "version": "0.10.5"
+    },
+    {
+      "date": "2023-04-03T13:12:30.863Z",
+      "version": "0.10.4"
+    },
+    {
+      "date": "2023-03-29T13:50:14.581Z",
+      "version": "0.10.3"
+    },
+    {
+      "date": "2023-03-22T07:22:13.568Z",
+      "version": "0.10.2"
+    },
+    {
+      "date": "2023-03-17T05:41:31.936Z",
+      "version": "0.10.1"
+    }
+  ]
+}

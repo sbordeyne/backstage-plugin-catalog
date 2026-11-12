@@ -1,0 +1,89 @@
+{
+  "author": "",
+  "created": "2026-08-10T21:54:25.802Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin that ingests repository history from the catalog's GitHub and Azure DevOps repositories into the Backstage database, and serves it to the Code Health dashboard",
+  "homepage": "https://github.com/rios0rios0/backstage-plugin-code-health#readme",
+  "keywords": [
+    "azure-devops",
+    "backstage",
+    "backstage-plugin",
+    "ci",
+    "code-health",
+    "confluence",
+    "github",
+    "jira",
+    "wakatime"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "rios0rios0"
+  ],
+  "name": "@rios0rios0/backstage-plugin-code-health-backend",
+  "plugin_id": "code-health",
+  "readme": "# @rios0rios0/backstage-plugin-code-health-backend\n\nThe Backstage **backend** plugin of the Code Health suite.\n\nIt discovers repositories from the Backstage catalog, authenticates through the host application's\nexisting `integrations` configuration, ingests a year of their history in a rate-limited background\njob, stores it in the Backstage database, and serves it to the frontend plugin under\n`/api/code-health`.\n\nInstall it alongside `@rios0rios0/backstage-plugin-code-health`:\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@rios0rios0/backstage-plugin-code-health-backend'));\n```\n\nSee the [repository README](https://github.com/rios0rios0/backstage-plugin-code-health#readme)\nfor configuration, the scheduled tasks and the operational notes.\n\n## Trends and ownership\n\nThree routes answer a question about one row of the dashboard rather than about the fleet:\n\n| Route | Answers |\n|---|---|\n| `GET /v1/contributors/:key/trend?from&to&bucket` | One person's history, bucketed by `day`, `week` or `month` — the same row the contributors table shows, aggregated over each bucket, with the productivity score it earned |\n| `GET /v1/repositories/:id/trend?from&to&bucket` | One repository's history on the same terms, with its health score |\n| `GET /v1/contributors/:key/repositories?from&to` | The repositories the person is **responsible for** |\n\n`:key` is a contributor row's key, so it is percent-encoded: a linked person's key is a catalog\nreference such as `user%3Adefault%2Fjane`, and an unlinked account's is `vcs%3Ajane%40acme.com`.\n\nEvery bucket of a person's trend is scored against **the fleet in that same bucket**, not against\nthe whole window. A score is a rate against the team's mean rate over the same period, so a quiet\nweek beside one exceptional week reads as a quiet week rather than as a collapse. The fleet in a\nbucket is the window's people: somebody quiet in a bucket is a measured zero there rather than a row\nleft out of the mean, so the line under the headline is the same quantity as the headline. A bucket\nthe person did nothing in still gets a point — an all-zero row carrying their name — because\nclosing over a fortnight off would draw it as a shorter, busier month.\n\nSonar, compliance and badge figures on a trend come from the most recent daily snapshot at or before\neach bucket's last day, filled forward when a snapshot task missed a run. None of them can be\nbackfilled, so those series begin at the first snapshot after installation.\n\nResponsibility is the catalog's `spec.owner`, read by discovery and stored on the repository row\nbeside the other catalog facts. It is matched against the person's own `User` entity, every `Group`\nthey are a member of and the parents of those groups — the same expansion Backstage's own identity\nperforms. A row nobody has linked to a catalog user owns nothing and says so with an empty `owners`,\nbecause \"owns no repositories\" and \"not attached to anybody yet\" are different conversations.\n\n## Administrators\n\nTwo things on the dashboard are not reads: an administrator can start the history collection over\nand choose how far back it reaches, and can change how the productivity score is read — the weights\neach role is scored on, and which role each person has.\n\n```yaml\ncodeHealth:\n  administrators:\n    - user:default/jane\n    - group:default/platform\n```\n\nEntity references of catalog users or groups. A bare name defaults to a user, so `jane` means\n`user:default/jane`. **The list is empty by default, which means nobody** — a reset drops every\ncollected commit, pull request, review and build and re-walks the providers, which is hours of\nrate-limited requests, so it is not something an install should acquire by upgrading.\n\nThere are two levers and both have to open:\n\n- **The list** is what makes the restriction real on a stock install. Backstage's default permission\n  policy allows everything, so the framework alone cannot say \"administrators only\".\n- **A permission** is what lets an installed policy, or the RBAC plugin, veto one of the two by\n  name — including for somebody the list names. `code-health.ingestion.reset` covers the reset and\n  `code-health.scoring.manage` the weights and the roles, exported as\n  `codeHealthIngestionResetPermission` and `codeHealthScoringManagePermission` so a policy can name\n  what it is deciding about. Two permissions rather than one, because a reset costs a day of\n  provider requests and changes nothing about what a row says, while the weights and the roles cost\n  nothing and change what every row says; an organisation may well want different people holding\n  each.\n\n| Route | Answers |\n|---|---|\n| `GET /v1/access` | `{ canResetIngestion, canManageScoring, retentionDays }` for the caller. Never a 403: a page asks this before deciding whether to draw a button, and a service principal or an anonymous decision simply reads `false` |\n| `POST /v1/ingestion/reset` | Body `{ days }`, a whole number from 1 to the configured `codeHealth.ingestion.retentionDays`. `403` when the caller is not an administrator, `400` when `days` is out of range |\n| `GET /v1/productivity/weights` | `{ weights: { engineer, lead } }` — every role's weights, the defaults for any role nobody customised. Answered for everybody, because the contributors table folds each row's score in the browser through the same set a trend is folded through here |\n| `PUT /v1/productivity/weights/:role` | Body `{ weights }`, every component named with a finite weight of zero or more and at least one above zero. `403` when the caller may not manage the scoring, `400` for a partial set or a role the plugin does not know |\n| `DELETE /v1/productivity/weights/:role` | Forgets what was stored for the role, so it is scored on the defaults again — deleting rather than writing the defaults back, so a later release's better defaults reach an install that never customised the role |\n| `PUT /v1/contributors/:key/role` | Body `{ role }`, `engineer` or `lead`, under the contributor row's percent-encoded key. `403` when the caller may not manage the scoring, `400` for a malformed key or role, `404` for a catalog user the catalog does not hold or an account nobody has observed |\n\nA role is recorded under the person key the row carried when it was assigned — a catalog reference\nfor somebody linked, `<source>:<account>` for an account nobody has linked — and resolved through\nthe person directory on read, so a role given to an account before it was linked follows it onto the\nlinked row and a role given to a person reaches every account of theirs. Neither a role nor a set of\nweights touches anything collected: both are applied when a row is built, exactly as a link and an\nexclusion are, so every window the plugin has ever collected is scored through the new numbers from\nthe next read. A reset keeps both.\n\nA reset, in one transaction per run, sends every **tracked** repository back over the reach that was\nasked for: it deletes the commits, pull requests, reviews and builds inside the reach, forgets the\ndays inside it those repositories claimed as fetched, and sets the backfill floor to the reach. It\nthen triggers the ingestion task. The deletes stop at the reach on purpose — the walk never goes\nbelow its floor, so anything older that was deleted would never come back, and a thirty-day reach\nwould silently cost the other eleven months.\n\nWhat it **keeps**: every row older than the reach; snapshots, releases and tags, which come from the\ndaily snapshot rather than from the walk and which nothing would ever put back; and the history of a\nrepository that has left the catalog, which is never ingested again.\n\nAfterwards the dashboard behaves as it does after installation — the last day is answerable from the\nfirst run, and wider ranges unlock as the backfill advances.\n\n## Optional integrations\n\nEach one is absent unless it is configured, and the frontend asks which are on before it draws a\ncolumn. Every reference below covers exactly what is measured, how each number is derived, and what\nthe provider cannot answer:\n\n- [WakaTime](docs/wakatime.md) — coding time, language and editor breakdowns, branches, and AI\n  token counts\n- [Jira](docs/jira.md) — tickets, interactions, story points, cycle and lead time\n- [Claude Code](docs/claude.md) — optional organization token consumption, daily history,\n  identity linking and exclusions; informational and excluded from productivity scores\n- [Confluence](docs/confluence.md) — pages, written volume, comments and page views\n\nThese sources report people under account systems that agree with neither each other nor the catalog, so\na contributor row is a **person** rather than an account. The `Identities` screen is where an account\nis attached to a catalog `User`; the WakaTime reference explains the rules that screen applies, and\nthey are the same for every source.\n\nThat screen is also where an account that is not a person being measured — a build service, a bot,\nan outside contributor, a leaver — is **excluded** under one of four reasons. An excluded account\nleaves every figure the backend reports: no contributor row, no contribution to a repository's\ncounters or the fleet cadence, and no part in the fleet reference the relative components of the\nproductivity score are read against. Nothing is deleted; the exclusion is applied when a row is\nbuilt, so including the account again restores every window already collected.\n",
+  "repository": "https://github.com/rios0rios0/backstage-plugin-code-health/tree/HEAD/plugins/code-health-backend",
+  "role": "backend-plugin",
+  "scope": "@rios0rios0",
+  "updated": "2026-10-16T19:22:40.580Z",
+  "version": "6.0.0",
+  "version_count": 14,
+  "versions": [
+    {
+      "date": "2026-10-16T19:22:40.580Z",
+      "version": "6.0.0"
+    },
+    {
+      "date": "2026-09-29T16:54:53.877Z",
+      "version": "5.3.0"
+    },
+    {
+      "date": "2026-09-18T22:20:14.629Z",
+      "version": "5.2.0"
+    },
+    {
+      "date": "2026-09-18T17:46:49.097Z",
+      "version": "5.1.0"
+    },
+    {
+      "date": "2026-09-15T20:52:26.583Z",
+      "version": "5.0.0"
+    },
+    {
+      "date": "2026-09-10T17:23:28.870Z",
+      "version": "4.2.0"
+    },
+    {
+      "date": "2026-09-10T16:33:25.410Z",
+      "version": "4.1.0"
+    },
+    {
+      "date": "2026-09-09T17:03:54.969Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2026-08-26T22:03:28.804Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2026-08-24T22:00:26.361Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2026-08-11T21:34:55.078Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2026-08-11T15:32:01.354Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2026-08-10T22:04:28.876Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-08-10T21:54:26.135Z",
+      "version": "0.0.1"
+    }
+  ]
+}

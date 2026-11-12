@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2023-03-26T13:29:05.284Z",
+  "deprecated": "",
+  "description": "Welcome to the [Spectral](https://stoplight.io/open-source/spectral) Linter plugin!",
+  "homepage": "https://github.com/dweber019/backstage-plugins/tree/main/plugins/api-docs-spectral-linter",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "dweber019"
+  ],
+  "name": "@dweber019/backstage-plugin-api-docs-spectral-linter",
+  "plugin_id": "api-docs-spectral-linter",
+  "readme": "# Spectral Linter Plugin\n\nWelcome to the [Spectral](https://stoplight.io/open-source/spectral) Linter plugin!\n\nThis plugin allows you to lint (validate) API's with rule sets.\n\n![Spectral linter](https://raw.githubusercontent.com/dweber019/backstage-plugins/main/plugins/api-docs-spectral-linter/docs/spectral-linter.png)\n\n## Setup\n\n1. Install this plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @dweber019/backstage-plugin-api-docs-spectral-linter\n```\n\n### Entity Pages\n\n1. Add the plugin as a tab to your Entity pages:\n\n```jsx\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityApiDocsSpectralLinterContent, isApiDocsSpectralLinterAvailable } from '@dweber019/backstage-plugin-api-docs-spectral-linter';\n\n...\n\nconst apiPage = (\n  <EntityLayout>\n    {/* other tabs... */}\n    <EntityLayout.Route if={isApiDocsSpectralLinterAvailable} path=\"/linter\" title=\"Linter\">\n      <EntityApiDocsSpectralLinterContent />\n    </EntityLayout.Route>\n  </EntityLayout>\n```\n\n2. Add `backstage.io/spectral-ruleset-url` annotation to your `catalog-info.yaml`:\n\n```yaml\nmetadata:\n  annotations:\n    backstage.io/spectral-ruleset-url: <url-to-your-yaml-or-json-file>\n```\n\n### Default rule sets\n\nYou can provide default rule sets in you `app-config.yaml` like this\n\n```yaml\nspectralLinter:\n  openApiRulesetUrl: <url-to-your-yaml-or-json-file>\n  asyncApiRulesetUrl: <url-to-your-yaml-or-json-file>\n```\n\n## Local development\n\nThere is a local setup at `plugins/api-docs-spectral-linter/dev` which can be started with `yarn --cwd plugins/api-docs-spectral-linter start` from the root.\n",
+  "repository": "https://github.com/dweber019/backstage-plugins/tree/HEAD/plugins/api-docs-spectral-linter",
+  "role": "frontend-plugin",
+  "scope": "@dweber019",
+  "updated": "2025-12-19T07:45:21.378Z",
+  "version": "0.5.2",
+  "version_count": 32,
+  "versions": [
+    {
+      "date": "2025-12-19T07:45:21.378Z",
+      "version": "0.5.2"
+    },
+    {
+      "date": "2025-08-15T06:55:13.587Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2025-06-27T07:33:07.786Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-04-08T11:32:01.878Z",
+      "version": "0.4.11"
+    },
+    {
+      "date": "2025-03-17T20:39:49.688Z",
+      "version": "0.4.10"
+    },
+    {
+      "date": "2025-01-20T10:42:51.420Z",
+      "version": "0.4.9"
+    },
+    {
+      "date": "2024-12-28T22:35:32.600Z",
+      "version": "0.4.8"
+    },
+    {
+      "date": "2024-10-21T10:44:55.259Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2024-09-25T06:28:31.126Z",
+      "version": "0.4.6"
+    },
+    {
+      "date": "2024-08-29T20:39:34.717Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2024-08-24T21:59:05.455Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2024-07-29T00:33:07.302Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2024-07-20T21:52:29.623Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2024-07-06T08:23:26.394Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2024-06-10T04:56:28.596Z",
+      "version": "0.4.0"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "author": "Conviso Application Security",
+  "created": "2025-11-12T14:18:21.809Z",
+  "deprecated": "",
+  "description": "Backstage plugin for seamless integration with Conviso Platform.",
+  "homepage": "https://github.com/convisoappsec/backstage-plugin-conviso#readme",
+  "keywords": [
+    "assets",
+    "backstage",
+    "conviso",
+    "integration",
+    "platform",
+    "plugin",
+    "security",
+    "vulnerabilities"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "conviso"
+  ],
+  "name": "@conviso/backstage-plugin-conviso",
+  "plugin_id": "backstage-plugin-conviso",
+  "readme": "# Conviso Platform Backstage Plugin\n\n<div align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/convisoappsec/backstage-plugin-conviso/main/assets/convisoappsec_logo.png\" alt=\"Conviso Logo\" width=\"200\"/>\n  \n  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)\n  [![npm version](https://img.shields.io/npm/v/@conviso/backstage-plugin-conviso)](https://www.npmjs.com/package/@conviso/backstage-plugin-conviso)\n</div>\n\nBackstage plugin for integration with [Conviso Platform](https://convisoappsec.com/). Import your Backstage catalog entities as assets in Conviso Platform.\n\n## Demo\n\n![Plugin Demo](https://raw.githubusercontent.com/convisoappsec/backstage-plugin-conviso/main/assets/demo.gif)\n\n## Screenshots\n\n<div align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/convisoappsec/backstage-plugin-conviso/main/assets/screenshot-1.png\" alt=\"Integration Creation\" width=\"600\"/>\n  <p><strong>Integration Creation</strong> - Create and configure your Conviso Platform integration</p>\n</div>\n\n<div align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/convisoappsec/backstage-plugin-conviso/main/assets/screenshot-2.png\" alt=\"Entity List\" width=\"600\"/>\n  <p><strong>Entity List</strong> - Browse and view your Backstage catalog entities</p>\n</div>\n\n<div align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/convisoappsec/backstage-plugin-conviso/main/assets/screenshot-3.png\" alt=\"Entity Import\" width=\"600\"/>\n  <p><strong>Entity Import</strong> - Select and import Backstage entities as security assets</p>\n</div>\n\n## Features\n\n- 🔄 **Project Import**: Import Backstage catalog projects as assets in Conviso Platform\n- 🤖 **Auto-Import**: Automatically sync new entities from your Backstage catalog\n- 📊 **Status Tracking**: View which projects are imported and their status\n- 🔍 **Search & Filter**: Search projects by name, description, or owner\n- ⚡ **Performance**: Multi-layer caching system for fast operations\n- 🔐 **Security**: Secure API key authentication with Conviso Platform\n- 📈 **Scalable**: Handles large catalogs with efficient pagination and batch processing\n\n## Installation\n\nInstall the plugin package in your Backstage app:\n\n```bash\nyarn add @conviso/backstage-plugin-conviso\n```\n\nOr with npm:\n\n```bash\nnpm install @conviso/backstage-plugin-conviso\n```\n\n## Setup\n\n### 1. Add the Frontend Plugin\n\n**1.1. Add the route** (`packages/app/src/App.tsx`):\n\n```tsx\nimport { BackstagePluginConvisoPage } from '@conviso/backstage-plugin-conviso';\n\n// In your routes\n<Route path=\"/conviso\" element={<BackstagePluginConvisoPage />} />\n```\n\n**1.2. Add sidebar navigation link** (`packages/app/src/components/Root/Root.tsx`):\n\n```tsx\nimport { SidebarItem } from '@backstage/core-components';\nimport SecurityIcon from '@material-ui/icons/Security';\n\n// Inside the SidebarGroup \"Menu\", add:\n<SidebarItem icon={SecurityIcon} to=\"conviso\" text=\"Conviso\" />\n```\n\nThis adds a \"Conviso\" link to the sidebar menu.\n\n### 2. Add the Backend Plugin\n\nIn your `packages/backend/src/index.ts`, add the backend plugin:\n\n```ts\n// Conviso plugin backend\nbackend.add(import('@conviso/backstage-plugin-conviso/backend.js'));\n```\n\n**Note:** The plugin follows the official Backstage plugin pattern, compiling the backend to CommonJS and exporting via the `exports` field in `package.json`.\n\n### 3. Configure the Plugin\n\nThe plugin uses **environment variables with app-config.yaml** for secure configuration.\n\n1. **Export environment variables** in your shell:\n\n```bash\nexport CONVISO_API_KEY=\"your-api-key\"\nexport CONVISO_COMPANY_ID=\"your-company-id\"\nexport CONVISO_ENVIRONMENT=\"production\"  # or \"staging\" or \"local\"\nexport CONVISO_API_BASE=\"http://localhost:3000\"  # Only if environment is 'local'\n```\n\n2. **Add configuration to `app-config.yaml`** using environment variable substitution:\n\n```yaml\n# Conviso Platform configuration\nconviso:\n  apiKey: ${CONVISO_API_KEY}\n  companyId: ${CONVISO_COMPANY_ID}\n  environment: ${CONVISO_ENVIRONMENT:-production}\n  apiBase: ${CONVISO_API_BASE}  # Required if environment is 'local'\n```\n\n**Important:** Always use environment variable substitution (`${VAR}`) in `app-config.yaml` to avoid committing sensitive values to Git. Never hardcode API keys or company IDs directly in the config file.\n\n3. **Start Backstage:**\n\n```bash\nyarn start\n```\n\n**Configuration Priority:**\n1. **Exported environment variables** (highest priority) - `export CONVISO_COMPANY_ID=1028`\n2. **`app-config.yaml`** (Backstage config file with variable substitution)\n\nThis ensures sensitive values are never committed to Git and remain secure.\n\n## Quick Start\n\nAfter installation and configuration:\n\n1. Start your Backstage instance: `yarn dev` (or `yarn start`)\n2. Navigate to `http://localhost:3000/conviso` in your browser\n3. Start importing your Backstage catalog entities!\n\n## Usage\n\n### Importing Projects\n\n1. Navigate to the Conviso plugin page in Backstage (`/conviso`)\n2. Browse your catalog entities in the table\n3. Select one or more projects you want to import (use checkboxes)\n4. Click \"Import Selected\" to sync them to Conviso Platform\n5. Wait for the import to complete (you'll see a success message)\n\n### Auto-Import\n\nEnable auto-import to automatically sync new entities from your Backstage catalog:\n\n1. Toggle \"Auto Import\" in the plugin interface\n2. New entities will be automatically imported when detected\n3. The system runs periodic checks to sync new projects\n\n### Refreshing Status\n\nUse the \"Refresh Status\" button to update the import status of all assets, ensuring the plugin reflects the current state in Conviso Platform.\n\n## API Endpoints\n\nThe backend plugin provides the following REST API endpoints:\n\n- `GET /api/conviso/imported-assets/:companyId?` - Get list of imported assets\n- `POST /api/conviso/import-projects` - Import projects to Conviso Platform\n- `POST /api/conviso/check-imported-names` - Check which names are already imported\n- `POST /api/conviso/sync-imported-assets/:companyId?` - Sync asset cache\n- `GET /api/conviso/integration/:instanceId` - Get integration details\n- `POST /api/conviso/integration` - Create or update integration\n- `POST /api/conviso/auto-import` - Configure auto-import settings\n\n## Configuration Reference\n\n### Environment Variables\n\n**Required:**\n- `CONVISO_API_KEY` - Your Conviso Platform API key\n\n**Optional:**\n- `CONVISO_COMPANY_ID` - Default company ID (can also be provided per integration)\n- `CONVISO_ENVIRONMENT` - Environment: `\"production\"` (default), `\"staging\"`, or `\"local\"`\n- `CONVISO_API_BASE` - Custom API base URL (required if `CONVISO_ENVIRONMENT=local`)\n- `CONVISO_CACHE_DIR` - Custom cache directory path\n\n### app-config.yaml Structure\n\n```yaml\nconviso:\n  apiKey: ${CONVISO_API_KEY}\n  companyId: ${CONVISO_COMPANY_ID}\n  environment: ${CONVISO_ENVIRONMENT:-production}\n  apiBase: ${CONVISO_API_BASE}  # Required if environment is 'local'\n```\n\n### Frontend Configuration\n\nThe frontend plugin reads configuration from:\n- `localStorage`: Stores `companyId` and `instanceId` per instance\n- Backend API: Fetches integration settings from the backend\n\n## Development\n\n### Running the Plugin Locally\n\n```bash\nyarn start\n```\n\nThe plugin will be available at `http://localhost:3000/conviso`.\n\n### Building\n\n```bash\nyarn build\n```\n\n### Testing\n\n```bash\n# Run all tests\nyarn test\n\n# Run tests with coverage\nyarn test:coverage\n\n# Run tests in watch mode\nyarn test:watch\n```\n\n## Architecture\n\n### Frontend\n\n- React components with Material-UI\n- Custom hooks for state management\n- Caching layer for performance optimization\n- Real-time status updates\n\n### Backend\n\n- Express.js REST API\n- GraphQL client for Conviso Platform\n- Kafka integration for async processing\n- File-based caching system\n- Background jobs for auto-import\n\n## Contributing\n\nContributions are welcome! Please feel free to submit a Pull Request.\n\n1. Fork the repository\n2. Create your feature branch (`git checkout -b feature/amazing-feature`)\n3. Commit your changes (`git commit -m 'Add some amazing feature'`)\n4. Push to the branch (`git push origin feature/amazing-feature`)\n5. Open a Pull Request\n\n## License\n\nCopyright 2025 Conviso Application Security\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n\n## Support\n\n- **Documentation**: [GitHub Repository](https://github.com/convisoappsec/backstage-plugin-conviso)\n- **Issues**: [GitHub Issues](https://github.com/convisoappsec/backstage-plugin-conviso/issues)\n- **Conviso Platform**: [https://convisoappsec.com/](https://convisoappsec.com/)\n\n## Related Links\n\n- [Backstage Documentation](https://backstage.io/docs)\n- [Conviso Platform](https://convisoappsec.com/)\n- [Backstage Plugin Directory](https://backstage.io/plugins/)\n",
+  "repository": "https://github.com/convisoappsec/backstage-plugin-conviso",
+  "role": "frontend-plugin",
+  "scope": "@conviso",
+  "updated": "2025-11-15T01:34:33.299Z",
+  "version": "0.1.13",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2025-11-15T01:34:33.299Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2025-11-14T01:55:44.955Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2025-11-14T00:34:49.847Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2025-11-14T00:08:09.109Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2025-11-13T21:03:57.623Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2025-11-13T03:50:57.742Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2025-11-12T17:43:00.080Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2025-11-12T16:18:15.795Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-11-12T15:38:28.426Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-11-12T14:43:16.011Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-11-12T14:18:22.072Z",
+      "version": "0.1.1"
+    }
+  ]
+}

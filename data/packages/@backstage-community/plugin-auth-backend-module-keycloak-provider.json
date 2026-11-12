@@ -1,0 +1,55 @@
+{
+  "author": "",
+  "created": "2026-05-23T23:42:01.047Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-auth-backend-module-keycloak-provider",
+  "plugin_id": "auth",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/keycloak/plugins/auth-backend-module-keycloak",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-09-16T12:15:49.486Z",
+  "version": "0.6.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2026-09-16T12:15:49.486Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-08-26T18:35:44.916Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-08-19T11:24:20.720Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-07-03T03:26:33.446Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-07-01T02:24:33.418Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-06-18T00:22:21.187Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-06-11T14:25:12.978Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-05-23T23:42:01.312Z",
+      "version": "0.1.0"
+    }
+  ]
+}

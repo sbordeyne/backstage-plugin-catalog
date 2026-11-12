@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-06T09:56:37.868Z",
+  "deprecated": "",
+  "description": "The accentuate backend plugin merges data stored in the database with the ingested entities mostly ingested from SCM.",
+  "homepage": "https://github.com/dweber019/backstage-plugins/tree/main/plugins/accentuate-backend",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "dweber019"
+  ],
+  "name": "@dweber019/backstage-plugin-accentuate-backend",
+  "plugin_id": "accentuate",
+  "readme": "# Accentuate backend plugin\n\nThe accentuate backend plugin merges data stored in the database with the ingested entities mostly ingested from\nSCM.\n\nAdditionally, the plugin will provide an API to manage the data for the [accentuate frontend plugin](../accentuate/README.md).\n\n## Install\n\n### Setup plugin\n\nFirst we need to add the `@dweber019/backstage-plugin-accentuate-backend` package:\n\n```sh\n# From your Backstage root directory\nyarn --cwd packages/backend add @dweber019/backstage-plugin-accentuate-backend\n```\n\nThen we open the file named `packages/backend/src/plugins/catalog.ts`, and extend it with:\n\n```ts\nimport { AccentuateEntitiesProcessor } from '@dweber019/backstage-plugin-accentuate-backend';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n  envAccentuate: PluginEnvironment, // required that the correct database is used in AccentuateEntitiesProcessor\n): Promise<Router> {\n  const builder = await CatalogBuilder.create(env);\n\n  builder.addProcessor(\n    await AccentuateEntitiesProcessor.fromEnv(envAccentuate),\n  );\n\n  const { processingEngine, router } = await builder.build();\n  // ..\n}\n```\n\nThen create a file at `packages/backend/src/plugins/accentuate.ts` with\n\n```ts\nimport { createRouter } from '@dweber019/backstage-plugin-accentuate-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    logger: env.logger,\n    database: env.database,\n    identity: env.identity,\n  });\n}\n```\n\nNext we wire this into the overall backend router, edit `packages/backend/src/index.ts`:\n\n```ts\nimport accentuate from './plugins/accentuate';\n// ...\nasync function main() {\n  // ...\n  // Add this line under the other lines that follow the useHotMemoize pattern\n  const accentuateEnv = useHotMemoize(module, () => createEnv('accentuate'));\n  // ...\n  // Extend the catalog to provide the accentuateEnv\n  apiRouter.use('/catalog', await catalog(catalogEnv, accentuateEnv));\n  // Insert this line under the other lines that add their routers to apiRouter in the same way\n  apiRouter.use('/accentuate', await accentuate(accentuateEnv));\n```\n\n### New Backend System\n\nThe backend plugin has support for the [new backend system](https://backstage.io/docs/backend-system/), here's how you can set that up:\n\nIn your `packages/backend/src/index.ts` make the following changes:\n\n```ts\nimport {\n  accentuatePlugin,\n  catalogModuleAccentuateProcessor,\n} from '@dweber019/backstage-plugin-accentuate-backend';\nconst backend = createBackend();\n\nbackend.add(accentuatePlugin);\nbackend.add(catalogModuleAccentuateProcessor);\n\n// ... other feature additions\n\nbackend.start();\n```\n\n> This was not tested and is here for reference\n",
+  "repository": "https://github.com/dweber019/backstage-plugins/tree/HEAD/plugins/accentuate-backend",
+  "role": "backend-plugin",
+  "scope": "@dweber019",
+  "updated": "2025-12-19T07:45:21.590Z",
+  "version": "1.1.2",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2025-12-19T07:45:21.590Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2025-08-15T06:55:13.838Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2025-06-27T07:33:07.234Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-03-17T20:39:52.735Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2025-01-20T10:42:51.817Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-12-28T22:35:32.407Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-10-21T10:44:55.491Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-09-25T06:28:30.850Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-08-29T20:39:34.630Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2024-08-24T21:59:05.166Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2024-07-20T21:52:29.499Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2024-07-06T08:23:26.131Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2024-06-02T10:36:03.107Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-05-15T20:15:33.582Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-05-04T17:06:26.540Z",
+      "version": "0.0.2"
+    }
+  ]
+}

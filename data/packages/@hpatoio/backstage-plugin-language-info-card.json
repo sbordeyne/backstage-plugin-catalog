@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-03-21T10:15:40.930Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "hpatoio"
+  ],
+  "name": "@hpatoio/backstage-plugin-language-info-card",
+  "plugin_id": "backstage-plugin-language-info-card",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@hpatoio",
+  "updated": "2025-03-26T11:43:16.572Z",
+  "version": "1.1.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-03-26T11:43:16.572Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-03-25T16:04:59.377Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-03-21T10:15:41.168Z",
+      "version": "1.0.0"
+    }
+  ]
+}

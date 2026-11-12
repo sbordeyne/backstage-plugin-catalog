@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2024-09-06T11:04:41.845Z",
+  "deprecated": "",
+  "description": "## Overview",
+  "homepage": "https://emma.ms",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "anton-ustyugov",
+    "luebken",
+    "zaradarbh"
+  ],
+  "name": "@emma-community/backstage-plugin-emma",
+  "plugin_id": "emma",
+  "readme": "# emma plugin\n\n## Overview\n\nThe `emma` plugin provides the frontend components and logic for the emma application. It includes UI components for displaying data, routing, and API interactions.\n\n## Key files\n\n- **`index.ts` and `index.tsx`**: Main entry points for the plugin.\n- **`plugin.ts`**: Contains the initialization logic for the plugin.\n- **`routes.ts`**: Defines the routes used by the plugin.\n- **`EmmaClient.ts`**: Provides methods to interact with the backend API.\n- **`HeatMapComponent.tsx`**: UI component for displaying heat maps.\n- **`HeatMapPageComponent.tsx`**: UI component for displaying a page with heat maps.\n- **`HeatMapPageComponent.test.tsx`**: Tests for the `HeatMapPageComponent`.\n\n## Installation\n\nTo install the dependencies, run:\n\n```sh\nyarn install\n```\n\n## Running the plugin\n\nTo start the development server, run:\n\n```sh\nyarn dev\n```\n\n## Testing\n\nTo run the tests, use:\n\n```sh\nyarn test\n```\n\n## License\n\nThis project is licensed under the Apache 2.0 License.\n",
+  "repository": "https://github.com/emma-community/emma-backstage-plugins/tree/HEAD/plugins/emma-backstage-plugins",
+  "role": "frontend-plugin",
+  "scope": "@emma-community",
+  "updated": "2024-09-27T04:27:54.080Z",
+  "version": "1.1.9",
+  "version_count": 34,
+  "versions": [
+    {
+      "date": "2024-09-27T04:27:54.080Z",
+      "version": "1.1.9"
+    },
+    {
+      "date": "2024-09-24T15:42:32.195Z",
+      "version": "1.1.7"
+    },
+    {
+      "date": "2024-09-20T14:05:43.641Z",
+      "version": "1.1.6"
+    },
+    {
+      "date": "2024-09-20T13:41:35.126Z",
+      "version": "1.1.5"
+    },
+    {
+      "date": "2024-09-20T12:58:00.040Z",
+      "version": "1.1.4"
+    },
+    {
+      "date": "2024-09-20T11:54:29.144Z",
+      "version": "1.1.3"
+    },
+    {
+      "date": "2024-09-20T09:28:05.545Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2024-09-19T15:29:19.061Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2024-09-18T13:16:49.400Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-09-16T13:19:13.894Z",
+      "version": "1.0.24"
+    },
+    {
+      "date": "2024-09-16T12:26:35.621Z",
+      "version": "1.0.23"
+    },
+    {
+      "date": "2024-09-16T10:24:18.522Z",
+      "version": "1.0.22"
+    },
+    {
+      "date": "2024-09-16T01:51:19.204Z",
+      "version": "1.0.21"
+    },
+    {
+      "date": "2024-09-15T20:54:27.810Z",
+      "version": "1.0.20"
+    },
+    {
+      "date": "2024-09-13T15:10:47.954Z",
+      "version": "1.0.19"
+    }
+  ]
+}

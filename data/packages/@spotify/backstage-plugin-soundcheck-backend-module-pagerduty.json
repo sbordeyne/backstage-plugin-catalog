@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2023-12-21T16:46:38.253Z",
+  "deprecated": "",
+  "description": "Soundcheck 3rd party integration with PagerDuty",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-soundcheck-backend-module-pagerduty",
+  "plugin_id": "soundcheck",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2026-10-23T12:28:53.320Z",
+  "version": "0.6.2",
+  "version_count": 44,
+  "versions": [
+    {
+      "date": "2026-10-23T12:28:53.320Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2026-09-17T14:12:31.790Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2026-08-20T15:32:18.642Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-07-17T16:17:25.027Z",
+      "version": "0.5.2"
+    },
+    {
+      "date": "2026-06-19T07:53:31.859Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-05-26T11:52:37.984Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-04-17T09:04:41.134Z",
+      "version": "0.4.19"
+    },
+    {
+      "date": "2026-03-19T22:29:19.343Z",
+      "version": "0.4.18"
+    },
+    {
+      "date": "2026-02-19T17:01:15.983Z",
+      "version": "0.4.17"
+    },
+    {
+      "date": "2026-01-22T15:51:01.822Z",
+      "version": "0.4.16"
+    },
+    {
+      "date": "2025-12-19T12:54:44.021Z",
+      "version": "0.4.15"
+    },
+    {
+      "date": "2025-11-21T18:06:46.099Z",
+      "version": "0.4.14"
+    },
+    {
+      "date": "2025-10-17T16:15:08.565Z",
+      "version": "0.4.13"
+    },
+    {
+      "date": "2025-08-22T11:49:47.146Z",
+      "version": "0.4.12"
+    },
+    {
+      "date": "2025-07-17T09:06:32.677Z",
+      "version": "0.4.11"
+    }
+  ]
+}

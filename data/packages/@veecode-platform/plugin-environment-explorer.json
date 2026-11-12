@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2023-11-16T15:08:04.473Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "environment",
+    "environment-explorer"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/plugin-environment-explorer",
+  "plugin_id": "environment-explorer",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2025-06-27T14:49:39.553Z",
+  "version": "0.4.0",
+  "version_count": 140,
+  "versions": [
+    {
+      "date": "2025-06-27T14:49:39.553Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-09-20T14:44:48.628Z",
+      "version": "0.3.18"
+    },
+    {
+      "date": "2024-07-10T17:08:24.798Z",
+      "version": "0.3.17"
+    },
+    {
+      "date": "2024-07-08T20:31:23.372Z",
+      "version": "0.3.16"
+    },
+    {
+      "date": "2024-07-02T19:46:58.434Z",
+      "version": "0.3.15"
+    },
+    {
+      "date": "2024-07-02T12:55:46.639Z",
+      "version": "0.3.14"
+    },
+    {
+      "date": "2024-07-02T12:26:50.393Z",
+      "version": "0.3.13"
+    },
+    {
+      "date": "2024-07-01T15:03:02.544Z",
+      "version": "0.3.12"
+    },
+    {
+      "date": "2024-07-01T13:03:12.450Z",
+      "version": "0.3.11"
+    },
+    {
+      "date": "2024-06-24T15:00:00.194Z",
+      "version": "0.3.10"
+    },
+    {
+      "date": "2024-06-21T19:50:04.062Z",
+      "version": "0.3.9"
+    },
+    {
+      "date": "2024-06-21T16:05:58.427Z",
+      "version": "0.3.8"
+    },
+    {
+      "date": "2024-06-21T15:57:15.635Z",
+      "version": "0.3.7"
+    },
+    {
+      "date": "2024-06-12T12:32:15.070Z",
+      "version": "0.3.6"
+    },
+    {
+      "date": "2024-06-12T10:12:54.523Z",
+      "version": "0.3.5"
+    }
+  ]
+}

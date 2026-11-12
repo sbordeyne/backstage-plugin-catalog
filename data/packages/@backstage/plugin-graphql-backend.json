@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2020-08-04T23:41:56.616Z",
+  "deprecated": "",
+  "description": "Deprecated, consider using @frontside/backstage-plugin-graphql-backend instead",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "graphql"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-graphql-backend",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/graphql-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage",
+  "updated": "2023-11-14T15:14:45.933Z",
+  "version": "0.2.1",
+  "version_count": 751,
+  "versions": [
+    {
+      "date": "2023-11-17T02:25:07.425Z",
+      "version": "0.0.0-nightly-20231117021546"
+    },
+    {
+      "date": "2023-11-16T02:25:53.428Z",
+      "version": "0.0.0-nightly-20231116021557"
+    },
+    {
+      "date": "2023-11-15T02:24:19.295Z",
+      "version": "0.0.0-nightly-20231115021506"
+    },
+    {
+      "date": "2023-11-14T15:14:45.933Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-11-07T12:46:51.092Z",
+      "version": "0.2.1-next.2"
+    },
+    {
+      "date": "2023-11-07T02:32:08.778Z",
+      "version": "0.0.0-nightly-20231107021551"
+    },
+    {
+      "date": "2023-11-06T02:32:57.437Z",
+      "version": "0.0.0-nightly-20231106021619"
+    },
+    {
+      "date": "2023-11-05T02:23:57.867Z",
+      "version": "0.0.0-nightly-20231105021421"
+    },
+    {
+      "date": "2023-11-04T02:29:05.950Z",
+      "version": "0.0.0-nightly-20231104021304"
+    },
+    {
+      "date": "2023-11-03T02:26:48.937Z",
+      "version": "0.0.0-nightly-20231103021306"
+    },
+    {
+      "date": "2023-11-02T02:32:59.224Z",
+      "version": "0.0.0-nightly-20231102021349"
+    },
+    {
+      "date": "2023-11-01T02:37:16.495Z",
+      "version": "0.0.0-nightly-20231101021742"
+    },
+    {
+      "date": "2023-10-31T17:57:19.204Z",
+      "version": "0.2.1-next.1"
+    },
+    {
+      "date": "2023-10-31T02:30:20.558Z",
+      "version": "0.0.0-nightly-20231031021349"
+    },
+    {
+      "date": "2023-10-30T02:28:03.353Z",
+      "version": "0.0.0-nightly-20231030021305"
+    }
+  ]
+}

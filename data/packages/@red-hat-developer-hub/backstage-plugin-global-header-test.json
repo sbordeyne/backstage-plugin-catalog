@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2025-01-15T05:03:02.414Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-global-header-test",
+  "plugin_id": "global-header-test",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/global-header/plugins/global-header-test",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-26T14:09:25.702Z",
+  "version": "0.9.0",
+  "version_count": 15,
+  "versions": [
+    {
+      "date": "2026-10-26T14:09:25.702Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-09-10T22:49:06.865Z",
+      "version": "0.8.1"
+    },
+    {
+      "date": "2026-07-20T23:49:58.743Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-12-09T09:53:04.110Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-11-11T12:04:30.863Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-09-24T15:08:14.376Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2025-08-07T22:05:15.465Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-07-21T13:57:59.713Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2025-06-16T16:49:28.762Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-06-04T16:25:00.720Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-06-02T16:38:39.315Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-03-23T22:12:20.711Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-03-17T23:54:27.885Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2025-01-15T08:23:11.008Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-01-15T05:03:02.714Z",
+      "version": "0.0.1"
+    }
+  ]
+}

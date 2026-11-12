@@ -1,0 +1,36 @@
+{
+  "author": "Rik Claessens",
+  "created": "2025-03-15T12:55:15.561Z",
+  "deprecated": "",
+  "description": "The News plugin retrieves markdown files with frontmatter and displays them as news articles in Backstage, Spotify's IDP framework. This is the frontend plugin that offers a number of frontend components to renders news items.",
+  "homepage": "https://github.com/RikClaessens/backstage-plugin-news#readme",
+  "keywords": [
+    "backstage",
+    "idp",
+    "markdown",
+    "news"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "rikclaessens"
+  ],
+  "name": "@rikclaessens/backstage-plugin-news",
+  "plugin_id": "news",
+  "readme": "# backstage-plugin-news\n\nTo install the plugin in the Backstage app, run the following commands:\n\n```bash\nyarn --cwd packages/app add @rikclaessens/backstage-plugin-news\n```\n\nThen, make the plugin available in your Backstage instance by adding it to the `App.tsx`:\n\n```tsx\n...\nimport { NewsItemsPage } from '@rikclaessens/backstage-plugin-news';\n...\n\nconst routes = (\n  <FlatRoutes>\n    ...\n    <Route path=\"/news\" element={<NewsItemsPage />} />\n    ...\n  </FlatRoutes>\n);\n...\n```\n\nWhen searching for news, Backstage provides a default search result item. The plugin provides a result item that shows more information to the user. To use this result item, add the following code to the `SearchPage.tsx`:\n\n```tsx\nimport { NewsSearchResultListItem } from '@rikclaessens/backstage-plugin-news';\n...\n\n<SearchResult>\n  ...\n  <NewsSearchResultListItem icon={<Bullhorn />} />\n</SearchResult>\n...\n```",
+  "repository": "https://github.com/RikClaessens/backstage-plugin-news",
+  "role": "frontend-plugin",
+  "scope": "@rikclaessens",
+  "updated": "2025-03-17T07:39:07.265Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-03-17T07:39:07.265Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-03-15T12:55:15.843Z",
+      "version": "0.1.0"
+    }
+  ]
+}

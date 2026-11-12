@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2023-07-25T10:26:10.844Z",
+  "deprecated": "",
+  "description": "The Azure Container Registry (ACR) plugin displays information about your container images available in the Azure Container Registry.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-acr",
+  "plugin_id": "",
+  "readme": "# Azure Container Registry plugin for Backstage\n\nThe Azure Container Registry (ACR) plugin displays information about your container images available in the Azure Container Registry.\n\n## For administrators\n\n### Installing and configuring the ACR plugin\n\n1. Run the following command to install the ACR plugin:\n\n   ```bash\n   yarn workspace app add @janus-idp/backstage-plugin-acr\n   ```\n\n1. Set the proxy to the desired ACR server in the `app-config.yaml` file as follows:\n\n   ```yaml\n   # app-config.yaml\n   proxy:\n     endpoints:\n       '/acr/api':\n         target: 'https://mycontainerregistry.azurecr.io/acr/v1/'\n         changeOrigin: true\n         headers:\n           # If you use Bearer Token for authorization, please replace the 'Basic' with 'Bearer' in the following line.\n           Authorization: 'Basic ${ACR_AUTH_TOKEN}'\n         # Change to \"false\" in case of using self hosted artifactory instance with a self-signed certificate\n         secure: true\n   ```\n\n1. Set the authorization using one of the following options:\n\n   - Basic authorization:\n\n     - Navigate to the ACR portal and go to the **Access Keys** tab.\n     - Retrieve the username and password of the Admin user and use the [Basic Auth Header Generator tool](https://www.debugbear.com/basic-auth-header-generator) or run `echo printf '<username>:<password>' | base64` in a terminal to convert the credentials into a basic token.\n     - Set the generated token as `ACR_AUTH_TOKEN` in environment variables.\n\n   - OAuth2: - Generate bearer access token using the process described in Authenticate with an Azure Container Registry.\n\n     - One method is to generate a bearer token using your basic authorization token, i.e.\n\n       ```bash\n               curl --location 'https://<yourregistry>.azurecr.io/oauth2/token?scope=repository%3A*%3A*&service=<yourregistry>.azurecr.io' \\\n       --header 'Authorization: Basic <basic_token>'\n       ```\n\n     - Set the generated token as `ACR_AUTH_TOKEN` in environment variables. Make sure to replace the `Basic` in the `app-config.yaml` with `Bearer`\n\n1. Enable an additional tab on the entity view page using the `packages/app/src/components/catalog/EntityPage.tsx` file as follows:\n\n   ```tsx title=\"packages/app/src/components/catalog/EntityPage.tsx\"\n   /* highlight-add-start */\n   import { AcrPage, isAcrAvailable } from '@janus-idp/backstage-plugin-acr';\n\n   /* highlight-add-end */\n\n   const serviceEntityPage = (\n     <EntityLayout>\n       // ...\n       {/* highlight-add-start */}\n       <EntityLayout.Route\n         if={e => Boolean(isAcrAvailable(e))}\n         path=\"/acr\"\n         title=\"ACR\"\n       >\n         <AcrPage />\n       </EntityLayout.Route>\n       {/* highlight-add-end */}\n     </EntityLayout>\n   );\n   ```\n\n1. Annotate your entity using the following annotations:\n\n   ```yaml\n   metadata:\n     annotations:\n       'azure-container-registry/repository-name': `<REPOSITORY-NAME>',\n   ```\n\n## For users\n\n### Using the ACR plugin in Backstage\n\nACR is a front-end plugin that enables you to view information about the container images from your Azure Container Registry in Backstage.\n\n#### Prerequisites\n\n- Your Backstage application is installed and running.\n- You have installed the ACR plugin. For installation instructions, see [Installing and configuring the ACR plugin](#installing-and-configuring-the-acr-plugin).\n\n#### Procedure\n\n1. Open your Backstage application and select a component from the Catalog page.\n\n1. Go to the **ACR** tab.\n\n   ![acr-tab](./images/acr-plugin-user1.png)\n\n   The **ACR** tab in the Backstage UI contains a list of container images and related information, such as **TAG**, **CREATED**, **LAST MODIFIED**, and **MANIFEST**.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/acr",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-14T21:33:36.769Z",
+  "version": "1.4.15",
+  "version_count": 92,
+  "versions": [
+    {
+      "date": "2024-11-14T21:33:36.769Z",
+      "version": "1.4.15"
+    },
+    {
+      "date": "2024-10-31T22:18:37.364Z",
+      "version": "1.7.16"
+    },
+    {
+      "date": "2024-09-25T12:42:09.864Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2024-09-20T03:32:43.175Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2024-09-19T16:43:45.894Z",
+      "version": "1.7.15"
+    },
+    {
+      "date": "2024-09-11T06:32:17.617Z",
+      "version": "1.7.14"
+    },
+    {
+      "date": "2024-09-10T09:13:48.416Z",
+      "version": "1.7.13"
+    },
+    {
+      "date": "2024-09-03T12:43:05.617Z",
+      "version": "1.7.12"
+    },
+    {
+      "date": "2024-08-16T18:44:08.451Z",
+      "version": "1.7.11"
+    },
+    {
+      "date": "2024-08-15T16:08:42.558Z",
+      "version": "1.7.10"
+    },
+    {
+      "date": "2024-08-09T08:42:05.881Z",
+      "version": "1.7.9"
+    },
+    {
+      "date": "2024-08-06T13:23:57.743Z",
+      "version": "1.7.8"
+    },
+    {
+      "date": "2024-08-06T06:31:29.988Z",
+      "version": "1.7.7"
+    },
+    {
+      "date": "2024-08-02T18:14:29.268Z",
+      "version": "1.7.6"
+    },
+    {
+      "date": "2024-08-02T17:08:30.602Z",
+      "version": "1.7.5"
+    }
+  ]
+}

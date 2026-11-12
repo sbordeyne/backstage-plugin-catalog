@@ -1,0 +1,89 @@
+{
+  "author": "",
+  "created": "2026-05-08T11:39:51.934Z",
+  "deprecated": "",
+  "description": "Backend plugin for Dev AI Hub",
+  "homepage": "https://github.com/nosportugal/backstage-plugin-dev-ai-hub#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "calexandre",
+    "dsiteixeira",
+    "jfhs",
+    "kkthx",
+    "marcoaureliox",
+    "paparuco",
+    "yrxavier"
+  ],
+  "name": "@nospt/plugin-dev-ai-hub-backend",
+  "plugin_id": "dev-ai-hub",
+  "readme": "# @nospt/plugin-dev-ai-hub-backend\n\nThe backend half of **Dev AI Hub**. It reads `AiResource` entities from the Backstage catalog on demand, resolves each resource's body from its `backstage.io/source-location`, and records lightweight install/view telemetry.\n\n> **Requires Backstage 1.56 or later.** The `AiResource` kind comes from Backstage's own alpha catalog module, and these packages depend on `@backstage/catalog-model@^1.10.2`, first shipped in 1.56.0. The `plugin` and `marketplace` subtypes arrived in 1.54.0.\n\n## How it works\n\nThe catalog is the sole source of truth. This plugin keeps **no second copy** of any resource — it ships no ingestion path, no EntityProvider, no Git discovery and no scheduled sync. It is a consumer, never a producer.\n\n```text\nAiResource entity  ──►  flattened to ResourceSummary  ──►  frontend\n   (the catalog)              (this plugin)\n\n  its source-location  ──►  read via UrlReader  ──►  the body\n   (a URL into Git)         (your integrations)\n```\n\nTwo consequences worth knowing before you install it:\n\n- **Nothing is cached.** Edit an entity or its body in Git, and the next request reflects it as soon as the catalog has refreshed.\n- **Reads resolve as the calling user.** A resource someone cannot see in the catalog is not readable through this plugin either — visibility is Backstage's to decide, not this plugin's.\n\n## Install\n\n```bash\nyarn --cwd packages/backend add @nospt/plugin-dev-ai-hub-backend\n```\n\nIn `packages/backend/src/index.ts`, register the `AiResource` kind and then this plugin:\n\n```typescript\nbackend.add(import('@backstage/plugin-catalog-backend-module-ai-model'));\nbackend.add(import('@nospt/plugin-dev-ai-hub-backend'));\n```\n\n`AiResource` must also be allow-listed in `app-config.yaml`, or the catalog will reject the entities before this plugin ever sees them:\n\n```yaml\ncatalog:\n  rules:\n    - allow: [Component, API, Resource, System, Domain, Location, AiResource]\n```\n\n## Routes\n\n```text\nGET  /api/dev-ai-hub/resources                     List AiResource entities as flat ResourceSummary items\nGET  /api/dev-ai-hub/entity/:ref/raw               Resolved body (markdown or JSON, by resource shape)\nGET  /api/dev-ai-hub/entity/:ref/raw/:filename     A specific file from a directory-shaped body\nGET  /api/dev-ai-hub/entity/:ref/raw?download=true Download the artifact (zipped if multi-file)\nPOST /api/dev-ai-hub/telemetry                     Record an install/copy/download/view event\nGET  /api/dev-ai-hub/telemetry                     Catalog-wide lifetime totals, keyed by entity ref\nGET  /api/dev-ai-hub/telemetry/:ref                Per-action counts for a resource\nPUT  /api/dev-ai-hub/curation/:ref/recommendation  Set or clear a resource's \"Recommended\" state\nPUT  /api/dev-ai-hub/curation/:ref/exclusion       Set or clear a resource's \"Excluded\" state\n```\n\nEvery route requires standard Backstage authentication — there are no unauthenticated endpoints. `PUT /curation/:ref/recommendation` and `PUT /curation/:ref/exclusion` additionally require the `dev-ai-hub.backoffice.curate` permission (exported as `devAiHubBackofficeCuratePermission` from `@nospt/plugin-dev-ai-hub-common`); they 403 without it and 404 if the target entity doesn't exist or isn't visible to the caller. Recommending an entity already tagged `recommended` returns 409: it is recommended by the catalog, and a `curation` row on top would outlive the tag (ADR-0020). Clearing is always allowed.\n\n`GET /resources` omits excluded resources entirely (ADR-0019) — they are absent from the payload, not flagged in it, so nothing downstream has to know the concept. Pass `?includeExcluded=true` to get them back with their `excluded`, `excludedBy` and `excludedAt` fields; that opt-in requires `dev-ai-hub.backoffice.read` and 403s without it. Only the backoffice's \"Excluded\" page uses it. Body endpoints (`/entity/:ref/raw`) are deliberately unaffected: exclusion is curation, not access control, and the entity is still served by the catalog itself.\n\n`GET /resources` is rate-limited to 1000 requests per 15 minutes per authenticated user or service principal, falling back to the client IP only when there is none, so users behind one NAT or ingress don't share a quota. It is an abuse guard rather than a strict quota: counters live in each process's memory, so a deployment with several replicas allows that many per replica. Browsing and curating stay well below it, since the frontend does not poll and curation writes have their own lower limit.\n\n`GET /telemetry` powers the backoffice's \"Usage\" section (#83): one grouped query across every resource's events, rather than the N requests `GET /telemetry/:ref` would take fetched once per resource. It has no notion of catalog visibility — the frontend joins the result against the `ResourceSummary` list it already has, so a \"most installed\" ranking never names something the caller cannot otherwise see.\n\n`GET /resources` returns the flat contract, never a raw catalog `Entity`:\n\n```json\n{\n  \"items\": [\n    {\n      \"entityRef\": \"airesource:default/azure-devops-cli\",\n      \"name\": \"azure-devops-cli\",\n      \"title\": \"Azure DevOps CLI\",\n      \"description\": \"Manage Azure DevOps resources via CLI…\",\n      \"type\": \"skill\",\n      \"lifecycle\": \"production\",\n      \"owner\": \"group:ai-platform-team\",\n      \"sourceLocation\": \"url:https://github.com/your-org/ai-assets/blob/main/skills/azure-devops-cli.md\",\n      \"frameworks\": [\"github-copilot\", \"claude-code\"],\n      \"version\": \"1.0.0\",\n      \"tags\": [\"azure-devops\", \"ci-cd\"],\n      \"kind\": \"AiResource\",\n      \"annotations\": { \"…\": \"…\" }\n    }\n  ]\n}\n```\n\n## Body resolution\n\nA `source-location` pointing at a **file** is served as that file. One pointing at a **directory** (a trailing `/`) is served as a tree: the entry file is picked for viewing, and `?download=true` returns the whole directory zipped.\n\nResolution goes through Backstage's `UrlReaderService`, so GitHub, GitLab, Bitbucket and Azure all work from your existing `integrations` config with no code here. A resource with no `source-location` is browsable but not installable, by design.\n\n## Configuration\n\n```yaml\ndevAiHub:\n  telemetry:\n    # Optional. Salts the per-user hash used to dedup `view` events.\n    # Omit it and the plugin generates one on first start and persists it in\n    # its own database. Set it to keep the salt outside that database, or to\n    # control rotation — a real secret, never committed, and stable once set.\n    salt: ${DEV_AI_HUB_TELEMETRY_SALT}\n  frameworks:\n    # Optional allow-list. When set, any framework declared on an AiResource\n    # (via `spec.agents` or `devaihub.io/compatible-frameworks`) that is not\n    # listed here is dropped before the resource is served — no badge, no\n    # \"Works with\" entry, no filter option, no generated install path. Tokens\n    # are normalised (aliases such as `claude` → `claude-code` are resolved),\n    # and a resource declaring the `all` wildcard collapses to exactly this\n    # list. Omit the key to permit every framework; an explicit empty list\n    # permits none. Must be a list of strings.\n    allowed: [claude-code, github-copilot, cursor, google-gemini]\n    # Optional. Frameworks this deployment registers itself (ADR-0018), keyed\n    # by the token authors write in `spec.agents`. `displayName` defaults to\n    # the key, `icon` to a neutral glyph; `icon` is any browser-loadable\n    # source and is read by the frontend, which is why the key is\n    # frontend-visible.\n    #\n    # Registering one activates the allow-list even when `allowed` is omitted —\n    # the effective set becomes every built-in framework plus these keys. With\n    # `allowed` set, the two are unioned. A key that collides with a built-in\n    # token or alias (`claude-code`, `claude`) is ignored with a logged warning.\n    #\n    # Custom frameworks are discovery-only: the served summary carries them in\n    # `frameworks` (so they badge and filter) but excludes them from\n    # `installFrameworks`, and a resource left with nothing installable is\n    # flagged `frameworksRestricted`.\n    custom:\n      acme-assistant:\n        displayName: Acme Assistant\n        icon: https://example.com/acme-assistant.svg\n```\n\n## Database\n\nThe plugin owns tables for telemetry events, curation state (the \"Recommended\" and \"Excluded\" flags and their attribution), and when it first saw each resource (for the browse page's \"Newest\" sort, ADR-0021). They are created by its own migrations and applied automatically on start. It runs on both SQLite and PostgreSQL and needs no manual setup.\n\nThe catalog exposes no creation date, so `GET /resources` records one itself: the first request after upgrading reads every `AiResource` ref with the plugin's own service credentials and records them all as undated (\"predates tracking\"); after that, any ref it hasn't seen before is recorded with the current time. This is best-effort — a failure is logged and the list is served without dates.\n\nDon't roll the package back past a version that added a migration: knex refuses to start when `knex_migrations` names a file the installed version doesn't ship. Roll forward instead.\n\nActor identity is stored as a **one-way hash** for telemetry. Counts are deduplicated per person, but \"who installed this\" is deliberately unanswerable — not merely unbuilt. Curation is the exception: `curated_by` records the curator's own entity ref (never hashed), since knowing who recommended a resource is the point.\n\n## Troubleshooting\n\n| Symptom | Usually means |\n|---|---|\n| `/resources` returns an empty list | No `AiResource` entities in the catalog, or the kind is missing from `catalog.rules` |\n| A resource appears but its body 404s | The `source-location` points somewhere the `UrlReader` cannot reach — check `integrations` credentials and that the path still exists |\n| 401 / 403 on every route | The request carries no Backstage identity; all routes are authenticated |\n| Entities are rejected at catalog ingestion | `plugin-catalog-backend-module-ai-model` is not registered, so the `AiResource` kind is unknown |\n\n## Full setup\n\nEntity authoring, the frontend wiring and the decisions behind all of the above are covered once in the [repository README](https://github.com/nosportugal/backstage-plugin-dev-ai-hub#readme), which is the single place kept current.\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/nosportugal/backstage-plugin-dev-ai-hub",
+  "role": "backend-plugin",
+  "scope": "@nospt",
+  "updated": "2026-11-09T12:15:06.128Z",
+  "version": "1.3.0",
+  "version_count": 23,
+  "versions": [
+    {
+      "date": "2026-11-09T12:15:06.128Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-10-02T09:47:24.610Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-10-01T19:15:18.896Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-09-30T15:05:39.500Z",
+      "version": "1.2.0-rc3"
+    },
+    {
+      "date": "2026-09-30T09:33:40.756Z",
+      "version": "1.2.0-rc2"
+    },
+    {
+      "date": "2026-09-29T17:05:54.306Z",
+      "version": "1.2.0-rc1"
+    },
+    {
+      "date": "2026-09-24T16:04:07.514Z",
+      "version": "1.1.3"
+    },
+    {
+      "date": "2026-09-03T15:05:29.298Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2026-09-02T09:06:19.639Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-09-01T13:43:26.979Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-09-01T13:29:06.702Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-08-14T15:30:20.082Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-08-14T09:06:55.753Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-08-13T15:12:27.645Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-08-07T17:08:33.014Z",
+      "version": "1.0.0-rc1"
+    }
+  ]
+}

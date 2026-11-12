@@ -1,0 +1,89 @@
+{
+  "author": "",
+  "created": "2026-01-01T17:19:46.982Z",
+  "deprecated": "",
+  "description": "Configuration-driven sign-in page module for Backstage supporting all core authentication providers",
+  "homepage": "https://terasky.com",
+  "keywords": [
+    "auth",
+    "authentication",
+    "backstage",
+    "github",
+    "gitlab",
+    "google",
+    "login",
+    "microsoft",
+    "oauth",
+    "okta",
+    "providers",
+    "sign-in",
+    "signin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-app-module-global-signin-page",
+  "plugin_id": "app",
+  "readme": "# app-module-global-signin-page\n\nWelcome to the app-module-global-signin-page plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-app-module-global-signin-page/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-app-module-global-signin-page)\n\n## Description\n\nThe `app-module-global-signin-page` plugin for Backstage provides a configurable sign-in page that supports all core Backstage authentication providers through simple YAML configuration. This module eliminates the need to write TypeScript code for sign-in page customization, allowing teams to configure authentication providers, customize titles and messages, and enable/disable providers entirely through the `app-config.yaml` file.\n\n### Features\n\n- **Configuration-driven**: Configure authentication providers purely through `app-config.yaml`\n- **Multiple Provider Support**: Supports all core Backstage authentication providers including:\n  - GitHub, GitLab, Bitbucket, Bitbucket Server\n  - Microsoft, Google, Okta, OneLogin\n  - OpenShift, Atlassian\n  - VMware Cloud\n- **Guest Access**: Optional guest provider for development environments\n- **Customizable**: Set custom titles and messages for each authentication provider\n- **Zero Code**: No TypeScript code required for sign-in page configuration\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/signin-page/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.\n",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/app-module-global-signin-page",
+  "role": "frontend-plugin-module",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:45:44.119Z",
+  "version": "0.14.0",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2026-10-21T13:45:44.119Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2026-06-30T17:16:46.158Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2026-06-09T18:59:51.486Z",
+      "version": "0.10.1"
+    },
+    {
+      "date": "2026-05-04T07:09:02.928Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2026-04-16T08:17:08.282Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-03-22T16:57:42.238Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-03-09T16:49:34.529Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-02-17T20:35:56.596Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-01-28T18:28:15.272Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-01-26T11:04:13.407Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-01-26T10:34:28.689Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-01-21T10:05:46.240Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-01-01T17:19:47.216Z",
+      "version": "0.1.0"
+    }
+  ]
+}

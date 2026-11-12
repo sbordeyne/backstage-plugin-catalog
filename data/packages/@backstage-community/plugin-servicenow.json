@@ -1,0 +1,83 @@
+{
+  "author": "Red Hat",
+  "created": "2025-07-16T15:14:35.033Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-servicenow",
+  "plugin_id": "servicenow",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/servicenow/plugins/servicenow",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-06T09:49:59.428Z",
+  "version": "1.16.0",
+  "version_count": 24,
+  "versions": [
+    {
+      "date": "2026-11-06T09:49:59.428Z",
+      "version": "1.16.0"
+    },
+    {
+      "date": "2026-09-23T05:36:11.202Z",
+      "version": "1.15.3"
+    },
+    {
+      "date": "2026-09-15T00:03:26.804Z",
+      "version": "1.15.2"
+    },
+    {
+      "date": "2026-09-04T13:20:37.847Z",
+      "version": "1.15.1"
+    },
+    {
+      "date": "2026-08-28T08:48:13.456Z",
+      "version": "1.15.0"
+    },
+    {
+      "date": "2026-08-04T12:52:04.399Z",
+      "version": "1.14.0"
+    },
+    {
+      "date": "2026-07-22T21:54:36.667Z",
+      "version": "1.13.2"
+    },
+    {
+      "date": "2026-07-21T19:36:16.387Z",
+      "version": "1.13.1"
+    },
+    {
+      "date": "2026-07-03T11:38:03.871Z",
+      "version": "1.13.0"
+    },
+    {
+      "date": "2026-05-21T09:58:21.964Z",
+      "version": "1.12.0"
+    },
+    {
+      "date": "2026-04-26T05:30:42.525Z",
+      "version": "1.11.0"
+    },
+    {
+      "date": "2026-03-27T14:49:47.705Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2026-03-07T06:25:53.598Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2026-02-18T17:44:36.080Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2026-01-19T11:23:27.084Z",
+      "version": "1.7.0"
+    }
+  ]
+}

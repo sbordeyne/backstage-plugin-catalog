@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2023-04-20T15:08:03.196Z",
+  "deprecated": "",
+  "description": "Soundcheck 3rd party integration with Tech Insights",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-soundcheck-backend-module-techinsights",
+  "plugin_id": "soundcheck",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2026-10-23T12:29:57.677Z",
+  "version": "0.6.25",
+  "version_count": 53,
+  "versions": [
+    {
+      "date": "2026-10-23T12:29:57.677Z",
+      "version": "0.6.25"
+    },
+    {
+      "date": "2026-09-17T14:12:55.776Z",
+      "version": "0.6.24"
+    },
+    {
+      "date": "2026-08-20T15:32:40.772Z",
+      "version": "0.6.23"
+    },
+    {
+      "date": "2026-07-17T16:17:46.104Z",
+      "version": "0.6.22"
+    },
+    {
+      "date": "2026-06-19T07:53:48.583Z",
+      "version": "0.6.21"
+    },
+    {
+      "date": "2026-05-26T11:52:54.987Z",
+      "version": "0.6.20"
+    },
+    {
+      "date": "2026-04-17T09:05:00.222Z",
+      "version": "0.6.19"
+    },
+    {
+      "date": "2026-03-19T22:29:37.808Z",
+      "version": "0.6.18"
+    },
+    {
+      "date": "2026-02-19T17:01:33.675Z",
+      "version": "0.6.17"
+    },
+    {
+      "date": "2026-01-22T15:51:21.508Z",
+      "version": "0.6.16"
+    },
+    {
+      "date": "2025-12-19T12:55:02.299Z",
+      "version": "0.6.15"
+    },
+    {
+      "date": "2025-11-21T18:07:07.282Z",
+      "version": "0.6.14"
+    },
+    {
+      "date": "2025-10-17T16:15:35.362Z",
+      "version": "0.6.13"
+    },
+    {
+      "date": "2025-08-22T11:50:11.789Z",
+      "version": "0.6.12"
+    },
+    {
+      "date": "2025-07-17T09:06:54.257Z",
+      "version": "0.6.11"
+    }
+  ]
+}

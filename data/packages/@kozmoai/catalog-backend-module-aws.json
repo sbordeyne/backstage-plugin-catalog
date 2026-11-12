@@ -1,0 +1,33 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:03.961Z",
+  "deprecated": "",
+  "description": "A set of Backstage catalog providers for AWS",
+  "homepage": "https://glint.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/catalog-backend-module-aws",
+  "plugin_id": "",
+  "readme": "# Catalog Backend Module for AWS\n\nThis is an extension module to the plugin-catalog-backend plugin, providing\nentity providers to read AWS objects as Backstage Entities.\n\nYou will need to configure the providers in your catalog.ts file in your backstage backend:\n\n```typescript\nimport {\n  AWSLambdaFunctionProvider,\n  AWSS3BucketProvider,\n  AWSIAMUserProvider,\n  AWSEC2Provider,\n} from '@kozmoai/catalog-backend-module-aws';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const builder = await CatalogBuilder.create(env);\n  const s3Provider = AWSS3BucketProvider.fromConfig(config, env);\n  const lambdaProvider = AWSLambdaFunctionProvider.fromConfig(config, env);\n  const iamUserProvider = AWSIAMUserProvider.fromConfig(config, env);\n  const ec2Provider = AWSEC2Provider.fromConfig(config, env);\n  const awsAccountsProvider = AWSOrganizationAccountsProvider.fromConfig(\n    config,\n    env,\n  );\n\n  builder.addEntityProvider(s3Provider);\n  builder.addEntityProvider(lambdaProvider);\n  builder.addEntityProvider(iamUserProvider);\n  builder.addEntityProvider(ec2Provider);\n  builder.addEntityProvider(awsAccountsProvider);\n\n  s3Provider.run();\n  lambdaProvider.run();\n  iamUserProvider.run();\n  ec2Provider.run();\n  awsAccountsProvider.run();\n\n  const { processingEngine, router } = await builder.build();\n  await processingEngine.start();\n\n  // ...\n\n  return router;\n}\n```\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/catalog-backend-module-aws",
+  "role": "backend-plugin-module",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:10.434Z",
+  "version": "2.2.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:10.434Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2024-03-25T22:14:04.192Z",
+      "version": "2.2.0"
+    }
+  ]
+}

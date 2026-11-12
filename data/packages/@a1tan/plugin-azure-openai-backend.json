@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2023-10-14T09:23:27.713Z",
+  "deprecated": "",
+  "description": "Welcome to the azure-openai backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "a1tan"
+  ],
+  "name": "@a1tan/plugin-azure-openai-backend",
+  "plugin_id": "",
+  "readme": "# azure-openai\n\nWelcome to the azure-openai backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/azureOpenaiPlugin/health](http://localhost:7007/api/azureOpenaiPlugin/health).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@a1tan",
+  "updated": "2024-05-13T10:53:29.820Z",
+  "version": "0.6.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2024-05-13T10:53:29.820Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2024-05-08T12:54:51.904Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2023-10-15T06:04:57.763Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2023-10-14T12:52:54.937Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-10-14T10:49:45.916Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-10-14T09:23:28.016Z",
+      "version": "0.1.0"
+    }
+  ]
+}

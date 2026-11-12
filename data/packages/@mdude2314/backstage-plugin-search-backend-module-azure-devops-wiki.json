@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2023-06-09T18:45:25.438Z",
+  "deprecated": "",
+  "description": "This plugin provides the pieces necessary to have Backstage index articles and entries from a wiki in an Azure DevOps project to make them available to search with the Backstage Search feature.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mdude2314"
+  ],
+  "name": "@mdude2314/backstage-plugin-search-backend-module-azure-devops-wiki",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-search-backend-module-azure-devops-wiki\n\nThis plugin provides the pieces necessary to have Backstage index articles and entries from a wiki in an Azure DevOps project to make them available to search with the Backstage Search feature.\n\n## Prerequisites\n\n- You must have an Azure DevOps project with a wiki present\n- You must be using the Backstage Search feature\n- You must be using the new backend system in Backstage\n\n## Getting started\n\nIn the root directory of your Backstage project:\n\n```console\nyarn add --cwd packages/backend @mdude2314/backstage-plugin-search-backend-module-azure-devops-wiki\n```\n\nAdd the necessary configuration for this plugin to your app-config.yaml:\n\n```yaml\n# app-config.yaml\n\n# multiple wikis\nazureDevOpsWikiCollator:\n  baseUrl: https://my-azure-instance.com  # The URL of your Azure DevOps instance. Required\n  token: ${AZURE_TOKEN}                   # The PAT used to authenticate to the Azure DevOps REST API. Required.\n  wikis:\n    - wikiIdentifier: Wiki-Identifier.wiki    # The identifier of the wiki. This can be found by looking at the URL of the wiki in ADO. It is typically something like '{nameOfWiki}.wiki'. Required.\n      organization: MyOrganization            # The name of the organization the wiki is contained in. Required.\n      project: MyProject                      # The name of the project the wiki is contained in. Required.\n      titleSuffix: \" - My Suffix\"             # A string to append to the title of articles to make them easier to identify as search results from the wiki. Optional\n    - wikiIdentifier: Wiki-Identifier2.wiki\n      organization: MyOrganization\n      project: MyProject\n      titleSuffix: \" - Suffix 2\"\n\n# or a single wiki\nazureDevOpsWikiCollator:\n  baseUrl: https://my-azure-instance.com  # The URL of your Azure DevOps instance. Required\n  token: ${AZURE_TOKEN}                   # The PAT used to authenticate to the Azure DevOps REST API. Required.\n  wikiIdentifier: Wiki-Identifier.wiki    # The identifier of the wiki. This can be found by looking at the URL of the wiki in ADO. It is typically something like '{nameOfWiki}.wiki'. Required.\n  organization: MyOrganization            # The name of the organization the wiki is contained in. Required.\n  project: MyProject                      # The name of the project the wiki is contained in. Required.\n  titleSuffix: \" - My Suffix\"             # A string to append to the title of articles to make them easier to identify as search results from the wiki. Optional\n```\n\nAdd the plugin to your backend. This uses the new backend system.\n\n```typescript\n// packages/backend/src/index.ts\nimport { searchModuleAzureDevopsWikiCollator } from '@mdude2314/backstage-plugin-search-backend-module-azure-devops-wiki';\n\n...\n\nbackend.add(searchModuleAzureDevopsWikiCollator());\n\n```\n\nFrom here, the collator will begin indexing all articles in the wiki into search. Once the indexing is done, the articles and their content will be searchable via the Backstage search feature.\n\nIf there are any errors with indexing the articles, they will be reported in the Backstage logs.\n",
+  "repository": "https://github.com/arhill05/backstage-plugin-search-backend-module-azure-devops-wiki",
+  "role": "backend-plugin-module",
+  "scope": "@mdude2314",
+  "updated": "2024-05-23T17:26:28.221Z",
+  "version": "1.0.1",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2024-05-23T17:26:28.221Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-11-27T12:27:26.930Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2023-11-14T19:56:33.763Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2023-06-09T19:16:03.593Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2023-06-09T18:55:50.041Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-06-09T18:45:25.756Z",
+      "version": "0.2.0"
+    }
+  ]
+}

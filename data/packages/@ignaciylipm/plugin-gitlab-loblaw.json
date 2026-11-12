@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-06-06T07:48:00.953Z",
+  "deprecated": "",
+  "description": "Tanzu Portal Builder plugin interface for this [backstage gitlab plugin](https://github.com/loblaw-sre/backstage-plugin-gitlab).",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ignaciylipm"
+  ],
+  "name": "@ignaciylipm/plugin-gitlab-loblaw",
+  "plugin_id": "",
+  "readme": "Tanzu Portal Builder plugin interface for this [backstage gitlab plugin](https://github.com/loblaw-sre/backstage-plugin-gitlab).\n\n## Branches\n\nThere are two maintained branches. All working MRs should target the `main` branch. Whenever we want to publish a new version, we should merge changes from `main` into the `releases` branch.\nA pipeline watching the `releases` branch will automatically publish this new plugin version to Artifactory and also update the plugin version in the `package.json`file in both branches.\n\n## Publishing Steps\n\n1. `yarn changeset` and commit changes\n2. Push changes + create an MR targetting `main`\n3. Merge `main` into `releases` branch\n4. Observe the pipeline for green builds\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@ignaciylipm",
+  "updated": "2024-06-06T07:48:01.234Z",
+  "version": "0.1.3",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-06-06T07:48:01.234Z",
+      "version": "0.1.3"
+    }
+  ]
+}

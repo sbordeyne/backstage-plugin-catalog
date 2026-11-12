@@ -1,0 +1,36 @@
+{
+  "author": "Gijs Reijn",
+  "created": "2026-07-03T12:57:49.526Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/Gijsreyn/backstage-plugin-techdocs-addon-frontmatter#readme",
+  "keywords": [
+    "backstage",
+    "frontmatter",
+    "techdocs",
+    "yaml"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "gijsreijn"
+  ],
+  "name": "backstage-plugin-techdocs-addon-frontmatter",
+  "plugin_id": "techdocs",
+  "readme": "",
+  "repository": "https://github.com/Gijsreyn/backstage-plugin-techdocs-addon-frontmatter/tree/HEAD/.",
+  "role": "frontend-plugin-module",
+  "scope": "",
+  "updated": "2026-07-03T13:05:22.165Z",
+  "version": "0.1.3",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-07-03T13:05:22.165Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2026-07-03T12:57:49.802Z",
+      "version": "0.1.2"
+    }
+  ]
+}

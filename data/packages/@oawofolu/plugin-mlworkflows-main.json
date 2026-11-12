@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2023-11-22T10:56:14.954Z",
+  "deprecated": "",
+  "description": "Welcome to the mlworkflows-main plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "oawofolu"
+  ],
+  "name": "@oawofolu/plugin-mlworkflows-main",
+  "plugin_id": "",
+  "readme": "# mlworkflows-main\n\nWelcome to the mlworkflows-main plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/mlworkflows-main](http://localhost:3000/mlworkflows-main).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@oawofolu",
+  "updated": "2024-05-14T13:30:21.719Z",
+  "version": "0.4.18",
+  "version_count": 21,
+  "versions": [
+    {
+      "date": "2024-05-14T13:30:21.719Z",
+      "version": "0.4.18"
+    },
+    {
+      "date": "2024-05-14T11:59:24.290Z",
+      "version": "0.4.17"
+    },
+    {
+      "date": "2024-05-14T01:08:43.034Z",
+      "version": "0.4.16"
+    },
+    {
+      "date": "2024-05-14T00:04:29.507Z",
+      "version": "0.4.15"
+    },
+    {
+      "date": "2024-05-13T21:23:26.711Z",
+      "version": "0.4.14"
+    },
+    {
+      "date": "2024-01-06T14:32:28.383Z",
+      "version": "0.4.13"
+    },
+    {
+      "date": "2024-01-05T11:23:12.937Z",
+      "version": "0.4.12"
+    },
+    {
+      "date": "2023-12-07T15:36:31.599Z",
+      "version": "0.4.11"
+    },
+    {
+      "date": "2023-12-07T00:48:09.506Z",
+      "version": "0.4.10"
+    },
+    {
+      "date": "2023-12-07T00:46:02.090Z",
+      "version": "0.4.9"
+    },
+    {
+      "date": "2023-12-07T00:44:22.801Z",
+      "version": "0.4.8"
+    },
+    {
+      "date": "2023-12-01T18:44:36.123Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2023-11-29T11:21:52.968Z",
+      "version": "0.4.6"
+    },
+    {
+      "date": "2023-11-29T11:20:13.412Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2023-11-28T20:23:09.415Z",
+      "version": "0.4.4"
+    }
+  ]
+}

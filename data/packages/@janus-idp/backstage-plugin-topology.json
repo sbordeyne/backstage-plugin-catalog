@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2023-02-28T21:57:11.535Z",
+  "deprecated": "",
+  "description": "The Topology plugin enables you to visualize the workloads such as Deployment, Job, Daemonset, Statefulset, CronJob, and Pods powering any service on the Kubernetes cluster.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-topology",
+  "plugin_id": "",
+  "readme": "# Topology plugin for Backstage\n\nThe Topology plugin enables you to visualize the workloads such as Deployment, Job, Daemonset, Statefulset, CronJob, and Pods powering any service on the Kubernetes cluster.\n\n## For administrators\n\n### Installation\n\n#### Prerequisites\n\n- The Kubernetes plugins including `@backstage/plugin-kubernetes` and `@backstage/plugin-kubernetes-backend` are installed and configured by following the [installation](https://backstage.io/docs/features/kubernetes/installation) and [configuration](https://backstage.io/docs/features/kubernetes/configuration) guides.\n- The Kubernetes plugin is configured and connects to the cluster using a `ServiceAccount`.\n- The [`ClusterRole`](https://backstage.io/docs/features/kubernetes/configuration#role-based-access-control) must be granted to `ServiceAccount` accessing the cluster. If you have the Backstage Kubernetes plugin configured, then the `ClusterRole` is already granted.\n\n> Tip: You can use the [prepared manifest for a read-only `ClusterRole`](https://raw.githubusercontent.com/janus-idp/backstage-plugins/main/plugins/topology/manifests/clusterrole.yaml), providing access for both Kubernetes plugin and Topology plugin.\n\n#### Other configurations\n\n##### To view the OpenShift routes\n\n- Ensure that read access is granted to the `routes` resource in the [`ClusterRole`](https://backstage.io/docs/features/kubernetes/configuration#role-based-access-control). You can use the following code to do so:\n\n  ```yaml\n    apiVersion: rbac.authorization.k8s.io/v1\n    kind: ClusterRole\n    metadata:\n      name: backstage-read-only\n    rules:\n      ...\n      - apiGroups:\n          - route.openshift.io\n        resources:\n          - routes\n        verbs:\n          - get\n          - list\n\n  ```\n\n- The following must be added in `kubernetes.customResources` property in the [`app-config.yaml`](https://backstage.io/docs/features/kubernetes/configuration#configuring-kubernetes-clusters) file to view the OpenShift route as well:\n\n  ```yaml\n    kubernetes:\n      ...\n      customResources:\n        - group: 'route.openshift.io'\n          apiVersion: 'v1'\n          plural: 'routes'\n  ```\n\n##### To view the pods/pods log\n\nThe following permission must be granted to the [`ClusterRole`](https://backstage.io/docs/features/kubernetes/configuration#role-based-access-control) to be able to view the pod logs:\n\n```yaml\n  apiVersion: rbac.authorization.k8s.io/v1\n  kind: ClusterRole\n  metadata:\n    name: backstage-read-only\n  rules:\n    ...\n    - apiGroups:\n        - ''\n      resources:\n        - pods\n        - pods/log\n      verbs:\n        - get\n        - list\n        - watch\n```\n\n##### To view the Tekton PipelineRuns\n\n- Ensure that read access is granted to the Pipelines, PipelineRuns, and TaskRuns resource in the [`ClusterRole`](https://backstage.io/docs/features/kubernetes/configuration#role-based-access-control). You can use the following code to do so:\n\n  ```yaml\n    ...\n    apiVersion: rbac.authorization.k8s.io/v1\n    kind: ClusterRole\n    metadata:\n      name: backstage-read-only\n    rules:\n      ...\n      - apiGroups:\n          - tekton.dev\n        resources:\n          - pipelines\n          - pipelineruns\n          - taskruns\n        verbs:\n          - get\n          - list\n  ```\n\n- The following code must be added to the `kubernets.customResources` property in the [`app-config.yaml`](https://backstage.io/docs/features/kubernetes/configuration#configuring-kubernetes-clusters) file to view the Tekton PipelineRuns list in the side panel and to view the latest PipelineRun status in the Topology node decorator:\n\n  ```yaml\n    kubernetes:\n      ...\n      customResources:\n        - group: 'tekton.dev'\n          apiVersion: 'v1'\n          plural: 'pipelines'\n        - group: 'tekton.dev'\n          apiVersion: 'v1'\n          plural: 'pipelineruns'\n        - group: 'tekton.dev'\n          apiVersion: 'v1'\n          plural: 'taskruns'\n  ```\n\n##### To enable the Source Code Editor\n\n- Ensure that read access is granted to the `CheClusters` resource in the [`ClusterRole`](https://backstage.io/docs/features/kubernetes/configuration#role-based-access-control) as shown in the following example code:\n\n  ```yaml\n    ...\n    apiVersion: rbac.authorization.k8s.io/v1\n    kind: ClusterRole\n    metadata:\n      name: backstage-read-only\n    rules:\n      ...\n      - apiGroups:\n          - org.eclipse.che\n        resources:\n          - checlusters\n        verbs:\n          - get\n          - list\n  ```\n\n- The following configuration must be added in the `kubernetes.customResources` property in the [`app-config.yaml`](https://backstage.io/docs/features/kubernetes/configuration#configuring-kubernetes-clusters) file to use the Source Code Editor:\n\n  ```yaml\n    kubernetes:\n      ...\n      customResources:\n        - group: 'org.eclipse.che'\n          apiVersion: 'v2'\n          plural: 'checlusters'\n  ```\n\n#### Labels and annotations\n\n##### Link to the source code editor or the source\n\nThe following annotations are added to workload resources, such as Deployments to navigate to the Git repository of the associated application using the source code editor:\n\n```yaml title=\"deployment.yaml\"\nannotations:\n  app.openshift.io/vcs-uri: <GIT_REPO_URL>\n```\n\nYou can also add the following annotation to navigate to a specific branch:\n\n```yaml title=\"deployment.yaml\"\nannotations:\n  app.openshift.io/vcs-ref: <GIT_REPO_BRANCH>\n```\n\n> Note: If Red Hat OpenShift Dev Spaces is [installed and configured](https://access.redhat.com/documentation/en-us/red_hat_openshift_dev_spaces/3.7/html/administration_guide/installing-devspaces) and git URL annotations are also added to the workload YAML file, then clicking on the edit code decorator redirects you to the Red Hat OpenShift Dev Spaces instance.\n\n> Note: When you deploy your application using the OCP Git import flows, then you do not need to add the labels as import flows do that. Otherwise, you need to add the labels manually to the workload YAML file.\n\nThe labels are not similar to `backstage.io/edit-url` annotations as it points to the catalog entity metadata source file and is applied to Backstage catalog entity metadata YAML file, but not Kubernetes resources.\n\n> Tip: You can also add the `app.openshift.io/edit-url` annotation with the edit URL that you want to access using the decorator.\n\n##### Entity annotation/label\n\n- In order for Backstage to detect that an entity has Kubernetes components, the following annotation should be added to the entity's `catalog-info.yaml`:\n\n  ```yaml title=\"catalog-info.yaml\"\n  annotations:\n    backstage.io/kubernetes-id: <BACKSTAGE_ENTITY_NAME>\n  ```\n\n- The following label is added to the resources so that the Kubernetes plugin gets the Kubernetes resources from the requested entity:\n\n  ```yaml title=\"catalog-info.yaml\"\n  labels:\n    backstage.io/kubernetes-id: <BACKSTAGE_ENTITY_NAME>`\n  ```\n\n  ***\n\n  **NOTE**  \n  When using the label selector, the mentioned labels must be present on the resource.\n\n  ***\n\n##### Namespace annotation\n\nYou can also add the `backstage.io/kubernetes-namespace` annotation to identify the Kubernetes resources using the defined namespace.\n\n```yaml title=\"catalog-info.yaml\"\nannotations:\n  backstage.io/kubernetes-namespace: <RESOURCE_NS>\n```\n\n> The Red Hat OpenShift Dev Spaces instance is not accessible using the source code editor if the `backstage.io/kubernetes-namespace` annotation is added to the `catalog-info.yaml` file.\n\nTo retrieve the instance URL, CheCluster Custom Resource (CR) is required. The instance URL is not retrieved if the namespace annotation value is different from `openshift-devspaces` as CheCluster CR is created in `openshift-devspaces` namespace.\n\n##### Label selector query annotation\n\nYou can write your own custom label, which Backstage uses to find the Kubernetes resources. The label selector takes precedence over the ID annotations.\n\n```yaml title=\"catalog-info.yaml\"\nannotations:\n  backstage.io/kubernetes-label-selector: 'app=my-app,component=front-end'\n```\n\nIf you have multiple entities while Red Hat Dev Spaces is configured and want multiple entities to support the edit code decorator that redirects to the Red Hat Dev Spaces instance, you can add the `backstage.io/kubernetes-label-selector` annotation to the `catalog-info.yaml` file for each entity.\n\n```yaml title=\"catalog-info.yaml\"\nannotations:\n  backstage.io/kubernetes-label-selector: 'component in (<BACKSTAGE_ENTITY_NAME>,che)'\n```\n\nIf you are using the above label selector, ensure that you add the below labels to your resources so that the Kubernetes plugin gets the Kubernetes resources from the requested entity:\n\n```yaml title=\"checluster.yaml\"\nlabels:\n  component: che # add this label to your che cluster instance\n```\n\n```yaml\nlabels:\n  component: <BACKSTAGE_ENTITY_NAME> # add this label to the other resources associated with your entity\n```\n\nYou can also write your own custom query for the label selector with unique labels to differentiate your entities. However, you need to ensure that you add those labels to the resources associated with your entities including your CheCluster instance.\n\n##### Icon displayed in the node\n\n- The following label is added to workload resources, such as Deployments to display runtime icon in the topology nodes:\n\n  ```yaml title=\"deployment.yaml\"\n  labels:\n    app.openshift.io/runtime: <RUNTIME_NAME>\n  ```\n\n- As another option, you can include the following label to display the runtime icon:\n\n  ```yaml title=\"deployment.yaml\"\n  labels:\n    app.kubernetes.io/name: <RUNTIME_NAME>\n  ```\n\n  Supported values of `<RUNTIME_NAME>` include:\n\n  - django\n  - dotnet\n  - drupal\n  - go-gopher\n  - golang\n  - grails\n  - jboss\n  - jruby\n  - js\n  - nginx\n  - nodejs\n  - openjdk\n  - perl\n  - phalcon\n  - php\n  - python\n  - quarkus\n  - rails\n  - redis\n  - rh-spring-boot\n  - rust\n  - java\n  - rh-openjdk\n  - ruby\n  - spring\n  - spring-boot\n\n  **NOTE** Other values result in icons not being rendered for the node.\n\n##### App grouping\n\nThe following label is added to display the workload resources such as Deployments and Pods in a visual group:\n\n```yaml title=\"catalog-info.yaml\"\nlabels:\n  app.kubernetes.io/part-of: <GROUP_NAME>\n```\n\n##### Node connector\n\nThe following annotation is added to display the workload resources such as Deployments and Pods with a visual connector:\n\n```yaml title=\"catalog-info.yaml\"\nannotations:\n  app.openshift.io/connects-to: '[{\"apiVersion\": <RESOURCE_APIVERSION>,\"kind\": <RESOURCE_KIND>,\"name\": <RESOURCE_NAME>}]'\n```\n\nFor more information about the labels and annotations, see [Guidelines for labels and annotations for OpenShift applications](https://github.com/redhat-developer/app-labels/blob/master/labels-annotation-for-openshift.adoc).\n\n#### Procedure\n\n1. Install the Topology plugin using the following command:\n\n   ```console\n   yarn workspace app add @janus-idp/backstage-plugin-topology\n   ```\n\n2. Enable **TOPOLOGY** tab in `packages/app/src/components/catalog/EntityPage.tsx`:\n\n   ```tsx title=\"packages/app/src/components/catalog/EntityPage.tsx\"\n   /* highlight-add-next-line */\n   import { TopologyPage } from '@janus-idp/backstage-plugin-topology';\n\n   const serviceEntityPage = (\n     <EntityLayout>\n       {/* ... */}\n       {/* highlight-add-start */}\n       <EntityLayout.Route path=\"/topology\" title=\"Topology\">\n         <TopologyPage />\n       </EntityLayout.Route>\n       {/* highlight-add-end */}\n     </EntityLayout>\n   );\n   ```\n\n## For users\n\n### Using the Topology plugin in Backstage\n\nTopology is a front-end plugin that enables you to view the workloads as nodes that power any service on the Kubernetes cluster.\n\n#### Prerequisites\n\n- Your Backstage application is installed and running.\n- You have installed the Topology plugin. For the installation process, see [Installation](#installation).\n- If RBAC permission framework is enabled, ensure to add the following permission policies in an external permission policies configuration file named `rbac-policy.csv` to allow the rbac admins or your desired user(s)/group(s) to access the topology plugin:\n\n```csv rbac-policy.csv\ng, user:default/<YOUR_USERNAME>, role:default/topology-viewer\np, role:default/topology-viewer, topology.view.read, read, allow\np, role:default/topology-viewer, kubernetes.proxy, use, allow\np, role:default/topology-viewer, catalog-entity, read, allow\n```\n\n`p, role:default/topology-viewer, topology.view.read, read, allow` grants the user the ability to see the Topology panel. `p, role:default/topology-viewer, kubernetes.proxy, use, allow` grants the user the ability to view the pod logs. `p, role:default/topology-viewer, catalog-entity, read, allow` grants the user the ability to see the catalog item.\n\n#### Procedure\n\n1. Open your Backstage application and select a component from the **Catalog** page.\n1. Go to the **TOPOLOGY** tab and you can view the workloads such as Deployments, Pods as nodes.\n\n   ![topology-tab](./images/topology-tab-user1.png)\n\n1. Select a node and a pop-up appears on the right side, which contains two tabs: **Details** and **Resources**.\n\n   The **Details** and **Resources** tab contain the associated information and resources of the node.\n\n   ![topology-tab-details](./images/topology-tab-user2.png)\n\n1. Click on the **Open URL** button on the top of a node.\n\n   ![topology-tab-open-url](./images/topology-tab-user3.png)\n\n   When you click on the open URL button, it allows you to access the associated **Ingresses** and runs your application in a new tab.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/topology",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-14T21:33:40.368Z",
+  "version": "1.21.12",
+  "version_count": 147,
+  "versions": [
+    {
+      "date": "2024-11-14T21:33:40.368Z",
+      "version": "1.21.12"
+    },
+    {
+      "date": "2024-11-04T12:24:49.713Z",
+      "version": "1.30.1"
+    },
+    {
+      "date": "2024-10-31T22:18:40.351Z",
+      "version": "1.27.7"
+    },
+    {
+      "date": "2024-10-30T20:19:06.000Z",
+      "version": "1.30.0"
+    },
+    {
+      "date": "2024-10-29T18:59:38.489Z",
+      "version": "1.29.2"
+    },
+    {
+      "date": "2024-10-22T21:37:12.733Z",
+      "version": "1.29.0"
+    },
+    {
+      "date": "2024-10-10T07:36:30.198Z",
+      "version": "1.28.6"
+    },
+    {
+      "date": "2024-10-09T20:49:51.558Z",
+      "version": "1.28.5"
+    },
+    {
+      "date": "2024-10-08T18:41:06.316Z",
+      "version": "1.28.4"
+    },
+    {
+      "date": "2024-10-08T06:35:42.048Z",
+      "version": "1.28.3"
+    },
+    {
+      "date": "2024-10-01T18:39:43.189Z",
+      "version": "1.28.2"
+    },
+    {
+      "date": "2024-09-25T13:01:07.896Z",
+      "version": "1.28.1"
+    },
+    {
+      "date": "2024-09-20T03:58:27.484Z",
+      "version": "1.28.0"
+    },
+    {
+      "date": "2024-09-19T17:02:13.418Z",
+      "version": "1.27.6"
+    },
+    {
+      "date": "2024-09-16T10:45:52.704Z",
+      "version": "1.27.5"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:25:36.467Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "reporting",
+    "tech-insights"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-tech-insights-backend",
+  "plugin_id": "tech-insights",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/tech-insights/plugins/tech-insights-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-09-08T09:06:10.005Z",
+  "version": "3.1.0",
+  "version_count": 34,
+  "versions": [
+    {
+      "date": "2026-09-08T09:06:10.005Z",
+      "version": "3.1.0"
+    },
+    {
+      "date": "2026-06-09T18:38:53.275Z",
+      "version": "3.0.1"
+    },
+    {
+      "date": "2026-06-02T21:39:35.747Z",
+      "version": "2.7.0"
+    },
+    {
+      "date": "2026-05-20T15:04:54.866Z",
+      "version": "2.6.0"
+    },
+    {
+      "date": "2026-01-31T18:24:29.507Z",
+      "version": "2.5.2"
+    },
+    {
+      "date": "2026-01-29T07:29:46.932Z",
+      "version": "2.5.1"
+    },
+    {
+      "date": "2026-01-13T10:58:37.755Z",
+      "version": "2.5.0"
+    },
+    {
+      "date": "2025-12-24T23:04:27.560Z",
+      "version": "2.4.3"
+    },
+    {
+      "date": "2025-10-27T08:21:09.603Z",
+      "version": "2.4.2"
+    },
+    {
+      "date": "2025-08-22T21:11:18.042Z",
+      "version": "2.4.1"
+    },
+    {
+      "date": "2025-06-08T15:20:41.628Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2025-05-14T06:21:27.378Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2025-04-30T11:00:44.922Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2025-03-21T20:31:10.197Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2025-02-05T15:58:25.566Z",
+      "version": "2.2.0"
+    }
+  ]
+}

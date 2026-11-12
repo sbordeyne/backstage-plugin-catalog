@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2024-07-19T04:07:10.753Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates towards Vault",
+  "homepage": "",
+  "keywords": [],
+  "license": "",
+  "maintainers": [
+    "skitamura7446"
+  ],
+  "name": "@skitamura7446/plugin-vault-dynamic",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@skitamura7446",
+  "updated": "2024-07-27T03:58:19.222Z",
+  "version": "0.0.4",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-07-27T03:58:19.222Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-07-27T03:57:44.997Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-07-19T04:07:11.200Z",
+      "version": "0.0.1"
+    }
+  ]
+}

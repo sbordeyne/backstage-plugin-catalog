@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2024-01-31T18:19:29.628Z",
+  "deprecated": "",
+  "description": "This plugin offers the ability to run Software Templates from within an entity's EntityPage. Templates, once selected, can be autopopulated with data from the Entity. For example, if I am on the EntityPage for `system:default/tickets` and I select a templ",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "seatgeek"
+  ],
+  "name": "@seatgeek/backstage-plugin-entity-scaffolder-content",
+  "plugin_id": "entity-scaffolder-content",
+  "readme": "# @seatgeek/backstage-plugin-entity-scaffolder-content\n\nThis plugin offers the ability to run Software Templates from within an entity's EntityPage. Templates, once selected, can be autopopulated with data from the Entity. For example, if I am on the EntityPage for `system:default/tickets` and I select a template for creating a new Postgres database, I can autopopulate that template's `system:` field to `system:default/tickets`.\n\n[![npm latest version](https://img.shields.io/npm/v/@seatgeek/backstage-plugin-entity-scaffolder-content/latest.svg)](https://www.npmjs.com/package/@seatgeek/backstage-plugin-entity-scaffolder-content)\n\n![Template groups visible on an EntityPage](screenshot-groups.png)\n\n![Selected template with entity's information filled in](screenshot-selected.png)\n\nThis plugin addresses https://github.com/backstage/backstage/issues/16053 and builds on top of [@frontside/backstage-plugin-scaffolder-workflow](https://github.com/thefrontside/playhouse/tree/main/plugins/scaffolder-frontend-workflow).\n\n## Installation\n\n### Install the package\n\nInstall the `@seatgeek/backstage-plugin-entity-scaffolder-content` package in your frontend app package:\n\n```shell\n# From your Backstage root directory\nyarn add --cwd packages/app @seatgeek/backstage-plugin-entity-scaffolder-content\n```\n\n### Add the plugin to your `EntityPage`\n\n```tsx\nimport { EntityScaffolderContent } from '@seatgeek/backstage-plugin-entity-scaffolder-content';\n\nconst systemPage = (\n  <EntityLayout>\n    {/** ... */}\n    <EntityLayout.Route path=\"/scaffolder\" title=\"Scaffolder\">\n      <EntityScaffolderContent\n        templateGroupFilters={[\n          // We show all resource templates that have the label `forEntity:system``\n          // on our system EntityPage\n          {\n            title: 'Resources',\n            filter: (_, template) =>\n              template.metadata?.labels?.forEntity === 'system' &&\n              template.spec.type === 'Resource',\n          },\n          // If our system defines its language as python, we show all templates\n          // that are intended to be applied to pythom systems.\n          {\n            title: 'Python',\n            filter: (entity, template) =>\n              template.metadata?.labels?.forEntity === 'system' &&\n              entity.metadata?.labels?.language === 'python' &&\n              template.metadata?.labels?.language === 'python',\n          },\n        ]}\n        buildInitialState={entity => ({ system: stringifyEntityRef(entity) })}\n        // optional\n        ScaffolderFieldExtensions={\n          <ScaffolderFieldExtensions>\n            {/* Any field extensions you need */}\n          </ScaffolderFieldExtensions>\n        }\n        // optional\n        components={{\n          TemplateCard: CustomTemplateCard,\n        }}\n      />\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@seatgeek",
+  "updated": "2024-09-24T19:24:04.325Z",
+  "version": "1.2.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-09-24T19:24:04.325Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2024-09-24T15:08:10.710Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-08-24T23:01:35.159Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-01-31T18:41:47.707Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-01-31T18:19:29.904Z",
+      "version": "1.0.0"
+    }
+  ]
+}

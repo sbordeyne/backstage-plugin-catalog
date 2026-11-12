@@ -1,0 +1,53 @@
+{
+  "author": "",
+  "created": "2025-10-07T08:42:27.010Z",
+  "deprecated": "",
+  "description": "A Backstage plugin to integrate [Citrix Secure Developer Spaces (SDS) Workspaces](https://docs.citrix.com/en-us/secure-developer-spaces) into your Backstage developer portal.",
+  "homepage": "https://github.com/strong-network/backstage-sds-plugins#readme",
+  "keywords": [],
+  "license": "",
+  "maintainers": [
+    "aleksa_sds",
+    "bingli",
+    "csgdeveloper",
+    "hailanl",
+    "pedrocitrix",
+    "scottcitrix",
+    "thomasbcitrix"
+  ],
+  "name": "@citrixcloud/backstage-sds-workspaces",
+  "plugin_id": "sds-workspaces",
+  "readme": "# SDS Workspaces Plugin\n\nA Backstage plugin to integrate [Citrix Secure Developer Spaces (SDS) Workspaces](https://docs.citrix.com/en-us/secure-developer-spaces) into your Backstage developer portal.\n\n---\n\n## Prerequisite: Backend Plugin Required\n\n> **Important:**\n>\n> To use the SDS Workspaces frontend plugin, you **must** also install and configure the [`backstage-sds-workspaces-backend`](https://www.npmjs.com/package/@citrixcloud/backstage-sds-workspaces-backend) plugin in your Backstage backend project.\n>\n> This backend plugin enables all communication between Backstage and the SDS Workspaces platform.\n\n---\n\n## Features\n\n- View and manage SDS Workspaces directly from Backstage.\n- Custom SDS Workspace Cards and Tabs for your entities.\n- Seamless integration with SDS Workspaces platform.\n\n---\n\n## Getting Started\n\n### 1. Install the Plugin\n\n```bash\n# From your Backstage app root\nyarn add @citrixcloud/backstage-sds-workspaces\n```\n\n---\n\n### 2. Configure in `app-config.yaml`\n\nAdd the following section to your `app-config.yaml`:\n\n```yaml\nsdsWorkspaces:\n  platformURL: ${platformURL}\n```\n\nReplace `${platformURL}` with your SDS Workspaces Platform base URL (e.g., `https://yourdomain.com`).\n\n---\n\n### 3. Add to Your Frontend\n\nImport the plugin components in your app:\n\n```typescript\nexport {\n  SDSWorkspaceCard,\n  SDSWorkspacesTab,\n} from '@citrixcloud/backstage-sds-workspaces';\n```\n\n- **SDSWorkspaceCard**: Card component to display workspace info on entity pages.\n- **SDSWorkspacesTab**: Tab component for additional workspace details.\n\n---\n\n## Example Usage\n\n#### Add `SDSWorkspaceCard` to the Entity Overview Page\n\n1. Open your `EntityPage.tsx` (commonly at `packages/app/src/components/catalog/EntityPage.tsx`).\n2. Find the section for the Overview tab, often under:\n\n```typescript\n<EntityLayout.Route path=\"/\" title=\"Overview\">\n  {/* ...other overview components... */}\n  <Grid item md={6}>\n    <SDSWorkspaceCard entity={entity} />\n  </Grid>\n  {/* ...other overview components... */}\n</EntityLayout.Route>\n```\n\nThis will display the SDS Workspace card on the entity’s Overview page.\n\n---\n\n#### Add `SDSWorkspacesTab` as a Tab in the Entity Page\n\n1. In the same `EntityPage.tsx`, add a new route for the tab:\n\n```typescript\n<EntityLayout.Route path=\"/sds-workspaces\" title=\"SDS Workspaces\">\n  <SDSWorkspacesTab entity={entity} />\n</EntityLayout.Route>\n```\n\nThis creates a new \"SDS Workspaces\" tab in the entity page navigation.\n\n---\n\n**Note:**  \nIf your entity page uses a different layout, insert these components where other entity cards or tabs are configured.\n\n---\n\n## New Frontend System Support\n\nThis plugin supports [**Backstage's New Frontend System**](https://backstage.io/docs/frontend-system/), which provides a more modular and extensible plugin architecture.\n\n### Using with the New Frontend System\n\nIf your Backstage instance uses the new frontend system, you can install this plugin using the **alpha export**:\n\n```typescript\n// packages/app/src/index.tsx\nimport sdsWorkspacesPlugin from '@citrixcloud/backstage-sds-workspaces/alpha';\n\nconst app = createApp({\n  features: [\n    // ... other plugins\n    sdsWorkspacesPlugin,\n  ],\n});\n```\n\nThe plugin will automatically provide the `SDSWorkspaceCard` and `SDSWorkspacesTab` as declarative extensions using blueprints, along with the configured API client.\n",
+  "repository": "https://github.com/strong-network/backstage-sds-plugins",
+  "role": "frontend-plugin",
+  "scope": "@citrixcloud",
+  "updated": "2025-11-12T13:27:16.435Z",
+  "version": "0.1.6",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2025-11-12T13:27:16.435Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2025-11-12T13:20:52.896Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2025-11-12T12:43:34.404Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-10-21T10:25:26.246Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-10-08T13:12:17.697Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-10-07T08:42:27.278Z",
+      "version": "0.1.1"
+    }
+  ]
+}

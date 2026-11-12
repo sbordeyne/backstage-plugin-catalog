@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2026-04-17T06:25:33.856Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-x2a-dcr",
+  "plugin_id": "x2a-dcr",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/x2a/plugins/x2a-dcr",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-07-30T12:06:30.955Z",
+  "version": "1.0.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-07-30T12:06:30.955Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-04-17T06:25:34.091Z",
+      "version": "0.2.0"
+    }
+  ]
+}

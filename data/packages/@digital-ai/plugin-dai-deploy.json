@@ -1,0 +1,72 @@
+{
+  "author": "Digital.ai",
+  "created": "2024-05-06T03:23:15.006Z",
+  "deprecated": "",
+  "description": "Frontend functionalities for the dai-deploy backstage plugin",
+  "homepage": "https://digital.ai/",
+  "keywords": [
+    "backstage",
+    "ci/cd",
+    "devops",
+    "digital.ai deploy",
+    "plugin",
+    "typescript"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "agavaldas",
+    "dai-npmjs-bot",
+    "geekzoo-dai",
+    "grantcroker-dai",
+    "gvolarevic-dai",
+    "jcaldas",
+    "msnively"
+  ],
+  "name": "@digital-ai/plugin-dai-deploy",
+  "plugin_id": "dai-deploy",
+  "readme": "# Digital.ai Deploy Plugin\n\n   - Welcome to the Digital.ai (Dai) Deploy plugin for Backstage!\n   - With Dai Deploy Plugin you can monitor all your active and archived deployments, the status of deployments, and view the task details of various deployments.\n\nThis is a combination of 2 plugins - the frontend and the backend.\n\n## Setup\n\nThe following section helps you add the Digital.ai Deploy frontend plugin.\n\n### Prerequisites\n\nYou need to set up the [Dai Deploy backend plugin](https://www.npmjs.com/package/@digital-ai/plugin-dai-deploy-backend) before you move forward with any of these steps.\n\n### Installing and Configuring the Frontend Plugin\n\n   The frontend plugin needs to be added to your application. To do so:\n\n####   1. Run the following command from the Backstage root directory:\n```shell\nyarn --cwd packages/app add @digital-ai/plugin-dai-deploy\n```\n\n####   2. Add the DaiDeployEntityDeploymentsContent extension to your entity pages:\n```tsx\n// For example in the CI/CD section\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  DaiDeployEntityDeploymentsContent\n} from '@digital-ai/plugin-dai-deploy';\n\nconst cicdContent = (\n  <EntitySwitch>\n    // ...\n    <EntitySwitch.Case>\n        <DaiDeployEntityDeploymentsContent />\n    </EntitySwitch.Case>\n    // ...\n  </EntitySwitch>\n\n// For example to create a new section \"Deploy\" in entity page\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  DaiDeployEntityDeploymentsContent\n} from '@digital-ai/plugin-dai-deploy';\n\nconst serviceEntityPage = (\n  <EntityLayout>\n// ...\n<EntityLayout.Route path=\"/deploy\" title=\"Deploy\">\n      \t<DaiDeployEntityDeploymentsContent />\n               </EntityLayout.Route>\n// ...\n  </EntityLayout>\n\nconst websiteEntityPage = (\n  <EntityLayout>\n// ...\n<EntityLayout.Route path=\"/deploy\" title=\"Deploy\">\n      <DaiDeployEntityDeploymentsContent />\n    </EntityLayout.Route>\n// ...\n  </EntityLayout>\n```\n\n####   3. Add an annotation to your catalog-info.yaml files. For example\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n     dai-deploy/ci-id: '<ci-name>'\nspec:\n  type: service\n  # ...\n```\nNote: ci-name is your application name in Deploy.\n\n\n## Links\nFor more information, see [Overview](https://docs.digital.ai/bundle/devops-deploy-version-v.24.1/page/deploy/concept/xl-deploy-backstage-overview.html) and [Adding Deploy to Your Backstage IDP](https://docs.digital.ai/bundle/devops-deploy-version-v.24.1/page/deploy/concept/xl-deploy-backstage-plugins.html)",
+  "repository": "https://github.com/digital-ai/backstage-deploy/tree/HEAD/.",
+  "role": "frontend-plugin",
+  "scope": "@digital-ai",
+  "updated": "2025-04-08T14:02:14.199Z",
+  "version": "0.1.4",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2025-04-08T14:02:14.199Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-11-04T09:31:43.143Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-10-29T05:04:34.616Z",
+      "version": "0.1.3-alpha-0"
+    },
+    {
+      "date": "2024-06-04T08:50:23.628Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-05-06T10:50:41.903Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-05-06T09:38:50.368Z",
+      "version": "0.0.1-alpha-3"
+    },
+    {
+      "date": "2024-05-06T03:56:07.456Z",
+      "version": "0.0.1-alpha-2"
+    },
+    {
+      "date": "2024-05-06T03:45:13.755Z",
+      "version": "0.0.1-alpha-1"
+    },
+    {
+      "date": "2024-05-06T03:23:15.325Z",
+      "version": "0.0.1-alpha-0"
+    }
+  ]
+}

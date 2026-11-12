@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:22.501Z",
+  "deprecated": "",
+  "description": "This custom scaffolder field, fetches an api call from the backstage backend and allows the result to be rendered to a list.",
+  "homepage": "https://github.com/kozmoai/glint-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/plugin-scaffolder-frontend-module-http-request-field",
+  "plugin_id": "",
+  "readme": "# scaffolder-frontend-module-http-request-field\n\nThis custom scaffolder field, fetches an api call from the backstage backend and allows the result to be\nrendered to a list.\n\nIt can be installed as follows in the `App.tsx`\n\n```typescript jsx\n...\n    <Route path=\"/create\" element={<ScaffolderPage />}>\n      <ScaffolderFieldExtensions>\n        ...\n        <SelectFieldFromApiExtension />\n      </ScaffolderFieldExtensions>\n    </Route>\n...\n```\n\nHere is an example of its use in a template:\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: custom-field-demo\n  title: Custom Field Demo\n  description: Custom Field Demo.\nspec:\n  owner: backstage/techdocs-core\n  type: service\n\n  parameters:\n    properties:\n      - title: Custom\n        properties:\n          custom:\n            type: string\n            # Use `SelectFieldFromApi` to configure the select field for the entry.\n            ui:field: SelectFieldFromApi\n\n            ui:options:\n              title: My Dropdown title\n              description: My custom description for the component\n\n              # The Path on the Backstage API and the parameters to fetch the data for the dropdown\n              path: 'catalog/entity-facets'\n              params:\n                facet: 'kind'\n\n              # (Optional) Renders the provided text as a placeholder value into the select box.\n              placeholder: 'Select from options'\n\n              # This selects the array element from the API fetch response. It finds the array with the name kind\n              # under the facets object\n              arraySelector: 'facets.kind'\n\n              # (Optional) This selects the field in the array to use for the value of each select item. If its not specified\n              # it will use the value of the item directly.\n              valueSelector: 'count'\n              # (Optional) This selects the field in the array to use for the label of each select item.\n              labelSelector: 'value'\n```\n\nThe configuration above will result in an outgoing request to: `https://my.backstage.com/api/catalog/entity-facets?facet=kind`\n\nThe response is the following, and it will extract the `count` field as the value and `value` as the label of the dropdown.\n\n```json\n{\n  \"facets\": {\n    \"kind\": [\n      {\n        \"count\": 5,\n        \"value\": \"foo\"\n      }\n    ]\n  }\n}\n```\n\nThe example template would result in the following dropdown:\n\n![Alt text](images/dropdown_sample_closed.png?raw=true 'Example of the custom scaffolder field')\n![Alt text](images/dropdown_sample_opened.png?raw=true 'Example of the custom scaffolder field')\n\nYou also have the running user frontend context available for you in case there is a need to template the URL string based on the user. The underlying functionality uses nunjucks to handle templating and supports _some_ filters that are available within the library. You can find the current user information from context using the template `{{ identity }}`. The items available within the identity object can be found from the [Backstage GitHub repository](https://github.com/backstage/backstage/blob/master/packages/core-plugin-api/src/apis/definitions/auth.ts#L199).\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/scaffolder-field-extensions/scaffolder-frontend-module-http-request-field",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:18.210Z",
+  "version": "1.6.10",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:18.210Z",
+      "version": "1.6.10"
+    },
+    {
+      "date": "2024-03-25T22:14:22.745Z",
+      "version": "1.6.8"
+    }
+  ]
+}

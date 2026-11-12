@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2023-06-13T18:11:27.649Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that provides a settings page - veeCode version",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/plugin-user-settings",
+  "plugin_id": "",
+  "readme": "# user-settings\n\nWelcome to the user-settings plugin!\n\n## About the plugin\n\nThis plugin provides two components, `<UserSettings />` is intended to be used within the [`<Sidebar>`](https://backstage.io/storybook/?path=/story/sidebar--sample-sidebar) and displays the signed-in users profile picture and name. The second component is a settings page where the user can control different settings across the App.\n\nIt also provides a `UserSettingsStorage` implementation of the `StorageApi`, to\nbe used in the frontend as a persistent alternative to the builtin `WebStorage`.\nPlease see [the backend\nREADME](https://github.com/backstage/backstage/tree/master/plugins/user-settings-backend)\nfor installation instructions.\n\n## Components Usage\n\nAdd the item to the Sidebar:\n\n```tsx\nimport { Settings as SidebarSettings } from '@backstage/plugin-user-settings';\n\n<SidebarPage>\n  <Sidebar>\n    <SidebarSettings />\n  </Sidebar>\n</SidebarPage>;\n```\n\nAdd the page to the App routing:\n\n```tsx\nimport { UserSettingsPage } from '@backstage/plugin-user-settings';\n\nconst AppRoutes = () => (\n  <Routes>\n    <Route path=\"/settings\" element={<UserSettingsPage />} />\n  </Routes>\n);\n```\n\n### Props\n\n**Auth Providers**\n\nBy default, the plugin provides a list of configured authentication providers fetched from `app-config.yaml` and displayed in the \"Authentication Providers\" tab.\n\nIf you want to supply your own custom list of Authentication Providers, use the `providerSettings` prop:\n\n```tsx\nconst MyAuthProviders = () => (\n  <ListItem>\n    <ListItemText primary=\"example\" />\n    <ListItemSecondaryAction>{someAction}</ListItemSecondaryAction>\n  </ListItem>\n);\n\nconst AppRoutes = () => (\n  <Routes>\n    <Route\n      path=\"/settings\"\n      element={<SettingsRouter providerSettings={<MyAuthProviders />} />}\n    />\n  </Routes>\n);\n```\n\n> **Note that the list of providers expects to be rendered within a Material UI [`<List>`](https://v4.mui.com/components/lists/)**\n\n**Tabs**\n\nBy default, the plugin renders 3 tabs of settings; GENERAL, AUTHENTICATION PROVIDERS, and FEATURE FLAGS.\n\nIf you want to add more options for your users,\njust pass the extra tabs using `SettingsLayout.Route` components as children of the `UserSettingsPage` route.\nThe path is in this case a child of the settings path,\nin the example below it would be `/settings/advanced` so that you can easily link to it.\n\n```tsx\nimport {\n  SettingsLayout,\n  UserSettingsPage,\n} from '@backstage/plugin-user-settings';\n\n<Route path=\"/settings\" element={<UserSettingsPage />}>\n  <SettingsLayout.Route path=\"/advanced\" title=\"Advanced\">\n    <AdvancedSettings />\n  </SettingsLayout.Route>\n</Route>;\n```\n\nTo standardize the UI of all setting tabs,\nmake sure you use a similar component structure as the other tabs.\nYou can take a look at\n[the example extra tab](https://github.com/backstage/backstage/blob/master/packages/app/src/components/advancedSettings/AdvancedSettings.tsx)\nwe have created in Backstage's demo app.\n\nTo change the layout altogether, create a custom page in `packages/app/src/components/user-settings/SettingsPage.tsx`:\n\n```tsx\nimport React from 'react';\nimport {\n  SettingsLayout,\n  UserSettingsGeneral,\n} from '@backstage/plugin-user-settings';\nimport { AdvancedSettings } from './advancedSettings';\n\nexport const settingsPage = (\n  <SettingsLayout>\n    <SettingsLayout.Route path=\"general\" title=\"General\">\n      <UserSettingsGeneral />\n    </SettingsLayout.Route>\n    <SettingsLayout.Route path=\"advanced\" title=\"Advanced\">\n      <AdvancedSettings />\n    </SettingsLayout.Route>\n  </SettingsLayout>\n);\n```\n\nNow register the new settings page in `packages/app/src/App.tsx`:\n\n```diff\n+ import {settingsPage} from './components/settings/settingsPage';\n\nconst routes = (\n  <FlatRoutes>\n-    <Route path=\"/settings\" element={<UserSettingsPage />} />\n+    <Route path=\"/settings\" element={<UserSettingsPage />}>\n+      {settingsPage}\n+    </Route>\n  </FlatRoutes>\n);\n```\n",
+  "repository": "https://github.com/veecode-platform/backstage-plugins/tree/HEAD/plugins/user-settings",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2024-04-02T18:17:02.361Z",
+  "version": "0.8.5",
+  "version_count": 40,
+  "versions": [
+    {
+      "date": "2024-04-02T18:17:02.361Z",
+      "version": "0.8.5"
+    },
+    {
+      "date": "2024-03-07T20:23:26.971Z",
+      "version": "0.8.4"
+    },
+    {
+      "date": "2024-03-04T11:01:20.062Z",
+      "version": "0.8.3"
+    },
+    {
+      "date": "2023-12-29T14:57:23.343Z",
+      "version": "0.7.39"
+    },
+    {
+      "date": "2023-12-28T19:46:08.172Z",
+      "version": "0.7.38"
+    },
+    {
+      "date": "2023-12-28T19:17:03.175Z",
+      "version": "0.7.37"
+    },
+    {
+      "date": "2023-12-28T18:16:04.438Z",
+      "version": "0.7.36"
+    },
+    {
+      "date": "2023-12-28T17:22:17.751Z",
+      "version": "0.7.35"
+    },
+    {
+      "date": "2023-12-08T12:24:07.500Z",
+      "version": "0.7.34"
+    },
+    {
+      "date": "2023-12-05T20:42:19.057Z",
+      "version": "0.7.33"
+    },
+    {
+      "date": "2023-12-01T14:18:10.555Z",
+      "version": "0.7.32"
+    },
+    {
+      "date": "2023-12-01T13:45:18.111Z",
+      "version": "0.7.31"
+    },
+    {
+      "date": "2023-11-29T19:19:38.851Z",
+      "version": "0.7.28"
+    },
+    {
+      "date": "2023-11-23T18:20:32.257Z",
+      "version": "0.7.27"
+    },
+    {
+      "date": "2023-11-17T15:01:41.092Z",
+      "version": "0.7.26"
+    }
+  ]
+}

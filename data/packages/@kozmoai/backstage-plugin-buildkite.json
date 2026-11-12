@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:10.460Z",
+  "deprecated": "",
+  "description": "![a list of builds in the Buildkite plugin for Backstage](./docs/buildkite-plugin.png)",
+  "homepage": "https://glint.io/backstage/plugins/buildkite/",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-buildkite",
+  "plugin_id": "",
+  "readme": "# Buildkite CI/CD Plugin for Backstage\n\n![a list of builds in the Buildkite plugin for Backstage](./docs/buildkite-plugin.png)\n\n## Features\n\n- List Buildkite CI/CD Builds\n- Retrigger builds\n- Inspect each builds step in real time\n\n## How to add Buildkite project dependency to Backstage app\n\n1. If you have standalone app (you didn't clone this repo), then do\n\n```bash\nyarn add @kozmoai/backstage-plugin-buildkite\n```\n\n2. Add proxy config:\n\n```yaml\n// app-config.yaml\nproxy:\n  '/buildkite/api':\n    target: https://api.buildkite.com/v2/\n    headers:\n      Authorization: 'Bearer ${BUILDKITE_API_TOKEN}'\n```\n\n3. Import it into your Backstage application:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityBuildkiteContent,\n  isPluginApplicableToEntity as isBuildkiteAvailable,\n} from '@kozmoai/backstage-plugin-buildkite';\n```\n\n4. Add plugin API to your Backstage instance:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\n\nexport const cicdContent = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isBuildkiteAvailable}>\n      <EntityBuildkiteContent />\n    </EntitySwitch.Case>\n    ...\n  </EntitySwitch>\n);\n```\n\n## How to use Buildkite plugin in Backstage\n\n1. Add annotation to the yaml config file of a component:\n\n```yaml\nmetadata:\n  annotations:\n    buildkite.com/project-slug: [exampleorganization/exampleproject]\n```\n\n2. Get an api token from buildkite and export it to your shell.\n\n```bash\nexport BUILDKITE_API_TOKEN=xxx-xxx-xxx\n```\n\n## Links\n\n- [Backstage](https://backstage.io)\n- Get hosted, managed Backstage for your company: https://glint.io\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-buildkite",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:12.813Z",
+  "version": "2.1.22",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:12.813Z",
+      "version": "2.1.22"
+    },
+    {
+      "date": "2024-03-25T22:14:10.768Z",
+      "version": "2.1.21"
+    }
+  ]
+}

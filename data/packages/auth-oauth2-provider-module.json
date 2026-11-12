@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-04-06T11:28:06.718Z",
+  "deprecated": "",
+  "description": "The oauth2-provider backend module for the auth plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bbtestt235"
+  ],
+  "name": "auth-oauth2-provider-module",
+  "plugin_id": "auth",
+  "readme": "# OAuth 2.0 Provider Backend Module\n\nThe oauth2-provider backend module for the auth plugin provides generic OAuth 2.0 identity provider support\nwith the option to further customize the sign-in resolver and identity management. For more information on\nsign-in and identity management, see the docs: <https://backstage.io/docs/auth/identity-resolver/>\n\nThe current implementation creates a user entity ref based on email, and assigns\na Backstage token for that user entity regardless of the entities existence within the Backstage catalog.\n\n> This plugin was created through the Backstage CLI\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "",
+  "updated": "2025-04-06T11:34:08.662Z",
+  "version": "2.3.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-04-06T11:34:08.662Z",
+      "version": "2.3.2"
+    },
+    {
+      "date": "2025-04-06T11:28:06.967Z",
+      "version": "2.3.1"
+    }
+  ]
+}

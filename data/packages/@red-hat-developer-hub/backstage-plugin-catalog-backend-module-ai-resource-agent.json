@@ -1,0 +1,48 @@
+{
+  "author": "",
+  "created": "2026-08-12T00:01:40.581Z",
+  "deprecated": "",
+  "description": "The ai-resource-agent backend module for the catalog plugin. Registers the agent specType for AiResource entities.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-catalog-backend-module-ai-resource-agent",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/ai-integrations/plugins/catalog-backend-module-ai-resource-agent",
+  "role": "backend-plugin-module",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-04T14:54:04.491Z",
+  "version": "0.6.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-11-04T14:54:04.491Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-10-26T14:12:33.391Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-08-27T21:57:22.965Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-08-17T20:44:28.839Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-08-12T00:01:40.882Z",
+      "version": "0.2.1"
+    }
+  ]
+}

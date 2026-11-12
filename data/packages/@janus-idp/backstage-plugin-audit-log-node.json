@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2024-06-03T17:27:46.722Z",
+  "deprecated": "",
+  "description": "Node.js library for the audit-log plugin",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-audit-log-node",
+  "plugin_id": "audit-log",
+  "readme": "# @janus-idp/backstage-plugin-audit-log-node\n\nThis package contains common types and utility functions for audit logging the backend\n\n## Installation\n\nTo install this plugin in a package/plugin, run the following command:\n\n```console\nyarn workspace <package/plugin> add @janus-idp/backstage-plugin-audit-log-node\n```\n\n### Usage\n\nThe audit logging node package contains a helper class for generating audit logs with a common structure, as well as logging them.\n\nThe `auditLog` function can be used to log out an audit log using the backstage `LoggerService`. You can provide a log level to the `auditLog` function. The supported levels are: `info`, `debug`, `warn`, and `error`. If no log level is provided, it defaults to the `info` level.\n\nAlternatively, if you want to generate the audit log object (does not contain message) without it being logged out for you, the `createAuditLogDetails` helper function of the `DefaultAuditLogger` can be used.\n\nThe `DefaultAuditLogger.createAuditLogDetails` will generate the `actorId` of the actor with the following priority (highest to lowest):\n\n- The `actorId` provided in the arguments\n- The actor id generated from the `express.Request` object provided in the arguments\n- `null` if neither of the above fields were provided in the arguments\n\n#### Event Naming Convention\n\nIt is recommended that you prefix the `eventName` value with the name of the component you are audit logging. This will help with searchability in the central log collector.\n\nFor example, \"ScaffolderTaskRead\", \"CatalogEntityFetch\", etc.\n\n---\n\n**IMPORTANT**\n\nAny fields containing secrets provided to these helper functions should have secrets redacted or else they will be logged as is.\n\nFor the `DefaultAuditLogger`, these fields would include:\n\n- The `metadata` field\n- The following fields in the `request`:\n  - `request.body`\n  - `request.params`\n  - `request.query`\n- The `response.body` field\n\n---\n\nThe `getActorId` helper function grabs the specified entityRef of the user or service associated with the provided credentials in the provided express Request object. If no request is provided or no user/service was associated to the request, `undefined` is returned.\n\n### Example\n\n#### Audit Log Example\n\nIn the following example, we add a simple audit log for the `/health` endpoint of a plugin's router to the `debug` log level.\n\n```ts plugins/test/src/service/router.ts\nimport {\n  AuthService,\n  HttpAuthService,\n  LoggerService,\n} from '@backstage/backend-plugin-api';\nimport { Config } from '@backstage/config';\n\n/* highlight-add-start */\nimport { DefaultAuditLogger } from '@janus-idp/backstage-plugin-audit-log-node';\n\n/* highlight-add-end */\n\nexport interface RouterOptions {\n  logger: LoggerService;\n  config: Config;\n  auth: AuthService;\n  httpAuth: HttpAuthService;\n}\n\nexport async function createRouter(\n  options: RouterOptions,\n): Promise<express.Router> {\n  const { logger, config, auth, httpAuth } = options;\n\n  /* highlight-add-start */\n  const auditLogger = new DefaultAuditLogger({\n    logger,\n    auth,\n    httpAuth,\n  });\n  /* highlight-add-end */\n\n  const router = Router();\n  router.use(express.json());\n\n  router.get('/health', async (request, response) => {\n    logger.info('PONG!');\n    response.json({ status: 'ok' });\n\n    /* highlight-add-start */\n    // Note: if `level` is not provided, it defaults to `info`\n    auditLogger.auditLog({\n      eventName: 'HealthEndpointHit',\n      stage: 'completion',\n      status: 'succeeded',\n      level: 'debug',\n      request,\n      response: {\n        status: 200,\n        body: { status: 'ok' },\n      },\n      message: `The Health Endpoint was hit by ${await auditLogger.getActorId(\n        request,\n      )}`,\n    });\n    /* highlight-add-end */\n  });\n\n  const middleware = MiddlewareFactory.create({ logger, config });\n\n  router.use(middleware.error());\n  return router;\n}\n```\n\nAssuming the `user:default/tester` user hit requested this endpoint, something similar to the following would be outputted if the logger format is JSON:\n\n```JSON\n{\"actor\":{\"actorId\":\"user:default/tester\",\"hostname\":\"localhost\",\"ip\":\"::1\",\"userAgent\":\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36\"},\"eventName\":\"HealthEndpointHit\",\"isAuditLog\":true,\"level\":\"debug\",\"message\":\"The Health Endpoint was hit by user:default/tester\",\"meta\":{},\"plugin\":\"test\",\"request\":{\"body\": \"\",\"method\":\"GET\",\"params\":{},\"query\":{},\"url\":\"/api/test/health\"},\"service\":\"backstage\",\"stage\":\"completion\",\"status\":\"succeeded\",\"timestamp\":\"2024-05-17 11:17:07\",\"type\":\"plugin\"}\n```\n\n#### Audit Log Error Example\n\nIn the following example, we utilize the `auditLog` utility function to generate and output an error log to the `error` log level:\n\n```ts plugins/test/src/service/router.ts\nimport {\n  AuthService,\n  HttpAuthService,\n  LoggerService,\n} from '@backstage/backend-plugin-api';\n\n/* highlight-add-start */\nimport { DefaultAuditLogger } from '@janus-idp/backstage-plugin-audit-log-node';\n\n/* highlight-add-end */\n\nexport interface RouterOptions {\n  logger: LoggerService;\n  auth: AuthService;\n  httpAuth: HttpAuthService;\n}\n\nexport async function createRouter(\n  options: RouterOptions,\n): Promise<express.Router> {\n  const { logger, auth, httpAuth } = options;\n\n  /* highlight-add-start */\n  const auditLogger = new DefaultAuditLogger({\n    logger,\n    auth,\n    httpAuth,\n  });\n  /* highlight-add-end */\n\n  const router = Router();\n  router.use(express.json());\n\n  router.get('/error', async (request, response) => {\n    try {\n      const customErr = new Error('Custom Error Occurred');\n      customErr.name = 'CustomError';\n\n      throw customErr;\n\n      response.json({\n        status: 'ok',\n      });\n    } catch (err) {\n      /* highlight-add-start */\n      auditLogger.auditLog({\n        eventName: 'ErrorEndpointHit',\n        stage: 'completion',\n        status: 'failed',\n        level: 'error',\n        request,\n        response: {\n          status: 501,\n          body: {\n            errors: [\n              {\n                name: (err as Error).name,\n                message: (err as Error).message,\n              },\n            ],\n          },\n        },\n        errors: [customErr],\n        message: `An error occurred when querying the '/errors' endpoint`,\n      });\n      /* highlight-add-end */\n      // Do something with the caught error\n      response.status(501).json({\n        errors: [\n          {\n            name: (err as Error).name,\n            message: (err as Error).message,\n          },\n        ],\n      });\n    }\n  });\n  router.use(errorHandler());\n  return router;\n}\n```\n\nAn example error audit log would be in the following form:\nNote: the stack trace was removed redacted in this example due to its size.\n\n```JSON\n{\"actor\":{\"actorId\":\"user:development/guest\",\"hostname\":\"localhost\",\"ip\":\"::1\",\"userAgent\":\"curl/8.2.1\"},\"errors\":[{\"message\":\"Custom Error Occurred\",\"name\":\"CustomError\",\"stack\":\"CustomError: Custom Error Occurred\\n    at STACK_TRACE]\"}],\"eventName\":\"ErrorEndpointHit\",\"isAuditLog\":true,\"level\":\"error\",\"message\":\"An error occurred when querying the '/errors' endpoint\",\"meta\":{},\"plugin\":\"test\",\"request\":{\"body\":{},\"method\":\"GET\",\"params\":{},\"query\":{},\"url\":\"/api/test/error\"},\"response\":{\"body\":{\"errors\":[{\"name\":\"CustomError\",\"message\":\"Custom Error Occurred\"}]},\"status\":501},\"service\":\"backstage\",\"stage\":\"completion\",\"status\":\"failed\",\"timestamp\":\"2024-05-23 10:09:04\"}\n```\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/audit-log-node",
+  "role": "node-library",
+  "scope": "@janus-idp",
+  "updated": "2025-01-13T20:57:03.675Z",
+  "version": "1.7.2",
+  "version_count": 18,
+  "versions": [
+    {
+      "date": "2025-01-13T20:57:03.675Z",
+      "version": "1.7.2"
+    },
+    {
+      "date": "2025-01-06T18:53:02.060Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2024-12-04T16:08:01.268Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2024-11-14T21:33:33.308Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2024-11-04T12:24:08.666Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2024-10-30T20:18:24.105Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2024-10-22T21:36:37.676Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-10-05T07:50:56.812Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2024-09-20T03:34:12.853Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-09-17T18:39:06.805Z",
+      "version": "1.4.1"
+    },
+    {
+      "date": "2024-07-25T23:12:51.898Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2024-07-23T22:31:25.115Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2024-06-13T21:29:09.573Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2024-06-05T19:27:14.035Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-06-04T19:35:46.181Z",
+      "version": "1.0.3"
+    }
+  ]
+}

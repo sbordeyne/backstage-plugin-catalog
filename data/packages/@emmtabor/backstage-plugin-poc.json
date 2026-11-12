@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2026-05-07T16:46:27.596Z",
+  "deprecated": "",
+  "description": "Welcome to the poc plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "emmtabor-org"
+  ],
+  "name": "@emmtabor/backstage-plugin-poc",
+  "plugin_id": "poc",
+  "readme": "# poc\n\nWelcome to the poc plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/poc](http://localhost:3000/poc).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@emmtabor",
+  "updated": "2026-05-07T16:46:27.863Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-05-07T16:46:27.863Z",
+      "version": "1.0.0"
+    }
+  ]
+}

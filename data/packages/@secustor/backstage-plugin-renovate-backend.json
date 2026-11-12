@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-04-02T21:43:16.636Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/secustor/backstage-plugins",
+  "keywords": [
+    "backstage",
+    "renovate"
+  ],
+  "license": "LGPL-3.0-or-later",
+  "maintainers": [
+    "secustor"
+  ],
+  "name": "@secustor/backstage-plugin-renovate-backend",
+  "plugin_id": "renovate",
+  "readme": "",
+  "repository": "https://github.com/secustor/backstage-plugins/tree/HEAD/plugins/renovate-backend",
+  "role": "backend-plugin",
+  "scope": "@secustor",
+  "updated": "2026-10-16T12:26:52.809Z",
+  "version": "0.20.0",
+  "version_count": 49,
+  "versions": [
+    {
+      "date": "2026-10-16T12:26:52.809Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-07-28T15:32:56.796Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-04-16T06:12:44.324Z",
+      "version": "0.18.2"
+    },
+    {
+      "date": "2026-04-14T16:35:40.664Z",
+      "version": "0.18.1"
+    },
+    {
+      "date": "2026-02-28T10:06:56.850Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-01-25T20:25:14.416Z",
+      "version": "0.17.2"
+    },
+    {
+      "date": "2025-12-23T23:56:38.543Z",
+      "version": "0.17.1"
+    },
+    {
+      "date": "2025-10-16T06:13:28.845Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2025-08-26T13:55:33.537Z",
+      "version": "0.16.2"
+    },
+    {
+      "date": "2025-08-20T13:47:48.396Z",
+      "version": "0.16.1"
+    },
+    {
+      "date": "2025-07-14T23:09:48.252Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-06-17T22:08:01.174Z",
+      "version": "0.15.8"
+    },
+    {
+      "date": "2025-05-21T08:44:26.224Z",
+      "version": "0.15.7"
+    },
+    {
+      "date": "2025-04-19T22:34:03.187Z",
+      "version": "0.15.6"
+    },
+    {
+      "date": "2025-04-02T16:57:01.837Z",
+      "version": "0.15.5"
+    }
+  ]
+}

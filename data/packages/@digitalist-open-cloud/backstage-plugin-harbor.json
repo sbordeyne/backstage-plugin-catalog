@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-07-18T18:03:42.779Z",
+  "deprecated": "",
+  "description": "This is a fork of: <https://github.com/container-registry/backstage-plugin-harbor>",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ewert-the-dragon"
+  ],
+  "name": "@digitalist-open-cloud/backstage-plugin-harbor",
+  "plugin_id": "harbor",
+  "readme": "# Backstage Harbor plugin\n\nThis is a fork of: <https://github.com/container-registry/backstage-plugin-harbor>\n\nThis plugin will show you information about your docker images within Harbor.\n\n## Getting started\n\n### Enabling frontend\n\n```bash\nyarn --cwd packages/app add @digitalist-open-cloud/backstage-plugin-harbor\n```\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  HarborPage,\n  HarborWidget,\n  isHarborAvailable,\n} from '@digitalist-open-cloud/backstage-plugin-harbor'\n\nconst serviceEntityPage = (\n  <EntityPageLayout>\n    // ...\n    <EntityLayout.Route path=\"/harbor\" title=\"Harbor\" if={isHarborAvailable}>\n      <HarborPage />\n    </EntityLayout.Route>\n  </EntityPageLayout>\n)\n```\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\n\nconst overviewContent = (\n  <Grid container spacing={6} alignItems=\"stretch\">\n    // ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isHarborAvailable}>\n        <Grid item>\n          <HarborWidget />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n    ...\n  </Grid>\n)\n```\n\n### Enabling backend\n\nSee [backstage-plugin-harbor-backend](https://github.com/Digitalist-Open-Cloud/backstage-plugin-harbor-backend).\n\n## Contributing\n\nPlease contribute back to the [original repo](https://github.com/container-registry/backstage-plugin-harbor/tree/master), and you are free to use any code from this repo to contribute back to the original repo without giving us credit.\n\n## History\n\nThis Backstage plugin was initially created by [BESTSELLER](https://github.com/BESTSELLER) and transferred to [Container Registry](https://github.com/container-registry/).\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@digitalist-open-cloud",
+  "updated": "2025-09-04T14:19:45.411Z",
+  "version": "0.9.0",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2025-09-04T14:19:45.411Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-07-18T07:27:37.030Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-06-19T21:16:01.135Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2025-06-04T11:24:11.455Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-05-05T13:25:45.435Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-04-15T19:36:22.752Z",
+      "version": "0.5.4"
+    },
+    {
+      "date": "2025-04-15T08:23:21.415Z",
+      "version": "0.5.3"
+    },
+    {
+      "date": "2025-04-15T07:20:54.730Z",
+      "version": "0.5.2"
+    },
+    {
+      "date": "2025-04-15T07:14:04.563Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2025-04-15T07:06:56.150Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-07-20T10:12:06.367Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2024-07-20T09:43:02.527Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2024-07-20T09:05:19.237Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2024-07-19T14:39:46.043Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2024-07-18T18:09:09.630Z",
+      "version": "0.4.1"
+    }
+  ]
+}

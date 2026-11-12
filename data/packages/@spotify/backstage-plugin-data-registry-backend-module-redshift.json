@@ -1,0 +1,67 @@
+{
+  "author": "",
+  "created": "2024-11-22T18:10:43.309Z",
+  "deprecated": "",
+  "description": "The redshift backend module for the data-registry plugin.",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-data-registry-backend-module-redshift",
+  "plugin_id": "data-registry",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2025-07-17T09:01:41.127Z",
+  "version": "0.14.4",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2025-07-17T09:01:41.127Z",
+      "version": "0.14.4"
+    },
+    {
+      "date": "2025-06-19T17:50:59.123Z",
+      "version": "0.14.3"
+    },
+    {
+      "date": "2025-05-29T17:08:50.166Z",
+      "version": "0.14.2"
+    },
+    {
+      "date": "2025-04-18T11:49:14.760Z",
+      "version": "0.14.1"
+    },
+    {
+      "date": "2025-04-17T16:38:16.353Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-03-20T15:37:24.404Z",
+      "version": "0.13.2"
+    },
+    {
+      "date": "2025-02-21T09:41:39.051Z",
+      "version": "0.13.1"
+    },
+    {
+      "date": "2025-01-16T14:41:03.780Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2024-12-19T10:32:23.348Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2024-12-04T15:40:16.957Z",
+      "version": "0.11.1"
+    },
+    {
+      "date": "2024-11-22T18:10:43.597Z",
+      "version": "0.11.0"
+    }
+  ]
+}

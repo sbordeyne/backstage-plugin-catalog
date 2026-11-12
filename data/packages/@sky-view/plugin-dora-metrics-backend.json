@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-07-25T06:11:15.480Z",
+  "deprecated": "",
+  "description": "This Backstage plugin provides visualization of DORA (DevOps Research and Assessment) metrics from Apache DevLake. It includes dashboards and scorecards to help teams track their DevOps performance.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "avmath"
+  ],
+  "name": "@sky-view/plugin-dora-metrics-backend",
+  "plugin_id": "",
+  "readme": "# Sky View: DORA Metrics Backstage Plugin\n\nThis Backstage plugin provides visualization of DORA (DevOps Research and Assessment) metrics from Apache DevLake. It includes dashboards and scorecards to help teams track their DevOps performance.\n\n## DORA Metrics\n\nThis plugin visualizes the four key DORA metrics:\n- Deployment Frequency\n- Lead Time for Changes\n- Mean Time to Restore (MTTR)\n- Change Failure Rate\n\n## Setup\n\n1. Install the plugin in your Backstage instance\n2. Configure the connection to your Apache DevLake MySQL database\n3. Access the DORA metrics dashboard through the Backstage UI\n\n## Development\n\n```bash\n# Install dependencies\nyarn install\n\n# Start the app for development\nyarn start\n```\n\n## Configuration\n\nConfigure your Apache DevLake database connection in your app-config.yaml:\n\n```yaml\ndoraMetrics:\n  database:\n    client: mysql\n    connection:\n      host: mysql\n      port: 3306\n      user: merico\n      password: merico\n      database: lake\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@sky-view",
+  "updated": "2025-07-25T19:43:45.462Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-07-25T19:43:45.462Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-07-25T06:11:15.856Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "author": "Edtroleis",
+  "created": "2026-10-23T15:45:44.675Z",
+  "deprecated": "",
+  "description": "Scaffolder action techdocs-editor:setup: prepares a documentation repository for the TechDocs editor (checks, lint, squash merge, ruleset)",
+  "homepage": "https://github.com/edtroleis/backstage-plugin-techdocs-editor/tree/main/plugins/scaffolder-backend-module-techdocs-editor#readme",
+  "keywords": [
+    "backstage",
+    "github",
+    "scaffolder",
+    "techdocs"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "edtroleis"
+  ],
+  "name": "@edtroleis/plugin-scaffolder-backend-module-techdocs-editor",
+  "plugin_id": "scaffolder",
+  "readme": "# techdocs-editor:setup\n\n[English](README.md) · **Português**\n\nMódulo do Scaffolder com a action `techdocs-editor:setup`: prepara um repositório de documentação\npara o editor do TechDocs. Só aplica o que falta, então pode rodar de novo.\n\n- Merge só por squash, com título e descrição do PR, e ruleset da branch principal (PR obrigatório\n  e, se o workflow padrão já está lá, os 4 checks): na hora. O token precisa ser admin.\n- Workflow de verificações e `.markdownlint.yaml`, se faltarem: num PR da branch\n  `techdocs-editor/setup`.\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@edtroleis/plugin-scaffolder-backend-module-techdocs-editor'));\n```\n\n```yaml\nsteps:\n  - id: setup\n    action: techdocs-editor:setup\n    input:\n      repoUrl: github.com?owner=my-org&repo=wiki-team\n      requiredApprovals: 1 # opcional; padrão 0\n```\n\nSaídas: `applied` (o que mudou: `workflow`, `markdownlint`, `merge`, `ruleset`) e\n`pullRequestUrl` (quando abriu PR). A lógica fica em `@edtroleis/plugin-techdocs-editor-common`\n(`planSetup`/`applySetup`), a mesma do botão \"Configurar verificações\" do editor. Mais detalhes no\n[README do plugin](../techdocs-editor/README.pt-BR.md#setup-do-repositório).\n",
+  "repository": "https://github.com/edtroleis/backstage-plugin-techdocs-editor/tree/HEAD/plugins/scaffolder-backend-module-techdocs-editor",
+  "role": "backend-plugin-module",
+  "scope": "@edtroleis",
+  "updated": "2026-10-23T21:07:56.125Z",
+  "version": "0.1.1",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-10-23T21:07:56.125Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-10-23T19:26:14.139Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-23T15:45:44.675Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

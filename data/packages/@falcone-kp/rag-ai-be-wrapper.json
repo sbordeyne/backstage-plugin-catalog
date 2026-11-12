@@ -1,0 +1,43 @@
+{
+  "author": "KeyPartner",
+  "created": "2025-01-22T15:40:47.987Z",
+  "deprecated": "",
+  "description": "Wrapper for RAG AI frontend plugin, developed for Backstage",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "falcone-kp"
+  ],
+  "name": "@falcone-kp/rag-ai-be-wrapper",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@falcone-kp",
+  "updated": "2025-01-22T16:50:09.181Z",
+  "version": "0.0.5",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2025-01-22T16:50:09.181Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2025-01-22T16:41:47.704Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2025-01-22T16:28:49.479Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2025-01-22T16:00:55.101Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-01-22T15:40:48.411Z",
+      "version": "0.0.1"
+    }
+  ]
+}

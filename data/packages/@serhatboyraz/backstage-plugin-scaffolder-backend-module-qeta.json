@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2026-07-23T13:11:54.873Z",
+  "deprecated": "",
+  "description": "The qeta backend module for the scaffolder plugin.",
+  "homepage": "https://github.com/drodil/backstage-plugin-qeta",
+  "keywords": [
+    "backstage",
+    "backstage.io",
+    "plugin",
+    "scaffolder"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "serhatboyraz"
+  ],
+  "name": "@serhatboyraz/backstage-plugin-scaffolder-backend-module-qeta",
+  "plugin_id": "scaffolder",
+  "readme": "# backstage-plugin-scaffolder-backend-module-qeta\r\n\r\nAllows adding Q&A related scaffolder actions to Backstage.\r\n\r\nInstalling the plugin:\r\n\r\n```shell\r\nyarn add --cwd packages/backend @serhatboyraz/backstage-plugin-scaffolder-backend-module-qeta\r\n```\r\n\r\nThen, add the plugin to the Backstage instance in `packages/backend/src/index.ts`:\r\n\r\n```typescript\r\nbackend.add(import('@serhatboyraz/backstage-plugin-scaffolder-backend-module-qeta'));\r\n```\r\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@serhatboyraz",
+  "updated": "2026-07-23T17:03:31.159Z",
+  "version": "3.59.13",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-07-23T17:03:31.159Z",
+      "version": "3.59.13"
+    },
+    {
+      "date": "2026-07-23T14:37:54.479Z",
+      "version": "3.59.12"
+    },
+    {
+      "date": "2026-07-23T14:14:55.164Z",
+      "version": "3.59.11"
+    },
+    {
+      "date": "2026-07-23T13:11:55.168Z",
+      "version": "3.59.10"
+    }
+  ]
+}

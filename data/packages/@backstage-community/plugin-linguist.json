@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T13:39:32.918Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-linguist",
+  "plugin_id": "linguist",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/linguist/plugins/linguist",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:32:19.097Z",
+  "version": "0.26.0",
+  "version_count": 37,
+  "versions": [
+    {
+      "date": "2026-11-03T14:32:19.097Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-09-24T17:21:54.266Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-08-27T14:16:24.519Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-08-05T13:47:47.582Z",
+      "version": "0.23.1"
+    },
+    {
+      "date": "2026-07-22T00:17:21.363Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-06-24T13:17:37.289Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-05-27T12:13:25.791Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-04-28T19:37:56.321Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-04-11T21:16:01.368Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-03-07T13:39:15.837Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-02-28T01:04:04.855Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-01-28T23:00:07.505Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-12-24T22:51:41.977Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-11-27T15:33:37.087Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-10-17T20:44:27.828Z",
+      "version": "0.13.0"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "author": "",
+  "created": "2024-03-25T08:58:58.415Z",
+  "deprecated": "",
+  "description": "The OpenAI backend module for the @roadiehq/rag-ai plugin.",
+  "homepage": "",
+  "keywords": [
+    "backend",
+    "backstage",
+    "openai",
+    "plugin",
+    "rag-ai"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brianfletcher",
+    "roadie-bot",
+    "roadiehq-david",
+    "xantier"
+  ],
+  "name": "@roadiehq/rag-ai-backend-embeddings-openai",
+  "plugin_id": "rag-ai-backend-embeddings-openai",
+  "readme": "",
+  "repository": "https://github.com/RoadieHQ/roadie-backstage-plugins/tree/HEAD/plugins/backend/rag-ai-backend-embeddings-openai",
+  "role": "backend-plugin-module",
+  "scope": "@roadiehq",
+  "updated": "2026-10-02T15:58:34.240Z",
+  "version": "0.10.0",
+  "version_count": 25,
+  "versions": [
+    {
+      "date": "2026-10-02T15:58:34.240Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-09-29T13:29:54.637Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-11-26T13:51:24.432Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-10-31T09:31:40.654Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-07-23T10:19:18.587Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-06-26T08:50:10.064Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2025-03-20T15:17:37.740Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-03-07T13:54:13.499Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2025-01-21T13:56:00.664Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2024-12-06T08:29:38.181Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-10-30T13:23:37.500Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-10-15T11:36:11.080Z",
+      "version": "0.2.12"
+    },
+    {
+      "date": "2024-10-03T08:29:23.807Z",
+      "version": "0.2.11"
+    },
+    {
+      "date": "2024-09-26T11:00:35.314Z",
+      "version": "0.2.10"
+    },
+    {
+      "date": "2024-09-20T13:32:30.191Z",
+      "version": "0.2.9"
+    }
+  ]
+}

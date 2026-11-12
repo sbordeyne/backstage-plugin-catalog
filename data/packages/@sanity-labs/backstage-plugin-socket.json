@@ -1,0 +1,72 @@
+{
+  "author": "",
+  "created": "2026-02-12T21:26:08.026Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates with Socket Security to display security findings and vulnerability analysis for repositories.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bjoerge",
+    "colepeters-sanity",
+    "hermanw",
+    "joshbrand",
+    "jw-sanity",
+    "jwoods-sanity",
+    "kmelve",
+    "laurenashpolesanity",
+    "mariuslundgard",
+    "mttdnt-sanity",
+    "nicholasklem",
+    "rexxars",
+    "robinpyon",
+    "rostimelk",
+    "samhem",
+    "sanitykev",
+    "sergeisarviro",
+    "shapirodaniel",
+    "simen.svale",
+    "snorreeb",
+    "stipsan",
+    "tbeseda"
+  ],
+  "name": "@sanity-labs/backstage-plugin-socket",
+  "plugin_id": "socket",
+  "readme": "# Socket Security Plugin for Backstage\n\nA Backstage plugin that integrates with Socket Security to display security findings and vulnerability analysis for repositories.\n\n> **Note:** As of version 1.0.0, this plugin has been split into separate frontend and backend packages. The frontend provides UI components while the backend handles Socket API integration with server-side caching.\n\n## Features\n\n- **Security Dashboard**: View security findings and vulnerabilities for your repositories\n- **Entity Integration**: Add the Socket Security card to any entity page\n- **Severity Classification**: Issues are categorized by severity (Critical, High, Medium, Low)\n- **Detailed Analysis**: View detailed information about each security finding\n- **Fix Availability**: See which issues have fixes available\n- **Backend Integration**: Server-side caching and API handling via the backend plugin\n\n## Installation\n\nThis plugin requires both frontend and backend packages:\n\n### 1. Install Frontend Plugin\n\n```bash\n# From your Backstage app root directory\nyarn --cwd packages/app add @sanity-labs/backstage-plugin-socket\n```\n\n### 2. Install Backend Plugin\n\n```bash\nyarn --cwd packages/backend add @sanity-labs/backstage-plugin-socket-backend\n```\n\nThen add the backend plugin to `packages/backend/src/index.ts`:\n\n```typescript\nbackend.add(import('@sanity-labs/backstage-plugin-socket-backend'));\n```\n\n### 3. Add UI Components\n\n**(Optional)** Add the standalone Socket Security page to your app routes in `packages/app/src/App.tsx`:\n\n```typescript\nimport { SocketPage } from '@sanity-labs/backstage-plugin-socket';\n\nconst routes = (\n  <FlatRoutes>\n    {/* other routes */}\n    <Route path=\"/socket\" element={<SocketPage />} />\n  </FlatRoutes>\n);\n```\n\n### 4. Add to Entity Pages\n\nAdd the Socket Security card to entity pages. Choose one or both options:\n\n### Option A: Add to Overview Tab\n\nIn `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```typescript\nimport { EntitySocketSecurityCard } from '@sanity-labs/backstage-plugin-socket';\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    {/* existing content */}\n    <Grid item md={12} xs={12}>\n      <EntitySocketSecurityCard />\n    </Grid>\n  </Grid>\n);\n```\n\n### Option B: Add a Dedicated Security Tab\n\nIn `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```typescript\nimport { EntitySocketSecurityCard } from '@sanity-labs/backstage-plugin-socket';\n\n// Add this route to your service entity page layout\nconst serviceEntityPage = (\n  <EntityLayout>\n    {/* existing routes like Overview, CI/CD, etc. */}\n    \n    <EntityLayout.Route path=\"/security\" title=\"Security\">\n      <Grid container spacing={3} alignItems=\"stretch\">\n        <Grid item xs={12}>\n          <EntitySocketSecurityCard />\n        </Grid>\n      </Grid>\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\n### Option C: Use Standalone Component\n\nFor custom implementations outside of entity context:\n\n```typescript\nimport { StandaloneSocketSecurityCard } from '@sanity-labs/backstage-plugin-socket';\n\n// Use anywhere with explicit repository parameter\n<StandaloneSocketSecurityCard repository=\"github.com/owner/repo-name\" />\n```\n\n## Configuration\n\nAdd configuration to your `app-config.yaml`:\n\n```yaml\nsocket:\n  # Backend configuration (required)\n  apiToken: ${SOCKET_API_TOKEN}  # Required - Socket.dev API token\n  apiBaseUrl: https://api.socket.dev  # Optional - Socket API base URL (default: https://api.socket.dev)\n\n  # Frontend configuration (optional)\n  cacheTime: 30  # Frontend cache time in minutes (default: 30)\n  staleTime: 5   # Stale time in minutes (default: 5)\n\n  # Severity levels to include (default: ['critical', 'high', 'medium'])\n  # Available: 'critical', 'high', 'medium', 'low'\n  severityFilter:\n    - critical\n    - high\n    - medium\n    # - low  # Uncomment to include low severity alerts\n\n  # Whether to show alerts that have been ignored by org policy (default: false)\n  # Set to true to match Socket dashboard behavior and see all alerts\n  showIgnoredAlerts: false\n```\n\nSet your Socket API token as an environment variable:\n\n```bash\nexport SOCKET_API_TOKEN=your-socket-api-token-here\n```\n\nOr add it to your `.env` file:\n\n```\nSOCKET_API_TOKEN=your-socket-api-token-here\n```\n\n**Note:** The backend plugin handles all Socket API communication and authentication. No proxy configuration is needed. For additional backend configuration options, see the [backend plugin README](../socket-backend/README.md).\n\n### Configuration Options\n\n#### Severity Filtering\nBy default, the plugin excludes `low` severity alerts to focus on more critical issues. You can customize which severity levels to show by modifying the `severityFilter` array.\n\n#### Ignored Alerts\nThe plugin uses Socket's full scan API, which includes alerts that have been ignored by your organization's security policy. By default, these ignored alerts are filtered out to show only actionable items. Set `showIgnoredAlerts: true` to see all alerts (matching the Socket dashboard behavior).\n\n**Note**: The Socket dashboard may show more alerts than the plugin by default because it includes ignored alerts. Enable `showIgnoredAlerts` if you want to match the dashboard exactly.\n\n### Entity Annotation\n\nTo enable Socket security scanning for a component, add the `socket.dev/repo-slug` annotation to your entity's catalog-info.yaml:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-service\n  annotations:\n    socket.dev/repo-slug: 'github.com/owner/repo-name'\nspec:\n  type: service\n  lifecycle: production\n```\n\nThe `socket.dev/repo-slug` annotation should contain the repository identifier that Socket Security can analyze.\n\n## Usage\n\n### Standalone Page\n\nNavigate to `/socket` to view the Socket Security dashboard for the current entity.\n\n### Entity Card\n\nWhen viewing an entity with a `socket.dev/repo-slug` annotation, the Socket Security card will display:\n\n- **Summary Statistics**: Total findings broken down by severity\n- **Detailed Table**: All security findings with filtering and search\n- **Finding Details**: Click on any row to see detailed information\n- **Fix Information**: See which findings have available fixes\n\n### Standalone Card\n\nThe `StandaloneSocketSecurityCard` component can be used outside of entity context:\n\n- Takes an explicit `repository` prop instead of reading from entity annotations\n- Useful for custom dashboards or non-entity pages\n- Provides identical functionality to the entity card\n- Does not require entity context or `socket.dev/repo-slug` annotations\n\n### Security Findings\n\nEach finding includes:\n\n- **Severity Level**: Critical, High, Medium, or Low\n- **Package Information**: Affected package and version\n- **Issue Description**: Details about the security issue\n- **Fix Availability**: Whether a fix is available\n- **Type**: Classification of the security issue\n\n## Development\n\n### Running the Plugin\n\n```bash\nyarn start\n```\n\n### Running Tests\n\n```bash\nyarn test\n```\n\n### Building\n\n```bash\nyarn build\n```\n\n## Architecture\n\nThis plugin uses a frontend-backend architecture:\n\n- **Frontend** (`@sanity-labs/backstage-plugin-socket`): React components for displaying security findings\n- **Backend** (`@sanity-labs/backstage-plugin-socket-backend`): REST API with server-side caching that integrates with Socket.dev API\n\nThe backend plugin handles:\n- Socket.dev API authentication and communication\n- Server-side caching to reduce API calls\n- Data transformation and aggregation\n\nThe frontend plugin provides:\n- UI components for displaying security findings\n- Client-side query caching with React Query\n- Filtering and search functionality\n\nFor more information about Socket Security, visit [socket.dev](https://socket.dev).\n\n## License\n\nApache-2.0\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@sanity-labs",
+  "updated": "2026-11-10T15:10:00.787Z",
+  "version": "1.3.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-11-10T15:10:00.787Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-11-10T13:34:13.507Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-08-14T07:56:20.915Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-05-08T00:03:25.733Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-02-13T23:51:25.438Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-02-13T21:32:05.624Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-02-12T21:26:08.337Z",
+      "version": "1.0.0"
+    }
+  ]
+}

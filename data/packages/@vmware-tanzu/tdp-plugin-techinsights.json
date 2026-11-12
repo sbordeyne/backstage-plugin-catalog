@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2023-09-29T21:58:22.903Z",
+  "deprecated": "",
+  "description": "TechInsights plugin wrapper for VMware Tanzu Developer Portal",
+  "homepage": "",
+  "keywords": [],
+  "license": "VMware General Terms",
+  "maintainers": [
+    "abraundmeier",
+    "afbonney",
+    "aliu-vmware",
+    "andyadnguyen",
+    "austinal",
+    "bsnchan",
+    "fouadhamdi",
+    "gweresch",
+    "jamieklassen",
+    "krisapplegate",
+    "mchinigo",
+    "mstergianis",
+    "sameer-broadcom"
+  ],
+  "name": "@vmware-tanzu/tdp-plugin-techinsights",
+  "plugin_id": "",
+  "readme": "# TechInsights Front-End Wrapper for VMware Tanzu Developer Portal\n\nThis package is a wrapper for the [TechInsights Front-End plugin](https://github.com/backstage/backstage/tree/master/plugins/tech-insights)\n\nBy downloading or using this package, you agree to be bound by the terms of the [VMware General Terms](https://www.vmware.com/vmware-general-terms.html).\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@vmware-tanzu",
+  "updated": "2024-03-22T19:23:16.023Z",
+  "version": "4.0.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2024-03-22T19:23:16.023Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2024-03-15T19:50:40.060Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-03-07T17:52:49.066Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-02-27T17:59:19.884Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2024-01-11T21:02:42.387Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2023-09-29T21:58:23.269Z",
+      "version": "0.0.2"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-01-23T21:00:20.558Z",
+  "deprecated": "",
+  "description": "The github-discussions backend module for the search plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-search-backend-module-github-discussions",
+  "plugin_id": "search",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/github/plugins/search-backend-module-github-discussions",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:32:27.743Z",
+  "version": "0.18.0",
+  "version_count": 20,
+  "versions": [
+    {
+      "date": "2026-11-03T14:32:27.743Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-09-24T17:24:18.764Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-09-14T16:28:13.380Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-07-21T23:07:10.649Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2026-06-24T13:18:15.466Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2026-05-27T12:15:58.756Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2026-04-28T19:38:37.263Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-04-03T00:29:01.374Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2026-03-04T18:53:45.505Z",
+      "version": "0.10.1"
+    },
+    {
+      "date": "2026-03-01T18:34:56.176Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-02-20T21:38:08.301Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2025-12-24T16:39:29.704Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-10-17T20:43:29.844Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-10-07T00:09:31.252Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-08-30T13:47:12.806Z",
+      "version": "0.6.0"
+    }
+  ]
+}

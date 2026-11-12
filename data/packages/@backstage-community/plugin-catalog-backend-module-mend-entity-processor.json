@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-04-30T10:37:47.243Z",
+  "deprecated": "",
+  "description": "The mend-entity-processor backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-catalog-backend-module-mend-entity-processor",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/mend/plugins/catalog-backend-module-mend-entity-processor",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-06-25T06:30:07.652Z",
+  "version": "0.2.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-06-25T06:30:07.652Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-04-30T10:37:47.541Z",
+      "version": "0.1.0"
+    }
+  ]
+}

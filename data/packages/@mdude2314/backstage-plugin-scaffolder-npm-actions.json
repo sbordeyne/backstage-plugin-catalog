@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2022-11-21T19:45:07.743Z",
+  "deprecated": "",
+  "description": "The npm-actions module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mdude2314"
+  ],
+  "name": "@mdude2314/backstage-plugin-scaffolder-npm-actions",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-scaffolder-npm-actions package\n\nThis is a `npm` actions plugin for the `scaffolder-backend` in Backstage.\n\nThis contains a collection of actions for using with npm:\n\n- npm:init\n- npm:install\n- npm:exec\n- npm:config\n\n## Prerequisites\n\n- Node and NPM must be installed in the environment your Backstage instance is running in, but it will most likely already be there since your Backstage instance runs in Node.\n\n## Getting started\n\nIn the root directory of your Backstage project:\n\n```\nyarn add --cwd packages/backend @mdude2314/backstage-plugin-scaffolder-npm-actions\n```\n\nAdd the actions you'd like to the scaffolder:\n\n```typescript\n// packages/backend/src/plugins/scaffolder.ts\n\nimport {\n  createNpmExecAction,\n  createNpmInitAction,\n  createNpmInstallAction,\n  createNpmConfigAction,\n} from '@mdude2314/backstage-plugin-scaffolder-npm-actions';\nimport { ScmIntegrations } from '@backstage/integration';\nimport { createBuiltinActions, createRouter } from '@backstage/plugin-scaffolder-backend';\n\n...\n\nconst integrations = ScmIntegrations.fromConfig(env.config);\nconst builtInActions = createBuiltinActions({\n  catalogClient,\n  integrations,\n  config: env.config,\n  reader: env.reader\n});\n\nconst actions = [\n    createNpmExecAction(),\n    createNpmInitAction(),\n    createNpmInstallAction(),\n    createNpmConfigAction(),\n  ...builtInActions\n];\n\nreturn await createRouter({\n  logger: env.logger,\n  config: env.config,\n  database: env.database,\n  reader: env.reader,\n  catalogClient,\n  actions\n});\n```\n\n## Example of using each of the three actions:\n\n```yaml\n---\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: npm-demo\n  title: My npm demo template\n  description: Run npm commands in the task's working directory\nspec:\n  owner: mdude2314\n  type: service\n\n  parameters:\n    - title: Npm init\n      properties:\n        packageToInstall:\n          title: Package to install\n          type: string\n          description: The name of the npm package to install\n        execArgs:\n          title: Args for exec\n          type: array\n          description: Arguments to pass to the exec command\n\n  steps:\n    - id: npm-init\n      name: init\n      action: npm:init\n\n    - id: npm-install\n      name: install\n      action: npm:install\n      input:\n        packageToInstall: ${{ parameters.packageToInstall }}\n\n    - id: npm-config\n      name: config\n      action: npm:config\n      input:\n        args: ${{ parameters.execArgs }}\n\n    - id: npm-exec\n      name: exec\n      action: npm:exec\n      input:\n        args: ${{ parameters.execArgs }}\n```\n",
+  "repository": "https://github.com/arhill05/backstage-plugin-scaffolder-npm-actions",
+  "role": "backend-plugin-module",
+  "scope": "@mdude2314",
+  "updated": "2023-11-27T12:34:21.318Z",
+  "version": "1.1.1",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2023-11-27T12:34:21.318Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2022-11-22T18:16:36.250Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2022-11-21T20:17:15.237Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2022-11-21T20:09:08.907Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2022-11-21T19:45:08.014Z",
+      "version": "1.0.0"
+    }
+  ]
+}

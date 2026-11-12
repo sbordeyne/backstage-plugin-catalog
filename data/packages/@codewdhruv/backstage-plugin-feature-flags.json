@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2023-04-04T09:09:52.702Z",
+  "deprecated": "",
+  "description": "Website: [https://harness.io/](https://harness.io/)",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "codewdhruv"
+  ],
+  "name": "@codewdhruv/backstage-plugin-feature-flags",
+  "plugin_id": "",
+  "readme": "# Harness Feature Flags Plugin\n\nWebsite: [https://harness.io/](https://harness.io/)\n\nWelcome to the Harness Feature Flags plugin for Backstage!\n\n## Screenshots\n\n<img src=\"./src/assets/FeatureList.png\" />\n<img src=\"./src/assets/ListofEnvironment.png\" />\n\n## Setup steps\n\n1. Open terminal and navigate to the _root of your Backstage app_. Then run\n\n```\nyarn add --cwd packages/app @harnessio/backstage-plugin-feature-flags\n\nyarn install\n```\n\nIf you are looking to get started with Backstage, check out [backstage.io/docs](https://backstage.io/docs/getting-started/).\n\nFor testing purposes, you can also clone this repository to try out the plugin. It contains an example Backstage app setup which is pre-installed with Harness plugins. However, you must create a new Backstage app if you are looking to get started with Backstage.\n\n2. Configure proxy for harness in your `app-config.yaml` under the `proxy` config. Add your Harness Personal Access Token or Service Account Token for `x-api-key`. See the [Harness docs](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys) for generating an API Key.\n\n```yaml\n# In app-config.yaml\n\nproxy:\n  # ... existing proxy settings\n  '/harness':\n    target: 'https://app.harness.io/'\n    headers:\n      'x-api-key': '<YOUR PAT/SAT>'\n# ...\n```\n\nNotes:\n\n- Plugin uses token configured here to make Harness API calls. Make sure this token has the necessary permissions\n\n- Set the value of target to your on-prem URL if you are using the Harness on-prem offering\n\n3. Inside your Backstage's `EntityPage.tsx`, add the new `featureFlagList` component to render `<EntityHarnessFeatureFlagContent />` whenever the service is using Harness Feature Flags. Something like this -\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  isHarnessFeatureFlagAvailable,\n  EntityHarnessFeatureFlagContent,\n} from '@harnessio/backstage-plugin-feature-flags';\n\n...\n\nconst featureFlagList = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isHarnessFeatureFlagAvailable}>\n      <EntityHarnessFeatureFlagContent />\n    </EntitySwitch.Case>\n\n    <EntitySwitch.Case>\n      <EmptyState\n        title=\"No Feature Flags available for this entity\"\n        missing=\"info\"\n        description=\"You need to add an annotation to your component if you want to enable Feature Flags for it. You can read more about annotations in Backstage by clicking the button below.\"\n        action={\n          <Button\n            variant=\"contained\"\n            color=\"primary\"\n            href=\"https://backstage.io/docs/features/software-catalog/well-known-annotations\"\n          >\n            Read more\n          </Button>\n        }\n      />\n    </EntitySwitch.Case>\n  </EntitySwitch>\n);\n\n...\n\nconst serviceEntityPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/feature-flag\" title=\"Feature Flags\">\n      {featureFlagList}\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n\n...\n\n```\n\n4. Add required harness specific annotations to your software component's respective `catalog-info.yaml` file. Here is an example: https://github.com/harness/backstage-plugins/blob/main/examples/catalog-harness-cicd.yaml\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    # mandatory annotation\n    harness.io/project-url: <harness_project_url>\n\n    # optional annotations\n    # harness.io/ci-pipelineIds: <pipelineId1,pipelineId2,pipelineId3 etc>\n    # harness.io/cd-serviceId: <serviceId>\nspec:\n  type: service\n  # ...\n```\n\nNote: Refer to [this](./harness-ci-cd/PluginConfiguation.md) page on how to get these values from your Harness account.\n\nBy default, the plugin will take all the pipelines inside the configured Harness project and show their executions. However, if your service has quiet a few pipelines, you can additionally configure the pipelines as well as associated services to show those specific execution details for the display.\n\n## Other configurations\n\n- (Optional) Harness URL\n\nIf you have a separate Harness hosted URL other than `https://app.harness.io`, you can configure `baseUrl` for `harness` in `app-config.yaml` This step is optional. The default value of `harness.baseUrl` is https://app.harness.io/\n\n```yaml\n# In app-config.yaml\n\nharness:\n  baseUrl: https://app.harness.io/\n```\n\n## Features\n\n- Connect a Backstage service with a Harness project and view the list of all Feature Flags.\n- See details about a Feature Flags - state(on/off), type and status environment, last modified and created.\n- Filter the Feature Flags and their corresponding information according to the Environments.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@codewdhruv",
+  "updated": "2023-07-03T13:22:52.217Z",
+  "version": "0.2.0-alpha.1",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2023-07-03T13:22:52.217Z",
+      "version": "0.2.0-alpha.1"
+    },
+    {
+      "date": "2023-04-05T05:55:21.158Z",
+      "version": "3.0.1"
+    },
+    {
+      "date": "2023-04-04T16:46:55.656Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2023-04-04T16:43:53.492Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2023-04-04T15:37:16.643Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2023-04-04T09:09:53.011Z",
+      "version": "0.1.1"
+    }
+  ]
+}

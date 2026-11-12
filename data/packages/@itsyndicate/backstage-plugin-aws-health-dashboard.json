@@ -1,0 +1,79 @@
+{
+  "author": "ITsyndicate",
+  "created": "2024-11-05T08:50:47.430Z",
+  "deprecated": "",
+  "description": "## Description The AWS Health plugin provides real-time insights into AWS Health events, including ongoing issues, scheduled changes, and notifications. It enables users to monitor and manage AWS health events by displaying detailed information for each e",
+  "homepage": "https://itsyndicate.org",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "maksym_yemleninov",
+    "volodymyr.voitovych"
+  ],
+  "name": "@itsyndicate/backstage-plugin-aws-health-dashboard",
+  "plugin_id": "aws-health-dashboard",
+  "readme": "# AWS Health\n\n## Description\nThe AWS Health plugin provides real-time insights into AWS Health events, including ongoing issues, scheduled changes, and notifications. It enables users to monitor and manage AWS health events by displaying detailed information for each event.\n\n## Functionality\n- Fetches AWS health events across different categories: issues, scheduled changes, notifications, and event logs.\n- Displays events with options to filter by type and view event details.\n- Links directly to the AWS Health Console for more information on specific events.\n- Allows customization of monitored AWS regions through the configuration file.\n\n## Installation\nFrom your Backstage directory:\n\n1. Add the plugin:\n   ```bash\n   yarn --cwd packages/app add @internal/backstage-plugin-aws-health\n   ```\n\n2. Add the AWS Health component to `packages/app/src/components/catalog/EntityPage.tsx`:\n\n   ```typescript\n   import { AwsHealthComponent } from '@internal/backstage-plugin-aws-health';\n   // ...\n   const entityPage = (\n     <EntityLayout>\n       <EntityLayout.Route path=\"/\" title=\"Overview\">\n         <Grid container spacing={3}>\n           ...\n           <Grid item xs={12} md={6}>\n             <AwsHealthComponent />\n           </Grid>\n         </Grid>\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n   ```\n",
+  "repository": "https://github.com/itsyndicate/itsyndicate-devops-platform-plugins/tree/HEAD/workspaces/aws-health/aws-health-dashboard",
+  "role": "frontend-plugin",
+  "scope": "@itsyndicate",
+  "updated": "2024-11-15T11:20:01.266Z",
+  "version": "0.1.65",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2024-11-15T11:20:01.266Z",
+      "version": "0.1.65"
+    },
+    {
+      "date": "2024-11-15T11:07:37.764Z",
+      "version": "0.1.60"
+    },
+    {
+      "date": "2024-11-12T14:31:17.089Z",
+      "version": "0.1.55"
+    },
+    {
+      "date": "2024-11-12T12:31:41.440Z",
+      "version": "0.1.50"
+    },
+    {
+      "date": "2024-11-12T11:55:20.217Z",
+      "version": "0.1.45"
+    },
+    {
+      "date": "2024-11-12T11:50:45.485Z",
+      "version": "0.1.40"
+    },
+    {
+      "date": "2024-11-12T10:47:17.440Z",
+      "version": "0.1.35"
+    },
+    {
+      "date": "2024-11-12T10:20:18.071Z",
+      "version": "0.1.30"
+    },
+    {
+      "date": "2024-11-05T10:27:13.163Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2024-11-05T10:15:42.808Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2024-11-05T09:14:19.947Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2024-11-05T09:02:16.918Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2024-11-05T08:50:47.769Z",
+      "version": "0.1.5"
+    }
+  ]
+}

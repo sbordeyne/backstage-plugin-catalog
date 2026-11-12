@@ -1,0 +1,83 @@
+{
+  "author": "pfeifferj",
+  "created": "2024-01-03T18:05:11.840Z",
+  "deprecated": "",
+  "description": "The kubernetes-deploy module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pfeifferj"
+  ],
+  "name": "@pfeifferj/plugin-scaffolder-backend-module-kubernetes-deploy",
+  "plugin_id": "",
+  "readme": "# @pfeifferj/plugin-scaffolder-backend-module-kubernetes-deploy\n\nThe kubernetes-deploy module for [@pfeifferj/plugin-scaffolder-backend-module-kubernetes-deploy](https://www.npmjs.com/package/@pfeifferj/plugin-scaffolder-backend-module-kubernetes-deploy).\n\n## quickstart\nInstall package\n```bash\nyarn add --cwd packages/backend @pfeifferj/plugin-scaffolder-backend-module-kubernetes-deploy\n```\n\nImport plugin into `scaffolder.ts`\n\n```typescript\nimport { CatalogClient } from '@backstage/catalog-client';\nimport {\n  createBuiltinActions,\n  createRouter,\n} from '@backstage/plugin-scaffolder-backend';\nimport { Router } from 'express';\nimport type { PluginEnvironment } from '../types';\nimport {\n  deployKubernetesAction,\n  templateAndValidateKubernetesAction,\n} from '@pfeifferj/plugin-scaffolder-backend-module-kubernetes-deploy'; // here\nimport { ScmIntegrations } from '@backstage/integration';\nimport { createConfluenceToMarkdownAction } from '@backstage/plugin-scaffolder-backend-module-confluence-to-markdown';\n\n```\n\nand add actions\n\n```typescript\n  const actions = [\n    ...builtInActions,\n    deployKubernetesAction(), // here\n    templateAndValidateKubernetesAction(), // and here\n    createConfluenceToMarkdownAction({\n      integrations,\n      config: env.config,\n      reader: env.reader,\n    }),\n  ];\n\n\n```\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "https://github.com/pfeifferj/backstage-plugin-scaffolder-kubernetes-deploy",
+  "role": "backend-plugin-module",
+  "scope": "@pfeifferj",
+  "updated": "2024-02-15T22:37:58.571Z",
+  "version": "0.0.27",
+  "version_count": 27,
+  "versions": [
+    {
+      "date": "2024-02-15T22:37:58.571Z",
+      "version": "0.0.27"
+    },
+    {
+      "date": "2024-02-15T19:34:52.052Z",
+      "version": "0.0.26"
+    },
+    {
+      "date": "2024-02-04T15:54:03.631Z",
+      "version": "0.0.25"
+    },
+    {
+      "date": "2024-02-04T14:02:05.309Z",
+      "version": "0.0.24"
+    },
+    {
+      "date": "2024-02-04T13:49:07.453Z",
+      "version": "0.0.23"
+    },
+    {
+      "date": "2024-02-04T13:04:10.022Z",
+      "version": "0.0.22"
+    },
+    {
+      "date": "2024-02-04T11:43:05.853Z",
+      "version": "0.0.21"
+    },
+    {
+      "date": "2024-02-03T20:58:14.674Z",
+      "version": "0.0.20"
+    },
+    {
+      "date": "2024-02-03T20:07:41.793Z",
+      "version": "0.0.19"
+    },
+    {
+      "date": "2024-02-03T19:15:16.378Z",
+      "version": "0.0.18"
+    },
+    {
+      "date": "2024-02-03T17:53:46.854Z",
+      "version": "0.0.17"
+    },
+    {
+      "date": "2024-02-03T17:32:08.424Z",
+      "version": "0.0.16"
+    },
+    {
+      "date": "2024-01-07T19:18:29.423Z",
+      "version": "0.0.15"
+    },
+    {
+      "date": "2024-01-07T17:58:57.649Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2024-01-06T16:33:21.678Z",
+      "version": "0.0.13"
+    }
+  ]
+}

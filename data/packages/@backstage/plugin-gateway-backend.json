@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2025-04-15T17:54:41.369Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-gateway-backend",
+  "plugin_id": "gateway",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/gateway-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage",
+  "updated": "2026-10-20T17:01:14.154Z",
+  "version": "1.1.10",
+  "version_count": 411,
+  "versions": [
+    {
+      "date": "2026-11-11T03:05:10.242Z",
+      "version": "1.1.11-next.1"
+    },
+    {
+      "date": "2026-11-07T02:59:13.095Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T03:03:11.636Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T02:57:18.213Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-10-31T02:51:44.270Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:50:58.769Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T03:01:58.122Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T03:01:07.091Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:34:48.255Z",
+      "version": "1.1.11-next.0"
+    },
+    {
+      "date": "2026-10-20T17:01:14.154Z",
+      "version": "1.1.10"
+    },
+    {
+      "date": "2026-09-29T12:33:31.053Z",
+      "version": "1.1.10-next.1"
+    },
+    {
+      "date": "2026-09-28T03:17:21.459Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:11:13.153Z",
+      "version": "0.0.0-nightly-20260927023342"
+    },
+    {
+      "date": "2026-09-26T03:06:41.678Z",
+      "version": "0.0.0-nightly-20260926022852"
+    },
+    {
+      "date": "2026-09-25T03:06:26.584Z",
+      "version": "0.0.0-nightly-20260925022940"
+    }
+  ]
+}

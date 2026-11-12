@@ -1,0 +1,86 @@
+{
+  "author": "Red Hat",
+  "created": "2024-08-20T22:24:02.659Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-3scale-backend",
+  "plugin_id": "3scale",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/3scale/plugins/3scale-backend",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-09-08T21:38:39.200Z",
+  "version": "3.17.0",
+  "version_count": 32,
+  "versions": [
+    {
+      "date": "2026-09-08T21:38:39.200Z",
+      "version": "3.17.0"
+    },
+    {
+      "date": "2026-07-30T12:22:21.508Z",
+      "version": "3.16.0"
+    },
+    {
+      "date": "2026-06-24T15:29:48.662Z",
+      "version": "3.15.0"
+    },
+    {
+      "date": "2026-06-23T12:23:33.216Z",
+      "version": "3.14.1"
+    },
+    {
+      "date": "2026-06-17T13:03:43.224Z",
+      "version": "3.14.0"
+    },
+    {
+      "date": "2026-04-14T07:28:33.683Z",
+      "version": "3.13.0"
+    },
+    {
+      "date": "2026-02-12T14:26:25.261Z",
+      "version": "3.12.0"
+    },
+    {
+      "date": "2026-01-19T08:32:06.908Z",
+      "version": "3.11.0"
+    },
+    {
+      "date": "2025-12-12T16:15:42.684Z",
+      "version": "3.10.0"
+    },
+    {
+      "date": "2025-10-23T09:42:07.077Z",
+      "version": "3.9.0"
+    },
+    {
+      "date": "2025-09-17T09:49:49.087Z",
+      "version": "3.8.0"
+    },
+    {
+      "date": "2025-08-13T14:13:00.041Z",
+      "version": "3.7.0"
+    },
+    {
+      "date": "2025-06-23T13:55:10.661Z",
+      "version": "3.6.1"
+    },
+    {
+      "date": "2025-06-17T16:01:31.688Z",
+      "version": "3.6.0"
+    },
+    {
+      "date": "2025-05-30T14:23:24.023Z",
+      "version": "3.5.0"
+    }
+  ]
+}

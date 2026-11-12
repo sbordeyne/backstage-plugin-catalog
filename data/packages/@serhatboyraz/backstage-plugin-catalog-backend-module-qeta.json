@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2026-07-23T13:11:04.725Z",
+  "deprecated": "",
+  "description": "The qeta backend module for the catalog plugin.",
+  "homepage": "https://github.com/drodil/backstage-plugin-qeta",
+  "keywords": [
+    "backend",
+    "backstage",
+    "backstage.io",
+    "plugin"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "serhatboyraz"
+  ],
+  "name": "@serhatboyraz/backstage-plugin-catalog-backend-module-qeta",
+  "plugin_id": "catalog",
+  "readme": "# @internal/plugin-catalog-backend-module-qeta\r\n\r\nThe qeta backend module for the catalog plugin.\r\n\r\n## Installation\r\n\r\nIn your `packages/backend/src/index.ts` make the following changes:\r\n\r\n```diff\r\n  import { createBackend } from '@backstage/backend-defaults';\r\n  const backend = createBackend();\r\n  // ... other feature additions\r\n+ backend.add(import('@serhatboyraz/backstage-plugin-catalog-backend-module-qeta'));\r\n  backend.start();\r\n```\r\n\r\n## Processors\r\n\r\n- `CatalogEntityLinkProcessor`: Adds `qeta` links in catalog entities.\r\n",
+  "repository": "https://github.com/drodil/backstage-plugin-qeta",
+  "role": "backend-plugin-module",
+  "scope": "@serhatboyraz",
+  "updated": "2026-07-23T17:03:26.428Z",
+  "version": "3.59.13",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-07-23T17:03:26.428Z",
+      "version": "3.59.13"
+    },
+    {
+      "date": "2026-07-23T14:37:35.055Z",
+      "version": "3.59.12"
+    },
+    {
+      "date": "2026-07-23T14:09:53.376Z",
+      "version": "3.59.11"
+    },
+    {
+      "date": "2026-07-23T13:11:05.136Z",
+      "version": "3.59.10"
+    }
+  ]
+}

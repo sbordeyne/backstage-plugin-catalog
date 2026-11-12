@@ -1,0 +1,38 @@
+{
+  "author": "tduniec",
+  "created": "2025-02-05T04:20:59.261Z",
+  "deprecated": "",
+  "description": "This plugin provides an implementation of charts and statistics related to your time savings that are coming from usage of your templates. Plugins is built from frontend and backend part. Backend plugin is responsible for scheduled stats parsing process a",
+  "homepage": "https://github.com/alithya-oss/backstage-plugins/workspaces/time-saver",
+  "keywords": [
+    "backstage",
+    "time-saver"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fjudith"
+  ],
+  "name": "@alithya-oss/backstage-plugin-time-saver-backend",
+  "plugin_id": "time-saver",
+  "readme": "",
+  "repository": "https://github.com/alithya-oss/backstage-plugins/tree/HEAD/workspaces/time-saver/plugins/time-saver-backend",
+  "role": "backend-plugin",
+  "scope": "@alithya-oss",
+  "updated": "2025-05-21T04:15:15.350Z",
+  "version": "3.0.7",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-05-21T04:15:15.350Z",
+      "version": "3.0.7"
+    },
+    {
+      "date": "2025-05-10T03:57:54.617Z",
+      "version": "3.0.6"
+    },
+    {
+      "date": "2025-02-05T04:20:59.517Z",
+      "version": "3.0.5"
+    }
+  ]
+}

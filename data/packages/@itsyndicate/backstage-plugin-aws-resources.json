@@ -1,0 +1,79 @@
+{
+  "author": "ITsyndicate",
+  "created": "2024-11-05T08:49:52.180Z",
+  "deprecated": "",
+  "description": "## Description The AWS Resources plugin provides a visual overview of various AWS resources, displaying their counts and categories. Users can view details for each resource type and navigate to specific AWS Console links for detailed resource management.",
+  "homepage": "https://itsyndicate.org",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "maksym_yemleninov",
+    "volodymyr.voitovych"
+  ],
+  "name": "@itsyndicate/backstage-plugin-aws-resources",
+  "plugin_id": "aws-resources",
+  "readme": "# AWS Resources\n\n## Description\nThe AWS Resources plugin provides a visual overview of various AWS resources, displaying their counts and categories. Users can view details for each resource type and navigate to specific AWS Console links for detailed resource management.\n\n## Functionality\n- Fetches and categorizes AWS resources (EC2, ECS, S3, RDS, etc.).\n- Provides resource counts and details for each AWS service.\n- Opens a dialog with specific resource details and links to the AWS Console.\n- Customizable to show resources from specific regions as defined in `app-config.yaml`.\n\n## Installation\nFrom your Backstage directory:\n\n1. Add the plugin:\n   ```bash\n   yarn --cwd packages/app add @internal/backstage-plugin-aws-resources\n   ```\n\n2. Example: Add the AWS Resources widget to `packages/app/src/components/catalog/EntityPage.tsx`:\n\n   ```typescript\n   import { AwsResourcesWidget } from '@internal/backstage-plugin-aws-resources';\n   // ...\n   const entityPage = (\n     <EntityLayout>\n       <EntityLayout.Route path=\"/\" title=\"Overview\">\n         <Grid container spacing={3}>\n           ...\n           <Grid item xs={12} md={6}>\n             <AwsResourcesWidget />\n           </Grid>\n         </Grid>\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n   ```",
+  "repository": "https://github.com/itsyndicate/itsyndicate-devops-platform-plugins/tree/HEAD/workspaces/aws-resources/aws-resources",
+  "role": "frontend-plugin",
+  "scope": "@itsyndicate",
+  "updated": "2024-11-15T11:18:48.028Z",
+  "version": "0.1.75",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2024-11-15T11:18:48.028Z",
+      "version": "0.1.75"
+    },
+    {
+      "date": "2024-11-15T11:06:24.287Z",
+      "version": "0.1.70"
+    },
+    {
+      "date": "2024-11-12T14:30:14.644Z",
+      "version": "0.1.65"
+    },
+    {
+      "date": "2024-11-12T12:30:18.001Z",
+      "version": "0.1.50"
+    },
+    {
+      "date": "2024-11-12T11:54:03.713Z",
+      "version": "0.1.45"
+    },
+    {
+      "date": "2024-11-12T11:49:19.048Z",
+      "version": "0.1.40"
+    },
+    {
+      "date": "2024-11-12T10:46:00.789Z",
+      "version": "0.1.35"
+    },
+    {
+      "date": "2024-11-12T10:18:54.376Z",
+      "version": "0.1.30"
+    },
+    {
+      "date": "2024-11-05T10:25:46.735Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2024-11-05T10:14:31.048Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2024-11-05T09:13:46.858Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2024-11-05T09:01:38.550Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2024-11-05T08:49:52.430Z",
+      "version": "0.1.5"
+    }
+  ]
+}

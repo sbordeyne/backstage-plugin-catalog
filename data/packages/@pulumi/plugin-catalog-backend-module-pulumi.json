@@ -1,0 +1,68 @@
+{
+  "author": "",
+  "created": "2023-11-26T17:28:55.833Z",
+  "deprecated": "",
+  "description": "The pulumi backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "joeduffy",
+    "pulumi-bot"
+  ],
+  "name": "@pulumi/plugin-catalog-backend-module-pulumi",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@pulumi",
+  "updated": "2025-05-24T16:27:41.659Z",
+  "version": "0.18.0",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2025-05-24T16:27:41.659Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2025-02-18T13:09:09.041Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2024-11-19T09:44:57.459Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2024-10-02T16:01:31.068Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2024-07-10T11:01:32.294Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2024-05-20T11:18:38.038Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2024-04-22T15:46:04.507Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2024-04-10T14:19:17.172Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2024-03-04T12:25:27.515Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2023-12-20T16:18:52.927Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2023-11-26T17:28:56.093Z",
+      "version": "0.3.0"
+    }
+  ]
+}

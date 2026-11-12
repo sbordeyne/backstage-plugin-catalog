@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-05-21T02:42:41.631Z",
+  "deprecated": "",
+  "description": "The catalog-entities backend module for the tech-insights plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fjudith"
+  ],
+  "name": "@alithya-oss/backstage-plugin-tech-insights-backend-module-catalog-entities",
+  "plugin_id": "tech-insights",
+  "readme": "",
+  "repository": "https://github.com/alithya-oss/backtage-plugins/tree/HEAD/workspaces/tech-insights/plugins/tech-insights-backend-module-catalog-entities",
+  "role": "backend-plugin-module",
+  "scope": "@alithya-oss",
+  "updated": "2025-05-21T04:15:18.899Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-05-21T04:15:18.899Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-05-21T02:42:41.960Z",
+      "version": "0.1.0"
+    }
+  ]
+}

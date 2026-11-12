@@ -1,0 +1,58 @@
+{
+  "author": "Red Hat",
+  "created": "2024-07-29T14:56:11.142Z",
+  "deprecated": "",
+  "description": "The Lightspeed plugin enables you to interact with any LLM server running a model with OpenAI's API compatibility.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-lightspeed",
+  "plugin_id": "lightspeed",
+  "readme": "# Lightspeed plugin for Backstage\n\nThe Lightspeed plugin enables you to interact with any LLM server running a model with OpenAI's API compatibility.\n\n## For administrators\n\n### Installation\n\n1. Install the Lightspeed plugin using the following command:\n\n   ```console\n   yarn workspace app add @janus-idp/backstage-plugin-lightspeed\n   ```\n\n### Configuration\n\n1. Set the proxy to the desired LLM server in the `app-config.yaml` file as follows:\n\n   ```yaml title=\"app-config.yaml\"\n   proxy:\n     '/lightspeed/api':\n       target: http://localhost:11434/v1/\n       headers:\n         Authorization: Bearer <token>\n   ```\n\n2. Add a new nav item **Lightspeed** in App `packages/app/src/App.tsx`:\n\n   ```tsx title=\"packages/app/src/components/App.tsx\"\n   /* highlight-add-next-line */ import { LightspeedPage } from '@janus-idp/backstage-plugin-lightspeed';\n\n   <Route path=\"/lightspeed\" element={<LightspeedPage />} />;\n   ```\n\n3. Enable **Lightspeed** page in `packages/app/src/components/Root/Root.tsx`:\n\n   ```tsx title=\"packages/app/src/components/Root/Root.tsx\"\n   /* highlight-add-next-line */ import { LightspeedIcon } from '@janus-idp/backstage-plugin-lightspeed';\n\n   <SidebarItem\n     icon={LightspeedIcon as IconComponent}\n     to=\"lightspeed\"\n     text=\"Lightspeed\"\n   />;\n   ```\n\n## For users\n\n### Using the Lightspeed plugin in Backstage\n\nLightspeed is a front-end plugin that enables you to interact with any LLM server running a model with OpenAI's API compatibility.\n\n#### Prerequisites\n\n- Your Backstage application is installed and running.\n- You have installed the Lightspeed plugin. For installation process, see [Installation](#installation).\n\n#### Procedure\n\n1. Open your Backstage application and select a Lightspeed nav item from the **Navigation**.\n2. Ask you questions to the Lightspeed chatbot.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/lightspeed",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-09-23T15:37:50.963Z",
+  "version": "0.1.2",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2024-09-23T15:37:50.963Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-09-17T17:21:44.614Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-08-07T15:56:43.435Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-08-02T15:30:47.800Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-08-01T19:42:42.671Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-07-29T14:56:11.380Z",
+      "version": "0.1.0"
+    }
+  ]
+}

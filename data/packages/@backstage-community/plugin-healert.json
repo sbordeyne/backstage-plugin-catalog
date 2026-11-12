@@ -1,0 +1,41 @@
+{
+  "author": "",
+  "created": "2026-07-22T12:07:05.224Z",
+  "deprecated": "",
+  "description": "Healert Friction Intelligence Platform Plugin for Backstage — surfaces Kubernetes bypass events and friction scores per service",
+  "homepage": "https://healert.io",
+  "keywords": [
+    "audit-log",
+    "backstage",
+    "backstage-plugin",
+    "developer-experience",
+    "devops",
+    "ebpf",
+    "friction",
+    "kubernetes",
+    "platform-engineering"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-healert",
+  "plugin_id": "healert",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/healert/plugins/healert",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-07-29T22:54:53.138Z",
+  "version": "0.2.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-07-29T22:54:53.138Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-07-22T12:07:05.633Z",
+      "version": "0.1.0"
+    }
+  ]
+}

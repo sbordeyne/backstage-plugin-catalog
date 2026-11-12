@@ -1,0 +1,33 @@
+{
+  "author": "Infosys",
+  "created": "2025-07-15T10:13:30.564Z",
+  "deprecated": "",
+  "description": "The Holiday Calendar Plugin for Backstage provides a convenient way to display and manage holiday information for any specified country or region using the Calendarific API. This plugin includes a secure backend proxy configuration to fetch holiday data w",
+  "homepage": "https://github.com/Infosys/holiday-tracker-plugin",
+  "keywords": [
+    "backstage",
+    "holiday",
+    "plugin",
+    "utility"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aditya_kr",
+    "ambrishr"
+  ],
+  "name": "@infosys_ltd/holiday-tracker-plugin",
+  "plugin_id": "holiday-tracker",
+  "readme": "# Holiday Tracker Plugin for Backstage\n\nThe Holiday Tracker Plugin for Backstage provides a convenient way to display and manage holiday information for any specified country or region using the Calendarific API. This plugin includes a secure backend proxy configuration to fetch holiday data without exposing your API key.\n\n---\n\n## Installation\n\nTo install the plugin, run the following command:\n\n```bash\nyarn --cwd packages/app add @infosys_ltd/holiday-tracker-plugin\n```\n\nAfter installation, create an account on [Calendarific](https://calendarific.com/) and generate your API Access Key.\n\n---\n\n## Configuration\n\n### Backend Proxy Configuration\n\nUpdate your `app-config.yaml` file with the following proxy configuration:\n\n```yaml\nproxy:\n  endpoints:\n    '/holidays':\n      target: 'https://calendarific.com/api/v2/holidays?api_key=YOUR_API_KEY&country=YOUR_DEFAULT_LOCATION&year=YOUR_HOLIDAY_YEAR'\n      changeOrigin: true\n```\n\n**Important Notes:**\n- Replace `YOUR_API_KEY` with your Calendarific API key.\n- Replace `YOUR_DEFAULT_LOCATION` with the desired default location (e.g., `IN`).\n- Replace `YOUR_HOLIDAY_YEAR` with the desired year (e.g., `2025`).\n\nThis configuration ensures:\n- The `api_key` (API key) is securely embedded in the proxy target URL.\n- The `country` parameter specifies the default location for calendar data.\n- The `year` parameter specifies the year for calendar data.\n\n---\n\n## Using Environment Variables (Optional)\n\nInstead of hardcoding the `api_key`,`country`,`year` in the configuration file, you can dynamically set them via environment variables. This approach is more secure and flexible.\n\nSet the following environment variables in your CLI:\n\n```bash\nexport HOLIDAY_TRACKER_ACCESS_KEY=your_api_key_here\nexport HOLIDAY_TRACKER_LOCATION=your_default_location_here\nexport HOLIDAY_TRACKER_YEAR=your_default_year_here\n```\n\nThen update the `app-config.yaml` as follows:\n\n```yaml\nproxy:\n  endpoints:\n    '/holidays':\n      target: 'https://calendarific.com/api/v2/holidays?api_key=${HOLIDAY_TRACKER_ACCESS_KEY}&country=${HOLIDAY_TRACKER_LOCATION}&year=${HOLIDAY_TRACKER_YEAR}'\n      changeOrigin: true\n```\n\n---\n\n### Example Screenshots\n\n**Holiday Tracker Plugin Configuration:**\n\n```bash\nimport { HolidayTrackerPage } from '@infosys_ltd/holiday-tracker-plugin';\n```\n> [!NOTE]\n> You have to import above HolidayTrackerPage and use it wherever its needed.\n\n![Holiday Tracker Page](https://github.com/Infosys/holiday-tracker-plugin/blob/main/plugins/holiday-tracker/src/docs/holidaytrackerplugin.png)\n\n---\n\n## Contributing\n\nContributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.\n\n---\n\n## License\n\nThis project is licensed under the Apache License 2.0. See the [LICENSE](https://github.com/Infosys/holiday-tracker-plugin/blob/main/LICENSE) file for details.\n",
+  "repository": "https://github.com/Infosys/holiday-tracker-plugin",
+  "role": "frontend-plugin",
+  "scope": "@infosys_ltd",
+  "updated": "2025-07-15T10:13:30.929Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-07-15T10:13:30.929Z",
+      "version": "1.0.0"
+    }
+  ]
+}

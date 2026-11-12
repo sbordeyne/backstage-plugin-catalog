@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-09-08T15:09:53.098Z",
+  "deprecated": "",
+  "description": "Welcome to the ai-assistant plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sweetoburrito"
+  ],
+  "name": "@sweetoburrito/backstage-plugin-ai-assistant",
+  "plugin_id": "ai-assistant",
+  "readme": "# ai-assistant\n\nWelcome to the ai-assistant plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/ai-assistant](http://localhost:3000/ai-assistant).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@sweetoburrito",
+  "updated": "2026-05-07T11:49:17.338Z",
+  "version": "0.15.1",
+  "version_count": 63,
+  "versions": [
+    {
+      "date": "2026-05-07T11:49:17.338Z",
+      "version": "0.15.1"
+    },
+    {
+      "date": "2026-05-07T11:44:01.283Z",
+      "version": "0.0.0-snapshot-20260507114349"
+    },
+    {
+      "date": "2026-04-17T11:29:18.992Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2026-04-17T11:17:36.786Z",
+      "version": "0.0.0-snapshot-20260417111724"
+    },
+    {
+      "date": "2026-04-17T08:30:57.473Z",
+      "version": "0.0.0-snapshot-20260417083045"
+    },
+    {
+      "date": "2026-04-15T06:55:58.676Z",
+      "version": "0.0.0-snapshot-20260415065547"
+    },
+    {
+      "date": "2026-04-10T14:48:53.690Z",
+      "version": "0.0.0-snapshot-20260410144842"
+    },
+    {
+      "date": "2026-04-07T09:01:36.491Z",
+      "version": "0.0.0-snapshot-20260407090125"
+    },
+    {
+      "date": "2026-03-05T06:57:58.743Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2026-02-20T12:51:08.567Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2026-02-20T12:40:23.851Z",
+      "version": "0.0.0-snapshot-20260220124013"
+    },
+    {
+      "date": "2026-02-20T11:57:51.409Z",
+      "version": "0.0.0-snapshot-20260220115740"
+    },
+    {
+      "date": "2026-02-20T11:01:40.626Z",
+      "version": "0.0.0-snapshot-20260220110129"
+    },
+    {
+      "date": "2026-02-19T13:00:08.386Z",
+      "version": "0.12.2"
+    },
+    {
+      "date": "2026-02-18T12:37:07.974Z",
+      "version": "0.12.1"
+    }
+  ]
+}

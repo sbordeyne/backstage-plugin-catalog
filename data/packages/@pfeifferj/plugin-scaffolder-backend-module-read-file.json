@@ -1,0 +1,59 @@
+{
+  "author": "pfeifferj",
+  "created": "2024-02-03T22:46:01.872Z",
+  "deprecated": "",
+  "description": "The read file module for plugin-scaffolder-backend-module-read-file.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pfeifferj"
+  ],
+  "name": "@pfeifferj/plugin-scaffolder-backend-module-read-file",
+  "plugin_id": "",
+  "readme": "# @pfeifferj/plugin-scaffolder-backend-module-read-file\n\nThe read file module for [@pfeifferj/plugin-scaffolder-backend-module-read-file](https://www.npmjs.com/package/@pfeifferj/plugin-scaffolder-backend-module-read-file).\n\nAccepts a file path and returns file content as a string.\n\n## quickstart\n\nInstall package\n\n```bash\nyarn add --cwd packages/backend @pfeifferj/plugin-scaffolder-backend-module-read-file\n```\n\nImport plugin into `scaffolder.ts`\n\n```typescript\nimport { CatalogClient } from '@backstage/catalog-client';\nimport {\n\tcreateBuiltinActions,\n\tcreateRouter,\n} from '@backstage/plugin-scaffolder-backend';\nimport { Router } from 'express';\nimport type { PluginEnvironment } from '../types';\nimport { readFileAction } from '@pfeifferj/plugin-scaffolder-backend-module-read-file'; // here\nimport { ScmIntegrations } from '@backstage/integration';\nimport { createConfluenceToMarkdownAction } from '@backstage/plugin-scaffolder-backend-module-confluence-to-markdown';\n```\n\nand add actions\n\n```typescript\nconst actions = [\n\t...builtInActions,\n\treadFileAction(), // here\n\tcreateConfluenceToMarkdownAction({\n\t\tintegrations,\n\t\tconfig: env.config,\n\t\treader: env.reader,\n\t}),\n];\n```\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "https://github.com/pfeifferj/backstage-plugin-scaffolder-read-file",
+  "role": "backend-plugin-module",
+  "scope": "@pfeifferj",
+  "updated": "2024-02-15T19:34:31.173Z",
+  "version": "0.0.9",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2024-02-15T19:34:31.173Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2024-02-04T12:38:32.562Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2024-02-04T12:18:46.719Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2024-02-04T11:33:05.057Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2024-02-04T11:20:57.413Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2024-02-04T11:01:18.643Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-02-04T10:09:27.120Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-02-03T23:08:12.682Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-02-03T22:46:02.215Z",
+      "version": "0.0.0"
+    }
+  ]
+}

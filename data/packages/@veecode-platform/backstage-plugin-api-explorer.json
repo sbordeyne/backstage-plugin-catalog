@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2024-04-04T13:20:30.155Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-api-explorer",
+  "plugin_id": "api-explorer",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2024-09-20T14:44:46.982Z",
+  "version": "0.3.18",
+  "version_count": 64,
+  "versions": [
+    {
+      "date": "2024-09-20T14:44:46.982Z",
+      "version": "0.3.18"
+    },
+    {
+      "date": "2024-07-10T17:08:11.828Z",
+      "version": "0.3.17"
+    },
+    {
+      "date": "2024-07-08T20:31:10.945Z",
+      "version": "0.3.16"
+    },
+    {
+      "date": "2024-07-02T19:46:46.520Z",
+      "version": "0.3.15"
+    },
+    {
+      "date": "2024-07-02T12:55:35.025Z",
+      "version": "0.3.14"
+    },
+    {
+      "date": "2024-07-02T12:26:38.868Z",
+      "version": "0.3.13"
+    },
+    {
+      "date": "2024-07-01T15:02:49.449Z",
+      "version": "0.3.12"
+    },
+    {
+      "date": "2024-07-01T13:02:59.948Z",
+      "version": "0.3.11"
+    },
+    {
+      "date": "2024-06-24T14:59:49.150Z",
+      "version": "0.3.10"
+    },
+    {
+      "date": "2024-06-21T19:49:51.348Z",
+      "version": "0.3.9"
+    },
+    {
+      "date": "2024-06-21T16:05:45.704Z",
+      "version": "0.3.8"
+    },
+    {
+      "date": "2024-06-21T15:57:03.138Z",
+      "version": "0.3.7"
+    },
+    {
+      "date": "2024-06-12T12:32:03.546Z",
+      "version": "0.3.6"
+    },
+    {
+      "date": "2024-06-12T10:12:42.867Z",
+      "version": "0.3.5"
+    },
+    {
+      "date": "2024-06-11T23:46:58.873Z",
+      "version": "0.3.4"
+    }
+  ]
+}

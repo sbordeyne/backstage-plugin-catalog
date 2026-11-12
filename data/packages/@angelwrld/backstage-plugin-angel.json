@@ -1,0 +1,31 @@
+{
+  "author": "Austin",
+  "created": "2025-11-10T18:02:03.045Z",
+  "deprecated": "",
+  "description": "A custom Backstage frontend plugin",
+  "homepage": "https://github.com/New-Goblins/austin-plugin#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "angelwrld"
+  ],
+  "name": "@angelwrld/backstage-plugin-angel",
+  "plugin_id": "angel-plugin",
+  "readme": "# aaustin\n\nWelcome to the aaustin plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/aaustin](http://localhost:3000/aaustin).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/New-Goblins/austin-plugin",
+  "role": "frontend-plugin",
+  "scope": "@angelwrld",
+  "updated": "2025-11-10T18:02:03.394Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-11-10T18:02:03.394Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-03-04T02:28:05.770Z",
+  "deprecated": "",
+  "description": "Visualize interesting information about your software catalog.",
+  "homepage": "",
+  "keywords": [],
+  "license": "AGPL-3.0-or-later",
+  "maintainers": [
+    "vsouz4"
+  ],
+  "name": "@vsouz4/scorecards-backstage-plugin",
+  "plugin_id": "",
+  "readme": "# Scorecards Plugin for Backstage\n\nVisualize interesting information about your software catalog.\n\n## Setup and Integration\n\nInstall the plugin\n```shell\n$ yarn add --cwd packages/app @vsouz4/scorecards-backstage-plugin\n```\n\nAdd proxy config\n```\n# app-config.yaml\n\nproxy:\n  '/scorecards':\n    target: '<SCORECARDS_API_URL>'\n```\n\nExport the plugin\n```ts\n# packages/app/src/plugins.ts\n\nexport { scorecardsPlugin } from '@vsouz4/scorecards-backstage-plugin';\n```\n\nSetup route\n```tsx\n# packages/app/src/App.tsx\n\nimport { ScorecardsPage } from '@vsouz4/scorecards-backstage-plugin';\n\n...\n\n<Route path=\"/scorecards\" element={<ScorecardsPage />} />\n```\n\nAdd a new sidebar item\n```tsx\n# packages/app/src/components/Root/Root.tsx\n\nimport LayersIcon from '@material-ui/icons/Layers';\n\n...\n\n<SidebarItem icon={LayersIcon} to=\"scorecards\" text=\"Scorecards\" />\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@vsouz4",
+  "updated": "2024-03-11T10:59:59.239Z",
+  "version": "0.1.26",
+  "version_count": 27,
+  "versions": [
+    {
+      "date": "2024-03-11T10:59:59.239Z",
+      "version": "0.1.26"
+    },
+    {
+      "date": "2024-03-11T09:43:25.686Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2024-03-10T11:30:34.649Z",
+      "version": "0.1.24"
+    },
+    {
+      "date": "2024-03-10T11:12:27.743Z",
+      "version": "0.1.23"
+    },
+    {
+      "date": "2024-03-10T11:10:44.745Z",
+      "version": "0.1.22"
+    },
+    {
+      "date": "2024-03-10T10:51:48.004Z",
+      "version": "0.1.21"
+    },
+    {
+      "date": "2024-03-10T10:46:29.198Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2024-03-10T10:18:10.893Z",
+      "version": "0.1.19"
+    },
+    {
+      "date": "2024-03-10T10:08:02.820Z",
+      "version": "0.1.18"
+    },
+    {
+      "date": "2024-03-10T09:59:54.188Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2024-03-09T15:14:32.372Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2024-03-09T13:07:47.373Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2024-03-09T12:54:12.776Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2024-03-08T20:20:56.664Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2024-03-08T20:15:31.825Z",
+      "version": "0.1.12"
+    }
+  ]
+}

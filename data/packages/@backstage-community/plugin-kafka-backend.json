@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:05:08.748Z",
+  "deprecated": "",
+  "description": "A Backstage backend plugin that integrates towards Kafka",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "kafka"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-kafka-backend",
+  "plugin_id": "kafka",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/kafka/plugins/kafka-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-09-19T18:28:10.498Z",
+  "version": "0.12.0",
+  "version_count": 17,
+  "versions": [
+    {
+      "date": "2026-09-19T18:28:10.498Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-04-17T18:32:22.474Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-12-24T22:51:52.143Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-12-17T13:17:07.337Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-08-14T13:57:35.431Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-07-04T12:23:06.972Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-03-22T21:58:22.941Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-03-10T18:50:48.372Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2025-02-02T17:06:52.188Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-12-24T00:24:40.124Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-11-20T13:24:12.832Z",
+      "version": "0.3.22"
+    },
+    {
+      "date": "2024-10-19T14:06:57.738Z",
+      "version": "0.3.21"
+    },
+    {
+      "date": "2024-09-24T07:17:05.792Z",
+      "version": "0.3.20"
+    },
+    {
+      "date": "2024-08-30T16:11:33.585Z",
+      "version": "0.3.19"
+    },
+    {
+      "date": "2024-08-23T18:33:43.279Z",
+      "version": "0.3.18"
+    }
+  ]
+}

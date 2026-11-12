@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-12-27T19:01:16.690Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-announcements",
+  "plugin_id": "announcements",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/announcements/plugins/announcements",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-09-29T21:15:02.842Z",
+  "version": "2.14.1",
+  "version_count": 67,
+  "versions": [
+    {
+      "date": "2026-09-29T21:15:02.842Z",
+      "version": "2.14.1"
+    },
+    {
+      "date": "2026-09-22T16:15:56.859Z",
+      "version": "2.14.0"
+    },
+    {
+      "date": "2026-08-27T12:53:40.281Z",
+      "version": "2.13.0"
+    },
+    {
+      "date": "2026-08-18T17:40:21.751Z",
+      "version": "2.12.1"
+    },
+    {
+      "date": "2026-08-17T10:56:57.868Z",
+      "version": "2.12.0"
+    },
+    {
+      "date": "2026-07-14T17:22:31.385Z",
+      "version": "2.11.1"
+    },
+    {
+      "date": "2026-06-23T23:28:48.713Z",
+      "version": "2.11.0"
+    },
+    {
+      "date": "2026-06-05T03:25:14.307Z",
+      "version": "2.10.0"
+    },
+    {
+      "date": "2026-06-04T14:35:14.442Z",
+      "version": "2.9.1"
+    },
+    {
+      "date": "2026-04-24T06:06:39.261Z",
+      "version": "2.9.0"
+    },
+    {
+      "date": "2026-04-08T20:12:28.762Z",
+      "version": "2.8.0"
+    },
+    {
+      "date": "2026-03-28T20:29:56.681Z",
+      "version": "2.7.0"
+    },
+    {
+      "date": "2026-03-22T09:51:21.969Z",
+      "version": "2.6.0"
+    },
+    {
+      "date": "2026-03-19T16:48:23.822Z",
+      "version": "2.5.1"
+    },
+    {
+      "date": "2026-03-17T11:14:37.097Z",
+      "version": "2.5.0"
+    }
+  ]
+}

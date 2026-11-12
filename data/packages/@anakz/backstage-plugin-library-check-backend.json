@@ -1,0 +1,48 @@
+{
+  "author": "",
+  "created": "2024-03-10T19:20:57.259Z",
+  "deprecated": "",
+  "description": "Backstage.io Library Check plugin backend",
+  "homepage": "https://github.com/anakzr/backstage-plugin-library-check",
+  "keywords": [
+    "backend",
+    "backstage",
+    "backstage.io",
+    "plugin"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "accezar"
+  ],
+  "name": "@anakz/backstage-plugin-library-check-backend",
+  "plugin_id": "",
+  "readme": "# Library Check Backend\n\nWelcome to the library-check-backend backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n\n### Setup instructions:\n\nAdd the plugin to your backend app:\n\n```bash\ncd packages/backend && yarn add @anakz/backstage-plugin-library-check-backend\n```\n\nCreate new file at packages/backend/src/plugins/libraryCheck.ts:\n\n```ts\n\n// packages/backend/src/plugins/libraryCheck.ts\n\nimport { PluginEnvironment } from '../types';\nimport { Router } from 'express';\nimport {\n  DatabaseLibraryCheckStore,\n  createRouter,\n} from '@anakz/backstage-plugin-library-check-backend';\n\nexport default async function createPlugin({\n  logger,\n  database,\n  config,\n}: PluginEnvironment): Promise<Router> {\n  const db = await DatabaseLibraryCheckStore.create({\n    database: database,\n  });\n  return await createRouter({\n    logger,\n    database: db,\n    config,\n  });\n}\n```\n\nDefine the schedules for the plugin processor and provider on packages/backend/src/plugins/catalog.ts\n\n```ts\n\n// packages/backend/src/plugins/catalog.ts\n\n// ...\nbuilder.addEntityProvider(\n\n    // add a new provider entry, configure the schedule frequency as you wish\n    // initialDelay must be up to 15s to avoid conflicts\n\n    LibraryCheckProvider.fromConfig({\n      config: env.config,\n      envId: 'production',\n      logger: env.logger,\n      discovery: env.discovery,\n      schedule: env.scheduler.createScheduledTaskRunner({\n        initialDelay: {\n          seconds: 15,\n        },\n        frequency: {\n          minutes: 60,\n        },\n        timeout: {\n          minutes: 1,\n        },\n      }),\n    }),\n\n    // ...\n)\n\n// Add the new processor entries, and try to declare the LibraryCheckUpdater as the last in order.\n\n  builder.addProcessor(\n    // ...\n\n    LibraryCheckProcessor.fromConfig(env.config, {\n      discoveryService: env.discovery,\n      reader: env.reader,\n      logger: env.logger,\n    }),\n\n    // Other processors...\n    \n    LibraryCheckUpdaterProcessor.fromConfig(env.config, {\n      discoveryService: env.discovery,\n      reader: env.reader,\n      logger: env.logger,\n    }),\n\n    // ...\n  );\n\n\n```\n\nNow add the plugin to your packages/backend/src/index.ts:\n\n```ts\nimport libraryCheck from './plugins/libraryCheck';\n\n// ...\nconst libraryCheckEnv = useHotMemoize(module, () => createEnv('libraryCheck'));\n\n// ...\n  apiRouter.use('/library-check', await libraryCheck(libraryCheckEnv));\n```",
+  "repository": "https://github.com/anakzr/backstage-plugin-library-check",
+  "role": "backend-plugin",
+  "scope": "@anakz",
+  "updated": "2024-04-30T20:17:25.121Z",
+  "version": "0.2.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-04-30T20:17:25.121Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-04-02T12:47:38.527Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2024-03-20T14:55:01.087Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-03-10T20:14:23.861Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-03-10T19:20:57.550Z",
+      "version": "0.0.1"
+    }
+  ]
+}

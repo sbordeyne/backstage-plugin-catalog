@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:44:32.114Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-bazaar",
+  "plugin_id": "bazaar",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/bazaar/plugins/bazaar",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:36:19.240Z",
+  "version": "0.28.0",
+  "version_count": 36,
+  "versions": [
+    {
+      "date": "2026-11-03T14:36:19.240Z",
+      "version": "0.28.0"
+    },
+    {
+      "date": "2026-09-23T16:15:00.959Z",
+      "version": "0.27.0"
+    },
+    {
+      "date": "2026-08-27T13:43:18.804Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-07-21T22:57:48.788Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-06-24T13:05:11.459Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-05-27T11:53:45.115Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-04-24T18:07:44.761Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-04-03T00:29:33.111Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-02-27T17:48:47.020Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-02-20T20:56:39.639Z",
+      "version": "0.19.1"
+    },
+    {
+      "date": "2026-01-28T22:30:09.437Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-01-16T21:03:51.388Z",
+      "version": "0.18.2"
+    },
+    {
+      "date": "2025-12-24T22:22:51.809Z",
+      "version": "0.18.1"
+    },
+    {
+      "date": "2025-12-24T16:34:24.759Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2025-11-26T13:28:14.860Z",
+      "version": "0.17.0"
+    }
+  ]
+}

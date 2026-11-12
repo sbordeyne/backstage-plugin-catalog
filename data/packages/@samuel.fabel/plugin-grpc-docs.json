@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2026-08-09T01:45:32.125Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin — gRPC playground widget for API entities (spec.type: grpc)",
+  "homepage": "https://github.com/samuelfabel/backstage-grpc-docs",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "samuel.fabel"
+  ],
+  "name": "@samuel.fabel/plugin-grpc-docs",
+  "plugin_id": "grpc-docs",
+  "readme": "",
+  "repository": "https://github.com/samuelfabel/backstage-grpc-docs/tree/HEAD/plugins/grpc-docs",
+  "role": "frontend-plugin",
+  "scope": "@samuel.fabel",
+  "updated": "2026-08-09T01:45:32.380Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-08-09T01:45:32.380Z",
+      "version": "0.1.0"
+    }
+  ]
+}

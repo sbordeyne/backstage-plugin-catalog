@@ -1,0 +1,68 @@
+{
+  "author": "",
+  "created": "2025-09-24T08:24:30.203Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-mui5-test",
+  "plugin_id": "mui5-test",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/theme/plugins/mui5-test",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-26T13:54:16.358Z",
+  "version": "0.6.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2026-10-26T13:54:16.358Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-09-29T09:25:54.815Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-07-22T22:16:14.996Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-03-26T09:14:41.737Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-03-13T10:03:30.810Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-01-01T16:04:13.775Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-11-18T11:50:02.363Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-09-30T10:52:10.098Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-09-24T09:00:59.950Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2025-09-24T08:24:30.470Z",
+      "version": "0.0.0"
+    }
+  ]
+}

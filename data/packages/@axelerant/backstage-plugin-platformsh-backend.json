@@ -1,0 +1,56 @@
+{
+  "author": "zeshanziya",
+  "created": "2024-09-24T06:31:08.870Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin for Platform.sh integration!",
+  "homepage": "https://github.com/axelerant/backstage-plugins",
+  "keywords": [
+    "backstage",
+    "platform.sh",
+    "platformsh",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "axl_platform"
+  ],
+  "name": "@axelerant/backstage-plugin-platformsh-backend",
+  "plugin_id": "platformsh",
+  "readme": "# Platform.sh Backend Plugin\n\nBackend plugin for the [Platform.sh frontend plugin](https://github.com/axelerant/backstage-plugins/tree/main/plugins/platformsh).\n\n## Setup\n\n1. Install the plugin:\n\n   ```bash\n   yarn --cwd packages/backend add @axelerant/backstage-plugin-platformsh-backend\n   ```\n\n2. Add the plugin to the backend package:\n\n   In your `packages/backend/src/index.ts`, make the following changes:\n\n   ```diff\n   import { createBackend } from '@backstage/backend-defaults';\n\n   const backend = createBackend();\n\n   + backend.add(import('@axelerant/backstage-plugin-platformsh-backend'));\n\n   backend.start();\n   ```\n\n3. Configure a CLI token. You can create a token at [https://console.platform.sh/-/users/<your-user-name>/settings/tokens](https://console.platform.sh/-/users/<your-user-name>/settings/tokens).\n\n   ```yaml\n   # app-config.yaml\n   platformsh:\n     cli_token: <cli-token>\n   ```\n",
+  "repository": "https://github.com/axelerant/backstage-plugins/tree/HEAD/plugins/platformsh-backend",
+  "role": "backend-plugin",
+  "scope": "@axelerant",
+  "updated": "2025-09-09T13:15:29.479Z",
+  "version": "0.1.6",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2025-09-09T13:15:29.479Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2025-02-24T04:30:09.652Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-09-25T11:06:53.276Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-09-24T10:45:34.512Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-09-24T10:18:04.997Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-09-24T10:02:30.923Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-09-24T06:31:09.161Z",
+      "version": "0.1.0"
+    }
+  ]
+}

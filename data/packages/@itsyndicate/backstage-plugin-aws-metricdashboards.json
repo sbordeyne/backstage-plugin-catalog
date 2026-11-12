@@ -1,0 +1,83 @@
+{
+  "author": "ITsyndicate",
+  "created": "2024-11-05T09:01:27.323Z",
+  "deprecated": "",
+  "description": "## Description The AWS Metric Dashboards plugin provides real-time metrics visualization for AWS resources. It displays charts and metrics across multiple AWS services, offering insights into the health and usage of AWS resources in specified regions.",
+  "homepage": "https://itsyndicate.org",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "maksym_yemleninov",
+    "volodymyr.voitovych"
+  ],
+  "name": "@itsyndicate/backstage-plugin-aws-metricdashboards",
+  "plugin_id": "aws-metricdashboards",
+  "readme": "# AWS Metric Dashboards\n\n## Description\nThe AWS Metric Dashboards plugin provides real-time metrics visualization for AWS resources. It displays charts and metrics across multiple AWS services, offering insights into the health and usage of AWS resources in specified regions.\n\n## Functionality\n- Displays dynamic metrics charts for AWS resources (EC2, DynamoDB, EBS, RDS, API Gateway, etc.).\n- Allows filtering by AWS region to display metrics per region.\n- Links to AWS Console for each resource for in-depth management.\n\n## Installation\nFrom your Backstage directory:\n\n1. Add the plugin:\n   ```bash\n   yarn --cwd packages/app add @internal/backstage-plugin-aws-metricdashboards\n   ```\n\n2. Add the AWS Metric Dashboards component to `packages/app/src/components/catalog/EntityPage.tsx`:\n\n   ```typescript\n   import { DashboardsComponent } from '@internal/backstage-plugin-aws-metricdashboards';\n   // ...\n   const entityPage = (\n     <EntityLayout>\n       <EntityLayout.Route path=\"/\" title=\"Overview\">\n         <Grid container spacing={3}>\n           ...\n           <Grid item xs={12} md={6}>\n             <DashboardsComponent />\n           </Grid>\n         </Grid>\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n   ```",
+  "repository": "https://github.com/itsyndicate/itsyndicate-devops-platform-plugins/tree/HEAD/workspaces/aws-metricdashboards/aws-metricdashboards",
+  "role": "frontend-plugin",
+  "scope": "@itsyndicate",
+  "updated": "2024-11-26T11:03:26.094Z",
+  "version": "0.1.85",
+  "version_count": 14,
+  "versions": [
+    {
+      "date": "2024-11-26T11:03:26.094Z",
+      "version": "0.1.85"
+    },
+    {
+      "date": "2024-11-15T11:18:26.494Z",
+      "version": "0.1.80"
+    },
+    {
+      "date": "2024-11-15T11:06:03.110Z",
+      "version": "0.1.75"
+    },
+    {
+      "date": "2024-11-12T14:29:55.022Z",
+      "version": "0.1.70"
+    },
+    {
+      "date": "2024-11-12T12:29:53.360Z",
+      "version": "0.1.55"
+    },
+    {
+      "date": "2024-11-12T11:53:40.426Z",
+      "version": "0.1.50"
+    },
+    {
+      "date": "2024-11-12T11:48:56.049Z",
+      "version": "0.1.45"
+    },
+    {
+      "date": "2024-11-12T10:45:39.786Z",
+      "version": "0.1.40"
+    },
+    {
+      "date": "2024-11-12T10:18:31.575Z",
+      "version": "0.1.35"
+    },
+    {
+      "date": "2024-11-05T10:25:23.029Z",
+      "version": "0.1.30"
+    },
+    {
+      "date": "2024-11-05T10:14:12.667Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2024-11-05T09:13:36.806Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2024-11-05T09:13:06.228Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2024-11-05T09:01:27.575Z",
+      "version": "0.1.10"
+    }
+  ]
+}

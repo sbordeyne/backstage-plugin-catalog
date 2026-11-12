@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-03-14T02:33:32.340Z",
+  "deprecated": "",
+  "description": "This a frontend plugin package for Backstage related to Amazon ECS. For more information see the [documentation](../README.md).",
+  "homepage": "https://github.com/awslabs/backstage-plugins-for-aws#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "nialt"
+  ],
+  "name": "@aws/amazon-ecs-plugin-for-backstage",
+  "plugin_id": "amazon-ecs",
+  "readme": "# Amazon Elastic Container Service plugin for Backstage - Frontend\n\nThis a frontend plugin package for Backstage related to Amazon ECS. For more information see the [documentation](../README.md).\n",
+  "repository": "https://github.com/awslabs/backstage-plugins-for-aws/tree/HEAD/plugins/ecs/frontend",
+  "role": "frontend-plugin",
+  "scope": "@aws",
+  "updated": "2026-08-06T03:37:35.949Z",
+  "version": "0.7.0",
+  "version_count": 15,
+  "versions": [
+    {
+      "date": "2026-08-06T03:37:35.949Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-04-23T15:04:15.202Z",
+      "version": "0.6.3"
+    },
+    {
+      "date": "2025-11-14T05:54:36.622Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2025-11-07T18:59:38.100Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2025-09-19T02:25:16.338Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2024-11-29T23:31:29.846Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-08-29T23:05:29.869Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2024-08-29T22:03:36.176Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2024-07-09T16:58:03.661Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-05-31T03:00:26.966Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2024-05-08T02:46:26.831Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-04-26T02:39:15.887Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-04-03T23:00:55.858Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-03-30T02:15:17.370Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-03-14T02:33:32.776Z",
+      "version": "0.1.0"
+    }
+  ]
+}

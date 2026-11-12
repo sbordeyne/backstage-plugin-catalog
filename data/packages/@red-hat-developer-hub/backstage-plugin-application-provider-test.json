@@ -1,0 +1,80 @@
+{
+  "author": "",
+  "created": "2025-01-27T08:57:19.279Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-application-provider-test",
+  "plugin_id": "application-provider-test",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/global-floating-action-button/plugins/application-provider-test",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-04-15T12:13:18.765Z",
+  "version": "0.8.0",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2026-04-15T12:13:18.765Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-03-04T10:35:12.976Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-12-09T09:48:38.512Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-11-12T09:55:49.467Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-09-24T14:28:30.009Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-07-21T13:57:01.686Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-06-06T14:47:04.569Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-06-02T16:39:07.069Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-04-01T18:44:25.944Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-03-23T23:26:08.596Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-03-17T23:53:04.384Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2025-01-31T14:53:45.833Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-01-27T08:57:19.634Z",
+      "version": "0.0.1"
+    }
+  ]
+}

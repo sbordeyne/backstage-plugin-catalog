@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2023-11-01T16:08:46.264Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "modethirteen"
+  ],
+  "name": "backstage-plugin-algolia-backend",
+  "plugin_id": "algolia",
+  "readme": "",
+  "repository": "https://github.com/modethirteen/backstage-algolia/tree/HEAD/plugins/backstage-plugin-algolia-backend",
+  "role": "backend-plugin",
+  "scope": "",
+  "updated": "2025-05-07T22:11:31.795Z",
+  "version": "0.1.7",
+  "version_count": 27,
+  "versions": [
+    {
+      "date": "2025-05-07T22:11:31.795Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2025-05-03T03:20:28.021Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2025-04-20T01:52:22.846Z",
+      "version": "0.0.59"
+    },
+    {
+      "date": "2025-04-20T01:21:06.197Z",
+      "version": "0.0.58"
+    },
+    {
+      "date": "2025-02-15T20:23:30.069Z",
+      "version": "0.0.55"
+    },
+    {
+      "date": "2025-01-14T04:41:47.800Z",
+      "version": "0.0.54"
+    },
+    {
+      "date": "2024-11-08T03:41:03.165Z",
+      "version": "0.0.53"
+    },
+    {
+      "date": "2024-11-07T01:09:13.016Z",
+      "version": "0.0.52"
+    },
+    {
+      "date": "2024-09-16T16:26:44.383Z",
+      "version": "0.0.50"
+    },
+    {
+      "date": "2024-09-16T00:14:42.747Z",
+      "version": "0.0.49"
+    },
+    {
+      "date": "2024-09-16T00:00:15.549Z",
+      "version": "0.0.48"
+    },
+    {
+      "date": "2024-09-14T03:58:32.993Z",
+      "version": "0.0.47"
+    },
+    {
+      "date": "2024-09-14T00:01:38.466Z",
+      "version": "0.0.46"
+    },
+    {
+      "date": "2024-04-01T22:55:43.791Z",
+      "version": "0.0.45"
+    },
+    {
+      "date": "2023-12-23T18:16:53.932Z",
+      "version": "0.0.43"
+    }
+  ]
+}

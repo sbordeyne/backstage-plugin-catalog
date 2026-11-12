@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2024-04-30T08:36:01.530Z",
+  "deprecated": "",
+  "description": "Common functionalities for the custom-entities plugin",
+  "homepage": "https://github.com/telereso/backstage-plugins#readme",
+  "keywords": [
+    "backstage",
+    "entities",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ahna92"
+  ],
+  "name": "@telereso/backstage-plugin-custom-entities-common",
+  "plugin_id": "",
+  "readme": "# Custom Entities Common\n\n## Installation\n\n### Install the package\n\n```bash\nyarn --cwd packages/backend add @telereso/backstage-plugin-custom-entities-common\n```\n\n## Permissions\n\n### customEntitiesUpdatePermission",
+  "repository": "https://github.com/telereso/backstage-plugins/tree/HEAD/plugins/custom-entities-common",
+  "role": "common-library",
+  "scope": "@telereso",
+  "updated": "2024-05-07T11:36:06.469Z",
+  "version": "0.7.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2024-05-07T11:36:06.469Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2024-04-30T18:24:07.263Z",
+      "version": "0.6.3"
+    },
+    {
+      "date": "2024-04-30T16:01:10.649Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2024-04-30T15:53:04.037Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2024-04-30T13:36:02.072Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2024-04-30T09:08:26.432Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-04-30T08:57:28.020Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-04-30T08:36:02.307Z",
+      "version": "0.3.0"
+    }
+  ]
+}

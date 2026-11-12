@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-12-04T14:10:29.361Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@vrabbi/backstage-plugin-crossplane-scaffolder",
+  "plugin_id": "backstage-plugin-crossplane-scaffolder",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@vrabbi",
+  "updated": "2024-12-05T11:15:21.057Z",
+  "version": "0.3.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-12-05T11:15:21.057Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-12-04T15:11:08.839Z",
+      "version": "0.3.0"
+    }
+  ]
+}

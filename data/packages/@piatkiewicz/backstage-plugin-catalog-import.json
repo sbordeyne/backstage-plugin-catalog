@@ -1,0 +1,29 @@
+{
+  "author": "Piotr Piątkiewicz",
+  "created": "2024-03-14T12:50:50.161Z",
+  "deprecated": "",
+  "description": "A Backstage plugin the helps you import entities into your catalog",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "piatkiewicz"
+  ],
+  "name": "@piatkiewicz/backstage-plugin-catalog-import",
+  "plugin_id": "",
+  "readme": "# Catalog Import\n\nThe Catalog Import Plugin provides a wizard to onboard projects with existing `catalog-info.yaml` files.\nIt also assists by creating pull requests in repositories where no `catalog-info.yaml` exists.\n\n![Catalog Import Plugin](./docs/catalog-import-screenshot.png)\n\nCurrent features:\n\n- Import `catalog-info.yaml` files from a URL in a repository of one of the supported Git integrations (example `https://github.com/backstage/backstage/catalog-info.yaml`).\n- _[GitHub only]_ Search for all `catalog-info.yaml` files in a Git repository (example: `https://github.com/backstage/backstage`).\n- _[GitHub only]_ Analyze a repository, generate a Component entity, and create a Pull Request to onboard the repository.\n\nSome features are not yet available for all supported Git providers.\n\n## Getting Started\n\n1. Install the Catalog Import Plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @backstage/plugin-catalog-import\n```\n\n2. Add the `CatalogImportPage` extension to the app:\n\n```tsx\n// packages/app/src/App.tsx\n\nimport { CatalogImportPage } from '@backstage/plugin-catalog-import';\n\n<Route path=\"/catalog-import\" element={<CatalogImportPage />} />;\n```\n\n## Customizations\n\n### Custom layout\n\nA custom layout can be passed to the import page, as it's already\nsupported by the search page. If no custom layout is passed, the default layout\nis used.\n\n```typescript\n<Route path=\"/catalog-import\" element={<CatalogImportPage />}>\n  <Page themeId=\"home\">\n    <Header title=\"Register an existing component\" />\n    <Content>\n      <ContentHeader title=\"Start tracking your components\">\n        <SupportButton>\n          Start tracking your component in Backstage by adding it to the\n          software catalog.\n        </SupportButton>\n      </ContentHeader>\n\n      <Grid container spacing={2} direction=\"row-reverse\">\n        <Grid item xs={12} md={4} lg={6} xl={8}>\n          Hello World\n        </Grid>\n\n        <Grid item xs={12} md={8} lg={6} xl={4}>\n          <ImportStepper />\n        </Grid>\n      </Grid>\n    </Content>\n  </Page>\n</Route>\n```\n\nPreviously it was possible to disable and customize the automatic pull request\nfeature by passing options to `<CatalogImportPage>` (`pullRequest.disable` and\n`pullRequest.preparePullRequest`). This functionality is moved to the\n`CatalogImportApi` which now provides an optional `preparePullRequest()`\nfunction. The function can either be overridden to generate a different content\nfor the pull request, or removed to disable this feature.\n\n### Entity filename and branch name\n\nEntity filename (default: `catalog-info.yaml`) and branch name (default: `backstage-integration`) used in pull requests can be configured in `app-config.yaml` as follows:\n\n```yaml\n// app-config.yaml\n\ncatalog:\n  import:\n    entityFilename: anvil.yaml\n    pullRequestBranchName: anvil-integration\n```\n\n### Entity examples\n\nFollowing React components accept optional props for providing custom example entity and repository paths:\n\n```tsx\n<StepInitAnalyzeUrl\n  ...\n  exampleLocationUrl=\"https://github.com/acme-corp/our-awesome-api/blob/main/anvil.yaml\"\n/>\n```\n\n```tsx\n<ImportInfoCard\n  exampleLocationUrl=\"https://github.com/acme-corp/our-awesome-api/blob/main/anvil.yaml\"\n  exampleRepositoryUrl=\"https://github.com/acme-corp/our-awesome-api\"\n/>\n```\n\n## Development\n\nUse `yarn start` to run a [development version](./dev/index.tsx) of the plugin that can be used to validate each flow with mocked data.\n",
+  "repository": "https://github.com/NovoNordisk-OpenSource/backstage/tree/HEAD/plugins/catalog-import",
+  "role": "frontend-plugin",
+  "scope": "@piatkiewicz",
+  "updated": "2024-03-14T12:50:50.422Z",
+  "version": "0.0.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-03-14T12:50:50.422Z",
+      "version": "0.0.1"
+    }
+  ]
+}

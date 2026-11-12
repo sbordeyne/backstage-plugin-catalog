@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-05-28T08:11:18.763Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jxroyo"
+  ],
+  "name": "@npjosem/plugin-adr-backend",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/JoseMRoyo/npjosem/tree/HEAD/workspaces/adr/plugins/adr-backend",
+  "role": "backend-plugin",
+  "scope": "@npjosem",
+  "updated": "2024-05-28T08:11:19.039Z",
+  "version": "0.4.17",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-05-28T08:11:19.039Z",
+      "version": "0.4.17"
+    }
+  ]
+}

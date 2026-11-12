@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2024-09-05T14:09:44.967Z",
+  "deprecated": "",
+  "description": "ansible controller backstage integration",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "euprogramador"
+  ],
+  "name": "@mycloudlab/scaffolder-backend-module-ansible-controller",
+  "plugin_id": "scaffolder-backend-module-ansible-controller",
+  "readme": "# @mycloudlab/scaffolder-backend-module-ansible-controller\n\n![NPM Version](https://img.shields.io/npm/v/%40mycloudlab%2Fscaffolder-backend-module-ansible-controller)\n\n\nPlugin used to integrate ansible with backstage.\n\nThis plugin allows the execution of an ansible job-template from an action in the template step.\n\n## install on RHDH\n\nCheck integrity version using command:\n```bash\n# please change <version> to especific version\ncurl -sL https://registry.npmjs.org/@mycloudlab/scaffolder-backend-module-ansible-controller/<version> | jq '.dist.integrity' -r\n```\n\n```yaml\n# add entry dynamic-plugins-rhdh config map\n# please change <version> to especific version\n    plugins:\n      - package: '@mycloudlab/scaffolder-backend-module-ansible-controller@<version>'\n        integrity: '<integrity of before command>'\n        disabled: false   \n```\n\n## how to use\n\nConfigure your `app-config.yaml` with this entry.\n\n```yaml\n# app-config.yaml\n\n...\n\nintegrations:\n  ansible-controller:\n    - name: my-controller\n      url: https://aap.host.com\n      username: username\n      password: password\n```\n\nConfigure your template call to ansible:\n\n```yaml\n# your template\n  steps:\n    - id: call-ansible\n      name: Calling ansible to launch\n      action: ansible-controller:job_template:launch\n      input:\n        controller: my-controller\n        job_template: Demo Job Template\n        extra_vars:\n          execution_count: ${{ parameters.execution_count }}\n          fail_execution: ${{ parameters.fail_execution }}\n```\n\n",
+  "repository": "https://github.com/mycloudlab/scaffolder-backend-module-ansible-controller",
+  "role": "backend-plugin-module",
+  "scope": "@mycloudlab",
+  "updated": "2025-04-02T10:20:05.013Z",
+  "version": "0.5.3",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2025-04-02T10:20:05.013Z",
+      "version": "0.5.3"
+    },
+    {
+      "date": "2024-09-05T18:56:50.186Z",
+      "version": "0.5.2"
+    },
+    {
+      "date": "2024-09-05T18:39:22.213Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2024-09-05T18:35:24.226Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-09-05T17:06:17.466Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-09-05T15:43:09.144Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-09-05T14:09:45.293Z",
+      "version": "0.1.0"
+    }
+  ]
+}

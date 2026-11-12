@@ -1,0 +1,37 @@
+{
+  "author": "Juterrabuio",
+  "created": "2024-11-19T17:14:45.671Z",
+  "deprecated": "",
+  "description": "Plugin do Backstage para exibir dados do IBGE para POC",
+  "homepage": "https://github.com/juterrabuio/backstage-plugin-ibge#readme",
+  "keywords": [
+    "backend",
+    "backstage",
+    "frontend",
+    "ibge",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "juterrabuio"
+  ],
+  "name": "@juterrabuio/backstage-plugin-ibge",
+  "plugin_id": "ibge",
+  "readme": "# backstage-plugin-ibge\nDemonstração POC\n",
+  "repository": "https://github.com/juterrabuio/backstage-plugin-ibge",
+  "role": "frontend-plugin",
+  "scope": "@juterrabuio",
+  "updated": "2024-11-19T17:49:03.175Z",
+  "version": "1.0.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-11-19T17:49:03.175Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-11-19T17:14:45.924Z",
+      "version": "0.1.0"
+    }
+  ]
+}

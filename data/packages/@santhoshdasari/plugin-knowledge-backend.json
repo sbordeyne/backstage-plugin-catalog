@@ -1,0 +1,36 @@
+{
+  "author": "D S Santhosh",
+  "created": "2026-09-08T17:29:05.873Z",
+  "deprecated": "",
+  "description": "Permission-aware RAG backend for Backstage: TechDocs ingestion at scale, hybrid retrieval, grounded answers with citations, and a tool-calling agent.",
+  "homepage": "https://github.com/santhoshdasari786/developer-portal#readme",
+  "keywords": [
+    "agent",
+    "backstage",
+    "backstage-plugin",
+    "knowledge",
+    "llm",
+    "rag",
+    "retrieval",
+    "techdocs"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "santhoshdasari"
+  ],
+  "name": "@santhoshdasari/plugin-knowledge-backend",
+  "plugin_id": "knowledge",
+  "readme": "",
+  "repository": "https://github.com/santhoshdasari786/developer-portal/tree/HEAD/plugins/knowledge-backend",
+  "role": "backend-plugin",
+  "scope": "@santhoshdasari",
+  "updated": "2026-09-08T17:29:06.165Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-09-08T17:29:06.165Z",
+      "version": "0.1.0"
+    }
+  ]
+}

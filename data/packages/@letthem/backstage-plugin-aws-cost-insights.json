@@ -1,0 +1,48 @@
+{
+  "author": "",
+  "created": "2026-03-04T04:44:10.757Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for EC2 cost visualization.",
+  "homepage": "https://github.com/letthem/backstage-plugin-cost-insights#readme",
+  "keywords": [
+    "aws",
+    "backstage",
+    "cloud-cost",
+    "cost-analysis",
+    "cost-insights",
+    "ec2",
+    "finops",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "letthem"
+  ],
+  "name": "@letthem/backstage-plugin-aws-cost-insights",
+  "plugin_id": "aws-cost-insights",
+  "readme": "# Cost Insights Frontend Plugin\n\nBackstage frontend plugin for EC2 cost visualization.\n\n## What It Shows\n\n- Resource-level EC2 cost breakdown\n- Daily trend chart for selected date range\n- Monthly comparison chart\n- Top cost resources\n- Forecast card (month-end estimate)\n\n## Requirements\n\n- `@internal/plugin-cost-insights-backend` must be installed and enabled\n- Backend must expose the plugin ID `cost-insights`\n\n## Route Integration\n\n```tsx\nimport { CostInsightsPage } from '@internal/plugin-cost-insights';\n\n<Route path=\"/cost-insights/ec2\" element={<CostInsightsPage />} />\n```\n\n## Runtime Behavior\n\n- On load, frontend calls backend `/config` to get:\n  - environments\n  - defaultEnvironment\n- Environment toggle is rendered dynamically from backend config.\n- Data request uses `/product/ec2/insights?intervals=<start>/<end>&environment=<env>`.\n\n## Related Backend Config\n\n```yaml\ncostInsights:\n  environments: [dev, stg, prod]\n  defaultEnvironment: prod\n  auth:\n    allowUnauthenticated: false\n  s3:\n    region: ap-northeast-2\n    bucket: your-cur-result-bucket\n    # Optional for local SSO\n    # profile: your-aws-profile\n    # Optional if your CUR prefix differs\n    dailyPrefixTemplate: '{environment}/daily/{yearMonth}/'\n```\n",
+  "repository": "https://github.com/letthem/backstage-plugin-cost-insights/tree/HEAD/plugins/cost-insights",
+  "role": "frontend-plugin",
+  "scope": "@letthem",
+  "updated": "2026-03-05T07:40:55.762Z",
+  "version": "1.0.1",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-03-05T07:40:55.762Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-03-05T07:29:49.599Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-03-05T07:11:02.372Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-03-04T04:44:11.030Z",
+      "version": "0.2.0"
+    }
+  ]
+}

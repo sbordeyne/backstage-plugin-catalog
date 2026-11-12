@@ -1,0 +1,73 @@
+{
+  "author": "Nobl9",
+  "created": "2023-12-15T12:53:08.062Z",
+  "deprecated": "",
+  "description": "This plugin is one of two [Backstage](https://backstage.io) plugins to support [Nobl9](https://nobl9.com) SLOs in your Backstage installation. It allows you to easily access the most up-to-date metrics for any SLO within Backstage, such as the Burn Rate, ",
+  "homepage": "https://github.com/nobl9/nobl9-backstage-plugin#readme",
+  "keywords": [],
+  "license": "MPL-2.0",
+  "maintainers": [
+    "jakub.sobczak",
+    "krolik",
+    "nobl9-publisher"
+  ],
+  "name": "@nobl9/nobl9-backstage-plugin",
+  "plugin_id": "nobl9",
+  "readme": "# Nobl9 UI plugin for Backstage\n\nThis plugin is one of two [Backstage](https://backstage.io) plugins to support [Nobl9](https://nobl9.com) SLOs in your Backstage installation.\nIt allows you to easily access the most up-to-date metrics for any SLO within Backstage, such as the Burn Rate, Remaining Error Budget, labels, etc.\n\n![Nobl9 SLOs tab](https://github.com/nobl9/nobl9-backstage-plugin/blob/main/docs/images/backstage-ui-plugin.png 'Nobl9 SLOs tab')\n\n## Installation guide\n\nSee the [Nobl9 Backstage plugins repository for installation guide](https://github.com/nobl9/nobl9-backstage-plugin?tab=readme-ov-file#installation-guide).\n\nThe repository contains the following Backstage plugins:\n\n- Nobl9 Backend plugin\n- Nobl9 UI plugin\n\nYou'll need both of them to integrate with Nobl9 successfully.\n",
+  "repository": "https://github.com/nobl9/nobl9-backstage-plugin/tree/HEAD/plugins/nobl9-plugin",
+  "role": "frontend-plugin",
+  "scope": "@nobl9",
+  "updated": "2026-09-22T09:21:34.947Z",
+  "version": "0.4.0",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-09-22T09:21:34.947Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-02-21T16:15:12.115Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-09-19T08:59:41.362Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-09-18T12:04:57.863Z",
+      "version": "0.3.0-alpha.7"
+    },
+    {
+      "date": "2024-09-18T11:12:46.516Z",
+      "version": "0.3.0-alpha.6"
+    },
+    {
+      "date": "2024-05-22T11:57:50.843Z",
+      "version": "0.3.0-alpha.4"
+    },
+    {
+      "date": "2024-05-17T15:02:18.593Z",
+      "version": "0.2.1-alpha.0"
+    },
+    {
+      "date": "2024-05-02T12:57:24.723Z",
+      "version": "0.3.0-alpha.0"
+    },
+    {
+      "date": "2024-03-28T20:49:18.803Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-03-28T11:55:44.920Z",
+      "version": "0.1.4-alpha.0"
+    },
+    {
+      "date": "2023-12-15T13:11:33.102Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-12-15T12:53:08.422Z",
+      "version": "0.1.2"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "author": "Lucas Palhares Barbosa",
+  "created": "2026-05-18T13:30:15.023Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin - World Clock",
+  "homepage": "https://github.com/lucaspalharesbarbosa/backstage-plugin-world-clock#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "frontend-plugin",
+    "plugin",
+    "world-clock"
+  ],
+  "license": "UNLICENSED",
+  "maintainers": [
+    "lucaspalharesbarbosa"
+  ],
+  "name": "@lucaspalharesbarbosa/backstage-plugin-world-clock-plugin",
+  "plugin_id": "world-clock-plugin",
+  "readme": "# World Clock — plugin Backstage\n\nPlugin de frontend para o [Backstage](https://backstage.io) que exibe relógios em tempo real para fusos horários de escritórios (Nova York, Londres e Tóquio por padrão). O item **World clock** aparece automaticamente na barra lateral.\n\nConstruída com o [novo sistema de frontend](https://backstage.io/docs/frontend-system/architecture/index) do Backstage (`@backstage/frontend-plugin-api`).\n\n## Requisitos\n\n- App Backstage com o **novo frontend system** (padrão em apps criados recentemente com `create-app`).\n- No `app-config.yaml`, a descoberta automática de plugins costuma estar habilitada com `app.packages: all` (valor padrão em apps novos).\n\nSe o seu app ainda usa o frontend legado, esta plugin não é compatível sem migração.\n\n## Instalação\n\nNa **raiz do monorepo** do seu app Backstage (não na pasta da plugin):\n\n```bash\nyarn --cwd packages/app add @lucaspalharesbarbosa/backstage-plugin-world-clock-plugin\n```\n\nA dependência deve ficar em `packages/app`, onde ficam as plugins de interface.\n\n### Descoberta automática (recomendado)\n\nConfirme que o `app-config.yaml` contém:\n\n```yaml\napp:\n  packages: all\n```\n\nCom isso, não é necessário alterar código: a plugin é detectada após a instalação.\n\nSuba o app e acesse:\n\n```text\nhttp://localhost:3000/world-clock-plugin\n```\n\n### Instalação manual (opcional)\n\nUse apenas se **não** utilizar `app.packages: all` ou precisar de controle explícito sobre as features do app.\n\nEm `packages/app/src/App.tsx` (o caminho pode variar no seu projeto):\n\n```tsx\nimport { createApp } from '@backstage/frontend-defaults';\nimport worldClockPlugin from '@lucaspalharesbarbosa/backstage-plugin-world-clock-plugin';\n\nconst app = createApp({\n  features: [\n    worldClockPlugin,\n    // ...demais plugins\n  ],\n});\n\nexport default app.createRoot();\n```\n\nDocumentação oficial: [Configuring App with plugins](https://backstage.io/docs/getting-started/configure-app-with-plugins).\n\n## Uso\n\n| Item | Valor |\n|------|--------|\n| Rota | `/world-clock-plugin` |\n| Título na sidebar | World clock |\n| ID da plugin | `world-clock-plugin` |\n\nAs cidades exibidas vêm da constante `DISPLAY_CITIES` exportada pelo pacote. Para personalizar fusos no código do seu app, importe e use os tipos exportados (`CityClockConfig`, `DISPLAY_CITIES`) conforme a necessidade do seu time.\n\n## Atualização\n\nPara instalar uma versão mais recente publicada no npm:\n\n```bash\nyarn --cwd packages/app upgrade @lucaspalharesbarbosa/backstage-plugin-world-clock-plugin\n```\n\n## Desenvolvimento local (mantenedores)\n\nPara trabalhar neste repositório da plugin, não no app Backstage consumidor:\n\n```bash\nyarn install\nyarn start\n```\n\nO modo isolado em `dev/` oferece hot reload mais rápido e serve apenas para desenvolvimento.\n\nOutros comandos úteis:\n\n```bash\nyarn build   # gera dist/ para publicação no npm\nyarn test\nyarn lint\n```\n\n## Links\n\n- [Documentação — building plugins](https://backstage.io/docs/frontend-system/building-plugins/index)\n- [Repositório no GitHub](https://github.com/lucaspalharesbarbosa/backstage-plugin-world-clock)\n- [Reportar problemas](https://github.com/lucaspalharesbarbosa/backstage-plugin-world-clock/issues)\n\n## Licença\n\nUNLICENSED — consulte o autor antes de redistribuir ou usar fora do contexto acordado.\n",
+  "repository": "https://github.com/lucaspalharesbarbosa/backstage-plugin-world-clock/tree/HEAD/.",
+  "role": "frontend-plugin",
+  "scope": "@lucaspalharesbarbosa",
+  "updated": "2026-05-18T13:30:15.262Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-05-18T13:30:15.262Z",
+      "version": "0.1.0"
+    }
+  ]
+}

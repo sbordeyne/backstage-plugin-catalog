@@ -1,0 +1,69 @@
+{
+  "author": "",
+  "created": "2024-05-14T10:34:04.005Z",
+  "deprecated": "",
+  "description": "---",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aziz.haddad",
+    "humanitec2",
+    "louisbennett"
+  ],
+  "name": "@humanitec/backstage-plugin-scaffolder-backend-module-dynamic",
+  "plugin_id": "scaffolder",
+  "readme": "# @humanitec/backstage-plugin-scaffolder-backend-module-dynamic\n\n---\n\n:warning: __This is the dynamic version of a Backstage plugin intended for [Red Hat Developer Hub](https://developers.redhat.com/rhdh/overview). If you are interest in the regular Humanitec Backstage plugins, checkout the [README](https://github.com/humanitec/humanitec-backstage-plugins?tab=readme-ov-file#humanitec-backstage-plugins).__ :warning:\n\n---\n\n # @humanitec/backstage-plugin-scaffolder-backend-module\n\n`@humanitec/backstage-plugin-scaffolder-backend-module` is a new backend system module to add the humanitec action in the scaffolder\n\n## Scaffolder Actions\n\nThis plugin provides the following scaffolder actions:\n\n### create-app\n\n`create-app` will create an app in Humanitec with specific workloads and automation.\n\n#### Installation\n\n1. Install `@humanitec/backstage-plugin-scaffolder-backend-module` plugin with,\n\n```bash\nyarn workspace backend add @humanitec/backstage-plugin-scaffolder-backend-module\n```\n\n1. Add the plugin in `./packages/backend/src/index.ts` to your backend,\n\n```diff\n+ backend.add(import('@humanitec/backstage-plugin-scaffolder-backend-module'));\n\nbackend.start();\n```\n\n1. Add configuration to `app-config.yaml`\n\n```diff\nhumanitec:\n  orgId: the-frontside-software-inc\n  token: ${HUMANITEC_TOKEN}\n```\n\n### Usage\n\nAdd the action to your template,\n\n```diff\n+    - name: Create Humanitec App\n+      id: humanitec-create-app\n+      action: humanitec:create-app\n+      input:\n+        setupFile: humanitec-apps.yaml\n+        appId: ${{ parameters.componentName }}\n\n+    - name: Fetch configured humanitec.orgId\n+      id: humanitec-environment\n+      action: humanitec:get-environment\n```\n\n### setupFile parameter\n\n`humanitec:create-app` needs to know what workloads to create in the Humanitec App. In the future, workload configuration will be handled using [paws.sh](https://paws.sh), in the mean time, `humanitec:create-app` expects to read an YAML file where it expects to find information about the payload. By default, this file is called `humanitec-app.yaml` and can be changed by specifying `setupFile` parameter.\n\nHere is an example of such a file,\n\n```yaml\n---\nid: ${{values.componentName | dump}}\nname: ${{values.componentName | dump}}\n\nenvironments:\n  development:\n    metadata:\n      env_id: development\n      name: Initial deployment\n\n    modules:\n      ${{values.componentName | dump}}:\n        externals:\n          http:\n            type: dns\n        profile: humanitec/default-module\n        spec:\n          containers:\n            ${{values.componentName | dump}}:\n              id: ${{values.componentName}}\n              image: ${{values.registryUrl}}/${{values.componentName}}:dummy\n              resources:\n                limits:\n                  cpu: 0.25\n                  memory: 256Mi\n                requests:\n                  cpu: 0.025\n                  memory: 64Mi\n              variables: {}\n              volume_mounts: {}\n              files: {}\n          ingress:\n            rules:\n              externals.http:\n                http:\n                  \"/\":\n                    port: 9898\n                    type: prefix\n\n# automations that will be created\n# see https://api-docs.humanitec.com/#tag/AutomationRule/paths/~1orgs~1{orgId}~1apps~1{appId}~1envs~1{envId}~1rules/post\nautomations:\n  development:\n    - active: true\n      exclude_images_filter: false\n      images_filter: []\n      type: update\n      update_to: branch\n```\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@humanitec",
+  "updated": "2025-04-08T19:17:33.384Z",
+  "version": "0.5.6",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2025-04-08T19:17:33.384Z",
+      "version": "0.5.6"
+    },
+    {
+      "date": "2024-12-16T15:20:42.009Z",
+      "version": "0.5.5"
+    },
+    {
+      "date": "2024-10-25T13:57:47.745Z",
+      "version": "0.5.4"
+    },
+    {
+      "date": "2024-10-21T14:27:54.515Z",
+      "version": "0.5.3"
+    },
+    {
+      "date": "2024-09-19T11:32:08.784Z",
+      "version": "0.5.2"
+    },
+    {
+      "date": "2024-09-19T08:50:01.618Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2024-08-23T14:10:51.989Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-06-26T12:36:01.726Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-05-15T15:49:35.038Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-05-15T14:34:09.430Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-05-14T10:34:04.319Z",
+      "version": "0.1.3"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2024-04-16T13:25:33.681Z",
+  "deprecated": "",
+  "description": "The cloudflare-access-provider backend module for the auth plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-auth-backend-module-cloudflare-access-provider",
+  "plugin_id": "auth",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/auth-backend-module-cloudflare-access-provider",
+  "role": "backend-plugin-module",
+  "scope": "@backstage",
+  "updated": "2026-10-20T16:49:12.092Z",
+  "version": "0.5.1",
+  "version_count": 761,
+  "versions": [
+    {
+      "date": "2026-11-11T02:55:22.538Z",
+      "version": "0.5.2-next.1"
+    },
+    {
+      "date": "2026-11-07T02:52:42.658Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T02:54:43.685Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T02:48:12.636Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-10-31T02:45:23.783Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:44:54.270Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T02:51:53.734Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T02:50:45.310Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:26:38.012Z",
+      "version": "0.5.2-next.0"
+    },
+    {
+      "date": "2026-10-20T16:49:12.092Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-09-29T12:25:32.982Z",
+      "version": "0.5.1-next.1"
+    },
+    {
+      "date": "2026-09-28T03:09:57.223Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:03:07.135Z",
+      "version": "0.0.0-nightly-20260927023342"
+    },
+    {
+      "date": "2026-09-26T02:58:03.987Z",
+      "version": "0.0.0-nightly-20260926022852"
+    },
+    {
+      "date": "2026-09-25T02:58:33.079Z",
+      "version": "0.0.0-nightly-20260925022940"
+    }
+  ]
+}

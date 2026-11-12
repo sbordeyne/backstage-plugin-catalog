@@ -1,0 +1,87 @@
+{
+  "author": "Christoph Jerolimov",
+  "created": "2024-10-21T23:02:12.630Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that shows meta info and latest versions from a npm registry",
+  "homepage": "https://github.com/backstage/community-plugins/tree/main/workspaces/npm/plugins/npm",
+  "keywords": [
+    "backstage",
+    "npm",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-npm",
+  "plugin_id": "npm",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/npm/plugins/npm",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-10T11:17:48.866Z",
+  "version": "1.29.0",
+  "version_count": 42,
+  "versions": [
+    {
+      "date": "2026-11-10T11:17:48.866Z",
+      "version": "1.29.0"
+    },
+    {
+      "date": "2026-11-10T09:02:06.208Z",
+      "version": "1.28.0"
+    },
+    {
+      "date": "2026-10-25T20:05:22.461Z",
+      "version": "1.27.0"
+    },
+    {
+      "date": "2026-09-22T14:41:34.035Z",
+      "version": "1.26.0"
+    },
+    {
+      "date": "2026-09-21T14:55:05.995Z",
+      "version": "1.25.3"
+    },
+    {
+      "date": "2026-09-15T00:03:53.810Z",
+      "version": "1.25.2"
+    },
+    {
+      "date": "2026-08-28T20:51:17.963Z",
+      "version": "1.25.1"
+    },
+    {
+      "date": "2026-08-28T08:46:49.968Z",
+      "version": "1.25.0"
+    },
+    {
+      "date": "2026-07-21T20:11:23.273Z",
+      "version": "1.24.0"
+    },
+    {
+      "date": "2026-07-21T17:20:50.808Z",
+      "version": "1.23.0"
+    },
+    {
+      "date": "2026-05-22T09:56:33.740Z",
+      "version": "1.22.0"
+    },
+    {
+      "date": "2026-04-26T05:07:21.303Z",
+      "version": "1.21.1"
+    },
+    {
+      "date": "2026-04-18T22:54:58.679Z",
+      "version": "1.21.0"
+    },
+    {
+      "date": "2026-03-25T14:43:09.613Z",
+      "version": "1.20.0"
+    },
+    {
+      "date": "2026-03-15T20:08:42.783Z",
+      "version": "1.19.1"
+    }
+  ]
+}

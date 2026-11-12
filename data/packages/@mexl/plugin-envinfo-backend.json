@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2024-04-30T12:51:04.874Z",
+  "deprecated": "",
+  "description": "This is a backend plugin for envinfo in the @mexl suite of plugins. It provides a feature to display the current environment information on the Development Portal for all non-production environments.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mexl"
+  ],
+  "name": "@mexl/plugin-envinfo-backend",
+  "plugin_id": "",
+  "readme": "# @mexl/plugin-envinfo-backend\n\nThis is a backend plugin for envinfo in the @mexl suite of plugins. It provides a feature to display the current environment information on the Development Portal for all non-production environments.\n\n## Purpose\n\nThe purpose of this plugin is to distinguish between development, test, and validation environments to avoid confusion for users accessing the portal. The solution clearly indicates which environment the portal is currently operating in, ensuring that users are aware and can easily distinguish non-production environments from the production environment.\n\n### Why\n\n- **Clarity for Users**: By clearly indicating the current environment, users can easily understand where they are working, reducing confusion and improving usability.\n- **Preventing Mistakes**: By distinguishing non-production environments from the production environment, we can reduce the chances of users making mistakes such as modifying production data or settings by accident.\n\n## Usage\n\nTo use this plugin, include it in your Backstage app's plugins directory and register it in your apis.ts file.\n\n```javascript\n// In packages/app/src/apis.ts\nimport { createEnvInfoBackend } from '@mexl/plugin-envinfo-backend';\n\n// ...\n\nbuilder.add(createEnvInfoBackend());\n```\n\nTo add this file to backend/plugins/envinfo.ts, you can follow these steps:\n\n1. Navigate to the backend/plugins directory in your project.\n2. Create a new file named envinfo.ts.\n\n```javascript\nimport { createRouter } from '@mexl/plugin-envinfo-backend';\nimport { Router } from 'express';\nimport { Config } from '@backstage/config';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(_env: PluginEnvironment,config: Config): Promise<Router> {\n  return await createRouter(config);\n}\n```\n\nCopy and paste the provided code into the envinfo.ts file.\n\n### Changes to backend/index.ts for @mexl/plugin-envinfo-backend\n\nThe backend/index.ts file has been updated to include the @mexl/plugin-envinfo-backend plugin. This plugin provides a feature to display the current environment information on the Development Portal for all non-production environments.\n\n#### Changes Made\n\n- **Import the plugin**: The sysInfo import statement has been added to import the envinfo plugin.\n  \n  ```javascript\n  import sysInfo from './plugins/envinfo';\n  ```\n\n- **Create the plugin environment**: The systemInfoEnv constant has been added to create the environment for the envinfo plugin.\n  \n  ```javascript\n  const systemInfoEnv = useHotMemoize(module, () => createEnv('sysInfo'));\n  ```\n\n- **Add the plugin to the API router**: The apiRouter.use('/envinfo', await sysInfo(systemInfoEnv, config)); line has been added to add the envinfo plugin to the API router.\n\n  ```javascript\n  apiRouter.use('/envinfo', await sysInfo(systemInfoEnv, config));\n  ```\n\n### How to Use\n\nWith these changes, the @mexl/plugin-envinfo-backend plugin is now part of your Backstage backend. It will provide an API endpoint at /api/envinfo/envconfig that returns the current environment information.\n\nYou can use this endpoint in your frontend to display the current environment information on the Development Portal. This can help users distinguish between development, test, and validation environments, reducing confusion and preventing mistakes.\n\n### Finally app config changes\n\nTo add this information to the app-config.yaml file and dynamically fetch data from different environments, follow these steps:\n\nOpen the app-config.yaml file in your project.\nCopy and paste the provided YAML code into the app-config.yaml file.\n\n```yaml\n# envinfo non prod environments configuration. ** Supports html tags in information.\nenvironments:\n  env:\n    - id: dev\n      title: Development\n      contains: -dev\n      information: This is development environment, this will be unstable with limited availability when developers may continuously deploy code to this environment.  <br><br><b>No guarantee of data on this environment.</b> <br> If You expect data to be retained use production env.\n    - id: test\n      title: Test\n      contains: -tst\n      information: This is test environment, this will be unstable with limited availability during deployment of code to this environment.  <br><br><b>No guarantee of data on this environment.</b> <br> If You expect data to be retained use production env.\n    - id: val\n      title: Validation\n      contains: -val\n      information: This is validation environment, this environment will have production like code most of time.  <br><br><b>No guarantee of data on this environment.</b> <br> If You expect data to be retained use production env.\n    - id: local\n      title: Local\n      contains: localhost\n      information: This is local development, you can only have this environment accessible if you are running backstage locally",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@mexl",
+  "updated": "2024-04-30T13:45:52.434Z",
+  "version": "0.4.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-04-30T13:45:52.434Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-04-30T13:42:18.069Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-04-30T13:40:45.169Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-04-30T12:51:05.164Z",
+      "version": "0.1.0"
+    }
+  ]
+}

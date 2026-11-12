@@ -1,0 +1,55 @@
+{
+  "author": "",
+  "created": "2025-08-22T15:58:42.326Z",
+  "deprecated": "",
+  "description": "A module for the search backend that exports explore modules",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-search-backend-module-explore",
+  "plugin_id": "search",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/explore/plugins/search-backend-module-explore",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-07-24T13:26:15.356Z",
+  "version": "0.11.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2026-07-24T13:26:15.356Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2026-04-17T18:35:43.279Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-01-28T23:01:22.414Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-12-24T22:52:04.706Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-12-12T16:15:53.159Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-10-15T18:25:55.532Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-10-08T09:05:19.539Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-08-22T15:58:42.617Z",
+      "version": "0.4.0"
+    }
+  ]
+}

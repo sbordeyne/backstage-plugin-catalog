@@ -1,0 +1,36 @@
+{
+  "author": "D S Santhosh",
+  "created": "2026-09-08T17:29:09.642Z",
+  "deprecated": "",
+  "description": "Postgres and pgvector store for Backstage RAG, with hybrid dense plus full-text retrieval fused by reciprocal rank fusion in one query.",
+  "homepage": "https://github.com/santhoshdasari786/developer-portal#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "hnsw",
+    "hybrid-search",
+    "knowledge",
+    "pgvector",
+    "postgres",
+    "rag"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "santhoshdasari"
+  ],
+  "name": "@santhoshdasari/plugin-knowledge-backend-module-pgvector",
+  "plugin_id": "knowledge",
+  "readme": "",
+  "repository": "https://github.com/santhoshdasari786/developer-portal/tree/HEAD/plugins/knowledge-backend-module-pgvector",
+  "role": "backend-plugin-module",
+  "scope": "@santhoshdasari",
+  "updated": "2026-09-08T17:29:09.997Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-09-08T17:29:09.997Z",
+      "version": "0.1.0"
+    }
+  ]
+}

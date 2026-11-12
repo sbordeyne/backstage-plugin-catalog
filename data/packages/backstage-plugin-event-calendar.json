@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2025-02-09T00:19:44.998Z",
+  "deprecated": "",
+  "description": "Welcome to the **Event Calendar Plugin**! This plugin enables you to display events within your developer portal.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ferin79"
+  ],
+  "name": "backstage-plugin-event-calendar",
+  "plugin_id": "event-calendar",
+  "readme": "# Event Calendar Plugin\n\nWelcome to the **Event Calendar Plugin**! This plugin enables you to display events within your developer portal.\n\n## Overview\n\nThis plugin offers a simple, non-intrusive way to track and join events in your organization without cluttering personal calendars. Unlike Google or Microsoft calendars, where you need invitations to events or have to manually import them, this plugin allows teams to share **optional events** like office hours, review meetings, and more, which anyone in the organization can join if they choose.\n\n### Use Case\n\nIn large organizations with multiple teams hosting regular events, it's easy to get overwhelmed by invitations and cluttered calendars. The Event Calendar Plugin lets teams list events that are optional for anyone to attend, without the need to send invites or overload individual calendars.\n\n#### Example Use Case:\n\nIf your organization has several teams with rotating office hours or recurring review meetings, the plugin allows these teams to list their events in a shared calendar. Team members can view and join any event that interests them, without needing to manage cluttered invites.\n\nThis plugin is especially useful for large teams, collaborative groups, or departments that run regular, but optional, meetings.\n\n## Screenshots\n\n![All Events / Meetings](https://raw.githubusercontent.com/Ferin79/backstage-plugin-event-calendar/refs/heads/main/examples/all-events.png 'All Events / Meetings')\n\n![Event Details](https://raw.githubusercontent.com/Ferin79/backstage-plugin-event-calendar/refs/heads/main/examples/event-detail.png 'Event Details')\n\n![Event Card](https://raw.githubusercontent.com/Ferin79/backstage-plugin-event-calendar/refs/heads/main/examples/events-card.png 'Events Card')\n\n## Setup\n\nThe following sections will help you get the Event Calendar Plugin setup and running.\n\n### Backend\n\nYou need to set up the Event Calendar backend plugin before you move forward with any of the following steps if you haven't already.\n\n#### Installation\n\nTo start using the Event Calendar Plugin, follow these steps:\n\n- Install Dependency:\n\n  ```bash\n  # From your Backstage root directory\n  yarn --cwd packages/backend add backstage-plugin-event-calendar-backend\n  ```\n\n- Configure:\n\n  In the `packages/backend/src/index.ts` file, add the following:\n\n  ```typescript\n  import { createBackend } from '@backstage/backend-defaults';\n\n  const backend = createBackend();\n\n  backend.add(import('backstage-plugin-event-calendar-backend'));\n\n  backend.start();\n  ```\n\n### Frontend\n\nYou need to set up the Event Calendar backend plugin before you move forward with any of the following steps if you haven't already.\n\n#### Installation\n\n- Install Dependency:\n\n  ```bash\n  # From your Backstage root directory\n  yarn --cwd packages/app add backstage-plugin-event-calendar\n  ```\n\n- Configure Routes:\n\n  **App.tsx**\n\n  ```javascript\n  import { EventCalendarPage } from 'backstage-plugin-event-calendar';\n\n  <Route path=\"/event-calendar\" element={<EventCalendarPage />} />;\n  ```\n\n  **Root.tsx**\n\n  ```javascript\n  import EventNoteIcon from '@material-ui/icons/EventNote';\n\n  <SidebarItem icon={EventNoteIcon} to=\"event-calendar\" text=\"Events\" />;\n  ```\n\n### YAML Configuration Example (app-config.yaml)\n\n```yaml\neventsCalendar:\n  sources:\n    urls:\n      - '../../examples/events.json'\n      - '../../examples/events.yaml'\n    events:\n      - id: 1\n        title: 'Office Hours'\n        start: '2025-02-25 10:15'\n        end: '2025-02-25 11:30'\n\n      - id: 2\n        title: 'Ski Trip'\n        start: '2025-02-05'\n        end: '2025-02-05'\n        allDay: true\n\n      - id: 3\n        title: 'DevX Meeting'\n        start: '2024-02-10T10:00:00.000Z'\n        end: '2024-02-10T11:00:00.000Z'\n        recurrence: 'FREQ=WEEKLY;INTERVAL=2;BYDAY=MO,WE;UNTIL=20260229T235959'\n        desc: 'Discuss the future of DevX'\n        metadata:\n          location: 'Room 101'\n          meetingLink: 'https://meet.google.com/abc-xyz'\n```\n\n#### Example JSON file\n\n```json\n{\n  \"events\": [\n    {\n      \"id\": 11,\n      \"title\": \"Tech Conference\",\n      \"start\": \"2025-03-10T09:00:00.000Z\",\n      \"end\": \"2025-03-10T17:00:00.000Z\",\n      \"allDay\": false,\n      \"metadata\": {\n        \"location\": \"Convention Center\",\n        \"meetingLink\": \"https://zoom.us/tech-conference\"\n      }\n    }\n  ]\n}\n```\n\n#### Example YAML file\n\n```yaml\nevents:\n  - id: 1\n    title: 'New Year Celebration'\n    start: '2025-01-01'\n    end: '2025-01-01'\n    allDay: true\n```\n\n#### Event Object\n\n| Field                  | Type      | Description                                                                  | Required |\n| ---------------------- | --------- | ---------------------------------------------------------------------------- | -------- |\n| `id`                   | `number`  | Unique identifier for the event.                                             | Yes      |\n| `title`                | `string`  | Title or name of the event.                                                  | Yes      |\n| `start`                | `string`  | Start date and time of the event in ISO 8601 format.                         | Yes      |\n| `end`                  | `string`  | End date and time of the event in ISO 8601 format.                           | Yes      |\n| `allDay`               | `boolean` | Flag indicating whether the event is an all-day event.                       | No       |\n| `metadata`             | `object`  | Additional event-related information. Contains `location` and `meetingLink`. | No       |\n| `metadata.location`    | `string`  | Location where the event will take place.                                    | No       |\n| `metadata.meetingLink` | `string`  | URL link for joining the event (e.g., Zoom link).                            | No       |\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2025-02-09T01:35:39.819Z",
+  "version": "0.1.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-02-09T01:35:39.819Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-02-09T00:36:20.084Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-02-09T00:29:27.402Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-02-09T00:19:45.293Z",
+      "version": "0.1.0"
+    }
+  ]
+}

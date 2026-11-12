@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2026-08-18T17:30:49.809Z",
+  "deprecated": "",
+  "description": "Custom node/edge styling and spec.extendedRelations merging for the catalog-graph plugin's entity card and standalone graph page.",
+  "homepage": "https://github.com/raccoon-core/backstage-plugins/tree/main/plugins/catalog-graph-module-extended-relations",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "michael-todorovic"
+  ],
+  "name": "@raccoon-core/backstage-plugin-catalog-graph-module-extended-relations",
+  "plugin_id": "catalog-graph",
+  "readme": "# @raccoon-core/backstage-plugin-catalog-graph-module-extended-relations\n\nA frontend module (`pluginId: 'catalog-graph'`) that overrides two extensions\nfrom `@backstage/plugin-catalog-graph`:\n\n- `entity-card:catalog-graph/relations` — merges `spec.extendedRelations`\n  (written by `catalog-backend-module-extended-relations`) into the graph\n  alongside native catalog relations.\n- `page:catalog-graph` — the standalone `/catalog-graph` page, with the same\n  custom node/edge rendering as the entity card.\n\nIt also mounts a global fix for `DependencyGraph`'s zoom/pan reset-on-render\nbehaviour.\n\n## Installation\n\nAdd the package to your app:\n\n```sh\nyarn --cwd packages/app add @raccoon-core/backstage-plugin-catalog-graph-module-extended-relations\n```\n\nRegister it in `packages/app/src/App.tsx`'s `features` array, alongside the\nupstream `catalogGraphPlugin` — this module overrides two of that plugin's\nextensions, it doesn't replace it:\n\n```tsx\nimport catalogGraphPlugin from '@backstage/plugin-catalog-graph/alpha';\nimport catalogGraphModuleExtendedRelations from '@raccoon-core/backstage-plugin-catalog-graph-module-extended-relations';\n\nexport const app = createApp({\n  features: [\n    catalogGraphPlugin,\n    catalogGraphModuleExtendedRelations,\n    // ...your other features\n  ],\n});\n```\n\nNo further configuration is required. The relations card and the standalone\n`/catalog-graph` page will pick up `spec.extendedRelations` on any entity that\nhas it, and fall back to native catalog relations otherwise.\n\n## Configuration\n\n### Node text\n\nChoose which entity fields the node's two text lines show. Both are optional;\nthe defaults reproduce the previous behaviour (`title` + `system`):\n\n```yaml\ncatalogGraph:\n  extendedRelations:\n    node:\n      title: name # title | name | system | owner | description | type | lifecycle\n      subtitle: system # same values, or `none` to hide the second line\n```\n\n`system`/`owner` show the referenced entity's display title. If the chosen\n`title` field is missing on an entity the node falls back to its display name;\na missing `subtitle` field just hides the second line. `description` is\ntruncated to 40 characters.\n\n### Node colors\n\nThe node color palette (same one reused by `getNodeColor`/`getNodeTintFill`\nfor e.g. search result kind badges) can be overridden per app via\n`app-config.yaml`. Each entry overrides either a whole `kind`'s palette, or —\nwith `type` — just that `kind`+`spec.type` combination:\n\n```yaml\ncatalogGraph:\n  extendedRelations:\n    palette:\n      # Whole-kind override\n      - kind: component\n        accent: '#3b82f6'\n        tint: '#eff6ff'\n        darkTint: '#1e40af'\n      # kind+spec.type override — only entities with this exact combination\n      - kind: Component\n        type: third-party\n        accent: &thirdPartyAccent '#6b7280'\n        tint: &thirdPartyTint '#f3f4f6'\n        darkTint: &thirdPartyDarkTint '#384250'\n      - kind: Group\n        type: third-parties\n        accent: *thirdPartyAccent\n        tint: *thirdPartyTint\n        darkTint: *thirdPartyDarkTint\n```\n\n`accent` is the node's left border bar / badge text color, `tint`/`darkTint`\nare the node background fill for light/dark theme respectively. See\n[`config.d.ts`](./config.d.ts) for the full schema. Kinds/types without a\nmatching entry keep the built-in palette.\n\nSee `CLAUDE.md` for the file layout and implementation notes.\n",
+  "repository": "https://github.com/raccoon-core/backstage-plugins/tree/HEAD/plugins/catalog-graph-module-extended-relations",
+  "role": "frontend-plugin-module",
+  "scope": "@raccoon-core",
+  "updated": "2026-10-09T09:08:46.470Z",
+  "version": "0.4.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-10-09T09:08:46.470Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-10-01T11:22:00.128Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-08-18T17:39:10.553Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2026-08-18T17:30:50.198Z",
+      "version": "0.2.2"
+    }
+  ]
+}

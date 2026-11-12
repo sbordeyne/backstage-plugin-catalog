@@ -1,0 +1,90 @@
+{
+  "author": "",
+  "created": "2021-09-23T12:56:24.117Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "bugsnag",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brianfletcher",
+    "roadie-bot",
+    "roadiehq-david",
+    "xantier"
+  ],
+  "name": "@roadiehq/backstage-plugin-bugsnag",
+  "plugin_id": "backstage-plugin-bugsnag",
+  "readme": "",
+  "repository": "https://github.com/RoadieHQ/roadie-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-bugsnag",
+  "role": "frontend-plugin",
+  "scope": "@roadiehq",
+  "updated": "2026-10-02T15:59:03.400Z",
+  "version": "2.5.1",
+  "version_count": 63,
+  "versions": [
+    {
+      "date": "2026-10-02T15:59:03.400Z",
+      "version": "2.5.1"
+    },
+    {
+      "date": "2026-09-29T13:25:30.710Z",
+      "version": "2.5.0"
+    },
+    {
+      "date": "2025-10-31T09:32:29.966Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2025-07-23T10:20:08.626Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2025-03-07T13:53:59.548Z",
+      "version": "2.2.13"
+    },
+    {
+      "date": "2024-10-03T08:29:14.684Z",
+      "version": "2.2.12"
+    },
+    {
+      "date": "2024-09-26T11:00:23.490Z",
+      "version": "2.2.11"
+    },
+    {
+      "date": "2024-08-28T09:41:26.916Z",
+      "version": "2.2.10"
+    },
+    {
+      "date": "2024-05-08T12:02:18.044Z",
+      "version": "2.2.9"
+    },
+    {
+      "date": "2024-04-03T15:39:44.183Z",
+      "version": "2.2.8"
+    },
+    {
+      "date": "2024-02-29T12:59:01.855Z",
+      "version": "2.2.7"
+    },
+    {
+      "date": "2024-02-27T12:27:09.938Z",
+      "version": "2.2.6"
+    },
+    {
+      "date": "2023-12-01T07:43:32.305Z",
+      "version": "2.2.3"
+    },
+    {
+      "date": "2023-11-10T15:43:24.321Z",
+      "version": "2.2.2"
+    },
+    {
+      "date": "2023-09-28T15:46:28.828Z",
+      "version": "2.2.1"
+    }
+  ]
+}

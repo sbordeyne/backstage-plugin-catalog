@@ -1,0 +1,33 @@
+{
+  "author": "",
+  "created": "2023-01-24T23:41:09.664Z",
+  "deprecated": "",
+  "description": "The Backstage plugin that helps you programatically update catalog entities",
+  "homepage": "https://github.com/K-Phoen/backstage-plugin-codemods",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "kphoen"
+  ],
+  "name": "@k-phoen/plugin-codemods",
+  "plugin_id": "",
+  "readme": "# Codemod Frontend\n\nTODO\n",
+  "repository": "https://github.com/K-Phoen/backstage-plugin-codemods/tree/HEAD/plugins/codemods",
+  "role": "frontend-plugin",
+  "scope": "@k-phoen",
+  "updated": "2023-01-31T00:01:37.249Z",
+  "version": "0.0.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-01-31T00:01:37.249Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2023-01-24T23:41:09.955Z",
+      "version": "0.0.0"
+    }
+  ]
+}

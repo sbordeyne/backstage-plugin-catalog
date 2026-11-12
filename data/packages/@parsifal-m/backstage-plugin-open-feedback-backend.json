@@ -1,0 +1,66 @@
+{
+  "author": "",
+  "created": "2024-05-04T21:08:12.467Z",
+  "deprecated": "",
+  "description": "This plugin serves as the backend for OpenFeedback.",
+  "homepage": "https://github.com/Parsifal-M/backstage-open-feedback#readme",
+  "keywords": [
+    "backend",
+    "backstage",
+    "backstage-plugin",
+    "feedback",
+    "open-source",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "parsifal-m"
+  ],
+  "name": "@parsifal-m/backstage-plugin-open-feedback-backend",
+  "plugin_id": "open-feedback",
+  "readme": "# OpenFeedback Backend\n\nThis plugin serves as the backend for OpenFeedback.\n\n## Adding the OpenFeedback Backend to your Backstage Application\n\nTo add the OpenFeedback backend to your Backstage application, you need to add the following code to your `packages/backend/src/plugins/index.ts` file:\n\n```typescript\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n\n// Other plugins\nbackend.add(import('@parsifal-m/backstage-plugin-open-feedback-backend'));\n\nbackend.start();\n```\n",
+  "repository": "https://github.com/Parsifal-M/backstage-open-feedback",
+  "role": "backend-plugin",
+  "scope": "@parsifal-m",
+  "updated": "2026-07-13T13:25:51.517Z",
+  "version": "0.5.4",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2026-07-13T13:25:51.517Z",
+      "version": "0.5.4"
+    },
+    {
+      "date": "2026-04-08T11:47:46.126Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2025-12-29T11:40:02.759Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2025-04-05T16:05:38.480Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2024-11-25T13:37:46.153Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2024-11-25T09:11:10.430Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-07-26T19:20:21.712Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-05-04T21:19:02.087Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-05-04T21:08:12.793Z",
+      "version": "0.1.0"
+    }
+  ]
+}

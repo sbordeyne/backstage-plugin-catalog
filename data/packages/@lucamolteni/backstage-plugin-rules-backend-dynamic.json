@@ -1,0 +1,30 @@
+{
+  "author": "",
+  "created": "2025-01-30T15:45:44.380Z",
+  "deprecated": "",
+  "description": "Welcome to the rules backend plugin!",
+  "homepage": "https://github.com/janus-idp/backstage-plugins#readme",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "lucamolteni"
+  ],
+  "name": "@lucamolteni/backstage-plugin-rules-backend-dynamic",
+  "plugin_id": "",
+  "readme": "# rules\n\nWelcome to the rules backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/rules](http://localhost:3000/rules).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/rules",
+  "role": "backend-plugin",
+  "scope": "@lucamolteni",
+  "updated": "2025-01-30T15:45:44.822Z",
+  "version": "0.1.2",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-01-30T15:45:44.822Z",
+      "version": "0.1.2"
+    }
+  ]
+}

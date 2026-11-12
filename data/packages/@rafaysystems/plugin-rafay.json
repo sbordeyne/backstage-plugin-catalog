@@ -1,0 +1,28 @@
+{
+  "author": "",
+  "created": "2024-09-11T05:26:41.012Z",
+  "deprecated": "",
+  "description": "Welcome to the rafay plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "kutumba-rafay",
+    "manoj-rafay"
+  ],
+  "name": "@rafaysystems/plugin-rafay",
+  "plugin_id": "rafay",
+  "readme": "# rafay\n\nWelcome to the rafay plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/rafay](http://localhost:3000/rafay).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@rafaysystems",
+  "updated": "2024-09-11T05:26:41.450Z",
+  "version": "0.2.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-09-11T05:26:41.450Z",
+      "version": "0.2.0"
+    }
+  ]
+}

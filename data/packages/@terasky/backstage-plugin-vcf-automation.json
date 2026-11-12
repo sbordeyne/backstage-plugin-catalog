@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-04-21T16:21:27.391Z",
+  "deprecated": "",
+  "description": "Welcome to the vcf-automation plugin!",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-vcf-automation",
+  "plugin_id": "vcf-automation",
+  "readme": "# vcf-automation\n\nWelcome to the vcf-automation plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-vcf-automation/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-vcf-automation)\n\nThe `vcf-automation` plugin for Backstage provides visibility into VCF deployments, resources, and projects. It offers detailed views of deployment operations, resource states, and project configurations. The plugin integrates with Backstage's permission framework to ensure secure access control.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/vcf-automation/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/scaleops-frontend",
+  "role": "frontend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:58:39.106Z",
+  "version": "1.19.0",
+  "version_count": 33,
+  "versions": [
+    {
+      "date": "2026-10-21T13:58:39.106Z",
+      "version": "1.19.0"
+    },
+    {
+      "date": "2026-06-30T17:23:42.345Z",
+      "version": "1.16.0"
+    },
+    {
+      "date": "2026-06-09T19:10:53.194Z",
+      "version": "1.15.1"
+    },
+    {
+      "date": "2026-05-04T07:12:58.746Z",
+      "version": "1.14.1"
+    },
+    {
+      "date": "2026-04-16T08:23:14.857Z",
+      "version": "1.14.0"
+    },
+    {
+      "date": "2026-03-22T17:03:48.293Z",
+      "version": "1.12.0"
+    },
+    {
+      "date": "2026-03-09T16:54:31.194Z",
+      "version": "1.11.2"
+    },
+    {
+      "date": "2026-02-17T20:42:04.146Z",
+      "version": "1.11.0"
+    },
+    {
+      "date": "2026-01-28T18:33:33.847Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2026-01-26T10:39:22.178Z",
+      "version": "1.9.1"
+    },
+    {
+      "date": "2026-01-21T10:09:57.669Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2026-01-01T17:21:24.650Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2025-12-22T10:17:22.413Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2025-12-02T12:37:18.272Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2025-11-05T16:58:21.922Z",
+      "version": "1.5.3"
+    }
+  ]
+}

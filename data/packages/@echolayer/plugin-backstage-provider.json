@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2023-09-05T19:20:07.626Z",
+  "deprecated": "",
+  "description": "Welcome to the EchoLayer Backstage plugin! From here, you'll learn how to install our module and configure our plugin in your Backstage instance.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "karlclement",
+    "karlcodex",
+    "saumilp"
+  ],
+  "name": "@echolayer/plugin-backstage-provider",
+  "plugin_id": "",
+  "readme": "# EchoLayer Backstage Plugin\n\nWelcome to the EchoLayer Backstage plugin! From here, you'll learn how to install our module and configure our plugin in your Backstage instance.\n\n## Backstage Configuration\nYou'll need to configure a proxy to echolayer.com and place the echolayer.com cards and pages in your Backstage files.\n\n### Create an EchoLayer API Key\n1. [Login to EchoLayer](https://app.echolayer.com/sign-in) using your GitHub account\n2. Create an API Key at the [EchoLayer API Key page](https://app.echolayer.com/account/api-keys)\n3. Set your API Key as an environment variable, `ECHOLAYER_API_KEY` in the environment where you run Backstage\n\n\n## Installing EchoLayer Backend Plugin Provider\n1. Install the plugin\n```bash\n# In Backstage root directory\nyarn add --cwd packages/backend @echolayer/plugin-backstage-provider\n```\n\n2. In the `catalog.ts` file in the following location in Backstage: `packages/backend/src/plugins/catalog.ts`, import our provider:\n```typescript\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n// Add our provider:\nimport { EchoLayerProvider } from \"@echolayer/plugin-backstage-provider\";\n```\n\n\n3. In the `catalog.ts` file, instantiate the class and add it as an entity provider:\n```typescript\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const builder = await CatalogBuilder.create(env);\n  const echolayer = new EchoLayerProvider('echolayer', env.config);\n  builder.addEntityProvider(echolayer);\n  // ...snip\n}\n```\n\n\n4. In the `catalog.ts` file, schedule echolayer to run:\n```typescript\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  // ...snip\n  const echolayer = new EchoLayerProvider('echolayer', env.config);\n  // ...snip\n  await env.scheduler.scheduleTask({\n    id: \"run_echolayer_provider\",\n    fn: async () => {\n      await echolayer.run();\n    },\n    frequency: { minutes: 1 },\n    timeout: { minutes: 10 }\n  });\n  \n  return router;\n}\n```\n\n4. Update your `app-config.yaml` to include the following:\n```yaml\necholayer:\n  apiKey: <your api key>\n```\n\n## License\n\nThis plugin is licensed under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).\n\nThe EchoLayer name and brand are copyright Codex Build Inc. 2023. They are excluded from the Apache 2.0 license.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@echolayer",
+  "updated": "2023-09-20T17:52:59.938Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2023-09-20T17:52:59.938Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-09-06T19:56:41.517Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-09-05T19:20:07.938Z",
+      "version": "0.1.0"
+    }
+  ]
+}

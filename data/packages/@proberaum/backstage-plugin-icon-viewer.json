@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2025-10-18T07:46:56.302Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "christoph-jerolimov",
+    "jerolimov"
+  ],
+  "name": "@proberaum/backstage-plugin-icon-viewer",
+  "plugin_id": "icon-viewer",
+  "readme": "",
+  "repository": "https://github.com/proberaum/backstage-plugins/tree/HEAD/workspaces/icon-viewer/plugins/icon-viewer",
+  "role": "frontend-plugin",
+  "scope": "@proberaum",
+  "updated": "2026-02-28T09:22:48.796Z",
+  "version": "0.3.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-02-28T09:22:48.796Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-11-18T17:45:58.579Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-10-19T19:10:26.234Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-10-19T17:01:44.364Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-10-18T07:46:56.618Z",
+      "version": "0.1.0"
+    }
+  ]
+}

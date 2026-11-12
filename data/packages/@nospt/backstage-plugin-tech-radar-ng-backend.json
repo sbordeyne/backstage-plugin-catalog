@@ -1,0 +1,86 @@
+{
+  "author": "NOS SGPS, S.A.",
+  "created": "2026-04-01T00:22:35.230Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin for the NOS Technology Radar",
+  "homepage": "https://github.com/nosportugal/backstage-plugin-tech-radar-ng#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "tech-radar",
+    "technology-radar"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "calexandre",
+    "dsiteixeira",
+    "jfhs",
+    "kkthx",
+    "marcoaureliox",
+    "paparuco",
+    "yrxavier"
+  ],
+  "name": "@nospt/backstage-plugin-tech-radar-ng-backend",
+  "plugin_id": "tech-radar-ng",
+  "readme": "<div align=\"center\">\n\n<img src=\"https://raw.githubusercontent.com/nosportugal/backstage-plugin-tech-radar-ng/main/images/logo-backend.png\" alt=\"Tech Radar NG — Backend\" width=\"50%\" />\n\n# @nospt/backstage-plugin-tech-radar-ng-backend\n\n**Backend plugin for the Tech Radar NG suite.**\n\n[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](../../LICENSE) [![Backstage](https://img.shields.io/badge/Backstage-New%20Backend%20System-blueviolet)](https://backstage.io) [![Beta](https://img.shields.io/badge/status-beta-orange)](#)\n\n</div>\n\n> [!WARNING] > **BETA** — This plugin is under active development. APIs, data models, and configuration options may change between versions.\n\n---\n\n## Overview\n\nThis package provides the **backend** for the Tech Radar NG Backstage plugin suite. It includes:\n\n- **Scheduled Discovery** — Automatically discovers technologies from GitHub on a configurable schedule using a 50/50 strategy (top scorers + trending).\n- **Temporal Metrics** — Stores timestamped snapshots of stars and forks with percentage-change trend indicators.\n- **REST API** — Exposes endpoints for segments, rings, candidates (with pagination/filtering), batch classification, and manual discovery triggers.\n- **Database Migrations** — Automatic Knex migrations on startup (PostgreSQL or SQLite).\n- **DI Services** — `RadarMetricsService`, `RingsService`, `SegmentsService` following the Backstage service-ref pattern.\n\nBuilt with the [New Backend System](https://backstage.io/docs/backend-system/) using `createBackendPlugin` and core DI services.\n\n---\n\n## Installation\n\nFrom your Backstage root:\n\n```bash\nyarn --cwd packages/backend add @nospt/backstage-plugin-tech-radar-ng-backend\n```\n\nRegister the plugin:\n\n```ts\n// packages/backend/src/index.ts\nconst backend = createBackend();\nbackend.add(import('@nospt/backstage-plugin-tech-radar-ng-backend'));\nbackend.start();\n```\n\nDatabase migrations run automatically on startup.\n\n---\n\n## Configuration\n\nAdd to your `app-config.yaml`:\n\n```yaml\ntechRadarNg:\n  discovery:\n    frequency: { hours: 2 } # How often to run discovery (default: 24h)\n    timeout: { minutes: 15 } # Max discovery run duration\n    initialDelay: { seconds: 5 } # Delay before first run (default: 60s)\n  github:\n    searchQueries:\n      - 'AI OR ML OR \"machine learning\" OR \"artificial intelligence\"'\n      - 'LLM OR \"language model\" OR GPT OR transformer'\n```\n\nSee the full [configuration reference](../../docs/README.md#configuration-reference) for all options.\n\n---\n\n## REST API\n\nAll endpoints are served under `/api/tech-radar-ng`.\n\n| Method | Path                   | Description                             |\n| ------ | ---------------------- | --------------------------------------- |\n| `GET`  | `/segments`            | List all radar segments                 |\n| `GET`  | `/rings`               | List all radar rings                    |\n| `PUT`  | `/rings`               | Update ring definitions                 |\n| `GET`  | `/candidates`          | List candidates (paginated, filterable) |\n| `PUT`  | `/candidates/classify` | Batch-update candidate classifications  |\n| `GET`  | `/githubDiscovery`     | Manually trigger a discovery run        |\n\nFor detailed request/response schemas, see the [API reference](../../docs/README.md#rest-api-reference).\n\n---\n\n## Services\n\n| Service               | Ref                      | Description                                         |\n| --------------------- | ------------------------ | --------------------------------------------------- |\n| `RadarMetricsService` | `radarMetricsServiceRef` | Discovery engine, candidate CRUD, metrics snapshots |\n| `RingsService`        | `ringsServiceRef`        | Ring management                                     |\n| `SegmentsService`     | `segmentsServiceRef`     | Segment management                                  |\n\nAll services follow the Backstage DI pattern: interface → private constructor with `static create()` factory → `createServiceRef` / `createServiceFactory`.\n\n---\n\n## Development\n\n```bash\ncd plugins/tech-radar-ng-backend\nyarn start       # Start backend in development mode\nyarn test        # Run tests\nyarn lint        # Lint\nyarn build       # Build for production\n```\n\n---\n\n## Related Packages\n\n| Package                                                                   | Description                                       |\n| ------------------------------------------------------------------------- | ------------------------------------------------- |\n| [`@nospt/backstage-plugin-tech-radar-ng`](../tech-radar-ng)               | Frontend — Radar visualization and Back Office UI |\n| [`@nospt/backstage-plugin-tech-radar-ng-common`](../tech-radar-ng-common) | Shared types, Zod schemas, and enums              |\n\n---\n\n## License\n\n[Apache License 2.0](../../LICENSE)\n",
+  "repository": "https://github.com/nosportugal/backstage-plugin-tech-radar-ng/tree/HEAD/plugins/tech-radar-ng-backend",
+  "role": "backend-plugin",
+  "scope": "@nospt",
+  "updated": "2026-07-03T11:39:19.343Z",
+  "version": "1.2.0",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2026-07-03T11:39:19.343Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-05-12T10:40:46.337Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-04-21T09:54:33.594Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-04-21T09:15:09.559Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-04-20T16:29:45.412Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-04-15T11:01:31.503Z",
+      "version": "0.9.8"
+    },
+    {
+      "date": "2026-04-09T14:12:39.101Z",
+      "version": "0.9.7"
+    },
+    {
+      "date": "2026-04-09T11:38:33.359Z",
+      "version": "0.9.6"
+    },
+    {
+      "date": "2026-04-02T16:30:55.720Z",
+      "version": "0.9.4"
+    },
+    {
+      "date": "2026-04-02T14:01:02.893Z",
+      "version": "0.9.3"
+    },
+    {
+      "date": "2026-04-01T10:36:55.767Z",
+      "version": "0.9.2"
+    },
+    {
+      "date": "2026-04-01T09:52:15.320Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2026-04-01T00:22:35.486Z",
+      "version": "0.9.0"
+    }
+  ]
+}

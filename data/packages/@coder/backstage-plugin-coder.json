@@ -1,0 +1,73 @@
+{
+  "author": "",
+  "created": "2024-02-28T19:29:17.106Z",
+  "deprecated": "",
+  "description": "Create and manage Coder workspaces from Backstage",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "coder",
+    "developer-tools",
+    "ide",
+    "jetbrains",
+    "platform",
+    "vscode"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ammar",
+    "ammarb",
+    "coder-bot",
+    "coderasher",
+    "coderhq",
+    "jonayers",
+    "kiracoder",
+    "kylecarbs",
+    "mattvollmer",
+    "partheseas",
+    "sethcoder"
+  ],
+  "name": "@coder/backstage-plugin-coder",
+  "plugin_id": "coder",
+  "readme": "",
+  "repository": "https://github.com/coder/backstage-plugins",
+  "role": "frontend-plugin",
+  "scope": "@coder",
+  "updated": "2025-10-31T20:04:56.746Z",
+  "version": "0.5.0-alpha.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2025-10-31T20:04:56.746Z",
+      "version": "0.5.0-alpha.0"
+    },
+    {
+      "date": "2025-10-15T22:01:54.756Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-06-17T20:14:08.598Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-04-19T14:21:40.354Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-04-04T17:27:48.033Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-03-29T22:10:55.893Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2024-03-14T21:47:57.420Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-02-28T19:29:17.350Z",
+      "version": "0.0.1"
+    }
+  ]
+}

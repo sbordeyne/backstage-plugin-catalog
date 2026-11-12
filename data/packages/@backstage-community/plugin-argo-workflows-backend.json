@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-08-13T14:08:30.416Z",
+  "deprecated": "",
+  "description": "Backend plugin for the argo-workflows plugin",
+  "homepage": "",
+  "keywords": [
+    "argo-workflows",
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-argo-workflows-backend",
+  "plugin_id": "argo-workflows",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/argo-workflows/plugins/argo-workflows-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-08-19T00:27:51.838Z",
+  "version": "0.2.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-08-19T00:27:51.838Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-13T14:08:30.668Z",
+      "version": "0.1.0"
+    }
+  ]
+}

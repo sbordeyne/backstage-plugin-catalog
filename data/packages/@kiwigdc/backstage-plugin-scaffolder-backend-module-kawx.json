@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2024-07-03T12:41:12.030Z",
+  "deprecated": "",
+  "description": "The kawx backend module for the scaffolder plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "yghore"
+  ],
+  "name": "@kiwigdc/backstage-plugin-scaffolder-backend-module-kawx",
+  "plugin_id": "scaffolder",
+  "readme": "# @kiwigdc/backstage-plugin-scaffolder-backend-module-kawx\n\nThe kawx backend module for the scaffolder plugin.\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "https://github.com/KiwiGDC/backstage-kawx/tree/HEAD/plugins/scaffolder-backend-module-kawx",
+  "role": "backend-plugin-module",
+  "scope": "@kiwigdc",
+  "updated": "2024-07-04T13:03:52.491Z",
+  "version": "0.1.5",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2024-07-04T13:03:52.491Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-07-04T12:46:24.233Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-07-04T09:28:32.350Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-07-04T08:25:43.050Z",
+      "version": "0.1.2-a"
+    },
+    {
+      "date": "2024-07-03T12:58:52.690Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-07-03T12:41:12.324Z",
+      "version": "0.1.1"
+    }
+  ]
+}

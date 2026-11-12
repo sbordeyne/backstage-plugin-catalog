@@ -1,0 +1,31 @@
+{
+  "author": "Juliano Terrabuio",
+  "created": "2024-11-20T17:57:19.923Z",
+  "deprecated": "",
+  "description": "Backstage plugin",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "juterrabuio"
+  ],
+  "name": "@juterrabuio/backstage-twelve-factor-tips",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/juterrabuio/backstage-twelve-factor-tips",
+  "role": "frontend-plugin",
+  "scope": "@juterrabuio",
+  "updated": "2024-11-20T18:13:26.679Z",
+  "version": "1.0.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-11-20T18:13:26.679Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-11-20T17:57:20.207Z",
+      "version": "1.0.0"
+    }
+  ]
+}

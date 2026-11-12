@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-10-06T23:37:29.215Z",
+  "deprecated": "",
+  "description": "Backend for [`@iswesolutions/plugin-ipam`](../ipam): a permission-checked gateway to the phpIPAM API, static-address allocation for new containers, DNS checks, usage history, a search collator and Backstage notifications for new IPAM issues.",
+  "homepage": "https://github.com/ISWE-Solutions/backstage-plugins/tree/main/plugins/ipam-backend#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "csiwale"
+  ],
+  "name": "@iswesolutions/plugin-ipam-backend",
+  "plugin_id": "ipam",
+  "readme": "# @iswesolutions/plugin-ipam-backend\n\nBackend for [`@iswesolutions/plugin-ipam`](../ipam): a permission-checked\ngateway to the phpIPAM API, static-address allocation for new containers, DNS\nchecks, usage history, a search collator and Backstage notifications for new\nIPAM issues.\n\n## Installation\n\n```sh\nyarn --cwd packages/backend add @iswesolutions/plugin-ipam-backend\n```\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@iswesolutions/plugin-ipam-backend'));\n// optional: index IP addresses in Backstage search\nbackend.add(import('@iswesolutions/plugin-ipam-backend/search'));\n```\n\n## phpIPAM\n\nCreate an API app in phpIPAM (_Administration → API_) with app security\n\"SSL with App code token\", and give it read/write access.\n\n## Configuration\n\n```yaml\nipam:\n  phpipam:\n    url: https://phpipam.example.com/api/backstage\n    appCode: ${PHPIPAM_APP_CODE}\n    verifyTls: true\n  # Optional: hand out static addresses for new hosts\n  allocation:\n    subnet: 10.0.0.0\n    prefix: 24\n    from: 10.0.0.100\n    to: 10.0.0.199\n    gateway: 10.0.0.1\n    nameserver: 10.0.0.53\n  # Optional: DHCP pools, shaded on the subnet map\n  dhcpRanges:\n    - from: 10.0.0.200\n      to: 10.0.0.254\n  # Optional: Proxmox node -> web UI URL, for links to guests\n  proxmoxUiUrls:\n    pve1: https://pve1.example.com:8006\n  # Optional: notifications for new issues\n  notifications:\n    enabled: true\n    recipients: [group:default/network-admins]\n    thresholds: [80, 90]\n```\n\nSee [`config.d.ts`](config.d.ts) for every option.\n\n## Permissions\n\nReads are open to signed-in users. Writes check these permissions, defined in\n`@iswesolutions/plugin-ipam-common`:\n\n`ipam.address.create`, `ipam.address.update`, `ipam.address.delete`,\n`ipam.subnet.create`, `ipam.subnet.update`, `ipam.vlan.create`\n",
+  "repository": "https://github.com/ISWE-Solutions/backstage-plugins/tree/HEAD/plugins/ipam-backend",
+  "role": "backend-plugin",
+  "scope": "@iswesolutions",
+  "updated": "2026-10-15T11:34:25.916Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-10-15T11:34:25.916Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-10-06T23:38:24.349Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-06T23:37:29.215Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

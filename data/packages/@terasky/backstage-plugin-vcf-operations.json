@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-08-06T13:11:32.512Z",
+  "deprecated": "",
+  "description": "This plugin provides integration with VMware vRealize Operations (VCF Operations) for displaying metrics and analytics data within Backstage.",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-vcf-operations",
+  "plugin_id": "vcf-operations",
+  "readme": "# VCF Operations Plugin\n\nThis plugin provides integration with VMware vRealize Operations (VCF Operations) for displaying metrics and analytics data within Backstage.\n\n## Features\n\n- **VCFOperationsExplorer Component**: Interactive metrics explorer with charting capabilities\n- **Multiple Metrics Support**: Select and visualize multiple metrics simultaneously\n- **Time Range Selection**: Flexible time range picker including custom date/time ranges\n- **Real-time Data**: Auto-refresh functionality for live metrics monitoring\n- **Instance Support**: Multi-instance VCF Operations support\n- **Interactive Charts**: Powered by Recharts for responsive data visualization\n\n## Installation\n\nThis plugin is designed to be used with entities that have VCF Automation annotations. The component will automatically detect the resource ID from entity annotations.\n\n## Usage\n\n### Adding the Explorer to an Entity Page\n\nAdd the `VCFOperationsExplorer` component as a tab to any entity that has VCF Automation annotations:\n\n```tsx\nimport { VCFOperationsExplorer } from '@terasky/backstage-plugin-vcf-operations';\n\n// In your entity page\n<EntityLayout.Route path=\"/vcf-operations\" title=\"Operations Metrics\">\n  <VCFOperationsExplorer />\n</EntityLayout.Route>\n```\n\n### Required Entity Annotations\n\nThe component requires one of the following annotations on the entity:\n\n- `vcf-automation.io/resource-id`: The VCF Automation resource ID\n- `vcf-automation.io/deployment-id`: The VCF Automation deployment ID\n\n### Supported Metrics\n\nThe plugin includes common metrics such as:\n\n- CPU Usage (%)\n- Memory Usage (%)\n- Disk Usage (%)\n- Network Usage\n- Power Usage\n- And many more...\n\nYou can also add custom metrics using the metric key format (e.g., `cpu|usage_average`).\n\n## Configuration\n\nConfigure your VCF Operations instances in your `app-config.yaml`:\n\n```yaml\nvcfOperations:\n  instances:\n  - name: polo-vcf\n    baseUrl: 'https://polo-vcf01.terasky.local'\n    majorVersion: 9\n    relatedVCFAInstances:\n    - vcfa-instance-name\n    authentication:\n      username: 'admin'\n      password: 'VMware1!VMware1!'\n```",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/vcf-operations",
+  "role": "frontend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:57:58.861Z",
+  "version": "0.17.0",
+  "version_count": 23,
+  "versions": [
+    {
+      "date": "2026-10-21T13:57:58.861Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-06-30T17:24:07.552Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2026-06-09T19:11:31.584Z",
+      "version": "0.13.1"
+    },
+    {
+      "date": "2026-05-04T07:13:13.198Z",
+      "version": "0.12.1"
+    },
+    {
+      "date": "2026-04-16T08:23:40.634Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-03-22T17:04:11.870Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-03-09T16:54:52.586Z",
+      "version": "0.9.2"
+    },
+    {
+      "date": "2026-02-17T20:42:28.182Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-01-28T18:33:59.214Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-01-26T10:39:47.926Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2026-01-21T10:10:22.596Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-01-01T17:21:40.119Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2025-12-22T10:17:46.214Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-12-02T12:37:43.057Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-11-05T16:58:38.768Z",
+      "version": "0.3.3"
+    }
+  ]
+}

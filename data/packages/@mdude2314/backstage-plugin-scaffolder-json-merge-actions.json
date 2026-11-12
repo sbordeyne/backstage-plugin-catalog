@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2022-12-13T14:03:20.388Z",
+  "deprecated": "",
+  "description": "The json-merge actions module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mdude2314"
+  ],
+  "name": "@mdude2314/backstage-plugin-scaffolder-json-merge-actions",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-scaffolder-json-merge-actions\n\nThis is a `json-merge` actions plugin for the `scaffolder-backend` in Backstage.\n\nThis contains a collection of actions for using with the [JSON Merger npm package](https://www.npmjs.com/package/json-merger):\n\n- json:merge-files - [JSON Merger doc](https://www.npmjs.com/package/json-merger#mergefilesfiles-string-config-config)\n- json:merge-file - [JSON Merger doc](https://www.npmjs.com/package/json-merger#mergefilefile-string-config-config)\n\n## Prerequisites\n\n- Node must be installed in the environment your Backstage instance is running in, but it will most likely already be there since your Backstage instance runs in Node.\n\n- Additionally, these actions use the [JSON Merger npm package](https://www.npmjs.com/package/json-merger). It will be useful to understand how it functions as well as what options are available in the configuration.\n\n## Getting started\n\nIn the root directory of your Backstage project:\n\n```\nyarn add --cwd packages/backend @mdude2314/backstage-plugin-scaffolder-json-merge-actions\n```\n\nAdd the actions you'd like to the scaffolder:\n\n```typescript\n// packages/backend/src/plugins/scaffolder.ts\n\nimport {\n  createJsonMergeFileAction,\n  createJsonMergeFilesAction\n} from '@mdude2314/backstage-plugin-scaffolder-json-merge-actions';\nimport { ScmIntegrations } from '@backstage/integration';\nimport { createBuiltinActions, createRouter } from '@backstage/plugin-scaffolder-backend';\n\n...\n\nconst integrations = ScmIntegrations.fromConfig(env.config);\nconst builtInActions = createBuiltinActions({\n  catalogClient,\n  integrations,\n  config: env.config,\n  reader: env.reader\n});\n\nconst actions = [\n    createJsonMergeFileAction(),\n    createJsonMergeFilesAction(),\n  ...builtInActions\n];\n\nreturn await createRouter({\n  logger: env.logger,\n  config: env.config,\n  database: env.database,\n  reader: env.reader,\n  catalogClient,\n  actions\n});\n```\n\n## Example of using the JSON merge:\n\n```json\n/// files/file-1.json\n{ \"hello\": \"world\", \"foo\": [\"bar\", \"baz\"] }\n\n/// files/file-2.json\n{ \"goodbye\": \"world\", \"foo\": [\"rab\", \"zab\"] }\n```\n\n```yaml\n---\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: json-merge-demo\n  title: My json merge template\n  description: Merge JSON files in the working directory of the task\nspec:\n  owner: mdude2314\n  type: service\n\n  steps:\n    - id: fetch-files\n      name: Fetch files\n      action: fetch:plain\n      input:\n        url: ./files # files should contain the JSON files you want to merge\n\n    - id: merge-files\n      name: Merge files\n      action: json:merge\n      input:\n        inputFiles: [\"file-1.json\", \"file-2.json\"]\n        outputFilePath: results\n        outputFileName: results.json\n        jsonMergeOptions: # options passed directly to the mergeFiles function\n          defaultArrayMergeOperation: \"concat\"\n```\n\nOutput:\n\n```json\n/// results/results.json\n{ \"hello\": \"world\", \"foo\": [\"bar\", \"baz\", \"rab\", \"zab\"], \"goodbye\": \"world\" }\n```\n",
+  "repository": "https://github.com/arhill05/backstage-plugin-scaffolder-json-merge-actions",
+  "role": "backend-plugin-module",
+  "scope": "@mdude2314",
+  "updated": "2023-11-27T12:33:10.074Z",
+  "version": "1.2.1",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2023-11-27T12:33:10.074Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2022-12-13T20:30:06.365Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2022-12-13T14:05:13.357Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2022-12-13T14:03:20.609Z",
+      "version": "1.0.0"
+    }
+  ]
+}

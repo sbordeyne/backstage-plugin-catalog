@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2024-07-05T08:38:45.143Z",
+  "deprecated": "",
+  "description": "Welcome to the panw-rbac plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "yyashika"
+  ],
+  "name": "backstage-plugin-panw-rbac",
+  "plugin_id": "",
+  "readme": "# rbac\n\nWelcome to the panw-rbac plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/rbac](http://localhost:3000/rbac).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n\n <!---Protected_by_PANW_Code_Armor_2024 - Y3ByfC9jb3JlLXNyZS9wcm9qZWN0cy9jb3JlLWZyYW1ld29yay90ZW5hbnRzL2JhY2tzdGFnZS1jb3JlLXBsdWdpbnMvcGFudy1yYmFjfDE2NDU5fG1haW4= ---> \n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2024-07-08T17:08:45.201Z",
+  "version": "0.1.12",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2024-07-08T17:08:45.201Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2024-07-08T06:18:35.271Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2024-07-08T06:07:11.204Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2024-07-08T05:54:47.730Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2024-07-08T05:43:39.678Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2024-07-08T05:19:49.040Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2024-07-07T21:10:35.825Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2024-07-07T20:51:53.368Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-07-05T14:54:07.486Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-07-05T14:07:17.675Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-07-05T13:04:36.634Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-07-05T08:38:45.467Z",
+      "version": "0.1.1"
+    }
+  ]
+}

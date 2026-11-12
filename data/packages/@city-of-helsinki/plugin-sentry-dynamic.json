@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-04-10T13:34:08.433Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates towards Sentry",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "sentry"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "anmipa",
+    "helsinki",
+    "kannappan.senthilnathan",
+    "tuomas777",
+    "vikoivun",
+    "voneiden"
+  ],
+  "name": "@city-of-helsinki/plugin-sentry-dynamic",
+  "plugin_id": "sentry",
+  "readme": "# Sentry Plugin\n\nThe Sentry Plugin displays issues from [Sentry](https://sentry.io).\n\n![Sentry Card](./docs/sentry-card.png)\n\n## Getting Started\n\n1. Install the Sentry Plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @backstage-community/plugin-sentry\n```\n\n2. Import the sentry card or content into the frontend. If using the standard Backstage frontend, follow step 2A, and if using\n   the [new alpha frontend system](https://backstage.io/docs/frontend-system/), follow step 2B instead.\n\nA. Add the `EntitySentryCard` to the EntityPage:\n\n```jsx\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport { EntitySentryCard } from '@backstage-community/plugin-sentry';\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    // ...\n    <Grid item xs={12} sm={6} md={4}>\n      <EntitySentryCard />\n    </Grid>\n    // ...\n  </Grid>\n);\n```\n\n> You can also import the full-page `EntitySentryContent` extension if you want to have a dedicated sentry page:\n>\n> ```tsx\n> // packages/app/src/components/catalog/EntityPage.tsx\n>\n> import { EntitySentryContent } from '@backstage-community/plugin-sentry';\n>\n> const serviceEntityPage = (\n>   <EntityLayout>\n>     // ...\n>     <EntityLayout.Route path=\"/sentry\" title=\"Sentry\">\n>       <EntitySentryContent />\n>     </EntityLayout.Route>\n>     // ...\n>   </EntityLayout>\n> );\n> ```\n\nB. [Install the plugin](https://backstage.io/docs/frontend-system/building-apps/index#install-features-manually) by updating `App.tsx` to include the plugin in the features block during app creation:\n\n```tsx\n// packages/app/src/App.tsx\nimport { createApp } from '@backstage/frontend-app-api';\nimport sentryPlugin from '@axis-backstage/plugin-sentry/alpha';\n\n...\nconst app = createApp({\n  features: [\n    ...,\n    sentryPlugin,\n    ],\n});\nexport default app.createRoot();\n```\n\n3. Add the proxy config:\n\n```yaml\n# app-config.yaml\n\nproxy:\n  '/sentry/api':\n    target: https://sentry.io/api/\n    allowedMethods: ['GET']\n    headers:\n      Authorization: Bearer ${SENTRY_TOKEN}\n\nsentry:\n  organization: <your-organization>\n```\n\n4. Create a new internal integration with the permissions `Issues & Events: Read` (https://docs.sentry.io/product/integrations/integration-platform/) and provide it as `SENTRY_TOKEN` as env variable.\n\n5. Add the `sentry.io/project-slug` annotation to your catalog-info.yaml file:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: backstage\n  description: |\n    Backstage is an open-source developer portal that puts the developer experience first.\n  annotations:\n    sentry.io/project-slug: YOUR_PROJECT_SLUG\nspec:\n  type: library\n  owner: CNCF\n  lifecycle: experimental\n```\n\n### Demo Mode\n\nThe plugin provides a MockAPI that always returns dummy data instead of talking to the sentry backend.\nYou can add it by overriding the `sentryApiRef`:\n\n```ts\n// packages/app/src/apis.ts\n\nimport { createApiFactory } from '@backstage/core-plugin-api';\nimport {\n  MockSentryApi,\n  sentryApiRef,\n} from '@backstage-community/plugin-sentry';\n\nexport const apis = [\n  // ...\n\n  createApiFactory(sentryApiRef, new MockSentryApi()),\n];\n```\n\nIf using the [new frontend system](<(https://backstage.io/docs/frontend-system/)>), then use the mock api by modifying App.tsx instead;\n\n```ts\n// packages/app/src/App.tsx\n\nimport {\n  createApiFactory,\n  createExtensionOverrides,\n  ApiBlueprint,\n} from '@backstage/frontend-plugin-api';\nimport {\n  MockSentryApi,\n  sentryApiRef,\n} from '@backstage-community/plugin-sentry';\nimport sentryPlugin from '@axis-backstage/plugin-sentry/alpha';\n\n\nconst sentryMockApi = ApiBlueprint.make({\n  name: 'sentry',\n  params: {\n    factory: createApiFactory({\n      api: sentryApiRef,\n      deps: {},\n      factory: () => new MockSentryApi(),\n    }),\n  },\n});\n\nconst app = createApp({\n  features: [\n    ...,\n    sentryPlugin,\n    createExtensionOverrides({\n      extensions: [\n        sentryMockApi,\n      ],\n    }),\n    ],\n});\n...\n```\n",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/sentry/plugins/sentry",
+  "role": "frontend-plugin",
+  "scope": "@city-of-helsinki",
+  "updated": "2025-04-10T13:34:08.791Z",
+  "version": "1.4.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-04-10T13:34:08.791Z",
+      "version": "1.4.0"
+    }
+  ]
+}

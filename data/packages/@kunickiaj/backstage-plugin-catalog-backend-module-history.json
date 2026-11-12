@@ -1,0 +1,54 @@
+{
+  "author": "",
+  "created": "2026-10-22T23:16:27.595Z",
+  "deprecated": "",
+  "description": "Backstage backend module that records every catalog EntityProvider mutation into a versioned history store.",
+  "homepage": "https://github.com/kunickiaj/backstage-plugin-catalog-module-history#readme",
+  "keywords": [
+    "audit",
+    "backend-plugin-module",
+    "backstage",
+    "backstage-plugin",
+    "catalog",
+    "history"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "kunickiaj"
+  ],
+  "name": "@kunickiaj/backstage-plugin-catalog-backend-module-history",
+  "plugin_id": "catalog",
+  "readme": "# @kunickiaj/backstage-plugin-catalog-backend-module-history\n\nBackstage backend module that records catalog entity changes into a versioned history store.\n\nThe default backend feature loader installs the catalog backend module and the default Postgres `historyStoreServiceRef` factory from `@kunickiaj/backstage-plugin-catalog-history-storage-node`.\n\n```ts\nbackend.add(\n  import('@kunickiaj/backstage-plugin-catalog-backend-module-history'),\n);\n```\n\nAdvanced storage overrides should register their own `historyStoreServiceRef` factory and import the named module instead of the default loader:\n\n```ts\nbackend.add(catalogModuleHistory);\nbackend.add(myHistoryStoreServiceFactory);\n```\n\nProvider wrappers should be configured in the same catalog module where the provider is created: depend on `historyStoreServiceRef`, then pass the resolved store into `HistoryRecordingEntityProvider`. The legacy `catalog.history.database` setting remains as a deprecated compatibility path honored by the default store factory, so all consumers of the injected store share the same connection.\n\n## Removed compatibility re-exports in `0.5.0`\n\nReleases from `0.2.0` through `0.4.0` re-exported store contracts and storage from this package. `0.5.0` removes them. Import them from their own packages:\n\n| Symbols                                                                                                          | Import from                                                |\n| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |\n| `CaptureSource`, `CurrentEtag`, `CycleInput`, `EntityRow`, `HistoryStore`, `MutationType`, `RECONCILER_PROVIDER` | `@kunickiaj/backstage-plugin-catalog-history-node`         |\n| `ensureSchema`, `historyStoreServiceFactory`, `PostgresHistoryStore`                                             | `@kunickiaj/backstage-plugin-catalog-history-storage-node` |\n\n```ts\nimport type { HistoryStore } from '@kunickiaj/backstage-plugin-catalog-history-node';\nimport { PostgresHistoryStore } from '@kunickiaj/backstage-plugin-catalog-history-storage-node';\n```\n\nThe default backend loader and the capture exports, such as `HistoryRecordingEntityProvider`, stay in this package.\n\n## Optional HTTP read API in `0.2.0`\n\nSet `catalog.history.api.enabled` to `true` to serve authenticated entity-history routes from this catalog module. The routes use the same history store as recording; no separate backend plugin or database is needed.\n\n```yaml\ncatalog:\n  history:\n    api:\n      enabled: true\n```\n\nThe routes are `GET /api/catalog/history/entities/:kind/:namespace/:name/history`, `GET /api/catalog/history/entities/:kind/:namespace/:name/versions`, and `GET /api/catalog/history/entities/:kind/:namespace/:name/versions/:id`. The detail route returns the exact recorded event for the canonical entity reference and row ID; use the timeline item's `id`, not an etag. They require the `catalog-history.read` permission (`catalogHistoryReadPermission` from `@kunickiaj/backstage-plugin-catalog-history-common`). With the permission framework enabled, only an explicit `ALLOW` permits access; without it, authenticated users use Backstage's normal permission behavior.\n\nCustom `historyStoreServiceRef` factories must provide the optional query capability, including `getEntityVersion`, when this setting is enabled. Otherwise backend startup fails. Keep the API disabled when a custom store only supports recording.\n\n## Optional full-to-delta conversion\n\n`HistoryRecordingEntityProvider` defaults to forwarding provider mutations unchanged. With `convertFullToDelta: true`, full snapshots with an existing history baseline become deltas: every incoming entry goes into `added`, with its `locationKey` intact, and history refs missing from the snapshot go into `removed`. The catalog compares each entry's full content and key; the wrapper does not use history etags to filter catalog writes. This preserves key-only changes and content changes even when a provider reuses an etag, but does not avoid comparing unchanged entries.\n\nHistory still classifies changes using entity etags, so its counts can report an entry as unchanged even when the catalog sees a key or content change. History is best-effort, not a deletion safety check: a missing history ref cannot produce an inferred removal. An empty baseline or a failed baseline read forwards the original full mutation instead.\n\nWith `forceFullEvery` configured, the first full after the wrapper starts is forwarded unchanged even when history already has a baseline. Each successfully forwarded full starts the interval, including a fallback full after a history-read failure; rejected catalog writes and native deltas do not reset it. The first full received at or after the interval expires is forwarded unchanged to reconcile against the catalog's own provider refs. This is not a background timer. Keep conversion disabled when deletions must always use the catalog's current provider refs.\n\nA converted full reads its history baseline before it forwards, so it waits for any earlier recordings from the same wrapper, and later mutations from that wrapper wait for its forward. If a history call hangs while conversion is on, that provider's catalog writes stop until it finishes. The default store's `queryTimeoutMs` deadline applies only to history API reads, not to the wrapper's baseline reads or recording writes.\n\n### Catalog regression tests\n\nThe provider tests include an in-memory SQLite integration with the pinned catalog backend development dependency. Run them from the workspace root with `env CI=1 yarn test packages/catalog-backend-module-history/src/provider --watch=false --runInBand`. They do not require a running catalog or an external database.\n\nFor current usage and productization roadmap details, see the [workspace README](../../README.md).\n\n## Overlapping provider mutations in `0.5.0`\n\nA provider can call `applyMutation` again before an earlier call finishes, for example when a webhook push arrives during a scheduled full refresh. The wrapper forwards overlapping calls to the catalog one at a time, in arrival order, and records them in history in the same order. Each recording reads its baseline only after the previous recording finishes, so history's latest row for an entity matches the catalog's last applied mutation. Earlier versions could record an older full on top of a newer push. Earlier versions also forwarded overlapping calls in parallel, so a provider that sends many concurrent deltas now sends them one at a time.\n\nWithout conversion, forwards do not wait for history, so a slow or unavailable store does not delay catalog writes. Each `applyMutation` call still resolves only after its own recording, so the provider feels slow history as slower calls. A provider that awaits each call therefore never has more than one mutation waiting. A provider with many calls in flight keeps one waiting mutation per call. The wrapper logs one warning when more than 20 recordings are queued, and warns again only after the queue drains: `History recording for provider <name> is <n> mutations behind`. A failed forward rejects only its own call and records nothing. A failed recording is logged and does not stop later mutations. Each wrapper has its own order, so different providers stay independent.\n",
+  "repository": "https://github.com/kunickiaj/backstage-plugin-catalog-module-history",
+  "role": "backend-plugin-module",
+  "scope": "@kunickiaj",
+  "updated": "2026-10-27T17:46:25.555Z",
+  "version": "0.5.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-10-27T17:46:25.555Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-10-26T22:39:35.789Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-10-26T05:19:46.096Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-10-23T22:54:54.672Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-10-22T23:17:23.719Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-22T23:16:27.595Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

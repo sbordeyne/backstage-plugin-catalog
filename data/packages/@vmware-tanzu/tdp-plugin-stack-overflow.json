@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2023-09-29T22:18:39.566Z",
+  "deprecated": "",
+  "description": "Stack Overflow plugin wrapper for VMware Tanzu Developer Portal",
+  "homepage": "",
+  "keywords": [],
+  "license": "VMware General Terms",
+  "maintainers": [
+    "abraundmeier",
+    "afbonney",
+    "aliu-vmware",
+    "andyadnguyen",
+    "austinal",
+    "bsnchan",
+    "fouadhamdi",
+    "gweresch",
+    "jamieklassen",
+    "krisapplegate",
+    "mchinigo",
+    "mstergianis",
+    "sameer-broadcom"
+  ],
+  "name": "@vmware-tanzu/tdp-plugin-stack-overflow",
+  "plugin_id": "",
+  "readme": "# Stack Overflow Front-End Wrapper for VMware Tanzu Developer Portal\n\nThis code is a thin wrapper for the [Backstage Stack Overflow plugin](https://github.com/backstage/backstage/tree/master/plugins/stack-overflow) that provides a `HomePageStackOverflowQuestions` that will be used in the Home page to display a card with Stack Overflow questions.\n\nBy downloading or using this package, you agree to be bound by the terms of the [VMware General Terms](https://www.vmware.com/vmware-general-terms.html).\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@vmware-tanzu",
+  "updated": "2024-03-22T19:23:14.851Z",
+  "version": "4.0.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2024-03-22T19:23:14.851Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2024-03-15T19:50:39.990Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-03-07T17:52:43.146Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-02-27T17:59:20.102Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2024-01-11T21:05:45.687Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2023-09-29T22:18:40.047Z",
+      "version": "0.0.2"
+    }
+  ]
+}

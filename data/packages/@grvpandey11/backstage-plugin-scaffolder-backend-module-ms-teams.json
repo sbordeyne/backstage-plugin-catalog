@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2023-08-10T16:18:28.116Z",
+  "deprecated": "",
+  "description": "The Microsoft Teams module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "grvpandey11"
+  ],
+  "name": "@grvpandey11/backstage-plugin-scaffolder-backend-module-ms-teams",
+  "plugin_id": "scaffolder",
+  "readme": "# backstage-plugin-scaffolder-backend-module-ms-teams\n\nThis is a `ms-teams` actions plugin for the `scaffolder-backend` in Backstage.\n\nThis contains a collection of actions for using to send Microsoft Teams messages.\n\n## Prerequisites\n\n- Node must be installed in the environment\n\n- You must have a Microsoft Teams webhook URL available to send messages to\n\n## Getting Started\n\nIn the root directory of your Backstage project:\n\n```shell\nyarn add --cwd packages/backend @grvpandey11/backstage-plugin-scaffolder-backend-module-ms-teams\n```\n\nAdd the actions you'd like to the scaffolder:\n\n```typescript\n// packages/backend/src/index.ts\n\n...\n\nbackend.add(import('@grvpandey11/backstage-plugin-scaffolder-backend-module-ms-teams'));\n```\n\nAdd a ms-teams configuration section to your app-config.yaml.\n\n> You can omit this by providing a webhook URL in the input of the step in your scaffolder template, but it must be present in one place or the other.\n\n```yaml\n# app-config.yaml\n\nms-teams:\n  webhookUrl: \"https://your-url.com\"\n```\n\n## Example of using the send message action in a template\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: ms-teams-demo\n  title: Microsoft Teams message demo\n  description: Send a message via MS Teams\nspec:\n  owner: user:grvpandey11\n  type: service\n\n  steps:\n    - id: send-ms-teams-message\n      name: Send message\n      action: ms-teams:sendMessage\n      input:\n        message: \"Hello, world!\"\n        webhookUrl: \"https://your-url.com\" # optional if the URL is supplied in the app-config.yaml\n```\n",
+  "repository": "https://github.com/grvpandey11/backstage-plugin-scaffolder-backend-module-ms-teams/tree/HEAD/.",
+  "role": "backend-plugin-module",
+  "scope": "@grvpandey11",
+  "updated": "2026-07-04T07:55:56.814Z",
+  "version": "3.1.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-07-04T07:55:56.814Z",
+      "version": "3.1.0"
+    },
+    {
+      "date": "2025-06-25T21:03:07.689Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2025-06-23T21:29:48.927Z",
+      "version": "3.0.0-alpha.0"
+    },
+    {
+      "date": "2024-12-23T00:28:03.305Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2023-08-11T07:08:38.682Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-08-10T16:18:28.426Z",
+      "version": "1.0.0"
+    }
+  ]
+}

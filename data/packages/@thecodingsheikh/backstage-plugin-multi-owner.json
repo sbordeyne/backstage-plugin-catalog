@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2026-02-15T06:59:39.945Z",
+  "deprecated": "",
+  "description": "A frontend plugin that displays multiple owners for Backstage entities, with optional role labels.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "thecodingsheikh"
+  ],
+  "name": "@thecodingsheikh/backstage-plugin-multi-owner",
+  "plugin_id": "multi-owner",
+  "readme": "# @thecodingsheikh/backstage-plugin-multi-owner\n\nA frontend plugin that displays multiple owners for Backstage entities, with optional role labels.\n\n![screenshow](https://github.com/TheCodingSheikh/backstage-plugins/blob/main/plugins/multi-owner/multi-owner/screenshot.png?raw=true)\n\n## Features\n\n- **EntityMultiOwnerCard** — An info card showing all owners with clickable entity reference links\n- **Role chips** — Optional role labels displayed as Material UI chips\n- **Smart icons** — Group icon for groups, person icon for users\n- **Fallback** — Falls back to `spec.owner` when `spec.owners` is not configured\n- **EntitySwitch guard** — `isMultiOwnerAvailable()` for conditional rendering\n\n## Installation\n\n```bash\nyarn add @thecodingsheikh/backstage-plugin-multi-owner\n```\n\n## Usage\n\n### Entity Page\n\nAdd the card to your entity pages in `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```tsx\nimport {\n  EntityMultiOwnerCard,\n  isMultiOwnerAvailable,\n} from '@thecodingsheikh/backstage-plugin-multi-owner';\n\n// In your entity page layout:\nconst overviewContent = (\n  <Grid container spacing={3}>\n    {/* ... other cards ... */}\n\n    <EntitySwitch>\n      <EntitySwitch.Case if={isMultiOwnerAvailable}>\n        <Grid item md={6}>\n          <EntityMultiOwnerCard />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n  </Grid>\n);\n```\n\n### Props\n\n| Prop | Type | Default | Description |\n|---|---|---|---|\n| `title` | `string` | `\"Owners\"` | Card title |\n| `variant` | `'gridItem' \\| 'fullHeight'` | — | Card variant |\n\n### Custom Hook\n\nYou can also use the `useMultiOwners` hook directly:\n\n```tsx\nimport { useMultiOwners } from '@thecodingsheikh/backstage-plugin-multi-owner';\n\nfunction MyComponent() {\n  const { owners, loading } = useMultiOwners();\n\n  if (loading) return <Progress />;\n\n  return (\n    <ul>\n      {owners.map(owner => (\n        <li key={owner.name}>\n          {owner.name} {owner.role && `(${owner.role})`}\n        </li>\n      ))}\n    </ul>\n  );\n}\n```\n\n## Requirements\n\nThis plugin requires the backend processor module to be installed:\n\n```bash\nyarn add @thecodingsheikh/backstage-plugin-catalog-backend-module-multi-owner-processor\n```\n\nSee the [backend module README](https://github.com/TheCodingSheikh/backstage-plugins/blob/main/plugins/multi-owner/catalog-backend-module-multi-owner-processor/README.md) for setup instructions.\n\n## RBAC — role-aware permission rules\n\nThe backend processor also registers two catalog permission rules that understand the `role` field on multi-owner entries. Use these in your `conditional-policies.yaml` to gate any `catalog-entity` resource permission (read, update, or plugin-defined permissions like `entity-scaffolder.edit`) on _ownership + role_, not just ownership.\n\n-   **`IS_ENTITY_MULTI_OWNER_WITH_ROLE(claims, roles)`** — policy-driven allowlist.\n-   **`IS_ENTITY_MULTI_OWNER_WITH_ANNOTATION_ROLE(claims, annotation)`** — reads allowed roles from a per-entity annotation (comma-separated).\n\nSee the [backend module README](https://github.com/TheCodingSheikh/backstage-plugins/blob/main/plugins/multi-owner/catalog-backend-module-multi-owner-processor/README.md#permission-rules) for parameter details and policy examples.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@thecodingsheikh",
+  "updated": "2026-10-26T07:14:54.656Z",
+  "version": "1.2.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-10-26T07:14:54.656Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-10-26T06:50:19.038Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-04-21T17:38:50.030Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2026-04-19T11:38:50.306Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2026-02-15T08:09:17.358Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-02-15T06:59:40.165Z",
+      "version": "1.0.2"
+    }
+  ]
+}

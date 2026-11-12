@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-06-18T14:35:11.287Z",
+  "deprecated": "",
+  "description": "The scaffolder-relation-processor backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-catalog-backend-module-scaffolder-relation-processor",
+  "plugin_id": "scaffolder-relation-processor",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/scaffolder-relation-processor/plugins/catalog-backend-module-scaffolder-relation-processor",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-09-11T12:31:20.614Z",
+  "version": "2.17.1",
+  "version_count": 37,
+  "versions": [
+    {
+      "date": "2026-09-11T12:31:20.614Z",
+      "version": "2.17.1"
+    },
+    {
+      "date": "2026-09-08T21:39:25.006Z",
+      "version": "2.17.0"
+    },
+    {
+      "date": "2026-08-07T13:05:19.095Z",
+      "version": "2.16.0"
+    },
+    {
+      "date": "2026-07-08T08:07:05.421Z",
+      "version": "2.15.0"
+    },
+    {
+      "date": "2026-05-05T18:14:22.400Z",
+      "version": "2.14.2"
+    },
+    {
+      "date": "2026-04-23T12:58:12.774Z",
+      "version": "2.14.1"
+    },
+    {
+      "date": "2026-04-10T15:14:15.614Z",
+      "version": "2.14.0"
+    },
+    {
+      "date": "2026-03-11T14:44:16.627Z",
+      "version": "2.13.0"
+    },
+    {
+      "date": "2026-02-16T17:00:41.213Z",
+      "version": "2.12.0"
+    },
+    {
+      "date": "2026-01-07T15:17:27.030Z",
+      "version": "2.11.0"
+    },
+    {
+      "date": "2025-12-09T14:10:17.530Z",
+      "version": "2.10.0"
+    },
+    {
+      "date": "2025-10-16T12:30:59.222Z",
+      "version": "2.9.0"
+    },
+    {
+      "date": "2025-09-19T08:20:24.693Z",
+      "version": "2.8.0"
+    },
+    {
+      "date": "2025-09-17T12:15:13.540Z",
+      "version": "2.7.0"
+    },
+    {
+      "date": "2025-09-05T10:30:12.631Z",
+      "version": "2.6.1"
+    }
+  ]
+}

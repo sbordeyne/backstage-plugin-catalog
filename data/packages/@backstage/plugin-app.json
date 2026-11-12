@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2024-08-27T12:33:29.981Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-app",
+  "plugin_id": "app",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/app",
+  "role": "frontend-plugin",
+  "scope": "@backstage",
+  "updated": "2026-10-20T16:47:46.353Z",
+  "version": "0.5.4",
+  "version_count": 697,
+  "versions": [
+    {
+      "date": "2026-11-11T02:58:42.523Z",
+      "version": "0.6.0-next.2"
+    },
+    {
+      "date": "2026-11-07T02:48:03.951Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T02:52:41.802Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T02:46:58.262Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-11-03T18:54:58.991Z",
+      "version": "0.6.0-next.1"
+    },
+    {
+      "date": "2026-10-31T02:42:46.514Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:42:00.091Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T02:49:59.306Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T02:51:11.739Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:23:13.948Z",
+      "version": "0.5.5-next.0"
+    },
+    {
+      "date": "2026-10-27T02:53:32.291Z",
+      "version": "0.0.0-nightly-20261027023041"
+    },
+    {
+      "date": "2026-10-20T16:47:46.353Z",
+      "version": "0.5.4"
+    },
+    {
+      "date": "2026-10-13T16:14:16.368Z",
+      "version": "0.5.4-next.1"
+    },
+    {
+      "date": "2026-09-28T03:08:13.001Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:00:32.702Z",
+      "version": "0.0.0-nightly-20260927023342"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "author": "",
+  "created": "2026-04-21T15:58:29.959Z",
+  "deprecated": "",
+  "description": "This package is part of the BC Data Catalogue Backstage integration.",
+  "homepage": "https://github.com/bcgov/csit-backstage-poc#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "akroon3r",
+    "bc-gov-common-services",
+    "bradenmitchell",
+    "citzcodemvp",
+    "danebenal",
+    "danilomeireles",
+    "dgboss",
+    "fbarreta",
+    "galen.gray",
+    "irfan.charania",
+    "jimmypalelil",
+    "jleach",
+    "jujaga",
+    "kolezhannochka",
+    "mgranbois",
+    "michael.nelson.gov.bc.ca",
+    "mkernohanbc",
+    "nicoledegreef",
+    "omprakashmishra",
+    "parcjason",
+    "paul.howells",
+    "qqnluaq",
+    "sahejmundi",
+    "sheaphillips",
+    "shellyxuehan",
+    "sidmclaughlin",
+    "stoews",
+    "supriya-arora",
+    "taylorfries",
+    "ty2k"
+  ],
+  "name": "@bcgov/plugin-catalog-dataset",
+  "plugin_id": "catalog-dataset",
+  "readme": "# catalog-dataset\n\nThis package is part of the BC Data Catalogue Backstage integration.\n\n👉 **Please refer to the main project README at the root of this repository for installation and usage instructions.**\n\nThis plugin is one part of a multi-package integration and is not intended to be used independently.\n\n---\n\n## Purpose\n\nThe `@bcgov/catalog-dataset` package provides the frontend UI for rendering `Dataset` entities in Backstage.\n\nIt is intended to be used from the Backstage **entity page**, not as a standalone route.\n\n---\n\n## How It Is Accessed\n\nThis plugin uses the Backstage entity context and is expected to be rendered through an entity page configuration such as:\n\n```tsx\nconst datasetPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <EntityDatasetOverviewContent />\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n\n<EntitySwitch.Case if={isKind('dataset')} children={datasetPage} />;\n```\n\nIn normal usage, users access this page by opening a `Dataset` entity from the Backstage catalog.\n\nA direct route such as `/catalog-dataset` does **not** provide entity context and will fail unless additional context wiring is added.\n\n---\n\n## Local Development\n\nThis plugin can still be developed locally, but the standard Backstage usage is through a dataset entity in the catalog.\n\nSee the `./dev` directory for local plugin development setup.\n\n---\n\n## Notes\n\n- This plugin depends on:\n  - `@bcgov/plugin-catalog-common-bc-data-catalogue`\n  - `@bcgov/plugin-catalog-backend-module-bc-data-catalogue`\n- Always follow the main project README when adding this to a Backstage instance\n- Do not document `/catalog-dataset` as the normal access path unless you intentionally add entity context for that route\n",
+  "repository": "https://github.com/bcgov/csit-backstage-poc/tree/HEAD/plugins/catalog-dataset",
+  "role": "frontend-plugin",
+  "scope": "@bcgov",
+  "updated": "2026-06-03T21:47:08.433Z",
+  "version": "0.2.11-main.893f0530",
+  "version_count": 27,
+  "versions": [
+    {
+      "date": "2026-06-03T21:47:08.433Z",
+      "version": "0.2.11-main.893f0530"
+    },
+    {
+      "date": "2026-06-01T18:14:43.657Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.935bcaf2"
+    },
+    {
+      "date": "2026-06-01T17:03:48.679Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.3140a64f"
+    },
+    {
+      "date": "2026-06-01T16:57:51.531Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.884422b5"
+    },
+    {
+      "date": "2026-05-29T16:46:35.989Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.49bf3524"
+    },
+    {
+      "date": "2026-05-27T19:14:56.476Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.76f29cfa"
+    },
+    {
+      "date": "2026-05-27T18:45:37.038Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.5336a157"
+    },
+    {
+      "date": "2026-05-27T18:16:49.778Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.84605942"
+    },
+    {
+      "date": "2026-05-27T15:39:02.741Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.cb2d711a"
+    },
+    {
+      "date": "2026-05-22T19:44:48.160Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.91b201f2"
+    },
+    {
+      "date": "2026-05-22T18:26:24.404Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.ba12fc56"
+    },
+    {
+      "date": "2026-05-22T16:30:54.674Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.a8871ee9"
+    },
+    {
+      "date": "2026-05-22T15:57:18.379Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.418ebc71"
+    },
+    {
+      "date": "2026-05-21T16:12:57.469Z",
+      "version": "0.2.11-main.bc7f58ec"
+    },
+    {
+      "date": "2026-05-21T16:08:23.543Z",
+      "version": "0.2.10-feature.aps-4589-bump-version.44523cb0"
+    }
+  ]
+}

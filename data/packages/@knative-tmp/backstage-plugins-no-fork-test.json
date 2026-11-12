@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2024-05-09T15:00:54.579Z",
+  "deprecated": "",
+  "description": "tesa # Knative Event Mesh plugin",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aliok"
+  ],
+  "name": "@knative-tmp/backstage-plugins-no-fork-test",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@knative-tmp",
+  "updated": "2024-05-13T07:31:12.013Z",
+  "version": "1.33.1",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-06-11T08:26:20.562Z",
+      "version": "0.0.0-snapshot.e5e7d0f"
+    },
+    {
+      "date": "2024-05-13T07:31:12.013Z",
+      "version": "1.33.1"
+    },
+    {
+      "date": "2024-05-09T15:00:54.852Z",
+      "version": "1.33.0"
+    }
+  ]
+}

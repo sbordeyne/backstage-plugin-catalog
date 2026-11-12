@@ -1,0 +1,85 @@
+{
+  "author": "Solace Corporation",
+  "created": "2022-12-18T15:27:01.315Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/solace-iot-team/backstage-ep-devp-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dishantlangayan",
+    "solacecommunity",
+    "tamimi65"
+  ],
+  "name": "@solace-labs/backstage-plugin-ep-devp-backend",
+  "plugin_id": "",
+  "readme": "# Event Portal Developer Portal Backend\n",
+  "repository": "https://github.com/solace-iot-team/backstage-ep-devp-plugins/tree/HEAD/plugins/ep-devp-backend",
+  "role": "backend-plugin",
+  "scope": "@solace-labs",
+  "updated": "2023-09-20T10:33:49.346Z",
+  "version": "1.0.1",
+  "version_count": 52,
+  "versions": [
+    {
+      "date": "2023-09-20T10:33:49.346Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-09-06T11:47:06.523Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2023-05-31T05:09:00.844Z",
+      "version": "0.15.2"
+    },
+    {
+      "date": "2023-05-10T10:54:41.158Z",
+      "version": "0.15.1"
+    },
+    {
+      "date": "2023-05-04T07:30:22.524Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2023-04-30T10:10:01.939Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2023-04-28T10:19:50.750Z",
+      "version": "0.13.7"
+    },
+    {
+      "date": "2023-04-27T11:39:07.560Z",
+      "version": "0.13.6"
+    },
+    {
+      "date": "2023-04-26T11:26:32.164Z",
+      "version": "0.13.5"
+    },
+    {
+      "date": "2023-04-24T14:18:23.900Z",
+      "version": "0.13.4"
+    },
+    {
+      "date": "2023-04-21T12:08:00.622Z",
+      "version": "0.13.3"
+    },
+    {
+      "date": "2023-04-19T10:01:19.251Z",
+      "version": "0.13.2"
+    },
+    {
+      "date": "2023-04-17T15:33:46.800Z",
+      "version": "0.13.1"
+    },
+    {
+      "date": "2023-04-06T06:53:00.155Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2023-04-05T09:43:08.012Z",
+      "version": "0.12.4"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-12-19T11:07:20.964Z",
+  "deprecated": "",
+  "description": "The crossplane-templator module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@vrabbi/backstage-plugin-scaffolder-backend-module-crossplane-templator",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@vrabbi",
+  "updated": "2024-12-19T11:38:49.820Z",
+  "version": "1.0.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-12-19T11:38:49.820Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-12-19T11:07:21.259Z",
+      "version": "0.1.0"
+    }
+  ]
+}

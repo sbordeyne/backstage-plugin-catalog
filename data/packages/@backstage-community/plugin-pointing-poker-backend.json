@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-10-28T02:26:51.024Z",
+  "deprecated": "",
+  "description": "Backend plugin for Pointing Poker — session management and ticket provider extension point",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-pointing-poker-backend",
+  "plugin_id": "pointing-poker",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/pointing-poker/plugins/pointing-poker-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-28T02:27:46.296Z",
+  "version": "0.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-10-28T02:27:46.296Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-28T02:26:51.024Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

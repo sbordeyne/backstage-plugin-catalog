@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-07-04T23:12:36.334Z",
+  "deprecated": "",
+  "description": "The queue-local backend module for the renovate plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "LGPL-3.0-or-later",
+  "maintainers": [
+    "secustor"
+  ],
+  "name": "@secustor/backstage-plugin-renovate-backend-module-queue-local",
+  "plugin_id": "renovate",
+  "readme": "",
+  "repository": "https://github.com/secustor/backstage-plugins/tree/HEAD/plugins/renovate-backend-module-queue-local",
+  "role": "backend-plugin-module",
+  "scope": "@secustor",
+  "updated": "2026-10-16T12:27:56.382Z",
+  "version": "0.6.0",
+  "version_count": 22,
+  "versions": [
+    {
+      "date": "2026-10-16T12:27:56.382Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-07-28T15:33:01.482Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-12-23T23:56:42.945Z",
+      "version": "0.4.8"
+    },
+    {
+      "date": "2025-08-20T13:47:53.616Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2025-06-17T22:08:06.215Z",
+      "version": "0.4.6"
+    },
+    {
+      "date": "2025-05-21T08:44:30.798Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2025-04-19T22:34:08.383Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2025-04-02T16:57:06.776Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2025-03-21T19:34:28.492Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2025-02-23T16:30:07.525Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-01-29T21:41:15.631Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-11-20T23:21:29.474Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-10-17T09:50:58.439Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-09-23T11:08:04.346Z",
+      "version": "0.2.8"
+    },
+    {
+      "date": "2024-09-03T14:03:29.216Z",
+      "version": "0.2.7"
+    }
+  ]
+}

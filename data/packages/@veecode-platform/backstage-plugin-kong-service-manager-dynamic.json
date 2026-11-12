@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2026-02-24T18:08:30.150Z",
+  "deprecated": "",
+  "description": "<!-- markdownlint-disable MD033 -->",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-kong-service-manager-dynamic",
+  "plugin_id": "kong-service-manager",
+  "readme": "# Kong Service Manager\n\n<!-- markdownlint-disable MD033 -->\n\nBackstage frontend plugin for managing\n[Kong Gateway](https://konghq.com/products/kong-gateway) services, routes,\nand plugins directly from the catalog.\n\n## Features\n\n- View Kong service details (protocol, host, port, timeouts, tags)\n- List and manage plugins on a service (add, edit, remove)\n- List and manage routes on a service (create, edit, delete)\n- Manage plugins scoped to individual routes\n- Dynamic plugin configuration based on Kong schema introspection\n- Multi-instance support with an instance selector dropdown\n- Plugin categorization (AI, Authentication, Security, Traffic Control, etc.)\n\n## Screenshots\n\n<div class=\"screenshot-carousel\">\n  <img src=\"../../docs/screenshots/01-service-tab.png\" alt=\"Service Tab\" />\n  <img src=\"../../docs/screenshots/02-plugins-tab.png\" alt=\"Plugins Tab\" />\n  <img src=\"../../docs/screenshots/03-routes-tab.png\" alt=\"Routes Tab\" />\n</div>\n\n<style>\n.screenshot-carousel {\n  display: flex;\n  overflow-x: auto;\n  gap: 1rem;\n  padding: 1rem 0;\n}\n.screenshot-carousel img {\n  flex: 0 0 auto;\n  max-width: 420px;\n  height: auto;\n  border-radius: 8px;\n  box-shadow: 0 2px 8px rgba(0,0,0,0.1);\n}\n</style>\n\n## Installation\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @veecode-platform/backstage-plugin-kong-service-manager\n```\n\n### Prerequisites\n\nThis plugin requires the backend plugin to be installed:\n\n```bash\nyarn --cwd packages/backend add @veecode-platform/backstage-plugin-kong-service-manager-backend\n```\n\nSee the\n[backend plugin README](https://www.npmjs.com/package/@veecode-platform/backstage-plugin-kong-service-manager-backend)\nfor configuration details.\n\n## Setup\n\nAdd the plugin to your Entity page in `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```tsx\nimport {\n  KongServiceManagerContent,\n  isKongServiceManagerAvailable,\n} from '@veecode-platform/backstage-plugin-kong-service-manager';\n\n// Inside your EntityLayout:\n<EntityLayout.Route\n  if={isKongServiceManagerAvailable}\n  path=\"/kong-service-manager\"\n  title=\"Kong\"\n>\n  <KongServiceManagerContent />\n</EntityLayout.Route>\n```\n\nThe `isKongServiceManagerAvailable` guard ensures the tab only appears on\nentities that have the required annotation.\n\n## Annotate Your Entities\n\nAdd the `kong-manager/service-name` annotation to any catalog entity that\nmaps to a Kong service:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-service\n  annotations:\n    kong-manager/service-name: my-kong-service\nspec:\n  type: service\n  owner: team-a\n```\n\nIf you use multiple Kong instances, specify which one(s) the entity should\nuse:\n\n```yaml\nmetadata:\n  annotations:\n    kong-manager/service-name: my-kong-service\n    kong-manager/instance: production\n```\n\nWhen `kong-manager/instance` is omitted, all configured instances are\navailable via the instance selector dropdown.\n\n## UI Overview\n\nThe plugin renders a tabbed interface on the entity page:\n\n- **Service** - Displays service info (protocol, host, port, path, timeouts,\n  tags) and the list of associated plugins.\n- **Plugins** - Browse and manage service-level plugins. Add new plugins from\n  the list of available Kong plugins, or edit/remove existing ones.\n- **Routes** - View, create, edit, and delete routes. Each route shows its\n  protocols, methods, paths, hosts, and configuration flags.\n\n## Exports\n\n| Export | Type | Description |\n|---|---|---|\n| `kongServiceManagerPlugin` | Plugin | Backstage plugin instance. |\n| `KongServiceManagerContent` | Component | Routable extension to mount on entity pages. |\n| `kongServiceManagerApiRef` | ApiRef | API reference for dependency injection. |\n| `KongServiceManagerClient` | Class | Default API client implementation. |\n| `useEntityAnnotations` | Hook | Reads Kong annotations from the current entity. |\n\n## Dynamic Plugin Wiring\n\n**Note:** dynamic plugin loading is a feature supported by VeeCode DevPortal and by RHDH (Red Hat Developer Hub).\n\nThis plugin can be dynamically downloaded and installed from the public npm registry, as well as its UI elements can be configured without any source code changes:\n\n```yaml\nplugins:\n  - package: @veecode-platform/backstage-plugin-kong-service-manager-dynamic\n    disabled: false\n    pluginConfig:\n      dynamicPlugins:\n        frontend:\n          veecode-platform.backstage-plugin-kong-service-manager:\n            entityTabs:\n              - path: /kong\n                title: Kong\n                mountPoint: entity.page.kong\n            mountPoints:\n              - mountPoint: entity.page.kong/cards\n                importName: KongServiceManagerContent\n                config:\n                  layout:\n                    gridColumn: \"1 / -1\"\n```\n\n**VeeCode DevPortal** already bundles the dynamic plugin as a pre-installed plugin with default configs, so it can be alternatively be loaded just using a local path:\n\n```yaml\nplugins:\n  - package: ./dynamic-plugins/dist/backstage-plugin-kong-service-manager-dynamic\n    disabled: false\n  - package: ./dynamic-plugins/dist/backstage-plugin-kong-service-manager-backend-dynamic\n    disabled: false\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2026-03-20T12:47:48.283Z",
+  "version": "1.1.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-03-20T12:47:48.283Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-03-06T19:07:42.632Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-02-24T18:08:30.594Z",
+      "version": "1.0.1"
+    }
+  ]
+}

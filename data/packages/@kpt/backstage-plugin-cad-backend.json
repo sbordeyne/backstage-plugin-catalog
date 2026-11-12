@@ -1,0 +1,33 @@
+{
+  "author": "",
+  "created": "2022-05-10T22:22:02.649Z",
+  "deprecated": "",
+  "description": "Welcome to the Configuration as Data backend plugin!",
+  "homepage": "https://github.com/GoogleContainerTools/kpt-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bgrant0607",
+    "christopherfry2022",
+    "google-wombot"
+  ],
+  "name": "@kpt/backstage-plugin-cad-backend",
+  "plugin_id": "",
+  "readme": "# Configuration as Data Backend Plugin\n\nWelcome to the Configuration as Data backend plugin!\n\n## Installation\n\n### Adding the plugin\n\nNavigate to `packages/backend` of your Backstage app, and install the\n`@kpt/backstage-plugin-cad-backend` package.\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @kpt/backstage-plugin-cad-backend\n```\n\nNext, you'll need to add the plugin to the router in your `backend` package. You\ncan do this by creating a file called `packages/backend/src/plugins/cad.ts`\n\n```tsx\nimport { createRouter } from '@kpt/backstage-plugin-cad-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    config: env.config,\n    logger: env.logger,\n  });\n}\n```\n\nWith the `cad.ts` router setup in place, add the router to\n`packages/backend/src/index.ts`:\n\n```ts\nimport cad from './plugins/cad';\n// ...\n\nasync function main() {\n  // ...\n  const cadEnv = useHotMemoize(module, () => createEnv('cad'));\n\n  // ...\n  apiRouter.use('/config-as-data', await cad(cadEnv));\n```\n\n### Configuration\n\nThe following configuration will need to be added to `app-config.yaml`:\n\n```yaml\nconfigAsData:\n  # The namespace where Porch managed resources live.\n  resourcesNamespace: default\n\n  # Determines the GitOps delivery tool to use.\n  gitOpsDeliveryTool: config-sync\n\n  clusterLocatorMethod:\n    # Determines how the client will locate the Kubernetes cluster.\n    type: current-context\n\n    # Determines how the client will authenticate with the Kubernetes cluster.\n    authProvider: current-context\n\n    # Optional. Determines the OIDC token provider to use when using the 'oidc' auth provider.\n    oidcTokenProvider: okta\n\n    # Optional. The service account token to be used when using the 'service-account' auth provider.\n    serviceAccountToken: ${CAD_SERVICE_ACCOUNT_TOKEN}\n```\n\n`resourcesNamespace` defines the namespace where Porch managed resources live\n\n`gitOpsDeliveryTool` determines what tool to use for GitOps\n\nValid values:\n| Values | Description |\n| ------ | ----------- |\n| none | Use no GitOps delivery tool |\n| config-sync | Use [Config Sync](https://github.com/GoogleContainerTools/kpt-config-sync). Config Sync must be installed on the cluster. |\n\n`clusterLocatorMethod` determines where to receive the cluster configuration\nfrom\n\n`clusterLocatorMethod.type` determines how the cluster will be located\n\nValid values:\n| Values | Description |\n| ------ | ----------- |\n| current-context | Connect to the cluster as defined by the kubeconfig current context |\n| in-cluster | Connect to the same cluster that Backstage is running in |\n\n`clusterLocatorMethod.authProvider` determines how the client will authenticate\nwith the cluster.\n\nValid values:\n| Values | Description |\n| ------ | ----------- |\n| current-context | Authenticate to the cluster with the user in the kubeconfig current context |\n| google | Authenticate to the cluster using the user's access token token from the [Google auth provider](https://backstage.io/docs/auth/google/provider) |\n| oidc | Authenticate to the cluster using OIDC (OpenID Connect) |\n| service-account | Authenticate to the cluster using a Kubernetes service account token |\n\n`clusterLocatorMethod.oidcTokenProvider` determines which configured [Backstage auth provider](https://backstage.io/docs/auth/) to\nuse to authenticate to the cluster with. This field is required with the `oidc` auth provider.\n\nValid values:\n| Values | Description |\n| ------ | ----------- |\n| google | Authenticate to the cluster with the [Google auth provider](https://backstage.io/docs/auth/google/provider) |\n| okta | Authenticate to the cluster with the [Okta auth provider](https://backstage.io/docs/auth/okta/provider) |\n\n`clusterLocatorMethod.serviceAccountToken` defines the service account token to be used with the `service-account` auth provider. You can get the service account token with the following command:\n\n```bash\nkubectl -n <NAMESPACE> get secret $(kubectl -n <NAMESPACE> get sa <SERVICE_ACCOUNT_NAME> -o=json \\\n  | jq -r '.secrets[0].name') -o=json \\\n  | jq -r '.data[\"token\"]' \\\n  | base64 --decode\n```\n",
+  "repository": "https://github.com/GoogleContainerTools/kpt-backstage-plugins/tree/HEAD/plugins/cad-backend",
+  "role": "backend-plugin",
+  "scope": "@kpt",
+  "updated": "2022-12-08T03:38:56.609Z",
+  "version": "0.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2022-12-08T03:38:56.609Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2022-05-10T22:22:02.984Z",
+      "version": "0.0.0"
+    }
+  ]
+}

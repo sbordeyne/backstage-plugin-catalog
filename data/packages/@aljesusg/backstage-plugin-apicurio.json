@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2023-06-16T08:59:09.491Z",
+  "deprecated": "",
+  "description": "Welcome to the apicurio plugin!",
+  "homepage": "https://github.com/janus-idp/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aljesusg"
+  ],
+  "name": "@aljesusg/backstage-plugin-apicurio",
+  "plugin_id": "",
+  "readme": "# Apicurio\n\nWelcome to the apicurio plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/apicurio](http://localhost:3000/apicurio).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n\n# Setup Apicurio Plugin\n\nThe first step is to add the Apicurio frontend plugin to your Backstage\napplication.\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @janus-idp/plugin-apicurio\n```\n\nOnce the package has been installed, you need to import the plugin in your app\nby adding the \"Apicurio\" tab to the respective catalog pages.\n\n```tsx title=\"packages/app/src/components/catalog/EntityPage.tsx\"\n/* highlight-add-next-line */\nimport { EntityApicurioContent } from '@janus-idp/plugin-apicurio';\n\n// You can add the tab to any number of pages, the service page is shown as an\n// example here\nconst serviceEntityPage = (\n  <EntityLayout>\n    {/* other tabs... */}\n    {/* highlight-add-start */}\n    <EntityLayout.Route path=\"/apicurio\" title=\"Apicurio\">\n      <EntityApicurioContent />\n    </EntityLayout.Route>\n    {/* highlight-add-end */}\n  </EntityLayout>\n);\n```\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins",
+  "role": "frontend-plugin",
+  "scope": "@aljesusg",
+  "updated": "2023-06-16T08:59:09.728Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-06-16T08:59:09.728Z",
+      "version": "0.1.0"
+    }
+  ]
+}

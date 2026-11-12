@@ -1,0 +1,40 @@
+{
+  "author": "",
+  "created": "2024-06-10T08:45:17.024Z",
+  "deprecated": "",
+  "description": "In the configuration, provider the URL of the audit backend. By default, it passes by localhost that is much secure.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "imoverlord",
+    "tchoupinax"
+  ],
+  "name": "@ubiquious/backstage-plugin-audit-backend",
+  "plugin_id": "",
+  "readme": "# @ubiquious/backstage-plugin-audit-backend\n\nIn the configuration, provider the URL of the audit backend. By default, it passes by localhost that is much secure.\n\n```yaml\n# app-config.yaml\n\naudit:\n  url: 'http://localhost:7007/api/audit/receive' # Mandatory\n  pluginName: 'audit' # Optional, default to \"audit\"\n  bypassPaths: ['/my-sensitive-route'] # Optionnal, default to []\n  bypassMethods: ['GET'] # Optionnal, default to []\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@ubiquious",
+  "updated": "2024-06-10T16:22:03.060Z",
+  "version": "0.2.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-06-10T16:22:03.060Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-06-10T08:55:54.327Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-06-10T08:51:53.649Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-06-10T08:45:17.254Z",
+      "version": "0.1.0"
+    }
+  ]
+}

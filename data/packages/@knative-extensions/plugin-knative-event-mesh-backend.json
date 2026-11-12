@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2023-12-20T13:58:21.902Z",
+  "deprecated": "",
+  "description": "The Event Mesh plugin is a Backstage plugin that allows you to view and manage Knative Eventing resources.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aliok"
+  ],
+  "name": "@knative-extensions/plugin-knative-event-mesh-backend",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@knative-extensions",
+  "updated": "2026-01-28T16:19:22.757Z",
+  "version": "1.21.0",
+  "version_count": 350,
+  "versions": [
+    {
+      "date": "2026-02-02T02:37:47.672Z",
+      "version": "0.0.0-snapshot.1df8f7b"
+    },
+    {
+      "date": "2026-01-30T11:23:15.803Z",
+      "version": "0.0.0-snapshot.9963828"
+    },
+    {
+      "date": "2026-01-28T16:19:22.757Z",
+      "version": "1.21.0"
+    },
+    {
+      "date": "2026-01-28T11:20:19.592Z",
+      "version": "0.0.0-snapshot.e825e86"
+    },
+    {
+      "date": "2026-01-28T02:35:29.453Z",
+      "version": "0.0.0-snapshot.99aa649"
+    },
+    {
+      "date": "2026-01-27T14:20:23.577Z",
+      "version": "0.0.0-snapshot.b3845ee"
+    },
+    {
+      "date": "2026-01-27T02:36:22.522Z",
+      "version": "0.0.0-snapshot.fe3ac3b"
+    },
+    {
+      "date": "2026-01-26T14:21:20.144Z",
+      "version": "0.0.0-snapshot.a1a2975"
+    },
+    {
+      "date": "2026-01-26T11:19:10.354Z",
+      "version": "0.0.0-snapshot.12fb79e"
+    },
+    {
+      "date": "2026-01-23T11:22:01.872Z",
+      "version": "0.0.0-snapshot.74836b8"
+    },
+    {
+      "date": "2026-01-23T02:34:54.164Z",
+      "version": "0.0.0-snapshot.d67e046"
+    },
+    {
+      "date": "2026-01-21T02:36:08.131Z",
+      "version": "0.0.0-snapshot.3a14ed7"
+    },
+    {
+      "date": "2026-01-20T14:25:19.613Z",
+      "version": "0.0.0-snapshot.28defd9"
+    },
+    {
+      "date": "2026-01-20T02:37:59.253Z",
+      "version": "0.0.0-snapshot.a73d670"
+    },
+    {
+      "date": "2026-01-19T11:19:35.116Z",
+      "version": "0.0.0-snapshot.e5166e8"
+    }
+  ]
+}

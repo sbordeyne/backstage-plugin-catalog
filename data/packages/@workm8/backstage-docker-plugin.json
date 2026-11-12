@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-07-22T18:40:40.417Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pascalwilbrink"
+  ],
+  "name": "@workm8/backstage-docker-plugin",
+  "plugin_id": "",
+  "readme": "# Workm8 Docker plugin\n\n\n## Installation\n\nInstall the `@workm8/backstage-docker-tags` package in your frontend app package:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @workm8/backstage-docker-tags\n```\n\n### Set the proxy\nIn your `app-config.yaml` located in the root directory we'll need to add a proxy to `hub.docker.com`.\nUnder `proxy`, add the following:\n\n```yaml\nproxy:\n  endpoints:\n    '/docker':\n      target: 'https://hub.docker.com'\n      changeOrigin: true\n```\n\n## Usage\n\n### Update your EntityPage\n\nIn your `EntityPage.tsx` file located in `packages\\app\\src\\components\\catalog` we'll need to make a few changes to get the Docker \n\nFirst we need to add the following imports:\n\n```ts\nimport { DockerTagsTableWidget } from '@workm8/backstage-docker-tags';\n```\n\nYou can display the Widget by adding the following code (for example, the `overviewContent`):\n\n```diff\n+ const dockerTagsContent = (\n+    <DockerTagsTableWidget \n+       heading=\"Docker\" \n+       columns={['name', 'username', 'status']} />\n+ );\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    {entityWarningContent}\n    <Grid item md={4}>\n      <EntityAboutCard variant=\"gridItem\" />\n    </Grid>\n    <Grid item md={4} xs={12}>\n      <EntityCatalogGraphCard variant=\"gridItem\" height={400} />\n    </Grid>\n+    <Grid item md={4} xs={12}>\n+      {dockerTagsContent}\n+    </Grid>\n    <Grid item md={4} xs={12}>\n      <EntityLinksCard />\n    </Grid>\n    <Grid item md={8} xs={12}>\n      <EntityHasSubcomponentsCard variant=\"gridItem\" />\n    </Grid>\n  </Grid>\n);\n```\n### Annotate your components\nBy adding the `docker.com/repository` annotation to your component, the `DockerRepositoriesWidget` will fetch all the versions from `hub.docker.com`.\n\n```diff\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: Grafana\n  annotations:\n+    docker.com/repository: 'grafana/grafana'\n```\n\n## Configuration\nYou can override the default header, columns and pagination. \n\n| Attribute | Type   | Default  | Description |\n| --------- | ------ | -------- | ------- |\n| heading   | String | `Docker` | The table Header |\n| columns   | array  | `['name', 'username', 'status', 'architecture']` | The columns that are shown. Possible values: `name`, `username`, `status`, `architecture`|\n| initialPage | number | 0 | The first page that is shown |\n| pageSize    | number | 5 | The default page size |\n| pageSizeOptions | array | `[5, 10, 25]` | Possible page sizes. Must include `pageSize` |\n| showCountInHeading | boolean | true | If `true`, it shows the count of the total amount of Docker images in the heading. |\n\nBy default, the table looks like this.\n<br />\n<img src='docs/all_columns.png' width='460px' style=\"display:block;\">\n\nBy disabling some columns, you can make it fit in smaller areas\n<br />\n<img src='docs/example.png' width='460px' style=\"display:block;\">\n\n## Private repositories\nFor private repositories, you need to create a [Personal Access Token](https://hub.docker.com/settings/security) on Docker Hub.\nThis Personal Access Token needs to be added in the proxy.\n\n```diff\n  endpoints:\n    '/docker':\n      target: 'https://hub.docker.com'\n      changeOrigin: true\n+      headers:\n+        Authorization: {PERSONAL_ACCESS_TOKEN}\n```\n\n## Issues\nIf you come across any issues, please don't hesitate to open a [GitHub issue](https://github.com/work-m8/backstage-docker-plugin/issues).\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@workm8",
+  "updated": "2024-07-22T18:40:40.672Z",
+  "version": "1.0.1-alpha",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-07-22T18:40:40.672Z",
+      "version": "1.0.1-alpha"
+    }
+  ]
+}

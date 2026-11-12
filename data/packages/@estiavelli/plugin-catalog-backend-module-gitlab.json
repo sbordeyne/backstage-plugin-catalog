@@ -1,0 +1,29 @@
+{
+  "author": "",
+  "created": "2023-03-01T19:14:06.856Z",
+  "deprecated": "",
+  "description": "A Backstage catalog backend module that helps integrate towards GitLab. Personal version with changes to use branch from config files",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "estiavelli"
+  ],
+  "name": "@estiavelli/plugin-catalog-backend-module-gitlab",
+  "plugin_id": "",
+  "readme": "# Catalog Backend Module for GitLab\n\nThis is an extension module to the plugin-catalog-backend plugin, providing extensions targeted at GitLab offerings.\n\n## Getting started\n\nSee [Backstage documentation](https://backstage.io/docs/integrations/gitlab/discovery) for details on how to install\nand configure the plugin.\n",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog-backend-module-gitlab",
+  "role": "backend-plugin-module",
+  "scope": "@estiavelli",
+  "updated": "2023-03-01T19:14:07.137Z",
+  "version": "0.1.13-ib",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-03-01T19:14:07.137Z",
+      "version": "0.1.13-ib"
+    }
+  ]
+}

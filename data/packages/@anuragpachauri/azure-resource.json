@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-01-14T09:10:31.473Z",
+  "deprecated": "",
+  "description": "Welcome to the **Azure Resource Plugin**!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "anuragpachauri"
+  ],
+  "name": "@anuragpachauri/azure-resource",
+  "plugin_id": "azure-resource",
+  "readme": "# Azure Resource Plugin\n\nWelcome to the **Azure Resource Plugin**!\n\n_This plugin was created through the Backstage CLI._\n\n---\n\n![Alt text](https://i.ibb.co/3FPzKLx/Screenshot-from-2025-01-16-14-08-18.png 'title image')\n\n## Features\n\n- View **Azure resources** associated with a specific component in Backstage.\n- Filter resources by **tags** defined in the `catalog-info.yaml`.\n\n---\n\n## Limitations\n\n- Supports Azure resources queried through the **Azure Resource Graph API**.\n- Requires **tags** to be defined in the `catalog-info.yaml` for filtering.\n\n---\n\n## Setup\n\n### Installation and Configuration\n\nTo set up the Azure Resource Plugin in your Backstage instance, follow these steps:\n\n#### 1. Install the Plugin\n\nRun the following command in the app directory of your Backstage project:\n\n```bash\nyarn --cwd packages/app add @anuragpachauri/azure-resource\n```\n\n### Configuration\n\n#### 1. Backend Configuration\n\nEnsure the backend plugin for Azure resources is configured to query resources using the Azure Resource Graph API.\n\nhttps://github.com/anuragpachauri/backstageMain/tree/main/plugins/azure-backend\n\nRefer to the backend plugin documentation for detailed setup instructions.\n\n#### 2. Frontend Configuration\n\nAdd the Azure Resource Plugin to your app:\n\nFor apps using Backstage's new frontend system\n\nEdit the packages/app/src/components/catalog/EntityPage.tsx file:\n\n```bash\nimport { AzureResourcePage } from '@anuragpachauri/azure-resource';\n\nconst serviceEntityPage = (\n  <EntityLayout.Route\n    path=\"/azure-resource\"\n    title=\"Azure Resources\"\n    if={(entity) => !!entity.metadata.annotations?.['azure.com/resource-tag']}\n  >\n    <AzureResourcePage />\n  </EntityLayout.Route>\n);\n```\n\nRegister Components\n\nAdd the required annotation to your catalog-info.yaml file:\n\n```bash\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: your-component\n  description: A description of your component\n  annotations:\n    azure.com/resource-tag: 'your-tag-key:your-tag-value'\nspec:\n  type: service\n  lifecycle: experimental\n  owner: your-name\n\n```\n\nAfter registration, navigate to the component in the Backstage catalog. The associated Azure resources will be displayed based on the specified tags.\n\nFuture Enhancements\nSupport for additional Azure services beyond those accessible via the Resource Graph API.\n\nEnhanced filtering and sorting capabilities.\nFeedback\n\nFeel free to suggest changes or report issues by creating a GitHub issue.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@anuragpachauri",
+  "updated": "2025-04-09T10:48:31.907Z",
+  "version": "1.3.2",
+  "version_count": 18,
+  "versions": [
+    {
+      "date": "2025-04-09T10:48:31.907Z",
+      "version": "1.3.2"
+    },
+    {
+      "date": "2025-01-17T10:00:29.249Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2025-01-16T08:50:36.091Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2025-01-16T08:42:38.586Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2025-01-16T08:31:44.368Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-01-16T07:36:47.751Z",
+      "version": "14.0.0"
+    },
+    {
+      "date": "2025-01-16T07:34:36.784Z",
+      "version": "13.0.0"
+    },
+    {
+      "date": "2025-01-16T07:31:01.207Z",
+      "version": "12.0.0"
+    },
+    {
+      "date": "2025-01-16T07:27:12.227Z",
+      "version": "11.0.0"
+    },
+    {
+      "date": "2025-01-14T11:41:37.221Z",
+      "version": "10.0.0"
+    },
+    {
+      "date": "2025-01-14T11:32:48.584Z",
+      "version": "9.0.0"
+    },
+    {
+      "date": "2025-01-14T11:28:44.451Z",
+      "version": "8.0.0"
+    },
+    {
+      "date": "2025-01-14T11:26:09.065Z",
+      "version": "7.0.0"
+    },
+    {
+      "date": "2025-01-14T11:23:14.102Z",
+      "version": "6.0.0"
+    },
+    {
+      "date": "2025-01-14T11:18:50.438Z",
+      "version": "5.0.0"
+    }
+  ]
+}

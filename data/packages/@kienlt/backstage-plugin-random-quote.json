@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2025-11-28T03:47:44.979Z",
+  "deprecated": "",
+  "description": "A simple Backstage frontend plugin that displays a random quote in a card.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "kienlt"
+  ],
+  "name": "@kienlt/backstage-plugin-random-quote",
+  "plugin_id": "",
+  "readme": "# Backstage Random Quote Plugin\n\nA simple Backstage frontend plugin that displays a random quote in a card.\n\n## Installation\n\n1. Install the plugin package in your Backstage app:\n\n   ```bash\n   yarn --cwd packages/app add @kienlt/backstage-plugin-random-quote\n   ```\n\n2. Import the card component into your `EntityPage.tsx`:\n\n   ```tsx\n   import { RandomQuoteCard } from '@kienlt/backstage-plugin-random-quote';\n   ```\n\n3. Add the card to your desired layout:\n\n   ```tsx\n   <Grid item xs={12}>\n     <RandomQuoteCard />\n   </Grid>\n   ```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@kienlt",
+  "updated": "2025-11-28T07:30:33.154Z",
+  "version": "0.1.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2025-11-28T07:30:33.154Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-11-28T07:13:27.151Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-11-28T04:20:10.991Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-11-28T04:08:11.569Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-11-28T03:47:45.254Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2025-01-14T10:34:59.466Z",
+  "deprecated": "",
+  "description": "Welcome to the **Azure Resource backend Plugin**!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "anuragpachauri"
+  ],
+  "name": "@anuragpachauri/azure-backend",
+  "plugin_id": "azure-backend",
+  "readme": "# Azure Resource Backend Plugin\n\nWelcome to the **Azure Resource backend Plugin**!\n\n_This plugin was created through the Backstage CLI._\n\n---\n\n## Features\n\n- it run a query on azure graph api to retrive resources.\n\n---\n\n## Limitations\n\n- Supports Azure resources queried through the **Azure Resource Graph API**.\n- Requires **tags** to be defined in the `catalog-info.yaml` for filtering.\n\n---\n\n## Setup\n\n### Installation and Configuration\n\nTo set up the Azure Resource backend Plugin in your Backstage instance, follow these steps:\n\n#### 1. Install the Plugin\n\nRun the following command in the backend directory of your Backstage project:\n\n```bash\nyarn --cwd packages/app add @anuragpachauri/azure-backend\n```\n\n### Configuration\n\n#### 1. add these line in packages/backend/src/index.ts\n\n```bash\nbackend.add(import('@anuragpachauri/azure-backend'));\n```\n\nAfter registration, add the azure resource plugin to Configure Front-end\nhttps://github.com/anuragpachauri/azure-resource\n\nFuture Enhancements\nSupport for additional Azure services beyond those accessible via the Resource Graph API.\n\nEnhanced filtering and sorting capabilities.\nFeedback\n\nFeel free to suggest changes or report issues by creating a GitHub issue.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@anuragpachauri",
+  "updated": "2025-04-09T10:47:59.170Z",
+  "version": "1.2.3",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2025-04-09T10:47:59.170Z",
+      "version": "1.2.3"
+    },
+    {
+      "date": "2025-01-17T10:08:46.372Z",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2025-01-17T10:01:17.286Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2025-01-16T08:44:37.586Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2025-01-16T08:32:59.126Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-01-16T08:31:13.664Z",
+      "version": "6.0.0"
+    },
+    {
+      "date": "2025-01-14T10:55:41.499Z",
+      "version": "5.0.0"
+    },
+    {
+      "date": "2025-01-14T10:42:35.610Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2025-01-14T10:34:59.742Z",
+      "version": "3.0.0"
+    }
+  ]
+}

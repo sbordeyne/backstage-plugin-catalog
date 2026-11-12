@@ -1,0 +1,55 @@
+{
+  "author": "Xavier Ruiz",
+  "created": "2023-11-26T15:31:41.762Z",
+  "deprecated": "",
+  "description": "Backstage plugin for running Ansible AWX job templates",
+  "homepage": "https://github.com/Xaviris/backstage-ansible-awx#readme",
+  "keywords": [],
+  "license": "ISC",
+  "maintainers": [
+    "xaviris"
+  ],
+  "name": "@xaviris/backstage-ansible-awx",
+  "plugin_id": "",
+  "readme": "# ansible-awx\n\nWelcome to the ansible-awx plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/ansible-awx](http://localhost:3000/ansible-awx).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/Xaviris/backstage-ansible-awx",
+  "role": "frontend-plugin",
+  "scope": "@xaviris",
+  "updated": "2023-11-27T12:33:36.585Z",
+  "version": "1.0.7",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2023-11-27T12:33:36.585Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2023-11-27T12:26:52.566Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2023-11-27T12:23:56.088Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2023-11-27T12:10:21.660Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2023-11-26T16:35:31.685Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2023-11-26T16:27:15.167Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2023-11-26T16:20:03.398Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-11-26T15:31:41.996Z",
+      "version": "1.0.0"
+    }
+  ]
+}

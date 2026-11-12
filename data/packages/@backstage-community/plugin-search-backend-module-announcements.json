@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-12-27T19:01:37.155Z",
+  "deprecated": "",
+  "description": "The announcements backend module for the search plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-search-backend-module-announcements",
+  "plugin_id": "search",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/announcements/plugins/search-backend-module-announcements",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-09-22T16:19:37.163Z",
+  "version": "0.23.0",
+  "version_count": 35,
+  "versions": [
+    {
+      "date": "2026-09-22T16:19:37.163Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-08-27T12:54:12.568Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-08-20T13:36:38.789Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-08-17T10:57:24.207Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-06-23T23:29:16.459Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-06-05T03:25:39.254Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-04-24T06:07:05.470Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-03-28T20:30:22.909Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-02-25T14:48:00.980Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2026-02-03T20:07:49.836Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2026-01-28T07:14:16.977Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2026-01-07T15:56:10.405Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-12-17T17:59:18.489Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-11-27T08:18:44.299Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-10-23T08:56:34.702Z",
+      "version": "0.9.1"
+    }
+  ]
+}

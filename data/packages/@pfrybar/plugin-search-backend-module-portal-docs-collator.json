@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-07-18T08:40:20.210Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "UNLICENSED",
+  "maintainers": [
+    "pfrybar"
+  ],
+  "name": "@pfrybar/plugin-search-backend-module-portal-docs-collator",
+  "plugin_id": "search",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@pfrybar",
+  "updated": "2025-07-18T08:40:20.485Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-07-18T08:40:20.485Z",
+      "version": "0.1.0"
+    }
+  ]
+}

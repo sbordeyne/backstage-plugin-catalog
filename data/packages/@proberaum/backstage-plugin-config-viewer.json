@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2025-09-12T20:06:31.849Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "christoph-jerolimov",
+    "jerolimov"
+  ],
+  "name": "@proberaum/backstage-plugin-config-viewer",
+  "plugin_id": "config-viewer",
+  "readme": "",
+  "repository": "https://github.com/proberaum/backstage-plugins/tree/HEAD/workspaces/config-viewer/plugins/config-viewer",
+  "role": "frontend-plugin",
+  "scope": "@proberaum",
+  "updated": "2026-02-28T16:49:20.396Z",
+  "version": "0.13.0",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2026-02-28T16:49:20.396Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-11-18T17:46:11.675Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-10-24T20:13:07.269Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-10-23T23:11:36.672Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-10-19T19:11:11.644Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2025-10-17T22:52:34.963Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-10-17T22:20:34.846Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-09-30T23:57:36.966Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2025-09-30T08:28:36.416Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-09-30T08:14:07.047Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-09-30T07:54:13.139Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-09-19T11:26:09.549Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-09-19T10:32:57.756Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-09-16T09:20:55.691Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-09-13T06:15:35.908Z",
+      "version": "0.2.0"
+    }
+  ]
+}

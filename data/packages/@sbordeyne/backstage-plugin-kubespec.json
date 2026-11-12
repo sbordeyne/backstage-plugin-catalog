@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-09-19T18:54:38.436Z",
+  "deprecated": "",
+  "description": "The `/kubespec` page: a reference for the Kubernetes API and for the CRDs of the operators you run, served by [`kubespec-backend`](../kubespec-backend/README.md).",
+  "homepage": "https://github.com/sbordeyne/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dogeek0"
+  ],
+  "name": "@sbordeyne/backstage-plugin-kubespec",
+  "plugin_id": "kubespec",
+  "readme": "# @sbordeyne/backstage-plugin-kubespec\n\nThe `/kubespec` page: a reference for the Kubernetes API and for the CRDs of the\noperators you run, served by\n[`kubespec-backend`](../kubespec-backend/README.md).\n\nFull documentation — configuration, CRD sources, ingest behaviour — lives at\n[sbordeyne.github.io/backstage-plugins/plugins/kubespec](https://sbordeyne.github.io/backstage-plugins/plugins/kubespec/).\n\n## Installation\n\nThe page renders from the backend's database and has no other data source, so\n[`@sbordeyne/backstage-plugin-kubespec-backend`](../kubespec-backend/README.md) has\nto be installed first.\n\n```bash\nyarn --cwd packages/app add @sbordeyne/backstage-plugin-kubespec\n```\n\nOn the [new frontend system](https://backstage.io/docs/frontend-system/), the\nplugin is installed as a feature:\n\n```tsx\n// packages/app/src/App.tsx\nimport kubespecPlugin from '@sbordeyne/backstage-plugin-kubespec/alpha';\n\nconst app = createApp({\n  features: [kubespecPlugin],\n});\n```\n\nThe page carries its own title and icon, which is what puts `Kubespec` in the\nsidebar — there is no `SidebarItem` to add. Path, title and icon are overridable\nfrom `app.extensions`, and `kubespec.defaultSource` picks the source the page\nopens on; see the documentation site for both.\n\nOn the legacy frontend system, the package root still exports a plugin and a\nroutable extension:\n\n```tsx\nimport { KubespecPageExtension, kubespecPlugin } from '@sbordeyne/backstage-plugin-kubespec';\n\n<FlatRoutes>\n  <Route path=\"/kubespec\" element={<KubespecPageExtension />} />\n</FlatRoutes>;\n```\n\n`kubespecPlugin` registers the API client, so the plugin still has to be picked up\nby the app even when only the route is mounted.\n\n## URLs\n\nFive fixed segments, with two literal aliases so a link parses without any data:\n\n```\n/kubespec/kubernetes/latest/apps/v1/Deployment\n/kubespec/kubernetes/v1.33/core/v1/Pod          # `core` = the empty API group\n/kubespec/cert-manager/v1.21.2/cert-manager.io/v1/Certificate\n```\n\nkubespec.dev leaves both the version and the group out when it can and decides at\nbuild time which is which — a parse that needs the data, which a router in a\nbrowser does not have.\n\n`latest` is a moving target on purpose, which is right for a link pasted in Slack\ntoday. The page shows what it currently resolves to and offers a **Pin** button\nfor links that must not drift.\n\nA property has its own address: `#.spec.template.spec.containers` expands its\nancestors and scrolls to it. The expand/collapse set is deliberately _not_ in the\nURL — thousands of paths would make the back button useless.\n\n## The property tree\n\nThe whole schema arrives in one request. A resource is 12 KB compressed at the\nmedian and 200 KB at the worst across the entire corpus, so there is no lazy\nsubtree protocol: expanding, collapsing, filtering and deep-link expansion are all\nsynchronous.\n\nThe tree is a flat list of rows derived from one reducer, not a component that\nrecurses into itself. That is what makes collapse-all, deep links and a real ARIA\n`tree` possible rather than structurally awkward.\n\nType colours follow a semantic category rather than a literal type name, so a type\nnobody has heard of still reads correctly, and colour is never the only signal —\nevery expandable row also carries a chevron and a child count.\n\n## Notes for the next person\n\n- The tree paints its own panel rather than using the theme surface. The dark\n  theme this was built against has `background.paper` at `#767470`, a mid grey\n  nothing reaches 3:1 against; `src/lib/propertyTypePalette.ts` documents the\n  measurement and carries the validator invocation to re-run if either theme\n  changes.\n- Description diffs arrive precomputed from the backend. They are a constant of\n  two stored strings, so they are produced once at ingest rather than once per\n  reader — which also keeps a diffing library out of the app bundle.\n- BUI's `Text` renders a `<span>` by default. Section titles pass `as=\"h2\"` /\n  `as=\"h3\"` so the page has a real heading outline.\n- `useCursorList` in the bruno plugin predates BUI's `useTable` cursor mode. New\n  paginated tables should use the latter.\n\n## Development\n\n```bash\nyarn workspace @sbordeyne/backstage-plugin-kubespec start   # dev harness, stubbed backend\nyarn workspace @sbordeyne/backstage-plugin-kubespec test\n```\n\nThe harness stubs the backend, including the cases that are awkward to reproduce\non purpose: a recursive schema, a kind missing from a version, and a failing\nrequest.\n",
+  "repository": "https://github.com/sbordeyne/backstage-plugins/tree/HEAD/plugins/kubespec",
+  "role": "frontend-plugin",
+  "scope": "@sbordeyne",
+  "updated": "2026-11-11T13:27:26.025Z",
+  "version": "0.2.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-11-11T13:27:26.025Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-09-19T18:54:38.705Z",
+      "version": "0.2.0"
+    }
+  ]
+}

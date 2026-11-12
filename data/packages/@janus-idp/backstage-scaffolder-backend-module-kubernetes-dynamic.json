@@ -1,0 +1,95 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-01-16T17:07:06.068Z",
+  "deprecated": "",
+  "description": "The kubernetes module for @backstage/plugin-scaffolder-backend",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backend-plugin-module",
+    "backstage",
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-scaffolder-backend-module-kubernetes-dynamic",
+  "plugin_id": "scaffolder",
+  "readme": "# Kubernetes actions for Backstage\n\nThis module provides [Backstage](https://backstage.io/) template [actions](https://backstage.io/docs/features/software-templates/builtin-actions) for [Kubernetes](https://kubernetes.io/docs/home/).\n\nThe following actions are currently supported in this module:\n\n- Create a kubernetes namespace\n\n## Installation\n\nRun the following command to install the action package in your Backstage project\n\n```bash\nyarn workspace backend add @janus-idp/backstage-scaffolder-backend-module-kubernetes\n```\n\n### Installing the action on the backend\n\nAdd the following to your `packages/backend/src/index.ts` file:\n\n```ts title=\"packages/backend/src/index.ts\"\nconst backend = createBackend();\n\n// Add the following line\nbackend.add(\n  import('@janus-idp/backstage-scaffolder-backend-module-kubernetes'),\n);\n\nbackend.start();\n```\n\n## Configuration\n\nAdd the Kubernetes actions to your templates, see the [example](./examples/templates/01-kubernetes-template.yaml) file in this repository for complete usage examples\n\n```yaml\naction: kubernetes:create-namespace\nid: create-kubernetes-namespace\nname: Create kubernetes namespace\ninput:\n  namespace: foo\n  clusterRef: bar\n  token: TOKEN\n  skipTLSVerify: false\n  caData: Zm9v\n  labels: app.io/type=ns; app.io/managed-by=org;\n```\n\n## Usage\n\n### Action: kubernetes:create-namespace\n\n#### Input\n\n| Parameter Name |  Type   | Required | Description                                         | Example                                |\n| -------------- | :-----: | :------: | --------------------------------------------------- | -------------------------------------- |\n| namespace      | string  |   Yes    | Kubernetes namespace name                           | foo                                    |\n| clusterRef     | string  |    No    | Cluster resource entity reference from the catalog  | bar                                    |\n| url            | string  |    No    | API url of the kubernetes cluster                   | <https://api.foo.redhat.com:6443>      |\n| token          | string  |    No    | Kubernetes API bearer token used for authentication |                                        |\n| skipTLSVerify  | boolean |    No    | If true, certificate verification is skipped        | false                                  |\n| caData         | string  |    No    | Base64 encoded certificate data                     |                                        |\n| label          | string  |    No    | Labels that will be applied to the namespace        | app.io/type=ns; app.io/managed-by=org; |\n\n#### Output\n\nThis action doesn't have any outputs.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/kubernetes-actions",
+  "role": "backend-plugin-module",
+  "scope": "@janus-idp",
+  "updated": "2024-10-11T15:50:50.178Z",
+  "version": "2.0.3",
+  "version_count": 43,
+  "versions": [
+    {
+      "date": "2024-10-11T15:50:50.178Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2024-10-09T17:26:00.564Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2024-10-08T18:29:01.215Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-10-02T21:01:23.970Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-10-01T18:26:40.493Z",
+      "version": "1.8.2"
+    },
+    {
+      "date": "2024-09-25T12:48:13.222Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2024-09-20T03:41:18.218Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2024-09-19T16:49:47.583Z",
+      "version": "1.7.2"
+    },
+    {
+      "date": "2024-08-16T18:52:17.288Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2024-07-26T01:28:08.487Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2024-07-24T14:36:15.173Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-06-25T15:00:48.197Z",
+      "version": "1.5.2"
+    },
+    {
+      "date": "2024-06-19T15:08:14.279Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2024-06-13T21:35:41.327Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-06-13T10:28:34.064Z",
+      "version": "1.4.14"
+    }
+  ]
+}

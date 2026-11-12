@@ -1,0 +1,49 @@
+{
+  "author": "NOS SGPS, S.A.",
+  "created": "2026-09-22T10:37:06.840Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin bootstrap for Apigee integration",
+  "homepage": "https://github.com/nosportugal/backstage-plugin-apigee#readme",
+  "keywords": [
+    "apigee",
+    "backstage",
+    "backstage-plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "calexandre",
+    "dsiteixeira",
+    "jfhs",
+    "kkthx",
+    "marcoaureliox",
+    "paparuco",
+    "yrxavier"
+  ],
+  "name": "@nospt/backstage-plugin-apigee",
+  "plugin_id": "apigee",
+  "readme": "# @nospt/backstage-plugin-apigee\n\nThe **frontend** package of the [Backstage Apigee plugin](../../README.md) — a dedicated **API Hub** experience for browsing the Apigee proxies and Apigee API Hub definitions that the [backend module](../apigee-backend/README.md) syncs into your catalog.\n\nBuilt on the Backstage **New Frontend System**.\n\n## What you get\n\n- **API Hub dashboard** (`/api-hub`) — an overview with live counts of your APIs by lifecycle (production / experimental / deprecated) and quick links into the catalog.\n- **API catalog** (`/api-hub/catalog`) — a searchable, paginated grid of API cards with:\n  - facet filters for **lifecycle**, **org**, **owner**, and **department**;\n  - full-text search and a configurable page-size selector;\n  - a details drawer showing metadata and the embedded or linked OpenAPI/AsyncAPI spec.\n- **Shareable views** — filters, search, and paging are all reflected in the URL (`?lifecycle=`, `?org=`, `?owner=`, `?department=`, `?q=`, `?page=`, `?size=`), so any view can be bookmarked or shared.\n\nThe catalog only shows entities produced by the Apigee backend (identified by their `cloud.google.com/*` annotations), so it lives happily alongside the rest of your Backstage catalog.\n\n<!-- Replace these placeholders with real screenshots or GIFs (see ../../docs/images/README.md). -->\n\n![The API Hub dashboard: API counts by lifecycle with quick links into the catalog](../../docs/images/api-hub-dashboard.png)\n\n![The API catalog: a searchable, filterable grid of API cards](../../docs/images/api-catalog.png)\n\n## Routes\n\n| Path               | Tab         | Description                                       |\n| ------------------ | ----------- | ------------------------------------------------- |\n| `/api-hub`         | Home        | Landing dashboard with API stats and quick links. |\n| `/api-hub/catalog` | API catalog | Filterable, searchable grid of API entities.      |\n\n## Installation\n\nAdd the package to your app:\n\n```bash\nyarn --cwd packages/app add @nospt/backstage-plugin-apigee\n```\n\nRegister the plugin in `packages/app/src/App.tsx`:\n\n```ts\nimport apigeePlugin from '@nospt/backstage-plugin-apigee';\n\nexport const app = createApp({\n  features: [\n    // ...\n    apigeePlugin,\n  ],\n});\n```\n\n### Optional: grouped navigation\n\nThe package also exports `apigeeNavModule`, a New Frontend System nav module that renders an expandable **API Hub** group (with the Home and API catalog sub-pages) in the app sidebar. Add it to your app's features to enable it:\n\n```ts\nimport apigeePlugin, { apigeeNavModule } from '@nospt/backstage-plugin-apigee';\n\nexport const app = createApp({\n  features: [apigeePlugin, apigeeNavModule],\n});\n```\n\nIf you manage the sidebar with your own nav module, skip `apigeeNavModule` and link to `/api-hub` directly.\n\n## Configuration\n\nAll frontend settings are optional and live under `apigee.catalog`:\n\n```yaml\napigee:\n  catalog:\n    # Friendly labels for the \"Org\" filter facet: raw org id -> display label.\n    orgLabels:\n      apigee-x-private-p-495866: Private\n      apigee-x-public-p-863498: Public\n    # Initial API cards per page. Users can change it via the selector\n    # (10/20/30/40/50). Values below 1 are floored to 1; defaults to 10.\n    pageSize: 24\n```\n\n| Key                        | Type   | Default | Description                                                                                                  |\n| -------------------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------ |\n| `apigee.catalog.orgLabels` | map    | —       | Maps raw org ids to friendly labels shown in the **Org** facet. Unmapped ids fall back to a humanised label. |\n| `apigee.catalog.pageSize`  | number | `10`    | Initial page size for the catalog grid.                                                                      |\n\nThe entities themselves (and everything shown on the cards) come from the backend module — see its [configuration reference](../apigee-backend/README.md#configuration).\n\n## Development\n\n```bash\ncd plugins/apigee\nyarn start    # run the isolated dev harness\nyarn test     # unit tests\nyarn test:e2e # Playwright end-to-end tests\nyarn lint\nyarn build\n```\n",
+  "repository": "https://github.com/nosportugal/backstage-plugin-apigee/tree/HEAD/plugins/apigee",
+  "role": "frontend-plugin",
+  "scope": "@nospt",
+  "updated": "2026-11-03T17:31:30.301Z",
+  "version": "1.1.4",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-11-03T17:31:30.301Z",
+      "version": "1.1.4"
+    },
+    {
+      "date": "2026-10-26T10:52:26.018Z",
+      "version": "1.1.3"
+    },
+    {
+      "date": "2026-10-22T17:35:03.013Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2026-09-22T10:37:07.345Z",
+      "version": "1.1.1"
+    }
+  ]
+}

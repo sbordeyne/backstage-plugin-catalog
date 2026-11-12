@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-04-24T15:33:14.533Z",
+  "deprecated": "",
+  "description": "Welcome to the visual-qontract plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "addrew"
+  ],
+  "name": "@redhatinsights/backstage-plugin-visual-qontract",
+  "plugin_id": "",
+  "readme": "# visual-qontract\n\nWelcome to the visual-qontract plugin!\n\n_This plugin was created through the Backstage CLI_\n\nSee the mono-repo readme for more info.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@redhatinsights",
+  "updated": "2024-04-24T15:33:14.936Z",
+  "version": "0.1.2",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-04-24T15:33:14.936Z",
+      "version": "0.1.2"
+    }
+  ]
+}

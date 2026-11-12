@@ -1,0 +1,89 @@
+{
+  "author": "",
+  "created": "2025-01-28T11:28:58.462Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "kyverno",
+    "policy-reporter"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fjogeleit",
+    "jaxwood",
+    "jonas-beck"
+  ],
+  "name": "@kyverno/backstage-plugin-policy-reporter",
+  "plugin_id": "policy-reporter",
+  "readme": "",
+  "repository": "https://github.com/kyverno/backstage-policy-reporter-plugin/tree/HEAD/plugins/policy-reporter",
+  "role": "frontend-plugin",
+  "scope": "@kyverno",
+  "updated": "2026-10-09T12:03:07.808Z",
+  "version": "2.11.0",
+  "version_count": 20,
+  "versions": [
+    {
+      "date": "2026-10-09T12:03:07.808Z",
+      "version": "2.11.0"
+    },
+    {
+      "date": "2026-07-08T06:50:53.005Z",
+      "version": "2.10.0"
+    },
+    {
+      "date": "2026-06-02T10:16:39.851Z",
+      "version": "2.9.0"
+    },
+    {
+      "date": "2026-05-06T12:45:21.845Z",
+      "version": "2.8.0"
+    },
+    {
+      "date": "2026-03-16T09:28:02.586Z",
+      "version": "2.7.0"
+    },
+    {
+      "date": "2026-02-20T12:52:24.382Z",
+      "version": "2.6.0"
+    },
+    {
+      "date": "2026-01-06T15:31:06.117Z",
+      "version": "2.5.0"
+    },
+    {
+      "date": "2025-08-21T06:12:59.138Z",
+      "version": "2.4.1"
+    },
+    {
+      "date": "2025-06-27T12:23:15.133Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2025-06-16T09:27:16.327Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2025-06-13T07:23:54.889Z",
+      "version": "2.2.4"
+    },
+    {
+      "date": "2025-06-12T13:49:01.297Z",
+      "version": "2.2.3"
+    },
+    {
+      "date": "2025-06-12T10:51:05.712Z",
+      "version": "2.2.2"
+    },
+    {
+      "date": "2025-06-03T06:31:20.675Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2025-04-07T07:58:37.056Z",
+      "version": "2.2.0"
+    }
+  ]
+}

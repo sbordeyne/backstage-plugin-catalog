@@ -1,0 +1,29 @@
+{
+  "author": "hoangndst",
+  "created": "2025-05-15T21:05:17.126Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://kusionstack.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "elliotxx",
+    "hoangndst",
+    "ooh_child"
+  ],
+  "name": "@kusionstack/plugin-scaffolder-backend-module-kusion",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/KusionStack/kusion-backstage-plugin/tree/HEAD/plugins/scaffolder-backend-module-kusion",
+  "role": "backend-plugin-module",
+  "scope": "@kusionstack",
+  "updated": "2025-05-15T21:05:17.427Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-05-15T21:05:17.427Z",
+      "version": "0.1.0"
+    }
+  ]
+}

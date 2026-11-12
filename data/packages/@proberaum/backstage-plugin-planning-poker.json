@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2025-10-19T19:12:04.457Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "christoph-jerolimov",
+    "jerolimov"
+  ],
+  "name": "@proberaum/backstage-plugin-planning-poker",
+  "plugin_id": "planning-poker",
+  "readme": "",
+  "repository": "https://github.com/proberaum/backstage-plugins/tree/HEAD/workspaces/planning-poker/plugins/planning-poker",
+  "role": "frontend-plugin",
+  "scope": "@proberaum",
+  "updated": "2026-03-14T22:55:48.213Z",
+  "version": "0.2.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-03-14T22:55:48.213Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-11-18T17:45:38.007Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-10-19T19:12:04.719Z",
+      "version": "0.0.1"
+    }
+  ]
+}

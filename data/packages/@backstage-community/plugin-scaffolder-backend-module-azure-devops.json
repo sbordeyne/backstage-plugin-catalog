@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-10-31T21:34:09.681Z",
+  "deprecated": "",
+  "description": "The azure-devops module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-scaffolder-backend-module-azure-devops",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/azure-devops/plugins/scaffolder-backend-module-azure-devops",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:19:51.409Z",
+  "version": "0.29.0",
+  "version_count": 39,
+  "versions": [
+    {
+      "date": "2026-11-03T14:19:51.409Z",
+      "version": "0.29.0"
+    },
+    {
+      "date": "2026-09-23T15:58:10.899Z",
+      "version": "0.28.0"
+    },
+    {
+      "date": "2026-08-27T11:53:35.915Z",
+      "version": "0.27.0"
+    },
+    {
+      "date": "2026-07-21T22:58:24.730Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-06-24T13:04:14.273Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-05-27T11:57:09.764Z",
+      "version": "0.24.1"
+    },
+    {
+      "date": "2026-04-24T18:09:19.140Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-04-11T21:16:59.765Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-03-04T18:50:34.140Z",
+      "version": "0.22.1"
+    },
+    {
+      "date": "2026-02-28T01:05:14.375Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-02-26T12:13:30.404Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-01-31T19:55:12.705Z",
+      "version": "0.20.1"
+    },
+    {
+      "date": "2026-01-28T23:01:04.367Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-01-27T21:40:38.134Z",
+      "version": "0.19.1"
+    },
+    {
+      "date": "2026-01-07T02:28:16.023Z",
+      "version": "0.19.0"
+    }
+  ]
+}

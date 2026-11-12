@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:29.070Z",
+  "deprecated": "",
+  "description": "The AWS (Bedrock) backend module for the @kozmoai/rag-ai plugin.",
+  "homepage": "https://github.com/kozmoai/glint-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/rag-ai-backend-embeddings-aws",
+  "plugin_id": "",
+  "readme": "# RAG AI Backend-embeddings AWS Bedrock submodule\n\nThis is a submodule for the `@kozmoai/rag-ai-backend` module, which provides functionality to use AWS Bedrock embeddings to generate a RAG AI Backend plugin for Backstage. It integrates `@backstage/integration-aws-node` package for fetching AWS account credentials.\n\n## Initialization\n\n```typescript\nconst vectorStore = await createGlintPgVectorStore({ logger, database });\nconst awsCredentialsManager = DefaultAwsCredentialsManager.fromConfig(config);\nconst credProvider = await awsCredentialsManager.getCredentialProvider();\n\nconst augmentationIndexer = await initializeBedrockEmbeddings({\n  logger,\n  catalogApi,\n  vectorStore,\n  discovery,\n  config,\n  options: {\n    credentials: credProvider.sdkCredentialProvider,\n    region: 'eu-central-1',\n  },\n});\n```\n\n## Configuration Options\n\nThe module expects 2 pieces of configuration:\n\n1. The configuration of the module to configure AWS Bedrock\n2. AWS integration configuration for credentials provisioning\n\n### AWS Bedrock configuration\n\nThe module expects the name of the embeddings generative AI model to be configured via app-config.\n\n```yaml\nai:\n  embeddings:\n    awsBedrock:\n      # Name of the Bedrock model to use to create Embeddings\n      modelName: 'amazon.titan-embed-text-v1'\n```\n\n### AWS Credentials Configuration\n\nThe module depends on the `@backstage/integration-aws-node` package which helps fetch AWS account credentials for AWS SDK clients in backend packages and plugins. Users configure AWS account information and the credentials in their Backstage app configurations. This could include IAM user credentials, IAM roles, and profile names for their AWS accounts.\n\nA full description of how to use and configure `@backstage/integration-aws-node` package can be found from the [package README](https://github.com/backstage/backstage/blob/master/packages/integration-aws-node/README.md).\n\nConfiguration examples:\n\n```yaml\naws:\n  mainAccount:\n    accessKeyId: ${MY_ACCESS_KEY_ID}\n    secretAccessKey: ${MY_SECRET_ACCESS_KEY}\n  accounts:\n    - accountId: '111111111111'\n      roleName: 'my-iam-role-name'\n      externalId: 'my-external-id'\n    - accountId: '222222222222'\n      partition: 'aws-other'\n      roleName: 'my-iam-role-name'\n      region: 'not-us-east-1'\n      accessKeyId: ${MY_ACCESS_KEY_ID_FOR_ANOTHER_PARTITION}\n      secretAccessKey: ${MY_SECRET_ACCESS_KEY_FOR_ANOTHER_PARTITION}\n    - accountId: '333333333333'\n      accessKeyId: ${MY_OTHER_ACCESS_KEY_ID}\n      secretAccessKey: ${MY_OTHER_SECRET_ACCESS_KEY}\n    - accountId: '444444444444'\n      profile: my-profile-name\n    - accountId: '555555555555'\n  accountDefaults:\n    roleName: 'my-backstage-role'\n    externalId: 'my-id'\n```\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/backend/rag-ai-backend-embeddings-aws",
+  "role": "backend-plugin-module",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:21.276Z",
+  "version": "0.2.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:21.276Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-03-25T22:14:29.336Z",
+      "version": "0.1.0"
+    }
+  ]
+}

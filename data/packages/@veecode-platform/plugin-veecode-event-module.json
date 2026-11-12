@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2025-06-16T12:03:08.766Z",
+  "deprecated": "",
+  "description": "Functionalities for the veecode-event plugins",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/plugin-veecode-event-module",
+  "plugin_id": "catalog",
+  "readme": "# VeeCode Platform Module Plugin\n\nThe **Veecode Platform Module** plugin is a backend plugin module that extends the backstage catalog, adding new features to the application's standard behavior.\n\nSuch as new **kinds**, new **schemas** and a new **apiversion**.\n\n**Kinds:**\n\n- Environment\n- Cluster\n- Database\n- Vault\n\n\n**ApiVersion**\n\n- veecode.backstage.io/v1alpha1\n\n  \n\n## Get started\n\n```yaml\ncd packages/backend\nyarn add @veecode-platform/plugin-veecode-platform-module\n```\n\n#### ⭐ Legacy Backend\n\nNow, in the file `packages > backend > src > plugins > catalog.ts`:\n\n```diff\n...\n+ import { ClusterEntitiesProcessor, DatabaseEntitiesProcessor, EnvironmentEntitiesProcessor, VaultEntitiesProcessor } from '@veecode-platform/plugin-veecode-platform-module';\n...\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const builder = await CatalogBuilder.create(env);\n  ... \n  \n+  builder.addProcessor( new ClusterEntitiesProcessor());\n+  builder.addProcessor( new EnvironmentEntitiesProcessor());\n+  builder.addProcessor( new DatabaseEntitiesProcessor());\n+  builder.addProcessor( new VaultEntitiesProcessor());\n\n  builder.addProcessor(new ScaffolderEntitiesProcessor());\n  const { processingEngine, router } = await builder.build();\n  await processingEngine.start();\n  return router;\n}\n\n...\n```\n\n#### 🆕 New Backend\n\nIn `packages > backend > src > index.ts`:\n\n```diff\n\nimport { createBackend } from '@backstage/backend-defaults';\n+ import { catalogModuleVeeCodeProcessor } from '@veecode-platform/plugin-veecode-platform-module/alpha';\n\nconst backend = createBackend();\n\nbackend.add(import('@backstage/plugin-app-backend/alpha'));\nbackend.add(import('@backstage/plugin-proxy-backend/alpha'));\nbackend.add(import('@backstage/plugin-scaffolder-backend/alpha'));\nbackend.add(import('@backstage/plugin-techdocs-backend/alpha'));\n...\n\n+ backend.add(catalogModuleVeeCodeProcessor);\n\n\nbackend.start();\n```\n\n<br>\n\n\nBy adding the processors to the application's backend, we extend our configuration to the default behavior of the backstage.\n\n\n**Remember that in order to access the customized types, you just need to grant access in `app-config.yaml`:**\n\n```diff\ncatalog:\n  import:\n    entityFilename: catalog-info.yaml\n    pullRequestBranchName: backstage-integration\n  rules:\n+    - allow: [Component, System, API, Resource, Location, Database, Cluster, Environment, Vault]\n...\n```",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@veecode-platform",
+  "updated": "2025-06-16T12:34:41.604Z",
+  "version": "0.1.3",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-06-16T12:34:41.604Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-06-16T12:03:09.044Z",
+      "version": "0.1.2"
+    }
+  ]
+}

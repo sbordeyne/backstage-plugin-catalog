@@ -1,0 +1,93 @@
+{
+  "author": "Red Hat",
+  "created": "2023-12-07T23:40:19.138Z",
+  "deprecated": "",
+  "description": "The quay-actions module for @backstage/plugin-scaffolder-backend",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "lifecycle:active",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-scaffolder-backend-module-quay-dynamic",
+  "plugin_id": "scaffolder",
+  "readme": "# Quay actions for Backstage\n\nThis module provides [Backstage](https://backstage.io/) template [actions](https://backstage.io/docs/features/software-templates/builtin-actions) for [Quay](https://docs.quay.io/).\n\nThe following actions are currently supported in this module:\n\n- Create a Quay repository\n\n## Installation\n\nRun the following command to install the action package in your Backstage project\n\n```bash\nyarn workspace backend add @janus-idp/backstage-scaffolder-backend-module-quay\n```\n\n### Installing the action on the new backend\n\nAdd the following to your `packages/backend/src/index.ts` file:\n\n```ts title=\"packages/backend/src/index.ts\"\nconst backend = createBackend();\n\n// Add the following line\nbackend.add(import('@janus-idp/backstage-scaffolder-backend-module-quay'));\n\nbackend.start();\n```\n\n## Configuration\n\nAdd the Quay actions to your templates, see the [example](./examples/templates/01-quay-template.yaml) file in this repository for complete usage examples\n\n```yaml\naction: quay:create-repository\nid: create-quay-repo\nname: Create quay repo\ninput:\n  baseUrl: https://quay.io\n  token: UW1dLVdCTj8uZWNuIW97K1k0XiBkSmppVU9MYzFT\n  name: foo\n  visibility: public\n  description: This is a foo repository\n  namespace: bar\n  repoKind: image\n```\n\n## Usage\n\n### Action: quay:create-repository\n\n#### Input\n\n| Parameter Name |  Type  | Required | Description                                                                       | Example                                  |\n| -------------- | :----: | :------: | --------------------------------------------------------------------------------- | ---------------------------------------- |\n| name           | string |   Yes    | Quay repository name                                                              | foo                                      |\n| visibility     | string |   Yes    | Visibility setting for the created repository, either public or private           | public                                   |\n| description    | string |   Yes    | Description for the created repository                                            | This if foo repository                   |\n| token          | string |   Yes    | Authentication token, see [docs](https://docs.quay.io/api/)                       | UW1dLVdCTj8uZWNuIW97K1k0XiBkSmppVU9MYzFT |\n| baseUrl        | string |    No    | Base url of a quay instance, defaults to <https://quay.io>                        | <https://foo.quay.io>                    |\n| namespace      | string |    No    | Namespace to create repository in, defaults to the namespace the token belongs to | bar                                      |\n| repoKind       | string |    No    | Created repository kind, either image or application, if empty defaults to image  | image                                    |\n\n#### Output\n\n| Name          |  Type  | Description                                |\n| ------------- | :----: | ------------------------------------------ |\n| repositoryUrl | string | Quay repository URL created by this action |\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/quay-actions",
+  "role": "backend-plugin-module",
+  "scope": "@janus-idp",
+  "updated": "2024-10-11T15:51:29.840Z",
+  "version": "2.0.4",
+  "version_count": 41,
+  "versions": [
+    {
+      "date": "2024-10-11T15:51:29.840Z",
+      "version": "2.0.4"
+    },
+    {
+      "date": "2024-10-09T20:42:24.237Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2024-10-08T18:36:05.115Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2024-10-01T18:34:29.867Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-09-27T16:59:12.316Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-09-25T12:55:37.066Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2024-09-20T03:50:17.318Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2024-09-19T16:57:13.427Z",
+      "version": "1.7.2"
+    },
+    {
+      "date": "2024-08-16T18:59:43.746Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2024-07-26T01:37:05.182Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2024-07-24T14:46:14.189Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-06-19T15:17:21.187Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2024-06-13T21:45:12.838Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-06-13T10:37:00.636Z",
+      "version": "1.4.13"
+    },
+    {
+      "date": "2024-06-05T16:23:01.727Z",
+      "version": "1.4.12"
+    }
+  ]
+}

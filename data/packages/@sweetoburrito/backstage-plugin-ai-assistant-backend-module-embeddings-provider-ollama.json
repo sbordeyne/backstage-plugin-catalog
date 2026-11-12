@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-09-04T11:01:51.300Z",
+  "deprecated": "",
+  "description": "The embeddings-provider-ollama backend module for the ai-assistant plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sweetoburrito"
+  ],
+  "name": "@sweetoburrito/backstage-plugin-ai-assistant-backend-module-embeddings-provider-ollama",
+  "plugin_id": "ai-assistant",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@sweetoburrito",
+  "updated": "2026-01-08T13:52:31.713Z",
+  "version": "0.3.9",
+  "version_count": 40,
+  "versions": [
+    {
+      "date": "2026-02-05T09:44:30.277Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-02-05T09:40:11.673Z",
+      "version": "0.0.0-snapshot-20260205093948"
+    },
+    {
+      "date": "2026-02-05T08:49:16.664Z",
+      "version": "0.0.0-snapshot-20260205084853"
+    },
+    {
+      "date": "2026-01-08T13:52:31.713Z",
+      "version": "0.3.9"
+    },
+    {
+      "date": "2026-01-08T13:36:45.124Z",
+      "version": "0.0.0-snapshot-20260108133622"
+    },
+    {
+      "date": "2026-01-08T12:46:18.066Z",
+      "version": "0.0.0-snapshot-20260108124555"
+    },
+    {
+      "date": "2025-12-10T13:53:07.859Z",
+      "version": "0.3.8"
+    },
+    {
+      "date": "2025-12-10T13:49:14.725Z",
+      "version": "0.0.0-snapshot-20251210134851"
+    },
+    {
+      "date": "2025-12-10T12:10:53.617Z",
+      "version": "0.0.0-snapshot-20251210121031"
+    },
+    {
+      "date": "2025-11-26T14:05:01.057Z",
+      "version": "0.3.7"
+    },
+    {
+      "date": "2025-11-26T14:02:03.557Z",
+      "version": "0.0.0-snapshot-20251126140141"
+    },
+    {
+      "date": "2025-11-26T13:35:17.511Z",
+      "version": "0.0.0-snapshot-20251126133455"
+    },
+    {
+      "date": "2025-11-20T11:24:32.517Z",
+      "version": "0.3.6"
+    },
+    {
+      "date": "2025-11-18T09:24:36.909Z",
+      "version": "0.3.5"
+    },
+    {
+      "date": "2025-11-18T09:19:23.933Z",
+      "version": "0.0.0-snapshot-20251118091900"
+    }
+  ]
+}

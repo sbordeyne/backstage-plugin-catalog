@@ -1,0 +1,61 @@
+{
+  "author": "tduniec",
+  "created": "2024-05-30T08:28:53.752Z",
+  "deprecated": "",
+  "description": "Provides with functionality to generate customisable reports from Scaffolder template executions",
+  "homepage": "https://github.com/tduniec/backstage-template-reporting-plugin#readme",
+  "keywords": [
+    "backstage",
+    "reporting",
+    "scaffolder",
+    "scaffolder-reporting",
+    "template-reporting"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "tduniec"
+  ],
+  "name": "@tduniec/backstage-plugin-template-reporting-backend",
+  "plugin_id": "template-reporting",
+  "readme": "# Template Reporting - backend\n\nThe Backstage Template-Reporting Plugin is designed to generate reports from template executions within Backstage. It offers high customization, allowing any template to be used with the Nunjucks templating engine. The plugin renders the final reports in a visually appealing format using Markdown, making it versatile for various reporting needs. This part of plugin is `backend` part.\n\n## Dependencies\n\n- [template-reporting](https://github.com/tduniec/backstage-template-reporting-plugin/tree/main/plugins/template-reporting)\n\n## Code\n\nhttps://github.com/tduniec/backstage-template-reporting-plugin.git\n\n## Installation\n\n1. Install the plugin package in your Backstage app:\n\n```sh\n# From your Backstage root directory\nyarn add --cwd packages/backend @tduniec/backstage-plugin-template-reporting-backend\n```\n\n2. Wire up the API implementation to your App in `templateReporting.ts` file in `packages/backend/src/plugins/`:\n\n```ts\nimport { createRouter } from '@tduniec/backstage-plugin-template-reporting-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    logger: env.logger,\n    database: env.database,\n  });\n}\n```\n\nin `packages/backend/src/index.ts`\n\n```ts\n\nimport templateReporting from './plugins/templateReporting';\n\n...\n\nconst templateReportingEnv = useHotMemoize(module, () => createEnv('template-reporting'));\n\n...\n\napiRouter.use('/template-reporting', await templateReporting(templateReportingEnv)); // you should use authMiddleware if you are using it for backend\n\n```\n\n3. Install [template-reporting](../template-reporting/README.md) part if not installed already\n\n## Adding Custom Report Template\n\nModify plugin configuration in `templateReporting.ts` file in `packages/backend/src/plugins/`:\n\n```diff\n\nexport default async function createPlugin(env: PluginEnvironment,): Promise<Router> {\n  return await createRouter({\n    logger: env.logger,\n    database: env.database,\n+   customReportTemplates: reportTemplates\n  });\n}\n\n+ const reportTemplateAdded: TemplateReportObj = {\n+ name: 'dummyTemplate',\n+  content: `\n+ ### This is dummy template for {{ templateExecutionId }} and template name : {{ templateName }}\n+ | Step Name | Step Output | Next Steps |\n+ | :-------|:--------:|--------:|\n+ {% for item in outputs -%}\n+ | {{ item.stepName }} | [{{item.stepOutput}}]({{ item.stepOutput }}) | {{ item.nextStep }} |\n+ {% endfor %}\n+ `}\n+\n+ const reportTemplates: TemplateReportObj[] = [\n+   reportTemplateAdded\n+ ]\n\n```\n\n## Custom Action\n\nWire up the Custom Action to your Scaffolder actions list in file in `packages/backend/src/plugins/scaffolder.ts`:\n\n```diff\n+ import { generateTemplateReport } from '@tduniec/plugin-template-reporting-backend';\n\n...\n\n  const actions = [\n    ...builtInActions,\n+   generateTemplateReport(env.config)\n  ];\n```\n\n### Custom action usage in template\n\n```yaml\n---\nsteps:\n  - id: generate-report\n    action: template:report:generate\n    name: Generate report for template\n    input:\n      reportInputs:\n        outputs:\n          - stepName: Step1\n            stepOutput: https://google.com\n            nextStep: Step2\n          - stepName: Step2\n            stepOutput: https://amazon.com\n            nextStep: verify report\n      reportTemplateName: 'dummyTemplate' #optional -> if you want to use your custom report template, if not specified the default report template will be taken\n\noutput:\n  links:\n    - title: Template Report\n      icon: catalog\n      url: ${{ steps['generate-report'].output.reportUrl }}\n```\n\n### Default Report Template\n\nIt comes with build in report Template\n\n```md\n## Generated report for template: '{{ templateName }}'\n\n#### Generated on **{{ time }}**\n\n---\n\nTemplate Execution Id: **{{ templateExecutionId }}**\n\nThis report provides an overview of the execution of template actions in Backstage Scaffolder.\n\n| Step Name | Step Output | Next Steps |\n| :-------- | :---------: | ---------: |\n\n{% for item in outputs -%}\n| {{ item.stepName }} | [{{ item.stepOutput }}]({{ item.stepOutput }}) | {{ item.nextStep }} |\n{% endfor %}\n\n### Further Actions\n\n---\n\nAfter the successful execution, the following steps need to be done as these steps are not done in the template execution\n{% for item in furtherActions %}\n{{ item }}\n{% endfor %}`\n```\n\nThis one can be used with this action:\n\n```yaml\n---\nsteps:\n  - id: generate-report\n    action: template:report:generate\n    name: Generate report for template\n    input:\n      reportInputs:\n        outputs:\n          - stepName: My Dummy Step1\n            stepOutput: https://google.com\n            nextStep: todo1\n          - stepName: My Dummy Step2\n            stepOutput: https://amazon.com\n            nextStep: todo2\n        furtherActions:\n          - 1. Upload the image to ECR production\n          - 2. Prepare release\noutput:\n  links:\n    - title: Template Report\n      icon: catalog\n      url: ${{ steps['generate-report'].output.reportUrl }}\n```\n\n### New Backend - instalation\n\n2. Wire up the plugin in Backstage new backend system\n\nin `packages/backend/src/index.ts`\n\n```ts\nbackend.add(import('@tduniec/backstage-plugin-template-reporting-backend'));\n```\n\n## register custom Report Templates\n\n```ts\nimport { createBackendModule } from '@backstage/backend-plugin-api';\nimport {\n  TemplateReportObj,\n  templateReportingReportsExtensionPoint,\n} from '@tduniec/backstage-plugin-template-reporting-backend';\n```\n\n...\n\n```ts\nconst reportTemplateAdded: TemplateReportObj = {\n  name: 'dummyTemplate',\n  content: `\n ### This is dummy template for {{ templateExecutionId }} and template name : {{ templateName }}\n | Step Name | Step Output | Next Steps |\n | :-------|:--------:|--------:|\n {% for item in outputs -%}\n | {{ item.stepName }} | [{{item.stepOutput}}]({{ item.stepOutput }}) | {{ item.nextStep }} |\n {% endfor %}\n `,\n};\n\nconst templateReportingCustomExtensions = createBackendModule({\n  pluginId: 'template-reporting',\n  moduleId: 'custom-template-report',\n  register(env) {\n    env.registerInit({\n      deps: {\n        templateReporting: templateReportingReportsExtensionPoint,\n      },\n      async init({ templateReporting }) {\n        templateReporting.addReports(reportTemplateAdded); // just an example\n      },\n    });\n  },\n});\nbackend.add(templateReportingCustomExtensions());\n```\n\n## register custom action in New Backend Scaffolder\n\n```ts\nimport {\n  TemplateReportObj,\n  templateReportingReportsExtensionPoint,\n  generateTemplateReport,\n} from '@tduniec/backstage-plugin-template-reporting-backend';\nimport { coreServices } from '@backstage/backend-plugin-api';\nimport { scaffolderActionsExtensionPoint } from '@backstage/plugin-scaffolder-node/alpha';\n```\n\n...\n\n```ts\nconst scaffolderModuleCustomExtensions = createBackendModule({\n  pluginId: 'scaffolder', // name of the plugin that the module is targeting\n  moduleId: 'custom-extensions',\n  register(env) {\n    env.registerInit({\n      deps: {\n        scaffolder: scaffolderActionsExtensionPoint,\n        config: coreServices.rootConfig,\n        auth: coreServices.auth,\n        // ... and other dependencies as needed\n      },\n      async init({ scaffolder, config, auth /* ..., other dependencies */ }) {\n        // Here you have the opportunity to interact with the extension\n        // point before the plugin itself gets instantiated\n        scaffolder.addActions(await generateTemplateReport(config, auth)); // just an example\n      },\n    });\n  },\n});\nbackend.add(scaffolderModuleCustomExtensions());\n```\n",
+  "repository": "https://github.com/tduniec/backstage-template-reporting-plugin",
+  "role": "backend-plugin",
+  "scope": "@tduniec",
+  "updated": "2024-09-11T07:48:16.715Z",
+  "version": "0.2.6",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2024-09-11T07:48:16.715Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2024-09-10T12:58:10.631Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2024-09-10T08:34:32.651Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2024-09-06T13:52:44.835Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2024-09-06T12:26:28.420Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2024-09-06T12:07:02.607Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-07-09T11:15:11.907Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-05-30T08:28:54.043Z",
+      "version": "0.1.0"
+    }
+  ]
+}

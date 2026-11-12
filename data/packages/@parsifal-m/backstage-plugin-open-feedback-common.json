@@ -1,0 +1,62 @@
+{
+  "author": "",
+  "created": "2024-05-04T21:09:03.606Z",
+  "deprecated": "",
+  "description": "Common functionalities for the open-feedback plugin",
+  "homepage": "https://github.com/Parsifal-M/backstage-open-feedback#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "common-library",
+    "feedback",
+    "open-source",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "parsifal-m"
+  ],
+  "name": "@parsifal-m/backstage-plugin-open-feedback-common",
+  "plugin_id": "open-feedback",
+  "readme": "# OpenFeedback Common\n\nThis is a common package for the OpenFeedback Frontend and Backend.\n\nIt contains some permissions and some shared types.\n",
+  "repository": "https://github.com/Parsifal-M/backstage-open-feedback",
+  "role": "common-library",
+  "scope": "@parsifal-m",
+  "updated": "2026-07-06T10:54:19.281Z",
+  "version": "0.4.4",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2026-07-06T10:54:19.281Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2026-04-08T11:48:20.208Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2025-12-29T11:40:19.821Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2025-04-05T16:06:25.465Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2024-07-26T19:22:00.389Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-05-22T10:53:10.930Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-05-04T21:19:22.300Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-05-04T21:09:03.878Z",
+      "version": "0.1.0"
+    }
+  ]
+}

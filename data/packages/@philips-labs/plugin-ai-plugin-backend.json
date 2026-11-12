@@ -1,0 +1,29 @@
+{
+  "author": "",
+  "created": "2025-06-20T18:54:36.519Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "npalm",
+    "rjaegers",
+    "scottguymer"
+  ],
+  "name": "@philips-labs/plugin-ai-plugin-backend",
+  "plugin_id": "ai-plugin",
+  "readme": "",
+  "repository": "https://github.com/philips-labs/argus-panoptes/tree/HEAD/workspaces/ai-rundown/plugins/ai-plugin-backend",
+  "role": "backend-plugin",
+  "scope": "@philips-labs",
+  "updated": "2025-06-20T18:54:36.751Z",
+  "version": "0.2.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-06-20T18:54:36.751Z",
+      "version": "0.2.0"
+    }
+  ]
+}

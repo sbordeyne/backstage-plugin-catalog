@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2022-03-06T01:06:49.551Z",
+  "deprecated": "",
+  "description": "This plugin integrates Confluence documents to Backstage' search engine.",
+  "homepage": "https://github.com/K-Phoen/backstage-plugin-confluence",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "kphoen"
+  ],
+  "name": "@k-phoen/backstage-plugin-confluence-backend",
+  "plugin_id": "",
+  "readme": "# Confluence search plugin backend [![](https://img.shields.io/npm/v/@k-phoen/backstage-plugin-confluence-backend.svg)](https://www.npmjs.com/package/@k-phoen/backstage-plugin-confluence-backend)\n\nThis plugin integrates Confluence documents to Backstage' search engine.\n\nIt is used in combination with its [frontend counter-part](../search-confluence/).\n\n## Installation\n\nAdd the plugin to your backend app:\n\n```bash\ncd packages/backend && yarn add @k-phoen/backstage-plugin-confluence-backend\n```\n\nConfigure the plugin in `app-config.yaml`:\n\n```yaml\n# app-config.yaml\nconfluence:\n  # Confluence base URL for wiki API\n  # Typically: https://{org-name}.atlassian.net/wiki\n  wikiUrl: https://org-name.atlassian.net/wiki\n\n  # List of spaces to index\n  # See https://confluence.atlassian.com/conf59/spaces-792498593.html\n  spaces: [ENG]\n\n  # Authentication credentials towards Confluence API\n  auth:\n    username: ${CONFLUENCE_USERNAME}\n    # While Confluence supports BASIC authentication, using an API token is preferred.\n    # See: https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/\n    password: ${CONFLUENCE_PASSWORD}\n```\n\nEnable Confluence documents indexing in the search engine:\n\n```typescript\n// packages/backend/src/plugins/search.ts\nimport { ConfluenceCollatorFactory } from '@k-phoen/backstage-plugin-confluence-backend';\n\nexport default async function createPlugin({\n  logger,\n  permissions,\n  discovery,\n  config,\n  tokenManager,\n}: PluginEnvironment) {\n  // Initialize a connection to a search engine.\n  const searchEngine = await ElasticSearchSearchEngine.fromConfig({\n    logger,\n    config,\n  });\n  const indexBuilder = new IndexBuilder({ logger, searchEngine });\n\n  // …\n\n  // Confluence documents indexing\n  indexBuilder.addCollator({\n    defaultRefreshIntervalSeconds: 1800, // 30 min\n    factory: ConfluenceCollatorFactory.fromConfig(config, { logger }),\n  });\n\n  // …\n\n  // The scheduler controls when documents are gathered from collators and sent\n  // to the search engine for indexing.\n  const { scheduler } = await indexBuilder.build();\n\n  // A 3 second delay gives the backend server a chance to initialize before\n  // any collators are executed, which may attempt requests against the API.\n  setTimeout(() => scheduler.start(), 3000);\n  useHotCleanup(module, () => scheduler.stop());\n\n  return await createRouter({\n    engine: indexBuilder.getSearchEngine(),\n    types: indexBuilder.getDocumentTypes(),\n    permissions,\n    config,\n    logger,\n  });\n}\n\n```\n\n## License\n\nThis library is under the [MIT](../LICENSE) license.\n",
+  "repository": "https://github.com/K-Phoen/backstage-plugin-confluence/tree/HEAD/plugins/search-confluence-backend",
+  "role": "backend-plugin",
+  "scope": "@k-phoen",
+  "updated": "2023-02-20T00:10:50.342Z",
+  "version": "0.0.14",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2023-02-20T00:10:50.342Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2023-01-16T14:45:18.130Z",
+      "version": "0.0.13"
+    },
+    {
+      "date": "2022-11-15T23:53:36.883Z",
+      "version": "0.0.12"
+    },
+    {
+      "date": "2022-09-25T16:44:49.953Z",
+      "version": "0.0.11"
+    },
+    {
+      "date": "2022-08-30T23:57:38.470Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2022-06-25T21:33:32.138Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2022-05-20T23:45:49.098Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2022-04-30T14:16:34.534Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2022-04-07T22:51:00.897Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2022-03-23T22:59:38.116Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2022-03-08T21:28:49.669Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2022-03-06T01:06:49.740Z",
+      "version": "0.0.3"
+    }
+  ]
+}

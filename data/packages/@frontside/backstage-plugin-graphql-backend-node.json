@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2023-09-14T10:03:01.122Z",
+  "deprecated": "",
+  "description": "Backstage backend extensions plugin for GraphQL",
+  "homepage": "https://frontside.com",
+  "keywords": [
+    "backstage",
+    "graphql"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "frontsidejack",
+    "jbolda"
+  ],
+  "name": "@frontside/backstage-plugin-graphql-backend-node",
+  "plugin_id": "graphql",
+  "readme": "# plugin-graphql-backend-node\n\nThe `graphql-backend-node` plugin contains extension points.\n",
+  "repository": "https://github.com/thefrontside/playhouse/tree/HEAD/plugins/graphql-backend-node",
+  "role": "backend-plugin",
+  "scope": "@frontside",
+  "updated": "2024-08-14T15:35:55.481Z",
+  "version": "0.1.7",
+  "version_count": 23,
+  "versions": [
+    {
+      "date": "2024-08-14T15:35:55.481Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2024-07-30T14:02:59.088Z",
+      "version": "0.1.7-dl-update-deps.0"
+    },
+    {
+      "date": "2024-04-22T18:42:16.971Z",
+      "version": "0.1.7-tm-upgrade-backstage-1.25.0"
+    },
+    {
+      "date": "2024-03-26T08:37:31.680Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2024-03-25T19:08:48.714Z",
+      "version": "0.1.6-changeset-release-main.1"
+    },
+    {
+      "date": "2024-03-25T14:35:17.417Z",
+      "version": "0.1.6-dl-entities-query.0"
+    },
+    {
+      "date": "2024-03-20T13:59:27.006Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-03-20T13:49:42.237Z",
+      "version": "0.1.6-changeset-release-main.0"
+    },
+    {
+      "date": "2024-03-20T13:46:10.356Z",
+      "version": "0.1.5-dl-entities-query.2"
+    },
+    {
+      "date": "2024-03-18T06:34:45.758Z",
+      "version": "0.1.5-dl-update-backstage.2"
+    },
+    {
+      "date": "2024-03-13T14:20:15.835Z",
+      "version": "0.1.5-dl-update-backstage.1"
+    },
+    {
+      "date": "2024-03-13T14:09:31.248Z",
+      "version": "0.1.5-dl-update-backstage.0"
+    },
+    {
+      "date": "2024-03-06T07:04:15.752Z",
+      "version": "0.1.5-dl-entities-query.1"
+    },
+    {
+      "date": "2024-03-05T14:01:47.124Z",
+      "version": "0.1.5-dl-entities-query.0"
+    },
+    {
+      "date": "2024-02-07T23:37:20.747Z",
+      "version": "0.1.4"
+    }
+  ]
+}

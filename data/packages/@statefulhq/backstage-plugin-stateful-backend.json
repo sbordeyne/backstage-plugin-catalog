@@ -1,0 +1,30 @@
+{
+  "author": "",
+  "created": "2024-05-03T20:37:51.964Z",
+  "deprecated": "",
+  "description": "Welcome to the stateful backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "admc",
+    "peraltafederico",
+    "sourishkrout",
+    "stateful-wombot"
+  ],
+  "name": "@statefulhq/backstage-plugin-stateful-backend",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@statefulhq",
+  "updated": "2024-05-03T23:28:35.448Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-05-03T23:28:35.448Z",
+      "version": "1.0.0"
+    }
+  ]
+}

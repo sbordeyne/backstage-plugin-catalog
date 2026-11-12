@@ -1,0 +1,86 @@
+{
+  "author": "Red Hat",
+  "created": "2024-11-04T20:51:37.834Z",
+  "deprecated": "",
+  "description": "The servicenow custom actions",
+  "homepage": "",
+  "keywords": [
+    "backend-plugin-module",
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-scaffolder-backend-module-servicenow",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/scaffolder-backend-module-servicenow/plugins/scaffolder-backend-module-servicenow",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-09-03T12:36:44.333Z",
+  "version": "2.17.0",
+  "version_count": 32,
+  "versions": [
+    {
+      "date": "2026-09-03T12:36:44.333Z",
+      "version": "2.17.0"
+    },
+    {
+      "date": "2026-08-05T14:06:58.835Z",
+      "version": "2.16.1"
+    },
+    {
+      "date": "2026-07-08T15:37:04.373Z",
+      "version": "2.16.0"
+    },
+    {
+      "date": "2026-06-23T18:38:42.238Z",
+      "version": "2.15.2"
+    },
+    {
+      "date": "2026-05-18T12:21:59.491Z",
+      "version": "2.15.1"
+    },
+    {
+      "date": "2026-04-09T15:10:31.053Z",
+      "version": "2.15.0"
+    },
+    {
+      "date": "2026-03-10T13:09:09.799Z",
+      "version": "2.14.0"
+    },
+    {
+      "date": "2026-02-10T21:15:08.427Z",
+      "version": "2.13.0"
+    },
+    {
+      "date": "2026-01-19T08:41:12.793Z",
+      "version": "2.12.0"
+    },
+    {
+      "date": "2026-01-05T14:33:51.784Z",
+      "version": "2.11.0"
+    },
+    {
+      "date": "2025-12-19T12:59:58.957Z",
+      "version": "2.10.2"
+    },
+    {
+      "date": "2025-11-18T15:44:57.399Z",
+      "version": "2.10.1"
+    },
+    {
+      "date": "2025-10-16T12:10:16.341Z",
+      "version": "2.10.0"
+    },
+    {
+      "date": "2025-09-11T13:20:05.166Z",
+      "version": "2.9.0"
+    },
+    {
+      "date": "2025-09-09T13:33:04.078Z",
+      "version": "2.8.2"
+    }
+  ]
+}

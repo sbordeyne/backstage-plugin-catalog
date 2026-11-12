@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2024-07-25T23:14:33.385Z",
+  "deprecated": "",
+  "description": "This is `bulk-import-backend` plugin which provides Rest API to bulk import catalog entities into the catalog",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-bulk-import-backend-dynamic",
+  "plugin_id": "bulk-import",
+  "readme": "# Bulk Import Backend Plugin\n\nThis is `bulk-import-backend` plugin which provides Rest API to bulk import catalog entities into the catalog\n\n## For administrators\n\n### Installation and Configuration\n\nTo set up the bulk import backend package for the backend:\n\n1. Install the bulk import backend plugin using the following command:\n\n   ```console\n   yarn workspace backend add @janus-idp/backstage-plugin-bulk-import-backend\n   ```\n\n1. Add the following code to the `packages/backend/src/index.ts` file:\n\n   ```ts title=\"packages/backend/src/index.ts\"\n   const backend = createBackend();\n   /* highlight-add-next-line */\n   backend.add(import('@janus-idp/backstage-plugin-bulk-import-backend'));\n\n   backend.start();\n   ```\n\n#### Permission Framework Support\n\nThe Bulk Import Backend plugin has support for the permission framework. A basic example permission policy is shown below to disallow access to the bulk import API for all users except those in the `backstage-admins` group.\n\n1. Create a backend module for the permission policy, under a `packages/backend/src/plugins/permissions.ts` file:\n\n```ts title=\"packages/backend/src/plugins/permissions.ts\"\nimport { createBackendModule } from '@backstage/backend-plugin-api';\nimport { BackstageIdentityResponse } from '@backstage/plugin-auth-node';\nimport {\n  AuthorizeResult,\n  isPermission,\n  PolicyDecision,\n} from '@backstage/plugin-permission-common';\nimport {\n  PermissionPolicy,\n  PolicyQuery,\n} from '@backstage/plugin-permission-node';\nimport { policyExtensionPoint } from '@backstage/plugin-permission-node/alpha';\n\nimport { bulkImportPermission } from '@janus-idp/backstage-plugin-bulk-import-common';\n\nclass BulkImportPermissionPolicy implements PermissionPolicy {\n  async handle(\n    request: PolicyQuery,\n    user?: BackstageIdentityResponse,\n  ): Promise<PolicyDecision> {\n    if (isPermission(request.permission, bulkImportPermission)) {\n      if (\n        user?.identity.ownershipEntityRefs.includes(\n          'group:default/backstage-admins',\n        )\n      ) {\n        return { result: AuthorizeResult.ALLOW };\n      }\n    }\n    return { result: AuthorizeResult.DENY };\n  }\n}\n\nexport const BulkImportPermissionBackendModule = createBackendModule({\n  pluginId: 'permission',\n  moduleId: 'custom-policy',\n  register(reg) {\n    reg.registerInit({\n      deps: { policy: policyExtensionPoint },\n      async init({ policy }) {\n        policy.setPolicy(new BulkImportPermissionPolicy());\n      },\n    });\n  },\n});\n```\n\n2. Import `@backstage/plugin-permission-backend/alpha` and add your permission module to the `packages/backend/src/index.ts` file:\n\n```ts title=\"packages/backend/src/index.ts\"\nimport { BulkImportPermissionBackendModule } from './plugins/permissions';\n\nbackend.add(BulkImportPermissionBackendModule);\nbackend.add(import('@backstage/plugin-permission-backend/alpha'));\n```\n\n### Audit Logging\n\nAudit logging is backed by the [`backstage-plugin-audit-log-node`](https://www.npmjs.com/package/@janus-idp/backstage-plugin-audit-log-node) package. The Bulk Import Backend plugin adds the following events to the backend audit logs:\n\n- **BulkImportUnknownEndpoint**: tracks requests to unknown endpoints.\n\n- **BulkImportPing**: tracks `GET` requests to the `/ping` endpoint, which allows to make sure the bulk import backend is up and running.\n\n- **BulkImportFindAllOrganizations**: tracks `GET` requests to the `/organizations` endpoint, which returns the list of organizations accessible from all configured GitHub Integrations.\n\n- **BulkImportFindRepositoriesByOrganization**: tracks `GET` requests to the `/organizations/:orgName/repositories` endpoint, which returns the list of repositories for the specified organization (accessible from any of the configured GitHub Integrations).\n\n- **BulkImportFindAllRepositories**: tracks `GET` requests to the `/repositories` endpoint, which returns the list of repositories accessible from all configured GitHub Integrations.\n\n- **BulkImportFindAllImports**: tracks `GET` requests to the `/imports` endpoint, which returns the list of existing import jobs along with their statuses.\n\n- **BulkImportCreateImportJobs**: tracks `POST` requests to the `/imports` endpoint, which allows to submit requests to bulk-import one or many repositories into the Backstage Catalog, by eventually creating import Pull Requests in the target repositories.\n\n- **BulkImportFindImportStatusByRepo**: tracks `GET` requests to the `/import/by-repo` endpoint, which fetches details about the import job for the specified repository.\n\n- **BulkImportDeleteImportByRepo**: tracks `DELETE` requests to the `/import/by-repo` endpoint, which deletes any existing import job for the specified repository, by closing any open import Pull Request that could have been created.\n\nExample:\n\n```json\n{\n  \"actor\": {\n    \"actorId\": \"user:default/myuser\",\n    \"hostname\": \"localhost\",\n    \"ip\": \"::1\",\n    \"userAgent\": \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\"\n  },\n  \"eventName\": \"BulkImportFindAllOrganizations\",\n  \"isAuditLog\": true,\n  \"level\": \"info\",\n  \"message\": \"'get /organizations' endpoint hit by user:default/myuser\",\n  \"meta\": {},\n  \"plugin\": \"bulk-import\",\n  \"request\": {\n    \"body\": {},\n    \"method\": \"GET\",\n    \"params\": {},\n    \"query\": {\n      \"pagePerIntegration\": \"1\",\n      \"sizePerIntegration\": \"5\"\n    },\n    \"url\": \"/api/bulk-import/organizations?pagePerIntegration=1&sizePerIntegration=5\"\n  },\n  \"response\": {\n    \"status\": 200\n  },\n  \"service\": \"backstage\",\n  \"stage\": \"completion\",\n  \"status\": \"succeeded\",\n  \"timestamp\": \"2024-08-26 16:41:02\"\n}\n```\n\n## For Users\n\n### Usage\n\nThe bulk import backend plugin provides a REST API to bulk import catalog entities into the catalog. The API is available at the `/api/bulk-import` endpoint.\n\nAs a prerequisite, you need to add at least one GitHub Integration (using either a GitHub token or a GitHub App or both) in your app-config YAML file (or a local `app-config.local.yaml` file).\nSee https://backstage.io/docs/integrations/github/locations/#configuration and https://backstage.io/docs/integrations/github/github-apps/#including-in-integrations-config for more details.\n\n## REST API\n\nPlease refer to [`src/schema/openapi.yaml`](src/schema/openapi.yaml) for the API definition (along with some examples) and the [generated documentation](api-docs/README.md) for more details about the request and response parameters and formats.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/bulk-import-backend",
+  "role": "backend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-10-11T15:50:17.863Z",
+  "version": "3.1.4",
+  "version_count": 31,
+  "versions": [
+    {
+      "date": "2024-10-11T15:50:17.863Z",
+      "version": "3.1.4"
+    },
+    {
+      "date": "2024-10-09T22:45:22.777Z",
+      "version": "3.1.3"
+    },
+    {
+      "date": "2024-10-09T17:22:04.146Z",
+      "version": "3.1.2"
+    },
+    {
+      "date": "2024-10-08T18:25:02.572Z",
+      "version": "3.1.1"
+    },
+    {
+      "date": "2024-10-07T15:32:43.733Z",
+      "version": "3.1.0"
+    },
+    {
+      "date": "2024-10-05T07:50:35.333Z",
+      "version": "3.0.1"
+    },
+    {
+      "date": "2024-10-04T05:07:57.995Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2024-10-03T10:49:08.353Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2024-10-01T18:19:16.832Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-09-30T21:23:40.930Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-09-25T12:40:18.074Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2024-09-20T03:35:55.524Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-09-19T16:41:53.124Z",
+      "version": "1.5.5"
+    },
+    {
+      "date": "2024-09-17T18:38:42.559Z",
+      "version": "1.5.4"
+    },
+    {
+      "date": "2024-09-16T16:37:24.515Z",
+      "version": "1.5.3"
+    }
+  ]
+}

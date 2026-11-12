@@ -1,0 +1,30 @@
+{
+  "author": "",
+  "created": "2022-12-23T16:40:11.776Z",
+  "deprecated": "",
+  "description": "A module for the scaffolder backend that lets you template projects using cookiecutter",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "audibene-platform",
+    "blessan.mathew",
+    "clovisdasilvaneto",
+    "flejz"
+  ],
+  "name": "@audibene/plugin-scaffolder-backend-module-cookiecutter",
+  "plugin_id": "",
+  "readme": "# scaffolder-backend-module-cookiecutter\n\nWelcome to the `fetch:cookiecutter` action for the `scaffolder-backend`.\n\n## Getting started\n\nYou need to configure the action in your backend:\n\n## From your Backstage root directory\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @backstage/plugin-scaffolder-backend-module-cookiecutter\n```\n\nConfigure the action:\n(you can check the [docs](https://backstage.io/docs/features/software-templates/writing-custom-actions#registering-custom-actions) to see all options):\n\n```typescript\n// packages/backend/src/plugins/scaffolder.ts\n\nconst actions = [\n  createFetchCookiecutterAction({\n    integrations,\n    reader: env.reader,\n    containerRunner,\n  }),\n  ...createBuiltInActions({\n    ...\n  })\n];\n\nreturn await createRouter({\n  containerRunner,\n  catalogClient,\n  actions,\n  logger: env.logger,\n  config: env.config,\n  database: env.database,\n  reader: env.reader,\n});\n```\n\nAfter that you can use the action in your template:\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: cookiecutter-demo\n  title: Cookiecutter Test\n  description: Cookiecutter example\nspec:\n  owner: backstage/techdocs-core\n  type: service\n\n  parameters:\n    - title: Fill in some steps\n      required:\n        - name\n        - owner\n      properties:\n        name:\n          title: Name\n          type: string\n          description: Unique name of the component\n          ui:autofocus: true\n          ui:options:\n            rows: 5\n        owner:\n          title: Owner\n          type: string\n          description: Owner of the component\n          ui:field: OwnerPicker\n          ui:options:\n            allowedKinds:\n              - Group\n        system:\n          title: System\n          type: string\n          description: System of the component\n          ui:field: EntityPicker\n          ui:options:\n            allowedKinds:\n              - System\n            defaultKind: System\n\n    - title: Choose a location\n      required:\n        - repoUrl\n        - dryRun\n      properties:\n        repoUrl:\n          title: Repository Location\n          type: string\n          ui:field: RepoUrlPicker\n          ui:options:\n            allowedHosts:\n              - github.com\n        dryRun:\n          title: Only perform a dry run, don't publish anything\n          type: boolean\n          default: false\n\n  steps:\n    - id: fetch-base\n      name: Fetch Base\n      action: fetch:cookiecutter\n      input:\n        url: ./template\n        values:\n          name: ${{ parameters.name }}\n          owner: ${{ parameters.owner }}\n          system: ${{ parameters.system }}\n          destination: ${{ parameters.repoUrl | parseRepoUrl }}\n\n    - id: publish\n      if: ${{ parameters.dryRun !== true }}\n      name: Publish\n      action: publish:github\n      input:\n        allowedHosts:\n          - github.com\n        description: This is ${{ parameters.name }}\n        repoUrl: ${{ parameters.repoUrl }}\n\n    - id: register\n      if: ${{ parameters.dryRun !== true }}\n      name: Register\n      action: catalog:register\n      input:\n        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}\n        catalogInfoPath: '/catalog-info.yaml'\n\n    - name: Results\n      if: ${{ parameters.dryRun }}\n      action: debug:log\n      input:\n        listWorkspace: true\n\n  output:\n    links:\n      - title: Repository\n        url: ${{ steps['publish'].output.remoteUrl }}\n      - title: Open in catalog\n        icon: catalog\n        entityRef: ${{ steps['register'].output.entityRef }}\n```\n\nYou can also visit the `/create/actions` route in your Backstage application to find out more about the parameters this action accepts when it's installed to configure how you like.\n\n### Environment setup\n\nThe environment needs to have either `cookiecutter` installed and be available in the `PATH` or access to a `docker` daemon so it can spin up a docker container with `cookiecutter` available.\n\nIf you are running Backstage from a Docker container and you want to avoid calling a container inside a container, you can set up `cookiecutter` in your own image, this will use the local installation instead.\n\nYou can do so by including the following lines in the last step of your Dockerfile:\n\n```dockerfile\nRUN apt-get update && apt-get install -y python3 python3-pip\nRUN pip3 install cookiecutter\n```\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@audibene",
+  "updated": "2022-12-23T16:40:12.038Z",
+  "version": "0.2.14-next.3",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2022-12-23T16:40:12.038Z",
+      "version": "0.2.14-next.3"
+    }
+  ]
+}

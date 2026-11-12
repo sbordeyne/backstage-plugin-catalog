@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2023-11-02T10:33:36.376Z",
+  "deprecated": "",
+  "description": "Welcome to the OpenDORA plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fishbowl"
+  ],
+  "name": "open-dora-backstage-plugin",
+  "plugin_id": "",
+  "readme": "# OpenDORA Plugin for Backstage\n\nWelcome to the OpenDORA plugin!\n\nThis plugin allows you to see DORA metrics for the teams within Backstage.\n\n## Setup\n\n1. Install this plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add open-dora-backstage-plugin\n```\n\n<!-- TODO Replace with a link to installation instructions for the helm chart -->\n\n2. Make sure the [OpenDORA backend](https://github.com/DevoteamNL/opendora) is deployed.\n\n3. Configure the url from which the OpenDORA API is accessible.\n\n```yaml\n# app-config.yaml\nopen-dora:\n  apiBaseUrl: http://localhost:10666\n```\n\n### Entity Pages\n\n1. Add a route to the plugin page:\n\n```jsx\n// In packages/app/src/App.tsx\nimport { OpenDoraPluginPage } from 'open-dora-backstage-plugin';\n\n...\nconst routes = (\n  <FlatRoutes>\n    {/* other routes... */}\n    <Route path=\"/open-dora\" element={<OpenDoraPluginPage />} />\n  </FlatRoutes>\n);\n```\n\n2. Add the plugin as a tab to your side-navigation:\n\n```jsx\n// In packages/app/src/components/Root/Root.tsx\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n      {/* other sidebar groups... */}\n      <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n        {/* other sidebar items... */}\n        <SidebarItem icon={ExtensionIcon} to=\"open-dora\" text=\"OpenDORA\" />\n      </SidebarGroup>\n\n      {/* other sidebar groups... */}\n    </Sidebar>\n    {children}\n  </SidebarPage>\n);\n```\n",
+  "repository": "https://github.com/DevoteamNL/opendora",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2023-11-02T10:33:36.732Z",
+  "version": "0.1.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-11-02T10:33:36.732Z",
+      "version": "0.1.1"
+    }
+  ]
+}

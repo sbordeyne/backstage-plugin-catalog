@@ -1,0 +1,75 @@
+{
+  "author": "",
+  "created": "2026-06-27T09:52:09.871Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT OR Apache-2.0",
+  "maintainers": [
+    "yumike"
+  ],
+  "name": "@rwdocs/backstage-plugin-rw-backend-module-notifications",
+  "plugin_id": "rw",
+  "readme": "",
+  "repository": "https://github.com/rwdocs/backstage-plugins/tree/HEAD/plugins/rw-backend-module-notifications",
+  "role": "backend-plugin-module",
+  "scope": "@rwdocs",
+  "updated": "2026-11-07T06:21:58.826Z",
+  "version": "0.2.0",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2026-11-07T06:21:58.826Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-09-08T05:46:43.339Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2026-08-07T06:12:36.854Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2026-07-30T11:31:19.079Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2026-07-16T07:02:21.325Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2026-07-14T04:16:38.727Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2026-07-13T03:50:00.434Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2026-07-10T11:57:33.868Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2026-06-30T10:24:52.823Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2026-06-29T10:37:08.534Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2026-06-28T09:55:41.772Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2026-06-27T10:03:15.656Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2026-06-27T09:52:10.117Z",
+      "version": "0.1.0"
+    }
+  ]
+}

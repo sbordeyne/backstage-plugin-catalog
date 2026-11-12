@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2026-09-17T20:56:51.297Z",
+  "deprecated": "",
+  "description": "GitHub Trending home ticker for Backstage",
+  "homepage": "https://github.com/AAG1999/backstage-plugin-github-trending#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aag_1999"
+  ],
+  "name": "@aag1999/plugin-github-trending",
+  "plugin_id": "github-trending",
+  "readme": "ERROR: No README data found!",
+  "repository": "https://github.com/AAG1999/backstage-plugin-github-trending/tree/HEAD/plugins/github-trending",
+  "role": "frontend-plugin",
+  "scope": "@aag1999",
+  "updated": "2026-09-18T00:07:51.132Z",
+  "version": "0.1.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-09-18T00:07:51.132Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2026-09-17T23:18:55.560Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2026-09-17T21:31:46.940Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-09-17T21:25:34.898Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-09-17T20:56:51.606Z",
+      "version": "0.1.0"
+    }
+  ]
+}

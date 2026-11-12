@@ -1,0 +1,45 @@
+{
+  "author": "Robert Lindley",
+  "created": "2024-09-01T16:54:47.819Z",
+  "deprecated": "",
+  "description": "A Webex scaffolding module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "cisco",
+    "incoming webhooks",
+    "scaffolder",
+    "webex"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "coderrob"
+  ],
+  "name": "@coderrob/backstage-plugin-scaffolder-backend-module-webex",
+  "plugin_id": "scaffolder",
+  "readme": "# @coderrob/backstage-plugin-scaffolder-backend-module-webex\n\n<a href=\"https://www.buymeacoffee.com/coderrob\" target=\"_blank\"><img src=\"https://cdn.buymeacoffee.com/buttons/v2/default-white.png\" alt=\"Buy Me A Coffee\" style=\"height: 50px !important;width: 200px !important;\" ></a>\n\nThe Webex scaffolding module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend). This Backstage.io module contains actions for sending messages using Webex Incoming Webhooks.\n\n## Prerequisites\n\n- [Node.js](https://nodejs.org/en/download) must be installed in the environment.\n- You must have a [Webex Incoming Webhook](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://apphub.webex.com/applications/incoming-webhooks-cisco-systems-38054-23307-75252) URL available to send messages.\n\n## Getting Started\n\nTo add the Webex scaffolding module to your Backstage project, follow these steps:\n\n1. **Install the module:**\n\n   In the root directory of your Backstage project, run the following command:\n\n   ```shell\n   yarn add --cwd packages/backend @coderrob/backstage-plugin-scaffolder-backend-module-webex\n   ```\n\n1. **Register the custom action:**\n\n   After installing the module, you'll need to register the Webex scaffolding module in your Scaffolder backend.\n\n   Open your `packages/backend/src/plugins/scaffolder.ts` file and [register the custom action](https://backstage.io/docs/features/software-templates/writing-custom-actions/#registering-custom-actions) as follows:\n\n   ```typescript\n   const backend = createBackend();\n   backend.add(import('@backstage/plugin-scaffolder-backend/alpha'));\n   backend.add(import('@coderrob/backstage-plugin-scaffolder-backend-module-webex'));\n   ```\n\n   This code snippet registers the `createSendWebhooksMessageAction` with the Scaffolder backend using the latest Backstage.io backend framework.\n\n1. **Using the action in a scaffolder template:**\n\n   Once the action is registered, you can use it in your scaffolder templates to send messages via Webex Incoming Webhooks.\n\n   Here's an example template:\n\n   ```yaml\n   spec:\n     . . .\n     steps:\n       - id: send-webex-message\n         name: Send Webex Message\n         action: webex:webhooks:sendMessage\n         input:\n           format: \"markdown\"\n           message: \"# This Could Be Us\"\n           webhooks:\n             - \"https://webexapis.com/v1/webhooks/incoming/<SPACE_ID>\"\n             - \"https://webexapis.com/v1/webhooks/incoming/<SPACE_ID>\" # optional ability to message multiple spaces\n   ```\n\n1. **Deploy and test:**\n\n   With everything configured, deploy your Backstage instance and test the Webex Incoming Webhooks action by running a template that includes the `webex:webhooks:sendMessage` step.\n\n   If everything is set up correctly, the specified Webex channels should receive the messages as defined in your template.\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@coderrob",
+  "updated": "2024-09-01T18:53:57.103Z",
+  "version": "1.0.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-09-01T18:53:57.103Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-09-01T18:06:13.830Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-09-01T17:10:08.168Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-09-01T16:54:48.148Z",
+      "version": "1.0.0"
+    }
+  ]
+}

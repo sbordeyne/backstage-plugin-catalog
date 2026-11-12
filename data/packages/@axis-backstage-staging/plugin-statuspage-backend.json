@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-03-21T16:00:56.412Z",
+  "deprecated": "",
+  "description": "Welcome to the Statuspage backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "glundh"
+  ],
+  "name": "@axis-backstage-staging/plugin-statuspage-backend",
+  "plugin_id": "",
+  "readme": "# Statuspage backend\n\nWelcome to the Statuspage backend plugin!\n\nThe plugin retrieves component status information the statuspage.io api.\n\n## Setup\n\nThe following sections will help you get the Readme Backend plugin setup and running.\n\n### Installation\n\nInstall the plugin by following the example below:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/backend add @axis-backstage/plugin-statuspage-backend\n```\n\n### Integrating\n\nHere's how to get the backend plugin up and running:\n\n1. Create a new file named `packages/backend/src/plugins/statuspage.ts`, and add the following to it:\n\n   ```ts\n   import { PluginEnvironment } from '../types';\n   import { createRouter } from '@axis-backstage/plugin-statuspage-backend';\n   import { Router } from 'express';\n\n   export default async function createPlugin(\n     env: PluginEnvironment,\n   ): Promise<Router> {\n     return await createRouter({\n       logger: env.logger,\n       config: env.config,\n     });\n   }\n   ```\n\n2. Wire this into the overall backend router by adding the following to `packages/backend/src/index.ts`:\n\n   ```ts\n   import statuspage from './plugins/statuspage';\n   ...\n\n   async function main() {\n     // Add this line under the other lines that follow the useHotMemoize pattern\n    const statuspageEnv = useHotMemoize(module, () => createEnv('statuspage'));\n\n    ....\n\n     // Add this under the lines that add their routers to apiRouter\n    apiRouter.use('/statuspage', authMiddleware, await statuspage(statuspageEnv));\n   }\n   ```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@axis-backstage-staging",
+  "updated": "2024-03-21T16:00:56.668Z",
+  "version": "0.2.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-03-21T16:00:56.668Z",
+      "version": "0.2.0"
+    }
+  ]
+}

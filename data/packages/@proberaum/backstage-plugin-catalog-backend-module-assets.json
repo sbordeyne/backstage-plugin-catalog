@@ -1,0 +1,52 @@
+{
+  "author": "",
+  "created": "2025-09-13T05:57:09.192Z",
+  "deprecated": "",
+  "description": "The assets backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "christoph-jerolimov",
+    "jerolimov"
+  ],
+  "name": "@proberaum/backstage-plugin-catalog-backend-module-assets",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@proberaum",
+  "updated": "2025-11-18T17:44:34.703Z",
+  "version": "0.6.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2025-11-18T17:44:34.703Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-10-17T22:59:32.176Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-10-17T22:21:07.680Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-10-17T16:07:30.933Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-10-15T00:48:29.782Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-10-14T05:24:40.290Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-09-13T05:57:09.474Z",
+      "version": "0.0.1"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "author": "",
+  "created": "2024-01-31T18:23:17.241Z",
+  "deprecated": "",
+  "description": "This plugin provides the backend API for the awards plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "seatgeek"
+  ],
+  "name": "@seatgeek/backstage-plugin-awards-backend",
+  "plugin_id": "awards",
+  "readme": "# @seatgeek/backstage-plugin-awards-backend\n\nThis plugin provides the backend API for the awards plugin.\n\n[![npm latest version](https://img.shields.io/npm/v/@seatgeek/backstage-plugin-awards-backend/latest.svg)](https://www.npmjs.com/package/@seatgeek/backstage-plugin-awards-backend)\n\nThis plugin relies on [Backstage authentication](https://backstage.io/docs/auth/)\nin order to enforce ownership of awards. Please follow the documentation to\nenable authentication before attempting to use this plugin!\n\nCurrently we support only `SQLite` and `PostgreSQL` databases.\n\n## Installation\n\nInstall the @seatgeek/backstage-plugin-awards-backend package using the [new backend](https://backstage.io/docs/plugins/new-backend-system/):\n\n```ts\nbackend.add(import('@seatgeek/backstage-plugin-awards-backend'));\n```\n\n## Configuration\n\n### Image storage (required)\n\nThe awards-backend requires storage to be configured for award images.\n\n### Filesystem\n\n```yaml\nawards:\n  storage:\n    fs:\n      # directory where files will be stored relative to the CWD where the application was started\n      directory: my-directory # optional: defaults to tmp-awards-storage\n```\n\n### GCS\n\n```yaml\nawards:\n  storage:\n    gcs:\n      bucket: gs://backstage-awards # required\n      keyFilename: path/to/keyFile.json # optional: defaults to GOOGLE_APPLICATION_CREDENTIALS\n```\n\n### S3\n\n```yaml\nawards:\n  storage:\n    s3:\n      bucket: backstage-awards # required\n      region: us-east-1 # required\n      # Omit the following fields if using IAM roles (https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/loading-node-credentials-iam.html)\n      accessKeyId: ${AWS_ACCESS_KEY_ID} # optional\n      secretAccessKey: ${AWS_SECRET_ACCESS_KEY} # optional\n      # For local development, pass the endpoint for your localstack server\n      endpoint: http://127.0.0.1:4566 # optional\n```\n\n### Slack notifications (optional)\n\nTo enable Slack notifications, add the following to your `app-config.yaml` file:\n\n```yaml\nawards:\n  notifications:\n    slack:\n      webhook:\n        # https://api.slack.com/messaging/webhooks\n        url: ${MY_SLACK_WEBHOOK_URL_ENV_VAR}\n```\n\nUsers who have the `slack.com/user_id` annotation set (see [slack-catalog-backend](/plugins/slack-catalog-backend/README.md)) will be tagged in notifications that pertain to them.\n\n## Developing this plugin\n\nThe plugin can be executed in isolation during development by running\n`yarn start` in the plugin root directory. This method of serving the plugin\nprovides quicker iteration speed and a faster startup and hot reloads.\n\nIt is only meant for local development, and the setup for it can be found\ninside the [/dev](/dev) directory.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@seatgeek",
+  "updated": "2024-08-27T21:19:45.256Z",
+  "version": "3.0.1",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2024-08-27T21:19:45.256Z",
+      "version": "3.0.1"
+    },
+    {
+      "date": "2024-08-26T16:08:04.621Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2024-08-24T23:07:27.902Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2024-03-01T19:59:17.323Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2024-02-28T16:35:06.565Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-02-28T14:26:38.030Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-01-31T18:42:28.423Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-01-31T18:23:17.678Z",
+      "version": "1.0.0"
+    }
+  ]
+}

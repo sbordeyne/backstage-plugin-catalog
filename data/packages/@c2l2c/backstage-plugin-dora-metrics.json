@@ -1,0 +1,70 @@
+{
+  "author": "C2L2C",
+  "created": "2026-03-17T22:36:23.843Z",
+  "deprecated": "",
+  "description": "A Backstage frontend plugin that displays DORA metrics (Deployment Frequency, Lead Time, Change Failure Rate, MTTR) for catalog entities via the GitHub API.",
+  "homepage": "https://github.com/C2L2C/backstage-plugin-dora-metrics#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "change-failure-rate",
+    "deployment-frequency",
+    "devops",
+    "dora",
+    "dora-metrics",
+    "github",
+    "lead-time",
+    "mttr"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "c2l2c"
+  ],
+  "name": "@c2l2c/backstage-plugin-dora-metrics",
+  "plugin_id": "dora-metrics",
+  "readme": "# @c2l2c/backstage-plugin-dora-metrics\n\n[![CI](https://github.com/C2L2C/backstage-plugin-dora-metrics/actions/workflows/ci.yml/badge.svg)](https://github.com/C2L2C/backstage-plugin-dora-metrics/actions/workflows/ci.yml)\n[![Publish](https://github.com/C2L2C/backstage-plugin-dora-metrics/actions/workflows/publish.yml/badge.svg)](https://github.com/C2L2C/backstage-plugin-dora-metrics/actions/workflows/publish.yml)\n[![npm](https://img.shields.io/npm/v/@c2l2c/backstage-plugin-dora-metrics)](https://www.npmjs.com/package/@c2l2c/backstage-plugin-dora-metrics)\n\nA Backstage frontend plugin that surfaces **DORA metrics per catalog entity** — scoped to the specific service you're viewing, not your whole org.\n\nFor each catalog service annotated with a GitHub repo, this plugin adds a **DORA Metrics tab** that computes all four key metrics directly from GitHub PRs via OAuth — no extra backend or data pipeline required:\n\n- **Deployment Frequency** — how often PRs are merged to the target branch\n- **Lead Time for Changes** — average time from PR open to merge\n- **Change Failure Rate** — percentage of deployments that were hotfixes (production only)\n- **MTTR** — mean time to recover, measured as average hotfix PR duration (production only)\n- **Hotfixes to Production** - number of hotfixes deployed to production in the given time period (production only)\n\n\nRatings are classified as **Elite / High / Medium / Low** per DORA research benchmarks.\n\n### How this differs from org-level DORA scorecards\n\nOrg-level [DORA plugins](https://github.com/zc149/backstage-plugin-dora-scorecard) aggregate metrics across all repositories in your GitHub org. This plugin instead scopes metrics to **a single catalog entity** — useful when you want to track DORA health at the service level, compare environments (e.g. production vs staging), or drill into which specific PRs are driving your lead time or failure rate. It also requires no backend: all data is fetched client-side using the user's existing GitHub OAuth session.\n\n---\n\n## Screenshots/Videos\n\n### 1. DORA metrics dashboard\n\n![Screenshot](/assets/dashboard.png)   \n\n### 2. Deployment frquency exapnded view\n![Screenshot](/assets/DF.png)\n\n### 3. LTFC expanded view\n![Screenshot](/assets/LTFC.png)\n\n### 4. CFR expanded view\n![Screenshot](/assets/CFR.png)\n\n### 5. MTTR expanded view\n![Screenshot](/assets/MTTR.png)\n\n\n## Requirements\n\n- Backstage v1.35+ (new frontend system)\n- GitHub OAuth configured in your Backstage instance (the plugin uses `githubAuthApi` to call the GitHub REST API)\n- Catalog entities annotated with `github.com/project-slug: org/repo`\n\n---\n\n## Installation\n\n```bash\n# In your Backstage app workspace\nyarn workspace app add @c2l2c/backstage-plugin-dora-metrics\n```\n\n### Register the plugin\n\nIn `packages/app/src/App.tsx`:\n\n```ts\nimport doraMetricsPlugin from '@c2l2c/backstage-plugin-dora-metrics/alpha';\n\n// Add to your app's plugins array\nconst app = createApp({\n  plugins: [doraMetricsPlugin],\n  // ...\n});\n```\n\n---\n\n## Configuration\n\nAdd to your `app-config.yaml`:\n\n```yaml\napp:\n  doraMetrics:\n    # Lookback window in days (default: 30)\n    collection:\n      initialDays: 30\n\n    # Optional: base URL of the GitHub instance (default: https://github.com).\n    # Set this for GitHub Enterprise. The REST API base URL is derived automatically:\n    #   github.com        → https://api.github.com\n    #   *.ghe.com (Cloud) → https://api.<host>   (e.g. https://api.va.ghe.com)\n    #   other (GHE Server)→ https://<host>/api/v3\n    githubUrl: https://github.com\n\n    # Define the environments / branches to track.\n    # Exactly ONE environment may set isProduction: true.\n    environments:\n      - name: Production\n        branch: main             # single branch name\n        isProduction: true\n        label: hotfix            # PR label for production failures (used for CFR/MTTR)\n      - name: Staging\n        branch: staging\n        isProduction: false\n      - name: Any main\n        # Comma-separated list — PRs merged to any of these branches are included\n        branch: \"main,master\"\n        isProduction: false\n      - name: Release branches\n        # JavaScript regex — resolved against the repo's actual branch list at query time\n        branch: \"^release/.*\"\n        isProduction: false\n\n    # Optional: override DORA benchmark targets\n    targets:\n      deploymentFrequency: 1   # deploys per day (Elite ≥ 1)\n      leadTime: 24             # hours (Elite ≤ 24h)\n      changeFailureRate: 5     # % (Elite ≤ 5%)\n      mttr: 1                  # hours (Elite ≤ 1h)\n\n    # Optional: enable mock data for local development (skips GitHub API calls)\n    debug: false\n```\n\n### Branch and label patterns\n\nBoth the `branch` and `label` fields accept the same three formats:\n\n| Format | Example | Behaviour |\n|--------|---------|-----------|\n| Single name | `main` / `hotfix` | Exact match |\n| Comma-separated | `main,master` / `hotfix,fix,bug` | Matches any name in the list |\n| JavaScript regex | `^release/.*` / `^hotfix` | Regex test against each value |\n\nA string is treated as a regex if it contains any of these characters: `| ^ $ [ ] ( ) { } ? + * \\`\n\nFor `branch`: when multiple branches match, PRs are fetched from all of them and deduplicated by PR number. Regex patterns are resolved against the repo's live branch list via the GitHub Branches API at query time.\n\nFor `label`: a PR is classified as a hotfix if **any** of its GitHub labels match the pattern.\n\n### Environment constraints\n\n- You may define any number of environments.\n- **Exactly one** environment may have `isProduction: true`. The plugin throws a configuration error at startup if this constraint is violated.\n- Change Failure Rate, MTTR, and Hotfixes to Production are only calculated for the production environment.\n\n### Per-repo overrides via catalog annotations\n\nYou can override environments and targets on a per-service basis in `catalog-info.yaml` without changing the global config:\n\n```yaml\nmetadata:\n  annotations:\n    github.com/project-slug: my-org/my-repo\n\n    # Override the environments list for this repo only (JSON)\n    dora-metrics/environments: |\n      [\n        { \"name\": \"Production\", \"branch\": \"main\", \"isProduction\": true, \"label\": \"hotfix\" },\n        { \"name\": \"Staging\",    \"branch\": \"staging\", \"isProduction\": false }\n      ]\n\n    # Override DORA targets for this repo only (JSON, partial overrides supported)\n    dora-metrics/targets: |\n      { \"deploymentFrequency\": 2, \"leadTime\": 48 }\n```\n\nAnnotation values are parsed as JSON. Partial `targets` overrides are merged with the global targets — only the keys you specify are replaced.\n\n### Example configs\n\nReady-to-use example configs are in the [`examples/`](examples/) directory:\n\n| File | Description |\n|------|-------------|\n| [`app-config.regex-branch.yaml`](examples/app-config.regex-branch.yaml) | Production tracked with a regex branch pattern (`^release/.*`) and a comma-separated label pattern |\n| [`app-config.multi-branch.yaml`](examples/app-config.multi-branch.yaml) | Production tracked across `main,master`; staging across `develop,dev`; hotfix label as regex |\n| [`catalog-info.yaml`](examples/catalog-info.yaml) | Per-repo environment and target overrides via `catalog-info.yaml` annotations |\n\n---\n\n## How it works\n\nThe plugin reads the `github.com/project-slug` annotation from the catalog entity and calls the GitHub REST API (authenticated via the user's GitHub OAuth session) to fetch merged pull requests within the configured time window.\n\nIt calculates:\n- **Deployment Frequency**: merged PRs per day to the target branch\n- **Lead Time**: time from PR creation to merge\n- **CFR**: percentage of PRs labelled as hotfixes (production environments only)\n- **MTTR**: average time hotfix PRs were open (production environments only)\n- **Hotfixes to Production** - number of hotfixes deployed to production in the given time period (production environments only)\n\n\n---\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/C2L2C/backstage-plugin-dora-metrics",
+  "role": "frontend-plugin",
+  "scope": "@c2l2c",
+  "updated": "2026-08-21T10:04:43.752Z",
+  "version": "0.5.0",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2026-08-21T10:04:43.752Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-06-28T13:32:13.365Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2026-06-27T22:51:21.449Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2026-06-27T22:02:29.861Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-06-27T21:53:41.249Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-04-24T21:17:28.748Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2026-04-01T13:31:42.036Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2026-03-28T09:08:09.244Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-03-17T22:36:24.174Z",
+      "version": "0.1.0"
+    }
+  ]
+}

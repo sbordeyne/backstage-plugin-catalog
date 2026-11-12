@@ -1,0 +1,30 @@
+{
+  "author": "",
+  "created": "2023-02-05T17:26:43.025Z",
+  "deprecated": "",
+  "description": "Welcome to the velaux plugin!",
+  "homepage": "https://kubevela.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "charlie0129",
+    "fogdong",
+    "oam-kubevela",
+    "zengqingguo"
+  ],
+  "name": "@oamdev/backstage-plugin-velaux",
+  "plugin_id": "",
+  "readme": "# velaux\n\nWelcome to the velaux plugin!\n\nThis plugin adds a sidebar page to allow you to quickly access VelaUX.\n\nEdit `packages/app/src/components/Root/Root.tsx` to add the sidebar\n\n```tsx\n// packages/app/src/components/Root/Root.tsx\nimport { VelaLogo } from 'backstage-plugin-velaux';\n\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n        {/* ... */}\n        <SidebarDivider />\n        <SidebarScrollWrapper>\n          {/* BEGIN */}\n          <SidebarItem icon={VelaLogo} to=\"velaux\" text=\"VelaUX\" />\n          {/* END */}\n        </SidebarScrollWrapper>\n      {/* ... */}\n  </SidebarPage>\n);\n```\n\nEdit `packages/app/src/App.tsx` to add routers\n\n```tsx\n// packages/app/src/App.tsx\nimport { VelauxPage } from 'backstage-plugin-velaux';\n\nconst routes = (\n  <FlatRoutes>\n    {/* ... */}\n    <Route path=\"/velaux\" element={<VelauxPage />} />\n    {/* ... */}\n  </FlatRoutes>\n);\n```\n\nLastly, you need to make sure you can access the VelaUX webpage. For example, by forwarding the VelaUX addon during development:\n\n```\nvela port-forward -n vela-system addon-velaux 9082:80\n```\n",
+  "repository": "https://github.com/wonderflow/vela-backstage-demo/tree/HEAD/plugins/velaux",
+  "role": "frontend-plugin",
+  "scope": "@oamdev",
+  "updated": "2023-02-05T17:26:43.330Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-02-05T17:26:43.330Z",
+      "version": "0.1.0"
+    }
+  ]
+}

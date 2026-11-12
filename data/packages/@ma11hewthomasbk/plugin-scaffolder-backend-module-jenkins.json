@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-10-04T21:16:38.225Z",
+  "deprecated": "",
+  "description": "Welcome to the `scaffolder-backend-module-jenkins` custom action!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ma11hewthomasbk"
+  ],
+  "name": "@ma11hewthomasbk/plugin-scaffolder-backend-module-jenkins",
+  "plugin_id": "",
+  "readme": "# scaffolder-backend-module-jenkins\n\nWelcome to the `scaffolder-backend-module-jenkins` custom action!\n\nThis contains one action: `jenkins:job:create`\n\nThe `jenkins:job:create` action creates a new job in Jenkins.\n\n## Getting started\n\n```\ncd packages/backend\nyarn add @ma11hewthomas/plugin-scaffolder-backend-module-jenkins\n```\n\nConfigure the action:\n(you can check the [docs](https://backstage.io/docs/features/software-templates/writing-custom-actions#registering-custom-actions) to see all options):\n\n```typescript\n// packages/backend/src/plugins/scaffolder.ts\n---\nimport { ScmIntegrations } from '@backstage/integration';\nimport { jenkinsCreateJobAction } from '@ma11hewthomas/plugin-scaffolder-backend-module-jenkins';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const catalogClient = new CatalogClient({\n    discoveryApi: env.discovery,\n  });\n\n  const integrations = ScmIntegrations.fromConfig(env.config);\n\n  const builtInActions = createBuiltinActions({\n    integrations,\n    catalogClient,\n    config: env.config,\n    reader: env.reader,\n  });\n\n  const actions = [\n    ...builtInActions,\n    jenkinsCreateJobAction({\n      config: env.config,\n    }),\n  ];\n\n  return await createRouter({\n    logger: env.logger,\n    config: env.config,\n    database: env.database,\n    catalogClient: catalogClient,\n    reader: env.reader,\n    identity: env.identity,\n    actions,\n    scheduler: env.scheduler,\n  });\n}\n```\n\n### Authorization\n\nIn order to use `scaffolder-backend-module-jenkins`, you must provide a username and api key to allow access the Jenkins API (permission to create jobs is required)\n\nYou must define your jenkins username and api key in the `app-config.yaml`:\n\n```yaml\nscaffolder:\n  jenkins:\n    username: ${JENKINS_USERNAME}\n    key: ${JENKINS_API_KEY}\n    server: ${JENKINS_SERVER_URL}\n    \n```\n\n### Example of using\n\n```yaml\n---\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: debug-jenkins\n  title: debug-jenkins\n  description: Template for debugging\n  tags:\n    - debug\nspec:\n  owner: MatthewThomas\n  type: debug\n  steps:\n    - id: template\n      name: Jenkins create job\n      action: jenkins:job:create\n      input:\n        configPath: /path/to/config.xml\n        jobName: test-project-one\n        folderName: test-folder\n```\n\nYou can visit the `/create/actions` route in your Backstage application to find out more about the parameters this action accepts when it's installed to configure how you like.\n\nThis scaffolder requires the path to a Jenkins job config.xml file. config.xml is the format Jenkins uses to store the project in the file system, you can see examples of them in the Jenkins home directory, or by retrieving the XML configuration of existing jobs from /job/JOBNAME/config.xml.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@ma11hewthomasbk",
+  "updated": "2024-10-04T21:16:38.609Z",
+  "version": "0.2.7",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-10-04T21:16:38.609Z",
+      "version": "0.2.7"
+    }
+  ]
+}

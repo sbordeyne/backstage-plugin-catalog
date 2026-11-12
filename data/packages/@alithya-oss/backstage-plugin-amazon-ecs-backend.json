@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-02-05T04:21:26.553Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fjudith"
+  ],
+  "name": "@alithya-oss/backstage-plugin-amazon-ecs-backend",
+  "plugin_id": "amazon-ecs",
+  "readme": "",
+  "repository": "https://github.com/awslabs/backstage-plugins-for-aws/tree/HEAD/plugins/ecs/backend",
+  "role": "backend-plugin",
+  "scope": "@alithya-oss",
+  "updated": "2025-05-21T04:15:52.065Z",
+  "version": "0.4.7",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-05-21T04:15:52.065Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2025-05-10T03:58:34.739Z",
+      "version": "0.4.6"
+    },
+    {
+      "date": "2025-02-05T04:21:26.827Z",
+      "version": "0.4.5"
+    }
+  ]
+}

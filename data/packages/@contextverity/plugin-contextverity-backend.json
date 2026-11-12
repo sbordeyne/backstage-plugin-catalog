@@ -1,0 +1,34 @@
+{
+  "author": "",
+  "created": "2026-10-08T12:17:23.485Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin that issues and verifies context receipts",
+  "homepage": "https://contextverity.github.io/",
+  "keywords": [
+    "backstage",
+    "contextverity"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sandeepbazar"
+  ],
+  "name": "@contextverity/plugin-contextverity-backend",
+  "plugin_id": "contextverity",
+  "readme": "# @contextverity/plugin-contextverity-backend\n\nBackstage backend plugin that issues and verifies context receipts.\n\n```ts\nbackend.add(import('@contextverity/plugin-contextverity-backend'));\n```\n\nProvides the `/api/contextverity/v1` HTTP API, loads context policies, runs the\nretention task and registers the `contextverity:resolve-context` and\n`contextverity:verify-receipt` actions. Configuration: [`config.d.ts`](config.d.ts) and\n[docs/backstage-integration.md](../../docs/backstage-integration.md).\n",
+  "repository": "https://github.com/contextverity/contextverity/tree/HEAD/plugins/contextverity-backend",
+  "role": "backend-plugin",
+  "scope": "@contextverity",
+  "updated": "2026-10-08T12:22:38.829Z",
+  "version": "0.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-10-08T12:22:38.829Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-08T12:17:23.485Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

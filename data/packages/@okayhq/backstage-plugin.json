@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2022-06-20T19:55:44.846Z",
+  "deprecated": "",
+  "description": "Welcome to the [Okay](https://www.okayhq.com/) plugin!",
+  "homepage": "https://github.com/OkayHQ/backstage-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "antoine-okay",
+    "sarah-okay",
+    "tomasrb"
+  ],
+  "name": "@okayhq/backstage-plugin",
+  "plugin_id": "",
+  "readme": "# Okay Backstage Plugin\n\nWelcome to the [Okay](https://www.okayhq.com/) plugin!\n\nThis plugin connects Backstage with your Okay account to visualize your team analytics. Embed dashboards (including DORA metrics) alongside your team or service pages.\nCreate dashboards from any of your dev tools (including Github, Gitlab, Jira, CircleCI, Argo, Buildkite, Pagerduty, Rollbar, Sentry and dozens of others).\nAdditionally send your own metrics with the Okay custom events endpoint.\n\n![okay_app](./docs/okay_app.png?raw=true)\n\nThe Okay plugin allows you to display a the list of company saved dashboards to surface important goals and metrics.\n\n![dashboard_list](./docs/dashboard_list.png?raw=true)\n\nComing soon is the ability to render any saved dashboard or chart directly in Backstage.\n\n![dashboard_list](./docs/dashboard_iframe.png?raw=true)\n\nTo get started with Okay & Backstage, check out our [product tour](https://www.okayhq.com/tour) and get in contact with us for more information!\n\n## Installing the dashboard list component\n\nThe dashboard list component shows a list of Okay dashboards in backstage. If you're interested in showing a group of dashboards, or tagging dashboards to show up in backstage, reach out to us!\n\n1.  Install the Okay plugin in packages/app.\n    ```\n    $ yarn add --cwd packages/app @okayhq/backstage-plugin\n    ```\n2.  Go to your Okay account and [create an API token](https://app.okayhq.com/settings/edit/company).\n3.  Add Okay to the [proxy config](https://backstage.io/docs/plugins/proxying) in `app-config.yaml` and save the token from the previous step as a secret.\n    ```\n    # app-config.yaml\n    proxy:\n      '/okay/api':\n        target: https://app.okayhq.com\n        headers:\n          Authorization: Bearer ${OKAY_TOKEN}\n    ```\n\n## Installing the dashboard iframe component\n\nThe dashboard iframe component renders an iframe of an Okay dashboard.\n\n1. Install the Okay plugin in packages/app.\n   ```\n   $ yarn add --cwd packages/app @okayhq/backstage-plugin\n   ```\n1. Go to your Okay account and [add a new \"Iframe Allowed Domain\"](https://app.okayhq.com/settings/edit/company). Input the domain of your backstage instance and save the **secret** and **id** that Okay returns to you.\n1. Save the secret from the previous step as a backstage secret. Add the Okay iframe configuration `app-config.yaml`, and update your backend CSP to allow iframing app.okayhq.com.\n\n   ```\n   # app-config.yaml\n   backend:\n     ...\n     csp:\n       connect-src: [\"'self'\", 'http:', 'https:']\n       frame-src: [\"'self'\", 'https://app.okayhq.com/']\n   okay:\n     iframe:\n       secret: ${OKAY_IFRAME_SECRET}\n       id: ${OKAY_IFRAME_ID}\n   ```\n\n1. Install the Okay Backend plugin in packages/backend.\n\n   ```\n   $ yarn add --cwd packages/backend @okayhq/backstage-backend-plugin\n   ```\n\n1. Create a backend plugin file `packages/backend/src/plugins/okay.ts`\n\n   ```\n   import { createRouter } from '@okayhq/backstage-backend-plugin';\n   import { Router } from 'express';\n   import { PluginEnvironment } from '../types';\n\n   export default async function createPlugin(\n     env: PluginEnvironment,\n   ): Promise<Router> {\n     return await createRouter({\n       logger: env.logger,\n       config: env.config\n     });\n   }\n   ```\n\n1. Add the plugin to `packages/backend/src/index.ts`\n   ```\n   import okay from './plugins/okay';\n   ...\n   async function main() {\n     ...\n     const okayEnv = useHotMemoize(module, () => createEnv('okay'));\n     apiRouter.use('/okay', await okay(okayEnv));\n   ```\n\n### Security overview\n\nEach iframe element uses a unique URL with a nonce, timestamp, id, and hmac signature. We validate the nonce + timestamp for replay attack protection, validate the signature to ensure the request has not been changed, and finally check the referrer header against the company-configured allowlist. If the URL request is deemed valid, Okay sends back the Content Security header `Content-Security-Policy: frame-ancestors <Referrer>`, allowing the requester to iframe the app.\n\n## Adding the Okay page\n\n1. In App.tsx, import the `OkayPage` and add it to the routes list. The Okay page will be accessible at `/okay`.\n\n   If you want to include a dashboard on the team page, add the dashboard uuid as a param. The dashboard uuid is the uuid in the URL. For example, for a dashboard URL like this:\n   https://app.okayhq.com/dashboards/0baa30fe-f717-4ef5-8383-816b449bc5cc/my-team-dashboard the uuid is `0baa30fe-f717-4ef5-8383-816b449bc5cc`.\n\n   ```\n   # App.tsx\n   import { OkayPage } from  '@okayhq/backstage-plugin';\n\n   const routes = (\n     <FlatRoutes>\n       ...\n       <Route path=\"/okay\" element={<OkayPage uuid=\"your-dashboard-uuid-here\" />} />\n     </FlatRoutes>\n   ```\n\n2. In Root.tsx, add a SidebarItem component linking to the Okay page.\n   ```\n   # Root.tsx\n   import Dashboard from '@material-ui/icons/Dashboard';\n   ...\n\n   export const Root = ({ children }: PropsWithChildren<{}>) => (\n     <SidebarPage>\n       <Sidebar>\n         <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n           ...\n           <SidebarItem icon={Dashboard} to=\"okay\" text=\"Okay\" />\n         </SidebarGroup>\n       </Sidebar>\n     </SidebarPage>\n   )\n   ```\n\n## Adding an Okay Dashboard Iframe Component to an entity page\n\nRight now, you can add a hard-coded dashboard to an entity page. Coming soon, we will allow passing contextual information via annotations (e.g.: manager email, service name) to display templated dashboards.\n\n```\n# packages/app/src/components/catalog/EntityPage.tsx\n\n...\nimport { OkayDashboardIframeComponent } from '@okayhq/backstage-plugin';\n\n\n...\n// Example: Adding a dashboard to the group page\nconst groupPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <Grid container spacing={3}>\n        ...\n        <Grid item md={12}>\n          <OkayDashboardIframeComponent uuid=\"4811d86d-34ac-40da-996b-79d3fb6b3f70\" />\n        </Grid>\n      </Grid>\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n",
+  "repository": "https://github.com/OkayHQ/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@okayhq",
+  "updated": "2022-07-18T22:47:35.060Z",
+  "version": "0.0.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2022-07-18T22:47:35.060Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2022-06-20T20:50:05.204Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2022-06-20T19:55:45.109Z",
+      "version": "0.0.0"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "author": "jikwan",
+  "created": "2025-12-29T01:45:37.604Z",
+  "deprecated": "",
+  "description": "Backstage plugin for tracking DORA (DevOps Research and Assessment) metrics with scorecard visualization",
+  "homepage": "https://github.com/zc149/backstage-plugin-dora-scorecard#readme",
+  "keywords": [
+    "backstage",
+    "change-failure-rate",
+    "deployment-frequency",
+    "devops",
+    "dora",
+    "lead-time",
+    "metrics",
+    "mttr",
+    "plugin",
+    "scorecard"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jikwan"
+  ],
+  "name": "@jikwan/backstage-plugin-dora-scorecard",
+  "plugin_id": "dora-scorecard",
+  "readme": "# DORA Scorecard Plugin (Frontend)\n\nFrontend plugin for rendering DORA metrics in Backstage service pages.\n\n## Install\n\n```bash\nyarn add --cwd packages/app @jikwan/backstage-plugin-dora-scorecard\n```\n\n## Required Setup\n\n### 1) Register the plugin in `App.tsx`\n\n```tsx\n// packages/app/src/App.tsx\nimport { createApp } from '@backstage/app-defaults';\nimport { doraMetricsPlugin } from '@jikwan/backstage-plugin-dora-scorecard';\n\nconst app = createApp({\n  // ...other options\n  plugins: [doraMetricsPlugin],\n});\n```\n\nIf this is missing, `DoraScorecard` can fail with:\n`No implementation available for apiRef{plugin.dora-metrics.service}`.\n\n### 2) Add `DoraScorecard` to an entity page\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { DoraScorecard } from '@jikwan/backstage-plugin-dora-scorecard';\n\nconst serviceEntityPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/dora\" title=\"DORA Metrics\">\n      <Grid container spacing={3}>\n        <Grid item xs={12}>\n          <DoraScorecard />\n        </Grid>\n      </Grid>\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\n## Backend Dependency\n\nThis frontend plugin requires `@jikwan/backstage-plugin-dora-scorecard-backend` to be installed and configured.\n\n## Exports\n\n- `DoraScorecard`\n- `doraMetricsPlugin`\n- `doraMetricsApiRef`\n- `DoraMetricsApi` (type)\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/zc149/backstage-plugin-dora-scorecard/tree/HEAD/plugins/dora-scorecard",
+  "role": "frontend-plugin",
+  "scope": "@jikwan",
+  "updated": "2026-02-27T08:24:00.249Z",
+  "version": "1.0.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-02-27T08:24:00.249Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-02-27T08:10:10.368Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-12-29T02:10:53.181Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-12-29T01:45:37.891Z",
+      "version": "1.0.0"
+    }
+  ]
+}

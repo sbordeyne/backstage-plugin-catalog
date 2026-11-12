@@ -1,0 +1,29 @@
+{
+  "author": "",
+  "created": "2025-06-20T18:54:42.066Z",
+  "deprecated": "",
+  "description": "The tech-insights-backend-module backend module for the ai-plugin plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "npalm",
+    "rjaegers",
+    "scottguymer"
+  ],
+  "name": "@philips-labs/plugin-ai-plugin-backend-module-tech-insights-backend-module",
+  "plugin_id": "ai-plugin",
+  "readme": "",
+  "repository": "https://github.com/philips-labs/argus-panoptes/tree/HEAD/workspaces/ai-rundown/plugins/ai-plugin-backend-module-tech-insights-backend-module",
+  "role": "backend-plugin-module",
+  "scope": "@philips-labs",
+  "updated": "2025-06-20T18:54:42.350Z",
+  "version": "0.2.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-06-20T18:54:42.350Z",
+      "version": "0.2.0"
+    }
+  ]
+}

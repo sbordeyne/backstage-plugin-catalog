@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2024-10-14T07:33:58.484Z",
+  "deprecated": "",
+  "description": "The Opsgenie plugin is a frontend plugin that displays Opsgenie alerts, incidents and on-call information in Backstage. The plugin includes two components that can be integrated into Backstage:",
+  "homepage": "https://github.com/mrackoa/backstage-plugin-opsgenie",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "mrackoa"
+  ],
+  "name": "@mrackoa/backstage-plugin-opsgenie",
+  "plugin_id": "opsgenie",
+  "readme": "# Opsgenie plugin for Backstage\n\nThe Opsgenie plugin is a frontend plugin that displays Opsgenie alerts, incidents and on-call information in Backstage. The plugin includes two components that can be integrated into Backstage:\n\n*  The `OpsGeniePage` routable extension component which produces a standalone page with the following capabilities:\n    * view a summary of who is currently on call\n    * view and search a list of active alerts with the option of acknowledging or closing alerts directly from Backstage\n    * view and search a list of incidents\n    * view incident-related analytics\n* The `EntityOpsgenieAlertsCard` component which can display recent alerts for a specific component.\n\n## Setup\n\nFind [installation instructions](./docs/index.md#installation) in our documentation.\n\n## How does it look?\n\n\"Who is on call?\" page:\n\n![Opsgenie on-call page](./docs/opsgenie-on-call-page.png)\n\nAlerts page:\n\n![Opsgenie alerts page](./docs/opsgenie-alerts-page.png)\n\nIncidents page:\n\n![Opsgenie incidents page](./docs/opsgenie-incidents-page.png)\n\nIncidents analytics page:\n\n![Opsgenie incidents analytics page](./docs/opsgenie-analytics-page.png)\n\nAlerts card:\n\n![Opsgenie alerts card](./docs/entity-overview.png)\n\n## License\n\nThis library is under the [MIT](LICENSE) license.",
+  "repository": "https://github.com/mrackoa/backstage-plugin-opsgenie/tree/HEAD/.",
+  "role": "frontend-plugin",
+  "scope": "@mrackoa",
+  "updated": "2024-11-07T11:03:41.004Z",
+  "version": "0.6.39",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-11-07T11:03:41.004Z",
+      "version": "0.6.39"
+    },
+    {
+      "date": "2024-10-14T08:32:14.954Z",
+      "version": "0.6.38"
+    },
+    {
+      "date": "2024-10-14T07:33:58.781Z",
+      "version": "0.6.37"
+    }
+  ]
+}

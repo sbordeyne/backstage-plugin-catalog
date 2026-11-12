@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2024-06-24T10:59:02.319Z",
+  "deprecated": "",
+  "description": "Website: [https://harness.io/](https://harness.io/)",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "abhinavrastogi",
+    "sjois"
+  ],
+  "name": "@harnessio/backstage-plugin-harness-chaos",
+  "plugin_id": "",
+  "readme": "# Harness Chaos Engineering Plugin\n\nWebsite: [https://harness.io/](https://harness.io/)\n\nWelcome to the Harness Chaos Engineering plugin for Backstage!\n\n## Screenshots\n\n<img src=\"./src/assets/chaos-experiments.png\" />\n\n## Setup steps\n\n1. Open terminal and navigate to the _root of your Backstage app_. Then run\n\n```\nyarn add --cwd packages/app @harnessio/backstage-plugin-harness-chaos\n\nyarn install\n```\n\nIf you are looking to get started with Backstage, check out [backstage.io/docs](https://backstage.io/docs/getting-started/).\n\nFor testing purposes, you can also clone this repository to try out the plugin. It contains an example Backstage app setup which is pre-installed with Harness plugins. However, you must create a new Backstage app if you are looking to get started with Backstage.\n\n2. Configure proxy for harness in your `app-config.yaml` under the `proxy` config. Add your Harness Personal Access Token or Service Account Token for `x-api-key`. See the [Harness docs](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys) for generating an API Key.\n\n```yaml\n# In app-config.yaml\n\nproxy:\n  # ... existing proxy settings\n  '/harness':\n    target: 'https://app.harness.io/'\n    headers:\n      'x-api-key': '<YOUR PAT/SAT>'\n# ...\n```\n\nNotes:\n\n- Plugin uses token configured here to make Harness API calls. Make sure this token has the necessary permissions\n\n- Set the value of target to your on-prem URL if you are using the Harness on-prem offering\n\n3. Inside your Backstage's `EntityPage.tsx`, update the `chaosContent` component to render `<EntityHarnessChaosContent />` whenever the service/project is using Harness Chaos Engineering. Something like this -\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  EntityHarnessChaosContent,\n  isHarnessChaosAvailable,\n} from '@harnessio/backstage-plugin-harness-chaos';\n\n...\n\nconst chaosContent = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isHarnessChaosAvailable}>\n      <EntityHarnessChaosContent />\n    </EntitySwitch.Case>\n\n    <EntitySwitch.Case>\n      <EmptyState\n        title=\"No Chaos data available for this entity\"\n        missing=\"info\"\n        description=\"You need to add an annotation to your component if you want to enable Chaos for it. You can read more about annotations in Backstage by clicking the button below.\"\n        action={\n          <Button\n            variant=\"contained\"\n            color=\"primary\"\n            href=\"https://backstage.io/docs/features/software-catalog/well-known-annotations\"\n          >\n            Read more\n          </Button>\n        }\n      />\n    </EntitySwitch.Case>\n  </EntitySwitch>\n);\n\n...\n\nconst serviceEntityPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/chaos\" title=\"Chaos Engineering\">\n      {chaosContent}\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n\n...\n\n```\n\n4. Add required harness specific annotations to your software component's respective `catalog-info.yaml` file. (optional)\n\n##### `harness.io/project-url` (required)\n\nURL of the experiments page of your Harness project, in the format\n\n```\nhttps://app.harness.io/ng/account/<accountId>/module/chaos/orgs/<orgId>/projects/<projectId>/experiments\n```\n\nThe older format without `/module` (`https://app.harness.io/ng/account/<accountId>/chaos/orgs/<orgId>/projects/<projectId>/experiments`) is also supported.\n\nThe plugin reads the account, organization and project from it and lists the experiments of that project. Only experiments tagged `<spec.type>=<metadata.name>` of the entity (for example `service=payment-service`) are shown, so add that tag to the experiments you want to see on the entity. If the URL doesn't match the format above, the plugin shows an error with the expected format.\n\n\n##### What the table shows\n\n- name, infrastructure, resilience score (of the latest run, `N/A` if the run has no score), recent runs, a link to the report of the latest run, last updated by, and actions to run an experiment or open it in Harness\n- a filter to show experiments of a single infrastructure type\n- the average resilience score of all matching experiments (not just the current page), along with how many experiments have a score out of the total. Experiments without a score are not counted, and the average is `N/A` if none of them has a score\n\nRefer image below to locate an application map tag.\n\n<img src=\"./src/assets/application-map-tags.png\" />\n\nHere is an example: [catalog-info.yaml](../../examples/catalog-harness-chaos.yaml)\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    # mandatory annotation\n    harness.io/project-url: <harness_project_url>\n\n    # optional annotations\n    harness.io/application-map-tags: |\n      <nm-name_1>: <nm-label_1>\n      <nm-name_2>: <nm-label_2>\n\nspec:\n  type: service\n  # ...\n```\n\n\n## Other configurations\n\n- (Optional) Harness URL\n\nIf you have a separate Harness hosted URL other than `https://app.harness.io`, you can configure `baseUrl` for `harness` in `app-config.yaml` This step is optional. The default value of `harness.baseUrl` is https://app.harness.io/\n\n```yaml\n# In app-config.yaml\n\nharness:\n  baseUrl: https://app.harness.io/\n```\n\n## Features\n\n- Connect a Backstage service with a Harness project and view all the chaos experiments associated with that project.\n- Add network-map tags to view targeted chaos experiments for a specific service/application map.\n- Support for various infrastructure filters on the go.\n- See details for last 10 runs such as resilience score, status and cron schedules.\n- Directly run a chaos experiment from the dashboard itself.\n- One click redirect to run details and infrastructure management screens.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@harnessio",
+  "updated": "2026-10-27T06:08:04.872Z",
+  "version": "0.4.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-10-27T06:08:04.872Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-09-05T06:27:35.761Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-06-24T10:59:02.610Z",
+      "version": "0.1.0"
+    }
+  ]
+}

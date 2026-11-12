@@ -1,0 +1,65 @@
+{
+  "author": "",
+  "created": "2026-07-22T17:25:50.938Z",
+  "deprecated": "",
+  "description": "Render ScaleQuality's measured signals as entity cards in Backstage: code maturity, security, compliance, licenses, test coverage, engineering maturity, AI, people and cost, initiatives, evolution, the technology landscape and bugs and incidents, for an o",
+  "homepage": "https://scalequality.io",
+  "keywords": [
+    "ai",
+    "backstage",
+    "backstage-plugin",
+    "code-quality",
+    "scalequality"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "squalequality"
+  ],
+  "name": "@scalequality/backstage-plugin",
+  "plugin_id": "scalequality",
+  "readme": "# @scalequality/backstage-plugin\n\nRender [ScaleQuality](https://scalequality.io)'s **measured** signals as entity cards in\nBackstage: code maturity, security, compliance, licenses, test coverage, engineering maturity,\nAI, people and cost, initiatives, evolution, the technology landscape and bugs and incidents, for the org,\nbusiness unit, team, business area or repository the entity maps to. Each card links back\ninto ScaleQuality for the full story.\n\nThe card reads ScaleQuality's public read-only `/v1` API through the Backstage backend\n**proxy**, so your org-scoped API key (`sq_live_...`) is injected server-side and never\nreaches the browser.\n\n## The card\n\nThe entity card renders theme-aware from real measured signals, so it stays clean in\nboth Backstage themes.\n\n![ScaleQuality entity card in the Backstage light theme](https://raw.githubusercontent.com/scalequality-io/backstage-plugin/main/assets/card-light.png)\n\n![ScaleQuality entity card in the Backstage dark theme](https://raw.githubusercontent.com/scalequality-io/backstage-plugin/main/assets/card-dark.png)\n\n## Install\n\n```bash\n# from your Backstage app root\nyarn --cwd packages/app add @scalequality/backstage-plugin\n```\n\n## 1. Configure the proxy\n\nAdd to `app-config.yaml` (the key stays in your backend / secret store):\n\n```yaml\nproxy:\n  endpoints:\n    '/scalequality':\n      target: https://app.scalequality.io/v1\n      changeOrigin: true\n      headers:\n        Authorization: 'Bearer ${SCALEQUALITY_API_KEY}'\n```\n\nCreate the API key in ScaleQuality under **Developers**, then set\n`SCALEQUALITY_API_KEY` in your environment. The key is read-only and scoped to your org.\n\n## 2. Add the card to your EntityPage\n\n`packages/app/src/components/catalog/EntityPage.tsx`:\n\n```tsx\nimport { EntityScaleQualityCard } from '@scalequality/backstage-plugin';\n\n// inside the entity page grid, e.g. the overview content:\n<Grid item md={6}>\n  <EntityScaleQualityCard />\n</Grid>\n```\n\n## 3. Map entities to a ScaleQuality scope\n\nAnnotate the entity (Component / Group) with the ScaleQuality id it should show. Most\nspecific wins (repository > team > business area > business unit > org):\n\n```yaml\nmetadata:\n  annotations:\n    scalequality.io/repo-id: <project-uuid>   # a repository, or one module of a monorepo\n    # or: scalequality.io/team-id: <team-uuid>\n    # or: scalequality.io/area-id: <business-area-uuid>\n    # or: scalequality.io/bu-id: <bu-uuid>\n    # or: scalequality.io/org-id: <org-uuid>\n```\n\nFind the ids in ScaleQuality's `GET /v1/catalog` (org, business units, teams, business\nareas and repositories), or in Developers › IDP, where each widget shows its endpoint.\n\n## What it shows\n\nEach widget appears only where it applies and when your key carries it. A widget with no\nmeasurement yet renders its empty state, never a fake value or a zero.\n\n| Widget | Where | Source | Key scope |\n|---|---|---|---|\n| Code maturity (score, level, domains, coverage, licenses allowed) | all five | Diagnosis per repository | `maturity:read` |\n| Security (open findings by severity) | all five | latest measurement per repository | `maturity:read` |\n| Test coverage (with its history) | all five | measured executed lines | `maturity:read` |\n| Evolution (score over 180 days, level bands) | all five | measurements kept | `maturity:read` |\n| Licenses (components by family, policy) | all five | license inventory + your policy | `evidence:read` |\n| Compliance (one regime's controls, audit dossier) | all five | controls engine | `evidence:read` |\n| AI (spend by source, people using AI, durability) | org, unit, team, area | provider readings + ScaleQuality AI | `durability:read` |\n| People and cost (the month day by day, per person, people using AI) | org, unit, team, area | provider readings + ScaleQuality AI, people × average salary | `business:read` |\n| Initiatives (planned, real, projected saving) | org, team, area | AI Portfolio | `business:read` |\n| Engineering maturity (L1 to L5, six domains) | org, unit, team | assessments | `maturity:read` |\n| Technology landscape | org, unit, team | configured radar | `catalog:read` |\n| Bugs and incidents (open now, critical or high, 30 days by day) | org, unit, team | the teams' Jira or Azure Boards, read every 6 h | `maturity:read` |\n\nFor a business area or a repository, Compliance reads the entity's own repositories. The\ncontrols that are kept per team come from the teams that own those repositories: the card\nnames them, says how many repositories no team owns, and says they are not applicable when\nno team owns any. They are never counted as met.\n\nIn the AI widget, **Rework paid** is a share of the month's AI spend on code: the connected\ncode tools and the code work done through ScaleQuality AI. It is a part of the month the\nwidget shows, not the whole of it, and the card says the amount it is a share of.\n\n`business:read` is never part of a key's default read. People cost over headcount is a\nteam's average salary, so create the key with **Share people cost and initiatives**\nchecked only if your portal should show it. People cost is hidden below three people.\nNo widget shows one person's figure.\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/scalequality-io/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@scalequality",
+  "updated": "2026-10-26T00:29:06.221Z",
+  "version": "0.3.0",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2026-10-26T00:29:06.221Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-10-15T23:07:47.134Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-10-13T23:52:53.267Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-10-10T20:28:18.360Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-10T01:32:34.368Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2026-07-23T18:00:51.989Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2026-07-23T14:57:04.570Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-07-23T12:36:38.503Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-07-22T17:25:51.274Z",
+      "version": "0.1.0"
+    }
+  ]
+}

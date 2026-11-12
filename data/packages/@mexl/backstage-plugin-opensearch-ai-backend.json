@@ -1,0 +1,38 @@
+{
+  "author": "",
+  "created": "2025-08-16T20:58:44.009Z",
+  "deprecated": "",
+  "description": "OpenSearch AI-enhanced Backend Plugin for Backstage",
+  "homepage": "https://github.com/automationpi/backstage-plugin-opensearch-ai-backend#readme",
+  "keywords": [
+    "ai",
+    "backend",
+    "backstage",
+    "elasticsearch",
+    "openai",
+    "opensearch",
+    "plugin",
+    "search",
+    "semantic-search",
+    "vector-search"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "mexl"
+  ],
+  "name": "@mexl/backstage-plugin-opensearch-ai-backend",
+  "plugin_id": "",
+  "readme": "# OpenSearch AI-enhanced Backend Plugin (Skeleton)\n\nThis is a backend-only Backstage plugin that aims to provide OpenSearch-based search with optional AI-assisted enhancements (query rewriting, result re-ranking, and semantic vector search).\n\nStatus: MVP with OpenSearch search, admin indexing routes, AI-assisted rewrite and heuristic re-ranking.\n\n## Key Pieces\n- `createRouter(options)`: exposes `/health` and `/query` routes.\n- `OpenSearchClient`: stub for BM25/hybrid search and indexing.\n- `QueryRewriteService`: stub for AI-assisted query rewriting.\n- `ReRankerService`: stub for AI-based re-ranking.\n- `FeatureToggle`: controls feature flags (rewrite, rerank, semantic).\n- `Observability`: hooks for metrics, tracing, and logs.\n\n## Features\n\n### Core Search Features\n- OpenSearch-based search with BM25 scoring, filters, and highlights\n- Admin endpoints: index template management, bulk indexing, and reindexing (Catalog/TechDocs/APIs)\n\n### AI Enhancement Features\nConfigure these features using the `features` config block:\n\n```yaml\nopensearch-ai:\n  features:\n    rewrite: true    # AI query rewriting\n    rerank: true     # AI result re-ranking  \n    semantic: true   # Vector semantic search\n```\n\n#### Query Rewriting (`rewrite: true`)\n- **Purpose**: Transforms user queries using AI to improve search results\n- **How it works**: Uses OpenAI GPT-4o-mini to normalize queries, expand synonyms, and clarify intent\n- **Impact**: Better matching for natural language queries, handles typos and ambiguous terms\n- **Cost**: ~$0.0001 per query (cached for 5 minutes to reduce costs)\n- **Example**: \"api docs\" → \"API documentation endpoints\"\n\n#### Result Re-ranking (`rerank: true`) \n- **Purpose**: Re-orders search results using AI to improve relevance\n- **How it works**: Uses heuristic scoring based on content freshness, type boosts, and relevance\n- **Impact**: More relevant results appear first, especially for broad queries\n- **Cost**: Minimal (computation-based, no API calls)\n- **Compatibility**: Works with or without rewrite feature\n\n#### Semantic Search (`semantic: true`)\n- **Purpose**: Enables meaning-based search using vector embeddings\n- **How it works**: Uses OpenAI text-embedding-3-small to create vector representations\n- **Impact**: Finds conceptually related content even without exact keyword matches\n- **Cost**: ~$0.00002 per query (cached for 1 hour)\n- **Example**: \"authentication\" finds results about \"login\", \"OAuth\", \"security\"\n\n### Feature Compatibility\n- **All features work independently** - you can enable any combination\n- **Rewrite + Semantic**: Best for natural language queries with concept matching\n- **Rerank + Semantic**: Good balance of relevance and semantic understanding\n- **All three enabled**: Maximum search quality but highest API costs\n\n## Config\nSee `docs/AI.md` and `docs/USAGE.md` for configuration and wiring examples.\n\n## Build\nFrom this directory:\n```sh\nnpm install\nnpm run build\n```\n\n## License\nUNLICENSED (internal scaffolding)\n",
+  "repository": "https://github.com/automationpi/backstage-plugin-opensearch-ai-backend",
+  "role": "backend-plugin-module",
+  "scope": "@mexl",
+  "updated": "2025-08-16T20:58:44.315Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-08-16T20:58:44.315Z",
+      "version": "1.0.0"
+    }
+  ]
+}

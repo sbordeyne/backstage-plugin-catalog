@@ -1,0 +1,52 @@
+{
+  "author": "",
+  "created": "2026-04-21T08:05:43.184Z",
+  "deprecated": "",
+  "description": "Backstage catalog backend module that ingests Kubernetes workloads and CRDs as entities. Config lives under catalog.providers.kubernetes.",
+  "homepage": "",
+  "keywords": [
+    "argocd",
+    "backstage",
+    "backstage-catalog",
+    "backstage-plugin",
+    "catalog",
+    "crd",
+    "k8s",
+    "kubernetes"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "thecodingsheikh"
+  ],
+  "name": "@thecodingsheikh/backstage-plugin-catalog-backend-module-kubernetes",
+  "plugin_id": "catalog",
+  "readme": "# @thecodingsheikh/backstage-plugin-catalog-backend-module-kubernetes\n\nCatalog backend module that ingests Kubernetes workloads and CRDs as Backstage\nentities. A slim, catalog-provider-focused rewrite of\n[`@terasky/backstage-plugin-kubernetes-ingestor`][terasky] — no Crossplane,\nno KRO, no scaffolder templates.\n\n[terasky]: https://github.com/TeraSky-OSS/backstage-plugins/tree/main/plugins/kubernetes-ingestor\n[mo]: https://www.npmjs.com/package/@thecodingsheikh/backstage-plugin-catalog-backend-module-multi-owner-processor\n\n## Install\n\n```bash\nyarn --cwd packages/backend add @thecodingsheikh/backstage-plugin-catalog-backend-module-kubernetes\n```\n\n## What it emits\n\nPer ingested workload:\n- **1 Component** (or Resource) — the workload itself.\n- **1 System** — one per namespace/cluster, shared across workloads in it. Opt out with `createSystemFromNamespace: false`.\n- **1 API** *(optional)* — if the workload has a `<prefix>/provides-api-*` annotation.\n\nPer selected CRD (optional): **1 API entity** per version.\n\nEach sync is a `type: 'full'` mutation, so deleting a K8s resource removes\nits entity on the next tick automatically.\n\n## Setup\n\n1. Configure clusters in the core kubernetes plugin (`kubernetes.clusterLocatorMethods`).\n2. Wire the module:\n   ```ts\n   // packages/backend/src/index.ts\n   backend.add(import('@thecodingsheikh/backstage-plugin-catalog-backend-module-kubernetes'));\n   ```\n3. Add at least one provider under `catalog.providers.kubernetes.<id>`.\n\n## Full config reference\n\n```yaml\ncatalog:\n  providers:\n    kubernetes:\n      # Arbitrary id; becomes part of the provider's log name and locationKey.\n      main:\n        # Annotation prefix read from K8s resources.\n        annotationPrefix: k8s.backstage.io              # default: k8s.backstage.io\n\n        # Fallback owner when neither the workload nor the namespace supplies one.\n        defaultOwner: kubernetes-auto-ingested          # default: kubernetes-auto-ingested\n\n        # If a workload has no <prefix>/owner, look up the same annotation on\n        # its Namespace object. Each unique namespace is fetched once per run.\n        inheritOwnerFromNamespace: false                # default: false\n\n        # Limit which clusters this provider ingests from. Names must match\n        # those registered in kubernetes.clusterLocatorMethods.\n        # Omit to use every discovered cluster.\n        allowedClusterNames: [prod-east, prod-west]\n\n        # Ceiling on in-flight HTTP calls to the kubernetes proxy, per sync\n        # phase (list + translate). Lower if your backend struggles with big\n        # clusters, raise to speed up huge fleets.\n        maxConcurrency: 20                              # default: 20\n\n        # Copies argocd.argoproj.io/tracking-id → argocd/app-name so the\n        # ArgoCD card on the entity page works.\n        argoIntegration: false                          # default: false\n\n        # Auto-create a System per namespace/cluster. False = no System is\n        # emitted and spec.system is only set when <prefix>/system is present.\n        createSystemFromNamespace: true                 # default: true\n\n        # Rewrites cluster names stamped on entities. Only needed if you\n        # register the same physical cluster twice (e.g. sa-prod + oidc-prod).\n        clusterNameMapping:\n          mode: prefix-replacement                      # or 'explicit'\n          sourcePrefix: sa-                             # prefix-replacement only\n          targetPrefix: oidc-\n          mappings:                                     # explicit only\n            sa-prod-01: oidc-prod-01\n\n        # How entity names are derived. Change these when workloads with the\n        # same name exist in multiple clusters or namespaces.\n        mappings:\n          namespaceModel: default          # default | cluster | namespace\n          nameModel: name                  # name | name-kind | name-cluster | name-namespace | uid\n          titleModel: name                 # name | name-cluster | name-namespace\n          systemModel: namespace           # namespace | cluster | cluster-namespace\n          referencesNamespaceModel: default # default | same\n\n        components:\n          enabled: true                                 # default: true\n          # Emit as Resource entities instead of Components.\n          ingestAsResources: false                      # default: false\n          # When true, only ingest workloads carrying <prefix>/add-to-catalog.\n          onlyIngestAnnotatedResources: false           # default: false\n          excludedNamespaces: [kube-system, kube-public]\n          # Turn off the built-in Deployment/StatefulSet/DaemonSet/CronJob list.\n          disableDefaultWorkloadTypes: false            # default: false\n          # Extra GVKs to ingest as Components. Independent of\n          # kubernetes.customResources (that one is for the frontend K8s tab).\n          customWorkloadTypes:\n            - group: argoproj.io\n              apiVersion: v1alpha1\n              plural: rollouts\n              defaultType: service                      # fallback for spec.type\n              ingestAsResources: false                  # per-type override\n\n        # Optional: emit one API entity per CRD version.\n        crds:\n          enabled: false                                # default: false\n          # true → spec.type: crd with raw CRD YAML (needs a CRD-aware UI).\n          # false → spec.type: openapi with a generated spec (renders in the\n          # default API card but paths are approximate).\n          ingestAPIsAsCRDs: true                        # default: true\n          # spec.system assigned to every CRD-derived API entity.\n          system: crds                                  # default: crds\n          # Explicit allowlist by CRD metadata.name; takes precedence over selector.\n          crds: [widgets.example.io]\n          # Or filter by label (ignored when `crds` is set).\n          crdLabelSelector:\n            key: example.io/catalog\n            value: \"true\"\n\n        # Standard Backstage scheduler config.\n        schedule:\n          frequency: { minutes: 10 }\n          timeout: { minutes: 5 }\n```\n\n## Workload annotations\n\nAll keys use the configured `annotationPrefix`.\n\n| Annotation | Effect |\n|---|---|\n| `<prefix>/add-to-catalog` | Required to ingest when `onlyIngestAnnotatedResources` is true. |\n| `<prefix>/exclude-from-catalog` | Always skip this workload. |\n| `<prefix>/name`, `/title`, `/description` | Override generated values. |\n| `<prefix>/owner` | Sets `spec.owner` (full entity ref or bare name). |\n| `<prefix>/owners` | Sets `spec.owners` for the [multi-owner processor][mo]. Compact syntax: comma/newline-separated, each entry `kind:name[:role]` or `kind:namespace/name[:role]`. A trailing `:role` is optional. JSON array form also accepted for explicit `{ name, role }`. Inherited from the Namespace when `inheritOwnerFromNamespace` is on. |\n| `<prefix>/system` | Sets `spec.system`. |\n| `<prefix>/system-type`, `/domain` | Applied to the generated System entity. |\n| `<prefix>/component-type`, `/lifecycle` | Override `spec.type` and `spec.lifecycle`. |\n| `<prefix>/backstage-namespace` | Override the Backstage namespace for both Component and System. |\n| `<prefix>/backstage-tags` | Extra tags as `k1:v1,k2:v2`. |\n| `<prefix>/component-annotations` | Extra annotations as `k1=v1,k2=v2`. |\n| `<prefix>/links` | JSON array of Backstage links. |\n| `<prefix>/dependsOn`, `/providesApis`, `/consumesApis`, `/subcomponent-of` | Entity-ref relationships. |\n| `<prefix>/kubernetes-label-selector` | Override the auto-derived label selector. |\n| `<prefix>/source-code-repo-url`, `/source-branch`, `/techdocs-path` | Wire up `backstage.io/source-location` + `backstage.io/techdocs-ref`. |\n| `<prefix>/provides-api-from-url` | Fetch OpenAPI/YAML from this URL, emit a linked API entity. |\n| `<prefix>/provides-api-from-def` | URL stored via Backstage's `$text` reference (no fetch). |\n| `<prefix>/provides-api-from-resource-ref` | JSON pointing at a K8s resource whose status field yields the URL to fetch. |\n| `argocd.argoproj.io/tracking-id` | Source for `argocd/app-name` when `argoIntegration` is on. |\n\n## Differences from `kubernetes-ingestor`\n\n| Feature | `kubernetes-ingestor` | This module |\n|---|---|---|\n| Config root | `kubernetesIngestor.*` | `catalog.providers.kubernetes.<id>.*` |\n| Multiple instances | no | yes |\n| Crossplane claims/XRs, XRD/CRD templates | yes | removed |\n| KRO instances, RGD templates | yes | removed |\n| Scaffolder template generation | yes | removed |\n| Signals-based delta updates | yes | removed (full sync handles deletion) |\n| Concurrency cap | no | `maxConcurrency`, default 20 |\n| Standard + custom workload ingestion | yes | kept |\n| CRD → API entity | yes | kept |\n| ArgoCD integration | yes | kept |\n| Cluster-name mapping, owner inheritance, naming models | yes | kept |\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@thecodingsheikh",
+  "updated": "2026-10-26T07:15:46.613Z",
+  "version": "0.3.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-10-26T07:15:46.613Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-10-26T06:51:06.254Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-04-21T17:38:31.086Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-04-21T10:40:02.202Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-04-21T08:05:43.488Z",
+      "version": "0.1.0"
+    }
+  ]
+}

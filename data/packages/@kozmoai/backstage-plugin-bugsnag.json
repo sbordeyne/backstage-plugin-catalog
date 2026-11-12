@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:10.348Z",
+  "deprecated": "",
+  "description": "![a preview of the Bugsnag plugin](./docs/backstage-bugsnag-plugin.png)",
+  "homepage": "https://github.com/kozmoai/glint-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-bugsnag",
+  "plugin_id": "",
+  "readme": "# Bugsnag Plugin for Backstage\n\n![a preview of the Bugsnag plugin](./docs/backstage-bugsnag-plugin.png)\n\n## Rate Limit\n\nSince Bugsnag has a policy around API rate limits (https://bugsnagapiv2.docs.apiary.io/#introduction/rate-limiting), we are not displaying error trends in the table. However, you can visit error details page in Bugsnag for more details, including error trend.\n\n## Features\n\n- Bugsnag plugin errors overview tab.\n\n## How to add bugsnag project dependency to Backstage app:\n\nIf you have your own backstage application without this plugin, here it's how to add it:\n\n1. Install the plugin inside `backstage/packages/app` :\n\n```bash\ncd packages/app\nyarn add @kozmoai/backstage-plugin-bugsnag\n```\n\n2. In the `app-config.yaml` file in the root directory, add bugsnag to the proxy object:\n\n```yml\nproxy:\n  ...\n  '/bugsnag/api':\n    target: 'https://api.bugsnag.com'\n    headers:\n        Authorization: 'token ${BUGSNAG_PERSONAL_TOKEN}'\n        X-version: '2'\n```\n\nDefine number of results fetched per request (this is optional and if ommited it will be set to default value of 30). This will be used as a 'per_page' parameter (https://bugsnagapiv2.docs.apiary.io/#introduction/rate-limiting).\n\n```yml\nbugsnag:\n  resultsPerPage: <number>\n```\n\n3. Add plugin to your Backstage instance:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityBugsnagErrorsOverviewTable } from '@kozmoai/backstage-plugin-bugsnag';\n...\n\nconst serviceEntityPage = (\n  <EntityLayoutWrapper>\n    ...\n    <EntityLayout.Route\n      path=\"/bugsnag\"\n      title=\"Bugsnag\">\n        <EntityBugsnagErrorsOverviewTable />\n    </EntityLayout.Route>\n    ...\n  </EntityLayoutWrapper>\n);\n```\n\n4. Run backstage app with `yarn start` and navigate to services tabs.\n\n## How to use Bugsnag plugin in Backstage:\n\n1. Add annotations to the yaml config file of a component:\n\n```yml\nbugsnag.com/project-key: <organization-name>/<project-name>\n```\n\nNote that you must use the full names, not the slugs.\n\nThese values can be found in Bugsnag settings dashboard, under organization and project settings.\n\n2. Add your Bugsnag personal auth token to the environment variables of your backstage backend server (you can find it in https://app.bugsnag.com/settings/{organizationaname}/my-account/auth-tokens), in the form of the word 'token' followed by your token. So it should look like this:\n\n   `BUGSNAG_PERSONAL_TOKEN=\"token <your-api-key>\"`\n\n## Links\n\n- [Backstage](https://backstage.io)\n- Get hosted, managed Backstage for your company: https://glint.io\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-bugsnag",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:12.759Z",
+  "version": "2.2.8",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:12.759Z",
+      "version": "2.2.8"
+    },
+    {
+      "date": "2024-03-25T22:14:10.644Z",
+      "version": "2.2.7"
+    }
+  ]
+}

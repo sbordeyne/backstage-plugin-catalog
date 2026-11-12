@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2024-08-08T14:00:49.767Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-redhat-resource-optimization",
+  "plugin_id": "redhat-resource-optimization",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/redhat-resource-optimization/plugins/redhat-resource-optimization",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2025-01-26T14:26:53.039Z",
+  "version": "1.1.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2025-01-26T14:26:53.039Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-11-06T14:16:41.869Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2024-10-19T20:36:56.807Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2024-09-28T09:43:29.084Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-08-24T15:49:11.067Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-08-12T13:00:34.348Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-08-08T14:00:50.074Z",
+      "version": "1.0.0"
+    }
+  ]
+}

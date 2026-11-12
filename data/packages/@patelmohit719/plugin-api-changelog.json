@@ -1,0 +1,63 @@
+{
+  "author": "",
+  "created": "2025-11-05T10:44:24.890Z",
+  "deprecated": "",
+  "description": "A Backstage plugin for comparing Swagger/OpenAPI specifications and visualizing API changes with detailed diff information.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patelmohit719"
+  ],
+  "name": "@patelmohit719/plugin-api-changelog",
+  "plugin_id": "",
+  "readme": "# API Changelog Plugin\n\nA Backstage plugin for comparing Swagger/OpenAPI specifications and visualizing API changes with detailed diff information.\n\n## Features\n\n- 🔍 **Comprehensive API Comparison**: Compare two Swagger/OpenAPI specs and detect all changes\n- 📊 **Visual Diff Viewer**: React component with Material-UI v4 to display changes\n- 🎯 **Detailed Analysis**: Extracts nested property changes, parameter modifications, and schema differences\n- ✅ **False Positive Filtering**: Automatically filters out array reordering artifacts\n- 📦 **Library Function**: Programmatic API for use in other applications\n\n## Installation\n\n```bash\nyarn add @patelmohit719/plugin-api-changelog\n```\n\n## Usage\n\n### React Component\n\nDisplay API changes in your React application:\n\n```tsx\nimport { SwaggerDiffViewer } from '@patelmohit719/plugin-api-changelog';\n\n// Option 1: Load from file path\n<SwaggerDiffViewer diffFilePath=\"/diff.json\" />\n\n// Option 2: Pass data directly\n<SwaggerDiffViewer diffData={diffData} />\n```\n\n### Comparison Function\n\nCompare Swagger specs programmatically:\n\n```tsx\nimport { compareSwaggerSpecs } from '@patelmohit719/plugin-api-changelog';\n\nconst oldSpec = {\n  paths: {\n    '/api/users': {\n      get: {\n        responses: {\n          '200': {\n            schema: {\n              type: 'object',\n              properties: {\n                name: { type: 'string' }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n};\n\nconst newSpec = {\n  paths: {\n    '/api/users': {\n      get: {\n        responses: {\n          '200': {\n            schema: {\n              type: 'object',\n              properties: {\n                name: { type: 'string' },\n                email: { type: 'string' }  // Added property\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n};\n\nconst diffResult = compareSwaggerSpecs(oldSpec, newSpec);\n\nconsole.log(diffResult.summary);\n// {\n//   endpointsAdded: 0,\n//   endpointsRemoved: 0,\n//   endpointsModified: 1,\n//   schemasAdded: 0,\n//   schemasRemoved: 0,\n//   schemasModified: 0\n// }\n```\n\n## API Reference\n\n### `compareSwaggerSpecs(oldSpec, newSpec)`\n\nCompares two Swagger/OpenAPI specification objects and returns detailed diff information.\n\n**Parameters:**\n- `oldSpec` (object): The old Swagger/OpenAPI specification object\n- `newSpec` (object): The new Swagger/OpenAPI specification object\n\n**Returns:** `DetailedDiffResult`\n\n```typescript\ninterface DetailedDiffResult {\n  summary: {\n    endpointsAdded: number;\n    endpointsRemoved: number;\n    endpointsModified: number;\n    schemasAdded: number;\n    schemasRemoved: number;\n    schemasModified: number;\n  };\n  endpoints: EndpointChange[];\n  schemas: SchemaChange[];\n}\n\ninterface EndpointChange {\n  method: string;              // GET, POST, PUT, etc.\n  endpoint: string;            // /api/users\n  changeType: 'added' | 'modified' | 'removed';\n  parameterChanges?: ParameterChange[];\n  responseChanges?: ResponseChange[];\n  requestBodyChanges?: PropertyChange[];\n}\n\ninterface ResponseChange {\n  statusCode: string;          // 200, 201, etc.\n  contentType: string;         // application/json\n  propertyChanges: PropertyChange[];\n}\n\ninterface PropertyChange {\n  property: string;            // results.items.rfp.contract.service_categories\n  changeType: 'added' | 'modified' | 'removed';\n  oldValue?: any;\n  newValue?: any;\n  description?: string;\n}\n```\n\n### `SwaggerDiffViewer`\n\nReact component to visualize API changes.\n\n**Props:**\n- `diffFilePath?: string` - Path to diff JSON file (default: `'diff.json'`)\n- `diffData?: SwaggerDiffData` - Direct diff data object (takes precedence over `diffFilePath`)\n\n## Example Output\n\nThe comparison function returns structured data showing:\n\n- **Endpoints**: Added, removed, or modified endpoints with:\n  - Parameter changes (query, path, body, header)\n  - Request body changes\n  - Response changes with nested property paths\n\n- **Schemas**: Added, removed, or modified schema definitions with property-level changes\n\n- **Property Paths**: Formatted for readability (e.g., `results (array) -> items (object) -> rfp (object) -> contract (object) -> service_categories (array)`)\n\n## Features\n\n- ✅ Handles Swagger 2.0 and OpenAPI 3.0\n- ✅ Resolves `$ref` references recursively\n- ✅ Filters false positives (array reordering artifacts)\n- ✅ Extracts nested property changes\n- ✅ Supports all HTTP methods (GET, POST, PUT, PATCH, DELETE, etc.)\n- ✅ Sorted output for consistent results\n\n## License\n\nApache-2.0\n\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@patelmohit719",
+  "updated": "2025-11-10T14:31:29.403Z",
+  "version": "0.1.9",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2025-11-10T14:31:29.403Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2025-11-10T13:49:23.071Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2025-11-10T13:24:18.861Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2025-11-10T13:13:51.811Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2025-11-10T12:58:22.335Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2025-11-10T12:35:06.940Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-11-10T07:23:11.312Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-11-05T14:00:05.625Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-11-05T11:02:02.166Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-11-05T10:44:25.179Z",
+      "version": "0.1.0"
+    }
+  ]
+}

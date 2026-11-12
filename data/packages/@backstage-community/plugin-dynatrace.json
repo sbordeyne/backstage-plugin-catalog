@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T08:54:58.116Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-dynatrace",
+  "plugin_id": "dynatrace",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/dynatrace/plugins/dynatrace",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-02T19:45:05.406Z",
+  "version": "10.25.0",
+  "version_count": 34,
+  "versions": [
+    {
+      "date": "2026-11-02T19:45:05.406Z",
+      "version": "10.25.0"
+    },
+    {
+      "date": "2026-09-24T17:19:04.064Z",
+      "version": "10.24.0"
+    },
+    {
+      "date": "2026-08-27T12:08:56.040Z",
+      "version": "10.23.0"
+    },
+    {
+      "date": "2026-07-21T23:04:41.699Z",
+      "version": "10.22.0"
+    },
+    {
+      "date": "2026-06-24T13:08:55.838Z",
+      "version": "10.21.0"
+    },
+    {
+      "date": "2026-06-01T06:58:03.361Z",
+      "version": "10.20.0"
+    },
+    {
+      "date": "2026-05-01T11:50:24.243Z",
+      "version": "10.19.1"
+    },
+    {
+      "date": "2026-04-29T19:03:51.144Z",
+      "version": "10.19.0"
+    },
+    {
+      "date": "2026-04-24T18:13:29.443Z",
+      "version": "10.18.0"
+    },
+    {
+      "date": "2026-04-03T00:37:18.483Z",
+      "version": "10.17.0"
+    },
+    {
+      "date": "2026-02-27T17:47:31.120Z",
+      "version": "10.16.0"
+    },
+    {
+      "date": "2026-01-28T22:35:47.355Z",
+      "version": "10.15.0"
+    },
+    {
+      "date": "2026-01-27T00:46:39.845Z",
+      "version": "10.14.0"
+    },
+    {
+      "date": "2026-01-16T17:51:08.712Z",
+      "version": "10.13.1"
+    },
+    {
+      "date": "2025-12-24T16:34:07.467Z",
+      "version": "10.13.0"
+    }
+  ]
+}

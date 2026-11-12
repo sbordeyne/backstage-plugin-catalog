@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2022-03-07T15:55:21.734Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brianfletcher",
+    "roadie-bot",
+    "roadiehq-david",
+    "xantier"
+  ],
+  "name": "@roadiehq/backstage-plugin-home-markdown",
+  "plugin_id": "backstage-plugin-home-markdown",
+  "readme": "",
+  "repository": "https://github.com/RoadieHQ/roadie-backstage-plugins/tree/HEAD/plugins/scaffolder-actions/backstage-plugin-home-markdown",
+  "role": "frontend-plugin",
+  "scope": "@roadiehq",
+  "updated": "2026-09-29T13:26:29.656Z",
+  "version": "2.8.0",
+  "version_count": 52,
+  "versions": [
+    {
+      "date": "2026-09-29T13:26:29.656Z",
+      "version": "2.8.0"
+    },
+    {
+      "date": "2025-10-31T09:33:54.601Z",
+      "version": "2.7.0"
+    },
+    {
+      "date": "2025-07-23T10:21:32.531Z",
+      "version": "2.6.0"
+    },
+    {
+      "date": "2025-03-07T13:54:06.281Z",
+      "version": "2.5.30"
+    },
+    {
+      "date": "2025-03-07T08:04:07.613Z",
+      "version": "2.5.29"
+    },
+    {
+      "date": "2024-09-26T11:00:29.679Z",
+      "version": "2.5.28"
+    },
+    {
+      "date": "2024-08-28T09:41:33.346Z",
+      "version": "2.5.27"
+    },
+    {
+      "date": "2024-06-24T14:13:57.592Z",
+      "version": "2.5.26"
+    },
+    {
+      "date": "2024-05-15T16:15:10.671Z",
+      "version": "2.5.25"
+    },
+    {
+      "date": "2024-05-08T12:02:26.244Z",
+      "version": "2.5.24"
+    },
+    {
+      "date": "2024-04-03T15:39:50.621Z",
+      "version": "2.5.23"
+    },
+    {
+      "date": "2024-03-05T13:32:45.104Z",
+      "version": "2.5.22"
+    },
+    {
+      "date": "2024-02-29T12:59:08.919Z",
+      "version": "2.5.21"
+    },
+    {
+      "date": "2024-02-27T12:27:18.427Z",
+      "version": "2.5.20"
+    },
+    {
+      "date": "2023-12-01T07:43:37.271Z",
+      "version": "2.5.17"
+    }
+  ]
+}

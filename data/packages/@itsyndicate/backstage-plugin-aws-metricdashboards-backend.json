@@ -1,0 +1,79 @@
+{
+  "author": "ITsyndicate",
+  "created": "2024-11-05T08:49:46.775Z",
+  "deprecated": "",
+  "description": "## Description The AWS Metric Dashboards backend plugin retrieves and stores metric data for various AWS resources. It gathers metrics across AWS regions, allowing users to monitor and analyze AWS CloudWatch metrics for multiple services, including EC2, D",
+  "homepage": "https://itsyndicate.org",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "maksym_yemleninov",
+    "volodymyr.voitovych"
+  ],
+  "name": "@itsyndicate/backstage-plugin-aws-metricdashboards-backend",
+  "plugin_id": "aws-metricdashboards",
+  "readme": "# AWS Metric Dashboards Backend\n\n## Description\nThe AWS Metric Dashboards backend plugin retrieves and stores metric data for various AWS resources. It gathers metrics across AWS regions, allowing users to monitor and analyze AWS CloudWatch metrics for multiple services, including EC2, DynamoDB, EBS, RDS, and SQS.\n\n## Installation\n\n1. Install the backend plugin:\n   ```bash\n   yarn --cwd packages/backend add @internal/backstage-plugin-aws-metricdashboards-backend\n   ```\n\n2. Add AWS configuration to your environment or `app-config.yaml`:\n   ```yaml\n   aws:\n     regions:\n       - us-east-1\n       - us-west-2\n   ```\n\n3. Set AWS access credentials as environment variables:\n   ```bash\n   export AWS_ACCESS_KEY_ID=your-access-key-id\n   export AWS_SECRET_ACCESS_KEY=your-secret-access-key\n   ```\n\n4. Register the plugin in `packages/backend/src/index.ts`:\n   ```typescript\n   const backend = createBackend();\n   // ...\n   backend.add(import('@internal/backstage-plugin-aws-metricdashboards-backend'));\n   ```",
+  "repository": "https://github.com/itsyndicate/itsyndicate-devops-platform-plugins/tree/HEAD/workspaces/aws-metricdashboards/aws-metricdashboards-backend",
+  "role": "backend-plugin",
+  "scope": "@itsyndicate",
+  "updated": "2024-11-15T11:18:38.326Z",
+  "version": "0.1.80",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2024-11-15T11:18:38.326Z",
+      "version": "0.1.80"
+    },
+    {
+      "date": "2024-11-15T11:06:14.694Z",
+      "version": "0.1.75"
+    },
+    {
+      "date": "2024-11-12T14:30:05.798Z",
+      "version": "0.1.70"
+    },
+    {
+      "date": "2024-11-12T12:30:06.220Z",
+      "version": "0.1.55"
+    },
+    {
+      "date": "2024-11-12T11:53:53.125Z",
+      "version": "0.1.50"
+    },
+    {
+      "date": "2024-11-12T11:49:07.854Z",
+      "version": "0.1.45"
+    },
+    {
+      "date": "2024-11-12T10:45:50.125Z",
+      "version": "0.1.40"
+    },
+    {
+      "date": "2024-11-12T10:18:42.428Z",
+      "version": "0.1.35"
+    },
+    {
+      "date": "2024-11-05T10:41:34.079Z",
+      "version": "0.1.30"
+    },
+    {
+      "date": "2024-11-05T10:25:34.006Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2024-11-05T10:14:21.754Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2024-11-05T09:01:33.123Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2024-11-05T08:49:47.112Z",
+      "version": "0.1.5"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "author": "Rulehub",
+  "created": "2026-03-06T05:03:39.469Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin that displays a policy/compliance catalog from a static JSON index.",
+  "homepage": "https://github.com/rulehub/rulehub-backstage-plugin#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "catalog",
+    "compliance",
+    "frontend",
+    "plugin",
+    "policy",
+    "rulehub"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "dev404ai"
+  ],
+  "name": "@rulehub/rulehub-backstage-plugin",
+  "plugin_id": "",
+  "readme": "# RuleHub — Backstage Policy Catalog Plugin\n\n[![npm version](https://img.shields.io/npm/v/%40rulehub%2Frulehub-backstage-plugin)](https://www.npmjs.com/package/@rulehub/rulehub-backstage-plugin) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![CI](https://github.com/rulehub/rulehub-backstage-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/rulehub/rulehub-backstage-plugin/actions/workflows/ci.yml)\n\nLightweight Backstage plugin that turns a static policy index into a beautiful, fast, and read-only compliance catalog.\n\nWhy use this plugin?\n\n- Ship a policy catalog in minutes — no backend required.\n- Low maintenance: static JSON index + static hosting = minimal ops.\n- Fast and accessible UI designed for engineers and auditors.\n- Integrates smoothly into Backstage with a tiny bundle and simple configuration.\n\n## Demo\n\n![Demo Screenshot 1](./docs/demo_1.png)\n\n![Demo Screenshot 2](./docs/demo_2.png)\n\n```bash\nnpm run demo\n```\n\nSee more [docs/demo-and-scripts.md](docs/demo-and-scripts.md).\n\n## What it does\n\nTurn your policies into a clean, searchable catalog inside Backstage — with zero backend.\n\n- Browse and discover policy packages by standard, jurisdiction, industry, and more.\n- One static JSON powers the entire view; host it anywhere (GitHub Pages, CDN, your app).\n- Clear outbound links to source files so engineers jump straight to code; auditors get a fast, accessible view.\n\n## Key features & competitive advantages\n\n- Zero-backend architecture: serve a single JSON file from your app or CDN.\n- Instant integration: add a route and a single config key to get started.\n- Minimal bundle and dependencies — keeps your Backstage app snappy.\n- Read-only by design — ideal for audit-friendly, reproducible policy views.\n- Customizable styling and theming to match your Backstage instance.\n- Open-source with focused docs and examples for index generation and deployment.\n\n## Quick start (3 steps)\n\n1. Install the plugin:\n\n   npm install @rulehub/rulehub-backstage-plugin\n\n2. Add the route (see example above).\n\n3. Point the plugin to the hosted index (default):\n\n- Official hosted indexes (JSON):\n  - charts: `https://rulehub.github.io/rulehub-charts/plugin-index/index.json`\n  - core: `https://rulehub.github.io/rulehub/plugin-index/index.json`\n\nOpen /rulehub in your Backstage app.\n\nFor end-to-end setup, index generation, and advanced integration patterns, see the full guide in `docs/DETAILED_GUIDE.md`.\n\n## Documentation\n\nLooking for the full documentation index? See `docs/README.md`.\n\nStart here — suggested reading order:\n\n1. Try the demo\n\n- `docs/demo-and-scripts.md` — quick commands to run a local demo (full app or frontend‑only)\n\n2. Install into your Backstage app\n\n- `docs/short-example-integration.md` — minimal lazy‑route example\n- `docs/DETAILED_GUIDE.md#full-installation--integration` — full step‑by‑step guide\n\n3. Configure\n\n- `docs/configuration-minimal.md` — copy‑paste config\n- `docs/BACKSTAGE_CONFIG_EXAMPLE.yaml` — richer example with links\n\n4. Test and verify\n\n- `docs/testing.md` — unit/E2E, coverage, tips\n- `docs/troubleshooting.md` — common issues and fixes\n\nOptional / deep dive\n\n- `docs/DETAILED_GUIDE.md` — all details (filters, runtime overrides, serving index, etc.)\n- `docs/localization-overrides.md` — labels/translations\n- `docs/bundle-size-budgets.md` — monitor bundle size\n- `docs/architecture.md` — internal structure\n- `docs/install-and-automation.md` — scripted wiring into an existing app\n\n## Community & Links\n\n- Plugin repo (this project): [https://github.com/rulehub/rulehub-backstage-plugin](https://github.com/rulehub/rulehub-backstage-plugin)\n- RuleHub (core policies, tools): [https://github.com/rulehub/rulehub](https://github.com/rulehub/rulehub)\n- RuleHub Policies Helm Chart: [https://github.com/rulehub/rulehub-charts](https://github.com/rulehub/rulehub-charts)\n- Issues: [https://github.com/rulehub/rulehub-backstage-plugin/issues](https://github.com/rulehub/rulehub-backstage-plugin/issues)\n- Discussions: [https://github.com/rulehub/rulehub/discussions](https://github.com/rulehub/rulehub/discussions)\n- Security policy: [https://github.com/rulehub/rulehub-backstage-plugin/security/policy](https://github.com/rulehub/rulehub-backstage-plugin/security/policy)\n\n## Contributing & Support\n\nWe welcome contributions. See [CONTRIBUTING.md](CONTRIBUTING.md) and open issues for bugs or feature requests. For security reports, use the email in `SECURITY.md`.\n\nFor full technical details, advanced configuration, and troubleshooting, read `docs/DETAILED_GUIDE.md`.\n\n## License\n\nMIT © Rulehub\n",
+  "repository": "https://github.com/rulehub/rulehub-backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@rulehub",
+  "updated": "2026-03-06T05:03:39.717Z",
+  "version": "0.1.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-03-06T05:03:39.717Z",
+      "version": "0.1.1"
+    }
+  ]
+}

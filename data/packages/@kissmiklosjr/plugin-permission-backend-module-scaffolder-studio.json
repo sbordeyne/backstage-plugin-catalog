@@ -1,0 +1,75 @@
+{
+  "author": "",
+  "created": "2026-02-18T12:37:18.966Z",
+  "deprecated": "",
+  "description": "The scaffolder-studio backend module for the permission plugin.",
+  "homepage": "https://github.com/kissmikijr/scaffolder-studio/tree/main/plugins/permission-backend-module-scaffolder-studio",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "kissmiklosjr"
+  ],
+  "name": "@kissmiklosjr/plugin-permission-backend-module-scaffolder-studio",
+  "plugin_id": "permission",
+  "readme": "",
+  "repository": "https://github.com/kissmikijr/scaffolder-studio/tree/HEAD/plugins/permission-backend-module-scaffolder-studio",
+  "role": "backend-plugin-module",
+  "scope": "@kissmiklosjr",
+  "updated": "2026-07-04T13:50:43.142Z",
+  "version": "1.2.1",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2026-07-04T13:50:43.142Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-06-24T14:08:31.953Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-03-23T11:11:29.922Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-03-08T15:53:36.833Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-03-08T14:04:12.990Z",
+      "version": "1.0.1-alpha.0"
+    },
+    {
+      "date": "2026-02-24T22:39:53.205Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-02-24T09:01:27.856Z",
+      "version": "1.0.0-beta.5"
+    },
+    {
+      "date": "2026-02-23T22:24:36.609Z",
+      "version": "1.0.0-beta.4"
+    },
+    {
+      "date": "2026-02-23T08:18:31.759Z",
+      "version": "1.0.0-beta.3"
+    },
+    {
+      "date": "2026-02-21T14:45:35.195Z",
+      "version": "1.0.0-beta.2"
+    },
+    {
+      "date": "2026-02-19T13:25:34.956Z",
+      "version": "1.0.0-beta.1"
+    },
+    {
+      "date": "2026-02-18T21:51:10.253Z",
+      "version": "1.0.0-beta.0"
+    },
+    {
+      "date": "2026-02-18T12:37:19.272Z",
+      "version": "0.0.7"
+    }
+  ]
+}

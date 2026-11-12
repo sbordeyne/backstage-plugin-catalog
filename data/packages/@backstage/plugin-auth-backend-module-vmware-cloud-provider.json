@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2023-11-24T02:22:10.802Z",
+  "deprecated": "",
+  "description": "The vmware-cloud-provider backend module for the auth plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-auth-backend-module-vmware-cloud-provider",
+  "plugin_id": "auth",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/auth-backend-module-vmware-cloud-provider",
+  "role": "backend-plugin-module",
+  "scope": "@backstage",
+  "updated": "2026-10-20T16:50:18.653Z",
+  "version": "0.5.19",
+  "version_count": 909,
+  "versions": [
+    {
+      "date": "2026-11-11T02:56:27.912Z",
+      "version": "0.5.20-next.1"
+    },
+    {
+      "date": "2026-11-07T02:51:23.677Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T02:56:13.580Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T02:50:07.628Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-10-31T02:46:04.461Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:44:32.050Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T02:53:33.999Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T02:52:44.523Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:26:25.773Z",
+      "version": "0.5.20-next.0"
+    },
+    {
+      "date": "2026-10-20T16:50:18.653Z",
+      "version": "0.5.19"
+    },
+    {
+      "date": "2026-09-29T12:28:54.647Z",
+      "version": "0.5.19-next.1"
+    },
+    {
+      "date": "2026-09-28T03:09:38.732Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:03:47.953Z",
+      "version": "0.0.0-nightly-20260927023342"
+    },
+    {
+      "date": "2026-09-26T02:59:28.533Z",
+      "version": "0.0.0-nightly-20260926022852"
+    },
+    {
+      "date": "2026-09-25T02:58:46.832Z",
+      "version": "0.0.0-nightly-20260925022940"
+    }
+  ]
+}

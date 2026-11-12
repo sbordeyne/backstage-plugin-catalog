@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:15:56.994Z",
+  "deprecated": "",
+  "description": "A Backstage plugin for building an exploration page of your software ecosystem",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-explore",
+  "plugin_id": "explore",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/explore/plugins/explore",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-08-12T21:58:33.773Z",
+  "version": "1.0.1",
+  "version_count": 28,
+  "versions": [
+    {
+      "date": "2026-08-12T21:58:33.773Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-07-24T13:25:47.560Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-04-17T18:35:17.931Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-01-28T23:00:58.056Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2025-12-24T22:51:40.158Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-12-12T16:15:28.387Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-11-21T18:06:22.834Z",
+      "version": "0.14.2"
+    },
+    {
+      "date": "2025-11-04T16:55:23.593Z",
+      "version": "0.14.1"
+    },
+    {
+      "date": "2025-10-15T18:25:30.409Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-10-08T09:04:53.161Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-08-22T15:58:16.583Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-08-13T12:16:54.696Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-07-04T12:23:45.115Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-05-09T20:38:20.967Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2025-04-23T00:06:06.820Z",
+      "version": "0.9.0"
+    }
+  ]
+}

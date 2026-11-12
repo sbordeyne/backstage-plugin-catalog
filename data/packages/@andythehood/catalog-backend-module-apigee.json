@@ -1,0 +1,29 @@
+{
+  "author": "andythehood@gmail.com",
+  "created": "2023-08-04T00:38:35.387Z",
+  "deprecated": "",
+  "description": "Catalog Backend Module for Apigee",
+  "homepage": "",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andythehood"
+  ],
+  "name": "@andythehood/catalog-backend-module-apigee",
+  "plugin_id": "",
+  "readme": "# Catalog Backend Module for Apigee\n\nThis is an extension module to the Backstage plugin-catalog-backend plugin, providing an Apigee Entity provider.\n\nThe provider uses the [Apigee Management API](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest) to import Apigee entities into the Backstage catalog and generate the relationships between them:\n\n![Apigee Entity Relationships](./apigee-image.svg \"Apigee Entity Relationships\")\n\nCurrently supported entities are\n\n- API Proxies imported as `kind:Component, spec.type:apiproxy`\n- API Products imported as `kind:Component, spec.type:apiproduct`\n- Developer Applications imported as `kind:Component, spec.type:devapp`\n- Developers imported as `kind:Component, spec.type:developer`\n- Environments imported as `kind:Resource, spec.type:environment`\n- API Deployments imported as `kind:Component, spec.type:deployment`\n\n## Dependencies\n\nThis module depends on the following Backstage backend plugins:\n\n- the Auth backend plugin needs to be configured with a [Google Authentication Provider](https://backstage.io/docs/auth/google/provider)\n- the Events backend plugin needs to be enabled and configured with a HttpPostIngressEventPublisher to enable the webhook trigger\n\nyarn add --cwd packages/backend @backstage/plugin-events-backend\n\nyarn --cwd packages/backend add @backstage/plugin-events-node\n\n/Users/andyhood/Projects/Backstage/backstage-dev/packages/backend/src/types.ts\nimport { EventBroker } from '@backstage/plugin-events-node';\n\n/Users/andyhood/Projects/Backstage/backstage-dev/packages/backend/src/index.ts\n\nimport { DefaultEventBroker } from '@backstage/plugin-events-backend';\n\nimport events from './plugins/events';\nconst eventsEnv = useHotMemoize(module, () => createEnv('events'));\n\napiRouter.use('/events', await events(eventsEnv));\n\nconst eventBroker = new DefaultEventBroker(root.child({ type: 'plugin' }));\n\nreturn (plugin: string): PluginEnvironment => {\nconst logger = root.child({ type: 'plugin', plugin });\nconst database = databaseManager.forPlugin(plugin);\nconst cache = cacheManager.forPlugin(plugin);\nconst scheduler = taskScheduler.forPlugin(plugin);\nreturn {\nlogger,\n...\neventBroker,\n};\n\n## Installation\n\nThis module needs to be added to an existing Backstage instance:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @andythehood/catalog-backend-module-apigee\n```\n\nSee [Backstage documentation](https://backstage.io) for further details on how to install modules.\n\n## Configuration\n\nYou should now be able to add this class to your backend in `packages/backend/src/plugins/catalog.ts`:\n\n### packages/backend/src/plugins/catalog.ts\n\n```diff\nimport { CatalogBuilder } from '@backstage/plugin-catalog-backend';\nimport { ScaffolderEntitiesProcessor } from '@backstage/plugin-scaffolder-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\n+import { ApigeeEntityProvider } from '@andythehood/catalog-backend-module-apigee';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const builder = await CatalogBuilder.create(env);\n  builder.addProcessor(new ScaffolderEntitiesProcessor());\n\n+  const apigeeAPIProvider = new ApigeeEntityProvider({\n+    logger: env.logger,\n+    topics: ['apigee'],\n+    eventBroker: env.eventBroker,\n+  });\n+  builder.addEntityProvider(apigeeAPIProvider);\n\n  const { processingEngine, router } = await builder.build();\n  await processingEngine.start();\n  return router;\n}\n```\n\n## Usage\n\nTo trigger an import from an Apigee Organization, send a HTTP POST request to the backend http events endpoint, e.g. `http://localhost:7007/api/events/http/apigee` with a JSON payload of the format\n\n```\n    {\"organization\" : \"my-apigeex-org\", \"namespace\": \"default\"}\n```\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@andythehood",
+  "updated": "2023-08-04T00:38:35.693Z",
+  "version": "0.0.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-08-04T00:38:35.693Z",
+      "version": "0.0.1"
+    }
+  ]
+}

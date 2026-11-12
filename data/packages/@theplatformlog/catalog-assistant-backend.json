@@ -1,0 +1,42 @@
+{
+  "author": "Naga15",
+  "created": "2026-06-10T09:20:23.530Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin that answers natural-language questions about the Software Catalog with grounded LLM answers and entity-ref citations.",
+  "homepage": "https://theplatformlog.dev/catalog-assistant",
+  "keywords": [
+    "ai",
+    "assistant",
+    "backstage",
+    "catalog",
+    "claude",
+    "llm"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "naga156"
+  ],
+  "name": "@theplatformlog/catalog-assistant-backend",
+  "plugin_id": "catalog-assistant",
+  "readme": "# Catalog Assistant Backend\r\n\r\nA Backstage backend plugin that answers natural-language questions about the\r\nSoftware Catalog using an LLM, grounded on catalog entities.\r\n\r\nAsk things like:\r\n\r\n- _\"Who owns the payments service?\"_\r\n- _\"What services depend on auth-db?\"_\r\n- _\"Which components are tagged `tier-1` and use Postgres?\"_\r\n\r\nThe plugin retrieves the top-N relevant catalog entities for a question,\r\nbuilds a grounded prompt, and asks Claude to answer using only those entities\r\nas the source of truth. The response includes the entity refs cited as\r\ncontext so the caller can verify or link them.\r\n\r\n## Status\r\n\r\nFirst slice. Backend HTTP endpoint only, no UI. Retrieval is keyword /\r\nsubstring scoring across entity name, title, description, tags, kind, and\r\nspec.type — intentionally simple and deterministic, no embedding store\r\nrequired. Designed to be swapped behind the same `CatalogContextRetriever`\r\ninterface for semantic retrieval later.\r\n\r\n## Installation\r\n\r\n```bash\r\nyarn --cwd packages/backend add @backstage/plugin-catalog-assistant-backend\r\n```\r\n\r\nRegister the plugin:\r\n\r\n```ts\r\n// packages/backend/src/index.ts\r\nbackend.add(import('@theplatformlog/catalog-assistant-backend'));\r\n```\r\n\r\n## Configuration\r\n\r\n```yaml\r\ncatalogAssistant:\r\n  # LLM provider: anthropic (default) | openai | google | mistral\r\n  provider: anthropic\r\n  # Model id for the chosen provider. Defaults to 'claude-opus-4-8'\r\n  # for anthropic; required for any other provider.\r\n  model: claude-opus-4-8\r\n  # API key for the provider. If omitted, the provider SDK reads its\r\n  # conventional env var (ANTHROPIC_API_KEY, OPENAI_API_KEY, etc.).\r\n  apiKey: ${ANTHROPIC_API_KEY}\r\n  # Defaults to 20\r\n  maxContextEntities: 20\r\n  # Defaults to 1024\r\n  maxOutputTokens: 1024\r\n```\r\n\r\n`apiKey` is marked `secret` in the config schema; provide it via env var in\r\nproduction. (`anthropicApiKey` is still accepted as a deprecated alias.)\r\n\r\n### Using a non-Anthropic provider\r\n\r\n`@ai-sdk/anthropic` ships with this plugin. To use another provider, install\r\nits Vercel AI SDK package in your backend and set `provider` + `model`:\r\n\r\n```bash\r\n# OpenAI\r\nyarn --cwd packages/backend add @ai-sdk/openai\r\n```\r\n\r\n```yaml\r\ncatalogAssistant:\r\n  provider: openai\r\n  model: gpt-5\r\n  apiKey: ${OPENAI_API_KEY}\r\n```\r\n\r\nSupported providers: `anthropic`, `openai`, `google`, `mistral`. Any model id\r\nthe chosen provider's SDK accepts works — Claude (`claude-opus-4-8`,\r\n`claude-sonnet-4-6`, `claude-haiku-4-5`, …), GPT, Gemini, Mistral, etc.\r\n\r\n### Free and local models (cost-sensitive)\r\n\r\nTwo paths to $0 (or near-$0):\r\n\r\n**Local — Ollama (truly free, runs Gemma 3 / Llama on your hardware).** Set the\r\n`openai` provider's `baseURL` to Ollama's OpenAI-compatible endpoint:\r\n\r\n```bash\r\nollama pull gemma3\r\nyarn --cwd packages/backend add @ai-sdk/openai\r\n```\r\n\r\n```yaml\r\ncatalogAssistant:\r\n  provider: openai\r\n  model: gemma3            # or gemma3:27b, llama3.1, qwen2.5, …\r\n  baseURL: http://localhost:11434/v1\r\n  apiKey: ollama           # any non-empty value; Ollama ignores it\r\n```\r\n\r\n**Hosted free tiers.** Google AI Studio (`gemini-2.5-flash`) has a generous\r\nfree tier; Groq and OpenRouter serve Gemma 3 free/cheap and are OpenAI-compatible:\r\n\r\n```yaml\r\n# Google free tier\r\ncatalogAssistant: { provider: google, model: gemini-2.5-flash, apiKey: ${GOOGLE_GENERATIVE_AI_API_KEY} }\r\n\r\n# Groq (free, fast) — serves Gemma\r\ncatalogAssistant: { provider: openai, model: gemma2-9b-it, baseURL: https://api.groq.com/openai/v1, apiKey: ${GROQ_API_KEY} }\r\n\r\n# OpenRouter — free Gemma 3 variant\r\ncatalogAssistant: { provider: openai, model: \"google/gemma-3-27b-it:free\", baseURL: https://openrouter.ai/api/v1, apiKey: ${OPENROUTER_API_KEY} }\r\n```\r\n\r\nBecause retrieval is deterministic and the prompt is grounded, a small free\r\nmodel handles most catalog Q&A well — reserve a frontier model for hard cases.\r\n\r\n## API\r\n\r\n### `POST /api/catalog-assistant/v1/query`\r\n\r\nRequest:\r\n\r\n```json\r\n{ \"question\": \"who owns the payments service?\" }\r\n```\r\n\r\nResponse:\r\n\r\n```json\r\n{\r\n  \"answer\": \"The payments service is owned by group:default/platform.\",\r\n  \"citations\": [\"component:default/payments-api\", \"api:default/payments\"]\r\n}\r\n```\r\n\r\nAuthentication uses the standard Backstage `httpAuth` service and accepts\r\neither a user or service credential.\r\n\r\n## Architecture\r\n\r\n```\r\n┌──────────────────┐    ┌──────────────────────────┐    ┌────────────────┐\r\n│ HTTP /v1/query   │ ─▶ │ CatalogContextRetriever  │ ─▶ │ Catalog API    │\r\n└──────────────────┘    │  (keyword + scoring)     │    └────────────────┘\r\n        │               └──────────────────────────┘\r\n        ▼\r\n┌──────────────────┐    ┌──────────────────────────┐\r\n│ QueryService     │ ─▶ │ Vercel AI SDK            │\r\n│  (build prompt)  │    │  generateText({ system,  │\r\n└──────────────────┘    │    prompt, model: ... }) │\r\n                        └──────────────────────────┘\r\n```\r\n\r\nThe LLM call uses `@ai-sdk/anthropic` + `ai`'s `generateText`, deliberately\r\nmatching the surface area proposed in\r\n[BEP-0015: AI Model Provider Service](https://github.com/backstage/backstage/pull/33906).\r\nWhen the AI Provider Service lands as a core extension point, replacing\r\n`generateText` with `provider.getLanguageModelFactory()(modelId)` is a small,\r\ncontained refactor.\r\n\r\n## Why this is the _inverse_ of `mcp-actions-backend`\r\n\r\n- `mcp-actions-backend` exposes Backstage's actions as **MCP tools** so\r\n  external AI agents can act on the catalog.\r\n- `catalog-assistant-backend` consumes the catalog **from within Backstage**\r\n  via an LLM call, so a human (or another Backstage plugin) can query it.\r\n\r\nBoth feed off the same underlying catalog; the audiences are opposite.\r\n\r\n## Limitations\r\n\r\n- **No conversation memory.** Each request is one-shot.\r\n- **Keyword retrieval only.** Compound questions (\"services tagged X that\r\n  depend on Y\") are answered as well as the LLM can reason over the retrieved\r\n  page; there is no graph traversal at retrieval time.\r\n- **No tool use.** The LLM cannot fetch additional entities mid-answer.\r\n  Once tool-use ships via BEP-0015, the assistant will be able to follow\r\n  relations on demand.\r\n- **No streaming.** v1 returns the full response in one body. SSE / streaming\r\n  will land alongside the chat UI plugin.\r\n",
+  "repository": "https://github.com/Naga15/platformlog-plugins/tree/HEAD/packages/catalog-assistant-backend",
+  "role": "backend-plugin",
+  "scope": "@theplatformlog",
+  "updated": "2026-06-25T17:20:56.581Z",
+  "version": "0.3.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-06-25T17:20:56.581Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-06-10T10:18:20.853Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-06-10T09:20:23.948Z",
+      "version": "0.1.0"
+    }
+  ]
+}

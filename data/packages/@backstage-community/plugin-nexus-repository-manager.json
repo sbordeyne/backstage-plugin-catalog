@@ -1,0 +1,86 @@
+{
+  "author": "Red Hat",
+  "created": "2024-10-07T09:36:47.648Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-nexus-repository-manager",
+  "plugin_id": "nexus-repository-manager",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/nexus-repository-manager/plugins/nexus-repository-manager",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-28T14:22:29.122Z",
+  "version": "1.27.5",
+  "version_count": 47,
+  "versions": [
+    {
+      "date": "2026-10-28T14:22:29.122Z",
+      "version": "1.27.5"
+    },
+    {
+      "date": "2026-09-22T00:06:54.268Z",
+      "version": "1.27.4"
+    },
+    {
+      "date": "2026-09-15T00:02:53.902Z",
+      "version": "1.27.2"
+    },
+    {
+      "date": "2026-09-04T13:15:55.614Z",
+      "version": "1.27.1"
+    },
+    {
+      "date": "2026-08-28T20:54:31.109Z",
+      "version": "1.27.0"
+    },
+    {
+      "date": "2026-08-04T12:51:55.230Z",
+      "version": "1.26.0"
+    },
+    {
+      "date": "2026-07-21T20:32:30.872Z",
+      "version": "1.25.1"
+    },
+    {
+      "date": "2026-07-03T11:48:38.192Z",
+      "version": "1.25.0"
+    },
+    {
+      "date": "2026-05-16T22:21:17.408Z",
+      "version": "1.24.0"
+    },
+    {
+      "date": "2026-05-08T15:04:55.230Z",
+      "version": "1.23.2"
+    },
+    {
+      "date": "2026-04-24T16:29:37.886Z",
+      "version": "1.23.1"
+    },
+    {
+      "date": "2026-03-25T10:36:29.859Z",
+      "version": "1.23.0"
+    },
+    {
+      "date": "2026-03-10T21:43:21.000Z",
+      "version": "1.22.3"
+    },
+    {
+      "date": "2026-03-04T22:24:34.909Z",
+      "version": "1.22.2"
+    },
+    {
+      "date": "2026-03-04T09:26:17.843Z",
+      "version": "1.22.1"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "author": "",
+  "created": "2025-11-05T16:57:28.637Z",
+  "deprecated": "",
+  "description": "A plugin that exposes MCP tools for interacting with the Backstage community RBAC plugin.",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/plugin-rbac-mcp-backend",
+  "plugin_id": "rbac-mcp",
+  "readme": "# RBAC MCP Backend\n\nWelcome to the rbac-mcp-backend plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/plugin-rbac-mcp-backend/latest.svg)](https://www.npmjs.com/package/@terasky/plugin-rbac-mcp-backend)\n\n## Description\n\nThe `rbac-mcp-backend` plugin for Backstage provides Model Context Protocol (MCP) actions for managing Role-Based Access Control (RBAC). This plugin enables AI agents and automation tools to discover, manage, and audit roles, permissions, and access policies programmatically.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/rbac-mcp/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.\n",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/rbac-mcp-backend",
+  "role": "backend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-02-17T20:39:00.458Z",
+  "version": "0.6.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2026-02-17T20:39:00.458Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-01-28T18:31:09.426Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-01-26T10:37:26.888Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-01-21T10:08:41.053Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-12-22T10:16:15.818Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-12-07T15:36:02.625Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-12-02T12:36:09.187Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-11-05T16:57:28.921Z",
+      "version": "0.1.1"
+    }
+  ]
+}

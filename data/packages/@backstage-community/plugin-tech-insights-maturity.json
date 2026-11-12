@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2025-02-05T15:58:39.818Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "tech-insights",
+    "tech-insights-maturity"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-tech-insights-maturity",
+  "plugin_id": "tech-insights",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/tech-insights/plugins/tech-insights-maturity",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-05T09:40:44.218Z",
+  "version": "0.10.1",
+  "version_count": 20,
+  "versions": [
+    {
+      "date": "2026-11-05T09:40:44.218Z",
+      "version": "0.10.1"
+    },
+    {
+      "date": "2026-09-08T09:06:57.012Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-06-08T18:35:26.424Z",
+      "version": "0.9.2"
+    },
+    {
+      "date": "2026-06-06T22:56:13.674Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2026-06-02T21:39:52.728Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-06-01T15:24:28.142Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-05-20T15:05:10.504Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-02-11T15:55:19.009Z",
+      "version": "0.6.5"
+    },
+    {
+      "date": "2026-02-09T18:49:48.725Z",
+      "version": "0.6.4"
+    },
+    {
+      "date": "2026-01-31T18:24:44.073Z",
+      "version": "0.6.3"
+    },
+    {
+      "date": "2026-01-30T17:14:46.473Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2026-01-29T07:30:01.649Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2026-01-13T10:58:53.190Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-10-27T08:21:16.662Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-08-22T21:11:37.817Z",
+      "version": "0.4.1"
+    }
+  ]
+}

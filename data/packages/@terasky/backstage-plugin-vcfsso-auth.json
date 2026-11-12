@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2026-03-22T17:08:38.861Z",
+  "deprecated": "",
+  "description": "VCF SSO OIDC authentication frontend plugin for Backstage",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-vcfsso-auth",
+  "plugin_id": "auth-vcfsso",
+  "readme": "# vcfsso-auth\n\nWelcome to the VCF SSO authentication frontend plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-vcfsso-auth/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-vcfsso-auth)\n\nThe `vcfsso-auth` plugin for Backstage provides the OAuth2 client implementation for VCF SSO OIDC authentication. It creates the necessary API reference and OAuth2 client that enable sign-in functionality and session management with VCF SSO as the identity provider.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/vcf-automation/vcfsso/frontend/about\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.\n",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/vcfsso-auth",
+  "role": "frontend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:59:33.961Z",
+  "version": "0.11.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-10-21T13:59:33.961Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2026-06-30T17:24:33.742Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-06-09T19:12:12.356Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-05-04T07:13:27.073Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-04-16T08:24:07.029Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-03-22T17:08:39.117Z",
+      "version": "0.2.1"
+    }
+  ]
+}

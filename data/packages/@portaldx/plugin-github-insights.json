@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2022-04-27T18:07:13.024Z",
+  "deprecated": "",
+  "description": "Welcome to the github-insights plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "accezar"
+  ],
+  "name": "@portaldx/plugin-github-insights",
+  "plugin_id": "",
+  "readme": "# github-insights\n\nWelcome to the github-insights plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/github-insights](http://localhost:3000/github-insights).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@portaldx",
+  "updated": "2023-02-14T13:06:59.664Z",
+  "version": "2.0.2",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2023-02-14T13:06:59.664Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2023-01-19T16:57:43.263Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2023-01-16T17:33:11.078Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2023-01-10T12:48:31.437Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-01-10T12:27:12.280Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2022-08-22T14:49:57.280Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2022-04-27T18:07:13.265Z",
+      "version": "0.10.0"
+    }
+  ]
+}

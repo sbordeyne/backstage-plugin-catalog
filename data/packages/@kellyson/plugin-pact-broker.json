@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2023-01-01T02:40:18.115Z",
+  "deprecated": "",
+  "description": "Website: [https://docs.pact.io/](https://docs.pact.io/)",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "kellyson-victor"
+  ],
+  "name": "@kellyson/plugin-pact-broker",
+  "plugin_id": "",
+  "readme": "# Pact-Broker Plugin\n\nWebsite: [https://docs.pact.io/](https://docs.pact.io/)\n\n## Screenshots\n\n<img alt=\"drawing\" width=\"80%\" src=\"./docs/pact-dashboard.png\" />\n\n## Setup\n\n1. If you have a standalone app (you didn't clone this repo), then do\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @backstage/plugin-pact-broker\n```\n\n2. Add the `EntityPactBrokerContentTab` extension to the entity page in your app:\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityPactBrokerContentTab,\n  isPactBrokerAvailable,\n} from '@backstage/plugin-pact-broker';\n\n// For example in the website entity section\nconst websiteEntityPage = (\n  <EntityLayout>\n    \n    ...\n\n    <EntityLayout.Route if={isPactBrokerAvailable} path=\"/pact-broker-frontend\" title=\"Pacts\">\n      <EntityPactBrokerContent />\n    </EntityLayout.Route> \n\n  </EntityLayout>\n```\n\n4. Add proxy config:\n\n- If you are using Pactflow service:\n\n```yaml\n# In app-config.yaml\nproxy:\n  '/pactbroker':\n    target: https://{ACCOUNT_NAME}.pactflow.io # by example: https://xyz.pactflow.io\n    headers:\n      Authorization: Bearer {PACTFLOW_API_TOKEN}\n```\n\n  Note: Get and provide a `PACTFLOW_API_TOKEN` as an environment variable (see the [Pactflow docs](https://docs.pactflow.io/docs/user-interface/settings/api-tokens/)).\n\n- If you are using self-hosting Pact Broker:\n\n```yaml\n# In app-config.yaml\n'/pactbroker':\n    target: {YOUR_PACT_BROKER_URL_HOST} # by example: http:// localhost:9080\n    headers:\n      Authorization: Basic {PACT_BROKER_TOKEN}\n```\n\n  Note: Get and provide a `PACT_BROKER_TOKEN` as an environment variable (see the [RFC 7617](https://datatracker.ietf.org/doc/html/rfc7617)).\n\n   \n5. Add an annotation to your respective `catalog-info.yaml` files, with the format `pactbroker/consumer-provider: <consumerName>:<providerName>` (See reference in [ADR002](https://backstage.io/docs/architecture-decisions/adrs-adr002#format)).\n\n```yaml\n# Example catalog-info.yaml entity definition file\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    pactbroker/consumer-provider: 'ExampleApp-ExampleAPI'\nspec:\n  type: service\n  # ...\n```\n\n## Features\n\n- List all published pacts between consumer and provider\n- Pagination for pacts\n\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@kellyson",
+  "updated": "2023-01-01T02:40:18.334Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-01-01T02:40:18.334Z",
+      "version": "0.1.0"
+    }
+  ]
+}

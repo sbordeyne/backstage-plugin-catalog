@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T07:22:18.885Z",
+  "deprecated": "",
+  "description": "Soundcheck 3rd party integration with Azure DevOps",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-soundcheck-backend-module-azure",
+  "plugin_id": "soundcheck",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2026-10-23T12:27:23.748Z",
+  "version": "0.6.2",
+  "version_count": 39,
+  "versions": [
+    {
+      "date": "2026-10-23T12:27:23.748Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2026-09-17T14:10:43.593Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2026-08-20T15:31:10.963Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-07-17T16:16:20.095Z",
+      "version": "0.5.2"
+    },
+    {
+      "date": "2026-06-19T07:25:58.885Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-05-26T11:51:43.569Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-04-17T09:03:43.858Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2026-03-19T22:28:20.523Z",
+      "version": "0.4.6"
+    },
+    {
+      "date": "2026-02-19T17:00:20.751Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2026-01-22T15:50:04.076Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2025-12-19T12:53:45.218Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2025-11-21T18:05:38.219Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2025-10-17T16:13:48.236Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-08-22T11:48:29.746Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-07-17T09:05:15.963Z",
+      "version": "0.3.12"
+    }
+  ]
+}

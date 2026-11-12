@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2024-09-07T22:20:34.037Z",
+  "deprecated": "",
+  "description": "_This package was created through the Backstage CLI_.",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "daytona",
+    "plugin",
+    "web"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "zzorica"
+  ],
+  "name": "@daytona-io/daytona-web",
+  "plugin_id": "",
+  "readme": "# @daytona-io/daytona-web\n\n_This package was created through the Backstage CLI_.\n\n## Description\n\nThe plugin provides the frontend components required for Daytona Authentication (`daytonaApiFactory`) and Sign-In (`daytonaSignInProvider`). These components will ease the implementation for Daytona authentication using OAuth in Backstage.\n\n## Installation\n\nInstall the package via Yarn in your Backstage root directory:\n\n```sh\n# From your Backstage root directory\nyarn --cwd packages/app add @daytona-io/daytona-web\n```\n\n## Authentication Setup\n\nBackstage requires ApiFactory to interact with Daytona OAuth library and a sign-in provider. Follow the below steps:\n\n1. In Backstage folder `packages/app/src`, add the below snippet in `apis.ts` file.\n\n    ```ts\n    // In packages/app/src/apis.ts\n    import { daytonaApiFactory } from '@daytona-io/daytona-web';\n\n    // Add the Daytona ApiFactory to the list of available APIs\n    export const apis: AnyApiFactory[] = [\n        {/* other ApiFactory here */}\n        daytonaApiFactory\n    ];\n    ```\n\n2. Add the following to Backstage `App.tsx` file.\n\n    ```tsx\n\n    // In packages/app/src/App.tsx\n    import { daytonaSignInProvider } from '@daytona-io/daytona-web';\n\n    // Add the Daytona Sign-In Provider to the available sign-in providers\n    const app = createApp({\n        {/* other api, bind routes here */}\n        components: {\n            SignInPage: props => <SignInPage {...props} auto providers={['guest',daytonaSignInProvider]} />,\n        },\n    });\n    ```\n",
+  "repository": "https://github.com/daytonaio/backstage-plugins/tree/HEAD/plugins/daytona-web",
+  "role": "web-library",
+  "scope": "@daytona-io",
+  "updated": "2024-09-08T10:58:51.798Z",
+  "version": "0.1.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-09-08T10:58:51.798Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-09-07T22:20:34.310Z",
+      "version": "0.1.1"
+    }
+  ]
+}

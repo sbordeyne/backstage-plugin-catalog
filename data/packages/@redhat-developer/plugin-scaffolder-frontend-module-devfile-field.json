@@ -1,0 +1,46 @@
+{
+  "author": "Red Hat",
+  "created": "2023-12-05T08:38:29.510Z",
+  "deprecated": "",
+  "description": "Devfile Custom Field Extensions (Frontend Plugin)",
+  "homepage": "https://odo.dev",
+  "keywords": [
+    "backstage",
+    "custom-field-extension",
+    "devfile",
+    "frontend-plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "adietish",
+    "dgolovin",
+    "fbricon",
+    "jeffmaury",
+    "jrichter1",
+    "mohitsuman",
+    "odockal",
+    "rhdevelopers-ci",
+    "robstryker",
+    "sudhirverma",
+    "yvydolob"
+  ],
+  "name": "@redhat-developer/plugin-scaffolder-frontend-module-devfile-field",
+  "plugin_id": "",
+  "readme": "# devfile-field-extension\n\nThis plugin is a Custom Field Extension for Backstage. It allows you to add a set of drop-down lists to pick a Devfile Stack version, a version, and a starter project.\nIt interacts with the configured [Devfile registry](https://registry.devfile.io/viewer) to load the list of available Devfile Stacks.\n\n## Preview\n\n![Devfile Custom Field Extension Preview](https://github.com/rm3l/backstage-odo-devfile-plugin/assets/593208/e7fcc998-dc87-4603-977b-76f510fed3aa)\n\n## Installation\n\nFrom your Backstage instance root folder:\n```shell\nyarn add --cwd packages/app @redhat-developer/plugin-scaffolder-frontend-module-devfile-field\n```\n\n## Configuration\n\n1. Add the import to your `packages/app/src/App.tsx` on the frontend package of your Backstage instance:\n\n```js\n// packages/app/src/App.tsx\n\nimport { DevfileSelectorFieldExtension } from '@redhat-developer/plugin-scaffolder-frontend-module-devfile-field';\nimport { ScaffolderFieldExtensions } from '@backstage/plugin-scaffolder-react';\n```\n\n2. Then add the imported field extension as a child of `ScaffolderFieldExtensions` inside `Route`, like so:\n\n```js\n// packages/app/src/App.tsx\n\n<Route path=\"/create\" element={<ScaffolderPage />}>\n  <ScaffolderFieldExtensions>\n    <DevfileSelectorFieldExtension />\n  </ScaffolderFieldExtensions>\n</Route>\n```\n\n3. This custom field extension populates the dropdown lists from a Devfile Registry, which is expected to be proxied by Backstage at the following path: `/devfile-registry`. As such, you need to add the appropriate configuration to your `app-config.yaml` file under the `proxy.endpoints` field, like so:\n\n```yaml\n# app-config.yaml\n\nproxy:\n  endpoints:\n    '/devfile-registry':\n      target: 'https://registry.devfile.io'\n```\n\nYou should now see the custom field `DevfileSelectorExtension` and its dropdown lists populated if you navigate to the Template Editor page at http://localhost:3000/create/edit.\n\n## Usage\n\nTo use the extension in a Backstage Software Template, you can add the `ui:field` field to the parameter. The output of the extension is an object made up of the following fields:\n- `devfile`: the Devfile Stack selected by the user.\n- `version`: the Devfile Stack version selected by the user\n- `starter_project`: the Devfile Starter Project selected by the user. Optional.\n\n```yaml\nparameters:\n    - title: Provide details about the Devfile\n      required:\n        - devfile_data\n      properties:\n        devfile_data:\n          type: object\n          required:\n            - devfile\n            - version\n          properties:\n            devfile:\n              type: string\n            version:\n              type: string\n            starter_project:\n              type: string\n          ui:field: DevfileSelectorExtension\n          ui:autofocus: true\n          ui:options:\n            rows: 5\n```\n\nSee https://github.com/ododev/odo-backstage-software-template for an example of a [Software Template](https://backstage.io/docs/features/software-templates/) making use of the Devfile Selector Field Extension.\n",
+  "repository": "https://github.com/redhat-developer/backstage-odo-devfile-plugin",
+  "role": "frontend-plugin",
+  "scope": "@redhat-developer",
+  "updated": "2023-12-20T23:08:28.583Z",
+  "version": "0.20.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-12-20T23:08:28.583Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2023-12-05T08:38:29.741Z",
+      "version": "0.18.0"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "author": "",
+  "created": "2025-08-27T05:13:53.332Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "common",
+    "documentation",
+    "observability",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mexl"
+  ],
+  "name": "@mexl/plugin-docpulse-common",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/mexl/backstage-plugin-docpulse/tree/HEAD/plugins/docpulse-common",
+  "role": "common-library",
+  "scope": "@mexl",
+  "updated": "2025-08-27T05:13:53.599Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-08-27T05:13:53.599Z",
+      "version": "0.1.0"
+    }
+  ]
+}

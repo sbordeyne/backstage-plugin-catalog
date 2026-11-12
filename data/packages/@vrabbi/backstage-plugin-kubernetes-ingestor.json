@@ -1,0 +1,67 @@
+{
+  "author": "",
+  "created": "2024-12-04T14:10:55.603Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@vrabbi/backstage-plugin-kubernetes-ingestor",
+  "plugin_id": "backstage-plugin-kubernetes-ingestor",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@vrabbi",
+  "updated": "2024-12-29T16:32:45.448Z",
+  "version": "1.2.1",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2024-12-29T16:32:45.448Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2024-12-26T18:28:36.237Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2024-12-26T12:46:00.655Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-12-24T13:53:03.199Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-12-19T11:38:38.679Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-12-18T10:34:17.832Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2024-12-15T15:13:49.891Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2024-12-11T17:44:05.261Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-12-10T14:42:18.486Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-12-05T11:13:52.654Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-12-04T15:11:44.736Z",
+      "version": "0.3.0"
+    }
+  ]
+}

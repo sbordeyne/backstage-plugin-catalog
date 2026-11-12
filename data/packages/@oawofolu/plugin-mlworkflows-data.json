@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2023-11-17T18:52:59.254Z",
+  "deprecated": "",
+  "description": "Welcome to the mlworkflows-data plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "oawofolu"
+  ],
+  "name": "@oawofolu/plugin-mlworkflows-data",
+  "plugin_id": "",
+  "readme": "# mlworkflows-data\n\nWelcome to the mlworkflows-data plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/mlworkflows-data](http://localhost:3000/mlworkflows-data).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@oawofolu",
+  "updated": "2023-11-22T11:04:17.082Z",
+  "version": "0.1.6",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2023-11-22T11:04:17.082Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2023-11-22T07:37:48.993Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-11-22T07:24:05.637Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-11-21T18:23:07.986Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-11-17T18:52:59.502Z",
+      "version": "0.1.0"
+    }
+  ]
+}

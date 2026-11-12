@@ -1,0 +1,40 @@
+{
+  "author": "",
+  "created": "2026-02-27T00:51:34.176Z",
+  "deprecated": "",
+  "description": "Backend plugin for the VeeCode DevPortal \"About\" page. Exposes a `/info` endpoint that returns system details (OS, memory, Node.js version, Backstage and DevPortal versions).",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-about-backend",
+  "plugin_id": "about",
+  "readme": "# @veecode-platform/backstage-plugin-about-backend\n\nBackend plugin for the VeeCode DevPortal \"About\" page. Exposes a `/info` endpoint that returns system details (OS, memory, Node.js version, Backstage and DevPortal versions).\n\nSupports dynamic plugin export via `rhdh-cli`.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2026-03-20T12:44:03.162Z",
+  "version": "1.1.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-03-20T12:44:03.162Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-03-06T18:50:53.261Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-02-27T01:33:37.480Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-02-27T00:51:34.402Z",
+      "version": "1.0.1"
+    }
+  ]
+}

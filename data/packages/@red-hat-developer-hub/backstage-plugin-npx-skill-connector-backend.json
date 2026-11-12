@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2026-11-04T14:50:13.864Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-npx-skill-connector-backend",
+  "plugin_id": "npx-skill-connector",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/ai-integrations/plugins/npx-skill-connector-backend",
+  "role": "backend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-09T17:26:30.881Z",
+  "version": "0.4.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-11-09T17:26:30.881Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-11-04T19:59:43.812Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-11-04T14:52:51.804Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-11-04T14:50:13.864Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "author": "jikwan",
+  "created": "2025-12-29T01:45:52.707Z",
+  "deprecated": "",
+  "description": "Backend for Backstage DORA Scorecard plugin - collects and serves DORA metrics data",
+  "homepage": "https://github.com/zc149/backstage-plugin-dora-scorecard#readme",
+  "keywords": [
+    "backend",
+    "backstage",
+    "ci-cd",
+    "deployment",
+    "devops",
+    "dora",
+    "github",
+    "metrics",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jikwan"
+  ],
+  "name": "@jikwan/backstage-plugin-dora-scorecard-backend",
+  "plugin_id": "dora-scorecard",
+  "readme": "# DORA Scorecard Plugin (Backend)\n\nBackend plugin that collects DORA metrics from GitHub and serves them to the frontend.\n\n## Install\n\n```bash\nyarn add --cwd packages/backend @jikwan/backstage-plugin-dora-scorecard-backend\n```\n\n## Register in Backend\n\n```ts\n// packages/backend/src/index.ts\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n\nbackend.add(import('@jikwan/backstage-plugin-dora-scorecard-backend'));\n\nbackend.start();\n```\n\n## Configuration\n\nAdd to `app-config.yaml`.\n\n### Option 1: Personal Access Token\n\n```yaml\ndoraMetrics:\n  github:\n    organizations:\n      - your-org-name\n    token: ${GITHUB_TOKEN}\n\n  environments:\n    production:\n      - prd\n      - prod\n      - production\n\n  labels:\n    failureIssue: bug\n\n  collection:\n    intervalMinutes: 30\n    initialDays: 30\n    includeServices: []\n    excludeServices: []\n```\n\n### Option 2: GitHub App\n\n```yaml\nintegrations:\n  github:\n    - host: github.com\n      apps:\n        - appId: ${GITHUB_APP_ID}\n          clientId: ${GITHUB_APP_CLIENT_ID}\n          clientSecret: ${GITHUB_APP_CLIENT_SECRET}\n          privateKey: |\n            ${GITHUB_APP_PRIVATE_KEY}\n\ndoraMetrics:\n  github:\n    organizations:\n      - your-org-name\n\n  environments:\n    production:\n      - prd\n      - prod\n      - production\n\n  labels:\n    failureIssue: bug\n\n  collection:\n    intervalMinutes: 30\n    initialDays: 30\n    includeServices: []\n    excludeServices: []\n```\n\n## Service Requirements\n\nCatalog entities must include one of these annotations:\n\n```yaml\nmetadata:\n  annotations:\n    github.com/project-slug: your-org/your-repo\n```\n\nor\n\n```yaml\nmetadata:\n  annotations:\n    backstage.io/source-location: url:https://github.com/your-org/your-repo\n```\n\n## API\n\nThe plugin ID is `dora-metrics`, so clients should use Backstage discovery:\n\n- `GET {baseUrl}/scorecard/:service?days=30`\n- `POST {baseUrl}/targets/:service`\n\nExample `baseUrl` in default Backstage setup is typically `/api/dora-metrics`.\n\n## Notes\n\n- Database migrations run automatically on startup.\n- Data sync runs on startup and then at `collection.intervalMinutes`.\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/zc149/backstage-plugin-dora-scorecard/tree/HEAD/plugins/dora-scorecard-backend",
+  "role": "backend-plugin",
+  "scope": "@jikwan",
+  "updated": "2026-02-27T08:24:14.846Z",
+  "version": "1.0.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-02-27T08:24:14.846Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-02-27T08:10:25.915Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-12-29T02:11:10.629Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-12-29T01:45:53.333Z",
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2026-07-24T15:04:57.958Z",
+  "deprecated": "",
+  "description": "The aws-config backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-catalog-backend-module-aws-config",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/catalog/plugins/catalog-backend-module-aws-config",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:26:31.861Z",
+  "version": "0.4.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-11-03T14:26:31.861Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-09-24T17:31:39.300Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-08-27T13:24:18.809Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-07-24T15:04:58.272Z",
+      "version": "0.1.0"
+    }
+  ]
+}

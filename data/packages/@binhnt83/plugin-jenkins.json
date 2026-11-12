@@ -1,0 +1,54 @@
+{
+  "author": "",
+  "created": "2024-10-25T07:47:12.459Z",
+  "deprecated": "",
+  "description": "BinhNT83 VingroupJSC custom Backstage plugin that integrates towards Jenkins",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "jenkins"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "binhnt83"
+  ],
+  "name": "@binhnt83/plugin-jenkins",
+  "plugin_id": "jenkins",
+  "readme": "# Jenkins Plugin (Alpha)\n\nWebsite: [https://jenkins.io/](https://jenkins.io/)\n\n<img src=\"./src/assets/last-master-build.png\"  alt=\"Last master build\"/>\n<img src=\"./src/assets/folder-results.png\"  alt=\"Folder results\"/>\n<img src=\"./src/assets/build-details.png\"  alt=\"Build details\"/>\n<img src=\"./src/assets/jobrun-table.png\"  alt=\"Job builds records\"/>\n<img src=\"./src/assets/dynamic-columns.png\"  alt=\"Modify Table Columns\"/>\n\n## Setup\n\n1. If you have a standalone app (you didn't clone this repo), then do\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @backstage-community/plugin-jenkins\n```\n\n2. Add and configure the [jenkins-backend](../jenkins-backend) plugin according to it's instructions\n\n3. Add the `EntityJenkinsContent` extension to the `CI/CD` page and `EntityLatestJenkinsRunCard` to the `overview` page in the app (or wherever you'd prefer):\n\nNote that if you configured a custom JenkinsInfoProvider in step 2, you may need a custom isJenkinsAvailable. Also if you're transitioning to a new default branch name, you can pass multiple branch names as a comma-separated list and it will check for each branch name.\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityJenkinsContent,\n  EntityLatestJenkinsRunCard,\n  isJenkinsAvailable,\n} from '@backstage-community/plugin-jenkins';\n\n// You can add the tab to any number of pages, the service page is shown as an\n// example here\nconst serviceEntityPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      {/* ... */}\n      <EntitySwitch>\n        <EntitySwitch.Case if={isJenkinsAvailable}>\n          <Grid item sm={6}>\n            <EntityLatestJenkinsRunCard\n              branch=\"main,master\"\n              variant=\"gridItem\"\n            />\n          </Grid>\n        </EntitySwitch.Case>\n        {/* ... */}\n      </EntitySwitch>\n    </EntityLayout.Route>\n    {/* other tabs... */}\n    <EntityLayout.Route path=\"/ci-cd\" title=\"CI/CD\">\n      <EntitySwitch>\n        <EntitySwitch.Case if={isJenkinsAvailable}>\n          <EntityJenkinsContent />\n        </EntitySwitch.Case>\n        {/* ... */}\n      </EntitySwitch>\n    </EntityLayout.Route>\n    {/* ... */}\n  </EntityLayout>\n);\n```\n\n4. Run app with `yarn start`\n5. Add the Jenkins folder annotation to your `catalog-info.yaml`.\n\nCurrently, this plugin only supports folders and Git SCM.\nNote that if you configured a custom JenkinsInfoProvider in step 2, you may need to use a different annotation scheme here\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: 'your-component'\n  description: 'a description'\n  annotations:\n    jenkins.io/github-folder: 'folder-name/project-name' # deprecated\n    jenkins.io/job-full-name: 'folder-name/project-name' # use this instead\n\nspec:\n  type: service\n  lifecycle: experimental\n  owner: your-name\n```\n\n7. Register your component\n\n8. Click the component in the catalog. You should now see Jenkins builds, and a\n   last build result for your master build.\n\n## Features\n\n- View all runs inside a folder\n- Last build status for specified branch\n- View summary of a build\n\n## Limitations\n\n- Only works with organization folder projects backed by GitHub\n- No pagination support currently\n\n## EntityJobRunsTable\n\n- View all builds of a particular job\n- shows average build time for successful builds\n\n## Modify Columns of EntityJenkinsContent\n\n- now you can pass down column props to show the columns/metadata as per your use case.\n\n```tsx\nexport const generatedColumns: TableColumn[] = [\n  {\n    title: 'Timestamp',\n    field: 'lastBuild.timestamp',\n    render: (row: Partial<Project>) => (\n      <>\n        <Typography paragraph>\n          {`\n            ${new Date(row.lastBuild?.timestamp).toLocaleDateString()}\n            ${new Date(row.lastBuild?.timestamp).toLocaleTimeString()}\n            `}\n        </Typography>\n      </>\n    ),\n  },\n]\n\n// ...\n<EntityJenkinsContent columns={generatedColumns}/>\n// ...\n```\n",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/jenkins/plugins/jenkins",
+  "role": "frontend-plugin",
+  "scope": "@binhnt83",
+  "updated": "2024-11-01T08:44:09.582Z",
+  "version": "0.18.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2024-11-01T08:44:09.582Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2024-11-01T08:30:33.470Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2024-10-31T06:45:38.389Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2024-10-31T06:42:11.879Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2024-10-25T09:00:33.810Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2024-10-25T08:09:18.861Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2024-10-25T07:47:12.763Z",
+      "version": "0.12.0"
+    }
+  ]
+}

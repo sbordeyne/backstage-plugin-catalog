@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2023-03-10T13:01:01.925Z",
+  "deprecated": "",
+  "description": "Add the backend plugin package:",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "v-ngu"
+  ],
+  "name": "backstage-plugin-bulletin-board-backend",
+  "plugin_id": "",
+  "readme": "# Backstage Plugin Bulletin Board (Backend Setup)\n\nAdd the backend plugin package:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend backstage-plugin-bulletin-board-backend\n```\n\nCreate a file in `packages/backend/src/plugins/bulletin-board.ts`:\n\n```ts\nimport { createRouter } from 'backstage-plugin-bulletin-board-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    logger: env.logger,\n    config: env.config,\n    database: env.database,\n  });\n}\n```\n\nIn `packages/backend/src/index.ts` add the following:\n\n```diff\n+ import bulletinBoard from './plugins/bulletin-board';\n\nasync function main() {\n  ...\n  const createEnv = makeCreateEnv(config);\n\n  const catalogEnv = useHotMemoize(module, () => createEnv('catalog'));\n+ const bulletinBoardEnv = useHotMemoize(module, () => createEnv('bulletin-board'));\n  ...\n\n  const apiRouter = Router();\n+ apiRouter.use('/bulletin-board', await bulletinBoard(bulletinBoardEnv));\n  ...\n  apiRouter.use(notFoundHandler());\n  ...\n}\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "",
+  "updated": "2024-02-13T22:45:00.955Z",
+  "version": "0.2.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-02-13T22:45:00.955Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2023-05-04T20:31:38.497Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-03-10T13:01:02.121Z",
+      "version": "0.2.0"
+    }
+  ]
+}

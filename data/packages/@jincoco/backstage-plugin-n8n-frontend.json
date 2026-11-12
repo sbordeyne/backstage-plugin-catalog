@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2024-06-06T03:16:34.457Z",
+  "deprecated": "",
+  "description": "A Backstage frontend plugin that integrates with n8n by iframe",
+  "homepage": "https://github.com/Jincoco88912/backstage-plugin-n8n#readme",
+  "keywords": [
+    "backstage",
+    "n8n",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jincoco"
+  ],
+  "name": "@jincoco/backstage-plugin-n8n-frontend",
+  "plugin_id": "",
+  "readme": "\r\n# Backstage Plugin for N8n\r\n\r\nThis plugin integrates N8n into your Backstage application, providing seamless access to your automation workflows directly from Backstage.\r\n\r\n## Setup\r\n\r\n### 1. Add the plugin to your frontend app\r\n\r\n```bash\r\ncd packages/app && yarn add @jincoco/backstage-plugin-n8n-frontend\r\n```\r\n\r\n### 2. Configure the plugin in `app-config.yaml`\r\n\r\nAdd the following configuration to your `app-config.yaml` file:\r\n\r\n```yaml\r\n# app-config.yaml\r\nn8n:\r\n  baseUrl: https://your.n8n.server\r\n```\r\n\r\n### 3. Import and use the components\r\n\r\nThe plugin provides two main components:\r\n\r\n- `N8nIndexPage`: This component can embed any dashboard.\r\n- `N8nComponentPage`: This component is more compatible with a component page and can also embed any dashboard.\r\n\r\nHere's an example of how to use these components in your Backstage app:\r\n\r\n```tsx\r\n// Example In your routes configuration file\r\n// App.tsx\r\nimport { N8nIndexPage } from '@jincoco/backstage-plugin-n8n-frontend';\r\n\r\n// Adding N8nIndexPage to your routes\r\n<Route path=\"/n8n\" element={<N8nIndexPage />} />\r\n```\r\n\r\n### Ensure that your N8n server allows embedding in an iframe\r\n\r\nAdd the following environment variable to your N8n service configuration in the docker-compose file:\r\n\r\n```bash\r\nN8N_DISABLE_UI_ACCESS=false\r\n```\r\nExample of setting this in a docker-compose.yml file:\r\n\r\n```yaml\r\n  n8n:\r\n    image: docker.n8n.io/n8nio/n8n\r\n    container_name: n8n\r\n    restart: always\r\n    ports:\r\n        - \"5678:5678\"\r\n    environment:\r\n        - WEBHOOK_URL=https://your.n8n.server\r\n        - N8N_SECURE_COOKIE=false\r\n        - N8N_DISABLE_UI_ACCESS=false\r\n        - N8N_SESSION_COOKIE_SAMESITE=none\r\n    volumes:\r\n        - 'n8n_data:/home/node/.n8n'\r\n    networks:\r\n        - app-network\r\n```\r\n## Features\r\n\r\n- **Embed N8n Dashboards**: Easily embed and interact with N8n dashboards within your Backstage application.\r\n- **Seamless Integration**: Provides a smooth and integrated experience for accessing N8n workflows and automation tasks.\r\n- **Configurable and Flexible**: Easily configure the plugin to point to your N8n server and customize the embedded dashboards as needed.\r\n\r\n## Screenshots\r\n![alt text](https://i.imgur.com/0X77q0T.png)\r\n\r\n\r\n## Contributing\r\n\r\nWe welcome contributions to improve this plugin. If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.",
+  "repository": "https://github.com/Jincoco88912/backstage-plugin-n8n",
+  "role": "frontend-plugin",
+  "scope": "@jincoco",
+  "updated": "2024-06-07T07:05:04.975Z",
+  "version": "0.1.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-06-07T07:05:04.975Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-06-06T04:09:01.556Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-06-06T03:43:17.044Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-06-06T03:40:54.130Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-06-06T03:16:34.742Z",
+      "version": "0.1.0"
+    }
+  ]
+}

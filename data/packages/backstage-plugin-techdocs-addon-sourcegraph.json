@@ -1,0 +1,32 @@
+{
+  "author": "James Andrew Vaughn",
+  "created": "2022-07-31T06:32:01.387Z",
+  "deprecated": "",
+  "description": "A module that extends Sourcegraph capabilities into Backstage TechDocs.",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "docs-as-code",
+    "sourcegraph",
+    "techdocs"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "modethirteen"
+  ],
+  "name": "backstage-plugin-techdocs-addon-sourcegraph",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2022-07-31T08:06:06.807Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2022-07-31T08:06:06.807Z",
+      "version": "0.1.0"
+    }
+  ]
+}

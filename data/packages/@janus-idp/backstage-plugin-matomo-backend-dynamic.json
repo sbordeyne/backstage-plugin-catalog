@@ -1,0 +1,95 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-01-16T17:08:27.949Z",
+  "deprecated": "",
+  "description": "This is the matomo backend plugin that act as a proxy with matomo instance.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-matomo-backend-dynamic",
+  "plugin_id": "matomo",
+  "readme": "# Matomo Backend\n\nThis is the matomo backend plugin that act as a proxy with matomo instance.\n\nPlugin will inject the auth token and ensure that the request are only read only operations.\n\nMatomo API cannot be used as proxy layer due to the token auth it follows. Thus this plugin will act as proxy layer\n\n## Getting Started\n\n### Installing the NPM package\n\n```bash\nyarn add --cwd packages/backend  @janus-idp/plugin-matomo-backend\n```\n\n### Installing the plugin\n\n#### Adding the plugin to the new backend\n\nAdd the following to your `packages/backend/src/index.ts` file:\n\n```ts title=\"packages/backend/src/index.ts\"\nconst backend = createBackend();\n\n// Add the following line\nbackend.add(import('@janus-idp/backstage-plugin-matomo-backend'));\n\nbackend.start();\n```\n\n### Plugin Configurations\n\nAdd the following configurations into your `app-config.yaml` file:\n\n```yaml\nmatomo:\n  apiToken: ${MATOMO_API_TOKEN}\n\n  apiUrl: ${MATOMO_API_URL}\n\n  # (OPTIONAL) Set to false if you get SSL certificate error\n  secure: ${MATOMO_SECURE_FLAG}\n```\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/matomo-backend",
+  "role": "backend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-10-11T15:51:00.608Z",
+  "version": "1.9.2",
+  "version_count": 41,
+  "versions": [
+    {
+      "date": "2024-10-11T15:51:00.608Z",
+      "version": "1.9.2"
+    },
+    {
+      "date": "2024-10-09T17:27:32.050Z",
+      "version": "1.9.1"
+    },
+    {
+      "date": "2024-10-08T18:30:35.766Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2024-10-01T18:28:19.414Z",
+      "version": "1.8.2"
+    },
+    {
+      "date": "2024-09-25T12:49:46.960Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2024-09-20T03:42:52.994Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2024-09-19T16:51:21.966Z",
+      "version": "1.7.3"
+    },
+    {
+      "date": "2024-09-17T18:40:25.361Z",
+      "version": "1.7.2"
+    },
+    {
+      "date": "2024-08-16T18:53:51.254Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2024-07-26T01:29:50.616Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2024-07-24T14:37:55.123Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-06-19T15:09:56.480Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2024-06-13T21:37:15.996Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-06-13T10:30:08.143Z",
+      "version": "1.4.15"
+    },
+    {
+      "date": "2024-06-05T16:15:39.145Z",
+      "version": "1.4.14"
+    }
+  ]
+}

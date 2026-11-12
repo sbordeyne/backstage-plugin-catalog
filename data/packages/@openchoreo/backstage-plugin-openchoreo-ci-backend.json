@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2026-09-01T09:23:14.933Z",
+  "deprecated": "",
+  "description": "Backend plugin for OpenChoreo CI/Workflow functionality. This plugin provides backend APIs for:",
+  "homepage": "https://github.com/openchoreo/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cncf-projects",
+    "kaviththiranga"
+  ],
+  "name": "@openchoreo/backstage-plugin-openchoreo-ci-backend",
+  "plugin_id": "openchoreo-ci-backend",
+  "readme": "",
+  "repository": "https://github.com/openchoreo/backstage-plugins/tree/HEAD/plugins/openchoreo-ci-backend",
+  "role": "backend-plugin",
+  "scope": "@openchoreo",
+  "updated": "2026-10-29T06:16:25.016Z",
+  "version": "1.3.3",
+  "version_count": 22,
+  "versions": [
+    {
+      "date": "2026-11-07T11:45:47.418Z",
+      "version": "1.4.0-m.2"
+    },
+    {
+      "date": "2026-10-29T11:43:08.390Z",
+      "version": "1.4.0-m.1"
+    },
+    {
+      "date": "2026-10-29T06:16:25.016Z",
+      "version": "1.3.3"
+    },
+    {
+      "date": "2026-10-22T14:09:18.508Z",
+      "version": "1.3.2"
+    },
+    {
+      "date": "2026-10-01T23:12:42.756Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2026-09-19T16:50:51.804Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-09-18T19:47:17.015Z",
+      "version": "1.3.0-rc.2"
+    },
+    {
+      "date": "2026-09-18T03:38:45.635Z",
+      "version": "1.3.0-rc.1"
+    },
+    {
+      "date": "2026-09-09T06:55:45.045Z",
+      "version": "1.2.5"
+    },
+    {
+      "date": "2026-09-01T09:24:13.261Z",
+      "version": "1.2.4"
+    },
+    {
+      "date": "2026-09-01T09:24:07.488Z",
+      "version": "1.2.3"
+    },
+    {
+      "date": "2026-09-01T09:24:03.215Z",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2026-09-01T09:23:57.499Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-09-01T09:23:53.767Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-09-01T09:23:48.496Z",
+      "version": "1.2.0-rc.2"
+    }
+  ]
+}

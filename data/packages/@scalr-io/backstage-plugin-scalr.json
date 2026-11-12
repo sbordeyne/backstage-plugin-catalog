@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2025-04-15T21:08:14.861Z",
+  "deprecated": "",
+  "description": "This repository provides both the **frontend** and **backend** plugins required to integrate **Scalr** with **Backstage**.",
+  "homepage": "https://www.scalr.com",
+  "keywords": [],
+  "license": "MPL-2.0",
+  "maintainers": [
+    "dicsydel",
+    "kl2808"
+  ],
+  "name": "@scalr-io/backstage-plugin-scalr",
+  "plugin_id": "scalr",
+  "readme": "# Scalr Backstage Plugin (Frontend & Backend)\n\nThis repository provides both the **frontend** and **backend** plugins required to integrate **Scalr** with **Backstage**.\n\nThe plugin enables you to:\n\n- Link environments and workspaces to Backstage entities.\n- Add a side navigation link that opens the Scalr plugin page for modules, sortable by namespaces.\n\n---\n\n## 🔧 Setup\n\n### Backend Plugin\n\n#### Installation\n\nInstall the backend plugin from the GitHub release:\n\n```bash\nyarn workspace backend add @scalr-io/backstage-plugin-scalr-backend\n```\n\n#### Integration\n\nAdd the plugin to your Backstage backend:\n\n```diff\n// packages/backend/src/index.ts\n\nimport { createBackend } from '@backstage/backend-defaults';\nconst backend = createBackend();\n...\n+ backend.add(import('@scalr-io/backstage-plugin-scalr-backend'));\n\nbackend.start();\n```\n\n---\n\n### Frontend Plugin\n\n#### Integration\n\n##### Entities\n\nAdd the plugin route to your entity page:\n\n```diff\n// packages/app/src/components/catalog/EntityPage.ts\n\n+ import { EntityScalrEnvironmentContent } from '@scalr-io/backstage-plugin-scalr';\n\nconst domainPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <Grid container spacing={3} alignItems=\"stretch\">\n        {entityWarningContent}\n        <Grid item md={6}>\n          <EntityAboutCard variant=\"gridItem\" />\n        </Grid>\n        <Grid item md={6} xs={12}>\n          <EntityCatalogGraphCard variant=\"gridItem\" height={400} />\n        </Grid>\n        <Grid item md={6}>\n          <EntityHasSystemsCard variant=\"gridItem\" />\n        </Grid>\n      </Grid>\n    </EntityLayout.Route>\n\n+   <EntityLayout.Route path=\"/scalr\" title=\"Scalr\">\n+     <EntityScalrEnvironmentContent />\n+   </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\n> ℹ️ You can integrate the plugin into any entity page based on your organizational structure. You can also extend the catalog with custom entity kinds and attach the plugin accordingly.\n\n##### Sidenav\n\nAdd the Plugin route to your Routes\n\n```diff\n// packages/app/src/App.tsx\n\n+ import { ModulesContent } from '@scalr-io/backstage-plugin-scalr';\n\nconst routes = (\n  <FlatRoutes>\n    <Route path=\"/\" element={<Navigate to=\"catalog\" />} />\n    <Route path=\"/catalog\" element={<CatalogIndexPage />} />\n    ...\n+   <Route path=\"/scalr/modules\" element={<ModulesContent />} />\n  </FlatRoutes>\n...\n```\n\nAdd The Sidebar Item to Navigate to the Modules Page\n\n```diff\n// packages/app/src/components/Root/Root.tsx\n\n+ import { ScalrIcon } from '@scalr-io/backstage-plugin-scalr';\n\n...\n<SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n        {/* Global nav, not org-specific */}\n        <SidebarItem icon={HomeIcon} to=\"catalog\" text=\"Home\" />\n        <MyGroupsSidebarItem\n          singularTitle=\"My Group\"\n          pluralTitle=\"My Groups\"\n          icon={GroupIcon}\n        />\n        <SidebarItem icon={ExtensionIcon} to=\"api-docs\" text=\"APIs\" />\n        <SidebarItem icon={LibraryBooks} to=\"docs\" text=\"Docs\" />\n        <SidebarItem icon={CreateComponentIcon} to=\"create\" text=\"Create...\" />\n        {/* End global nav */}\n        <SidebarDivider />\n        <SidebarScrollWrapper>\n+          <SidebarItem\n+            icon={ScalrIcon}\n+            to=\"/scalr/modules\"\n+            text=\"Scalr Modules\"\n+          />\n        </SidebarScrollWrapper>\n      </SidebarGroup>\n...\n```\n\n---\n\n### Configuration\n\nThe backend requires authentication credentials to access the Scalr API. Add the following to your `app-config.local.yaml` (or equivalent):\n\n```yaml\n# app-config.local.yaml\n\nintegrations:\n  scalr:\n    api-token: <YOUR_API_TOKEN>\n    base-url: <YOUR_BASE_URL>\n    # Optional\n    allow-trigger-run: true\n    # Optional (If set Namespaces will not be fetched)\n    module-namepsaces:\n      - id: modns-xxxxxxxxxxx\n        display-name: Developer Namespace\n```\n\n- **API Token:** Obtain it via the Scalr UI under your user profile → _Personal Access Tokens_.\n- **Base URL:** This is the hostname of your Scalr instance (e.g. `organization.scalr.io`), which you’ll see in your browser's address bar when logged in.\n- **(Optional) Allow Triggering Runs:** Setting this to `true` will allow Backstage users to trigger new runs directly from the Scalr plugin UI. (Default: `false`)\n\n---\n\n## 🚀 Usage\n\nYou can filter displayed Workspaces by Environment or Tag using the appropriate annotations:\n\n### 🔧 Filter by Environment\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Domain\nmetadata:\n  name: example\n  annotations:\n    scalr.com/environment: <ENVIRONMENT_ID>\nspec:\n  owner: guests\n```\n\n> 🔖 Replace `<ENVIRONMENT_ID>` with the ID of the Scalr environment you want to associate.\n\n### 🏷️ Filter by Tag\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Domain\nmetadata:\n  name: example\n  annotations:\n    scalr.com/tag: <TAG_NAME>\nspec:\n  owner: guests\n```\n\n> 🔖 Replace `<TAG_NAME>` with the Name of the Scalr tag you want to associate.\n\n### 🔎 Filter by Regex\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Domain\nmetadata:\n  name: example\n  annotations:\n    scalr.com/regex: <REGEX>\nspec:\n  owner: guests\n```\n\n> 🔖 Replace `<REGEX>` with a regex to match your workspace names (e.g. `^Workspace-A\\d+`)\n",
+  "repository": "https://github.com/Scalr/scalr-backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@scalr-io",
+  "updated": "2026-01-26T22:44:40.217Z",
+  "version": "0.5.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-01-26T22:44:40.217Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-08-29T21:04:38.215Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-07-08T20:15:49.116Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-07-06T17:00:07.553Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-04-15T21:08:15.167Z",
+      "version": "0.1.1"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "author": "Red Hat",
+  "created": "2026-07-02T12:51:59.710Z",
+  "deprecated": "",
+  "description": "Frontend plugin for the Boost AI platform — AI Catalog discovery and entity-page extensions for Red Hat Developer Hub.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "ai",
+    "ai-catalog",
+    "backstage",
+    "boost",
+    "plugin",
+    "rhdh"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-boost",
+  "plugin_id": "boost",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/boost/plugins/boost",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-09-21T17:45:50.755Z",
+  "version": "0.7.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2026-09-21T17:45:50.755Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-09-16T13:25:07.694Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-09-08T21:30:53.220Z",
+      "version": "0.5.4"
+    },
+    {
+      "date": "2026-09-08T17:52:53.647Z",
+      "version": "0.5.3"
+    },
+    {
+      "date": "2026-09-03T13:53:24.079Z",
+      "version": "0.5.2"
+    },
+    {
+      "date": "2026-08-17T21:11:32.584Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-08-14T21:00:10.295Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-08-04T18:48:48.230Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-07-08T19:09:41.350Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-07-02T12:52:00.098Z",
+      "version": "0.2.0"
+    }
+  ]
+}

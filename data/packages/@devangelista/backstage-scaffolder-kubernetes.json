@@ -1,0 +1,75 @@
+{
+  "author": "Derik Evangelista",
+  "created": "2023-11-29T10:59:22.972Z",
+  "deprecated": "",
+  "description": "Custom Backstage scaffolder actions to execute Kubernetes operations directly from your Backstage templates",
+  "homepage": "https://github.com/kirederik/backstage-k8s-scaffolder-actions",
+  "keywords": [
+    "backstage",
+    "backstage-custom-action",
+    "backstage-plugin",
+    "backstage-scaffolder",
+    "backstage-template",
+    "kubectl",
+    "kubernetes"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "devangelista"
+  ],
+  "name": "@devangelista/backstage-scaffolder-kubernetes",
+  "plugin_id": "k8s-scaffolder-actions",
+  "readme": "# Backstage Scaffolder Actions for Kubernetes\n\nThis is a Kubernetes actions plugin for the scaffolder-backend in Backstage.\n\nIt contains a set of actions to create and manage Kubernetes resources.\n\n# Getting Started\n\nIn the root directory of your Backstage project:\n\n```bash\nyarn add @devangelista/backstage-scaffolder-kubernetes\n```\n\nMake sure to add a Kubernetes section to your `app-config.yaml` (check the\nBackstage docs)\n\nOn your `package/backend/src/index.ts` file, add the following:\n\n```ts\nbackend.add(import(\"@devangelista/backstage-scaffolder-kubernetes\"));\n```\n\nThe scaffolder `kube` actions should now be available to use on your templates. Check the\n`/create/actions` endpoint for documentation.\n\n# Kubernetes Configuration\n\nThis plugin now integrates with Backstage's Kubernetes integration features, allowing you to:\n\n1. Use multiple Kubernetes clusters configured in your Backstage `app-config.yaml`\n2. Support various authentication methods (ServiceAccount, Google Cloud, AWS, Azure, OIDC)\n3. Specify which cluster to use for each action\n\n## Configuration Example\n\nHere's an example Kubernetes configuration in `app-config.yaml`:\n\n```yaml\nkubernetes:\n  clusterLocatorMethods:\n    - type: config\n      clusters:\n        - name: development\n          url: https://my-dev-cluster.example.com\n          authProvider: serviceAccount\n          serviceAccountToken: ${K8S_DEV_SA_TOKEN}\n          skipTLSVerify: true\n        - name: production\n          url: https://my-prod-cluster.example.com\n          authProvider: serviceAccount\n          serviceAccountToken: ${K8S_PROD_SA_TOKEN}\n          skipTLSVerify: false\n          caData: ${K8S_PROD_CA_DATA}\n        - name: oidc-cluster\n          url: https://my-oidc-cluster.example.com\n          authProvider: oidc\n          oidcTokenProvider: okta\n```\n\n# Usage\n\nYou can now use the actions in your templates:\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  description: Create a Namespace in Kubernetes\n  name: create-namespace\n  title: Create a Namespace\nspec:\n  lifecycle: experimental\n  owner: user\n  type: example\n  parameters:\n    - properties:\n        name:\n          description: The namespace name\n          title: Name\n          type: string\n          ui:autofocus: true\n      required:\n        - name\n      title: Namespace Name\n    - title: Cluster Name\n      properties:\n        cluster:\n          type: string\n          enum:\n            - development\n            - production\n          ui:autocomplete:\n            options:\n              - development\n              - production\n  steps:\n    - action: kube:apply\n      id: k-apply\n      name: Create a Resouce\n      input:\n        namespaced: false\n        clusterName: ${{ parameters.cluster }}\n        manifest: |\n          apiVersion: v1\n          kind: Namespace\n          metadata:\n            name: ${{ parameters.name }}\n---\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: delete-namespace\n  description: Delete a Namespace in Kubernetes\n  title: Delete a Namespace\nspec:\n  lifecycle: experimental\n  owner: user\n  type: example\n  parameters:\n    - properties:\n        name:\n          title: Name\n          description: The name of the namespace to delete\n          type: string\n          ui:autofocus: true\n      title: Namespace Name\n      required:\n        - name\n    - title: Cluster Name\n      properties:\n        cluster:\n          type: string\n          enum:\n            - development\n            - production\n          ui:autocomplete:\n            options:\n              - development\n              - production\n  steps:\n    - action: kube:delete\n      id: k-delete\n      name: Delete\n      input:\n        apiVersion: v1\n        kind: Namespace\n        clusterName: ${{ parameters.cluster }}\n        name: ${{ parameters.name }}\n```\n\nIf the cluster is set up to use OIDC authentication, provide a user token via the `token` input in the action:\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  description: Create a Namespace in Kubernetes using OIDC authentication\n  name: create-namespace\n  title: Create a Namespace\nspec:\n  lifecycle: experimental\n  owner: user\n  type: example\n  parameters:\n    - properties:\n        name:\n          description: The namespace name\n          title: Name\n          type: string\n          ui:autofocus: true\n      required:\n        - name\n      title: Namespace Name\n    - title: Cluster Name\n      properties:\n        cluster:\n          type: string\n          enum:\n            - oidc-cluster\n  steps:\n    - action: kube:apply\n      id: k-apply\n      name: Create a Resouce\n      input:\n        namespaced: false\n        clusterName: ${{ parameters.cluster }}\n        token: ${{ secrets.USER_OIDC_TOKEN }}\n        manifest: |\n          apiVersion: v1\n          kind: Namespace\n          metadata:\n            name: ${{ parameters.name }}\n```\n\n## Authentication Methods\n\nThe plugin currently supports the following authentication methods:\n\n1. **Service Account**: Uses a service account token\n2. **OIDC**: Uses a token provided by a user\n\nMore methods coming soon!\n\nIf no specific cluster is specified, the plugin will use the first cluster defined in the configuration, or fall back to using local kubeconfig.\n\n\n",
+  "repository": "https://github.com/kirederik/backstage-k8s-scaffolder-actions",
+  "role": "backend-plugin-module",
+  "scope": "@devangelista",
+  "updated": "2026-04-08T13:12:24.860Z",
+  "version": "0.6.2",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2026-04-08T13:12:24.860Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2026-03-11T16:52:41.509Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2026-02-26T17:37:49.210Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-04-05T17:26:59.029Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-03-08T18:29:19.983Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-02-28T10:22:12.978Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-09-13T13:54:04.620Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-02-15T11:15:35.658Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-02-15T11:14:06.319Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-11-29T11:01:51.092Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-11-29T10:59:23.237Z",
+      "version": "0.1.0"
+    }
+  ]
+}

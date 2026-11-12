@@ -1,0 +1,64 @@
+{
+  "author": "Rui Valim",
+  "created": "2025-12-30T15:12:55.666Z",
+  "deprecated": "",
+  "description": "A custom Backstage scaffolder action to execute shell commands.",
+  "homepage": "https://github.com/Ruivalim/shell-exec#readme",
+  "keywords": [
+    "backstage",
+    "backstage-custom-action",
+    "backstage-plugin",
+    "backstage-scaffolder",
+    "backstage-template",
+    "command",
+    "exec",
+    "shell"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ruivalim"
+  ],
+  "name": "@ruivalim/shell-exec",
+  "plugin_id": "scaffolder",
+  "readme": "# Shell Exec for Backstage\n\nA custom Backstage scaffolder action to execute shell commands and scripts during template scaffolding.\n\n## What\n\nThis action allows you to run shell commands, bash scripts, or any executable during your Backstage software template execution. It captures stdout/stderr and provides proper error handling.\n\n## Why\n\nUse this action when you need to:\n\n- Run setup scripts (e.g., configure Azure DevOps, GitHub, cloud resources)\n- Execute build or deployment commands\n- Run custom automation during template scaffolding\n- Perform system operations that aren't covered by built-in actions\n\n## Installation\n\nAdd the package to your Backstage backend:\n\n```bash\nyarn --cwd packages/backend add @ruivalim/shell-exec\n```\n\nThen register the module in `packages/backend/src/index.ts`:\n\n```typescript\nbackend.add(import('@ruivalim/shell-exec'));\n```\n\nThat's it, `shell:exec` shows up in the list of installed actions (`/create/actions`).\n\n### Registering the action yourself\n\nIf you already have your own scaffolder module, add the action there instead:\n\n```typescript\nimport { createBackendModule } from '@backstage/backend-plugin-api';\nimport { scaffolderActionsExtensionPoint } from '@backstage/plugin-scaffolder-node';\nimport { shellExec } from '@ruivalim/shell-exec';\n\nexport default createBackendModule({\n  pluginId: 'scaffolder',\n  moduleId: 'custom-actions',\n  register(env) {\n    env.registerInit({\n      deps: {\n        scaffolder: scaffolderActionsExtensionPoint,\n      },\n      async init({ scaffolder }) {\n        scaffolder.addActions(shellExec());\n      },\n    });\n  },\n});\n```\n\n## How `command` and `args` are run\n\n- **Without `args`**, `command` runs through the shell (`/bin/sh`), so pipes, `&&`, redirects and variables work:\n  `command: echo hello | tr a-z A-Z`\n- **With `args`**, `command` is executed directly and every item of `args` reaches it exactly as written. Nothing in `args` is interpreted by a shell, so a template parameter like `foo; rm -rf ~` stays a harmless string.\n\nPut template parameters in `args` whenever you can.\n\n> **Changed in 0.2.0.** Up to 0.1.x, `args` were joined with spaces and handed to the shell. That broke arguments containing spaces and let parameter values run as shell code. If you relied on shell syntax inside `args`, move the whole line into `command` and drop `args`.\n\n## Usage\n\n### Basic Example\n\nExecute a simple command:\n\n```yaml\nsteps:\n  - id: list-files\n    name: List Files\n    action: shell:exec\n    input:\n      command: ls\n      args:\n        - '-la'\n```\n\n### Run a Script\n\nExecute a bash script with arguments:\n\n```yaml\nsteps:\n  - id: setup-infrastructure\n    name: Setup Infrastructure\n    action: shell:exec\n    input:\n      command: bash\n      args:\n        - './scripts/setup.sh'\n        - '${{ parameters.environment }}'\n        - '${{ parameters.region }}'\n```\n\n### Custom Working Directory\n\nRun a command in a specific directory:\n\n```yaml\nsteps:\n  - id: build-app\n    name: Build Application\n    action: shell:exec\n    input:\n      command: npm\n      args:\n        - 'run'\n        - 'build'\n      cwd: './app'\n```\n\n### Real-World Example: Azure DevOps Setup\n\n```yaml\nsteps:\n  - id: fetch-script\n    name: Fetch Azure DevOps Setup Script\n    action: fetch:plain\n    input:\n      url: https://raw.githubusercontent.com/your-org/scripts/main/setup-azure-devops.sh\n      targetPath: ./scripts/\n\n  - id: setup-azure-devops\n    name: Setup Azure DevOps (Pipeline & Branch Policies)\n    action: shell:exec\n    input:\n      command: bash\n      args:\n        - './scripts/setup-azure-devops.sh'\n        - '${{ parameters.organization }}'\n        - '${{ parameters.project }}'\n        - '${{ parameters.repositoryName }}'\n```\n\n### Execute with Environment Variables\n\n`sh -c` receives the script as a single argument, and `$1` is taken from the next one, so the parameter never becomes shell code:\n\n```yaml\nsteps:\n  - id: deploy\n    name: Deploy to Cloud\n    action: shell:exec\n    input:\n      command: sh\n      args:\n        - '-c'\n        - 'API_KEY=\"$0\" ./deploy.sh \"$1\"'\n        - '${{ secrets.apiKey }}'\n        - '${{ parameters.env }}'\n```\n\n### Using Outputs from Scripts\n\nExecute a script and use its output in subsequent steps:\n\n```yaml\nsteps:\n  - id: setup-sonarcloud\n    name: Setup SonarCloud\n    action: shell:exec\n    input:\n      command: bash\n      args:\n        - './scripts/setup-sonarcloud.sh'\n        - 'fairfax-brasil'\n        - '${{ parameters.projectName }}'\n\n  - id: create-readme\n    name: Create README with SonarCloud Badge\n    action: fetch:template\n    input:\n      url: ./templates\n      values:\n        projectName: '${{ parameters.projectName }}'\n        sonarUrl: '${{ steps.setup-sonarcloud.output.value }}'\n```\n\nThe script `setup-sonarcloud.sh` would output the SonarCloud URL:\n\n```bash\n#!/bin/bash\nORG=$1\nPROJECT=$2\n\n# Setup SonarCloud project...\nSONAR_URL=\"https://sonarcloud.io/dashboard?id=${ORG}_${PROJECT}\"\n\n# Output the URL for use in other steps\necho \"EXEC_SHELL_OUTPUT_VALUE=${SONAR_URL}\"\n```\n\n## Parameters\n\n### command (required)\n\nThe shell command or executable to run.\n\n**Type:** `string`\n\n**Examples:**\n- `bash`\n- `sh`\n- `python`\n- `npm`\n- `./custom-script.sh`\n\n### args (optional)\n\nArray of arguments to pass to the command.\n\n**Type:** `string[]`\n\n**Default:** `[]`\n\n**Example:**\n```yaml\nargs:\n  - '--verbose'\n  - '--output=json'\n  - '${{ parameters.name }}'\n```\n\n### cwd (optional)\n\nWorking directory where the command should be executed.\n\n**Type:** `string`\n\n**Default:** Template workspace path. A relative path is resolved against the workspace.\n\n**Example:**\n```yaml\ncwd: './subfolder'\n```\n\n## Outputs\n\nThe action provides the following outputs that can be used in subsequent steps:\n\n### value (optional)\n\nCaptured value from the `EXEC_SHELL_OUTPUT_VALUE` variable in the command output. Your script can echo this value to pass data to other steps.\n\n**Type:** `string`\n\n**Example:**\n\n```yaml\nsteps:\n  - id: get-repo-url\n    name: Get Repository URL\n    action: shell:exec\n    input:\n      command: bash\n      args:\n        - './scripts/create-repo.sh'\n        - '${{ parameters.projectName }}'\n\n  - id: show-repo\n    name: Show Repository Info\n    action: debug:log\n    input:\n      message: 'Repository URL: ${{ steps.get-repo-url.output.value }}'\n```\n\nYour script should output the value like this:\n\n```bash\n#!/bin/bash\n# scripts/create-repo.sh\n\nPROJECT_NAME=$1\nREPO_URL=\"https://github.com/myorg/${PROJECT_NAME}\"\n\n# ... do some work ...\n\n# Output the value for Backstage\necho \"EXEC_SHELL_OUTPUT_VALUE=${REPO_URL}\"\n```\n\n### stdout\n\nThe complete standard output from the executed command.\n\n**Type:** `string`\n\n**Example:**\n```yaml\nmessage: 'Command output: ${{ steps.my-step.output.stdout }}'\n```\n\n### stderr\n\nThe complete standard error output from the executed command.\n\n**Type:** `string`\n\n### exitCode\n\nThe exit code returned by the command. It is always 0, since any other exit code fails the step.\n\n**Type:** `number`\n\n## Output and Logging\n\nThe action automatically captures and logs:\n- Command execution details (command, args, working directory)\n- Real-time stdout/stderr output\n- Exit codes and error messages\n\nAll output appears in the Backstage scaffolder task logs.\n\n## Error Handling\n\nThe action will:\n- Fail the step if the command exits with a non-zero exit code\n- Fail the step if the command is killed by a signal (for example by the OOM killer)\n- Log detailed error information including command, args, and error message\n- Halt template execution on failure\n\n## Security Considerations\n\n⚠️ **Important Security Notes:**\n\n1. **Command Injection Risk:** Never put user input inside `command`, since it goes through the shell. Pass it in `args`, which are not interpreted.\n\n2. **File Permissions:** Ensure scripts have execute permissions (`chmod +x script.sh`) before running them.\n\n3. **Secrets:** Use Backstage's secret management for sensitive data. Don't hardcode credentials.\n\n4. **Sandboxing:** The command runs in the context of the Backstage backend. Consider containerization for additional isolation.\n\n5. **Audit:** All command executions are logged for audit purposes.\n\n### Best Practices\n\n✅ **Do:**\n- Use explicit paths for scripts (e.g., `./scripts/setup.sh`)\n- Validate user input before passing to commands\n- Pass template parameters in `args`, never inside `command`\n- Check script exit codes\n- Log important information\n\n❌ **Don't:**\n- Use user input directly in shell commands without validation\n- Execute commands from untrusted sources\n- Store secrets in template parameters\n- Use `eval` or dynamic command construction\n\n## Requirements\n\n- Backstage with the new backend system (tested on Backstage 1.55)\n- Node.js 22 or 24\n\n## Troubleshooting\n\n### Script not found\n\nEnsure the script path is relative to the workspace:\n```yaml\ncommand: bash\nargs:\n  - './scripts/setup.sh'  # ✅ Correct\n  # Not: '/tmp/scripts/setup.sh'  # ❌ Wrong\n```\n\n### Permission denied\n\nMake scripts executable before running:\n```yaml\n- id: make-executable\n  action: shell:exec\n  input:\n    command: chmod\n    args: ['+x', './scripts/setup.sh']\n\n- id: run-script\n  action: shell:exec\n  input:\n    command: './scripts/setup.sh'\n```\n\n## Contributing\n\nContributions are welcome! Please feel free to submit a Pull Request.\n\n## License\n\nApache-2.0\n\n## Author\n\nRui Valim\n\n## Links\n\n- [GitHub Repository](https://github.com/Ruivalim/shell-exec)\n- [NPM Package](https://www.npmjs.com/package/@ruivalim/shell-exec)\n- [Issue Tracker](https://github.com/Ruivalim/shell-exec/issues)\n- [Backstage Documentation](https://backstage.io/docs/features/software-templates/writing-custom-actions)\n",
+  "repository": "https://github.com/Ruivalim/shell-exec/tree/HEAD/.",
+  "role": "backend-plugin-module",
+  "scope": "@ruivalim",
+  "updated": "2026-09-24T01:33:17.231Z",
+  "version": "0.2.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2026-09-24T01:33:17.231Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-01-06T18:36:17.907Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2026-01-05T14:02:01.319Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2025-12-30T17:39:50.575Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-12-30T17:03:37.054Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-12-30T16:43:49.064Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-12-30T16:09:07.708Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-12-30T15:12:55.941Z",
+      "version": "0.1.0"
+    }
+  ]
+}

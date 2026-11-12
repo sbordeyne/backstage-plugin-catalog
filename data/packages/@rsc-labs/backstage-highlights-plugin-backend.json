@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2023-11-19T17:43:48.126Z",
+  "deprecated": "",
+  "description": "<img src='https://raw.githubusercontent.com/RSC-Labs/backstage-highlights-plugin/main/docs/highlighter.png' width='100' height='150' alt='Highlights screenshot'>",
+  "homepage": "https://github.com/RSC-Labs/backstage-highlights-plugin#readme",
+  "keywords": [
+    "backend",
+    "backstage",
+    "git",
+    "highlights",
+    "javascript",
+    "plugin",
+    "rsc-labs",
+    "typescript"
+  ],
+  "license": "MPL-2.0",
+  "maintainers": [
+    "szymkiewicz.radoslaw"
+  ],
+  "name": "@rsc-labs/backstage-highlights-plugin-backend",
+  "plugin_id": "",
+  "readme": "# @rsc-labs/backstage-highlights-plugin-backend\n\n<img src='https://raw.githubusercontent.com/RSC-Labs/backstage-highlights-plugin/main/docs/highlighter.png' width='100' height='150' alt='Highlights screenshot'>\n\nBackstage Highlights Plugin is configurable and customizable plugin for viewing the most important information about your entity.\n\n### Why?\n\nWe have a lot information from different plugins and also in Overview tab, but sometimes:\n- we want to see some short summary from couple of plugins\n- we do not want to jump to every card to get such information\n\nThe \"Highlights\" shall provide you possibility to create such small, useful view.\n\n# Getting started\n\nIf you haven't already, check out the [Backstage docs](https://backstage.io/docs/getting-started/) and create a Backstage application with\n```\nnpx @backstage/create-app\n```\n\nThen, you will need to install and configure the highlights plugins for the frontend and the backend.\nFrontend plugin installation can be found here: [Frontend plugin](https://github.com/RSC-Labs/backstage-highlights-plugin/tree/main/plugins/backstage-highlights-plugin)\n\n# Backend plugin\n\nInstall:\n```bash\ncd packages/backend\nyarn add @rsc-labs/backstage-highlights-plugin-backend\n```\n\nCreate a file `packages/backend/src/plugins/highlights.ts`:\n```typescript\nimport {\n    createRouter,\n  } from '@rsc-labs/backstage-highlights-plugin-backend';\n  import { Router } from 'express';\n  import { PluginEnvironment } from '../types';\n  \n  export default async function createPlugin(\n    env: PluginEnvironment,\n  ): Promise<Router> {\n    return await createRouter({\n      discovery: env.discovery,\n      tokenManager: env.tokenManager,\n      logger: env.logger,\n      config: env.config\n    });\n  }\n```\n\nAdd the plugin to `packages/backend/src/index.ts`:\n```typescript\n// import:\nimport highlights from './plugins/highlights';\n...\n\nasync function main() {\n  ...\n  // add env\n  const highlightsEnv = useHotMemoize(module, () => createEnv('highlights'));\n  ...\n  // add to router\n  apiRouter.use('/highlights', await highlights(highlightsEnv));\n  ...\n}\n```\n\n## Catalog-info.yaml\n\nBackend plugin supports two providers - Github and Gitlab. They are providing information for built-in fields mentioned in Frontend plugin.\nPlugin uses following annotations from catalog-info.yaml:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: example-website\n  annotations:\n    github.com/project-slug: rsc-labs/backstage-changelog-plugin\n    gitlab.com/project-slug: owner/project\n```\n\nBoth annotations are supported (so your component can be in github or gitlab). In theory case if you have both annotations, github takes precedence.\n\n## App-config\n\nTo have properly working Github or Gitlab, you need also provide information about token and potentially about base url.\nYou have two options how to provide it\n1) Custom highlights configuration\n2) Integration configuration\n\nBelow you can find implemented both options:\n```yaml\nhighlights:\n  gitlab:\n    token: ${GITLAB_TOKEN}\n    apiBaseUrl: https://gitlab.com/api/v4\n  github:\n    token: ${GITHUB_TOKEN}\n\nintegrations:\n  gitlab:\n      - token: ${GITLAB_TOKEN}\n  github:\n      - token: ${GITHUB_TOKEN}\n```\n\nIf provided, \"highlights\" configuration takes precendece over \"integrations\".\n<b>Note:</b> \"highlights\" configuration requires providing \"apiBaseUrl\", while it is not needed in \"integrations\" (if you are using default one)\n\n### Multiple Gitlab instances\n\nWe start supporting also multiple Gitlab instances for both highlights and integrations in app-config. Below you can find instruction and example of configuration.\n\n1) If you would like to use \"highlights\" configuration, then you need to change it to a list instead of one object. Additionally, we need to be able to figure out which instance is used for which entity, so <b>host</b> annotation is needed (see example below). For backward compatibility, we still support single object.\n2) Similarly with <b>integrations</b>. We already support a list, but to use multiple Gitlab instances, you need to also provide <b>host</b> and <b>apiBaseUrl</b> (see example below)\n\nExample of both options in one configuration:\n```yaml\nhighlights:\n  gitlab:\n    - host: gitlab.com\n      token: ${GITLAB_TOKEN}\n      apiBaseUrl: https://gitlab.com/api/v4\n    - host: gitlab1.com\n      token: ${GITLAB2_TOKEN}\n      apiBaseUrl: https://gitlab1.com/api/v4\n  github:\n    token: ${GITHUB_TOKEN}\n\nintegrations:\n  gitlab:\n    - host: gitlab.com\n      token: ${GITLAB_TOKEN}\n    - host: gitlab1.com\n      token: ${GITLAB2_TOKEN}\n      apiBaseUrl: https://gitlab1.com/api/v4\n  github:\n    - host: github.com\n      token: ${GITHUB_TOKEN}\n```\n\nAt the same time, your entity shall have proper annotations, for example:\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: example-website\n  annotations:\n    github.com/project-slug: rsc-labs/backstage-changelog-plugin\n    gitlab.com/project-slug: owner/project\n    gitlab.com/instance: gitlab1.com\n```\n\nTaking above example - component <b>example-website</b> will use <b>gitlab1.com</b>, which maps to values:\n- host: gitlab1.com\n- token: ${GITLAB2_TOKEN}\n- apiBaseUrl: https://gitlab1.com/api/v4\n\nPlease remember that \"highlights\" configuration (if present) takes precendence over \"integrations\".\n\n## TODO\n\n[ ] Unit tests\n\n[ ] More fields to support\n\n## Contribution\n\nContributions are welcome and they are greatly appreciated!\n\n## License\n\nLicensed under the Mozilla Public License, Version 2.0: https://www.mozilla.org/en-US/MPL/2.0/\n\n---\n\n© 2023 RSC https://rsoftcon.com/",
+  "repository": "https://github.com/RSC-Labs/backstage-highlights-plugin",
+  "role": "backend-plugin",
+  "scope": "@rsc-labs",
+  "updated": "2024-06-22T14:12:32.291Z",
+  "version": "0.3.0",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2024-06-22T14:12:32.291Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-04-19T18:57:44.759Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2024-03-02T16:19:51.279Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2024-03-02T10:34:58.471Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2024-02-25T10:36:25.233Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-02-25T10:30:38.752Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-12-03T15:25:35.125Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2023-12-03T15:23:12.399Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2023-11-21T15:28:36.402Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2023-11-20T15:19:08.959Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-11-20T15:11:23.020Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-11-19T17:54:14.198Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-11-19T17:43:48.356Z",
+      "version": "0.1.0"
+    }
+  ]
+}

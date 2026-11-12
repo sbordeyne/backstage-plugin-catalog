@@ -1,0 +1,60 @@
+{
+  "author": "mexl",
+  "created": "2025-07-29T14:11:05.153Z",
+  "deprecated": "",
+  "description": "Backstage catalog backend module for MCP (Model Context Protocol) entities",
+  "homepage": "https://github.com/automationpi/backstage-plugin-catalog-backend-module-mcp#readme",
+  "keywords": [
+    "ai",
+    "backstage",
+    "catalog",
+    "entity",
+    "llm",
+    "mcp",
+    "model-context-protocol",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mexl"
+  ],
+  "name": "@mexl/backstage-plugin-catalog-backend-module-mcp",
+  "plugin_id": "",
+  "readme": "[![NPM Version](https://img.shields.io/npm/v/@mexl/backstage-plugin-catalog-backend-module-mcp)](https://www.npmjs.com/package/@mexl/backstage-plugin-catalog-backend-module-mcp)\n[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)\n\n<div align=\"center\">\n<table border=\"0\" style=\"border: none;\">\n<tr border=\"0\" style=\"border: none;\">\n<td align=\"center\" width=\"50%\" border=\"0\" style=\"border: none;\">\n<img width=\"350\" height=\"350\" alt=\"image\" src=\"https://github.com/user-attachments/assets/848445d0-26fb-45a6-8815-70b4bbeada62\" />\n</td>\n<td width=\"50%\">\n<h3>MCP Backend Plugin</h3>\nAdd full Model Context Protocol (MCP) entity support to your Backstage software catalog. Enable discovery and reuse of MCP servers across your organization, centralizing AI tool management and reducing duplication. Teams can easily find, share, and integrate MCP capabilities.\n</td>\n</tr>\n</table>\n</div>\n\n---\n\n## Features\n\n- Comprehensive support for MCP (Model Context Protocol) entities as a native kind in Backstage\n- Configuration validation for MCP entities\n- Automatic modeling of relationships (dependencies, ownership, API provision)\n- Multi-transport: stdio, SSE, WebSocket, HTTP\n- Multiple runtimes supported: Node.js, Python, Go, C#, Rust, Java\n- Automatic search integration in Backstage\n- Real-world, production-ready example YAMLs included\n\n<img width=\"1591\" height=\"675\" alt=\"image\" src=\"https://github.com/user-attachments/assets/ebe87bb9-109c-4249-a5e0-2987813081f8\" />\n\nNew entity type in backstage\n\n## Getting Started\n\n### 1. Install the Backend Plugin\n\n```sh\nyarn --cwd packages/backend add @mexl/backstage-plugin-catalog-backend-module-mcp\n\n```\n\n### 2. Register the MCP Backend Module\n\nIn your `packages/backend/src/index.ts`:\n\n```ts\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n\nbackend.add(import('@backstage/plugin-app-backend'));\nbackend.add(import('@backstage/plugin-proxy-backend'));\nbackend.add(import('@backstage/plugin-scaffolder-backend'));\nbackend.add(import('@backstage/plugin-techdocs-backend'));\n\n// Add MCP catalog module\nbackend.add(import('@mexl/backstage-plugin-catalog-backend-module-mcp'));\n\nbackend.start();\n```\n\n> **Note:** Requires Backstage version 1.0.0 or higher.\n\n### 3. Configure MCP Entity Support\n\nIn `app-config.yaml`, add MCP to your allowed kinds and catalog locations:\n\n```yaml\ncatalog:\n  rules:\n    - allow: [Component, System, API, Resource, Location, MCP]  # Add MCP here\n  locations:\n    - type: file\n      target: ../../catalog-info/mcp-entities.yaml\n      rules:\n        - allow: [MCP]\n```\n\n> **Note:** This backend plugin provides the MCP entity support and catalog integration. To visualize MCP entities with rich UI components, you'll also need to install the [frontend plugin](https://github.com/automationpi/backstage-plugin-mcp-frontend).\n\n## Test it\n\n### Define Your First MCP Entity\n\nCreate `catalog-info/mcp-entities.yaml`:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: MCP\nmetadata:\n  name: my-first-mcp\n  description: \"My first MCP server for file operations\"\nspec:\n  transport: stdio\n  runtime: node\n  type: file-processor\n  lifecycle: experimental\n  owner: my-team\n  capabilities:\n    tools: [\"read_file\", \"write_file\", \"list_files\"]\n  configuration:\n    command: \"npx\"\n    args: [\"-y\", \"@my-org/file-mcp-server\"]\n    timeout: 30000\n```\n\n### Install Frontend Plugin for Visualization\n\n**Important:** While this backend plugin enables MCP entities in your catalog, you'll need the frontend plugin to visualize them with enhanced UI cards:\n\n```sh\nyarn --cwd packages/app add @mexl/backstage-plugin-mcp-frontend\n```\n\nSee the [frontend plugin documentation](https://github.com/automationpi/backstage-plugin-mcp-frontend) for complete setup instructions.\n\n### Restart Backstage\n\n```sh\nyarn dev\n```\n\n### Verify Installation\n\n- Visit your Backstage instance, open Catalog\n- Filter by `Kind = MCP`\n- You should see your MCP entity listed\n- If you've installed the frontend plugin, clicking on an MCP entity will show rich UI cards with capabilities, configuration, and interactive features\n\n---\n\n## Example: MCP Entity Schema\n\nMCP entities use this schema:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: MCP\nmetadata:\n  name: my-mcp-server\n  description: \"Description of your MCP server\"\nspec:\n  transport: stdio | sse | websocket | http\n  runtime: node | python | go | csharp | rust | java\n  type: data-connector | tool-provider | workflow-automation | api-integration | file-processor\n  lifecycle: experimental | production | deprecated\n  owner: team-name\n  system: system-name\n  capabilities:\n    tools: [\"tool1\", \"tool2\"]\n    resources: [\"resource1\", \"resource2\"]\n    prompts: [\"prompt1\", \"prompt2\"]\n  configuration:\n    command: \"npx\"\n    args: [\"-y\", \"@my/mcp-server\"]\n    url: \"https://my-server.com/mcp\"\n    timeout: 30000\n    env:\n      - name: \"API_KEY\"\n        valueFrom: \"secret\"\n  authentication:\n    type: oauth2 | api-key | bearer | basic | none\n    provider: \"oauth-provider\"\n    config:\n      scopes: [\"read\", \"write\"]\n  dependsOn: [\"api:weather-api\", \"database\"]\n  consumedBy: [\"component:my-app\"]\n```\n\n## Example: Example MCP Entity YAMLs\n\n```yaml\n# Basic stdio MCP Server\napiVersion: backstage.io/v1alpha1\nkind: MCP\nmetadata:\n  name: simple-file-mcp\n  description: \"Simple file operations MCP server\"\nspec:\n  transport: stdio\n  runtime: node\n  type: file-processor\n  lifecycle: production\n  owner: platform-team\n  capabilities:\n    tools: [\"read_file\", \"write_file\", \"list_files\"]\n  configuration:\n    command: \"npx\"\n    args: [\"-y\", \"@my-org/file-mcp\"]\n    timeout: 30000\n```\n\n```yaml\n# Remote HTTP MCP Server\napiVersion: backstage.io/v1alpha1\nkind: MCP\nmetadata:\n  name: api-integration-mcp\n  description: \"API integration MCP server\"\nspec:\n  transport: http\n  runtime: python\n  type: api-integration\n  lifecycle: production\n  owner: integration-team\n  capabilities:\n    tools: [\"call_api\", \"transform_data\"]\n    resources: [\"api_schemas\", \"response_cache\"]\n  configuration:\n    url: \"https://api-mcp.company.com/v1\"\n    timeout: 45000\n  authentication:\n    type: oauth2\n    provider: \"company-sso\"\n  dependsOn: [\"api:external-service\"]\n```\n\nSee the `examples/` directory for more sample configurations.\n\n---\n\n## Complete Setup\n\nFor a complete MCP implementation in Backstage, you'll need:\n\n1. **This backend plugin** - Provides MCP entity support and catalog integration\n2. **[Frontend plugin](https://github.com/automationpi/backstage-plugin-mcp-frontend)** - Adds rich UI cards and visualization for MCP entities\n\nBoth plugins work together to provide a comprehensive MCP experience in your Backstage instance.\n\n## Contributing\n\nContributions welcome! Please:\n1. Fork the repository\n2. Create a feature branch\n3. Add tests for new functionality\n4. Ensure all tests pass\n5. Submit a pull request\n\n## License\n\nApache License 2.0 \n\n## Related Links\n\n- [Frontend Plugin (Required for UI)](https://github.com/automationpi/backstage-plugin-mcp-frontend)\n- [NPM Package](https://www.npmjs.com/package/@mexl/backstage-plugin-catalog-backend-module-mcp)\n- [Backstage.io](https://backstage.io)\n- [Model Context Protocol](https://modelcontextprotocol.io)\n- Issues & Support: [GitHub Issues](https://github.com/automationpi/backstage-plugin-catalog-backend-module-mcp/issues)\n",
+  "repository": "https://github.com/automationpi/backstage-plugin-catalog-backend-module-mcp",
+  "role": "backend-plugin-module",
+  "scope": "@mexl",
+  "updated": "2025-08-28T21:23:34.344Z",
+  "version": "1.0.8",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2025-08-28T21:23:34.344Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2025-08-28T21:07:06.404Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2025-08-28T20:40:28.156Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2025-08-03T14:30:01.446Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2025-07-31T23:06:02.592Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2025-07-29T14:17:01.192Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2025-07-29T14:11:05.506Z",
+      "version": "1.0.1"
+    }
+  ]
+}

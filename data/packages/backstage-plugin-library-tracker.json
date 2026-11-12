@@ -1,0 +1,42 @@
+{
+  "author": "",
+  "created": "2026-06-08T05:36:01.340Z",
+  "deprecated": "",
+  "description": "Frontend for the library-tracker Backstage plugin: org-wide dependency visibility",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "dependencies",
+    "dependency-management",
+    "developer-portal",
+    "software-catalog"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "mrjanga"
+  ],
+  "name": "backstage-plugin-library-tracker",
+  "plugin_id": "library-tracker",
+  "readme": "# backstage-plugin-library-tracker\n\n> Frontend plugin for [Library Tracker](https://github.com/mani1993/backstage-plugin-library-tracker) — org-wide third-party dependency visibility for Backstage.\n\n![Backstage](https://img.shields.io/badge/Backstage-plugin-9BF0E1?logo=backstage&logoColor=white)\n![License](https://img.shields.io/badge/license-MIT-green)\n![Version](https://img.shields.io/npm/v/backstage-plugin-library-tracker)\n\n## Install\n\n```bash\nyarn --cwd packages/app add backstage-plugin-library-tracker\n```\n\n## Usage — new Backstage frontend system\n\nImport from the `/alpha` subpath. The plugin self-registers its page, sidebar nav item, and entity tabs — no manual wiring needed.\n\n```ts\nimport libraryTrackerPlugin from 'backstage-plugin-library-tracker/alpha';\n\nconst app = createApp({\n  features: [libraryTrackerPlugin],\n});\n```\n\n## Usage — legacy frontend system\n\n**Org-wide page** — `packages/app/src/App.tsx`:\n\n```tsx\nimport { LibraryTrackerPage } from 'backstage-plugin-library-tracker';\n\n<Route path=\"/library-tracker\" element={<LibraryTrackerPage />} />;\n```\n\n**Entity tab** — `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```tsx\nimport {\n  EntityLibraryTrackerContent,\n  SystemLibraryTrackerContent,\n  LibraryTrackerIcon,\n} from 'backstage-plugin-library-tracker';\n\n// Component entity page\n<EntityLayout.Route path=\"/dependencies\" title=\"Dependencies\">\n  <EntityLibraryTrackerContent />\n</EntityLayout.Route>\n\n// System entity page\n<EntityLayout.Route path=\"/dependencies\" title=\"Dependencies\">\n  <SystemLibraryTrackerContent />\n</EntityLayout.Route>\n```\n\n**Sidebar icon** — `packages/app/src/components/Root/Root.tsx`:\n\n```tsx\nimport { LibraryTrackerIcon } from 'backstage-plugin-library-tracker';\n\n<SidebarItem icon={LibraryTrackerIcon} to=\"library-tracker\" text=\"Library Tracker\" />\n```\n\n## What it provides\n\n- **Overview dashboard** — stat cards, drift breakdown, ecosystem distribution\n- **All dependencies** — org-wide filterable table\n- **Package search** — reverse lookup: which components use a library and at which versions\n- **Outdated / Unused / Duplicate versions** — focused reports\n- **Entity tab** — one component's dependencies with on-demand rescan\n- **System tab** — aggregated dependencies for all components owned by a team\n- **Code-occurrence viewer** — exact files and lines where a library is imported, with VCS links\n\n## Full documentation\n\nSee the [main repository README](https://github.com/mani1993/backstage-plugin-library-tracker) for full setup, configuration, screenshots, and API reference.\n\n## License\n\nMIT\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2026-06-08T10:19:57.606Z",
+  "version": "0.2.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-06-08T10:19:57.606Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-06-08T08:02:03.420Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-06-08T05:36:01.637Z",
+      "version": "0.1.0"
+    }
+  ]
+}

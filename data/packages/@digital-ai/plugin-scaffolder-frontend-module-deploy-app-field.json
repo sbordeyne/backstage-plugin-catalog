@@ -1,0 +1,42 @@
+{
+  "author": "Digital.ai",
+  "created": "2025-04-09T03:54:58.826Z",
+  "deprecated": "",
+  "description": "Custom Field Extensions (Frontend Plugin)- List Deploy Application",
+  "homepage": "https://digital.ai/",
+  "keywords": [
+    "backstage",
+    "custom-field-extension",
+    "deploy-application",
+    "frontend-plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "agavaldas",
+    "dai-npmjs-bot",
+    "geekzoo-dai",
+    "grantcroker-dai",
+    "gvolarevic-dai",
+    "jcaldas",
+    "msnively"
+  ],
+  "name": "@digital-ai/plugin-scaffolder-frontend-module-deploy-app-field",
+  "plugin_id": "scaffolder-frontend-module-deploy-app-field",
+  "readme": "# scaffolder-frontend-module-deploy-app-field\n\nWelcome to the scaffolder-frontend-module-deploy-app-field plugin!\n\nThis plugin is a Custom Field Extension for Backstage. It allows you to add a set of drop-down lists to pick a Application already available in deploy.\nIt interacts with the configured Deploy Host to load the list of available Application from Deploy.\n\n## Preview\n\n![Deploy Application Selector Custom Field Extension Preview](img/DeployApplicationSelector.png)\n## Installation\n\nFrom your Backstage instance root folder:\n```shell\nyarn add --cwd packages/app @digital-ai/plugin-scaffolder-frontend-module-deploy-app-field\n```\n\n## Configuration\n\n1. Add the import to your `packages/app/src/App.tsx` on the frontend package of your Backstage instance:\n\n```js\n// packages/app/src/App.tsx\n\nimport { DeployApplicationSelectorFieldExtension } from '@digital-ai/plugin-scaffolder-frontend-module-deploy-app-field';\nimport { ScaffolderFieldExtensions } from '@backstage/plugin-scaffolder-react';\n```\n\n2. Then add the imported field extension as a child of `ScaffolderFieldExtensions` inside `Route`, like so:\n\n```js\n// packages/app/src/App.tsx\n\n<Route path=\"/create\" element={<ScaffolderPage />}>\n  <ScaffolderFieldExtensions>\n    <DeployApplicationSelectorFieldExtension />\n  </ScaffolderFieldExtensions>\n</Route>\n```\n\n3. This custom field extension populates the dropdown list with applications from XL-Deploy, which is expected to be proxied by Backstage at the following path: `/deploy-app`. As such, you need to add the appropriate configuration to your `app-config.yaml` file under the `proxy.endpoints` field, like so:\n\n```yaml\n# app-config.yaml\n\nproxy:\n  /deploy-app:\n    target: http://localhost:4516/\n    changeOrigin: true\n    headers:\n      Authorization: Basic YWRtaW46YWRtaW4=\n```\n\nYou should now see the custom field `DeployApplicationSelectorFieldExtension` and its dropdown lists populated if you navigate to the Template Editor page at http://localhost:3000/create/edit.\n\n## Usage\n\nTo use the extension in a Backstage Software Template, you can add the `ui:field` field to the parameter. The output of the extension is an object made up of the following fields:\n- `deployApplication`: the Application name selected by the user.\n\n```yaml\n  parameters:\n    - title:  Select Deploy Application\n      required:\n        - deploy\n      properties:\n        deploy:\n          type: object\n          properties:\n            deployApplication:\n              type: string\n          ui:field: DeployApplicationeSelectorExtension\n          ui:autofocus: true\n```\n",
+  "repository": "https://github.com/digital-ai/backstage-software-template",
+  "role": "frontend-plugin",
+  "scope": "@digital-ai",
+  "updated": "2025-04-15T05:04:52.616Z",
+  "version": "0.0.1-alpha.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-04-15T05:04:52.616Z",
+      "version": "0.0.1-alpha.2"
+    },
+    {
+      "date": "2025-04-09T03:54:59.130Z",
+      "version": "0.0.1-alpha.1"
+    }
+  ]
+}

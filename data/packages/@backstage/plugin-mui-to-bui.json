@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2025-09-27T03:18:03.324Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-mui-to-bui",
+  "plugin_id": "mui-to-bui",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/mui-to-bui",
+  "role": "frontend-plugin",
+  "scope": "@backstage",
+  "updated": "2026-10-20T16:59:40.591Z",
+  "version": "0.2.12",
+  "version_count": 338,
+  "versions": [
+    {
+      "date": "2026-11-11T03:06:46.290Z",
+      "version": "0.2.13-next.2"
+    },
+    {
+      "date": "2026-11-07T03:00:43.863Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T03:05:00.006Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T03:00:11.253Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-11-03T18:56:58.799Z",
+      "version": "0.2.13-next.1"
+    },
+    {
+      "date": "2026-10-31T02:54:39.738Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:50:54.173Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T03:03:46.855Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T03:02:00.664Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:36:21.766Z",
+      "version": "0.2.13-next.0"
+    },
+    {
+      "date": "2026-10-27T03:02:54.595Z",
+      "version": "0.0.0-nightly-20261027023041"
+    },
+    {
+      "date": "2026-10-20T16:59:40.591Z",
+      "version": "0.2.12"
+    },
+    {
+      "date": "2026-10-13T16:18:01.412Z",
+      "version": "0.2.12-next.2"
+    },
+    {
+      "date": "2026-09-29T12:35:52.003Z",
+      "version": "0.2.12-next.1"
+    },
+    {
+      "date": "2026-09-28T03:18:50.697Z",
+      "version": "0.0.0-nightly-20260928023907"
+    }
+  ]
+}

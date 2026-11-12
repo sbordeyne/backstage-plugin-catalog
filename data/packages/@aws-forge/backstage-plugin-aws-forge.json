@@ -1,0 +1,34 @@
+{
+  "author": "",
+  "created": "2026-05-24T07:27:02.637Z",
+  "deprecated": "",
+  "description": "Welcome to the aws plugin!",
+  "homepage": "https://github.com/refaelb/backstage-plugin-aws-control#readme",
+  "keywords": [
+    "aws",
+    "backstage",
+    "backstage-plugin",
+    "ec2",
+    "rds",
+    "s3"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "refael0583253"
+  ],
+  "name": "@aws-forge/backstage-plugin-aws-forge",
+  "plugin_id": "aws",
+  "readme": "# aws\n\nWelcome to the aws plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/aws](http://localhost:3000/aws).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/refaelb/backstage-plugin-aws-control/tree/HEAD/aws",
+  "role": "frontend-plugin",
+  "scope": "@aws-forge",
+  "updated": "2026-05-24T07:27:02.930Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-05-24T07:27:02.930Z",
+      "version": "0.1.0"
+    }
+  ]
+}

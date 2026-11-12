@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-01-10T18:23:08.668Z",
+  "deprecated": "",
+  "description": "This plugin proposes different UI fields to:",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cmoulliard"
+  ],
+  "name": "@qshift/plugin-quarkus",
+  "plugin_id": "",
+  "readme": "## Quarkus Frontend\n\nThis plugin proposes different UI fields to:\n\n| Name                                                        | Description                                                                                                                     |\n|-------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|\n| [QuarkusExtensionList](#Quarkus-extensions-field)           | Filter, select your Quarkus extensions using the `Quarkus Extension List` field.                                                |\n| [QuarkusQuickstartPicker](#Quarkus-Quickstart-picker-field) | Select using the `Quarkus QuickStart Picker` one of the quickstarts available: https://github.com/quarkusio/quarkus-quickstarts |\n| [QuarkusVersionList](#Quarkus-version-list-field)           | List the recommended and available versions of Quarkus                                                                          |\n\n\n**NOTE**: Such frontend feature(s) should be used with the quarkus scaffolder backend plugin (described hereafter) in order to get the generated project from https://code.quarkus.io/ as zip file !\n\n### Quarkus UI fields\n\nTo use the frontend components, import the needed package under the following path within an existing backstage application:\n```\ncd packages/app\nyarn add \"@qshift/plugin-quarkus\"\n```\n\nNext, customize the `packages/app/src/App.tsx` file according to the field that you plan to use\n\n#### Quarkus extensions field\n\nThis field allows a user to pick up Quarkus extension(s) from the code generator server.\n\nEdit the `packages/app/src/App.tsx` file to add the tag of the `<QuarkusExtensionListField />`\nwithin the tag `<Route path=\"/create\" element={<ScaffolderPage />}>` as described hereafter.\n\n```tsx\n...\nimport { ScaffolderFieldExtensions } from '@backstage/plugin-scaffolder-react';\nimport { QuarkusExtensionListField } from '@qshift/plugin-quarkus';\n...\n    <Route path=\"/create\" element={<ScaffolderPage />}>\n      <ScaffolderFieldExtensions>\n        <QuarkusExtensionListField />\n      </ScaffolderFieldExtensions>\n...\n```\n\nUpdate your template file to use extension field:\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: quarkus-application\n  title: Create a Quarkus Application\n  description: Create a Quarkus application using code generator \"code.quarkus.io\"\n  tags:\n    - quarkus\n    - java\nspec:\n  owner: guests\n  type: service\n\n  parameters:\n  ...\n  - title: Customize the Quarkus application features\n    properties:\n      extensions:\n        title: Quarkus Extensions\n        type: array\n        description: The list of the quarkus extensions\n        ui:field: QuarkusExtensionList\n  steps:\n  ...\n```\n\nWhen done, you will be able to select your extension(s) when you scaffold a new project.\n\nIt is also possible to filter the extensions (aka restrict the list of the extensions to be used):\n```yaml\n    ui:field: QuarkusExtensionList\n    ui:options:\n      filter:\n        extensions:\n          - io.quarkus:quarkus-resteasy-reactive-jackson\n          - io.quarkus:quarkus-smallrye-openapi\n          - io.quarkus:quarkus-smallrye-graphql\n          - io.quarkus:quarkus-hibernate-orm-rest-data-panache\n```\nIf you would like to use a different code generator server, set the following property\n```yaml\n    ui:field: QuarkusExtensionList\n    ui:options:\n        codeQuarkusUrl: https://staging.code.quarkus.io\n```\n\nQuarkus Extension List - default (field):\n![extensions-1.png](plugins%2Fquarkus%2Fdoc%2Fextensions-1.png)\n\nQuarkus Extension List - Select (field):\n![extensions-2.png](plugins%2Fquarkus%2Fdoc%2Fextensions-2.png)\n\nQuarkus Extension List - Added (field):\n![extensions-3.png](plugins%2Fquarkus%2Fdoc%2Fextensions-3.png)\n\n#### Quarkus Quickstart picker field\n\nThis field allows a user to pick up a Quarkus Quickstart project.\n\nEdit the `packages/app/src/App.tsx` file to add the tag of the `<QuarkusQuickstartPickerField />`\nwithin the `<Route path=\"/create\" element={<ScaffolderPage />}>` as described hereafter.\n\n```tsx\n...\nimport { ScaffolderFieldExtensions } from '@backstage/plugin-scaffolder-react';\nimport { QuarkusQuickstartPickerField } from '@qshift/plugin-quarkus';\n...\n    <Route path=\"/create\" element={<ScaffolderPage />}>\n      <ScaffolderFieldExtensions>\n        <QuarkusQuickstartPickerField />\n      </ScaffolderFieldExtensions>\n...\n```\n\nUpdate your template file to use extension field:\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: quarkus-quickstart\n  title: Create a Quarkus Application from a Quickstart\n  description: Create a Quarkus Application from one of the Quickstarts you can find on \"https://github.com/quarkusio/quarkus-quickstarts\"\n  tags:\n    - quarkus\n    - java\nspec:\n  owner: guests\n  type: service\n\n  parameters:\n  ...\n  - title: Select the Quarkus Quickstart\n    properties:\n      quickstartName:\n        title: Quickstart Name\n        type: string\n        description: The name of the quickstart to clone\n        default: 'hibernate-orm-panache'\n        ui:field: QuarkusQuickstartPicker\n  steps:\n  ...\n```\n\nWhen done, you will be able to create a new Quarkus project from the quickstart selected.\n\nQuarkus Quickstart Picker - default (field):\n![quickstart-1.png](plugins/quarkus/doc/quickstart-1.png)\n\nQuarkus Quickstart Picker - select (field):\n![quickstart-2.png](plugins/quarkus/doc/quickstart-2.png)\n\n#### Quarkus Version list field\n\nThis field allows a user to select a Quarkus version from the list of the recommended and available version.\n\nEdit the `packages/app/src/App.tsx` file to add the tag of the `<QuarkusQuickstartPickerField />`\nwithin the `<Route path=\"/create\" element={<ScaffolderPage />}>` as described hereafter.\n\n```tsx\n...\nimport { ScaffolderFieldExtensions } from '@backstage/plugin-scaffolder-react';\nimport { QuarkusVersionListField } from '@qshift/plugin-quarkus';\n...\n    <Route path=\"/create\" element={<ScaffolderPage />}>\n      <ScaffolderFieldExtensions>\n        <QuarkusQuickstartPickerField />\n      </ScaffolderFieldExtensions>\n...\n```\nUpdate your template file to use extension field:\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: quarkus-application\n  title: Create a Quarkus Application\n  description: Create a Quarkus application using code generator \"code.quarkus.io\"\n  tags:\n    - quarkus\n    - java\nspec:\n  owner: guests\n  type: service\n\n  parameters:\n  ...\n  - title: Customize the Quarkus application features\n    properties:\n      quarkusVersion:\n      title: Quarkus version\n      type: array\n      description: The list of the quarkus supported/recommended\n      ui:field: QuarkusVersionList\n      \n  steps:\n  ...\n```\n\nWhen done, you will be able to select the quarkus version to be used to scaffold \nyour quarkus project\n\nQuarkus Version list - Select (field):\n![version-list.png](plugins/quarkus/doc/version-list.png)\n\nQuarkus Version list - Recommended (field):\n![version-recommended.png](plugins/quarkus/doc/version-recommended.png)",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@qshift",
+  "updated": "2024-03-27T09:31:47.498Z",
+  "version": "0.1.28",
+  "version_count": 26,
+  "versions": [
+    {
+      "date": "2024-03-27T09:31:47.498Z",
+      "version": "0.1.28"
+    },
+    {
+      "date": "2024-03-11T15:47:08.033Z",
+      "version": "0.1.27"
+    },
+    {
+      "date": "2024-03-11T15:29:42.070Z",
+      "version": "0.1.26"
+    },
+    {
+      "date": "2024-03-05T13:15:42.361Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2024-03-04T13:06:10.373Z",
+      "version": "0.1.24"
+    },
+    {
+      "date": "2024-02-20T17:16:23.770Z",
+      "version": "0.1.23"
+    },
+    {
+      "date": "2024-02-20T16:45:02.077Z",
+      "version": "0.1.22"
+    },
+    {
+      "date": "2024-02-20T12:52:20.594Z",
+      "version": "0.1.21"
+    },
+    {
+      "date": "2024-02-08T18:51:48.523Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2024-02-08T18:00:05.248Z",
+      "version": "0.1.19"
+    },
+    {
+      "date": "2024-02-01T13:55:43.883Z",
+      "version": "0.1.18"
+    },
+    {
+      "date": "2024-01-30T13:40:13.757Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2024-01-26T09:00:03.495Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2024-01-22T09:29:07.314Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2024-01-19T10:27:54.078Z",
+      "version": "0.1.12"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2023-01-17T14:13:53.388Z",
+  "deprecated": "",
+  "description": "List the feed of a user on Backstage",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "accezar"
+  ],
+  "name": "@portaldx/plugin-medium-feed",
+  "plugin_id": "",
+  "readme": "# @portaldx/plugin-medium-feed\n\nList the feed of a user on Backstage\n\n_This plugin was created through the Backstage CLI_\n\n## Requirements\n\n- [Backstage](https://backstage.io/) Project;\n- Node.js v16.14.x\n\n## Use\n\n### On App.tsx:\n\n```tsx\nimport { MediumFeedProvider } from '@portaldx/plugin-medium-feed'\n\n[...]\n\nexport default app.createRoot(\n<AppRouter>\n  <MediumFeedProvider user=\"your-user-here\">\n    [...]\n  </MediumFeedProvider>\n<AppRouter />\n);\n```\n\n### On routes.tsx or Root.tsx:\n\n`packages/app/src/routes.tsx`\n\n```tsx\nimport { MediumFeedPage } from '@portaldx/plugin-medium-feed'\n\n[...]\n\nconst routes = (\n  <FlatRoutes>\n    [...]\n    <Route path=\"/medium\" element={<MediumFeedPage />} />\n  </FlatRoutes>\n);\n```\n\n### On HomePage.tsx or any other page:\n\n`packages/app/src/pages/HomePage.tsx`\n\n```tsx\nimport { MediumFeedHomeWidget } from '@portaldx/plugin-medium-feed';\n\n [...]\n\n export const HomePage = () => {\n\n    return (\n\n    [...]\n    <Grid item xs={12} md={6}>\n        <MediumFeedHomeWidget />\n    </Grid>\n    );\n };\n\n```\n\n_Developed with ❤️ by the [MadeiraMadeira](https://github.com/madeiramadeirabr) DX Junior Team_\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@portaldx",
+  "updated": "2023-02-14T13:07:50.204Z",
+  "version": "2.0.2",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2023-02-14T13:07:50.204Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2023-01-19T16:38:35.985Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2023-01-19T16:29:46.623Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2023-01-17T21:37:50.621Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2023-01-17T14:13:53.596Z",
+      "version": "0.1.0"
+    }
+  ]
+}

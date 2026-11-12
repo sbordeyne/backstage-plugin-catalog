@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2025-07-02T05:56:33.996Z",
+  "deprecated": "",
+  "description": "LangGraph agent with Azure OpenAI and Google Gemini support for Backstage GenAI plugin",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "rayl15"
+  ],
+  "name": "@rayl15/genai-plugin-langgraph-agent-for-backstage",
+  "plugin_id": "aws-genai",
+  "readme": "# Generative AI plugin for Backstage - LangGraph Agent Type\n\nThis package implements an agent for the Generative AI plugin for Backstage based on [LangGraph.js](https://github.com/langchain-ai/langgraphjs).\n\nFeatures:\n\n1. [ReAct pattern](https://react-lm.github.io/) to use available tools to answer prompts\n1. Choose between Amazon Bedrock, OpenAI, Azure OpenAI, or Google Gemini as the model provider\n1. Optionally use the Backstage sqlite/Postgres database as a checkpoint store\n1. Integrate with [LangFuse](https://github.com/langfuse/langfuse) for observability\n\n## Configuration\n\nThis agent can be configured at two different levels, global and per-agent\n\n### Global\n\nGlobal configuration values apply to all agents, all of this is optional:\n\n```yaml\ngenai:\n  langgraph:\n    memory: # (Optional) Memory store to use\n    recursionLimit: # (Optional) Limit the number of graph supersteps (default 25)\n    langfuse: # (Optional) Configuration for LangFuse observability\n      baseUrl: http://localhost:3001 # (Required) LangFuse URL\n      publicKey: pk-aaa # (Required) Public key\n      secretKey: sk-bbb # (Required) Secret key\n```\n\nThe available options for `memory` are:\n\n- `in-memory`: (Default) Store the agent state in memory\n- `backstage`: Uses the Backstage database to store agent state, either sqlite or PostgresQL depending on the configuration\n\n## Tested Models\n\nThe following models have been tested and verified to work:\n\n### AWS Bedrock\n- `anthropic.claude-3-5-sonnet-20241022-v2:0`\n- `anthropic.claude-3-haiku-20240307-v1:0`\n\n### OpenAI\n- `gpt-4`\n- `gpt-3.5-turbo`\n\n### Azure OpenAI\n- `gpt-4` (deployment)\n- Note: `o1-mini` requires API version `2024-12-01-preview` and uses `max_completion_tokens`\n\n### Google Gemini\n- `gemini-1.5-pro`\n- `gemini-1.5-flash` (recommended for free tier - higher rate limits)\n\n### Per-agent\n\nPer-agent configuration only applies to the agent for which it corresponds. The available parameters are:\n\n```yaml\ngenai:\n  agents:\n    general:\n      description: [...]\n      prompt: [...]\n      langgraph:\n        messagesMaxTokens: 100000 # (Required) Prune message history to maximum of this number of tokens\n        temperature: 0 # (Optional) Model temperature\n        maxTokens: 4000 # (Optional) Maximum output tokens\n        topP: 0.9 # (Optional) Model topP\n        # Only include the subsequent section for your model provider\n        # Bedrock only\n        bedrock:\n          modelId: 'anthropic.claude-3-5-sonnet-20241022-v2:0' # (Required) Bedrock model ID\n          region: us-west-2 # (Required) Bedrock AWS region\n        # OpenAI only\n        openai:\n          apiKey: ${OPENAI_API_KEY} # (Required) OpenAI API key\n          modelName: 'gpt-4' # (Optional) OpenAI model name\n          baseUrl: ${OPENAI_API_BASE_URL} # (Optional) URL for OpenAI API endpoint\n        # Azure OpenAI only\n        azureOpenai:\n          apiKey: ${AZURE_OPENAI_API_KEY} # (Required) Azure OpenAI API key\n          endpoint: ${AZURE_OPENAI_ENDPOINT} # (Required) Azure OpenAI endpoint URL\n          deploymentName: ${AZURE_OPENAI_DEPLOYMENT_NAME} # (Required) Azure deployment name\n          apiVersion: '2024-02-01' # (Optional) Azure OpenAI API version\n        # Google Gemini only\n        gemini:\n          apiKey: ${GOOGLE_AI_API_KEY} # (Required) Google AI API key\n          modelName: 'gemini-1.5-pro' # (Optional) Gemini model name\n```\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@rayl15",
+  "updated": "2025-12-24T06:40:48.081Z",
+  "version": "0.5.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2025-12-24T06:40:48.081Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-07-02T07:21:13.057Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2025-07-02T07:07:58.666Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2025-07-02T06:48:53.386Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2025-07-02T06:02:23.370Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2025-07-02T06:00:28.599Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2025-07-02T05:56:34.288Z",
+      "version": "0.4.1"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-11-11T20:35:07.323Z",
+  "deprecated": "",
+  "description": "The Headlamp Backend plugin provides endpoints for  starting the headlamp server binary with the kubernetes context specified in the `app-config.yaml` file. It also provides an endpoint for refreshing the kubeconfig file used by the headlamp server.",
+  "homepage": "https://github.com/backstage/backstage#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "yolossn"
+  ],
+  "name": "@yolossn/backstage-plugin-headlamp-backend",
+  "plugin_id": "headlamp",
+  "readme": "# Headlamp Backend Plugin (beta)\n\nThe Headlamp Backend plugin provides endpoints for \nstarting the headlamp server binary with the kubernetes context specified in the `app-config.yaml` file. It also provides an endpoint for refreshing the kubeconfig file used by the headlamp server.\n\n## Configuration\n\nThe Headlamp Backend plugin is configured by setting the `headlampBackend.binaryPath` in the `app-config.yaml` file. For example:\n\n### 1. Install the plugin\n```bash\nyarn --cwd packages/backend add @headlamp-k8s/backstage-plugin-headlamp-backend\n```\n\n### 2. Add backend plugin to `packages/backend/src/index.ts`\n\n```\n...\nbackend.add(import('@headlamp-k8s/backstage-plugin-headlamp-backend'));\n```\n\n### 3. Configure Headlamp Backend (Optional)\n\nIf you want to use a custom headlamp binary or custom plugins you can set the `headlampBackend.binaryPath` and `headlampBackend.pluginsPath` parameters in the `app-config.yaml` file.\n\nexample:\n```yaml\nheadlampBackend:\n  binaryPath: /path/to/headlamp/binary\n  pluginsPath: /path/to/headlamp/plugins\n```\n",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/headlamp-backend",
+  "role": "backend-plugin",
+  "scope": "@yolossn",
+  "updated": "2025-10-20T15:52:49.518Z",
+  "version": "0.1.0-beta-22",
+  "version_count": 23,
+  "versions": [
+    {
+      "date": "2025-10-20T15:52:49.518Z",
+      "version": "0.1.0-beta-22"
+    },
+    {
+      "date": "2025-08-14T04:46:08.637Z",
+      "version": "0.1.0-beta-21"
+    },
+    {
+      "date": "2025-08-13T11:59:18.663Z",
+      "version": "0.1.0-beta-20"
+    },
+    {
+      "date": "2025-04-29T09:23:19.691Z",
+      "version": "0.1.0-beta-19"
+    },
+    {
+      "date": "2025-04-27T15:20:55.861Z",
+      "version": "0.1.0-beta-18"
+    },
+    {
+      "date": "2025-04-17T04:12:27.995Z",
+      "version": "0.1.0-beta-17"
+    },
+    {
+      "date": "2025-04-06T21:22:53.342Z",
+      "version": "0.1.0-beta-16"
+    },
+    {
+      "date": "2025-04-06T21:08:55.309Z",
+      "version": "0.1.0-beta-15"
+    },
+    {
+      "date": "2025-04-06T20:45:55.656Z",
+      "version": "0.1.0-beta-14"
+    },
+    {
+      "date": "2025-04-06T20:44:53.942Z",
+      "version": "0.1.0-beta-13"
+    },
+    {
+      "date": "2025-03-31T19:07:20.009Z",
+      "version": "0.1.0-beta-12"
+    },
+    {
+      "date": "2025-03-31T16:32:34.488Z",
+      "version": "0.1.0-beta-11"
+    },
+    {
+      "date": "2025-03-31T13:33:31.385Z",
+      "version": "0.1.0-beta-10"
+    },
+    {
+      "date": "2025-03-31T12:45:37.261Z",
+      "version": "0.1.0-beta-9"
+    },
+    {
+      "date": "2025-03-31T08:35:17.803Z",
+      "version": "0.1.0-beta-8"
+    }
+  ]
+}

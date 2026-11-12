@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-05-15T12:58:04.531Z",
+  "deprecated": "",
+  "description": "A Backstage plugin for managing ephemeral Terraform environments using GitHub Issues as metadata and GitHub Actions for lifecycle automation.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "invincible"
+  ],
+  "name": "backstage-plugin-terraform-environments",
+  "plugin_id": "",
+  "readme": "# Backstage Plugin: Terraform Environments\n\nA Backstage plugin for managing ephemeral Terraform environments using GitHub Issues as metadata and GitHub Actions for lifecycle automation.\n\n## Features\n\n- List, view, and destroy ephemeral environments managed by Terraform\n- Integrates with GitHub Issues and Actions for environment metadata and automation\n- Designed for use with Backstage\n\n## Installation\n\n```sh\nyarn add @your-org/backstage-plugin-terraform-environments\n# or\nnpm install @your-org/backstage-plugin-terraform-environments\n```\n\n**After installation, the plugin will automatically add the necessary export to your Backstage app's `packages/app/src/plugins.ts` file.**\n\n## Configuration\n\n1. **Add a route in your app:**\n\n   In `packages/app/src/App.tsx`:\n   ```tsx\n   import { TerraformEnvironmentsPage } from '@your-org/backstage-plugin-terraform-environments';\n\n   // Inside your routes:\n   <Route path=\"/terraform-environments\" element={<TerraformEnvironmentsPage />} />\n   ```\n\n2. **Configure GitHub Token:**\n\n   In your Backstage `app-config.yaml`:\n   ```yaml\n   github:\n     token: ${GITHUB_TOKEN}\n   ```\n   The token must have `repo` and `workflow` permissions for the target repository.\n\n## Usage\n\n- Navigate to `/terraform-environments` in your Backstage app.\n- View, manage, and destroy ephemeral environments.\n\n## Development\n\n- Clone the repo and run:\n  ```sh\n  yarn install\n  yarn build\n  ```\n\n## Contributing\n\nContributions are welcome! Please open issues or pull requests.\n\n## License\n\n[Apache-2.0](./LICENSE) ",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2025-05-15T12:58:04.828Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-05-15T12:58:04.828Z",
+      "version": "0.1.0"
+    }
+  ]
+}

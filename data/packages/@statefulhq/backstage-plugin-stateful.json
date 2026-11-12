@@ -1,0 +1,50 @@
+{
+  "author": "",
+  "created": "2024-05-03T20:37:52.096Z",
+  "deprecated": "",
+  "description": "Welcome to the stateful plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "admc",
+    "peraltafederico",
+    "sourishkrout",
+    "stateful-wombot"
+  ],
+  "name": "@statefulhq/backstage-plugin-stateful",
+  "plugin_id": "",
+  "readme": "# stateful\n\nWelcome to the stateful plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/stateful](http://localhost:3000/stateful).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@statefulhq",
+  "updated": "2024-06-05T16:11:43.992Z",
+  "version": "1.2.1",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2024-06-05T16:11:43.992Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2024-05-13T15:07:19.081Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2024-05-10T00:56:31.778Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2024-05-09T18:38:39.312Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2024-05-09T17:02:18.869Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-05-03T23:28:35.422Z",
+      "version": "1.0.0"
+    }
+  ]
+}

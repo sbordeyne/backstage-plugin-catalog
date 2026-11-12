@@ -1,0 +1,91 @@
+{
+  "author": "",
+  "created": "2025-01-13T19:00:55.045Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-global-header",
+  "plugin_id": "global-header",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/global-header/plugins/global-header",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-04T05:06:58.436Z",
+  "version": "3.3.1",
+  "version_count": 64,
+  "versions": [
+    {
+      "date": "2026-11-04T05:06:58.436Z",
+      "version": "3.3.1"
+    },
+    {
+      "date": "2026-10-26T14:09:01.485Z",
+      "version": "3.3.0"
+    },
+    {
+      "date": "2026-10-21T15:52:37.140Z",
+      "version": "3.2.1"
+    },
+    {
+      "date": "2026-10-12T12:24:58.205Z",
+      "version": "3.2.0"
+    },
+    {
+      "date": "2026-09-21T11:08:22.295Z",
+      "version": "3.1.0"
+    },
+    {
+      "date": "2026-09-16T15:35:28.016Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2026-09-10T22:44:46.418Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2026-07-31T18:38:09.176Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-07-27T07:33:21.886Z",
+      "version": "1.22.1"
+    },
+    {
+      "date": "2026-07-20T23:49:54.587Z",
+      "version": "1.22.0"
+    },
+    {
+      "date": "2026-07-18T13:29:46.574Z",
+      "version": "1.21.7"
+    },
+    {
+      "date": "2026-06-02T17:25:12.354Z",
+      "version": "1.21.6"
+    },
+    {
+      "date": "2026-05-18T15:16:18.933Z",
+      "version": "1.21.5"
+    },
+    {
+      "date": "2026-05-06T13:06:22.917Z",
+      "version": "1.21.4"
+    },
+    {
+      "date": "2026-05-05T13:56:07.696Z",
+      "version": "1.21.3"
+    }
+  ]
+}

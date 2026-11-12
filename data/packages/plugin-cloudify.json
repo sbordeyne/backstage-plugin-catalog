@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2022-05-25T12:12:33.169Z",
+  "deprecated": "",
+  "description": "Backstage plugin that connects with the Cloudify Manager instance and pulls all available blueprints.   Blueprints are listed in a table and accesible via a link to the Cloudify Manager.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cloudify-it"
+  ],
+  "name": "plugin-cloudify",
+  "plugin_id": "",
+  "readme": "# Backstage Cloudify Plugin\n\nBackstage plugin that connects with the Cloudify Manager instance and pulls all available blueprints.  \nBlueprints are listed in a table and accesible via a link to the Cloudify Manager.\n\n\n## Setup\n\n1. Install the Backstage Cloudify Plugin\n2. Change following lines in the files to match your credentials:\n```ts\n// src/components/BlueprintsComponent/BlueprintsComponent.tsx\nconst CLOUDIFY_MANAGER_URL = 'http://${CLOUDIFY_MANAGER_IP}';\nconst BACKSTAGE_BACKEND_URL = 'http://${BACKSTAGE_BACKEND_IP}:7007';\n```\n3. Launch the Backstage app\n\n## Components\n\n### MainComponent\n\nThe Main Component displays information about Backstage Cloudify Plugin.  \nIt also generates and displays a Support Button where you can find following information:\n- [Backstage GitHub Issues](https://github.com/backstage/backstage/issues)\n- [Cloudify Homepage](https://cloudify.co/)\n- [Cloudify Documentation](https://docs.cloudify.co/latest/)\n- [Cloudify Contact](https://cloudify.co/contact/)\n\n### BlueprintsComponent\n\nThe Blueprints component displays a table with all blueprints available in the connected Cloudify Manager.  \nIt displays blueprint's icon, ID, main file name, description, and its labels.  \nEach element (blueprint) is a direct link to the blueprint's Cloudify Manager page where you can deploy it.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2022-05-25T12:12:33.395Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2022-05-25T12:12:33.395Z",
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2023-12-07T16:13:06.460Z",
+  "deprecated": "",
+  "description": "Welcome to the crossplane-aws plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mhoshi-vm"
+  ],
+  "name": "@mhoshi-vm/plugin-crossplane-aws",
+  "plugin_id": "",
+  "readme": "# crossplane-aws\n\nWelcome to the crossplane-aws plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by\nrunning `yarn start` in the root directory, and then navigating\nto [/crossplane-aws](http://localhost:3000/crossplane-ecs).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@mhoshi-vm",
+  "updated": "2023-12-23T16:21:16.477Z",
+  "version": "0.1.4",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2023-12-23T16:21:16.477Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2023-12-09T15:20:36.294Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-12-09T12:09:20.799Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-12-07T16:13:06.781Z",
+      "version": "0.1.1"
+    }
+  ]
+}

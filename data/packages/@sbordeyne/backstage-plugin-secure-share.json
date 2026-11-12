@@ -1,0 +1,42 @@
+{
+  "author": "",
+  "created": "2026-08-03T06:39:58.808Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for short-lived, end-to-end encrypted sharing of credentials, text and files between users and groups.",
+  "homepage": "https://sbordeyne.github.io/backstage-plugins/plugins/secure-share/",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "encryption",
+    "frontend-plugin",
+    "secrets",
+    "sharing"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dogeek0"
+  ],
+  "name": "@sbordeyne/backstage-plugin-secure-share",
+  "plugin_id": "secure-share",
+  "readme": "# secure-share\n\nFrontend for the `secure-share` plugin: share credentials, text and files with\nBackstage users and groups, encrypted in the browser and expiring on their own.\n\n## Where the crypto lives\n\nAll encryption and decryption happen here, in the browser:\n\n- each browser generates a **P-256 ECDH key pair** whose private half is stored in\n  IndexedDB as a non-extractable `CryptoKey`, so no code — including this plugin — can\n  read the key bytes;\n- a paste is encrypted with a fresh AES-256-GCM data key, and that data key is wrapped\n  once per recipient device public key;\n- the backend receives ciphertext and wrapped keys only.\n\nA consequence worth repeating in the UI: a new browser means a new key, and pastes\nshared with the previous one cannot be read there. Pastes are short lived by design, so\nthis is a cheap trade for having no key escrow anywhere.\n\nRecipient public keys are fetched from the backend, which is the one thing a sender cannot\nverify on its own. Fingerprints are therefore pinned per recipient, in this browser's\n`localStorage` and nowhere else: pins kept server side would be under the control of the\nvery backend they are meant to check.\n\nWhen a recipient presents a key that has never been pinned for them, the sender is shown\nthe fingerprint and has to confirm it before the paste can be sent. That check cannot tell\na substituted key from a recipient's new laptop, which is exactly why it asks instead of\ndeciding. Keys are pinned only after a paste has actually been sent, so an abandoned form\nnever silently trusts anything.\n\n## Configuration\n\nThe `secureShare` config block is declared once, by\n`@sbordeyne/backstage-plugin-secure-share-backend`, and read here through\n`readSecureShareSharedConfig` from `@sbordeyne/secure-share-common`. Both sides use the\nsame reader so the limits the form enforces match the ones the backend enforces.\n\n## Installation\n\nThis is a [new frontend system](https://backstage.io/docs/frontend-system/) plugin: it exposes\nno legacy `createPlugin` extensions, and is installed as a feature.\n\n```tsx\n// packages/app/src/App.tsx\nimport secureSharePlugin from '@sbordeyne/backstage-plugin-secure-share/alpha';\n\nconst app = createApp({\n  features: [secureSharePlugin],\n});\n```\n\nThe page carries its own title and icon, which is what the app builds the sidebar entry from, so\nthere is no `SidebarItem` to add. The `Shared with me` home page widget comes with the plugin and\nis added from the home page's own customization; it honours `secureShare.card.limit` unless the\nviewer overrides the count in the widget settings.\n\nRoutes inside the plugin:\n\n| Path                      | Purpose                                                        |\n| ------------------------- | -------------------------------------------------------------- |\n| `/secure-share`           | Share a secret, see what was shared with you, manage devices.  |\n| `/secure-share/paste/:id` | Open a paste shared with you, using this browser's device key. |\n| `/secure-share/link/:id`  | Open a paste from a secret link, whose key is in the fragment. |\n\n## Development\n\n```bash\nyarn workspace @sbordeyne/backstage-plugin-secure-share start\n```\n",
+  "repository": "https://github.com/sbordeyne/backstage-plugins/tree/HEAD/plugins/secure-share",
+  "role": "frontend-plugin",
+  "scope": "@sbordeyne",
+  "updated": "2026-08-24T07:07:52.124Z",
+  "version": "0.3.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-08-24T07:07:52.124Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-08-19T14:37:25.476Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-03T06:39:59.127Z",
+      "version": "0.1.0"
+    }
+  ]
+}

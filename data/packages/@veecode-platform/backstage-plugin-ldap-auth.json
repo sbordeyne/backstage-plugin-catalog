@@ -1,0 +1,40 @@
+{
+  "author": "",
+  "created": "2025-12-12T15:49:15.368Z",
+  "deprecated": "",
+  "description": "Backstage LDAP Authentication plugin, this packages adds frontend login page and token management (fork from @immobiliarelabs original plugin)",
+  "homepage": "https://github.com/veecode-platform/devportal-plugins#readme",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-ldap-auth",
+  "plugin_id": "ldap-auth",
+  "readme": "# @veecode-platform/backstage-plugin-ldap-auth\n\n> LDAP Authentication frontend for [Backstage](https://backstage.io/)\n\nThis package provides a custom LDAP login page and client-side token management for your Backstage instance.\n\n## About This Plugin\n\nThis is a **maintained fork** of the original [`@immobiliarelabs/backstage-plugin-ldap-auth`](https://github.com/immobiliare/backstage-plugin-ldap-auth), updated and adapted for:\n\n- ✅ **Latest Backstage releases** (v1.45+)\n- ✅ **Material-UI v5** (migrated from v4)\n- ✅ **Modern React patterns** (hooks, functional components)\n- ✅ **TypeScript 5.x** support\n\n### Credits\n\nOriginal plugin created by the amazing team at [ImmobiliareLabs](https://github.com/immobiliare). We are grateful for their work and maintain this fork to ensure compatibility with the latest Backstage releases.\n\n📚 **[Original Plugin Documentation](https://github.com/immobiliare/backstage-plugin-ldap-auth)**\n\n## Features\n\n- **Custom Login Page**: Material-UI based LDAP authentication form\n- **Token Management**: Automatic token refresh and session handling\n- **Customizable UI**: Pass children components to customize the look and feel\n- **Password Validation**: Built-in username and password validation\n- **Session Persistence**: Cookie-based session storage\n\n## Prerequisites\n\nThis plugin works in conjunction with:\n\n- **[@veecode-platform/backstage-plugin-ldap-auth-backend](../ldap-auth-backend)** - Backend authentication provider\n- **[@backstage/plugin-catalog-backend-module-ldap](https://www.npmjs.com/package/@backstage/plugin-catalog-backend-module-ldap)** - Syncs LDAP users/groups with Backstage catalog\n\n## Table of Contents\n\n- [@veecode-platform/backstage-plugin-ldap-auth](#veecode-platformbackstage-plugin-ldap-auth)\n  - [About This Plugin](#about-this-plugin)\n    - [Credits](#credits)\n  - [Features](#features)\n  - [Prerequisites](#prerequisites)\n  - [Table of Contents](#table-of-contents)\n  - [Installation](#installation)\n  - [Configuration](#configuration)\n    - [Basic Setup](#basic-setup)\n    - [Customization Options](#customization-options)\n    - [Custom Children](#custom-children)\n  - [Backend Configuration](#backend-configuration)\n  - [Migration from Original Plugin](#migration-from-original-plugin)\n  - [Support \\& Contributing](#support--contributing)\n  - [Thanks](#thanks)\n  - [License](#license)\n\n## Installation\n\nInstall both frontend and backend plugins:\n\n```bash\n# Frontend plugin\nyarn workspace app add @veecode-platform/backstage-plugin-ldap-auth\n\n# Backend plugin  \nyarn workspace backend add @veecode-platform/backstage-plugin-ldap-auth-backend\n```\n\n## Configuration\n\n### Basic Setup\n\nReplace Backstage's default sign-in page with the LDAP login page in your app.\n\n**`packages/app/src/App.tsx`**\n\n```typescript\nimport { LdapAuthFrontendPage } from '@veecode-platform/backstage-plugin-ldap-auth';\nimport { createApp } from '@backstage/app-defaults';\n\nconst app = createApp({\n  // ... other config\n  components: {\n    SignInPage: (props) => (\n      <LdapAuthFrontendPage\n        {...props}\n        provider=\"ldap\"\n      />\n    ),\n  },\n  // ... other config\n});\n```\n\n> **Note:** This component handles both UI and authentication logic, including token management and API calls to the backend authentication routes.\n\n### Customization Options\n\nYou can customize the login form with validation rules and helper text:\n\n```typescript\nconst app = createApp({\n  components: {\n    SignInPage: (props) => (\n      <LdapAuthFrontendPage\n        {...props}\n        provider=\"ldap\"\n        options={{\n          // Custom labels\n          usernameLabel: 'Employee ID',\n          \n          // Helper text\n          helperTextUsername: \"Enter your LDAP username (e.g., 'jsmith')\",\n          helperTextPassword: 'Enter your LDAP password',\n          \n          // Custom validation\n          validateUsername: (username) => username.length >= 3,\n          validatePassword: (password) => password.length >= 8,\n        }}\n      />\n    ),\n  },\n});\n```\n\n**Available Options:**\n\n| Option | Type | Description | Default |\n|--------|------|-------------|---------|\n| `usernameLabel` | `string` | Label for username field | `'LDAP Name'` |\n| `helperTextUsername` | `string` | Helper text below username field | `undefined` |\n| `helperTextPassword` | `string` | Helper text below password field | `undefined` |\n| `validateUsername` | `(usr: string) => boolean` | Custom username validation | Min 4 chars, max 40, no spaces |\n| `validatePassword` | `(pwd: string) => boolean` | Custom password validation | Min 4 chars, no spaces |\n\n### Custom Children\n\nThe login page accepts children components to customize the UI (e.g., logos, banners, footer):\n\n```typescript\nconst app = createApp({\n  components: {\n    SignInPage: (props) => (\n      <LdapAuthFrontendPage {...props} provider=\"ldap\">\n        <div style={{ textAlign: 'center', marginBottom: 24 }}>\n          <img src=\"/your-logo.png\" alt=\"Logo\" width={200} />\n          <h2>Welcome to Our Portal</h2>\n          <p>Please sign in with your LDAP credentials</p>\n        </div>\n      </LdapAuthFrontendPage>\n    ),\n  },\n});\n```\n\n## Backend Configuration\n\nMake sure to configure the backend plugin. See the [backend plugin documentation](../ldap-auth-backend) for details.\n\n## Migration from Original Plugin\n\nIf you're migrating from `@immobiliarelabs/backstage-plugin-ldap-auth`:\n\n1. **Update package name** in `package.json`:\n\n   ```diff\n   - \"@immobiliarelabs/backstage-plugin-ldap-auth\": \"^4.3.1\"\n   + \"@veecode-platform/backstage-plugin-ldap-auth\": \"workspace:*\"\n   ```\n\n2. **Update imports** in `App.tsx`:\n\n   ```diff\n   - import { LdapAuthFrontendPage } from '@immobiliarelabs/backstage-plugin-ldap-auth';\n   + import { LdapAuthFrontendPage } from '@veecode-platform/backstage-plugin-ldap-auth';\n   ```\n\n3. **Material-UI v5**: This fork uses MUI v5, which is already the standard in latest Backstage releases\n\n4. **API remains the same** - no code changes needed beyond import updates\n\n## Support & Contributing\n\nThis is a community-maintained fork. For issues or questions:\n\n- **This fork**: [GitHub Issues](https://github.com/veecode-platform/devportal-plugins/issues)\n- **Original plugin**: [ImmobiliareLabs/backstage-plugin-ldap-auth](https://github.com/immobiliare/backstage-plugin-ldap-auth)\n\n## Thanks\n\nOriginal plugin created with ❤️ by the [ImmobiliareLabs](https://github.com/immobiliare) team.\n\nMaintained and updated by [VeeCode Platform](https://github.com/veecode-platform).\n\n---\n\n## License\n\nMIT License - see [LICENSE](../../LICENSE) for details.\n\nOriginal work Copyright (c) ImmobiliareLabs  \nModified work Copyright (c) VeeCode Platform\n",
+  "repository": "https://github.com/veecode-platform/devportal-plugins/tree/HEAD/workspace/ldap-auth/plugins/ldap-auth",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2026-03-20T12:44:03.532Z",
+  "version": "1.2.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-03-20T12:44:03.532Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-03-06T19:17:07.793Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-02-19T13:13:46.662Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-12-12T15:49:15.619Z",
+      "version": "1.0.0"
+    }
+  ]
+}

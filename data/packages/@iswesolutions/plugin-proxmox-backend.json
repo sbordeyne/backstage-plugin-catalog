@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-10-06T23:31:45.278Z",
+  "deprecated": "",
+  "description": "Backend for [`@iswesolutions/plugin-proxmox`](../proxmox). It holds the Proxmox VE API tokens, reads `/cluster/resources` and `/cluster/status`, caches the result briefly, and serves the typed model and attention checks to the frontend. The browser never ",
+  "homepage": "https://github.com/ISWE-Solutions/backstage-plugins/tree/main/plugins/proxmox-backend#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "csiwale"
+  ],
+  "name": "@iswesolutions/plugin-proxmox-backend",
+  "plugin_id": "proxmox",
+  "readme": "# @iswesolutions/plugin-proxmox-backend\n\nBackend for [`@iswesolutions/plugin-proxmox`](../proxmox). It holds the\nProxmox VE API tokens, reads `/cluster/resources` and `/cluster/status`,\ncaches the result briefly, and serves the typed model and attention checks to\nthe frontend. The browser never talks to Proxmox directly.\n\n## Installation\n\n```sh\nyarn --cwd packages/backend add @iswesolutions/plugin-proxmox-backend\n```\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@iswesolutions/plugin-proxmox-backend'));\n```\n\n## Configuration\n\n```yaml\nproxmox:\n  url: https://pve.example.com:8006 # any cluster member\n  token: ${PROXMOX_TOKEN} # user@realm!tokenid=secret\n  name: Primary # optional display name\n  verifyTls: false # PVE ships a self-signed certificate\n  cacheSeconds: 15\n  uiUrls: # optional: node -> web UI, for deep links\n    pve1: https://pve1.example.com:8006\n  clusters: # optional additional clusters\n    - name: DR\n      url: https://pve-dr.example.com:8006\n      token: ${PROXMOX_DR_TOKEN}\n  attention: # optional threshold overrides\n    storageFull: 0.9\n    nodeMemoryHigh: 0.9\n    guestMemoryHigh: 0.95\n```\n\nUse a read-only token:\n\n```sh\npveum user token add monitoring@pve backstage --privsep 0\npveum acl modify / --roles PVEAuditor --tokens 'monitoring@pve!backstage'\n```\n\nClusters can also be added on the page's Settings tab. Those are stored in the\nplugin's database, and their tokens are never returned to the browser. See\n[`config.d.ts`](config.d.ts) for every option.\n\n## API\n\nAll routes, under `/api/proxmox`, need a signed-in user or a backend service token:\n\n| Route                                        | Purpose                                                 |\n| -------------------------------------------- | ------------------------------------------------------- |\n| `GET /resources`                             | Nodes, guests and storage for a cluster (`?cluster=`)   |\n| `GET /attention`                             | Health findings (offline nodes, full storage, …)        |\n| `GET /disks`, `GET /disks/smart`             | Physical disks and SMART data                           |\n| `GET /clusters`                              | Configured clusters (no tokens)                         |\n| `POST /clusters/test`                        | Test a cluster connection                               |\n| `POST /clusters`, `PUT/DELETE /clusters/:id` | Manage Settings-tab clusters (`proxmox.cluster.manage`) |\n\n## Permissions\n\nDefined in [`@iswesolutions/plugin-proxmox-common`](../proxmox-common):\n`proxmox.cluster.manage` gates adding, editing and removing clusters.\n`proxmox.guest.power` is reserved for future start/stop actions.\n",
+  "repository": "https://github.com/ISWE-Solutions/backstage-plugins/tree/HEAD/plugins/proxmox-backend",
+  "role": "backend-plugin",
+  "scope": "@iswesolutions",
+  "updated": "2026-10-15T11:32:08.520Z",
+  "version": "0.1.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-10-15T11:32:08.520Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-10-06T23:31:45.278Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

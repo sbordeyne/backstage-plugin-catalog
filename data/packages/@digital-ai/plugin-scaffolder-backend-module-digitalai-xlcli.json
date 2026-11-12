@@ -1,0 +1,39 @@
+{
+  "author": "Digital.ai",
+  "created": "2025-04-15T05:14:53.478Z",
+  "deprecated": "",
+  "description": "xlcli custom action for @backstage/plugin-scaffolder-backend",
+  "homepage": "https://digital.ai/",
+  "keywords": [
+    "backend-plugin",
+    "backstage",
+    "custom-actions",
+    "digitalai",
+    "xlcli"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "agavaldas",
+    "dai-npmjs-bot",
+    "geekzoo-dai",
+    "grantcroker-dai",
+    "gvolarevic-dai",
+    "jcaldas",
+    "msnively"
+  ],
+  "name": "@digital-ai/plugin-scaffolder-backend-module-digitalai-xlcli",
+  "plugin_id": "scaffolder-backend-module-digitalai-xlcli",
+  "readme": "# @digital-ai/plugin-scaffolder-backend-module-digitalai-xlcli\n# 🚀 Digital.ai XL CLI Apply Actions\n\nThis Backstage software template actions enables applying configuration files to \n**Digital.ai XL Deploy** or **XL Release** using the `xl apply` command via the **XL CLI**.\n\n---\n\n## 🧩 What It Does\n\nBased on user input, the template:\n\n- Determines whether to use **XL Deploy** or **XL Release**\n- Applies the specified configuration YAML file using the `xl` CLI\n- Uses credentials and host information from backstage app-config.yaml\n- Outputs the target environment URL after command success. \n\n---\n\n## ⚙️ How It Works\n\nThis template uses a custom Backstage scaffolder action called `xlcli:apply`. The action:\n\n1. Locates the `xl` CLI binary\n2. Reads configuration values (host, username, password) using `readValues`\n3. Constructs the `xl apply` command dynamically\n4. Executes it and reports the result via Backstage scaffolder outputs\n\n---\n\n## 📝 Input Parameters\n\n| Name       | Description                                           | Required |\n|------------|-------------------------------------------------------|----------|\n| `product`  | Target product: `xl-deploy` or `xl-release`           | ✅ Yes   |\n| `filePath` | Path to the configuration YAML file to be applied     | ✅ Yes   |\n\n## Installation\n\nFrom your Backstage instance root folder:\n```shell\nyarn add --cwd packages/backend @digital-ai/plugin-scaffolder-backend-module-digitalai-xlcli\n```\n\nThis will download the right `xl` cli binary for the current operating system and architecture from the dist at https://dist.xebialabs.com/public/xl-cli/\n\nThis behavior can be customized by adding a new `\"xlcli\"` field in your `packages/backend/package.json` file, like so:\n\n```json\n//packages/backend/package.json\n{\n  \"xlcli\": {   \n    \"version\": \"24.3.4\",\n    \"skipDownload\": false\n  }\n}\n```\nThe custom actions used in this template require the xl CLI binary to function correctly.\n\nIf you choose to skip automatic downloading (using the xl.skipDownload option), make sure to satisfy one of the following conditions:\n\na. The path to the xl binary is explicitly configured in your app-config.yaml. (See configuration details below)\n```yaml\nxlcli:\n# When adding this plugin to your Backstage instance, it will automatically try to download the latest xl-cli binary and use it.\n# But if you already have xl cli installed, you can override the path below.\n  binaryPath: '/home/ishwarya/backstage/xl_test'\n```\nb. The xl CLI is already installed and available in the system’s global PATH on the machine running Backstage.\n\n## Configuration\n1. Import the actions into your `packages/backend/src/index.ts` Backend Plugin of your Backstage instance: \n```ts\n// packages/backend/src/index.ts\nimport scaffolderxlcliModule from \"@digital-ai/plugin-scaffolder-backend-module-digitalai-xlcli\";\nconst backend = createBackend();\n// ....\nbackend.add(scaffolderxlcliModule);\n```\n## Preview\n![Preview the xl-cli apply action in backstage.](img/previewxlcliapply.png)\n\n## Usage\n  Please refer the template [xl-cli-github](templates/xl-cli-github/README.md) and [xl-cli-yaml-inline](templates/xl-cli-yaml-inline/README.md)  for more details on how to use the xlcli apply action in the backstage template.\n\n```yaml\n\n    - id: xlcliApply\n      name: Apply xl-cli\n      action: digitalai:xlcli:apply\n      input:\n        product: ${{ parameters.product }}\n        releaseInstance: ${{ parameters.releaseInstance }}\n        filePath: ${{ parameters.filePath }}\n\n```\n",
+  "repository": "https://github.com/digital-ai/backstage-software-template",
+  "role": "backend-plugin-module",
+  "scope": "@digital-ai",
+  "updated": "2025-04-15T05:14:53.776Z",
+  "version": "0.0.1-alpha.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-04-15T05:14:53.776Z",
+      "version": "0.0.1-alpha.0"
+    }
+  ]
+}

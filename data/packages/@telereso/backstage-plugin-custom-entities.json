@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2024-04-28T06:17:23.361Z",
+  "deprecated": "",
+  "description": "![Plugin Demo](../../docs/images/frontend-demo.png)",
+  "homepage": "https://github.com/telereso/backstage-plugins#readme",
+  "keywords": [
+    "backstage",
+    "entities",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ahna92"
+  ],
+  "name": "@telereso/backstage-plugin-custom-entities",
+  "plugin_id": "",
+  "readme": "# Custom Entities\n\n![Plugin Demo](../../docs/images/frontend-demo.png)\n\nThis plugin provide easy UI to add new entities (Users,Groups ...etc) by storing them and provide endpoints for catalog to consume them from\n\nThis is the front end plugin also check [Backend Plugin](../custom-entities-backend/README.md)\n\n## Why this plugin\n\n### First Deployment and Identity \nWhen setting up backstage for the first time it might be hard to digest everything at once and User/Group management and\nother entities will need some time to get use to,  \n\nAlso when integrating with a new [Authentication Provider](https://backstage.io/docs/auth/) this plugin will be handy to add users quickly\n\n### Custom/Limited Authentication Access\n\nSome organisation when integrating with Github/Gitlab or other auth providers don't want to copy the entre org users and groups into backstage \nand provide access to everyone involved, \n\nThis plugin will make it's easy to add/remove new users and groups without the need to maintain a git repo with all users and groups\n\nAlso will give a chance to re-organise the groups in case they don't match the hierarchy of the auth provider\n \n### Blue Print Entities \nThis plugin can be used to design all the org setup then quickly validate the result in backstage,\nAfter that the resulted `custom-entities.yaml` can be committed to some repo and location for better control and provision \n\n## Demo\nYou can check a live demo of the plugin [here](https://backstage-plugins-demo-q3zy3mrtmq-uc.a.run.app/custom-entities)\n\n\n## Installation\n\nThis is the front end plugin so make sure to setup the [Backend Plugin](../custom-entities-backend/README.md) as well\n\n### Install the package\n\n```bash\nyarn --cwd packages/app add @telereso/backstage-plugin-custom-entities\n```\n\n### Adding the plugin to route `packages/app`\n\nIn your `packages/app/src/App.tsx` add the following changes\n\n```diff\n+import { CustomEntitiesPage } from '@telereso/backstage-plugin-custom-entities';\n\nconst app = createApp({\n  apis,\n  \n\nconst routes = (\n  <FlatRoutes>\n    /* other routes */\n+   <Route path=\"/custom-entities\" element={<CustomEntitiesPage />} />\n  </FlatRoutes>\n);\n\n```\n\n### Adding to sidebar navigation\n\nIn your `packages/app/src/compoenets/Root/root.tsx` add the following changes\n\n```diff\n+import SupervisedUserCircleSharpIcon from '@material-ui/icons/SupervisedUserCircleSharp';\nimport MenuIcon from '@material-ui/icons/Menu';\nimport SearchIcon from '@material-ui/icons/Search';\n\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n      <SidebarLogo />\n      <SidebarGroup label=\"Search\" icon={<SearchIcon />} to=\"/search\">\n        <SidebarSearchModal />\n      </SidebarGroup>\n      <SidebarDivider />\n      <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n        {/* Other Items and groups */}\n        <SidebarItem icon={LibraryBooks} to=\"docs\" text=\"Docs\" />\n+       <SidebarItem icon={SupervisedUserCircleSharpIcon} to=\"custom-entities\" text=\"Custom Entities\" />\n        <SidebarItem icon={CreateComponentIcon} to=\"create\" text=\"Create...\" />\n        {/* Other Items and groups */}\n  </SidebarPage>\n);\n\n```\n\n\n#### Admin Permission \n\nTo only give access to admins for this plugin, you can make the following changes \n\n```bash\nyarn --cwd packages/app add @telereso/backstage-plugin-custom-entities-common\nyarn --cwd packages/backend add @telereso/backstage-plugin-custom-entities-common\n```\n\nUpdate `packages/app/src/compoenets/Root/root.tsx`\n\n```diff\n+import SupervisedUserCircleSharpIcon from '@material-ui/icons/SupervisedUserCircleSharp';\nimport MenuIcon from '@material-ui/icons/Menu';\nimport SearchIcon from '@material-ui/icons/Search';\n+ import {customEntitiesAdministerPermission} from \"@telereso/backstage-plugin-custom-entities-common\";\n\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n      <SidebarLogo />\n      <SidebarGroup label=\"Search\" icon={<SearchIcon />} to=\"/search\">\n        <SidebarSearchModal />\n      </SidebarGroup>\n      <SidebarDivider />\n      <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n        {/* Other Items and groups */}\n        <SidebarItem icon={LibraryBooks} to=\"docs\" text=\"Docs\" />\n+        <RequirePermission\n+            permission={customEntitiesAdministerPermission}\n+            errorPage={<></>}>\n+          <SidebarItem icon={SupervisedUserCircleSharpIcon} to=\"custom-entities\" text=\"Custom Entities\" />\n+        </RequirePermission>\n        <SidebarItem icon={CreateComponentIcon} to=\"create\" text=\"Create...\" />\n        {/* Other Items and groups */}\n  </SidebarPage>\n);\n\n```\n\nthen update your policy \n\n\n```diff\n+import {customEntitiesUpdatePermission} from \"@telereso/backstage-plugin-custom-entities-common\"\n\n\nconst GROUP_BACKSTAGE_ADMINS = 'group:default/backstage-admins'\n\nexport class TestPermissionPolicy implements PermissionPolicy {\n    async handle(request: PolicyQuery, user?: BackstageIdentityResponse,): Promise<PolicyDecision> {\n\n        // Custom Entities\n+        if (isPermission(request.permission, customEntitiesUpdatePermission)) {\n+            if (user?.identity.ownershipEntityRefs.includes(GROUP_BACKSTAGE_ADMINS,)\n+            ) {\n+                return {result: AuthorizeResult.ALLOW};\n+            }\n+            return {result: AuthorizeResult.DENY};\n+        }\n        \n        // Other permission\n\n        return {result: AuthorizeResult.ALLOW};\n    }\n}\n```\n",
+  "repository": "https://github.com/telereso/backstage-plugins/tree/HEAD/plugins/custom-entities",
+  "role": "frontend-plugin",
+  "scope": "@telereso",
+  "updated": "2024-05-07T11:36:36.732Z",
+  "version": "0.7.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2024-05-07T11:36:36.732Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2024-04-30T18:25:06.275Z",
+      "version": "0.6.3"
+    },
+    {
+      "date": "2024-04-30T16:01:42.719Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2024-04-30T15:53:30.867Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2024-04-30T13:36:31.815Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2024-04-30T10:00:28.316Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-04-28T06:38:16.814Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-04-28T06:17:23.672Z",
+      "version": "0.2.0"
+    }
+  ]
+}

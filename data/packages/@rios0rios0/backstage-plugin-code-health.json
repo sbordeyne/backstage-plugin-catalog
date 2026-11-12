@@ -1,0 +1,92 @@
+{
+  "author": "",
+  "created": "2026-07-28T23:30:14.516Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin that shows CI status, releases, tags, compliance checks and contributor metrics for every GitHub and Azure DevOps repository",
+  "homepage": "https://github.com/rios0rios0/backstage-plugin-code-health#readme",
+  "keywords": [
+    "azure-devops",
+    "backstage",
+    "backstage-plugin",
+    "ci",
+    "code-health",
+    "github",
+    "sonarcloud",
+    "wakatime"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "rios0rios0"
+  ],
+  "name": "@rios0rios0/backstage-plugin-code-health",
+  "plugin_id": "code-health",
+  "readme": "# @rios0rios0/backstage-plugin-code-health\n\nThe Backstage **frontend** plugin of the Code Health suite: a dashboard of CI status, releases,\ntags, compliance checks and contributor metrics for the repositories in your Backstage catalog.\n\nIt requires `@rios0rios0/backstage-plugin-code-health-backend`, which is where the repositories are\ndiscovered, the history is ingested and the credentials live. The browser holds no credential and\ntalks only to `/api/code-health`.\n\nBeyond the tables, clicking a contributor or a repository opens that row's own page: the last one\nto six months of the same figures the table prints, bucketed by day up to forty-five days and by\nweek beyond, bounded by what the backfill has actually collected. Each page heads itself with a\nscore — productivity for a person, health for a repository, both `0`–`100` — and never prints the\nnumber on its own: the components it was folded from are rendered beside it, with anything nothing\ncould measure left out and its weight shared among the rest rather than counted as a zero. A\ncontributor's page also lists the repositories that person is responsible for, read from the\ncatalog's `spec.owner` and the groups they belong to. Every person is scored as an engineer or a\nlead — an engineer's score leans on output, a lead's on reviews — and the contributors table opens\non the score, highest first. Administrators, and only administrators, get a control in the header\nfor re-collecting the history from scratch, another for changing either role's weights, and a role\nselect on every row of the contributors table.\n\nSee the [repository README](https://github.com/rios0rios0/backstage-plugin-code-health#readme)\nfor installation, configuration and architecture.\n",
+  "repository": "https://github.com/rios0rios0/backstage-plugin-code-health/tree/HEAD/plugins/code-health",
+  "role": "frontend-plugin",
+  "scope": "@rios0rios0",
+  "updated": "2026-10-16T19:22:21.126Z",
+  "version": "6.0.0",
+  "version_count": 15,
+  "versions": [
+    {
+      "date": "2026-10-16T19:22:21.126Z",
+      "version": "6.0.0"
+    },
+    {
+      "date": "2026-09-29T16:55:38.023Z",
+      "version": "5.3.0"
+    },
+    {
+      "date": "2026-09-18T22:20:27.233Z",
+      "version": "5.2.0"
+    },
+    {
+      "date": "2026-09-18T17:46:32.697Z",
+      "version": "5.1.0"
+    },
+    {
+      "date": "2026-09-15T20:50:34.184Z",
+      "version": "5.0.0"
+    },
+    {
+      "date": "2026-09-10T17:18:32.593Z",
+      "version": "4.2.0"
+    },
+    {
+      "date": "2026-09-10T16:30:43.350Z",
+      "version": "4.1.0"
+    },
+    {
+      "date": "2026-09-09T17:02:18.457Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2026-08-26T22:03:39.585Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2026-08-24T22:00:27.725Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2026-08-11T21:34:55.384Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2026-08-11T15:31:49.060Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2026-08-10T22:04:24.449Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-07-29T18:46:45.556Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-07-28T23:30:14.742Z",
+      "version": "1.0.0"
+    }
+  ]
+}

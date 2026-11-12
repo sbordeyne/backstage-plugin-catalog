@@ -1,0 +1,89 @@
+{
+  "author": "",
+  "created": "2025-10-22T09:42:39.398Z",
+  "deprecated": "",
+  "description": "Backstage plugin for TargetBoard.ai components",
+  "homepage": "https://github.com/targetboard/backstage-plugin",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "developer-portal",
+    "targetboard"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "elad.ziv.targetboard",
+    "lior.ash"
+  ],
+  "name": "@targetboard/backstage-plugin",
+  "plugin_id": "targetboard",
+  "readme": "# TargetBoard Backstage Plugin\n\nEmbed interactive **TargetBoard** dashboards and metric cards directly inside your [Backstage](https://backstage.io) Developer portal.\n\nThe TargetBoard plugin brings real-time delivery intelligence to Backstage-enabling engineering teams and leaders to view performance metrics, KPIs, and dashboards without leaving their workflow. It transforms Backstage from a service catalog into a decision-making hub that connects engineering execution to business outcomes.\n\n---\n<br />\n\n## 🎯 About TargetBoard\n\nTargetBoard helps you make faster, data-driven delivery decisions.<br />\n\nWe unify data from your entire toolchain to give teams and leaders real-time visibility into delivery performance, predictability, and business impact - without manual reporting or complex setup. \n\n**Key benefits include:**\n- 🚀 Faster delivery decisions\n- 📈 Improved predictability\n- 💰 Higher ROI on engineering investment\n- 🧭 Reduced operational risk\n- 🤝 Stronger business alignment\n- ⚙️ Lower overhead\n\n[Learn more](https://targetboard.ai/contact-us)\n\n---\n<br />\n\n## 🚀 Features\n\n- 📊 **Native Integration** - Embed full TargetBoard dashboards into Backstage\n- 🧱 **Metric Cards** - Directly embed essential KPIs, charts, tables, and trends\n- 🔐 **Trusted Security** - Uses secure API keys for authenticated embeds\n- 🧩 **Customizability** - Fully configurable via simple component props\n- 🔍 **Cross-tool visibility** - Connects to Jira, GitHub, GitLab, Bitbucket, AWS, etc.\n- 🛡️ **KPI Governance** - Standardized definitions and consistent reporting\n\n---\n<br />\n\n## 📦 Installation\n\nInstall the app-package into your Backstage app:\n\n```bash\n# For Yarn v3+\nyarn --cwd packages/app add @targetboard/backstage-plugin\n\n# For Yarn v1 (classic)\nyarn add --cwd packages/app @targetboard/backstage-plugin\n```\n\n---\n<br />\n\n## 🖥️ Usage\n\nImport and use the TargetBoardEmbedCard component anywhere in your Backstage frontend - for example, inside an entity page, overview page, or a custom route.\n\nExample:\n```ts\nimport React from 'react';\nimport { TargetBoardEmbedCard } from '@targetboard/backstage-plugin';\n\nexport const TeamPerformancePage = () => (\n  <TargetBoardEmbedCard\n    apiKey=\"api_##########################\"\n    embedId=\"your-embed-id\"\n    title=\"Team Performance Board\"\n  />\n);\n```\n\n\\* You can embed either a dashboard's or a metric card's embed-ID using the same component.\n\n---\n<br />\n\n## ▶️ Instructions\n\nHow to get your embed IDs and API keys inside TargetBoard\n\n### Embedding a Metric Card:\n\n1. Open the board where your desired KPI is found.\n2. Click on the card's \\[⋯\\] menu.\n3. Select \"Embed\", and follow the instructions.\n4. Copy the Embed ID provided.\n\n### Embedding a Board\n\n1. Open the board you want to embed.\n2. Click on the \\[⋯\\] menu at the top of the board.\n3. Select \"Embed\", follow the instructions.\n4. Copy the Embed ID provided.\n\n### Generating an API-Key\n\n1. Go to Settings → API Keys page.\n2. Click on \"Create new API key\" button.\n3. Select expiration period, and continue.\n4. Copy the generated key.\n\n---\n<br />\n\n## 🧱 Component Properties\n\n| Prop | Type | Required | Description |\n|---|---|---|---|\n| apiKey | string | ✅ | Your TargetBoard API key. |\n| embedId | string | ✅ | The embed ID of the board or metric card. |\n| title | string | ❌ | Optional card title displayed above the embed. |\n| height | string | ❌ | Optional iframe height (default: '480px'). |\n| maxHeight | string | ❌ | Optional iframe max-height. |\n\n---\n<br />\n\n## 🧩 Requirements\n\n- Backstage v1.30+ (or compatible)\n- Node.js 18 or 20 LTS\n- React 18\n\n---\n<br />\n\n## 📄 License\n\n- Apache License 2.0 © TargetBoard.ai\n\n---\n<br />\n\n## 🧠 TL;DR\n\nThe TargetBoard Backstage Plugin helps engineers turn Backstage into a delivery intelligence layer — aligning teams, data, and leadership around measurable outcomes.\n\n---\n<br />\n\n## 🧭 Contact\n\n- 🧱 NPM: [@targetboard/backstage-plugin](https://www.npmjs.com/package/@targetboard/backstage-plugin)\n- 🌐 TargetBoard: https://www.targetboard.ai | [Book a demo](https://targetboard.ai/contact-us)\n",
+  "repository": "https://github.com/targetboard/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@targetboard",
+  "updated": "2026-01-27T10:39:06.542Z",
+  "version": "0.1.14",
+  "version_count": 15,
+  "versions": [
+    {
+      "date": "2026-01-27T10:39:06.542Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2025-11-09T08:23:50.901Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2025-11-04T13:16:17.947Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2025-10-26T13:42:12.404Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2025-10-23T13:42:48.903Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2025-10-23T13:24:45.902Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2025-10-23T12:57:26.716Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2025-10-23T11:32:27.761Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2025-10-23T10:53:45.609Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2025-10-23T10:31:52.946Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2025-10-23T07:30:18.481Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-10-23T07:06:10.755Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-10-22T12:03:18.083Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-10-22T11:55:20.542Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-10-22T09:42:40.072Z",
+      "version": "0.1.0"
+    }
+  ]
+}

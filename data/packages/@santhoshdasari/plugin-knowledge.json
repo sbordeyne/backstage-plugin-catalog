@@ -1,0 +1,34 @@
+{
+  "author": "D S Santhosh",
+  "created": "2026-09-08T17:29:20.530Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin providing the AI assistant page and TechDocs Ask AI addon.",
+  "homepage": "https://github.com/santhoshdasari786/developer-portal#readme",
+  "keywords": [
+    "assistant",
+    "backstage",
+    "backstage-plugin",
+    "knowledge",
+    "rag",
+    "techdocs"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "santhoshdasari"
+  ],
+  "name": "@santhoshdasari/plugin-knowledge",
+  "plugin_id": "knowledge",
+  "readme": "",
+  "repository": "https://github.com/santhoshdasari786/developer-portal/tree/HEAD/plugins/knowledge",
+  "role": "frontend-plugin",
+  "scope": "@santhoshdasari",
+  "updated": "2026-09-08T17:29:20.876Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-09-08T17:29:20.876Z",
+      "version": "0.1.0"
+    }
+  ]
+}

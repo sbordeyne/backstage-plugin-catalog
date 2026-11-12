@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-02-04T17:43:57.631Z",
+  "deprecated": "",
+  "description": "This a common plugin package for Backstage related to AWS SecurityHub. For more information see the [documentation](../README.md).",
+  "homepage": "https://github.com/awslabs/backstage-plugins-for-aws#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "nialt"
+  ],
+  "name": "@aws/aws-securityhub-plugin-for-backstage",
+  "plugin_id": "aws-securityhub",
+  "readme": "# AWS SecurityHub plugin for Backstage - Frontend\n\nThis a common plugin package for Backstage related to AWS SecurityHub. For more information see the [documentation](../README.md).\n",
+  "repository": "https://github.com/awslabs/backstage-plugins-for-aws/tree/HEAD/plugins/securityhub/frontend",
+  "role": "frontend-plugin",
+  "scope": "@aws",
+  "updated": "2026-08-06T03:37:40.659Z",
+  "version": "0.2.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-08-06T03:37:40.659Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-02-04T17:48:21.231Z",
+      "version": "0.1.0"
+    }
+  ]
+}

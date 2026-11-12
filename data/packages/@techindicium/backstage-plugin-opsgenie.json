@@ -1,0 +1,41 @@
+{
+  "author": "",
+  "created": "2023-06-21T17:36:18.526Z",
+  "deprecated": "",
+  "description": "The Opsgenie plugin is a frontend plugin that displays Opsgenie alerts, incidents and on-call information in Backstage. The plugin includes two components that can be integrated into Backstage:",
+  "homepage": "https://github.com/techindicium/backstage-plugin-opsgenie",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "arthurcerqueira",
+    "indiciumtech",
+    "srhgeorgia"
+  ],
+  "name": "@techindicium/backstage-plugin-opsgenie",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/techindicium/backstage-plugin-opsgenie",
+  "role": "frontend-plugin",
+  "scope": "@techindicium",
+  "updated": "2023-11-28T23:27:27.395Z",
+  "version": "1.2.7",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2023-11-28T23:27:27.395Z",
+      "version": "1.2.7"
+    },
+    {
+      "date": "2023-11-28T22:00:39.396Z",
+      "version": "1.2.4"
+    },
+    {
+      "date": "2023-10-26T16:54:56.616Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2023-06-21T17:36:18.837Z",
+      "version": "0.0.1"
+    }
+  ]
+}

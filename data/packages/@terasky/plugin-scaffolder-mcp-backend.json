@@ -1,0 +1,55 @@
+{
+  "author": "",
+  "created": "2025-11-05T16:57:40.159Z",
+  "deprecated": "",
+  "description": "A plugin that exposes MCP tools for interacting with Backstage software templates (scaffolder).",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/plugin-scaffolder-mcp-backend",
+  "plugin_id": "scaffolder-mcp",
+  "readme": "# Scaffolder MCP Backend\n\nWelcome to the scaffolder-mcp-backend plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/plugin-scaffolder-mcp-backend/latest.svg)](https://www.npmjs.com/package/@terasky/plugin-scaffolder-mcp-backend)\n\n## Description\n\nThe `scaffolder-mcp-backend` plugin for Backstage provides Model Context Protocol (MCP) actions for interacting with Backstage software templates. This plugin enables AI agents and automation tools to discover, inspect, and execute software templates programmatically.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/scaffolder-mcp/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.\n",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/scaffolder-mcp-backend",
+  "role": "backend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-02-17T20:39:26.287Z",
+  "version": "0.6.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2026-02-17T20:39:26.287Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-01-28T18:31:25.622Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-01-26T10:37:43.997Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-01-21T10:08:56.985Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-12-22T10:16:31.599Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-12-07T15:36:13.989Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-12-02T12:36:25.509Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-11-05T16:57:40.467Z",
+      "version": "0.1.1"
+    }
+  ]
+}

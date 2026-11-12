@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2022-12-07T16:13:32.351Z",
+  "deprecated": "",
+  "description": "The Open Cluster Management (OCM) plugin integrates your Backstage instance with OCM.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-ocm-backend",
+  "plugin_id": "ocm",
+  "readme": "# Open Cluster Management plugin for Backstage\n\nThe Open Cluster Management (OCM) plugin integrates your Backstage instance with OCM.\n\nFor more information about OCM plugin, see the [Open Cluster Management plugin documentation](https://github.com/janus-idp/backstage-plugins/tree/main/plugins/ocm) on GitHub.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/ocm-backend",
+  "role": "backend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2025-01-13T22:15:43.567Z",
+  "version": "4.4.6",
+  "version_count": 103,
+  "versions": [
+    {
+      "date": "2025-01-13T22:15:43.567Z",
+      "version": "4.4.6"
+    },
+    {
+      "date": "2024-11-25T19:24:41.197Z",
+      "version": "4.4.5"
+    },
+    {
+      "date": "2024-11-14T21:33:33.478Z",
+      "version": "4.0.13"
+    },
+    {
+      "date": "2024-11-04T12:24:25.127Z",
+      "version": "5.2.1"
+    },
+    {
+      "date": "2024-10-31T22:18:34.439Z",
+      "version": "4.4.4"
+    },
+    {
+      "date": "2024-10-30T20:18:40.064Z",
+      "version": "5.2.0"
+    },
+    {
+      "date": "2024-10-29T18:59:33.089Z",
+      "version": "5.1.2"
+    },
+    {
+      "date": "2024-10-22T23:25:39.519Z",
+      "version": "4.0.12"
+    },
+    {
+      "date": "2024-10-22T21:45:56.669Z",
+      "version": "4.0.11"
+    },
+    {
+      "date": "2024-10-22T21:36:53.410Z",
+      "version": "5.1.0"
+    },
+    {
+      "date": "2024-10-11T21:06:05.334Z",
+      "version": "4.0.10"
+    },
+    {
+      "date": "2024-10-11T15:51:06.200Z",
+      "version": "5.0.5"
+    },
+    {
+      "date": "2024-10-09T17:28:58.383Z",
+      "version": "5.0.4"
+    },
+    {
+      "date": "2024-10-08T18:32:04.270Z",
+      "version": "5.0.3"
+    },
+    {
+      "date": "2024-10-03T16:01:19.771Z",
+      "version": "5.0.2"
+    }
+  ]
+}

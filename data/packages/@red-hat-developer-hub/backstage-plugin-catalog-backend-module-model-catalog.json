@@ -1,0 +1,64 @@
+{
+  "author": "",
+  "created": "2025-10-16T18:11:57.688Z",
+  "deprecated": "",
+  "description": "The model-catalog backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-catalog-backend-module-model-catalog",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/ai-integrations/plugins/catalog-backend-module-model-catalog",
+  "role": "backend-plugin-module",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-26T14:11:10.046Z",
+  "version": "1.2.0",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2026-10-26T14:11:10.046Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-09-16T20:10:11.030Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-08-27T21:57:29.906Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-08-17T22:46:02.003Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-08-12T00:01:50.798Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-07-16T16:01:06.602Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-12-12T14:35:22.845Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-11-13T10:24:23.414Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-10-16T18:11:58.054Z",
+      "version": "0.7.0"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "author": "",
+  "created": "2024-03-25T09:00:01.535Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "ai",
+    "backstage",
+    "llm",
+    "plugin",
+    "rag-ai"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brianfletcher",
+    "roadie-bot",
+    "roadiehq-david",
+    "xantier"
+  ],
+  "name": "@roadiehq/rag-ai",
+  "plugin_id": "rag-ai",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@roadiehq",
+  "updated": "2026-09-29T13:28:06.384Z",
+  "version": "1.4.0",
+  "version_count": 23,
+  "versions": [
+    {
+      "date": "2026-09-29T13:28:06.384Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2025-10-31T09:33:49.394Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2025-07-23T10:21:27.315Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2025-06-26T08:50:07.038Z",
+      "version": "1.1.9"
+    },
+    {
+      "date": "2025-03-07T13:54:05.449Z",
+      "version": "1.1.8"
+    },
+    {
+      "date": "2025-03-05T08:12:51.788Z",
+      "version": "1.1.7"
+    },
+    {
+      "date": "2024-10-11T12:47:58.405Z",
+      "version": "1.1.6"
+    },
+    {
+      "date": "2024-10-04T13:24:38.576Z",
+      "version": "1.1.5"
+    },
+    {
+      "date": "2024-10-03T08:29:21.743Z",
+      "version": "1.1.4"
+    },
+    {
+      "date": "2024-09-26T11:00:29.070Z",
+      "version": "1.1.3"
+    },
+    {
+      "date": "2024-09-20T13:32:28.687Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2024-08-28T09:41:32.691Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2024-08-23T10:59:01.771Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-08-09T09:54:04.956Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-08-01T15:12:09.128Z",
+      "version": "0.2.7"
+    }
+  ]
+}

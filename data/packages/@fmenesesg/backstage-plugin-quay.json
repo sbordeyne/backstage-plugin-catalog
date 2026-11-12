@@ -1,0 +1,55 @@
+{
+  "author": "",
+  "created": "2022-12-27T16:12:23.834Z",
+  "deprecated": "",
+  "description": "Welcome to the quay-frontend plugin! This plugin will show you information about your docker images within quay",
+  "homepage": "https://github.com/fmenesesg/backstage-plugin-quay",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fmenesesg"
+  ],
+  "name": "@fmenesesg/backstage-plugin-quay",
+  "plugin_id": "",
+  "readme": "# quay-frontend\n\nWelcome to the quay-frontend plugin!\nThis plugin will show you information about your docker images within quay\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\n### Enabling frontend\n\n1. Install the plugin\n\n   ```bash\n   yarn workspace app add @fmenesesg/backstage-plugin-quay\n   ```\n\n2. Set the proxy to desired Quay server\n\n   ```yaml\n   # app-config.yaml\n   proxy:\n     '/quay/api':\n       target: 'https://quay.io'\n       changeOrigin: true\n   ```\n\n3. Enable additional tab on the entity view page\n\n   ```ts\n   // packages/app/src/components/catalog/EntityPage.tsx\n   import { QuayPage, isQuayAvailable } from '@fmenesesg/backstage-plugin-quay';\n\n   const serviceEntityPage = (\n     <EntityPageLayout>\n       // ...\n       <EntityLayout.Route if={isQuayAvailable} path=\"/quay\" title=\"Quay\">\n         <QuayPage />\n       </EntityLayout.Route>\n     </EntityPageLayout>\n   );\n   ```\n\n4. Annotate your entity with\n\n   ```yaml\n   metadata:\n     annotations:\n       'quay.io/repository-slug': `<ORGANIZATION>/<REPOSITORY>',\n   ```",
+  "repository": "https://github.com/fmenesesg/backstage-plugin-quay",
+  "role": "frontend-plugin",
+  "scope": "@fmenesesg",
+  "updated": "2023-02-06T20:30:56.402Z",
+  "version": "0.1.8",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2023-02-06T20:30:56.402Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2023-02-06T20:23:03.831Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2023-02-06T20:12:48.286Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2022-12-27T21:36:48.106Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2022-12-27T21:22:52.713Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2022-12-27T21:22:07.154Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2022-12-27T21:11:12.049Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2022-12-27T16:12:24.071Z",
+      "version": "0.1.0"
+    }
+  ]
+}

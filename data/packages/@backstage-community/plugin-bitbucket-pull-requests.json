@@ -1,0 +1,52 @@
+{
+  "author": "",
+  "created": "2025-09-30T16:09:20.290Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "bitbucket",
+    "plugin",
+    "pullrequest"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-bitbucket-pull-requests",
+  "plugin_id": "bitbucket-pull-requests",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/bitbucket-pull-requests/plugins/bitbucket-pull-requests",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-07T17:23:30.486Z",
+  "version": "4.0.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-10-07T17:23:30.486Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2026-09-25T21:44:00.760Z",
+      "version": "3.0.4"
+    },
+    {
+      "date": "2026-07-08T12:25:12.329Z",
+      "version": "3.0.3"
+    },
+    {
+      "date": "2026-01-26T20:10:02.462Z",
+      "version": "3.0.2"
+    },
+    {
+      "date": "2026-01-07T19:39:10.596Z",
+      "version": "3.0.1"
+    },
+    {
+      "date": "2025-09-30T16:09:20.626Z",
+      "version": "3.0.0"
+    }
+  ]
+}

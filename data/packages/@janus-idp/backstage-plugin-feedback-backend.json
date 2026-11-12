@@ -1,0 +1,95 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-01-18T10:23:46.509Z",
+  "deprecated": "",
+  "description": "This is feedback-backend plugin which provides Rest API to create feedbacks.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-feedback-backend",
+  "plugin_id": "",
+  "readme": "# Feedback Backend\n\nThis is feedback-backend plugin which provides Rest API to create feedbacks.\n\nIt is also responsible for creating JIRA tickets,\n\n## Getting started\n\n### Installation\n\nInstall the NPM Package\n\n```bash\n# From your backstage root directory\nyarn workspace backend add @janus-idp/backstage-plugin-feedback-backend\n```\n\n#### Adding the plugin to the new backend\n\nAdd the following to your `packages/backend/src/index.ts` file:\n\n```ts title=\"packages/backend/src/index.ts\"\nconst backend = createBackend();\n\n// Add the following line\nbackend.add(import('@janus-idp/backstage-plugin-feedback-backend'));\n\nbackend.start();\n```\n\n#### Adding the plugin to the legacy backend (`@janus-idp/backstage-plugin-feedback-backend@1.2.6` and lower)\n\n1. Create a new file `packages/backend/src/plugins/feedback.ts` and add the following:\n\n   ```ts title=\"packages/backend/src/plugins/feedback.ts\"\n   import { Router } from 'express';\n\n   import { createRouter } from '@janus-idp/backstage-plugin-feedback-backend';\n\n   import { PluginEnvironment } from '../types';\n\n   export default async function createPlugin(\n     env: PluginEnvironment,\n   ): Promise<Router> {\n     return await createRouter({\n       logger: env.logger,\n       config: env.config,\n       discovery: env.discovery,\n     });\n   }\n   ```\n\n2. Next we wire this into overall backend router by editing the `packages/backend/src/index.ts` file:\n\n   ```ts title=\"packages/backend/src/index.ts\"\n   import feedback from './plugins/feedback';\n\n   // ...\n   async function main() {\n     // ...\n     const feedbackEnv = useHotMemoize(module, () => createEnv('feedback'));\n     apiRouter.use('/feedback', await feedback(feedbackEnv));\n   }\n   ```\n\n### Configurations\n\nAdd the following config in your `app-config.yaml` file.\n\n```yaml\nfeedback:\n  integrations:\n    jira:\n      # Under this object you can define multiple jira hosts\n      - host: ${JIRA_HOST_URL}\n        # Add your jira token along with Basic or Bearer type eg: Basic/Bearer <token>\n        token: ${JIRA_TOKEN}\n        # (optional) Due to GDPR limitations on jira cloud instances\n        # set hostType: CLOUD to make api work\n        # default value is SERVER\n        hostType: CLOUD\n\n    email:\n      ## Email integration uses nodemailer to send emails\n      host: ${EMAIL_HOST}\n      port: ${EMAIL_PORT} # defaults to 587, if not found\n\n      ## Email address of sender\n      from: ${EMAIL_FROM}\n\n      ## [optional] Authorization using user and password\n      auth:\n        user: ${EMAIL_USER}\n        pass: ${EMAIL_PASS}\n\n      # boolean\n      secure: false\n\n      # Path to ca certificate if required by mail server\n      caCert: ${NODE_EXTRA_CA_CERTS}\n```\n\n### Set up frontend plugin\n\nFollow instructions provided [feedback-plugin](../feedback/README.md)\n\n### API reference\n\nThe API specifications file can be found at [docs/openapi3_0](./docs/openapi3_0.yaml)\n\n### Running the plugin\n\nRun `yarn workspace @janus-idp/backstage-plugin-feedback-backend start`.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/feedback-backend",
+  "role": "backend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-10-11T21:05:22.400Z",
+  "version": "1.3.11",
+  "version_count": 34,
+  "versions": [
+    {
+      "date": "2024-10-11T21:05:22.400Z",
+      "version": "1.3.11"
+    },
+    {
+      "date": "2024-08-19T17:40:55.616Z",
+      "version": "1.7.2"
+    },
+    {
+      "date": "2024-08-16T18:48:12.983Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2024-07-26T01:23:44.147Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2024-07-24T14:32:08.451Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-06-19T15:03:56.273Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2024-06-13T21:31:43.191Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-06-13T14:55:50.182Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2024-06-13T10:24:33.713Z",
+      "version": "1.3.10"
+    },
+    {
+      "date": "2024-06-12T07:06:58.592Z",
+      "version": "1.3.9"
+    },
+    {
+      "date": "2024-06-05T16:09:59.882Z",
+      "version": "1.3.8"
+    },
+    {
+      "date": "2024-06-04T19:38:23.304Z",
+      "version": "1.3.7"
+    },
+    {
+      "date": "2024-06-04T08:26:24.232Z",
+      "version": "1.3.6"
+    },
+    {
+      "date": "2024-06-03T13:38:41.180Z",
+      "version": "1.3.5"
+    },
+    {
+      "date": "2024-05-29T19:59:42.258Z",
+      "version": "1.3.4"
+    }
+  ]
+}

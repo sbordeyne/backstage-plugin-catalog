@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2022-09-05T09:18:28.646Z",
+  "deprecated": "",
+  "description": "Backstage LDAP Authentication plugin, this packages adds backend authentication and token generation/validation/management; sibling of @immobiliarelabs/backstage-plugin-ldap-auth",
+  "homepage": "https://github.com/immobiliare/backstage-plugin-ldap-auth#readme",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "dnlup",
+    "immobiliare-labs-bot",
+    "jellybellydev",
+    "simonecorsi"
+  ],
+  "name": "@immobiliarelabs/backstage-plugin-ldap-auth-backend",
+  "plugin_id": "auth",
+  "readme": "",
+  "repository": "https://github.com/immobiliare/backstage-plugin-ldap-auth/tree/HEAD/packages/ldap-auth-backend",
+  "role": "backend-plugin-module",
+  "scope": "@immobiliarelabs",
+  "updated": "2026-04-15T13:30:06.016Z",
+  "version": "5.2.0",
+  "version_count": 52,
+  "versions": [
+    {
+      "date": "2026-04-15T13:30:06.016Z",
+      "version": "5.2.0"
+    },
+    {
+      "date": "2026-04-01T10:38:42.496Z",
+      "version": "5.1.0"
+    },
+    {
+      "date": "2026-04-01T10:17:22.723Z",
+      "version": "5.1.0-alpha.2"
+    },
+    {
+      "date": "2026-04-01T09:49:56.617Z",
+      "version": "5.1.0-alpha.1"
+    },
+    {
+      "date": "2026-04-01T06:59:22.464Z",
+      "version": "5.1.0-alpha.0"
+    },
+    {
+      "date": "2026-03-25T14:22:42.832Z",
+      "version": "5.0.0"
+    },
+    {
+      "date": "2026-03-24T14:46:04.186Z",
+      "version": "5.0.0-alpha.6"
+    },
+    {
+      "date": "2026-03-24T10:52:51.896Z",
+      "version": "5.0.0-alpha.5"
+    },
+    {
+      "date": "2026-03-06T16:33:40.955Z",
+      "version": "5.0.0-alpha.4"
+    },
+    {
+      "date": "2026-03-03T16:18:12.586Z",
+      "version": "5.0.0-alpha.3"
+    },
+    {
+      "date": "2026-03-03T16:12:13.978Z",
+      "version": "5.0.0-alpha.2"
+    },
+    {
+      "date": "2026-03-03T13:21:39.014Z",
+      "version": "5.0.0-alpha.1"
+    },
+    {
+      "date": "2024-10-18T15:24:34.054Z",
+      "version": "4.3.1"
+    },
+    {
+      "date": "2024-10-18T14:36:36.921Z",
+      "version": "4.3.1-alpha.0"
+    },
+    {
+      "date": "2024-07-23T10:16:29.713Z",
+      "version": "4.3.0"
+    }
+  ]
+}

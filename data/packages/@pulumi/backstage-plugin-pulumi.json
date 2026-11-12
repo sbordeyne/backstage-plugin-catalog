@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2023-09-27T16:30:48.517Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "MPL-2.0",
+  "maintainers": [
+    "joeduffy",
+    "pulumi-bot"
+  ],
+  "name": "@pulumi/backstage-plugin-pulumi",
+  "plugin_id": "pulumi",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@pulumi",
+  "updated": "2025-05-24T16:27:08.670Z",
+  "version": "0.18.0",
+  "version_count": 25,
+  "versions": [
+    {
+      "date": "2025-05-24T16:27:08.670Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2025-02-18T13:08:36.415Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2024-11-19T09:44:26.650Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2024-10-02T16:01:04.572Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2024-10-02T15:29:09.933Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2024-10-02T15:21:12.551Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2024-10-02T15:13:47.157Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2024-10-02T14:59:51.192Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2024-10-02T14:48:09.323Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2024-07-10T11:01:16.084Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2024-05-20T11:18:22.371Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2024-04-22T15:45:47.131Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2024-04-10T14:18:59.301Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2024-04-10T13:00:14.077Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2024-04-10T12:21:01.985Z",
+      "version": "0.6.0"
+    }
+  ]
+}

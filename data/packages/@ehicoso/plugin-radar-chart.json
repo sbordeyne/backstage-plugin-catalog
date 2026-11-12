@@ -1,0 +1,41 @@
+{
+  "author": "acarmisc",
+  "created": "2026-05-29T13:41:51.441Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin — generate KPI radar charts from any Backstage instance via a remote chart-rendering service.",
+  "homepage": "https://github.com/acarmisc/stupid-radar-chart-backstage-plugin#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "chart",
+    "kpi",
+    "radar-chart"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "acarmisc"
+  ],
+  "name": "@ehicoso/plugin-radar-chart",
+  "plugin_id": "radar-chart",
+  "readme": "# @ehicoso/plugin-radar-chart\n\nFrontend-only Backstage plugin that embeds KPI radar charts produced by a remote chart-rendering service. The plugin issues HTTP calls directly from the browser to a service base URL you provide — no Backstage backend plugin required.\n\n## Architecture\n\n- **Frontend-only.** Ships as a `frontend-plugin`; nothing runs server-side.\n- **Remote API.** All chart generation, persistence, and retrieval go to the URL set in `radarChart.baseUrl`.\n- **Two surfaces:**\n  - `EntityRadarChartCard` — annotation-driven, read-only card on Component entities.\n  - `RadarPage` — full configuration UI to build and persist new charts.\n\n## Prerequisites\n\n### Configure the service base URL\n\nThe plugin will throw at runtime if `radarChart.baseUrl` is not set. Add it to your `app-config.yaml`:\n\n```yaml\nradarChart:\n  baseUrl: 'https://<your-radar-chart-service>'\n```\n\n### CORS\n\nThe upstream service must allow CORS requests from your Backstage origin:\n\n```\nAccess-Control-Allow-Origin: https://<your-backstage-origin>\nAccess-Control-Allow-Methods: GET, POST, OPTIONS\nAccess-Control-Allow-Headers: Content-Type\n```\n\n## Installation\n\n```bash\nyarn add @ehicoso/plugin-radar-chart\n```\n\n## Usage (new frontend system)\n\n```typescript\n// packages/app/src/App.tsx\nimport radarChartPlugin from '@ehicoso/plugin-radar-chart';\n\nconst app = createApp({\n  features: [\n    // ...\n    radarChartPlugin,\n  ],\n});\n```\n\n`EntityRadarChartCard` is registered with the plugin and renders on `kind:Component` entities that carry the `radar-chart/kpis` annotation. Entities without the annotation render nothing.\n\n## Usage (legacy classic API)\n\n```typescript\nimport {\n  radarChartPlugin,\n  RadarPage,\n  EntityRadarChartCard,\n} from '@ehicoso/plugin-radar-chart';\n\n// Register the plugin\nconst app = createApp({ plugins: [radarChartPlugin] });\n\n// Route\n<Route path=\"/radar\" element={<RadarPage />} />\n\n// Entity card\n<EntityLayout.Route path=\"/\" title=\"Overview\">\n  <EntityRadarChartCard />\n</EntityLayout.Route>\n```\n\n## Annotations: `EntityRadarChartCard`\n\n### Required: `stupid-radar-chart/kpi-url`\n\nAbsolute URL that returns a JSON object mapping KPI name → integer in `[1, 100]`. The card fetches this URL on render, so KPI values can change without editing `catalog-info.yaml`.\n\nThe endpoint must:\n\n- respond with `Content-Type: application/json`,\n- return a JSON object (not an array),\n- allow CORS requests from the Backstage origin (`Access-Control-Allow-Origin`).\n\nUnknown KPI keys are preserved (forward-compatible). The locked KPI names (`author`, `ai`, `team`, `research`, `unspecified`) default to `50` when omitted from the payload.\n\n### Optional\n\n- `stupid-radar-chart/title` — overrides the card title (defaults to entity name).\n- `stupid-radar-chart/show-author` — `\"true\"` (default) or `\"false\"`.\n\n### Example `catalog-info.yaml`\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-service\n  annotations:\n    stupid-radar-chart/kpi-url: 'https://kpis.example.test/my-service.json'\n    stupid-radar-chart/title: 'My Service KPIs'\n    stupid-radar-chart/show-author: 'true'\nspec:\n  type: service\n  lifecycle: production\n  owner: team-a\n```\n\n### Expected payload shape\n\n```json\n{\n  \"author\": 85,\n  \"ai\": 40,\n  \"team\": 90,\n  \"research\": 60,\n  \"unspecified\": 50,\n  \"customKpi\": 75\n}\n```\n\nBehavior:\n\n- annotation missing → card not rendered,\n- URL not parseable, fetch fails, or payload invalid → `ResponseErrorPanel` rendered inside the card,\n- request in flight → `Progress` indicator inside the card.\n\n## `RadarPage`\n\nMount on a route (`/radar` by convention) to expose:\n\n- a configuration form (title, author, deliverable type, locked KPIs, optional custom KPI),\n- a live preview rendered with `react-chartjs-2`,\n- a \"Generate PNG & Save\" action that persists the chart on the remote service, downloads the PNG, and exposes a shareable URL.\n\n## Configuration reference\n\n| Key                  | Type   | Required | Description                                  |\n| -------------------- | ------ | -------- | -------------------------------------------- |\n| `radarChart.baseUrl` | string | yes      | Base URL of the remote chart-rendering service. |\n\n## Release / CI\n\n- `.github/workflows/ci.yml` — lint + test + build on push and PR to `main`.\n- `.github/workflows/release.yml` — publishes to npm and creates a GitHub release on tags matching `v*.*.*`. Requires the `NPM_TOKEN` repository secret (npm automation token with publish access to the `@ehicoso` scope).\n\n## License\n\nMIT\n",
+  "repository": "https://github.com/acarmisc/stupid-radar-chart-backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@ehicoso",
+  "updated": "2026-06-14T17:39:25.159Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-06-14T17:39:25.159Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-05-30T12:04:09.104Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-05-29T13:41:51.777Z",
+      "version": "0.1.0"
+    }
+  ]
+}

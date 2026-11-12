@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2024-01-31T12:23:59.847Z",
+  "deprecated": "",
+  "description": "The dynamic-plugins-info plugin is a frontend component for the [dynamic-plugins-info-backend](https://github.com/janus-idp/backstage-showcase/tree/main/plugins/dynamic-plugins-info-backend) plugin. It offers a simple table of plugins that are currently i",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-dynamic-plugins-info",
+  "plugin_id": "dynamic-plugins-info",
+  "readme": "# Dynamic Plugins Info plugin for Backstage\n\nThe dynamic-plugins-info plugin is a frontend component for the [dynamic-plugins-info-backend](https://github.com/janus-idp/backstage-showcase/tree/main/plugins/dynamic-plugins-info-backend) plugin. It offers a simple table of plugins that are currently installed in Red Hat Developer Hub or Janus IDP that supports client-side sorting, filtering and pagination.\n\n![dynamic-plugins-info-screenshot](./images/screenshot-plugin-list.png)\n\nThe plugin is designed to be installed dynamically in the [backstage-showcase](https://github.com/janus-idp/backstage-showcase/tree/main) app.\n\n## Installing via Helm\n\nTo install this plugin into Red Hat Developer Hub or Janus IDP via Helm use this configuration:\n\n```yaml\nglobal:\n  dynamic:\n    includes:\n      - dynamic-plugins.default.yaml\n    plugins:\n      - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-dynamic-plugins-info\n        disabled: false\n```\n\n## Building and installing locally\n\nTo build this plugin and the dynamic entrypoint:\n\n`yarn install`\n\n`yarn tsc`\n\n`yarn build`\n\n`yarn export-dynamic`\n\nTo install the dynamic plugin from a local build and run it in a local instance of [backstage-showcase](https://github.com/janus-idp/backstage-showcase/tree/main):\n\n```bash\ncd dist-scalprum\nnpm pack .\narchive=$(npm pack $pkg)\ntar -xzf \"$archive\" && rm \"$archive\"\nmv package $(echo $archive | sed -e 's:\\.tgz$::')\n```\n\nMove the resulting directory (`janus-idp-backstage-plugin-dynamic-plugins-info-0.1.0`) into the `dynamic-plugins-root` folder of your [backstage-showcase](https://github.com/janus-idp/backstage-showcase/tree/main) clone, then run `yarn start` to start the app.\n\nThis configuration will then enable the plugin to be visible in the UI:\n\n```yaml\ndynamicPlugins:\n  frontend:\n    janus-idp.backstage-plugin-dynamic-plugins-info:\n      dynamicRoutes:\n        - path: /admin/plugins\n          importName: DynamicPluginsInfo\n      mountPoints:\n        - mountPoint: admin.page.plugins/cards\n          importName: DynamicPluginsInfo\n          config:\n            layout:\n              gridColumn: '1 / -1'\n              width: 100vw\n```\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/dynamic-plugins-info",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-09-20T03:37:12.850Z",
+  "version": "1.6.0",
+  "version_count": 18,
+  "versions": [
+    {
+      "date": "2024-09-20T03:37:12.850Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-08-15T16:11:26.834Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2024-07-26T01:22:31.936Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-07-24T12:20:25.492Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2024-06-13T21:30:40.764Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2024-06-04T19:37:24.410Z",
+      "version": "1.2.5"
+    },
+    {
+      "date": "2024-05-31T18:19:44.390Z",
+      "version": "1.2.4"
+    },
+    {
+      "date": "2024-05-29T17:09:12.071Z",
+      "version": "1.2.3"
+    },
+    {
+      "date": "2024-05-16T20:30:52.008Z",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2024-05-16T14:46:22.572Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2024-05-14T14:26:15.341Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2024-05-09T21:47:10.037Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2024-04-15T19:31:24.085Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-04-05T15:45:08.274Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2024-03-29T12:25:01.474Z",
+      "version": "1.0.3"
+    }
+  ]
+}

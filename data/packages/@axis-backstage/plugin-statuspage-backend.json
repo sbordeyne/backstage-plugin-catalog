@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-02-06T11:13:45.673Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "anicke",
+    "fridajac",
+    "glundh",
+    "martinwa"
+  ],
+  "name": "@axis-backstage/plugin-statuspage-backend",
+  "plugin_id": "statuspage",
+  "readme": "",
+  "repository": "https://github.com/AxisCommunications/backstage-plugins/tree/HEAD/plugins/statuspage-backend",
+  "role": "backend-plugin",
+  "scope": "@axis-backstage",
+  "updated": "2026-09-10T08:49:12.592Z",
+  "version": "0.10.6",
+  "version_count": 18,
+  "versions": [
+    {
+      "date": "2026-09-10T08:49:12.592Z",
+      "version": "0.10.6"
+    },
+    {
+      "date": "2026-08-06T13:43:09.185Z",
+      "version": "0.10.5"
+    },
+    {
+      "date": "2026-07-13T08:02:48.135Z",
+      "version": "0.10.4"
+    },
+    {
+      "date": "2026-05-26T07:06:55.903Z",
+      "version": "0.10.3"
+    },
+    {
+      "date": "2026-04-21T08:54:06.955Z",
+      "version": "0.10.2"
+    },
+    {
+      "date": "2026-02-24T13:36:59.589Z",
+      "version": "0.10.1"
+    },
+    {
+      "date": "2026-01-20T11:54:11.294Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-09-04T12:06:04.641Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-08-07T11:45:07.087Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-03-12T08:38:34.489Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-03-10T07:59:28.416Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-02-25T12:07:11.547Z",
+      "version": "0.5.2"
+    },
+    {
+      "date": "2024-09-18T09:05:31.603Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2024-08-23T06:27:03.317Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-07-11T11:03:26.022Z",
+      "version": "0.4.0"
+    }
+  ]
+}

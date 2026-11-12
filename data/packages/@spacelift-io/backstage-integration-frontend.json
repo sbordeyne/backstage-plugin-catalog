@@ -1,0 +1,78 @@
+{
+  "author": "",
+  "created": "2025-06-10T14:45:15.315Z",
+  "deprecated": "",
+  "description": "Backstage plugin for integrating Spacelift.io with Backstage",
+  "homepage": "https://spacelift.io",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "category/cloud",
+    "category/infrastructure",
+    "cloud",
+    "devops",
+    "iac",
+    "infrastructure-as-code",
+    "spacelift"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "cube2222_spacelift",
+    "sladminspace"
+  ],
+  "name": "@spacelift-io/backstage-integration-frontend",
+  "plugin_id": "spacelift-io-frontend",
+  "readme": "# Spacelift Frontend Plugin\n\nThis frontend plugin for Backstage provides a user interface to view and interact with your Spacelift stacks and runs.\n\n## Installation\n\n1. Install the plugin package in your Backstage frontend app:\n\n   ```bash\n   # From your Backstage root directory\n   yarn --cwd packages/app add @spacelift-io/backstage-integration-frontend\n   ```\n\n2. Register the plugin using either the [new frontend system](#new-frontend-system) or the [legacy frontend system](#legacy-frontend-system), depending on your Backstage app.\n\n### New frontend system\n\nUse this path if your app uses `@backstage/frontend-defaults` / `createApp` and feature discovery (the default for newer Backstage apps).\n\nThe plugin ships a `/alpha` entry point that exports a frontend plugin with a page and API extension. On Backstage 1.51+, the page extension also contributes a sidebar nav item (title and icon).\n\n#### Option A — Feature discovery (recommended)\n\nIf your `app-config.yaml` enables package discovery (for example `app.packages: all`), installing the dependency is enough. The app discovers `@spacelift-io/backstage-integration-frontend/alpha` automatically. No extra code changes are required.\n\n#### Option B — Manual registration\n\nIf feature discovery is disabled, or you prefer explicit installs, import the default export from `/alpha` and pass it to `createApp`:\n\n```tsx\n// packages/app/src/App.tsx\nimport { createApp } from \"@backstage/frontend-defaults\";\nimport spaceliftPlugin from \"@spacelift-io/backstage-integration-frontend/alpha\";\n\nconst app = createApp({\n  features: [spaceliftPlugin],\n});\n\nexport default app.createRoot();\n```\n\nThis registers the `/spacelift` page and the Spacelift sidebar item. You do not need a separate `SidebarItem` in `Root.tsx`.\n\n### Legacy frontend system\n\nUse this path if your app still uses `FlatRoutes` and a hand-built sidebar.\n\n1. Add the plugin to your `packages/app/src/App.tsx`:\n\n   ```tsx\n   // packages/app/src/App.tsx\n   import { SpaceliftIoPage } from \"@spacelift-io/backstage-integration-frontend\";\n\n   // ...\n\n   const routes = (\n     <FlatRoutes>\n       {/* ...other routes */}\n       <Route path=\"/spacelift\" element={<SpaceliftIoPage />} />\n     </FlatRoutes>\n   );\n   ```\n\n2. Add the plugin to the sidebar in `packages/app/src/components/Root/Root.tsx`:\n\n   ```tsx\n   // packages/app/src/components/Root/Root.tsx\n   import SpaceliftIcon from \"@material-ui/icons/CloudQueue\"; // Example icon, choose an appropriate one\n\n   // ...\n\n   export const Root = ({ children }: PropsWithChildren<{}>) => (\n     <SidebarPage>\n       <Sidebar>\n         {/* ...other sidebar items */}\n         <SidebarItem icon={SpaceliftIcon} to=\"spacelift\" text=\"Spacelift\" />\n       </Sidebar>\n       {/* ... */}\n     </SidebarPage>\n   );\n   ```\n\n## Configuration\n\nThis plugin requires the `spacelift.hostUrl` to be configured in your `app-config.yaml` to allow the frontend to make requests to the Spacelift API via the backend plugin.\n\n```yaml\nspacelift:\n  hostUrl: \"<your-subdomain>.app.spacelift.io\" # Your Spacelift instance URL (WITHOUT https://)\n  readOnly: false # Optional: Set to true to disable trigger functionality (default: false)\n```\n\nMake sure to replace `<your-subdomain>` with your actual Spacelift subdomain.\n\n### Read-Only Mode\n\nWhen `readOnly: true` is set in the configuration:\n\n- The trigger run button will be hidden from the UI\n- Users will only be able to view stack information\n- This setting should match the backend configuration for consistency\n\nSee the [Backend Plugin README](./packages/spacelift-io-backend/README.md) for more details on read-only mode.\n\n### Important Note on Permissions\n\nThis frontend plugin relies on the permissions configured for the Spacelift API Key in the backend plugin. It does not implement separate user-level permission checks within the frontend components.\n\nEnsure that your Backstage instance has appropriate general permissions set up to control access to this plugin's pages and functionalities. This is crucial to prevent users from performing actions in Spacelift for which they are not authorized via the configured API key.\n\n## Compatibility\n\nThis plugin requires:\n\n- `@backstage/core-components` >= 0.17.1\n- `@backstage/core-plugin-api` >= 1.10.6\n- `@backstage/plugin-catalog-react` >= 1.17.0\n\nThe legacy (`FlatRoutes`) integration is compatible with Backstage 1.17.0 or later.\n\nThe `/alpha` new frontend system integration requires `@backstage/frontend-plugin-api` >= 0.17.0 and is supported on Backstage 1.51.0 or later.\n\n## Backend Plugin\n\nThis frontend plugin requires the [Spacelift Backend Plugin](https://github.com/spacelift-io/backstage-plugins/blob/main/packages/spacelift-io-backend/README.md) to be installed and configured.\n\n## Spacelift Documentation\n\nFor more information about Spacelift, please refer to the [official Spacelift documentation](https://docs.spacelift.io/integrations/external-integrations/backstage).\n",
+  "repository": "https://github.com/spacelift-io/backstage-plugins",
+  "role": "frontend-plugin",
+  "scope": "@spacelift-io",
+  "updated": "2026-08-31T10:56:56.259Z",
+  "version": "0.3.3",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2026-08-31T10:56:56.259Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2026-08-28T07:47:20.834Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2026-03-26T09:21:33.767Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-03-25T16:09:49.867Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-01-26T14:47:43.912Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-01-12T17:10:22.662Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-06-16T09:50:14.868Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-06-12T12:27:06.479Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-06-11T13:36:26.145Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-06-11T08:40:19.608Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-06-10T14:45:15.570Z",
+      "version": "0.0.0"
+    }
+  ]
+}

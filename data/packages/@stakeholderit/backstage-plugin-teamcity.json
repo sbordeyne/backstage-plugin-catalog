@@ -1,0 +1,38 @@
+{
+  "author": "@stakeholderit",
+  "created": "2025-02-18T06:38:32.719Z",
+  "deprecated": "",
+  "description": "Welcome to the teamcity plugin for Backstage!",
+  "homepage": "https://github.com/stakeholderit/backstage-teamcity",
+  "keywords": [
+    "backstage",
+    "teamcity"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ernstsen"
+  ],
+  "name": "@stakeholderit/backstage-plugin-teamcity",
+  "plugin_id": "teamcity",
+  "readme": "# Backstage teamcity plugin\n\nWelcome to the teamcity plugin for Backstage!\n\n## Getting started\nInstall via yarn\n```\nyarn --cwd packages/app add @stakeholderit/backstage-plugin-teamcity\n```\n\nIn: packages\\app\\src\\components\\catalog\\EntityPage.tsx file add:\n```\nimport { isTeamcityAvailable, EntityTeamcityContent } from 'backstage-plugin-teamcity';\n```\n\nThen under cicdContent block in the EntityPage.tsx file paste:\n```\n    <EntitySwitch.Case if={isTeamcityAvailable}>\n        <Grid item sm={12}>\n            <EntityTeamcityContent/>\n        </Grid>\n    </EntitySwitch.Case>\n```\n\nAs a final step add the proxy to the app-config.local.yaml or prod depending on the env.\n\n```\nproxy:\n  '/teamcity-proxy/':\n    target: 'http://localhost:8111'\n    headers:\n      Authorization: 'Basic BASIC_AUTH'\n      Accept: 'application/json'\n```\n\n# Project catalog flag requirement\n```\n  annotations:\n    teamcity/project-id: TEAMCITY_NAME\n```\n\n# Screenshots\n![error](https://github.com/stakeholderit/backstage-teamcity/blob/main/assets/sample.jpg)\n![error](https://github.com/stakeholderit/backstage-teamcity/blob/main/assets/history.jpg)\n![error](https://github.com/stakeholderit/backstage-teamcity/blob/main/assets/log.jpg)\n\n# Developing\n\n## Installing packages\nRun `yarn install`\n\n## Running tests\n\nTo run tests execute `yarn test a`\n",
+  "repository": "https://github.com/stakeholderit/backstage-teamcity",
+  "role": "frontend-plugin",
+  "scope": "@stakeholderit",
+  "updated": "2025-02-18T11:27:01.362Z",
+  "version": "1.0.6",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-02-18T11:27:01.362Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2025-02-18T10:14:20.884Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2025-02-18T06:38:32.987Z",
+      "version": "1.0.4"
+    }
+  ]
+}

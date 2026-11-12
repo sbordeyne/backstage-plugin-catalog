@@ -1,0 +1,68 @@
+{
+  "author": "",
+  "created": "2022-04-15T19:13:31.701Z",
+  "deprecated": "",
+  "description": "The Backstage back-end plugin for Cloud Carbon Footprint.",
+  "homepage": "https://www.cloudcarbonfootprint.org/",
+  "keywords": [
+    "backstage",
+    "carbon-emissions",
+    "carbon-footprint",
+    "climate",
+    "cloud",
+    "sustainability",
+    "thoughtworks"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ccasher",
+    "jyothirmai.m"
+  ],
+  "name": "@cloud-carbon-footprint/backstage-plugin-backend",
+  "plugin_id": "",
+  "readme": "# cloud-carbon-footprint-backend\n\n## Configuration\n\nCCF requires separate configuration for each cloud provider. It also requires specific permissions and billing exports to be configured.\n\nThe [CCF docs](https://www.cloudcarbonfootprint.org/docs/introduction) are the source of truth for CCF configuration. This readme aims to guide users how to inject relevant configuration into Backstage using its [static configuration mechanism](https://backstage.io/docs/conf/).\n\nTo see data, set follow the setup for one or more of the cloud providers.\n\n### GCP\n\nFollow the first three steps given [here](https://www.cloudcarbonfootprint.org/docs/gcp).\n\nThen, put relevant values into the Backstage config (see the schema in `./config.d.ts`). They will be injected into to CCF config.\n\nHere is an example of the recommended billing-based approach with GCP:\n\n```yaml\n# app-config.local.yaml\ncloudCarbonFootprint:\n  gcp:\n    useBillingData: true\n    billingProjectId: my-project\n    billingProjectName: My Project\n    bigQueryTable: billing_export_dataset.gcp_billing_export_v1_01B22A_05AA4C_87BDAC\n```\n\n### AWS\n\nFollow the first four steps given [here](https://www.cloudcarbonfootprint.org/docs/aws/)\n\nThen, put relevant values into the Backstage config (see the schema in `./config.d.ts`). They will be injected into to CCF config.\n\nHere is an example of the recommended billing-based approach with AWS:\n\n```yaml\n# app-config.local.yaml\ncloudCarbonFootprint:\n  aws:\n    useBillingData: true\n    athenaDbName: athena-db\n    athenaDbTable: billing export table\n    athenaRegion: us-east-1\n    athenaQueryResultLocation: s3://bucket\n    billingAccountId: cool-account\n    billingAccountName: Cool account, low emissions\n```\n\n### Azure\n\nFollow the first three steps given [here](https://www.cloudcarbonfootprint.org/docs/azure/)\n\nThen, put relevant values into the Backstage config (see the schema in `./config.d.ts`). They will be injected into to CCF config.\n\nHere is an example of the recommended billing-based approach with Azure:\n\n```yaml\n# app-config.local.yaml\ncloudCarbonFootprint:\n  azure:\n    useBillingData: true,\n    clientId: client id,\n    clientSecret: shhh,\n    tenantId: tenant id,\n```\n\n### Caching\n\nSee [here](https://www.cloudcarbonfootprint.org/docs/data-persistence-and-caching) for more detailed documentation on data persistence and caching.\n\nTo use MongoDB (recommended and supported caching mode), here is an example of the configuration:\n\n```yaml\n# app-config.local.yaml\ncloudCarbonFootprint:\n  optional:\n    cacheMode: MONGODB\n  mongodb:\n    mongodbUri: mongodb://localhost:27017\n    mongodbCredentials: ~/keys/mongodb-certificate.pem\n```\n\n---\n\n© 2022 Thoughtworks, Inc.\n",
+  "repository": "https://github.com/cloud-carbon-footprint/ccf-backstage-plugin/tree/HEAD/plugins/backend",
+  "role": "backend-plugin",
+  "scope": "@cloud-carbon-footprint",
+  "updated": "2023-06-30T21:18:22.358Z",
+  "version": "0.2.1",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2023-06-30T21:18:22.358Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-01-17T23:01:58.786Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2022-11-21T22:07:06.222Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2022-10-19T15:28:03.327Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2022-10-03T23:27:54.812Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2022-06-23T15:19:08.670Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2022-06-22T00:28:01.849Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2022-04-19T19:05:20.570Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2022-04-15T19:13:31.937Z",
+      "version": "0.0.1"
+    }
+  ]
+}

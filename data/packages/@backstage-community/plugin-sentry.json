@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:44:15.617Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates towards Sentry",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "sentry"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-sentry",
+  "plugin_id": "sentry",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/sentry/plugins/sentry",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-31T16:43:11.498Z",
+  "version": "1.23.0",
+  "version_count": 35,
+  "versions": [
+    {
+      "date": "2026-10-31T16:43:11.498Z",
+      "version": "1.23.0"
+    },
+    {
+      "date": "2026-09-23T15:36:43.800Z",
+      "version": "1.22.0"
+    },
+    {
+      "date": "2026-08-27T15:18:27.244Z",
+      "version": "1.21.0"
+    },
+    {
+      "date": "2026-07-22T00:24:04.985Z",
+      "version": "1.20.0"
+    },
+    {
+      "date": "2026-07-17T01:50:24.638Z",
+      "version": "1.19.1"
+    },
+    {
+      "date": "2026-06-24T13:09:10.310Z",
+      "version": "1.19.0"
+    },
+    {
+      "date": "2026-05-27T11:52:18.049Z",
+      "version": "1.18.0"
+    },
+    {
+      "date": "2026-04-24T18:02:13.946Z",
+      "version": "1.17.0"
+    },
+    {
+      "date": "2026-04-03T16:22:30.386Z",
+      "version": "1.16.0"
+    },
+    {
+      "date": "2026-04-02T23:30:59.017Z",
+      "version": "1.15.2"
+    },
+    {
+      "date": "2026-03-21T16:14:54.663Z",
+      "version": "1.15.1"
+    },
+    {
+      "date": "2026-02-27T19:22:59.388Z",
+      "version": "1.15.0"
+    },
+    {
+      "date": "2026-01-28T22:26:28.844Z",
+      "version": "1.14.0"
+    },
+    {
+      "date": "2026-01-07T02:27:24.745Z",
+      "version": "1.13.0"
+    },
+    {
+      "date": "2025-12-24T22:20:07.050Z",
+      "version": "1.12.1"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "author": "Red Hat",
+  "created": "2026-01-09T22:21:17.764Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-argocd",
+  "plugin_id": "backstage-community-argocd",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/argocd/plugins/argocd",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-09-23T05:32:43.387Z",
+  "version": "3.1.3",
+  "version_count": 21,
+  "versions": [
+    {
+      "date": "2026-09-23T05:32:43.387Z",
+      "version": "3.1.3"
+    },
+    {
+      "date": "2026-09-17T21:18:48.238Z",
+      "version": "3.1.2"
+    },
+    {
+      "date": "2026-09-17T06:35:26.656Z",
+      "version": "2.8.1"
+    },
+    {
+      "date": "2026-09-16T12:29:42.376Z",
+      "version": "3.1.1"
+    },
+    {
+      "date": "2026-08-28T21:31:34.721Z",
+      "version": "3.1.0"
+    },
+    {
+      "date": "2026-08-26T03:49:17.531Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2026-08-17T10:43:09.162Z",
+      "version": "2.11.0"
+    },
+    {
+      "date": "2026-07-17T09:05:20.142Z",
+      "version": "2.10.0"
+    },
+    {
+      "date": "2026-05-21T09:58:17.688Z",
+      "version": "2.9.0"
+    },
+    {
+      "date": "2026-03-27T14:46:34.574Z",
+      "version": "2.8.0"
+    },
+    {
+      "date": "2026-03-15T23:34:56.336Z",
+      "version": "2.7.1"
+    },
+    {
+      "date": "2026-03-10T22:19:07.515Z",
+      "version": "2.7.0"
+    },
+    {
+      "date": "2026-03-07T05:07:42.685Z",
+      "version": "2.6.0"
+    },
+    {
+      "date": "2026-02-24T19:54:44.192Z",
+      "version": "2.5.0"
+    },
+    {
+      "date": "2026-02-19T12:24:46.184Z",
+      "version": "2.4.6"
+    }
+  ]
+}

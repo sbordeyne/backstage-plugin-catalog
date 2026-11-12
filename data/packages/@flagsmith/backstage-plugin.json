@@ -1,0 +1,70 @@
+{
+  "author": "",
+  "created": "2026-01-28T13:17:01.871Z",
+  "deprecated": "",
+  "description": "Backstage plugin for Flagsmith feature flag management",
+  "homepage": "https://flagsmith.github.io/flagsmith-backstage-plugin/",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "feature-flags",
+    "feature-toggles",
+    "flagsmith"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asaphko",
+    "flagsmithengineering",
+    "kim.gustyr",
+    "kyle-ssg",
+    "matthewelwell",
+    "tcosta-fs"
+  ],
+  "name": "@flagsmith/backstage-plugin",
+  "plugin_id": "flagsmith",
+  "readme": "# Flagsmith Plugin for Backstage\n\n[![npm version](https://badge.fury.io/js/%40flagsmith%2Fbackstage-plugin.svg)](https://www.npmjs.com/package/@flagsmith/backstage-plugin)\n\nIntegrate [Flagsmith](https://flagsmith.com) feature flags into your Backstage instance.\n\n## Features\n\n- **Feature Flags Tab** - View all feature flags for a service directly in the entity page\n- **Overview Card** - Quick summary of flags and their states\n- **Usage Card** - Display Flagsmith usage metrics\n\n## Installation\n\n### 1. Install the plugin\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @flagsmith/backstage-plugin\n```\n\n### 2. Configure the Backstage proxy\n\nAdd to your `app-config.yaml` (or `app-config.local.yaml` for local development):\n\n```yaml\nproxy:\n  endpoints:\n    '/flagsmith':\n      target: 'https://api.flagsmith.com/api/v1'\n      headers:\n        Authorization: Api-Key ${FLAGSMITH_API_TOKEN}\n```\n\n> **Note:** Use an environment variable for the API token in production. Never commit tokens to version control.\n\nFor self-hosted Flagsmith, change the target URL:\n\n```yaml\nproxy:\n  endpoints:\n    '/flagsmith':\n      target: 'https://your-flagsmith-instance.com/api/v1'\n      headers:\n        Authorization: Api-Key ${FLAGSMITH_API_TOKEN}\n```\n\n### 3. Add the Feature Flags tab to entity pages\n\nIn `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```typescript\nimport { FlagsTab } from '@flagsmith/backstage-plugin';\n\n// Add to your entity page layout (e.g., serviceEntityPage)\n<EntityLayout.Route path=\"/feature-flags\" title=\"Feature Flags\">\n  <FlagsTab />\n</EntityLayout.Route>\n```\n\n### 4. (Optional) Add cards to the Overview page\n\n```typescript\nimport {\n  FlagsmithOverviewCard,\n  FlagsmithUsageCard,\n} from '@flagsmith/backstage-plugin';\n\n// Add to your entity overview page\n<Grid item md={6}>\n  <FlagsmithOverviewCard />\n</Grid>\n<Grid item md={6}>\n  <FlagsmithUsageCard />\n</Grid>\n```\n\n### 5. Annotate your entities\n\nAdd Flagsmith annotations to your `catalog-info.yaml`:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-service\n  annotations:\n    flagsmith.com/project-id: '12345'\nspec:\n  type: service\n  owner: team-a\n```\n\n> **Note:** The organization ID is automatically derived from the project data.\n\n## Getting your Flagsmith credentials\n\n1. Log in to your [Flagsmith dashboard](https://app.flagsmith.com)\n2. Go to **Organisation Settings** > **API Keys**\n3. Create or copy your **Admin API Key**\n4. Find your **Project ID** in the URL or project settings\n\n## Development\n\n### Prerequisites\n\n- Node.js 22+ (Node 24 has known ESM compatibility issues with Backstage)\n- Yarn\n- A Backstage application for testing\n\n### Local Development Setup\n\n1. Clone the repository:\n\n   ```bash\n   git clone https://github.com/Flagsmith/flagsmith-backstage-plugin.git\n   cd flagsmith-backstage-plugin\n   ```\n\n2. Install dependencies:\n\n   ```bash\n   yarn install\n   ```\n\n3. To test in a Backstage app, copy or link the plugin to your Backstage workspace's `plugins/` directory and add it as a workspace dependency.\n\n4. Create `app-config.local.yaml` with your Flagsmith credentials (this file is gitignored).\n\n5. Run the Backstage app:\n   ```bash\n   yarn start\n   ```\n\n### Available Scripts\n\n| Command      | Description                  |\n| ------------ | ---------------------------- |\n| `yarn start` | Start the development server |\n| `yarn build` | Build for production         |\n| `yarn test`  | Run tests                    |\n| `yarn lint`  | Lint the codebase            |\n\n### Project Structure\n\n```\nsrc/\n├── components/          # React components\n│   ├── FlagsTab.tsx\n│   ├── FlagsmithOverviewCard.tsx\n│   └── FlagsmithUsageCard.tsx\n├── api/                 # API client (uses Backstage proxy)\n│   └── FlagsmithClient.ts\n├── plugin.ts            # Frontend plugin definition\n└── index.ts             # Package exports\n```\n\n## Contributing\n\nContributions are welcome! Please open an issue or submit a pull request.\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/Flagsmith/flagsmith-backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@flagsmith",
+  "updated": "2026-02-24T13:23:44.806Z",
+  "version": "0.3.0",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2026-02-24T13:23:44.806Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-02-06T14:03:19.125Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-02-06T13:48:04.309Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-02-03T13:55:37.988Z",
+      "version": "0.1.0-pr.7.7f40003"
+    },
+    {
+      "date": "2026-02-03T13:54:03.664Z",
+      "version": "0.1.0-pr.7.de3318e"
+    },
+    {
+      "date": "2026-01-30T12:00:51.812Z",
+      "version": "0.1.0-pr.7.63ef880"
+    },
+    {
+      "date": "2026-01-29T16:34:56.649Z",
+      "version": "0.1.0-pr.7.3135fb9"
+    },
+    {
+      "date": "2026-01-28T13:29:41.437Z",
+      "version": "0.1.0-pr.7.ffc27ed"
+    },
+    {
+      "date": "2026-01-28T13:17:02.117Z",
+      "version": "0.1.0-pr.7.a55a280"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2022-04-27T22:04:39.994Z",
+  "deprecated": "",
+  "description": "The `backstage-plugin-techdocs-addon-mermaid` allows rendering of [Mermaid](https://mermaid-js.github.io/) diagrams within [Backstage TechDocs](https://backstage.io/docs/features/techdocs/techdocs-overview)",
+  "homepage": "https://github.com/johanneswuerbach/backstage-plugin-techdocs-addon-mermaid#readme",
+  "keywords": [
+    "backstage",
+    "mermaid",
+    "techdocs"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "johanneswuerbach"
+  ],
+  "name": "backstage-plugin-techdocs-addon-mermaid",
+  "plugin_id": "techdocs",
+  "readme": "# backstage-plugin-techdocs-addon-mermaid\n\nThe `backstage-plugin-techdocs-addon-mermaid` allows rendering of [Mermaid](https://mermaid-js.github.io/) diagrams\nwithin [Backstage TechDocs](https://backstage.io/docs/features/techdocs/techdocs-overview)\n\nThis plugin is a [Backstage TechDocs Addon](https://backstage.io/docs/features/techdocs/addons), which requires\nBackstage v1.2+\n\n## Getting started\n\n1. Follow [the official documentation for TechDocs Addons](https://backstage.io/docs/features/techdocs/addons#installing-and-using-addons) to enable addons for techdocs.\n2. For your backstage instance, make sure you have installed `mkdocs-techdocs-core` >= 1.0.2. Older versions will not render mermaid correctly!\n\n    ```sh\n    pip3 install mkdocs-techdocs-core==1.0.2\n    ```\n\n3. Install this plugin in your backstage app. Run the following command from the root of your backstage installation:\n\n   ```sh\n   yarn --cwd packages/app add backstage-plugin-techdocs-addon-mermaid\n   ```\n\n4. Enabling the Mermaid Addon:\n\n   - **Legacy Frontend System**: Enable the addon within techdocs viewer's within `App.tsx` and `EntityPage.tsx`\n\n   ```typescript jsx\n   // packages/app/src/App.tsx\n   // packages/app/src/components/catalog/EntityPage.tsx\n   import { Mermaid } from \"backstage-plugin-techdocs-addon-mermaid\";\n\n   // ...\n   {techDocsPage}\n   <TechDocsAddons>\n     {/*...*/}\n     <Mermaid config={{ theme: \"forest\", themeVariables: { lineColor: \"#000000\" } }} />\n   </TechDocsAddons>\n   ```\n\n   - **New Frontend System**: Enable the addon module within `App.tsx`:\n\n   ```typescript jsx\n   // packages/app/src/App.tsx\n   import techDocsPlugin from '@backstage/plugin-techdocs/alpha';\n   import { techDocsMermaidAddonModule } from \"backstage-plugin-techdocs-addon-mermaid\";\n\n   // ...\n\n   const app = createApp({\n     features: [\n       // ...\n       techDocsPlugin,\n       techDocsMermaidAddonModule,\n       // ...other techdocs addon modules\n     ],\n   });\n   ```\n\n## Use Mermaid in your TechDocs\n\n~~~markdown\n# Mermaid section\n\nHere is a mermaid graph!\n\n```mermaid\ngraph TD;\n    A-->B;\n    A-->C;\n    B-->D;\n    C-->D;\n```\n\n~~~\n\n## Mermaid Configuration\n\nThe plugin supports customizing the Mermaid configuration for light and dark themes, as well as a shared base configuration. The available options are:\n\n- `lightConfig` — Mermaid configuration applied when the Backstage theme is set to light mode.\n- `darkConfig` — Mermaid configuration applied when the Backstage theme is set to dark mode.\n- `config` — Shared configuration that is deep-merged on top of the selected theme configuration. Values here take precedence over `lightConfig`/`darkConfig`.\n\nEach option follows this schema:\n\n```typescript\ninterface MermaidConfig {\n  // Theme for the diagram. Options: 'default' | 'base' | 'dark' | 'forest' | 'neutral' | 'null'\n  theme?: string;\n  // Custom theme variables to override the default theme colors, fonts, etc.\n  themeVariables?: Record<string, any>;\n  // Custom CSS to apply to the diagram\n  themeCSS?: string;\n  // Font family and size for the diagram\n  fontFamily?: string;\n  fontSize?: number;\n  // ... any other Mermaid configuration options\n}\n```\n\nSee [Mermaid Config Schema](https://mermaid.ai/open-source/config/schema-docs/config.html) for all configuration options.\n\n### Legacy Frontend System\n\nPass `lightConfig`, `darkConfig`, and `config` directly as props:\n\n```typescript jsx\n<Mermaid\n  lightConfig={{ theme: \"default\", themeVariables: { primaryColor: \"#bb2528\" } }}\n  darkConfig={{ theme: \"dark\", themeVariables: { primaryColor: \"#bb2528\" } }}\n  config={{ fontFamily: \"Arial\", fontSize: 14 }}\n/>\n```\n\n### New Frontend System\n\nWhen using the new frontend system, these options are configured via `app-config.yaml`\nunder the `techdocs.addons.mermaid` key:\n\n```yaml\n# app-config.yaml\ntechdocs:\n  addons:\n    mermaid:\n      lightConfig:\n        theme: default\n        themeVariables:\n          primaryColor: \"#bb2528\"\n      darkConfig:\n        theme: dark\n        themeVariables:\n          primaryColor: \"#bb2528\"\n      config:\n        fontFamily: Arial\n        fontSize: 14\n```\n\nNo code changes are needed beyond the standard module registration shown in\nthe [Getting Started](#getting-started) section — the addon reads the\nconfiguration automatically at runtime.\n\n## Zoom and Pan Functionality\n\nThe plugin supports interactive zoom and pan functionality for Mermaid diagrams. This allows users to:\n- Zoom in/out using Ctrl/Cmd + mouse wheel\n- Pan the diagram using Ctrl/Cmd + mouse drag\n\n### Zoom Configuration Options\n\nThe zoom functionality can be configured using the following options:\n\n```typescript\ninterface ZoomOptions {\n  /**\n   * Defines the minimum and maximum zoom scale limits.\n   * Example: [0.1, 10] allows zooming out to 10% and in to 1000%\n   * Default: [0.1, 10]\n   */\n  scaleExtent?: [number, number];\n\n  /**\n   * Defines the boundaries for panning the diagram.\n   * Format: [[xmin, ymin], [xmax, ymax]]\n   * Example: [[-1000, -1000], [1000, 1000]] limits panning to a 2000x2000 area\n   * Default: No limits\n   */\n  translateExtent?: [[number, number], [number, number]];\n}\n```\n\n### Legacy Frontend System\n\nTo enable zoom functionality, add the `enableZoom` prop and optionally configure the zoom behavior:\n\n```typescript\n<Mermaid\n  enableZoom\n  zoomOptions={{\n    scaleExtent: [0.1, 10], // Optional: Set min/max zoom scale\n    translateExtent: [[-1000, -1000], [1000, 1000]] // Optional: Set pan boundaries\n  }}\n/>\n```\n\n### New Frontend System\n\nWhen using the new frontend system, zoom and pan are configured via `app-config.yaml`\nunder the `techdocs.addons.mermaid` key:\n\n```yaml\n# app-config.yaml\ntechdocs:\n  addons:\n    mermaid:\n      enableZoom: true\n      zoomOptions:\n        scaleExtent: [0.1, 10]           # Optional: min/max zoom scale\n        translateExtent:                   # Optional: pan boundaries\n          - [-1000, -1000]\n          - [1000, 1000]\n```\n\nNo code changes are needed beyond the standard module registration shown in\nthe [Getting Started](#getting-started) section — the addon reads the\nconfiguration automatically at runtime.\n\n## Icon Packs\n\nMermaid diagrams can reference icons from registered Iconify icon packs using the `icon` shape syntax, e.g. `icon \"logos:github\" \"GitHub\"`. Custom icon packs can be registered as follows:\n\n### Legacy Frontend System\n\nPass `iconLoaders` directly as a prop, either with inline icons or an async loader:\n\n```typescript jsx\n<Mermaid\n  iconLoaders={[\n    { name: 'custom', icons: { prefix: 'custom', icons: { 'my-icon': { body: '<path d=\"M0 0\" />' } } } },\n    { name: 'logos', loader: () => import('@iconify-json/logos').then((m) => m.icons) },\n  ]}\n/>\n```\n\n### New Frontend System\n\nWhen using the new frontend system, icon packs are configured via `app-config.yaml` under the `techdocs.addons.mermaid.iconPacks` key. Each entry needs a `name` (the prefix used to reference its icons in diagrams) and either:\n\n- `icons` — an inline [Iconify JSON](https://iconify.design/docs/types/iconify-json.html) icon set, for small custom packs, or\n- `package` — the name of a published `@iconify-json/*` package (optionally with a subpath). These are resolved against the [unpkg](https://unpkg.com) CDN. For other/custom/internal domains, `http(s)://` URLs are resolved directly. Either way, this is fetched as JSON at runtime, so the package does **not** need to be installed as a dependency of your Backstage app.\n\n```yaml\n# app-config.yaml\ntechdocs:\n  addons:\n    mermaid:\n      iconPacks:\n        - name: custom\n          icons:\n            prefix: custom\n            icons:\n              my-icon:\n                body: '<path d=\"M0 0\" />'\n        - name: logos\n          package: '@iconify-json/logos'\n        - name: hosted\n          package: 'https://example.com/icons/my-icons.json'\n```\n\n> **Note:** Because the `package` field is fetched from a public CDN at request time rather than pinned as a versioned dependency, its content isn't reviewed or locked the way an installed npm package would be. Prefer inline `icons` for anything sensitive, or a `package`/URL you control and trust.\n\n## Auto-Detection vs. Manual Detection\n\nBy default, this plugin will autodetect diagrams based on the starting token of the code block. In some cases, however, this auto-detection is not sufficient, for example, because of an unrecognized\ndiagram type or the use of front matter. In these cases, you can force the use of mermaid on blocks by adding configuration like this to your `mkdocs.yaml` file:\n\n```yaml\nmarkdown_extensions:\n  pymdownx.extra:\n    pymdownx.superfences:\n      custom_fences:\n        - name: mermaid\n          class: mermaid\n          format: !!python/name:pymdownx.superfences.fence_code_format\n```\n\n## Supporting Additional Layout Renderers\n\nBy providing a mermaid layout renderer that conforms to the `LayoutLoaderDefinition`, such as the [ELK Renderer](https://www.npmjs.com/package/@mermaid-js/layout-elk),\nthis plugin will include this provided render on page load.\n\n**Example Usage**\n\nIn your Backstage application root folder run:\n```bash\nyarn add @mermaid-js/layout-elk\n```\n\nThen within both `App.tsx` and `EntityPage.tsx` add the following:\n```typescript\nimport elkLayouts from '@mermaid-js/layout-elk';\n...\n<Mermaid layoutLoaders={elkLayouts} config={{layout: 'elk'}} />\n...\n```\n\nThis will support both the legacy syntax and the modern syntax for defining which mermaid diagrams utilize the new layout renderer\nLegacy\n```bash\n%%{init: {\"flowchart\": {\"defaultRenderer\": \"elk\"}} }%%\n```\nModern\n```bash\n---\nconfig:\n  layout: elk\n---\n```\n\n## Contributors Guide\n\nThis plugin can be developed in the context of an existing Backstage deployment or a [new local deployment](https://backstage.io/docs/getting-started/#1-create-your-backstage-app).\n\n### Releasing to npm\n\nThe `publish.yml` workflow uses [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/)\nto authenticate with GitHub Actions OIDC, without an `NPM_TOKEN` secret.\nBefore the first automated release, a package maintainer must configure a GitHub Actions\ntrusted publisher in the npm package settings with:\n\n- Organization or user: `johanneswuerbach`\n- Repository: `backstage-plugin-techdocs-addon-mermaid`\n- Workflow filename: `publish.yml`\n- Environment name: leave empty\n- Allow direct publishing with `npm publish`\n\nOnce trusted publishing is configured and verified, remove the old `NPM_TOKEN`\nrepository secret and revoke the token in npm.\n\nTo release, merge a version bump in `package.json`, tag that commit as `v<version>`\n(for example, `v0.30.0`), and publish a GitHub release for that tag. Pushing a tag\nalone or saving a draft release does not publish to npm. The workflow checks that\nthe tag matches the package version, runs type checks, builds, tests, and packs\nwith Yarn before publishing the tarball with npm. Node.js 24 supplies an npm CLI\nthat supports trusted publishing (npm 11.5.1 or later).\n\nRegular releases use the npm `latest` dist-tag; GitHub prereleases use `next`.\nUse a new package version for each release; npm versions cannot be overwritten.\n\n### Setup for Deployment\n\n1. Fork and clone this repo into the plugins folder of your Backstage codebase.\n2. To have yarn link the local version of the addon instead of the version on npm.\n   1. Change directories to the new `plugins/backstage-plugin-techdocs-addon-mermaid folder` and run `yarn link`.\n   2. Go up to the main Backstage directory and run `yarn link backstage-plugin-techdocs-addon-mermaid`.\n3. Run `yarn install` in the Backstage root.\n4. Follow the earlier instructions to add the plugin to your TechDocs pages in your Backstage deployment such as `app.tsx`.\n\n### Manual Testing\n\nAfter making changes to the plugin and having unit tests pass, to do manual end-to-end testing, follow the instructions below.\n\n#### Option #1 Techdocs CLI\n\nYou can use the [TechDocs CLI](https://backstage.io/docs/features/techdocs/cli/) to test against a local docs folder. You will need to customize the preview app bundle for that to work as the addon is not included in the [standard bundle](https://github.com/backstage/techdocs-cli/blob/main/packages/embedded-techdocs-app/src/App.tsx). Review the TechDoc's documentation for further instructions.\n\n#### Option #2 Use a Remote Location\n\nRegister a component via URL like any other Backstage component and view that component's TechDocs.\nFor example, to use the SampleDocs component in this repo:\n\n1. Generate a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) for *public repos*.\n2. Add the [GitHub integration](https://backstage.io/docs/integrations/github/locations) to your `app-config.local.yaml`.\n3. `yarn dev` in the root of your Backstage codebase.\n4. To register the demo docs, browse to `http://localhost:3000/catalog-import`\n5. Register the URL pointing to the SampleDocs/catalog-info.yaml, example: `https://github.com/johanneswuerbach/backstage-plugin-techdocs-addon-mermaid/blob/main/sampledocs/catalog-info.yaml`\n6. To iterate:\n   1. Create a branch for the addon.\n   2. Change the contents of the sampledocs.\n   3. Commit and push.\n   4. Register the catalog-info.yaml for your branch instead (keep in mind any security changes required for your personal access token).\n   5. Iterate changes to markdown and changes to the plugin.\n",
+  "repository": "https://github.com/johanneswuerbach/backstage-plugin-techdocs-addon-mermaid/tree/HEAD/.",
+  "role": "frontend-plugin-module",
+  "scope": "",
+  "updated": "2026-11-06T23:24:05.821Z",
+  "version": "0.30.0",
+  "version_count": 45,
+  "versions": [
+    {
+      "date": "2026-11-06T23:24:05.821Z",
+      "version": "0.30.0"
+    },
+    {
+      "date": "2026-09-29T14:54:12.018Z",
+      "version": "0.29.0"
+    },
+    {
+      "date": "2026-09-14T09:36:40.030Z",
+      "version": "0.28.0"
+    },
+    {
+      "date": "2026-08-21T12:32:42.004Z",
+      "version": "0.27.0"
+    },
+    {
+      "date": "2026-03-25T20:21:17.348Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-02-15T14:50:56.767Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2025-09-05T13:14:31.132Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2025-07-30T19:54:38.238Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2025-07-11T21:14:23.983Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2025-06-04T07:37:22.887Z",
+      "version": "0.21.5"
+    },
+    {
+      "date": "2025-06-02T12:56:40.530Z",
+      "version": "0.21.4"
+    },
+    {
+      "date": "2025-05-29T14:44:31.439Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2025-05-09T10:20:49.860Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2025-04-15T21:04:53.009Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2025-03-25T08:05:52.583Z",
+      "version": "0.18.1"
+    }
+  ]
+}

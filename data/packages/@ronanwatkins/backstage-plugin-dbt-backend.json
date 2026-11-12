@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-05-15T09:30:42.425Z",
+  "deprecated": "",
+  "description": "> Backstage plugin to read dbt doc",
+  "homepage": "https://github.com/sqsp-rwatkins/backstage-plugin-dbt#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ronanwatkins"
+  ],
+  "name": "@ronanwatkins/backstage-plugin-dbt-backend",
+  "plugin_id": "",
+  "readme": "# backstage dbt plugin backend\n\n> Backstage plugin to read dbt doc\n\nThis plugin is coupled with [@iiben_orgii/backstage-plugin-dbt](https://github.com/IIBenII/backstage-plugin-dbt/tree/main/packages/dbt), read the [docs](https://github.com/IIBenII/backstage-plugin-dbt) to use it.",
+  "repository": "https://github.com/sqsp-rwatkins/backstage-plugin-dbt",
+  "role": "backend-plugin",
+  "scope": "@ronanwatkins",
+  "updated": "2024-05-15T09:30:42.635Z",
+  "version": "1.0.1-alpha.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-05-15T09:30:42.635Z",
+      "version": "1.0.1-alpha.1"
+    }
+  ]
+}

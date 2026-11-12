@@ -1,0 +1,76 @@
+{
+  "author": "statusneo",
+  "created": "2023-03-14T13:32:50.808Z",
+  "deprecated": "",
+  "description": "<img src=\"https://raw.githubusercontent.com/StatusNeo/backstage-plugin-github/main/src/assets/statusneo.png\"/> <br/>",
+  "homepage": "https://github.com/StatusNeo/backstage-plugin-github#readme",
+  "keywords": [
+    "backstage",
+    "github",
+    "statusneo"
+  ],
+  "license": "ISC",
+  "maintainers": [
+    "abhaysoni",
+    "noicecurse"
+  ],
+  "name": "@statusneo/backstage-plugin-github",
+  "plugin_id": "",
+  "readme": "## GitHub Homepage Cards for Backstage Enterprise\n\n<img src=\"https://raw.githubusercontent.com/StatusNeo/backstage-plugin-github/main/src/assets/statusneo.png\"/> <br/>\n\nTo know more about the plugin, read this [blog](https://statusneo.com/23468-2).\n\n### Setup\n\nBefore you can start using the GitHub cards, you must set up a GitHub provider.\n\nYou can follow this [documentation](https://backstage.io/docs/auth/github/provider/) which will guide you through the process of setting up the GitHub provider for your Backstage instance.\n\nNow in the below steps, I will assume you are already done with the provider.\n\n### Integration Steps\n\n1. First Install the GitHub cards plugin by running this command from the root of the package.\n\n```shell\nyarn add –cwd packages/app @statusneo/backstage-plugin-github\n```\n2. add this to the app/src/apis.ts\n\n```javascript\n  import { githubApiRef, GithubClient as StatusNeoGithubClient } from '@statusneo/backstage-plugin-github';\n\n  // ...\n  createApiFactory({\n    api: githubApiRef,\n    deps: { authApi: githubAuthApiRef, fetchApi: fetchApiRef, configApi: configApiRef },\n    factory(deps) {\n      return new StatusNeoGithubClient(deps);\n    },\n  }),\n  // ...\n```\n\n3. Import `GithubPullRequestsCard`, and `GithubActionsCard` from the installed package.\n\n4. You can then use these components at the backstage frontend wherever you need.\n\n```javascript\nimport { GithubPullRequestsCard, GithubActionsCard } from '@statusneo/backstage-plugin-github';\n\n// ...\n              <Grid item xs={12} md={6}>\n                <GithubActionsCard />\n              </Grid>\n              <Grid item xs={12} md={6}>\n                <GithubPullRequestsCard />\n              </Grid>\n// ...\n```\n\n5. If you are using a GitHub enterprise edition, you can pass your instance url through app-config.yml\n\n```yaml\n\ngh-plugin:\n  url: ${GITHUB_ENTERPRISE_URL}\n\n```\n\nNow you are ready to use this Backstage GitHub plugin to make your software management and development cycle a little more hassle-free.\n",
+  "repository": "https://github.com/StatusNeo/backstage-plugin-github",
+  "role": "frontend-plugin",
+  "scope": "@statusneo",
+  "updated": "2023-08-29T07:07:30.159Z",
+  "version": "0.2.6",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2023-08-29T07:07:30.159Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2023-08-28T08:48:08.450Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2023-06-01T20:50:48.787Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2023-06-01T20:40:02.098Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2023-05-30T09:55:57.583Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-03-15T10:19:14.268Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2023-03-15T10:08:52.969Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2023-03-15T09:46:36.303Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2023-03-14T18:40:59.865Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-03-14T14:40:53.943Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-03-14T13:34:54.669Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-03-14T13:32:51.000Z",
+      "version": "0.1.0"
+    }
+  ]
+}

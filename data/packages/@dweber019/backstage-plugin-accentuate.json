@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-06T09:56:37.834Z",
+  "deprecated": "",
+  "description": "Welcome to the accentuate plugin.",
+  "homepage": "https://github.com/dweber019/backstage-plugins/tree/main/plugins/accentuate",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "dweber019"
+  ],
+  "name": "@dweber019/backstage-plugin-accentuate",
+  "plugin_id": "accentuate",
+  "readme": "# Accentuate Plugin\n\nWelcome to the accentuate plugin.\n\nThis plugin provides the ability to overwrite entities in the UI without change the backing YAML definition from SCM.\n\nProvided are the following functionalities:\n\n- Component to show that an entity has been overwritten\n- Component to edit entities based on JSON schemas\n- Page to get an overview what has been overwritten\n- Backend storing additional data in the database and responsible for merging\n\nFuture ideas:\n\n- Provide ability to create entities\n- Integrate in inspect dialog\n\n![entity-json-schema-editor](./docs/entity-json-schema-editor.png)\n\n## Setup\n\nInstall this plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @dweber019/backstage-plugin-accentuate\n```\n\n### Configuration\n\nYou need to have the [accentuate backend plugin](../accentuate-backend/README.md) configured.\n\n#### Allowed kinds\n\nYou can configure which entity kind (e.g. Group) are modifiable by the plugin by using\n\n```yaml\naccentuate:\n  allowedKinds:\n    - kind: 'User'\n    - kind: 'Group'\n    - kind: 'Group'\n    - kind: 'Component'\n    - kind: 'Resource'\n    - kind: 'System'\n    - kind: 'Domain'\n```\n\nThe list above is the default.\n\nYou can even more specific control the allowed entities over the `spec.type` with\n\n```yaml\naccentuate:\n  allowedKinds:\n    - kind: 'Component'\n      specType: 'service'\n```\n\nThis could mean only components of type service are allowed to be accentuated.\n\n#### Annotations\n\nYou can use the following annotation to disable modification on a per-entity level\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: component-accentuate\n  annotations:\n    accentuate/disable: 'true'\nspec: ...\n```\n\n### Entity Pages\n\nYou have two options to show and edit an entity.\n\n#### Info banner\n\n![entity-info-banner](./docs/entity-info-banner.png)\n\nFor this implement the `EntityAccentuateInfo` like\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  EntityAccentuateInfo,\n  isAccentuateEnabled,\n} from '@dweber019/backstage-plugin-accentuate';\n\nconst entityWarningContent = (\n  <>\n    ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isAccentuateEnabled}>\n        <Grid item xs={12}>\n          <EntityAccentuateInfo />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n  </>\n);\n```\n\n#### Context menu\n\n![entity-context-menu](./docs/entity-context-menu.png)\n\nFor this implement the `EntityAccentuateInfo` like\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport { EntityLayoutWrapper } from '@dweber019/backstage-plugin-accentuate';\n\nconst serviceEntityPage = (\n  <EntityLayoutWrapper>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      {overviewContent}\n    </EntityLayout.Route>\n    ...\n  </EntityLayoutWrapper>\n);\n```\n\n> If you are other plugins using context menu, you most probably have to reimplement this you own.\n\n### Overview page\n\n![page-overview](./docs/page-overview.png)\n\nTo add the overview page you have to add the page at\n\n```tsx\n// packages/app/src/App.tsx\n\nimport { AccentuatePage } from '@dweber019/backstage-plugin-accentuate';\n\nconst routes = (\n  <FlatRoutes>\n    ...\n    <Route path=\"/accentuate\" element={<AccentuatePage />} />\n  </FlatRoutes>\n);\n```\n\nThen extend the navigation like\n\n```tsx\n// packages/app/src/components/Root/Root.tsx\n\nimport BrushIcon from '@material-ui/icons/Brush';\n\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n      <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n        <SidebarScrollWrapper>\n          ...\n          <SidebarItem icon={BrushIcon} to=\"accentuate\" text=\"Accentuate\" />\n        </SidebarScrollWrapper>\n      </SidebarGroup>\n    </Sidebar>\n    {children}\n  </SidebarPage>\n);\n```\n\n## Icon\n\nThanks to [Dust icons created by Konkapp - Flaticon](https://www.flaticon.com/free-icons/dust) for the icon.\n",
+  "repository": "https://github.com/dweber019/backstage-plugins/tree/HEAD/plugins/accentuate",
+  "role": "frontend-plugin",
+  "scope": "@dweber019",
+  "updated": "2025-12-19T07:45:25.691Z",
+  "version": "0.1.2",
+  "version_count": 17,
+  "versions": [
+    {
+      "date": "2025-12-19T07:45:25.691Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-08-15T06:55:17.780Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-06-27T07:33:11.144Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-03-17T20:39:56.639Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2025-01-20T10:42:54.324Z",
+      "version": "0.0.13"
+    },
+    {
+      "date": "2024-12-28T22:35:34.197Z",
+      "version": "0.0.12"
+    },
+    {
+      "date": "2024-10-21T10:44:57.628Z",
+      "version": "0.0.11"
+    },
+    {
+      "date": "2024-09-25T06:28:31.043Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2024-08-29T20:39:34.815Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2024-08-24T21:59:05.263Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2024-07-29T00:33:07.296Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2024-07-20T21:52:29.523Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2024-07-06T08:23:26.455Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2024-06-02T10:36:02.914Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-05-15T20:15:33.696Z",
+      "version": "0.0.3"
+    }
+  ]
+}

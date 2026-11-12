@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2024-02-21T14:04:47.449Z",
+  "deprecated": "",
+  "description": "Welcome to the management-configs plugin!",
+  "homepage": "https://github.com/FlaviaBertoni/backstage-plugins/blob/main/plugins/management-configs/README.md",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "flavia-bertoni"
+  ],
+  "name": "@fbertoni/backstage-plugin-management-configs",
+  "plugin_id": "",
+  "readme": "# management-configs\n\nWelcome to the management-configs plugin!\n\n_This plugin was created through the Backstage CLI_\n\nThis plugin provides the front-end for managing the configurations of your applications that are in the cloud or in some other service in your on-premise environment. The plugin includes tabs for listing, creating, editing, and deleting feature flags, environments (envs), and secrets.\n\nSimply follow the contract and implement the backend locally. You can see an example of backend implementation [here](../management-configs-backend/src/service/router.ts).\n\n## Getting Started\n\n### Install the package\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @fbertoni/backstage-plugin-management-configs\n```\n\n### Add the plugin to `packages/app/src/components/catalog/EntityPage.tsx`\n\nImport the `ManagementConfigsContent` component and the `ConfigType` to define what type of configuration should be displayed.\n\n```bash\nimport { ManagementConfigsContent, ConfigType } from '@fbertoni/backstage-plugin-management-configs';\n```\n\nIn the `entityPage`, create an `EntityLayout.Route` with the `path` and `title` of the tab you want to display your configuration, and inside it, add the `ManagementConfigsContent` component with the desired `type`.\n\nFor example, in the case below, only for resources of type Keyvault, I would like to display the Secrets tab, and for the AppConfiguration type, I want to display two tabs, one for Environments (Envs) and another for Feature Flags:\n\n```diff\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityAboutCard,\n  EntityDependsOnComponentsCard,\n  EntityDependsOnResourcesCard,\n  EntityHasComponentsCard,\n  EntityHasResourcesCard,\n  EntityHasSubcomponentsCard,\n  EntityHasSystemsCard,\n  EntityLayout,\n  EntityLinksCard,\n  EntitySwitch,\n  EntityOrphanWarning,\n  EntityProcessingErrorsPanel,\n  isComponentType,\n  isKind,\n  hasCatalogProcessingErrors,\n  isOrphan,\n  hasRelationWarnings,\n  EntityRelationWarning,\n+ isResourceType,\n} from '@backstage/plugin-catalog';\n\n+ import { ManagementConfigsContent, ConfigType } from '@fbertoni/backstage-plugin-management-configs';\n\n…\n\n+ const resourcePage = (\n+   <EntityLayout>\n+     <EntityLayout.Route path=\"/\" title=\"Overview\">\n+       {overviewContent}\n+     </EntityLayout.Route>\n+ \n+     <EntityLayout.Route if={isResourceType('keyvault')} path=\"/management-secrets\" title=\"Secrets\">\n+       <ManagementConfigsContent title=\"Secret List\" type={ConfigType.Secret} />\n+     </EntityLayout.Route>\n+ \n+     <EntityLayout.Route if={isResourceType('appconfiguration')} path=\"/management-envs\" title=\"Envs\">\n+       <ManagementConfigsContent title=\"Env List\" type={ConfigType.Env} />\n+     </EntityLayout.Route>\n+ \n+     <EntityLayout.Route if={isResourceType('appconfiguration')} path=\"/management-featureflags\" title=\"Feature Flags\">\n+       <ManagementConfigsContent title=\"FeatureFlag List\" type={ConfigType.FeatureFlag} />\n+     </EntityLayout.Route>\n+   </EntityLayout>\n+ );\n\nexport const entityPage = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isKind('component')} children={componentPage} />\n    <EntitySwitch.Case if={isKind('api')} children={apiPage} />\n    <EntitySwitch.Case if={isKind('group')} children={groupPage} />\n    <EntitySwitch.Case if={isKind('user')} children={userPage} />\n    <EntitySwitch.Case if={isKind('system')} children={systemPage} />\n    <EntitySwitch.Case if={isKind('domain')} children={domainPage} />\n+   <EntitySwitch.Case if={isKind('resource')} children={resourcePage} />\n\n    <EntitySwitch.Case>{defaultEntityPage}</EntitySwitch.Case>\n  </EntitySwitch>\n);\n\n```\n\nResulting in the following layout:\n\n**Secrets**\n\n![Management Secrets](docs/secrets-management.png)\n![Details Secrets](docs/secrets-edit.png)\n![Edit Secrets](docs/secrets-edit-save.png)\n![Create Secrets](docs/secrets-create.png)\n![Delete Secrets](docs/secrets-delete.png)\n\n**Envs**\n![Management Envs](docs/envs-management.png)\n![Details and Edit Env](docs/envs-edit.png)\n\n**Feature Flags**\n![Management Feature Flags](docs/featureflags-management.png)\n![Details and Edit Feature Flags](docs/featureflags-edit.png)\n\n\n## Permissions\n\nThis plugin implements permissions defined in the plugin-management-configs-common. They are:\n\n| Name   | Description |\n|--------|-------|\n| manegementconfigs.envs.create  | used to display or hide the \"Create\" button for the \"Env\" type |\n| manegementconfigs.envs.delete  | used to display or hide the trash can icon in the actions column of the table for the \"Env\" type |\n| manegementconfigs.featureflag.create  | used to display or hide the \"Create\" button for the \"FeatureFlag\" type |\n| manegementconfigs.featureflag.delete  | used to display or hide the trash can icon in the actions column of the table for the \"FeatureFlag\" type |\n| manegementconfigs.secrets.create  | used to display or hide the \"Create\" button for the \"Secret\" type |\n| manegementconfigs.secrets.delete  | used to display or hide the trash can icon in the actions column of the table for the \"Scret\" type |\n\nIf you are creating your own backend, it is advisable to use permissions in the backend routes as well.\nAnd to enable the tab for each config, it is recommended to use the read permission in the `packages/app/src/components/catalog/EntityPage.tsx` file, as in this [example](../../packages/app/src/components/catalog/EntityPage.tsx)\n\n## Development\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/management-configs](http://localhost:3000/management-configs).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/FlaviaBertoni/backstage-plugins/tree/HEAD/plugins/management-configs",
+  "role": "frontend-plugin",
+  "scope": "@fbertoni",
+  "updated": "2024-03-05T12:35:45.117Z",
+  "version": "0.2.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-03-05T12:35:45.117Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-02-27T19:45:26.054Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-02-21T19:59:04.621Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-02-21T14:16:04.057Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-02-21T14:04:47.714Z",
+      "version": "0.1.0"
+    }
+  ]
+}

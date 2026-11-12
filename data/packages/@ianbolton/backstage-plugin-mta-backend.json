@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2025-03-12T14:24:49.746Z",
+  "deprecated": "",
+  "description": "Welcome to the mta backend plugin!",
+  "homepage": "https://github.com/backstage/community-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ibolton336"
+  ],
+  "name": "@ianbolton/backstage-plugin-mta-backend",
+  "plugin_id": "mta",
+  "readme": "# mta\n\nWelcome to the mta backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/mta/health](http://localhost:7007/api/mta/health).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/mta/plugins/mta-backend",
+  "role": "backend-plugin",
+  "scope": "@ianbolton",
+  "updated": "2025-03-14T20:30:39.467Z",
+  "version": "0.2.5",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-03-14T20:30:39.467Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2025-03-14T18:51:10.214Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2025-03-14T18:29:53.751Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2025-03-12T14:24:50.100Z",
+      "version": "0.2.2"
+    }
+  ]
+}

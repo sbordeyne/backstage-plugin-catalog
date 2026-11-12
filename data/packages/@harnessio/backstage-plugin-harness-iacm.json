@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2024-06-25T09:41:53.078Z",
+  "deprecated": "",
+  "description": "# Harness IACM plugin",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "abhinavrastogi",
+    "sjois"
+  ],
+  "name": "@harnessio/backstage-plugin-harness-iacm",
+  "plugin_id": "",
+  "readme": "# harness-iacm\n\n# Harness IACM plugin\n\nWebsite: [https://harness.io/](https://harness.io/)\n\nWelcome to the Harness IACM plugin for Backstage!\n\n## Screenshots\n<img src=\"./src/assets/harness-iacm-backstage-plugin-screenshot.png\">\n\n\n\n## Getting started\n\n## Setup steps\n\n1. Open terminal and navigate to the _root of your Backstage app_. Then run\n\n```\nyarn add --cwd packages/app @harnessio/backstage-plugin-iacm\n\nyarn install\n```\n\nIf you are looking to get started with Backstage, check out [backstage.io/docs](https://backstage.io/docs/getting-started/).\n\nFor testing purposes, you can also clone this repository to try out the plugin. It contains an example Backstage app setup which is pre-installed with Harness plugins. However, you must create a new Backstage app if you are looking to get started with Backstage.\n\n2. Configure proxy for harness in your `app-config.yaml` under the `proxy` config. Add your Harness Personal Access Token or Service Account Token for `x-api-key`. See the [Harness docs](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys) for generating an API Key.\n\n```yaml\n# In app-config.yaml\n\nproxy:\n  # ... existing proxy settings\n  '/harness/prod':\n    target: 'https://app.harness.io/'\n    headers:\n      'x-api-key': '<YOUR PAT/SAT>'\n# ...\n```\n\nNotes:\n\n- Plugin uses token configured here to make Harness API calls. Make sure the user creating this API token has necessary permissions, which include `project view` permission along with `pipeline view` and `execute` permissions and same applies for service accounts as well it must have a role assigned that has the roles with adequate permissions as described before. \n\n- Set the value of target to your on-prem URL if you are using the Harness on-prem offering\n\n3. Inside your Backstage's `EntityPage.tsx`, import the `EntityIacmContent` and `isHarnessIacmAvailable`  from `@harnessio/backstage-plugin-iacm` and add `<EntityHarnessIacmContent />`. Something like this -\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  isHarnessIacmAvailable,\n  EntityIacmContent,\n} from '@harnessio/backstage-plugin-iacm';\n\nconst iacmContent = (\n  // ...\n  <EntitySwitch.Case if={isHarnessIacmAvailable}>\n    <EntityHarnessIacmContent />\n  </EntitySwitch.Case>\n  // ...\n);\n```\n\n\n<details>\n  <summary>Instructions in case of multiple IACM based plugins (Click to expand)</summary>\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  isHarnessIacmAvailable,\n  EntityIacmContent,\n} from '@harnessio/backstage-plugin-iacm';\n\n\nconst serviceEntityPage = (\n  // ...\n  <EntityLayout.Route\n    path=\"/harness-iacm\"\n    title=\"Harness IACM\"\n    if={isHarnessIacmAvailable}\n  >\n    <EntityIacmContent />\n  </EntityLayout.Route>\n  // ...\n);\n```\n\n</details>\n\n4. Add required harness specific annotations to your software component's respective `catalog-info.yaml` file.\n\nHere is an example: [catalog-info-new.yaml](../../examples/catalog-harness-iacm.yaml)\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    # annotation\n    harness.io/workspace-url: |\n      labelA: <harness_iacm_workspace_url>\n      labelB: <harness_iacm_workspace_url>\n  # here labelA / labelB denotes the value you will see in dropdown in workspace list. \n\n```\n\n\n\n## Features\n\n- Connect a Backstage service with a Harness workspace and view workspace resources.\n- Navigate directly to specific pipeline from backstage\n\n\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@harnessio",
+  "updated": "2026-01-05T08:31:38.613Z",
+  "version": "0.4.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-01-05T08:31:38.613Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-01-13T16:22:18.350Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-07-10T07:15:30.660Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-07-09T10:08:52.726Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2024-06-25T09:41:53.333Z",
+      "version": "0.1.0-beta"
+    }
+  ]
+}

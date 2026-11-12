@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2021-06-02T01:49:19.158Z",
+  "deprecated": "",
+  "description": "[Cortex](https://www.cortex.io/) makes it easy for engineering organizations to gain visibility into their services and deliver high quality software.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "browniefed",
+    "dan_cortex",
+    "nikhilunni"
+  ],
+  "name": "@cortexapps/backstage-plugin",
+  "plugin_id": "",
+  "readme": "# Cortex Scorecard Plugin for Backstage\n\n[Cortex](https://www.cortex.io/) makes it easy for engineering organizations to gain\nvisibility into their services and deliver high quality software.\n\nWe’ve released our Scorecards product as a Backstage plugin. [Scorecards](https://www.cortex.io/products/scorecard)\nallow your team to define standards like production readiness and development quality,\nand enforce them without building scripts and maintaining spreadsheets.\n\n- **One-click integration with third-party tools**: Scorecards fetch data automatically from your integrations without manual work, letting you easily enforce standards across all your tools.\n- **The flexibility to meet your organization’s needs**: Our robust APIs make it easy to use data from custom sources in your Scorecards. Cortex Query Language (CQL) enables you to create complex rules that can compare data across multiple sources or write expressive logical statements.\n- **Enable leaders to make informed decisions**: Historical data and organizational summaries give leadership deep visibility into progress, bottlenecks, and areas of risk.\n- **Drive organizational progress with ease using Initiatives**: Within any Scorecard, assign owners and due dates to drive any best-practice, platform migration, and audit needs.\n\nThe plugin automatically ingests your Backstage components and then lets you easily define\nstandards and governance using our Scorecard editor. Scores are then piped back into Backstage\nthrough our plugin, so you can see the results directly in your Backstage service catalog.\nDevelopers never need to leave your Backstage portal to understand their action items and\nhow to improve the quality of their services.\n\nScorecards are extremely flexible, letting you track and enforce anything custom, including:\n\n- Security standards\n- Production readiness\n- Service maturity\n- Platform and package migrations\n- [DORA metrics](https://www.cortex.io/post/building-a-dora-metrics-scorecard)\n\n![plugin1](./docs/screen2.png?raw=true)\n![plugin2](./docs/screen3.png?raw=true)\n\nCortex creates personalized action items for service owners. These can be found in the Backstage UI\nor received through notifications via Slack and email.\n\nTo start using the Backstage plugin and see a demo, please [book a demo](https://www.cortex.io/demo)!\n\nFor information on how to migrate between major versions, see the [migration guide](https://github.com/cortexapps/backstage-plugin/blob/master/MIGRATION.md).\n\n## Setup and Integration\n\n1. In the [packages/app](https://github.com/backstage/backstage/blob/master/packages/app/) directory of your backstage\n   instance, add the plugin as a package.json dependency:\n\n```shell\n$ yarn add @cortexapps/backstage-plugin\n```\n\n2. Export the plugin in your app's [plugins.ts](https://github.com/backstage/backstage/blob/master/packages/app/src/plugins.ts)\n   to enable the plugin:\n\n```ts\nexport { cortexPlugin } from '@cortexapps/backstage-plugin';\n```\n\n3. Import page to [App.tsx](https://github.com/backstage/backstage/blob/master/packages/app/src/App.tsx):\n\n```tsx\nimport { CortexPage } from '@cortexapps/backstage-plugin';\n```\n\n3. And add a new route to [App.tsx](https://github.com/backstage/backstage/blob/master/packages/app/src/App.tsx):\n\n```tsx\n<Route path=\"/cortex\" element={<CortexPage />} />\n```\n\n4. Update [app-config.yaml](https://github.com/backstage/backstage/blob/master/app-config.yaml#L54) to add a new config under\n   the `proxy` section:\n\n```yaml\n'/cortex':\n  target: ${CORTEX_BACKEND_HOST_URL}\n  headers:\n    Authorization: Bearer ${CORTEX_TOKEN}\n  allowedHeaders: ['x-cortex-email', 'x-cortex-name']\n```\n\n5. Import `EntityCortexContent` and update [EntityPage.tsx](https://github.com/backstage/backstage/blob/master/packages/app/src/components/catalog/EntityPage.tsx) to add a new catalog tab for Cortex:\n\n```tsx\nimport { EntityCortexContent } from '@cortexapps/backstage-plugin';\n\n<EntityLayout.Route path=\"/cortex\" title=\"Cortex\">\n  <EntityCortexContent />\n</EntityLayout.Route>;\n```\n\n6. Add a new sidebar item in [Root.tsx](https://github.com/backstage/backstage/blob/master/packages/app/src/components/Root/Root.tsx)\n\n```tsx\nimport { CortexIcon } from '@cortexapps/backstage-plugin';\n\n<SidebarItem icon={CortexIcon} to=\"cortex\" text=\"Cortex\" />;\n```\n\n7. (Optional) Import `CortexScorecardWidget` and update [EntityPage.tsx](https://github.com/backstage/backstage/blob/master/packages/app/src/components/catalog/EntityPage.tsx) to add a new component widget for Cortex that shows scorecards for that component:\n\n```tsx\nimport { CortexScorecardWidget } from '@cortexapps/backstage-plugin';\n\n<Grid item md={4} xs={12}>\n  <CortexScorecardWidget />\n</Grid>;\n```\n\n8. (Optional) Import `CortexGroupActionItemsWidget` and update [EntityPage.tsx](https://github.com/backstage/backstage/blob/master/packages/app/src/components/catalog/EntityPage.tsx) to add a new group widget for Cortex that shows initiative action items for components owned by that group:\n\n```tsx\nimport { CortexGroupActionItemsWidget } from '@cortexapps/backstage-plugin';\n\n<Grid item md={4} xs={12}>\n  <CortexGroupActionItemsWidget />\n</Grid>;\n```\n\n9. (Optional) Import `SystemCortexContent` and update [EntityPage.tsx](https://github.com/backstage/backstage/blob/master/packages/app/src/components/catalog/EntityPage.tsx) to add a new catalog tab for Cortex:\n\n```tsx\n<EntityLayout.Route path=\"/cortex\" title=\"Cortex\">\n  <SystemCortexContent />\n</EntityLayout.Route>\n```\n\n10. (Optional) Update `app-config.yaml` to point to a self-hosted instance.\n\n```yaml\ncortex:\n  frontendBaseUrl: ${CORTEX_FRONTEND_HOST_URL}\n```\n\n11. (Optional) Update `app-config.yaml` to hide the Settings page from all users, including admins.\n\n```yaml\ncortex:\n  hideSettings: true\n```\n\n12. (Optional) When performing manual entity sync in the Settings page, you can choose to use gzip to compress the entities by updating `app-config.yaml` with the parameter `syncWithGzip`. You must also update the Backstage HTTP proxy to allow the `Content-Encoding` header. Additionally, you can also configure the `syncChunkSize` parameter if the default of `1000` does suit your use case.\n\n```yaml\ncortex:\n  syncWithGzip: true\n  syncChunkSize: 1000\n\nproxy:\n  '/cortex':\n    target: ${CORTEX_BACKEND_HOST_URL}\n    headers:\n      Authorization: ${CORTEX_TOKEN}\n    allowedHeaders:\n      - Content-Encoding\n```\n\n13. (Optional) Customize the appearance of the Cortex plugin\n\nSet custom Cortex page header:\n\n```yaml\ncortex:\n  header:\n    title: 'My custom title' # defaults to \"Cortex\"\n    subtitle: '' # defaults to \"Understand and improve your services.\"\n```\n\nHide links targeting Cortex app:\n\n```yaml\ncortex:\n  hideCortexLinks: true # defaults to `false`\n```\n\nSet custom name for Initiative(s):\n\n```yaml\ncortex:\n  initiativeNameOverride:\n    singular: 'enhancement target' # defaults to 'initiative'\n    plural: 'enhancement targets' # defaults to 'initiatives'\n```\n\n14. (Optional) Customize Backstage homepage as the Cortex homepage:\n\n![homepage](./docs/homepage.png?raw=true)\n\n- Import `CortexHomepage` and update [App.tsx](https://github.com/backstage/backstage/blob/master/packages/app/src/App.tsx):\n\n```tsx\nimport { CortexHomepage } from '@cortexapps/backstage-plugin';\n\n<Route path=\"/\" element={<HomepageCompositionRoot />}>\n  <CortexHomepage />\n</Route>;\n```\n\n- Update sidebar items in [Root.tsx](https://github.com/backstage/backstage/blob/master/packages/app/src/components/Root/Root.tsx):\n\n```tsx\n<SidebarItem icon={HomeIcon} to=\"/\" text=\"Home\" />\n```\n\nSee [Backstage Homepage documentation](https://backstage.io/docs/getting-started/homepage) for further details.\n\nNote: we rely on [Backstage's Identity API](https://backstage.io/docs/reference/core-plugin-api.identityapi/), specifically the `email` returned by `getProfileInfo()` for user-scoped requests.\n\n## Advanced\n\nYou can configure the Cortex plugin to customize its layout. (And soon the ability to provide custom mappings to Cortex YAMLs.)\nTo do this, instead of importing `cortexPlugin`, `CortexPage`, and `EntityCortexContent` directly, you can inject custom behavior into the plugin like:\n\n### **`cortex.ts`**\n\n```tsx\nimport {\n  CustomMapping,\n  EntityFilterGroup,\n  extendableCortexPlugin,\n  ExtensionApi,\n} from '@cortexapps/backstage-plugin';\nimport { Entity } from '@backstage/catalog-model';\n\nclass ExtensionApiImpl implements ExtensionApi {\n  async getAdditionalFilters(): Promise<EntityFilterGroup[]> {\n    return [\n      {\n        name: 'Type',\n        groupProperty: (entity: Entity) =>\n          entity.spec?.type === null || entity.spec?.type === undefined\n            ? undefined\n            : [JSON.stringify(entity.spec?.type).replaceAll('\"', '')],\n      },\n    ];\n  }\n\n  async getCustomMappings(): Promise<CustomMapping[]> {\n    return [\n      (entity: Entity) => {\n        if (!componentEntityV1alpha1Validator.check(entity)) {\n          return {};\n        }\n\n        const component = entity as ComponentEntityV1alpha1;\n        const system = component.spec.system;\n        const serviceGroup = system ? `system:${system}` : undefined;\n\n        return {\n          'x-cortex-service-groups': [\n            ...(component.metadata.tags ?? []),\n            ...(serviceGroup ?? []),\n          ],\n        };\n      },\n    ];\n  }\n}\n\nexport const { plugin, EntityCortexContent, CortexPage } =\n  extendableCortexPlugin({}, () => new ExtensionApiImpl());\n```\n\nThe extension above will insert Backstage spec types as a new filter type in many of the views -- and more filtering and aggregations with this configuration to follow.\n\nThen, instead of importing/exporting from `@cortexapps/backstage-plugin` directly, you can use these new extended exports instead:\n\n### **`packages/app/src/plugins.ts`**\n\n```ts\nexport { plugin } from './cortex';\n```\n\n### **`packages/app/src/App.tsx`**\n\n```tsx\nimport { CortexPage } from './cortex';\n```\n\n### **`packages/app/src/components/catalog/EntityPage.tsx`**\n\n```tsx\nimport { EntityCortexContent } from '../../cortex';\n```\n",
+  "repository": "https://github.com/cortexapps/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@cortexapps",
+  "updated": "2025-02-24T12:55:50.032Z",
+  "version": "2.13.6",
+  "version_count": 138,
+  "versions": [
+    {
+      "date": "2025-02-24T12:55:50.032Z",
+      "version": "2.13.6"
+    },
+    {
+      "date": "2024-10-09T18:29:08.520Z",
+      "version": "2.13.5"
+    },
+    {
+      "date": "2024-09-26T12:11:22.971Z",
+      "version": "2.13.4"
+    },
+    {
+      "date": "2024-08-29T17:35:33.870Z",
+      "version": "2.13.3"
+    },
+    {
+      "date": "2024-08-26T18:02:14.760Z",
+      "version": "2.12.3-18923f4beeb90e12113f4813b9e15a35ea7fee6e"
+    },
+    {
+      "date": "2024-08-26T17:43:27.146Z",
+      "version": "2.12.3-cca97b0edc23e577f522e606606a0ef766be1708"
+    },
+    {
+      "date": "2024-08-26T17:29:47.020Z",
+      "version": "2.12.3-bc2185770d816a8f4a4eb419027a951780781e6e"
+    },
+    {
+      "date": "2024-08-22T00:38:01.077Z",
+      "version": "2.12.3"
+    },
+    {
+      "date": "2024-08-21T14:22:37.822Z",
+      "version": "2.12.2"
+    },
+    {
+      "date": "2024-08-01T14:55:52.586Z",
+      "version": "2.11.7"
+    },
+    {
+      "date": "2024-06-28T20:14:50.996Z",
+      "version": "2.11.6"
+    },
+    {
+      "date": "2024-06-26T16:05:16.084Z",
+      "version": "2.11.5"
+    },
+    {
+      "date": "2024-06-26T15:18:04.495Z",
+      "version": "2.11.4"
+    },
+    {
+      "date": "2024-06-26T12:40:37.627Z",
+      "version": "2.11.3"
+    },
+    {
+      "date": "2024-06-21T17:13:54.791Z",
+      "version": "2.11.2"
+    }
+  ]
+}

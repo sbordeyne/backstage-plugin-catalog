@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-03-21T16:00:56.394Z",
+  "deprecated": "",
+  "description": "Welcome to the readme backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "glundh"
+  ],
+  "name": "@axis-backstage-staging/plugin-readme-backend",
+  "plugin_id": "",
+  "readme": "# Readme backend\n\nWelcome to the readme backend plugin!\n\nThe plugin retrieves README files from the entity source location. The corresponding frontend plugin responsible for displaying this information is the [Readme plugin](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/readme).\n\n## Setup\n\nThe following sections will help you get the Readme Backend plugin setup and running.\n\n### Installation\n\nInstall the plugin by following the example below:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/backend add @axis-backstage/plugin-readme-backend\n```\n\n### Integrating\n\nHere's how to get the backend plugin up and running:\n\n1. Create a new file named `packages/backend/src/plugins/readme.ts`, and add the following to it:\n\n   ```ts\n   import { createRouter } from '@axis-backstage/plugin-readme-backend';\n   import { Router } from 'express';\n   import { PluginEnvironment } from '../types';\n\n   export default async function createPlugin(\n     env: PluginEnvironment,\n   ): Promise<Router> {\n     return await createRouter({\n       logger: env.logger,\n       config: env.config,\n       reader: env.reader,\n       discovery: env.discovery,\n       tokenManager: env.tokenManager,\n     });\n   }\n   ```\n\n2. Wire this into the overall backend router by adding the following to `packages/backend/src/index.ts`:\n\n   ```ts\n   import readme from './plugins/readme';\n   ...\n\n   async function main() {\n     // Add this line under the other lines that follow the useHotMemoize pattern\n    const readmeEnv = useHotMemoize(module, () => createEnv('readme'),\n\n     // Add this under the lines that add their routers to apiRouter\n    apiRouter.use('/readme', await readme(readmeEnv));\n   }\n   ```\n\n### New Backend System\n\nThe Readme backend plugin has support for the [new backend system](https://backstage.io/docs/backend-system/). Here is how you can set it up:\n\nIn your `packages/backend/src/index.ts` make the following changes:\n\n```diff\n+ import { readmePlugin } from '@axis-backstage/readme-backend';\n\nconst backend = createBackend();\n+ backend.add(readmePlugin());\n// ... other feature additions\n\nbackend.start();\n```\n\n### Troubleshooting\n\nIf the backend fails to provide README content for an entity, it could be due to several reasons.\n\n#### No Integration Found for Entity\n\nThis error message indicates that there is no current integration with the external provider where the README file is located, such as GitHub, GitLab, or Gerrit. When the integration is missing, the backend does not have permission to access the README content.\n\nTo resolve this issue, set up the integration for the external provider where the README file is located. You can find more information about Backstage integrations in the [Backstage upstream documentation](https://backstage.io/docs/integrations/).\n\n#### Not a Valid Location for Source Target\n\nThis error means that the entity source location cannot be found or is not a valid URL. The `entity source location` is always the same directory as the catalog-info.yaml file.\n\nTo debug this error, ensure that the entity source location is valid for the current entity. You can find the entity source location in the entity's catalog-info.yaml file. See the example below:\n\n```yaml\nannotations:\n  backstage.io/source-location: url:https://github.com/AxisCommunications/backstage-plugins/blob/main/\n```\n\n#### README Not Found for Entity\n\nThis error indicates that no README, README.md, README.rst, README.txt, or README.MD file was found for that entity. To resolve this error, ensure that there is a README file located in the entity source location with one of the following formats: **md**, **rst**, or **txt**. The plugin can also handle symlinks.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@axis-backstage-staging",
+  "updated": "2024-03-21T16:00:56.674Z",
+  "version": "0.4.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-03-21T16:00:56.674Z",
+      "version": "0.4.0"
+    }
+  ]
+}

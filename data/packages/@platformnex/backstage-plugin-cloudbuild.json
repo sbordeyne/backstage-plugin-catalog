@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2025-03-22T17:30:50.064Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "chandih",
+    "muralish"
+  ],
+  "name": "@platformnex/backstage-plugin-cloudbuild",
+  "plugin_id": "cloudbuild",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@platformnex",
+  "updated": "2025-03-22T21:00:27.976Z",
+  "version": "0.0.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-03-22T21:00:27.976Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-03-22T17:30:50.325Z",
+      "version": "0.0.1"
+    }
+  ]
+}

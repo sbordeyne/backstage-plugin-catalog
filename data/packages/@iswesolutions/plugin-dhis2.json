@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-10-06T23:33:39.310Z",
+  "deprecated": "",
+  "description": "Run [DHIS2](https://dhis2.org) instances from Backstage. Each instance is a Proxmox VE LXC container behind a shared nginx reverse proxy with Let's Encrypt TLS. From the `/dhis2` page you can:",
+  "homepage": "https://github.com/ISWE-Solutions/backstage-plugins/tree/main/plugins/dhis2#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "csiwale"
+  ],
+  "name": "@iswesolutions/plugin-dhis2",
+  "plugin_id": "dhis2",
+  "readme": "# @iswesolutions/plugin-dhis2\n\nRun [DHIS2](https://dhis2.org) instances from Backstage. Each instance is a\nProxmox VE LXC container behind a shared nginx reverse proxy with Let's Encrypt\nTLS. From the `/dhis2` page you can:\n\n- **create** instances: pick the DHIS2 version, resources, Proxmox node and\n  database (in the container or on a shared PostgreSQL server), optionally\n  starting from a database dump\n- **clone**, **edit** resources and settings, and **upgrade** to newer DHIS2\n  releases and hotfixes\n- **start, stop, restart** and **back up** instances, and **restore** a database\n  or move it to another server\n- **decommission** an instance, optionally taking a `pg_dump` first\n- follow every job live, replay past runs, and read instance and nginx logs\n\nThe page has four tabs: **Dashboard** (cluster and instance overview),\n**DHIS2 Instances**, **Settings** (Proxmox clusters, proxy and defaults) and\n**Logs** (the orchestration history).\n\nThe work is done by\n[`@iswesolutions/plugin-dhis2-backend`](../dhis2-backend), which drives an\nAnsible playbook against the Proxmox REST API. Start there: its README lists\nwhat the orchestrator host needs.\n\n## Installation\n\n```sh\nyarn --cwd packages/app add @iswesolutions/plugin-dhis2\n```\n\n```tsx\n// packages/app/src/App.tsx\nimport { DHIS2Page } from '@iswesolutions/plugin-dhis2';\n\n<Route path=\"/dhis2\" element={<DHIS2Page />} />;\n```\n\nThe page calls Proxmox and the DHIS2 release list through the Backstage proxy:\n\n```yaml\nproxy:\n  endpoints:\n    '/proxmox':\n      target: ${PROXMOX_API_URL}\n      changeOrigin: true\n      secure: false # PVE ships a self-signed certificate\n      credentials: require\n      headers:\n        Authorization: PVEAPIToken=${PROXMOX_USER}!${PROXMOX_TOKEN_ID}=${PROXMOX_TOKEN_SECRET}\n    '/dhis2-releases':\n      target: https://releases.dhis2.org\n      changeOrigin: true\n```\n\nKeep `credentials: require` on `/proxmox`. The proxy adds the API token to\nevery request, so letting unauthenticated callers through would expose the\nProxmox API to anyone who can reach Backstage.\n\n## Configuration\n\nUsers can change the Settings tab, which is saved in their browser. Until they\ndo, the page uses these defaults, which you can set for your deployment:\n\n```yaml\ndhis2:\n  settingsDefaults:\n    proxmox:\n      apiUrl: https://pve.example.com:8006\n      defaultNode: pve1\n      searchDomain: example.org\n      nameserver: 10.0.0.53\n    proxy:\n      mode: path # or subdomain\n      baseDomain: dhis2.example.org # instances at dhis2.example.org/<name>\n      host: proxy.example.org # SSH host of the nginx proxy\n    dhis2:\n      defaultVersion: '2.40.3'\n      defaultCpu: 4\n      defaultMemoryMb: 16384\n      defaultStorageGb: 40\n    # Stored browser values to discard in favour of the defaults above,\n    # e.g. a host that once shipped as a default by mistake\n    replaceStoredValues:\n      proxy:\n        host: [old-proxy.example.org]\n```\n\nThis block is sent to the browser, so it accepts no passwords or tokens. See\n[`config.d.ts`](config.d.ts) for every option.\n\n## Permissions\n\nAnyone signed in can view instances, jobs and logs. Changes need the\npermissions in [`@iswesolutions/plugin-dhis2-common`](../dhis2-common)\n(`dhis2.instance.create`, `.clone`, `.update`, `.operate`, `.restore`,\n`.delete` and `dhis2.proxy.manage`). The page hides or disables actions the\nuser isn't allowed to take.\n",
+  "repository": "https://github.com/ISWE-Solutions/backstage-plugins/tree/HEAD/plugins/dhis2",
+  "role": "frontend-plugin",
+  "scope": "@iswesolutions",
+  "updated": "2026-10-15T11:32:06.869Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-10-15T11:32:06.869Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-10-06T23:34:34.905Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-06T23:33:39.310Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

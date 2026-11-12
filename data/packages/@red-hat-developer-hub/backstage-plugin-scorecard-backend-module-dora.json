@@ -1,0 +1,71 @@
+{
+  "author": "Red Hat",
+  "created": "2026-09-16T17:16:06.699Z",
+  "deprecated": "",
+  "description": "The dora backend module for the scorecard plugin.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-dora",
+  "plugin_id": "scorecard",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/scorecard/plugins/scorecard-backend-module-dora",
+  "role": "backend-plugin-module",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-04T05:11:51.074Z",
+  "version": "0.3.1",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2026-11-04T05:11:51.074Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-10-26T14:14:33.681Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-10-13T18:17:31.032Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2026-10-12T17:06:42.669Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2026-10-12T08:11:00.556Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2026-10-07T13:53:07.517Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2026-09-30T12:44:11.350Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-09-23T05:48:07.822Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-09-21T11:52:25.460Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-09-16T17:16:07.225Z",
+      "version": "0.1.1"
+    }
+  ]
+}

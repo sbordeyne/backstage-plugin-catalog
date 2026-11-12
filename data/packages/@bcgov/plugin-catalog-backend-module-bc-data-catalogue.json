@@ -1,0 +1,112 @@
+{
+  "author": "",
+  "created": "2026-01-20T17:37:26.461Z",
+  "deprecated": "",
+  "description": "The bc-data-catalogue backend module for the catalog plugin.",
+  "homepage": "https://github.com/bcgov/csit-backstage-poc#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "akroon3r",
+    "bc-gov-common-services",
+    "bradenmitchell",
+    "citzcodemvp",
+    "danebenal",
+    "danilomeireles",
+    "dgboss",
+    "fbarreta",
+    "galen.gray",
+    "irfan.charania",
+    "jimmypalelil",
+    "jleach",
+    "jujaga",
+    "kolezhannochka",
+    "mgranbois",
+    "michael.nelson.gov.bc.ca",
+    "mkernohanbc",
+    "nicoledegreef",
+    "omprakashmishra",
+    "parcjason",
+    "paul.howells",
+    "qqnluaq",
+    "sahejmundi",
+    "sheaphillips",
+    "shellyxuehan",
+    "sidmclaughlin",
+    "stoews",
+    "supriya-arora",
+    "taylorfries",
+    "ty2k"
+  ],
+  "name": "@bcgov/plugin-catalog-backend-module-bc-data-catalogue",
+  "plugin_id": "catalog",
+  "readme": "# @bcgov/plugin-catalog-backend-module-bc-data-catalogue\n\nThis package is part of the BC Data Catalogue Backstage integration.\n\n👉 **Refer to the main project README at the root of this repository for installation and configuration instructions.**\n\n---\n\n## Purpose\n\nThe `@bcgov/plugin-catalog-backend-module-bc-data-catalogue` package provides the backend integration with the BC Data Catalogue.\n\nIt is responsible for:\n\n- fetching datasets from the BC Data Catalogue\n- transforming them into Backstage entities\n- registering entities such as:\n  - `Dataset`\n  - `API`\n  - `System`\n  - `Group`\n  - `User`\n\n---\n\n## Usage\n\nThis package is intended to be registered as a backend module in Backstage:\n\n```ts\nbackend.add(import('@bcgov/plugin-catalog-backend-module-bc-data-catalogue'));\n```\n\n---\n\n## Notes\n\n- This package is **not intended to be used in isolation**\n- It depends on:\n  - `@bcgov/plugin-catalog-common-bc-data-catalogue`\n- It is designed to be used together with:\n  - `@bcgov/catalog-dataset` (frontend UI)\n- All setup, configuration, and environment details are documented in the root project README",
+  "repository": "https://github.com/bcgov/csit-backstage-poc/tree/HEAD/plugins/catalog-backend-module-bc-data-catalogue",
+  "role": "backend-plugin-module",
+  "scope": "@bcgov",
+  "updated": "2026-06-03T21:46:59.229Z",
+  "version": "0.2.11-main.893f0530",
+  "version_count": 30,
+  "versions": [
+    {
+      "date": "2026-06-03T21:46:59.229Z",
+      "version": "0.2.11-main.893f0530"
+    },
+    {
+      "date": "2026-06-01T18:14:34.838Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.935bcaf2"
+    },
+    {
+      "date": "2026-06-01T17:03:37.934Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.3140a64f"
+    },
+    {
+      "date": "2026-06-01T16:57:34.937Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.884422b5"
+    },
+    {
+      "date": "2026-05-29T16:46:11.599Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.49bf3524"
+    },
+    {
+      "date": "2026-05-27T19:14:47.621Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.76f29cfa"
+    },
+    {
+      "date": "2026-05-27T18:45:29.025Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.5336a157"
+    },
+    {
+      "date": "2026-05-27T18:16:40.277Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.84605942"
+    },
+    {
+      "date": "2026-05-27T15:38:31.956Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.cb2d711a"
+    },
+    {
+      "date": "2026-05-22T19:44:39.680Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.91b201f2"
+    },
+    {
+      "date": "2026-05-22T18:26:14.955Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.ba12fc56"
+    },
+    {
+      "date": "2026-05-22T16:30:46.219Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.a8871ee9"
+    },
+    {
+      "date": "2026-05-22T15:57:10.042Z",
+      "version": "0.2.10-feature.aps-4600-use-built-in-api-entity.418ebc71"
+    },
+    {
+      "date": "2026-05-21T16:12:49.135Z",
+      "version": "0.2.11-main.bc7f58ec"
+    },
+    {
+      "date": "2026-05-21T16:08:15.039Z",
+      "version": "0.2.10-feature.aps-4589-bump-version.44523cb0"
+    }
+  ]
+}

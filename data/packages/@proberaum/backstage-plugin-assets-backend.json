@@ -1,0 +1,52 @@
+{
+  "author": "",
+  "created": "2025-09-13T05:57:01.437Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "christoph-jerolimov",
+    "jerolimov"
+  ],
+  "name": "@proberaum/backstage-plugin-assets-backend",
+  "plugin_id": "assets",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@proberaum",
+  "updated": "2025-11-18T17:44:26.125Z",
+  "version": "0.6.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2025-11-18T17:44:26.125Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-10-17T22:59:24.128Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-10-17T22:20:59.139Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-10-17T16:07:22.881Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-10-15T00:48:22.248Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-10-14T05:24:32.476Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-09-13T05:57:01.732Z",
+      "version": "0.0.1"
+    }
+  ]
+}

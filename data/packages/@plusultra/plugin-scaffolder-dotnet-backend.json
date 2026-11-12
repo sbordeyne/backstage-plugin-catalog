@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2022-01-13T02:37:46.501Z",
+  "deprecated": "",
+  "description": "Welcome to the `dotnet` actions for the `scaffolder-backend`.",
+  "homepage": "https://github.com/alefcarlos/plusultra-dotnet-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "alefcarlos"
+  ],
+  "name": "@plusultra/plugin-scaffolder-dotnet-backend",
+  "plugin_id": "",
+  "readme": "# scaffolder-dotnet-backend\n\nWelcome to the `dotnet` actions for the `scaffolder-backend`.\n\nThis contains \n- `dotnet:new`\n- `dotnet:template:install`\n- `dotnet:build`\n\nThe `dotnet:new` action allows the task to create [dotnet templates](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new).\n\n## Getting started\n\nCreate your Backstage application using the Backstage CLI as described here:\nhttps://backstage.io/docs/getting-started/create-an-app\n\n> Note: If you are using this plugin in a Backstage monorepo that contains the code for `@backstage/plugin-scaffolder-backend`, you need to modify your internal build processes to transpile files from the `node_modules` folder as well.\n\nYou need to configure the action in your backend:\n\n## From your Backstage root directory\n\n```\ncd packages/backend\nyarn add @plusultra/plugin-scaffolder-dotnet-backend\n```\n\nConfigure the action:\n(you can check the [docs](https://backstage.io/docs/features/software-templates/writing-custom-actions#registering-custom-actions) to see all options):\n\n```typescript\n// packages/backend/src/plugins/scaffolder.ts\n\nimport { dotnetNewAction, dotnetBuildAction } from '@plusultra/plugin-scaffolder-dotnet-backend'\nimport { ScmIntegrations } from '@backstage/integration';\n\nconst integrations = ScmIntegrations.fromConfig(config);\n\nconst builtInActions = createBuiltinActions({\ncontainerRunner,\nintegrations,\nconfig,\ncatalogClient,\nreader,\n});\n\nconst actions = [...builtInActions, dotnetNewAction(), dotnetBuildAction()];\n\nreturn await createRouter({\n  containerRunner,\n  logger,\n  config,\n  database,\n  catalogClient,\n  reader,\n  actions,\n});\n```\n\n### Example of using\n\n```yaml\n---\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: debug\n  title: debug\n  description: Template for debugging\n  tags:\n    - debug\nspec:\n  owner: Alef\n  type: debug\n  steps:\n    - id: template\n      name: Dotnet new webapi\n      action: dotnet:new\n      input:\n        template: webapi\n        args:\n          - -n\n          - MyWebApi\n```\n\nYou can also visit the `/create/actions` route in your Backstage application to find out more about the parameters this action accepts when it's installed to configure how you like.",
+  "repository": "https://github.com/alefcarlos/plusultra-dotnet-backstage-plugins/tree/HEAD/plugins/scaffolder-dotnet-backend",
+  "role": "backend-plugin-module",
+  "scope": "@plusultra",
+  "updated": "2023-03-26T02:01:02.971Z",
+  "version": "1.1.2",
+  "version_count": 15,
+  "versions": [
+    {
+      "date": "2023-03-26T02:01:02.971Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2022-05-02T22:52:13.559Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2022-01-29T04:49:58.255Z",
+      "version": "1.0.13"
+    },
+    {
+      "date": "2022-01-29T04:10:16.512Z",
+      "version": "1.0.12"
+    },
+    {
+      "date": "2022-01-29T03:40:04.281Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2022-01-28T15:45:24.693Z",
+      "version": "1.0.10"
+    },
+    {
+      "date": "2022-01-26T14:34:58.516Z",
+      "version": "1.0.9"
+    },
+    {
+      "date": "2022-01-16T05:13:35.728Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2022-01-15T05:44:22.684Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2022-01-15T05:20:41.033Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2022-01-13T18:06:50.360Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2022-01-13T17:45:14.027Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2022-01-13T16:10:40.902Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2022-01-13T02:47:30.731Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2022-01-13T02:37:46.814Z",
+      "version": "1.0.0"
+    }
+  ]
+}

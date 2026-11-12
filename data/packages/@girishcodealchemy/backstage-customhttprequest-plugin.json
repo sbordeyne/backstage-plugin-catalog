@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2024-11-03T05:28:54.340Z",
+  "deprecated": "",
+  "description": "The customhttprequest module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "girishv"
+  ],
+  "name": "@girishcodealchemy/backstage-customhttprequest-plugin",
+  "plugin_id": "scaffolder",
+  "readme": "# @girishcodealchemy/backstage-customhttprequest-plugin\n\n The customhttprequest module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend)\n _This plugin was created through the Backstage CLI_\n\n## Overview\n This Backstage plugin provides a custom `http:request` action for the scaffolder backend, \n enabling users to make HTTP requests to APIs or services as part of a Backstage scaffolder template.\n With this action, you can interact with external services, update configurations, or \n manage permissions in an automated workflow.\n\n## Installation\n\n### 1. Install the plugin into your Backstage project:\n```bash\nyarn workspace backend add @girishcodealchemy/backstage-customhttprequest-plugin\n```\n### 2. Register the action in your index.ts file in the Backstage backend (usually found at `packages/backend/src/index.ts`)\n```typescript\nbackend.add(import('@girishcodealchemy/backstage-customhttprequest-plugin'));\n```\n\n## Usage\nThe custom http:request action allows for making HTTP requests within a template. This is particularly useful for\nscenarios such as setting up permissions, triggering workflows, or updating settings in a target system.\nHere’s how to use the custom action in a Backstage template YAML file to set permissions on a GitHub repository workflow:\n\n```yaml\n- id: set-permissions\n  name: Set Workflow Permissions\n  action: http:request\n  input:\n    method: PUT\n    url: https://api.github.com/repos/${{ (parameters.repoUrl | parseRepoUrl)[\"owner\"] }}/${{ (parameters.repoUrl | parseRepoUrl)[\"repo\"] }}/actions/permissions/workflow\n    headers:\n        Authorization: Bearer  ${{ secrets.GITHUB_PAT_TOKEN }}\n        Accept: application/vnd.github+json\n    body:\n        default_workflow_permissions: write\n```\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@girishcodealchemy",
+  "updated": "2025-01-21T03:59:39.257Z",
+  "version": "0.6.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2025-01-21T03:59:39.257Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2024-11-04T02:19:49.049Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-11-04T02:13:49.726Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-11-04T02:11:08.293Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-11-04T01:54:14.465Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-11-03T05:28:54.626Z",
+      "version": "0.1.0"
+    }
+  ]
+}

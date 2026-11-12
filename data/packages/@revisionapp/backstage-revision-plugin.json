@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-01-25T13:32:21.538Z",
+  "deprecated": "",
+  "description": "Backstage plugin for displaying Revision diagrams",
+  "homepage": "https://revision.app",
+  "keywords": [
+    "backstage",
+    "revision"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "revisionapp"
+  ],
+  "name": "@revisionapp/backstage-revision-plugin",
+  "plugin_id": "revision",
+  "readme": "# Revision Plugin\n\nThe Revision plugin displays diagrams from [Revision](https://revision.app).\n\n![Revision diagram](docs/entity-content.png 'Revision diagram')\n\n## Getting started\n\n1. Install the Revision plugin:\n\n```bash\n# From your Backstage root directory\n\nyarn add --cwd packages/app @revisionapp/backstage-revision-plugin\n```\n\n2. Add the EntitySentryCard to the EntityPage:\n\n```javascript\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport { EntityRevisionContent } from '@revisionapp/backstage-revision-plugin';\n\nconst serviceEntityPage = (\n  <EntityLayout>\n    // ...\n    <EntityLayout.Route path=\"/revision-diagram\" title=\"Diagram\">\n      <EntityRevisionContent />\n    </EntityLayout.Route>\n    // ...\n  </EntityLayout>\n);\n```\n\n3. Add the proxy config and Revision base url to your app config:\n\n```yaml\n# app-config.yaml\n\nproxy:\n  endpoints:\n    '/revision':\n      target: https://<your-organization>.revision.app\n      headers:\n        Authorization: 'Bearer ${REVISION_API_KEY}'\nrevision:\n  baseUrl: https://<your-organization>.revision.app\n```\n\n4. Add the `revision.app/diagram-slug` annotation to your catalog info file:\n\n```yaml\n# catalog-info.yaml\n\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: backstage\n  description: |\n    Backstage is an open-source developer portal that puts the developer experience first.\n  annotations:\n    revision.app/diagram-slug: YOUR_DIAGRAM_SLUG\nspec:\n  type: library\n  owner: CNCF\n  lifecycle: experimental\n```\n\n5. Set your Revision organization's API key, located under \"Settings\" > \"Security\" in Revision (requires administrator access), as an environmental variable called `REVISION_API_KEY`.\n",
+  "repository": "https://github.com/revision-org/backstage-plugins/tree/HEAD/plugins/revision",
+  "role": "frontend-plugin",
+  "scope": "@revisionapp",
+  "updated": "2026-01-15T15:39:49.530Z",
+  "version": "0.5.3",
+  "version_count": 18,
+  "versions": [
+    {
+      "date": "2026-01-15T15:39:49.530Z",
+      "version": "0.5.3"
+    },
+    {
+      "date": "2026-01-15T15:27:36.438Z",
+      "version": "0.5.2"
+    },
+    {
+      "date": "2026-01-15T15:15:59.087Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-01-15T14:49:09.376Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-01-26T14:52:09.570Z",
+      "version": "0.4.9"
+    },
+    {
+      "date": "2024-01-26T14:29:58.809Z",
+      "version": "0.4.8"
+    },
+    {
+      "date": "2024-01-26T13:46:42.375Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2024-01-26T13:44:47.834Z",
+      "version": "0.4.6"
+    },
+    {
+      "date": "2024-01-26T13:36:26.850Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2024-01-26T13:33:52.555Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2024-01-26T13:26:15.405Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2024-01-26T13:24:30.560Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2024-01-26T13:12:33.040Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-01-26T10:32:35.252Z",
+      "version": "0.4.0-alpha.2"
+    },
+    {
+      "date": "2024-01-26T10:16:19.126Z",
+      "version": "0.4.0-alpha.1"
+    }
+  ]
+}

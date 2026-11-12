@@ -1,0 +1,55 @@
+{
+  "author": "Tal Frumkin",
+  "created": "2023-11-14T00:30:14.766Z",
+  "deprecated": "",
+  "description": "Frontend Komodor intergration for Backstage",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "falupi22"
+  ],
+  "name": "@falupi22/plugin-komodor",
+  "plugin_id": "",
+  "readme": "# Komodor Plugin\n\n<img src=\"./plugins/komodor/src/assets/screenshot_normal.png\">\n\n## Setup\n\n1. Run:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @falupi22/plugin-komodor\nyarn --cwd packages/backend add @falupi22/plugin-komodor-backend\nyarn --cwd packages/app add @backstage/plugin-kubernetes\nyarn --cwd packages/backend add @backstage/plugin-kubernetes-backend\n```\n\n2. Add the plugin backend:\n\nIn a new file named `komodor.ts` under `backend/src/plugins`:\n\n```js\nimport { createRouter } from '@falupi22/plugin-komodor-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    logger: env.logger,\n    config: env.config,\n  });\n}\n```\n\nAnd then add to `packages/backend/src/index.ts`:\n\n```js\n// In packages/backend/src/index.ts\nimport komodor from './plugins/komodor';\n// ...\nasync function main() {\n  // ...\n  const komodorEnv = useHotMemoize(module, () => createEnv('komodor'));\n  // ...\n  apiRouter.use('/komodor', await komodor(komodorEnv));\n```\n\n3. Add the plugin as a tab to your service entities:\n\n```jsx\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityKomodorContent } from '@falupi22/plugin-komodor';\n\nconst serviceEntityPage = (\n  <EntityLayout>\n    {/* other tabs... */}\n    <EntityLayout.Route path=\"/komodor\" title=\"Komodor\">\n      <EntityKomodorContent />\n    </EntityLayout.Route>\n```\n4. Follow the instructions for [kubernetes plugin setup](https://backstage.io/docs/features/kubernetes/installation) (notice that the installation of it has already been done). You don't have to make the plugin appear in the UI in order to make this plugin work.\n\n4. Follow the backend instructions which can be found in the README file of the backend project.\n\n## Run\n\nIn order to run the full system, run `yarn dev` from the root directory.\nIn order to run the front end only, run `yarn start`.\nIn order to run the back end only, run `yarn start-backend`.\n",
+  "repository": "https://github.com/Falupi22/backstage-komodor",
+  "role": "frontend-plugin",
+  "scope": "@falupi22",
+  "updated": "2023-11-30T19:09:10.485Z",
+  "version": "0.1.1",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2023-11-30T19:09:10.485Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-11-30T19:01:13.572Z",
+      "version": "0.1.0-18-g1396bff"
+    },
+    {
+      "date": "2023-11-23T14:22:28.349Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2023-11-15T14:01:58.338Z",
+      "version": "1.0.0-delta.1"
+    },
+    {
+      "date": "2023-11-15T13:13:44.771Z",
+      "version": "1.0.0-delta"
+    },
+    {
+      "date": "2023-11-15T08:52:24.839Z",
+      "version": "1.0.0-gamma"
+    },
+    {
+      "date": "2023-11-14T09:33:36.627Z",
+      "version": "1.0.0-beta"
+    },
+    {
+      "date": "2023-11-14T00:30:15.083Z",
+      "version": "1.0.0-alpha"
+    }
+  ]
+}

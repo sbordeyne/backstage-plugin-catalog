@@ -1,0 +1,46 @@
+{
+  "author": "",
+  "created": "2025-07-23T10:19:51.792Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://roadie.io/backstage/plugins/aws/",
+  "keywords": [
+    "aws",
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brianfletcher",
+    "roadie-bot",
+    "roadiehq-david",
+    "xantier"
+  ],
+  "name": "@roadiehq/backstage-plugin-aws",
+  "plugin_id": "backstage-plugin-aws",
+  "readme": "",
+  "repository": "https://github.com/RoadieHQ/roadie-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-aws",
+  "role": "frontend-plugin",
+  "scope": "@roadiehq",
+  "updated": "2026-10-02T15:58:11.880Z",
+  "version": "1.4.1",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-10-02T15:58:11.880Z",
+      "version": "1.4.1"
+    },
+    {
+      "date": "2026-09-29T13:24:57.041Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2025-10-31T09:32:15.471Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2025-07-23T10:19:52.019Z",
+      "version": "1.2.0"
+    }
+  ]
+}

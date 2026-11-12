@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2023-02-06T20:33:52.592Z",
+  "deprecated": "",
+  "description": "Welcome to the backstage-plugin-defectdojo-backend backend plugin!",
+  "homepage": "https://github.com/geislor/backstage-plugin-defectdojo-backend",
+  "keywords": [
+    "backstage",
+    "defectdojo",
+    "vulnerability"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "geislor"
+  ],
+  "name": "@geislor/backstage-plugin-defectdojo-backend",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-defectdojo-backend\n\nWelcome to the backstage-plugin-defectdojo-backend backend plugin!\n\n\n## Getting started\n\n## Installation\nThis plugin needs to be added to an existing backstage instance.\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @geislor/backstage-plugin-defectdojo-backend\n```\n\nCreate a file called defectdojo.ts inside `packages/backend/src/plugins/` and add the following:\n\n### defectdojo.ts\n```typescript\nimport { createRouter } from '@geislor/backstage-plugin-defectdojo-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {  \n  return await createRouter({\n    logger: env.logger,\n    config: env.config,\n  });\n}\n```\n\nAnd import the plugin to `packages/backend/src/index.ts`.\n### src/index.ts\n```diff\ndiff --git a/packages/backend/src/index.ts b/packages/backend/src/index.ts\nindex c4736a5..5822302 100644\n--- a/packages/backend/src/index.ts\n+++ b/packages/backend/src/index.ts\n@@ -28,6 +28,7 @@ import scaffolder from './plugins/scaffolder';\n import proxy from './plugins/proxy';\n import techdocs from './plugins/techdocs';\n import search from './plugins/search';\n+import defectdojo from './plugins/defectdojo';\n import { PluginEnvironment } from './types';\n import { ServerPermissionClient } from '@backstage/plugin-permission-node';\n import { DefaultIdentityClient } from '@backstage/plugin-auth-node';\n@@ -85,6 +86,7 @@ async function main() {\n   const techdocsEnv = useHotMemoize(module, () => createEnv('techdocs'));\n   const searchEnv = useHotMemoize(module, () => createEnv('search'));\n   const appEnv = useHotMemoize(module, () => createEnv('app'));\n+  const defectdojoEnv = useHotMemoize(module, () => createEnv('defectdojo'));\n\n   const apiRouter = Router();\n   apiRouter.use('/catalog', await catalog(catalogEnv));\n@@ -93,6 +95,7 @@ async function main() {\n   apiRouter.use('/techdocs', await techdocs(techdocsEnv));\n   apiRouter.use('/proxy', await proxy(proxyEnv));\n   apiRouter.use('/search', await search(searchEnv));\n+  apiRouter.use('/defectdojo', await defectdojo(defectdojoEnv));\n\n   // Add backends ABOVE this line; this 404 handler is the catch-all fallback\n   apiRouter.use(notFoundHandler());\n\n```\n\n## Continue with Frontend Plugin\nFollow the Docs from [README.md](https://github.com/geislor/backstage-plugin-defectdojo)\n\n## Configuration\n\nAdd the following into your `app-config.yaml`\n### Config\n```yaml\ndefectdojo:\n  host: https://defectdojo.yourcompany.com/api\n  token: YOUR_API_TOKEN\n```\n\nAdd the following into your catalog\n### Catalog\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: backstage\n  annotations:\n    defectdojo/project: YOUR_PROJECT_NAME/YOUR_PROJECT_VERSION\n```\n",
+  "repository": "https://github.com/geislor/backstage-plugin-defectdojo-backend",
+  "role": "backend-plugin",
+  "scope": "@geislor",
+  "updated": "2023-02-06T20:33:52.851Z",
+  "version": "1.0.2",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-02-06T20:33:52.851Z",
+      "version": "1.0.2"
+    }
+  ]
+}

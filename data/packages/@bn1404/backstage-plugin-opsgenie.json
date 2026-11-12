@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2023-12-21T08:28:47.477Z",
+  "deprecated": "",
+  "description": "The Opsgenie plugin is a frontend plugin that displays Opsgenie alerts, incidents and on-call information in Backstage. The plugin includes two components that can be integrated into Backstage:",
+  "homepage": "https://github.com/bn1404/backstage-plugin-opsgenie",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "bn1404"
+  ],
+  "name": "@bn1404/backstage-plugin-opsgenie",
+  "plugin_id": "",
+  "readme": "# Opsgenie plugin for Backstage\n\nThe Opsgenie plugin is a frontend plugin that displays Opsgenie alerts, incidents and on-call information in Backstage. The plugin includes two components that can be integrated into Backstage:\n\n*  The `OpsGeniePage` routable extension component which produces a standalone page with the following capabilities:\n    * view a summary of who is currently on call\n    * view and search a list of active alerts with the option of acknowledging or closing alerts directly from Backstage\n    * view and search a list of incidents\n    * view incident-related analytics\n* The `EntityOpsgenieAlertsCard` component which can display recent alerts for a specific component.\n\n## Setup\n\nFind [installation instructions](./docs/index.md#installation) in our documentation.\n\n## How does it look?\n\n\"Who is on call?\" page:\n\n![Opsgenie on-call page](./docs/opsgenie-on-call-page.png)\n\nAlerts page:\n\n![Opsgenie alerts page](./docs/opsgenie-alerts-page.png)\n\nIncidents page:\n\n![Opsgenie incidents page](./docs/opsgenie-incidents-page.png)\n\nIncidents analytics page:\n\n![Opsgenie incidents analytics page](./docs/opsgenie-analytics-page.png)\n\nAlerts card:\n\n![Opsgenie alerts card](./docs/entity-overview.png)\n\n## License\n\nThis library is under the [MIT](LICENSE) license.",
+  "repository": "https://github.com/bn1404/backstage-plugin-opsgenie",
+  "role": "frontend-plugin",
+  "scope": "@bn1404",
+  "updated": "2023-12-21T08:28:47.844Z",
+  "version": "0.0.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-12-21T08:28:47.844Z",
+      "version": "0.0.1"
+    }
+  ]
+}

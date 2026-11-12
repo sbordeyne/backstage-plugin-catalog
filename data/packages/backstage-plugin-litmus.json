@@ -1,0 +1,53 @@
+{
+  "author": "",
+  "created": "2023-08-17T08:25:41.445Z",
+  "deprecated": "",
+  "description": "Backstage Plugin for Litmus",
+  "homepage": "https://github.com/litmuschaos/backstage-plugin",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "litmus",
+    "litmuschaos",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "namkyu1999"
+  ],
+  "name": "backstage-plugin-litmus",
+  "plugin_id": "",
+  "readme": "# backstage-plugin\n\n[![npm version](https://badge.fury.io/js/backstage-plugin-litmus.svg)](https://badge.fury.io/js/backstage-plugin-litmus)\n\n## Features\n\n### EntityLitmusCard\n\n![EntityLitmusCard](./docs/EntityLitmusCard.png)\n\n### EntityLitmusContent\n\n![EntityLitmusContent](./docs/EntityLitmusContent.png)\n\n## Before you begin\n\n- Compatible only with Litmus version [3.0.0](https://github.com/litmuschaos/litmus/releases/tag/3.0.0) or later.\n- Please visit our [documentation site](https://docs.litmuschaos.io/docs/integrations/backstage) to get a detailed guide.\n\n## Getting started\n\n1. In the `./packages/app` project add the plugin.\n\n   ```yaml\n   yarn add backstage-plugin-litmus\n   ```\n\n2. Get Litmus API Token through the Litmus UI\n\n   1. Click \"SETTINGS\" in the sidebar.\n   2. Click \"+ New Token\" Button in the 'API Tokens' section.\n      ![settings_tab](./docs/settings_tab.png)\n   3. Enter your information and click \"Confirm\".\n      ![create_dialog](./docs/create_dialog.png)\n   4. Get the token in the \"VALUE\" column.\n\n3. In the `app-config.yaml` file root directory, add litmus proxy and info like below\n   ```yaml\n   proxy:\n     '/litmus':\n       target: 'your-own-litmus-ui-url'\n       changeOrigin: true\n       headers:\n         Authorization: 'Bearer ${LITMUS_AUTH_TOKEN}'\n   litmus:\n     baseUrl: 'your-own-litmus-ui-url'\n     apiToken: ${LITMUS_AUTH_TOKEN}\n   ```\n4. Add your auth key to the environmental variables\n   ```shell\n   export LITMUS_AUTH_TOKEN=\"your-own-token\"\n   ```\n5. Adding annotations and values to your component file.\n   ```yaml\n   apiVersion: backstage.io/v1alpha1\n   kind: Component\n   metadata:\n     name: component-name\n     description: 'description'\n     annotations:\n       litmuschaos.io/project-id: 'your-own-project-id'\n   ```\n6. Enabling frontend\n\n   ```ts\n   // packages/app/src/components/catalog/EntityPage.tsx\n   import {\n     isLitmusAvailable,\n     EntityLitmusCard,\n     EntityLitmusContent,\n   } from 'backstage-plugin-litmus';\n   // ...\n   const overviewContent = (\n     <Grid container spacing={6} alignItems=\"stretch\">\n       // ...\n       <EntitySwitch>\n         <EntitySwitch.Case if={isLitmusAvailable}>\n           <Grid item md={4} xs={12}>\n             <EntityLitmusCard />\n           </Grid>\n         </EntitySwitch.Case>\n       </EntitySwitch>\n       // ...\n     </Grid>\n   );\n   // ...\n   const serviceEntityPage = (\n     <EntityLayout>\n       // ...\n       <EntityLayout.Route path=\"/litmus\" title=\"Litmus\">\n         <EntityLitmusContent />\n       </EntityLayout.Route>\n       // ...\n     </EntityLayout>\n   );\n   ```\n\n---\n\n> This plugin is based on [proposal documentation](https://docs.google.com/document/d/1_ePJ36DwFrhFPhcxhxXX__yiNzW1KDL83L2lfF8oIcA/edit?usp=sharing)\n",
+  "repository": "https://github.com/litmuschaos/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2024-03-04T17:22:47.688Z",
+  "version": "1.0.2",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2024-03-04T17:22:47.688Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-03-04T16:40:40.388Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-10-06T06:10:23.002Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2023-09-28T09:56:56.241Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-08-30T05:58:57.797Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-08-17T08:25:41.687Z",
+      "version": "0.1.0"
+    }
+  ]
+}

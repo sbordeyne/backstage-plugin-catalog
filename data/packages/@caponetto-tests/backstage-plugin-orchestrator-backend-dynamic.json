@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2023-11-24T13:24:45.781Z",
+  "deprecated": "",
+  "description": "Welcome to the backend package for the Orchestrator plugin!",
+  "homepage": "https://janus-idp.io/",
+  "keywords": [
+    "backstage",
+    "orchestrator",
+    "plugin",
+    "workflows"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "caponetto"
+  ],
+  "name": "@caponetto-tests/backstage-plugin-orchestrator-backend-dynamic",
+  "plugin_id": "",
+  "readme": "# Orchestrator Backend Plugin for Backstage\n\nWelcome to the backend package for the Orchestrator plugin!\n\nFor more information about the Orchestrator plugin, see the [Orchestrator Plugin documentation](https://github.com/janus-idp/backstage-plugins/tree/main/plugins/orchestrator) on GitHub.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins",
+  "role": "backend-plugin",
+  "scope": "@caponetto-tests",
+  "updated": "2024-03-13T18:16:16.622Z",
+  "version": "0.0.14-test2",
+  "version_count": 21,
+  "versions": [
+    {
+      "date": "2024-03-13T18:16:16.622Z",
+      "version": "0.0.14-test2"
+    },
+    {
+      "date": "2024-03-12T19:40:34.084Z",
+      "version": "0.0.14-test1"
+    },
+    {
+      "date": "2024-02-22T16:06:41.929Z",
+      "version": "0.0.13-demo1"
+    },
+    {
+      "date": "2024-01-18T23:35:36.490Z",
+      "version": "0.0.12-demo3"
+    },
+    {
+      "date": "2024-01-18T23:00:52.105Z",
+      "version": "0.0.12-demo2"
+    },
+    {
+      "date": "2024-01-18T18:45:54.076Z",
+      "version": "0.0.12-demo1"
+    },
+    {
+      "date": "2024-01-17T14:35:20.068Z",
+      "version": "0.0.11"
+    },
+    {
+      "date": "2024-01-16T17:07:14.687Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2024-01-15T18:30:24.370Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2024-01-12T16:26:50.565Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2024-01-11T20:27:35.954Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2024-01-09T18:00:02.939Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2024-01-09T17:37:17.659Z",
+      "version": "0.0.6-alpha4"
+    },
+    {
+      "date": "2024-01-08T14:59:48.725Z",
+      "version": "0.0.6-alpha3"
+    },
+    {
+      "date": "2024-01-08T14:47:08.239Z",
+      "version": "0.0.6-alpha2"
+    }
+  ]
+}

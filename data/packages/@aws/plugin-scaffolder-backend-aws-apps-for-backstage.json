@@ -1,0 +1,60 @@
+{
+  "author": "Amazon Web Services",
+  "created": "2023-05-09T14:04:26.956Z",
+  "deprecated": "",
+  "description": "The Harmonix module for @backstage/plugin-scaffolder-backend",
+  "homepage": "https://github.com/awslabs/harmonix#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "awsjim",
+    "z-sourcecode"
+  ],
+  "name": "@aws/plugin-scaffolder-backend-aws-apps-for-backstage",
+  "plugin_id": "scaffolder",
+  "readme": "<!-- \nCopyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: Apache-2.0 \n-->\n\n# Harmonix on AWS Scaffolder Actions Plugin\n\n## Overview\n\nThe Harmonix Scaffolder Actions plugin extends Backstage's scaffolder with custom actions specifically designed for AWS resource creation and management. This plugin enables software templates to provision and configure AWS resources and interact with AWSEnvironment and AWSEnvironmentProvider configurations as part of the scaffolding process.\n\n## Installation\n\n```sh\n# From your Backstage root directory\nyarn add --cwd packages/backend @aws/plugin-scaffolder-backend-aws-apps-for-backstage@0.4.0\n```\n\n## Configuration / Backend Integration\n\nRegister the scaffolder extension module in your Backstage backend:\n\n```diff\n// packages/backend/src/index.ts\n\nconst backend = createBackend();\n[...]\n+backend.add(import('@aws/plugin-scaffolder-backend-aws-apps-for-backstage'));\n[...]\n\nbackend.start();\n```\n\n## Available Actions\n\nAfter installation, you can use several custom actions in your software templates.  \nFor complete documentation of all available actions, install this plugin and visit the `/create/actions` \nendpoint for your Backstage instance (e.g. http://localhost:3000/create/actions).  \n\nYou can filter by \"harmonix\" to see all actions contributed by Harmonix with usage examples.\n",
+  "repository": "https://github.com/awslabs/harmonix/tree/HEAD/backstage-plugins/plugins/scaffolder-backend-module-harmonix",
+  "role": "backend-plugin-module",
+  "scope": "@aws",
+  "updated": "2025-04-21T14:33:38.695Z",
+  "version": "0.4.1",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2025-04-21T14:33:38.695Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-04-18T19:44:37.214Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-08-16T19:06:45.314Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2024-02-26T21:26:25.548Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2024-01-25T01:03:19.208Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-01-23T21:14:01.054Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-09-27T22:19:26.676Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-05-10T19:25:08.973Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-05-09T14:04:27.219Z",
+      "version": "0.1.0"
+    }
+  ]
+}

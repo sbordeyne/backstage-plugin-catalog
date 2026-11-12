@@ -1,0 +1,76 @@
+{
+  "author": "",
+  "created": "2025-02-16T13:18:54.311Z",
+  "deprecated": "",
+  "description": "This plugin provides a user interface for viewing Wiz security information within Backstage.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bengry",
+    "wizsecurity"
+  ],
+  "name": "@wiz-sec/backstage-plugin-wiz",
+  "plugin_id": "wiz",
+  "readme": "# Wiz Plugin for Backstage\n\nThis plugin provides a user interface for viewing Wiz security information within Backstage.\n\n## Features\n\n- Display security issues and vulnerabilities in a comprehensive table view\n- Severity-based issue categorization\n- Real-time search functionality\n- Pagination support\n- Integration with Backstage catalog entities\n- Support for various security annotations\n\n## Installation\n\n### Add the Frontend Plugin\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @wiz-sec/backstage-plugin-wiz\n```\n\n## Configuration\n\n### Entity Annotations\n\nAdd the following annotations to your catalog entities:\n\n```yaml\nmetadata:\n  annotations:\n    wiz.io/project-id: 'your-project-id'\n    wiz.io/asset-id: 'your-asset-id'\n    wiz.io/external-asset-id: 'your-external-asset-id'\n    wiz.io/repository-external-id: 'your <org/repo>'\n```\n\nAvailable annotations:\n\n- `wiz.io/project-id`: Wiz project identifier\n- `wiz.io/asset-id`: Direct asset identifier in Wiz\n- `wiz.io/external-asset-id`: External asset identifier (e.g., AWS resource ID)\n- `wiz.io/repository-external-id`: Repository identifier for version control integration (e.g., demo-org/demo-repo)\n\n## Features\n\n### Search Functionality\n\n- Real-time search for vulnerabilities by CVE IDs\n- Search issues by rule or resource name\n\n### Pagination\n\n- Configurable page sizes (5, 10, 20 items)\n- Load more data on demand\n- Total count display\n\n## Usage Examples\n\n### Basic Implementation\n\n```typescript\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  BackstagePluginWizPage\n} from \"@wiz-sec/backstage-plugin-wiz\";\n\n...\n\nconst serviceEntityPage = (\n  ...\n  <EntityLayout.Route\n    path=\"/wiz\"\n    title=\"Wiz\"\n  >\n    <BackstagePluginWizPage />\n  </EntityLayout.Route>\n);\n```\n\n### Entity Integration\n\n```yaml\n# catalog-info.yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-service\n  annotations:\n    wiz/project-id: 'proj-123'\n    wiz/external-asset-id: 'aws-resource-789'\n```\n\n## New Frontend System\n\nFollow these steps to detect and configure the Wiz plugin if you'd like to use it in an application that supports the new Backstage frontend system.\n\n### Package Detection\n\nOnce you install the `@wiz-sec/backstage-plugin-wiz` package using your preferred package manager, you have to choose how the package should be detected by the app. The package can be automatically discovered when the feature discovery config is set, or it can be manually enabled via code (for more granular package customization cases).\n\n<table>\n  <tr>\n    <td>Via config</td>\n    <td>Via code</td>\n  </tr>\n  <tr>\n    <td>\n      <pre lang=\"yaml\">\n        <code>\n# app-config.yaml\n  app:\n    # Enable package discovery for all plugins\n    packages: 'all'\n  ---\n  app:\n    # Enable package discovery only for Wiz\n    packages:\n      include:\n        - '@wiz-sec/backstage-plugin-wiz'\n        </code>\n      </pre>\n    </td>\n    <td>\n      <pre lang=\"javascript\">\n       <code>\n// packages/app/src/App.tsx\nimport { createApp } from '@backstage/frontend-defaults';\nimport wizPlugin from '@wiz-sec/backstage-plugin-wiz/alpha';\n//...\nconst app = createApp({\n  // ...\n  features: [\n    //...\n    wizPlugin,\n  ],\n});\n\n//...\n</code>\n\n</pre>\n</td>\n\n  </tr>\n</table>\n\n### Extensions Configuration\n\nCurrently, the plugin installs 2 extensions: 1 api and 1 entity page content (also known as entity page tab), see below examples of how to configure the available extensions.\n\n```yml\n# app-config.yaml\napp:\n  extensions:\n    # Example disabling the Wiz entity content\n    - 'entity-content:wiz': false\n    # Example customizing the Wiz entity content\n    - 'entity-content:wiz':\n        config:\n          path: '/security'\n          title: 'Security'\n```\n\n## Troubleshooting\n\nCommon issues and solutions:\n\n1. No data displayed\n   - Verify entity annotations are correct\n   - Check backend connectivity\n   - Validate API credentials\n\n2. \"Wiz API rate limit reached\" shown on the entity tab\n   - The Wiz tenant is throttling requests. The backend retries automatically\n     with backoff; refresh the page in a moment to load the data.\n   - For large catalogs, tune `cacheTtlSeconds`, `maxConcurrentRequests`, and\n     `maxRetries` in the backend `wiz:` config to reduce API load (see the\n     backend plugin README).\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@wiz-sec",
+  "updated": "2026-07-08T12:33:04.615Z",
+  "version": "1.0.12",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2026-07-08T12:33:04.615Z",
+      "version": "1.0.12"
+    },
+    {
+      "date": "2026-05-10T13:16:03.592Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2026-05-06T20:43:12.213Z",
+      "version": "1.0.10"
+    },
+    {
+      "date": "2026-05-04T12:36:15.795Z",
+      "version": "1.0.9"
+    },
+    {
+      "date": "2026-03-22T21:58:36.605Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2026-03-22T20:57:39.165Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2026-03-05T14:07:32.208Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2026-03-01T10:00:50.615Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2026-02-08T13:13:19.672Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2025-12-18T09:25:12.271Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2025-11-25T11:26:15.673Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-02-16T14:09:26.580Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-02-16T13:18:54.587Z",
+      "version": "1.0.0"
+    }
+  ]
+}

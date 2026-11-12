@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2022-07-13T20:59:35.176Z",
+  "deprecated": "",
+  "description": "Welcome to the @okayhq/backstage-backend-plugin backend plugin!",
+  "homepage": "https://github.com/OkayHQ/backstage-backend-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "antoine-okay",
+    "sarah-okay",
+    "tomasrb"
+  ],
+  "name": "@okayhq/backstage-backend-plugin",
+  "plugin_id": "",
+  "readme": "# @okayhq/backstage-backend-plugin\n\nWelcome to the @okayhq/backstage-backend-plugin backend plugin!\n\nThis plugin is the backend counterpart to the [@okayhq/backstage-plugin](https://github.com/OkayHQ/backstage-plugin), when iframe capabilities are needed. This plugin exposes an endpoint that returns a secure URL for iframe embedding. See [@okayhq/backstage-plugin](https://github.com/OkayHQ/backstage-plugin) for more information.\n\n## Getting started\n\nHead to [@okayhq/backstage-plugin](https://github.com/OkayHQ/backstage-plugin) for installation instructions.\n",
+  "repository": "https://github.com/OkayHQ/backstage-backend-plugin",
+  "role": "backend-plugin",
+  "scope": "@okayhq",
+  "updated": "2022-08-24T16:00:42.624Z",
+  "version": "0.0.3",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2022-08-24T16:00:42.624Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2022-07-18T21:22:59.197Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2022-07-13T20:59:35.368Z",
+      "version": "0.0.1"
+    }
+  ]
+}

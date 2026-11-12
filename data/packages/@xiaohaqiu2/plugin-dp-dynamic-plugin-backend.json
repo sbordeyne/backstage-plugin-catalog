@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2023-07-31T11:04:52.397Z",
+  "deprecated": "",
+  "description": "Welcome to the dp-dynamic-plugin backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "xiaohaqiu2"
+  ],
+  "name": "@xiaohaqiu2/plugin-dp-dynamic-plugin-backend",
+  "plugin_id": "",
+  "readme": "# dp-dynamic-plugin\n\nWelcome to the dp-dynamic-plugin backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/dp-dynamic-plugin](http://localhost:3000/dp-dynamic-plugin).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n\n## app-config.yaml\n\nAdd config below to app-config.yaml\n\n```\ndp-dynamic:\n  plugins:\n    - name: dp-remote-starter\n      baseUrl: http://localhost:8080\n      manifestLocation: http://localhost:8080/plugin-manifest.json\n      exposedModules:\n        - type: home-card\n          name: RemoteStarter\n\n```\n\n## GET api/dynamic-plugins\n\n**_response_**\n\n```\n[\n  {\n    apiVersion: 'dp.cpaas.io/v1aplha1',\n    kind: 'plugin',\n    metadata: { name: 'dp-remote-starter' },\n    spec: {\n      exposedModules: [{ name: 'RemoteStarter', type: 'home-card' }],\n      baseUrl: 'http://localhost:8080',\n      manifestLocation: 'http://localhost:8080/plugin-manifest.json',\n    },\n  },\n]\n\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@xiaohaqiu2",
+  "updated": "2023-07-31T11:16:10.982Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-07-31T11:16:10.982Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-07-31T11:04:52.668Z",
+      "version": "0.1.0"
+    }
+  ]
+}

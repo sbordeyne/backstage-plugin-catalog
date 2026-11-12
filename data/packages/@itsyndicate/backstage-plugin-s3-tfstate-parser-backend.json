@@ -1,0 +1,79 @@
+{
+  "author": "ITsyndicate",
+  "created": "2024-11-05T09:01:54.970Z",
+  "deprecated": "",
+  "description": "Here’s a combined README for the `s3-tfstate-parser` plugin, covering both frontend and backend setup.",
+  "homepage": "https://itsyndicate.org",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "maksym_yemleninov",
+    "volodymyr.voitovych"
+  ],
+  "name": "@itsyndicate/backstage-plugin-s3-tfstate-parser-backend",
+  "plugin_id": "s3-tfstate-parser",
+  "readme": "Here’s a combined README for the `s3-tfstate-parser` plugin, covering both frontend and backend setup.\n\n---\n\n# S3 TFState Parser\n\n## Description\nThe S3 TFState Parser plugin provides insights into AWS resources managed through Terraform. It reads and categorizes resources from Terraform state files stored in S3, allowing users to easily view and manage Terraform-managed AWS resources directly within Backstage.\n\n## Functionality\n- Fetches and displays AWS resources from Terraform state files in an S3 bucket.\n- Categorizes resources by type and allows users to search by name, type, or ID.\n- Provides direct links to AWS Console for managing individual resources.\n- Customizable AWS region configuration for flexibility.\n\n## Installation\n\n### Frontend Setup\n\n1. Install the frontend plugin in your Backstage app:\n   ```bash\n   yarn --cwd packages/app add @internal/backstage-plugin-s3-tfstate-parser\n   ```\n\n2. Configure `aws.regions` in `app-config.yaml` to specify the AWS regions:\n   ```yaml\n   aws:\n     regions:\n       - us-east-1\n       - us-west-2\n   ```\n\n3. Add the `Resources` component to the Backstage catalog `EntityPage`:\n   ```typescript\n   import { Resources } from '@internal/backstage-plugin-s3-tfstate-parser';\n   // ...\n   const entityPage = (\n     <EntityLayout>\n       <EntityLayout.Route path=\"/\" title=\"Overview\">\n         <Grid container spacing={3}>\n           ...\n           <Grid item xs={12} md={6}>\n             <Resources />\n           </Grid>\n         </Grid>\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n   ```\n\n### Backend Setup\n\n1. Install the backend plugin in your Backstage backend:\n   ```bash\n   yarn --cwd packages/backend add @internal/backstage-plugin-s3-tfstate-parser-backend\n   ```\n\n2. Add AWS region configurations in `app-config.yaml`:\n   ```yaml\n   aws:\n     regions:\n       - us-east-1\n       - us-west-2\n   ```\n\n3. Set AWS credentials as environment variables:\n   ```bash\n   export AWS_ACCESS_KEY_ID=your-access-key-id\n   export AWS_SECRET_ACCESS_KEY=your-secret-access-key\n   ```\n\n4. Register the backend plugin in `packages/backend/src/index.ts`:\n   ```typescript\n   const backend = createBackend();\n   // ...\n   backend.add(import('@internal/backstage-plugin-s3-tfstate-parser-backend'));\n   ```\n\n",
+  "repository": "https://github.com/itsyndicate/itsyndicate-devops-platform-plugins/tree/HEAD/workspaces/S3-tfstate-parser/s3-tfstate-parser-backend",
+  "role": "backend-plugin",
+  "scope": "@itsyndicate",
+  "updated": "2024-11-15T11:19:20.242Z",
+  "version": "0.1.75",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2024-11-15T11:19:20.242Z",
+      "version": "0.1.75"
+    },
+    {
+      "date": "2024-11-15T11:06:57.005Z",
+      "version": "0.1.70"
+    },
+    {
+      "date": "2024-11-12T14:58:45.531Z",
+      "version": "0.1.65"
+    },
+    {
+      "date": "2024-11-12T14:48:28.109Z",
+      "version": "0.1.60"
+    },
+    {
+      "date": "2024-11-12T12:30:55.629Z",
+      "version": "0.1.50"
+    },
+    {
+      "date": "2024-11-12T11:54:38.463Z",
+      "version": "0.1.45"
+    },
+    {
+      "date": "2024-11-12T11:49:58.326Z",
+      "version": "0.1.40"
+    },
+    {
+      "date": "2024-11-12T10:46:34.872Z",
+      "version": "0.1.35"
+    },
+    {
+      "date": "2024-11-12T10:19:32.738Z",
+      "version": "0.1.30"
+    },
+    {
+      "date": "2024-11-05T10:26:26.238Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2024-11-05T10:15:02.888Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2024-11-05T09:01:55.270Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2024-11-05T08:50:16.128Z",
+      "version": "0.1.5"
+    }
+  ]
+}

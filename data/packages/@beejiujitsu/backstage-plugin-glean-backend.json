@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2024-12-30T16:44:02.695Z",
+  "deprecated": "",
+  "description": "Welcome to the Glean backend plugin!",
+  "homepage": "https://github.com/beejiujitsu/wealthsimple-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "beejiujitsu"
+  ],
+  "name": "@beejiujitsu/backstage-plugin-glean-backend",
+  "plugin_id": "glean",
+  "readme": "# Glean Backend\n\nWelcome to the Glean backend plugin!\n\nThis backend plugin is used to make our Backstage content available in\n[Glean](https://glean.com/) — our internal search engine.\n\n## Installation\n\nInstall the plugin:\n\n```shell\nyarn --cwd packages/backend add '@beejiujitsu/backstage-plugin-glean-backend'\n```\n\nUpdate `packages/backend/src/index.ts` with:\n\n```typescript\nbackend.add(import('@beejiujitsu/backstage-plugin-glean-backend'));\n```\n\nUpdate your `app-config.yaml` based on the `config.d.ts` file;\nyou must define at least `glean.apiIndexUrl`, `glean.datasource`, and `glean.token`.\n\n## Getting started\n\nThis plugin has been added to the main backend app in this repository, meaning\nyou'll be able to access it by running `yarn start-backend` in the root\ndirectory, and then make requests to\n[http://localhost:7007/api/glean](http://localhost:7007/api/glean).\n",
+  "repository": "https://github.com/beejiujitsu/wealthsimple-backstage-plugins/tree/HEAD/plugins/glean-backend",
+  "role": "backend-plugin",
+  "scope": "@beejiujitsu",
+  "updated": "2024-12-30T17:33:05.913Z",
+  "version": "1.0.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-12-30T17:33:05.913Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-12-30T16:47:11.904Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-12-30T16:44:03.027Z",
+      "version": "1.0.0"
+    }
+  ]
+}

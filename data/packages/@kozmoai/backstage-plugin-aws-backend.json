@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:03.961Z",
+  "deprecated": "",
+  "description": "To use the backend, you will need to configure the following in the app-config.yaml file:",
+  "homepage": "https://github.com/kozmoai/glint-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-aws-backend",
+  "plugin_id": "",
+  "readme": "# AWS Plugin Backend for Backstage\n\nTo use the backend, you will need to configure the following in the app-config.yaml file:\n\nRegion and External ID are optional.\n\n```yaml\nintegrations:\n  aws:\n    - accountId: '9999999999'\n      roleArn: arn:aws:iam::9999999999:role/ops\n      region: eu-west-1\n      externalId: 'blah'\n```\n\nCreate a file in `packages/backend/src/plugins/aws.ts`\n\n```typescript\nimport { createRouter } from '@kozmoai/backstage-plugin-aws-backend';\nimport type { PluginEnvironment } from '../types';\n\nexport default async function createPlugin({\n  logger,\n  config,\n}: PluginEnvironment) {\n  return await createRouter({ logger, config });\n}\n```\n\nIn `packages/backend/src/index.ts` add the following:\n\n```typescript\nimport aws from './plugins/aws';\n// ...\nasync function main() {\n  // ...\n  const awsEnv = useHotMemoize(module, () => createEnv('aws'));\n  const apiRouter = Router();\n  apiRouter.use('/aws', await aws(awsEnv));\n  // ...\n}\n```\n\nAt this point you can retrieve details of an aws resource as follows:\n\nYou can optionally pass a parameter `region`.\n\n```bash\n$ curl http://localhost:7007/api/aws/9999999999/AWS::S3::Bucket/bucket1\n{ \"Arn\":\"arn:aws:s3:::bucket1\", \"BucketName\":\"bucket1\", ... }\n```\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/backend/backstage-aws-backend",
+  "role": "backend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:10.524Z",
+  "version": "1.1.22",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:10.524Z",
+      "version": "1.1.22"
+    },
+    {
+      "date": "2024-03-25T22:14:04.225Z",
+      "version": "1.1.21"
+    }
+  ]
+}

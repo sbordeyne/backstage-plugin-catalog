@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-01-16T14:44:24.606Z",
+  "deprecated": "",
+  "description": "The bigquery backend module for the soundcheck plugin.",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-soundcheck-backend-module-bigquery",
+  "plugin_id": "soundcheck",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2026-10-23T12:28:11.966Z",
+  "version": "0.3.2",
+  "version_count": 26,
+  "versions": [
+    {
+      "date": "2026-10-23T12:28:11.966Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2026-09-17T14:13:03.423Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-08-20T15:31:17.972Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-07-17T16:16:26.964Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-06-19T07:26:04.109Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-05-26T11:51:49.467Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-04-17T09:03:49.702Z",
+      "version": "0.1.19"
+    },
+    {
+      "date": "2026-03-19T22:28:27.313Z",
+      "version": "0.1.18"
+    },
+    {
+      "date": "2026-02-19T17:00:26.535Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2026-01-22T15:50:09.979Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2025-12-19T12:53:51.427Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2025-11-21T18:05:45.244Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2025-10-17T16:13:56.635Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2025-08-22T11:48:37.935Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2025-07-17T09:05:23.604Z",
+      "version": "0.1.11"
+    }
+  ]
+}

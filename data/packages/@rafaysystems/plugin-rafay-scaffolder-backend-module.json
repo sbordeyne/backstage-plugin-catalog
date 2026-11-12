@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2024-09-11T05:28:54.395Z",
+  "deprecated": "",
+  "description": "The rafay module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "kutumba-rafay",
+    "manoj-rafay"
+  ],
+  "name": "@rafaysystems/plugin-rafay-scaffolder-backend-module",
+  "plugin_id": "scaffolder",
+  "readme": "# @internal/backstage-plugin-scaffolder-backend-module-rafay\n\nThe rafay module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend).\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@rafaysystems",
+  "updated": "2024-09-11T15:53:58.258Z",
+  "version": "0.2.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-09-11T15:53:58.258Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-09-11T05:28:54.675Z",
+      "version": "0.2.0"
+    }
+  ]
+}

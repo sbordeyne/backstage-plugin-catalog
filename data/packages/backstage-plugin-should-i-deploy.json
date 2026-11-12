@@ -1,0 +1,50 @@
+{
+  "author": "nandorfs",
+  "created": "2023-11-05T17:10:53.446Z",
+  "deprecated": "",
+  "description": "Have you ever asked yourself... should I deploy today?",
+  "homepage": "https://github.com/NandoRFS/backstage-plugin-should-i-deploy/",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "nandorfs"
+  ],
+  "name": "backstage-plugin-should-i-deploy",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-should-i-deploy\n\nWelcome to the backstage-plugin-should-i-deploy plugin!\n\n## Overview\n\nTired of looking at the calendar to see if today is a good day to deploy? Your problems are solved! This plugin creates the perfect card containing this information for your home! The phrases and background color change according to the day, based on UTC or the time zone.\n\n### Simple Card\n\n![Simple card](./docs/should-i-deploy-card-without-title.png)\n\n### Card with title\n\n![Simple card](./docs/should-i-deploy-card-with-title.png)\n\n### Card it's not time to do it\n\n![Simple card](./docs/should-i-deploy-card-its-not-time.png)\n\n### Card you can do it\n\n![Simple card](./docs/should-i-deploy-card-go-ahead.png)\n\n## Getting started\n\n### Install the package\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app backstage-plugin-should-i-deploy\n```\n\n### Add the route\n\nAdd a **Should I deploy page** to the routes on the `packages/app/src/App.tsx` add:\n\n```diff\n+ import { ShouldIDeployPage } from 'backstage-plugin-should-i-deploy';\n\n  <FlatRoutes>\n+    <Route path=\"/should-i-deploy\" element={<ShouldIDeployPage />} />\n\n    {/* ...other items */}\n```\n\n### Import the card\n\nAdd a **Should I deploy card** to the home page on the `packages/app/src/components/home/HomePage.tsx` add:\n\n```diff\n+ import { ShouldIDeployCard } from 'backstage-plugin-should-i-deploy';\n\n    <Page themeId=\"other\">\n      <Header title=\"Home\" />\n      <Content>\n        <Grid container direction=\"row\">\n          <Grid item xs={12} md={3}>\n            <Grid container direction=\"column\">\n+             <Grid item>\n+               <ShouldIDeployCard title='Choose your title!' timeZone=\"America/Sao_Paulo\"/>\n+             </Grid>\n\n    {/* ...other items */}\n```\n\n**_Note_**: Title and time zone are optional. If you don't specify a title, it will not be rendered. If you don't specify a time zone, the API will use UTC.\n\nThis project uses the API available at [shouldideploy](https://github.com/baires/shouldideploy) :heart:\n",
+  "repository": "https://github.com/NandoRFS/backstage-plugin-should-i-deploy",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2023-11-08T00:07:46.018Z",
+  "version": "0.1.6",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2023-11-08T00:07:46.018Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2023-11-08T00:02:57.397Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2023-11-07T23:52:58.368Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2023-11-07T23:32:42.886Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-11-06T16:58:11.245Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-11-05T17:10:53.668Z",
+      "version": "0.1.1"
+    }
+  ]
+}

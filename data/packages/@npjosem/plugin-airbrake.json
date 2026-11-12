@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-05-27T15:31:34.648Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jxroyo"
+  ],
+  "name": "@npjosem/plugin-airbrake",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/JoseMRoyo/npjosem/tree/HEAD/workspaces/airbrake/plugins/airbrake",
+  "role": "frontend-plugin",
+  "scope": "@npjosem",
+  "updated": "2024-05-27T15:31:34.904Z",
+  "version": "0.3.35",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-05-27T15:31:34.904Z",
+      "version": "0.3.35"
+    }
+  ]
+}

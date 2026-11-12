@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2022-04-17T17:39:41.909Z",
+  "deprecated": "",
+  "description": "Welcome to the cloud-carbon-footprint-backend backend plugin!",
+  "homepage": "https://github.com/cloud-carbon-footprint/ccf-backstage-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "austin-garrard"
+  ],
+  "name": "@austin-garrard/backstage-plugin-backend",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/cloud-carbon-footprint/ccf-backstage-plugin/tree/HEAD/plugins/backend",
+  "role": "backend-plugin",
+  "scope": "@austin-garrard",
+  "updated": "2022-04-17T17:39:42.140Z",
+  "version": "0.0.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2022-04-19T03:07:20.582Z",
+      "version": "0.0.1-alpha.22"
+    },
+    {
+      "date": "2022-04-17T17:39:42.140Z",
+      "version": "0.0.1"
+    }
+  ]
+}

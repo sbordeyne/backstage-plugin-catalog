@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-12-08T17:39:02.898Z",
+  "deprecated": "",
+  "description": "Welcome to the plugin-t1 plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ahsanaslam91"
+  ],
+  "name": "backstage-plugin-plugin-t1",
+  "plugin_id": "plugin-t1",
+  "readme": "# plugin-t1\n\nWelcome to the plugin-t1 plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/plugin-t1](http://localhost:3000/plugin-t1).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2024-12-08T17:39:03.174Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-12-08T17:39:03.174Z",
+      "version": "0.1.0"
+    }
+  ]
+}

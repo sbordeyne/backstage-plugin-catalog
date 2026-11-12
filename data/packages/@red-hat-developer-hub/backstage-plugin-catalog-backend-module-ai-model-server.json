@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2026-08-12T00:01:36.613Z",
+  "deprecated": "",
+  "description": "The ai-model-server backend module for the catalog plugin. Registers the AiModelServerAPI kind.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-catalog-backend-module-ai-model-server",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/ai-integrations/plugins/catalog-backend-module-ai-model-server",
+  "role": "backend-plugin-module",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-26T14:11:29.388Z",
+  "version": "0.4.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-10-26T14:11:29.388Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-08-27T21:57:19.216Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-08-17T20:44:24.953Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-08-12T00:01:36.996Z",
+      "version": "0.2.0"
+    }
+  ]
+}

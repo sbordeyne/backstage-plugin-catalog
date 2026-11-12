@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2024-01-26T02:20:18.563Z",
+  "deprecated": "",
+  "description": "The aws-alb provider module for the Backstage auth backend.",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-auth-backend-module-aws-alb-provider",
+  "plugin_id": "auth",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/auth-backend-module-aws-alb-provider",
+  "role": "backend-plugin-module",
+  "scope": "@backstage",
+  "updated": "2026-10-20T16:48:34.269Z",
+  "version": "0.4.21",
+  "version_count": 910,
+  "versions": [
+    {
+      "date": "2026-11-11T02:54:48.885Z",
+      "version": "0.4.22-next.1"
+    },
+    {
+      "date": "2026-11-07T02:49:37.040Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T02:53:52.069Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T02:46:59.947Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-10-31T02:43:45.193Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:42:16.097Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T02:52:31.218Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T02:50:12.167Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:24:11.778Z",
+      "version": "0.4.22-next.0"
+    },
+    {
+      "date": "2026-10-27T02:54:17.638Z",
+      "version": "0.0.0-nightly-20261027023041"
+    },
+    {
+      "date": "2026-10-20T16:48:34.269Z",
+      "version": "0.4.21"
+    },
+    {
+      "date": "2026-09-29T12:27:52.859Z",
+      "version": "0.4.21-next.1"
+    },
+    {
+      "date": "2026-09-28T03:07:33.926Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:01:23.549Z",
+      "version": "0.0.0-nightly-20260927023342"
+    },
+    {
+      "date": "2026-09-26T02:56:18.720Z",
+      "version": "0.0.0-nightly-20260926022852"
+    }
+  ]
+}

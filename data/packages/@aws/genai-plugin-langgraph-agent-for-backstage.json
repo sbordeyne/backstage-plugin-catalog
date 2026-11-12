@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2024-12-09T20:12:06.622Z",
+  "deprecated": "",
+  "description": "LangGraph agent module package for the GenAI AWS plugins for Backstage",
+  "homepage": "https://github.com/awslabs/backstage-plugins-for-aws#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "nialt"
+  ],
+  "name": "@aws/genai-plugin-langgraph-agent-for-backstage",
+  "plugin_id": "aws-genai",
+  "readme": "# Generative AI plugin for Backstage - LangGraph Agent Type\n\nThis package implements an agent for the Generative AI plugin for Backstage based on [LangGraph.js](https://github.com/langchain-ai/langgraphjs).\n\nFeatures:\n\n1. [ReAct pattern](https://react-lm.github.io/) to use available tools to answer prompts\n1. Choose between Amazon Bedrock or OpenAI as the model provider\n1. Optionally use the Backstage sqlite/Postgres database as a checkpoint store\n1. Integrate with [LangFuse](https://github.com/langfuse/langfuse) for observability\n\n## Configuration\n\nThis agent can be configured at two different levels, global and per-agent\n\n### Global\n\nGlobal configuration values apply to all agents, all of this is optional:\n\n```yaml\ngenai:\n  langgraph:\n    memory: # (Optional) Memory store to use\n    recursionLimit: # (Optional) Limit the number of graph supersteps (default 25)\n    langfuse: # (Optional) Configuration for LangFuse observability\n      baseUrl: http://localhost:3001 # (Required) LangFuse URL\n      publicKey: pk-aaa # (Required) Public key\n      secretKey: sk-bbb # (Required) Secret key\n```\n\nThe available options for `memory` are:\n\n- `in-memory`: (Default) Store the agent state in memory\n- `backstage`: Uses the Backstage database to store agent state, either sqlite or PostgresQL depending on the configuration\n\n### Per-agent\n\nPer-agent configuration only applies to the agent for which it corresponds. The available parameters are:\n\n```yaml\ngenai:\n  agents:\n    general:\n      description: [...]\n      prompt: [...]\n      langgraph:\n        messagesMaxTokens: 100000 # (Required) Prune message history to maximum of this number of tokens\n        temperature: 0 # (Optional) Model temperature\n        maxTokens: 4000 # (Optional) Maximum output tokens\n        topP: 0.9 # (Optional) Model topP\n        # Only include the subsequent section for your model provider\n        # Bedrock only\n        bedrock:\n          modelId: 'anthropic.claude-3-5-sonnet-20241022-v2:0' # (Required) Bedrock model ID\n          region: us-west-2 # (Required) Bedrock AWS region\n        # OpenAI only\n        openai:\n          apiKey: ${OPENAI_API_KEY} # (Required) OpenAI model name\n          modelName: 'gpt-3.5-turbo-instruct' # (Optional) OpenAI model name\n          baseUrl: ${OPENAI_API_BASE_URL} # (Optional) URL for OpenAI API endpoint\n        ollama:\n          model: ${OLLAMA_MODEL} # (Required) Ollama model name\n          baseUrl: ${OLLAMA_BASE_URL} # (Required) Base URL for Ollama\n```\n",
+  "repository": "https://github.com/awslabs/backstage-plugins-for-aws/tree/HEAD/plugins/genai/agent-langgraph",
+  "role": "backend-plugin-module",
+  "scope": "@aws",
+  "updated": "2026-08-06T03:37:44.210Z",
+  "version": "0.8.0",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-08-06T03:37:44.210Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-04-23T15:04:16.264Z",
+      "version": "0.7.2"
+    },
+    {
+      "date": "2026-02-04T17:55:50.480Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2025-11-14T05:54:37.930Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-09-19T02:25:19.566Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-07-17T20:27:42.199Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-06-27T21:01:54.371Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-06-19T03:17:50.224Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2025-06-17T19:12:43.114Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2025-06-17T18:46:09.515Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-01-10T07:19:48.640Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-12-09T20:12:06.905Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "author": "",
+  "created": "2024-07-09T16:51:48.542Z",
+  "deprecated": "",
+  "description": "Common functionalities for the open-feedback plugin",
+  "homepage": "https://github.com/Baicheng-MiQ/backstage-open-feedback#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "common-library",
+    "feedback",
+    "open-source",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "baicheng-michael"
+  ],
+  "name": "@baicheng-michael/backstage-plugin-open-feedback-common",
+  "plugin_id": "open-feedback",
+  "readme": "# OpenFeedback Common\n\nThis is a common package for the OpenFeedback Frontend and Backend.\n\nIt contains some permissions and some shared types.\n",
+  "repository": "https://github.com/Baicheng-MiQ/backstage-open-feedback",
+  "role": "common-library",
+  "scope": "@baicheng-michael",
+  "updated": "2024-07-16T13:04:52.690Z",
+  "version": "0.3.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-07-16T13:04:52.690Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2024-07-12T21:19:15.640Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2024-07-10T12:21:17.774Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-07-09T16:51:48.753Z",
+      "version": "0.3.0"
+    }
+  ]
+}

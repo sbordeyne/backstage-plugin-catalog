@@ -1,0 +1,40 @@
+{
+  "author": "",
+  "created": "2026-02-27T00:52:00.457Z",
+  "deprecated": "",
+  "description": "Frontend plugin for the VeeCode DevPortal \"About\" page. Displays system information such as OS, Node.js version, resource utilization, and Backstage/DevPortal versions.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-about-dynamic",
+  "plugin_id": "about",
+  "readme": "# @veecode-platform/backstage-plugin-about\n\nFrontend plugin for the VeeCode DevPortal \"About\" page. Displays system information such as OS, Node.js version, resource utilization, and Backstage/DevPortal versions.\n\nSupports dynamic plugin export via `rhdh-cli`.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2026-03-20T12:46:15.580Z",
+  "version": "1.1.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-03-20T12:46:15.580Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-03-06T18:52:12.366Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-02-27T01:34:09.258Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-02-27T00:52:00.950Z",
+      "version": "1.0.1"
+    }
+  ]
+}

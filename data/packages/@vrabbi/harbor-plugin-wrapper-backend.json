@@ -1,0 +1,63 @@
+{
+  "author": "",
+  "created": "2023-11-01T13:35:17.831Z",
+  "deprecated": "",
+  "description": "Welcome to the harbor-plugin-wrapper backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@vrabbi/harbor-plugin-wrapper-backend",
+  "plugin_id": "",
+  "readme": "# harbor-plugin-wrapper\n\nWelcome to the harbor-plugin-wrapper backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/harbor-plugin-wrapper](http://localhost:3000/harbor-plugin-wrapper).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@vrabbi",
+  "updated": "2023-11-05T08:57:14.675Z",
+  "version": "0.6.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2023-11-05T08:57:14.675Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2023-11-02T13:58:30.668Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2023-11-02T13:29:36.132Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2023-11-02T12:24:10.234Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2023-11-02T11:57:54.249Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2023-11-02T09:35:04.489Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-11-01T18:27:59.089Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-11-01T16:48:15.082Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-11-01T16:48:00.302Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-11-01T13:35:18.169Z",
+      "version": "0.1.0"
+    }
+  ]
+}

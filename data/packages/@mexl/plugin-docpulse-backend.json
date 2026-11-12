@@ -1,0 +1,33 @@
+{
+  "author": "",
+  "created": "2025-08-27T05:14:00.134Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "documentation",
+    "observability",
+    "plugin",
+    "quality"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mexl"
+  ],
+  "name": "@mexl/plugin-docpulse-backend",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/mexl/backstage-plugin-docpulse/tree/HEAD/plugins/docpulse-backend",
+  "role": "backend-plugin",
+  "scope": "@mexl",
+  "updated": "2025-08-27T05:14:00.411Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-08-27T05:14:00.411Z",
+      "version": "0.1.0"
+    }
+  ]
+}

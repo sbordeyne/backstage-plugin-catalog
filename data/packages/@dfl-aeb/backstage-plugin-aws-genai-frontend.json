@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-07-11T08:16:16.456Z",
+  "deprecated": "",
+  "description": "Frontend package for the GenAI AWS plugins for Backstage",
+  "homepage": "https://github.com/awslabs/backstage-plugins-for-aws#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dfl-aeb"
+  ],
+  "name": "@dfl-aeb/backstage-plugin-aws-genai-frontend",
+  "plugin_id": "aws-genai",
+  "readme": "# AWS Generative AI plugin for Backstage - Frontend\n\nThis a frontend plugin package for Backstage related to Generative AI. For more information see the [documentation](../README.md).\n",
+  "repository": "https://github.com/awslabs/backstage-plugins-for-aws/tree/HEAD/plugins/genai/frontend",
+  "role": "frontend-plugin",
+  "scope": "@dfl-aeb",
+  "updated": "2025-07-11T08:16:16.709Z",
+  "version": "0.2.3-RC1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-07-11T08:16:16.709Z",
+      "version": "0.2.3-RC1"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "author": "Alexandre Amormino",
+  "created": "2026-04-25T16:34:01.522Z",
+  "deprecated": "",
+  "description": "Backend plugin for managing Backstage catalog entities with CRUD operations and validation",
+  "homepage": "https://github.com/alexandreamormino/backstage-entity-manager#readme",
+  "keywords": [
+    "backend",
+    "backstage",
+    "backstage-plugin",
+    "catalog",
+    "entity-manager"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "alexandreamormino"
+  ],
+  "name": "@alexandreamormino/plugin-entity-manager-backend",
+  "plugin_id": "entity-manager",
+  "readme": "# Entity Manager Backend Plugin\n\nBackend plugin for managing Backstage catalog entities with CRUD operations, schema validation, and automatic catalog synchronization.\n\n## Installation\n\n```bash\ncd packages/backend\nyarn add @alexandreamormino/plugin-entity-manager-backend\n```\n\n### Register the Entity Manager Backend Module\n\nIn `packages/backend/src/index.ts`, import the Entity Manager backend module:\n\n```ts\nimport { entityManagerModule } from '@alexandreamormino/plugin-entity-manager-backend';\n```\n\nRegister the module alongside the existing backend plugin registrations:\n\n```ts\nbackend.add(import('@alexandreamormino/plugin-entity-manager-backend'));\nbackend.add(entityManagerModule);\n```\n\nExample:\n\n```ts\nimport { entityManagerModule } from '@alexandreamormino/plugin-entity-manager-backend';\n\n// Other backend modules...\n\nbackend.add(import('@alexandreamormino/plugin-entity-manager-backend'));\nbackend.add(entityManagerModule);\n```\n\nThis registers the Entity Manager backend module during Backstage startup.\nThe plugin creates its database tables on first startup, registers API routes at `/api/entity-manager/*`, and initializes the catalog provider.\n\n## Configuration\n\nAll configuration is optional. Add to `app-config.yaml`:\n\n```yaml\nentityManager:\n  enabledKinds:\n    - Component\n    - API\n    - Resource\n    - System\n\n  provider:\n    schedule:\n      frequency: { minutes: 5 }\n      timeout: { minutes: 3 }\n\n  schemas:\n    Component: schemas/component.schema.json\n\n  templates:\n    Component: templates/component.yaml\n```\n\nSchema and template paths are resolved relative to the backend working directory (`process.cwd()`).\n\n## API\n\nBase path: `/api/entity-manager`\n\n| Method | Endpoint | Auth required |\n|--------|----------|---------------|\n| GET | `/health` | — |\n| GET | `/config` | — |\n| GET | `/schemas` | — |\n| GET | `/schemas/:kind` | — |\n| GET | `/templates` | — |\n| GET | `/templates/:kind` | — |\n| POST | `/validate` | — |\n| POST | `/entities` | `entity.manager.entity.create` |\n| GET | `/entities` | `entity.manager.entity.list` |\n| GET | `/entities/:kind/:name` | `entity.manager.entity.read` |\n| PUT | `/entities/:kind/:name` | `entity.manager.entity.update` |\n| DELETE | `/entities/:kind/:name` | `entity.manager.entity.delete` |\n\n## Permissions\n\nCRUD routes enforce the corresponding permission from `@alexandreamormino/plugin-entity-manager-common`. See the root [README](../../README.md) for an example permission policy.\n\n## Development\n\n```bash\nyarn workspace @alexandreamormino/plugin-entity-manager-backend test\nyarn workspace @alexandreamormino/plugin-entity-manager-backend lint\n```\n",
+  "repository": "https://github.com/alexandreamormino/backstage-entity-manager/tree/HEAD/plugins/entity-manager-backend",
+  "role": "backend-plugin",
+  "scope": "@alexandreamormino",
+  "updated": "2026-06-28T18:27:55.166Z",
+  "version": "1.0.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-06-28T18:27:55.166Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2026-06-28T16:33:17.420Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-06-28T02:29:26.851Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-04-25T16:56:07.241Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-04-25T16:34:01.745Z",
+      "version": "1.0.0"
+    }
+  ]
+}

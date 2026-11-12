@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2021-01-21T12:21:09.149Z",
+  "deprecated": "",
+  "description": "last update: 2025-12-17",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "snyk-tech-services"
+  ],
+  "name": "backstage-plugin-snyk",
+  "plugin_id": "snyk",
+  "readme": "last update: 2025-12-17 \n\n# Snyk Backstage Plugin\n\nThe Snyk plugin displays security details from [snyk.io](https://snyk.io/).\n\n![Snyk Tab](docs/assets/backstage-snyk-plugin-tab.png)\n\n## Features\n\n- List vulnerabilities detected by Snyk directly in Backstage with the `EntitySnykContent` component.\n- Use the `SnykOverview` widget to get a compact vulnerability count on your entity page.\n\n## Installation\n\n1. Ensure you are on a Snyk Paid plan to access the Snyk API.\n\n2. Install the plugin:\n\n```bash\nyarn --cwd packages/app add backstage-plugin-snyk\n```\n\n3. Add the plugin to the `EntityPage.tsx` file. Feel free to rename the title to Security, Snyk, Vulns, or whatever you prefer.\n\n```typescript\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  SnykOverview,\n  EntitySnykContent,\n  isSnykAvailable,\n} from \"backstage-plugin-snyk\";\n\n...\n\nconst serviceEntityPage = (\n  ...\n  <EntityLayout.Route \n    path=\"/snyk\"\n    title=\"Snyk\"\n    // Uncomment the line below if you'd like to only show the tab on entities with the correct annotations already set\n    // if={isSnykAvailable}\n  >\n    <EntitySnykContent />\n  </EntityLayout.Route>\n);\n```\n\nTo show the vulnerability count widget:\n\n```typescript\n// packages/app/src/components/catalog/EntityPage.tsx\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    ...\n    <Grid item md={6} if={isSnykAvailable}>\n      <SnykOverview />\n    </Grid>\n  </Grid>\n);\n```\n\nOr make it conditional:\n\n```typescript\n// packages/app/src/components/catalog/EntityPage.tsx\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isSnykAvailable}>\n        <Grid item md={6}>\n          <SnykOverview />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n  </Grid>\n);\n```\n\n## Plugin Configuration\n\n1. Add the Snyk proxy configuration to the `app-config.yaml` file in the root directory. The User Agent helps us track API traffic from Backstage setups so we can invest more in the plugin!\n\n```yaml\nproxy:\n  endpoints:\n    ...\n    /snyk:\n      # Host of the API to use for calls.\n      # For Snyk Enterprise customers with regional contracts, change this to api.eu.snyk.io (for EU) or api.au.snyk.io (for AUS) (see https://docs.snyk.io/working-with-snyk/regional-hosting-and-data-residency)\n      target: https://api.snyk.io/ \n      headers:\n        User-Agent: tech-services/backstage-plugin/1.x\n        Authorization: token ${SNYK_TOKEN}\n    ...\n```\n\n2. Optionally, add the following configuration to your `app-config.yaml`:\n\n```yaml\nsnyk:\n  # Host of the Web UI to render links. Defaults to \"app.snyk.io\"\n  # If you use an EU or AU Snyk account, change this to app.eu.snyk.io or app.au.snyk.io\n  appHost: app.snyk.io\n  #\n  # Uncomment to specify the version of the API to use for calls. Defaults to \"2024-02-28\".\n  # Override with care, not all versions have a target API.\n  # apiVersion: 2024-02-28\n  # Uncomment to specify the version for the issues API specifically. Defaults to 2024-01-23\n  # issuesApiVersion: 2024-01-23\n  #\n  # Mocks the API calls, useful for development and for testing the plugin without a Snyk account. Defaults to \"false\".\n  mocked: false\n  #\n  # Shows resolved issues in all graphs. Defaults to \"false\" to show only non-resolved issues.\n  showResolvedInGraphs: false\n```\n\n3. Obtain your Snyk token (a service account with Viewer permission at your group level is preferred) and set the `SNYK_TOKEN` environment variable with its value:\n\n   ```bash\n   export SNYK_TOKEN=\"123-123-123-123\"\n   ```\n\n4. Add one of the following annotations to your entities:\n\n   - `snyk.io/org-id`: The ID of the Snyk organization where your project is located. You can find the ID in the Organization Settings in the Snyk dashboard.\n   - `snyk.io/org-ids`: Specify one or more Snyk organization IDs, comma-separated. This will try to find any targets or projects in any of the organizations. `snyk.io/org-id` is ignored when this annotation is set.\n\n5. Then add one or more of the following annotations to your entities:\n\n   - `snyk.io/targets`: Specify one or more targets by name or ID. Using the target ID will avoid an API call and be faster. Use this [API endpoint](https://apidocs.snyk.io/?version=2023-06-19%7Ebeta#get-/orgs/-org_id-/targets) to get the Target IDs.\n   - `snyk.io/target-id`: Specify a single target by name or ID. Using the target ID will avoid an API call and be faster. Use this [API endpoint](https://apidocs.snyk.io/?version=2023-06-19%7Ebeta#get-/orgs/-org_id-/targets) to get the Target IDs.\n   - `snyk.io/target-name`: Specify a single target by display name. Prefer `snyk.io/target-id` when possible.\n   - `snyk.io/project-ids`: The project ID (see slug in URL or ID in project settings). If there are multiple projects (e.g., multiple package.json or pom files), add them comma-separated.\n   - `snyk.io/exclude-project-ids`: Exclude specific projects you might not want.\n\nAnnotation precedence when resolving targets:\n\n- Start with `snyk.io/targets` (if present)\n- Then append `snyk.io/target-id`, else `snyk.io/target-name`\n- If none of the above are set, and no `snyk.io/project-ids` are present, fall back to `github.com/project-slug`\n\nNotes:\n- `snyk.io/project-ids` are always fetched and merged into the results and disable slug fallback\n- `snyk.io/exclude-project-ids` are applied afterward to filter the combined list\n\nExample:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: goof\n  description: Goof\n  annotations:\n    snyk.io/org-id: 361fd3c0-41d4-4ea4-ba77-09bb17890967\n    snyk.io/targets: Snyk Demo/java-goof,508d2263-ea8a-4e42-bc9d-844de21f4172\n    snyk.io/target-id: aarlaud-snyk/github-stats\n    snyk.io/project-ids: 7439e322-f9c1-4c42-8367-002b33b9d946,db066cb9-b373-46da-b918-b49b541e0d63\n    snyk.io/exclude-project-ids: 4737fc9c-3894-40ba-9dc5-aa8ae658c9f6,38e02916-0cf7-4927-ba98-06afae9fef36\nspec:\n  type: service\n  lifecycle: production\n  owner: guest\n  ....\n```\n\nMore examples can be found [here](https://github.com/snyk-tech-services/backstage-plugin-snyk/tree/develop/test/fixtures).\n\n## New FrontEnd System\n\nNice contributions helped us move to the new frontend system. It's ready to be used.\nInstructions are available [here](https://github.com/snyk-tech-services/backstage-plugin-snyk/pull/212).\n\n## Migration Steps from Plugin Version 1.x to 2.x\n\n- Update the proxy target to not contain `/v1`.\n\n## Releasing Process\n\nThis plugin uses a special versioning system for Backstage dependencies to ensure compatibility with different Backstage versions.\n\n### Version Bumping Overview\n\nThe plugin uses `backstage:^` syntax for Backstage-related dependencies in development, which gets converted to explicit versions during publishing:\n\n- **Development**: `backstage:^` (flexible, uses Backstage Yarn plugin)\n- **Published**: `^1.7.6` (explicit, npm-compatible)\n\n### Automated Release (CI/CD)\n\nThe CircleCI pipeline handles version bumping automatically:\n\n1. **Pre-publish**: Removes Backstage Yarn plugin and converts `backstage:^` → explicit versions\n2. **Publish**: Runs `semantic-release` to publish to npm\n3. **Post-publish**: Restores Backstage Yarn plugin and `backstage:^` syntax\n\n### Manual Release\n\nFor local publishing, manually run:\n\n```bash\n# Remove plugin and bump versions\nyarn plugin remove @yarnpkg/plugin-backstage\nyarn backstage-cli versions:bump --skip-install\n\n# Publish to npm\nnpm publish\n\n# Restore plugin and backstage:^ syntax\nyarn plugin import https://versions.backstage.io/v1/releases/1.47.3/yarn-plugin\nyarn backstage-cli versions:bump --skip-install\n```\n\n### Version Resolution\n\n- `backstage.json` defines the target Backstage version\n- `versions:bump` converts `backstage:^` to explicit versions based on this target\n- Published packages have fixed Backstage dependency versions for stability\n\n## Troubleshooting\n\n- Missing or incorrect token set in the backend proxy.\n\n  ![Missing/wrong token](docs/assets/backstage_card_error_wrong_or_missing_token.png)\n\n- 404 errors from the Snyk API? Add the following `pathRewrite` to your `app-config.yaml` proxy:\n\n```yaml\nproxy:\n  endpoints:\n    ...\n    /snyk:\n      target: https://api.snyk.io/\n      headers:\n        User-Agent: tech-services/backstage-plugin/1.x\n        Authorization: token ${SNYK_TOKEN}\n      pathRewrite:\n        \"^/proxy/snyk/\": \"/\"\n```\n\n## New Frontend System\n\nFollow these steps to detect and configure the Snyk plugin if you'd like to use it in an application that supports the new Backstage frontend system.\n\n### Package Detection\n\nOnce you install the `backstage-plugin-snyk` package using your preferred package manager, you have to choose how the package should be detected by the app. The package can be automatically discovered when the feature discovery config is set, or it can be manually enabled via code (for more granular package customization cases).\n\n<table>\n  <tr>\n    <td>Via config</td>\n    <td>Via code</td>\n  </tr>\n  <tr>\n    <td>\n      <pre lang=\"yaml\">\n        <code>\n# app-config.yaml\n  app:\n    # Enable package discovery for all plugins\n    packages: 'all'\n  ---\n  app:\n    # Enable package discovery only for Snyk\n    packages:\n      include:\n        - 'backstage-plugin-snyk'\n        </code>\n      </pre>\n    </td>\n    <td>\n      <pre lang=\"javascript\">\n       <code>\n// packages/app/src/App.tsx\nimport { createApp } from '@backstage/frontend-defaults';\nimport snykPlugin from 'backstage-plugin-snyk/alpha';\n//...\nconst app = createApp({\n  // ...\n  features: [\n    //...\n    snykPlugin,\n  ],\n});\n\n//...\n       </code>\n      </pre>\n    </td>\n  </tr>\n</table>\n\n### Extensions Configuration\n\nCurrently, the plugin installs 5 extensions: 1 api, 1 page, 1 nav item (sidebar item), 1 entity page card and 1 entity page content (also known as entity page tab), see below examples of how to configure the available extensions. \n\n```yml\n# app-config.yaml\napp:\n  extensions:\n    # Example disabling the Snyk entity card\n    - 'entity-card:snyk': false\n    # Example disabling the Snyk entity content\n    - 'entity-content:snyk': false\n    # Example customizing the Snyk entity content\n    - 'entity-content:snyk':\n        config:\n          path: '/security'\n          title: 'Security'\n          filter:\n            kind: 'component'\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2026-02-03T23:03:30.943Z",
+  "version": "2.5.10",
+  "version_count": 39,
+  "versions": [
+    {
+      "date": "2026-02-03T23:03:30.943Z",
+      "version": "2.5.10"
+    },
+    {
+      "date": "2025-12-17T21:01:39.253Z",
+      "version": "2.5.7"
+    },
+    {
+      "date": "2025-12-17T20:37:07.837Z",
+      "version": "2.5.6"
+    },
+    {
+      "date": "2025-12-17T18:09:31.080Z",
+      "version": "2.5.5"
+    },
+    {
+      "date": "2025-09-22T14:13:45.147Z",
+      "version": "2.5.2"
+    },
+    {
+      "date": "2024-11-22T09:00:18.104Z",
+      "version": "2.5.1"
+    },
+    {
+      "date": "2024-09-11T13:24:04.294Z",
+      "version": "2.5.0"
+    },
+    {
+      "date": "2024-09-11T08:23:00.047Z",
+      "version": "2.4.1"
+    },
+    {
+      "date": "2024-04-17T10:31:33.417Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2024-04-03T13:46:19.974Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2024-03-06T09:23:31.572Z",
+      "version": "2.2.4"
+    },
+    {
+      "date": "2024-03-05T17:43:13.157Z",
+      "version": "2.2.3"
+    },
+    {
+      "date": "2024-02-14T16:34:29.580Z",
+      "version": "2.2.2"
+    },
+    {
+      "date": "2024-02-07T13:51:34.878Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2024-02-05T22:19:31.852Z",
+      "version": "2.2.0"
+    }
+  ]
+}

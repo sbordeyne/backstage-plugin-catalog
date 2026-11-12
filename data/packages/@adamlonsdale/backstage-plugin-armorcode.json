@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2023-03-19T15:58:47.569Z",
+  "deprecated": "",
+  "description": "Welcome to the `backstage-plugin-armorcode` plugin for Backstage!",
+  "homepage": "https://github.com/adamlonsdale/backstage-plugin-armorcode",
+  "keywords": [
+    "armorcode",
+    "backstage",
+    "vulnerability"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "adamlonsdale"
+  ],
+  "name": "@adamlonsdale/backstage-plugin-armorcode",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-armorcode\n\nWelcome to the `backstage-plugin-armorcode` plugin for Backstage!\n\n## Getting started\n\n### Example Renders\n\nOverview Page - Armorcode Vulnerability Chart - (Example image here when ready)\n\nService Entry Page - Armorcode Vulnerabilities List - Example image here when ready)\n\n### Prerequisites\n\nPlease ensure the following steps have been undertaken and installed prior to this plugin configuration.\n\n#### Armorcode Backend\n\nYou need to install and configure the [Armorcode Backend Plugin](https://github.com/adamlonsdale/backstage-plugin-armorcode-backend) before configuring the frontend.\n\n## Installation\n\nFirst add the relevant packages to your existing installation of Backstage\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @adamlonsdale/backstage-plugin-armorcode\n```\n\n`Note: You have 2 Options, you can setup both too`\n\n### Vulnerability Chart Overview (Optional)\n\nAdd the Armorcode Vulnerability chart into your entity overview page\n\nImport the plugin to `packages/app/src/components/catalog/EntityPage.tsx`.\n\n#### EntityPage.tsx\n\n```typescript\nimport { ArmorcodeCard } from '@adamlonsdale/backstage-plugin-armorcode';\n\n// ...\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    {entityWarningContent}\n    <Grid item md={6}>\n      <EntityAboutCard variant=\"gridItem\" />\n    </Grid>\n    \n    // ...\n    \n    <Grid item md={4} xs={12}>\n      <ArmorcodeCard />\n    </Grid>\n\n    // ...\n\n    <Grid item md={8} xs={12}>\n      <EntityHasSubcomponentsCard variant=\"gridItem\" />\n    </Grid>    \n  </Grid>\n);\n```\n\n### Vulnerabilities List (Optional)\n\nAdd the Armorcode Vulnerabilities List into the Service Entity page.\n\nImport the plugin to `packages/app/src/components/catalog/EntityPage.tsx`\n\n#### EntityPage.tsx\n\n```typescript\n// ...\nimport { ArmorcodePage } from '@adamlonsdale/backstage-plugin-armorcode';\n// ...\nconst serviceEntityPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      {overviewContent}\n    </EntityLayout.Route>\n\n    <EntityLayout.Route path=\"/ci-cd\" title=\"CI/CD\">\n      {cicdContent}\n    </EntityLayout.Route>\n\n    // ...\n\n    <EntityLayout.Route path=\"/armorcode\" title=\"Armorcode\">      \n      <ArmorcodePage />    \n    </EntityLayout.Route>\n\n    // ...\n\n  </EntityLayout>\n);\n```\n\n> Note: It is possible to hide the Armorcode service entity tab for those projects without Armorcode configured in the catalog-info.yaml\n\n```typescript\nimport { ArmorcodePage, isArmorcodeAvailable } from '@adamlonsdale/backstage-plugin-armorcode';\n\n// ...\n\n<EntityLayout.Route if={isArmorcodeAvailable} path=\"/armorcode\" title=\"Armorcode\">      \n  <ArmorcodePage />    \n</EntityLayout.Route>\n\n```\n\n## Configuration\n\nAdd the following into your `app-config.yaml`\n\n### Config\n\n```yaml\narmorcode:\n  host: https://app.armorcode.com\n  token: YOUR_API_TOKEN\n```\n\nAdd the following into your catalog-info.yaml\n\n### Catalog\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: backstage\n  annotations:\n    armorcode/project: YOUR_PROJECT_NAME/YOUR_PROJECT_VERSION\n```\n",
+  "repository": "https://github.com/adamlonsdale/backstage-plugin-armorcode",
+  "role": "frontend-plugin",
+  "scope": "@adamlonsdale",
+  "updated": "2023-04-23T00:02:30.527Z",
+  "version": "0.0.4",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-04-23T00:02:30.527Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2023-03-19T15:58:47.854Z",
+      "version": "0.0.1-alpha"
+    }
+  ]
+}

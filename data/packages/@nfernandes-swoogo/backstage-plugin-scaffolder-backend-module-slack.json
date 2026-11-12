@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-07-21T18:58:14.391Z",
+  "deprecated": "",
+  "description": "The slack module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "nfernandes-swoogo"
+  ],
+  "name": "@nfernandes-swoogo/backstage-plugin-scaffolder-backend-module-slack",
+  "plugin_id": "scaffolder",
+  "readme": "# backstage-plugin-scaffolder-backend-module-slack\n\nThis is a `slack` actions plugin for the `scaffolder-backend` in Backstage.\n\nThis contains a collection of actions for using to send Slack messages.\n\n## Prerequisites\n\n- Node must be installed in the environment your Backstage instance is running in, but it will most likely already be there since your Backstage instance runs in Node.\n\n- You must either have a Slack app installed with the proper OAuth scopes granted and an OAuth Bot Token to use, or a Slack webhook URL to send messages to.\n\n### Using a Slack Webhook URL\n\nIn order to use a Slack Webhook URL, follow the instructions in Slack's documentation to create a webhook URL that can receive messages. https://api.slack.com/messaging/webhooks\n\n### Using a Bot OAuth Token\n\nIn order to use a Slack App with the proper OAuth Token Scopes, follow the instructions in Slack's documentation to create a Slack App with the proper OAuth scopes granted to it. https://api.slack.com/start/quickstart\n\nYou'll need the following scopes:\n\n- channels:join\n- chat:write\n- chat:write.public\n- im:write\n- channels:read\n\nAlternatively, there is an app manifest provided in the `slack-app-manifest.yaml` of this repository that you can use to create an app with the proper permissions already granted.\n\n## Getting Started\n\nIn the root directory of your Backstage project:\n\n```shell\nyarn add --cwd packages/backend @nfernandes-swoogo/backstage-plugin-scaffolder-backend-module-slack\n```\n\nAdd the actions you'd like to the scaffolder:\n\n```typescript\n// packages/backend/src/index.ts\n\nimport {\n  sendSlackMessageModule\n} from '@nfernandes-swoogo/backstage-plugin-scaffolder-backend-module-slack'\n\n...\n\nbackend.add(sendSlackMessageModule());\n\n```\n\nAdd a Slack configuration section to your app-config.yaml.\n\n> You can omit this by providing a webhook URL in the input of the step in your scaffolder template, but it must be present in one place or the other.\n\n```yaml\n# app-config.yaml\n\nslack:\n  # This is required if you're using a Slack webhook URL to send messages and you\n  # don't intend to supply the webhook URL from the action inputs\n  webhookUrl: \"https://example.com\"\n\n  # These are required if you are using the Slack API to send messages and you\n  # don't intend to supply these from the action inputs\n  token: ${SLACK_TOKEN}\n  conversationId: ABC123 # The ID of the conversation to send messages to. Either this or the conversationName are required here if you don't intend to supply either from the action inputs\n  conversationName: general # The name of the conversation to send messages to. Either this or the conversationId are rqeuired here if you don't intend to supply either from the action inputs\n```\n\n## Example of using the send message action in a template\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: slack-message-demo\n  title: My Slack message demo\n  description: Send a message via Slack\nspec:\n  owner: nfernandes-swoogo\n  type: service\n\n  steps:\n    # this step is an example of using the webhook action\n    - id: send-slack-message\n      name: Send slack message via Slack webhook\n      action: slack:sendMessage:webhook\n      input:\n        message: \"Hello, world!\"\n        webhookUrl: \"https://example.com\" # optional if the URL is supplied in the app-config.yaml\n        channel: \"#general\" # optional - specify the channel to send the message to (can be channel name like #general or channel ID)\n\n    # this step is an example of using the conversation action\n    - id: send-slack-message\n      name: Send slack message via Slack API\n      action: slack:sendMessage:conversation\n      input:\n        message: \"Hello, world!\"\n        conversationId: \"abc123\" # optional if the conversationId is supplied in the app-config.yaml, or the conversationName is supplied at all\n        conversationName: \"general\" # optional if the conversationName is supplied in the app-config.yaml, or the conversationId is supplied at all\n```\n",
+  "repository": "https://github.com/nfernandes-swoogo/backstage-plugin-scaffolder-backend-module-slack/tree/HEAD/.",
+  "role": "backend-plugin-module",
+  "scope": "@nfernandes-swoogo",
+  "updated": "2025-07-21T20:35:09.989Z",
+  "version": "3.0.4",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-07-21T20:35:09.989Z",
+      "version": "3.0.4"
+    },
+    {
+      "date": "2025-07-21T19:16:02.919Z",
+      "version": "3.0.3"
+    },
+    {
+      "date": "2025-07-21T18:58:14.658Z",
+      "version": "3.0.2"
+    }
+  ]
+}

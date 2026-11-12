@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-27T13:31:02.861Z",
+  "deprecated": "",
+  "description": "Welcome to the demo backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cmoulliard"
+  ],
+  "name": "@cmoulliard/backstage-plugin-demo-backend",
+  "plugin_id": "",
+  "readme": "# demo\n\nWelcome to the demo backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/demoPlugin/health](http://localhost:7007/api/demoPlugin/health).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@cmoulliard",
+  "updated": "2024-03-27T14:16:10.793Z",
+  "version": "0.1.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-03-27T14:16:10.793Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-03-27T13:31:03.150Z",
+      "version": "0.1.1"
+    }
+  ]
+}

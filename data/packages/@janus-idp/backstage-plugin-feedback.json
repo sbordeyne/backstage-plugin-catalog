@@ -1,0 +1,95 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-01-18T10:22:17.768Z",
+  "deprecated": "",
+  "description": "## Introduction",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-feedback",
+  "plugin_id": "feedback",
+  "readme": "# Feedback Plugin\n\n## Introduction\n\nFeedback plugin is a valuable addition to backstage which allows project managers to get feedbacks for entites in Backstage Catalog.\n\nIt is dedicated to simplifying the process of gathering and managing user feedback for service catalog entities. This plugin seamlessly integrates with the [feedback-backend-plugin](../feedback-backend) and extends its capabilities by allowing users to create Jira tickets associated with their feedback.\n\n### Screenshots\n\n| Global Page                                  | Entity Page                                  |\n| -------------------------------------------- | -------------------------------------------- |\n| ![globalPage](./docs/images/global-page.png) | ![entityPage](./docs/images/entity-page.png) |\n\n| Feedback Details Modal                             | Create Feedback Modal                         |\n| -------------------------------------------------- | --------------------------------------------- |\n| ![feedbacDetails](./docs/images/details-modal.png) | ![entityPage](./docs/images/create-modal.png) |\n\n| Opc Feedback Component                             |                                                |                                                      |                                                |\n| -------------------------------------------------- | ---------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------- |\n| ![initialDialog](./docs/images/initial-dialog.png) | ![issueDialog](./docs/images/issue-dialog.png) | ![feedbackDialog](./docs/images/feedback-dialog.png) | ![finalDialog](./docs/images/final-dialog.png) |\n\n### Key Features\n\n- List all the feedbacks and bugs for the componnets on global page.\n- List all the feedbacks and bugs for each component on entity page.\n- Create Bugs, Feedbacks directly on JIRA and also sends a mail to reporter.\n- Unique feedback links for each feedback.\n- Works with all knex supported databases.\n\n### Requirements\n\n- Make sure that [feedback-backend-plugin](../feedback-backend) is configured prior to this.\n\n### Plugin Setup\n\n1. Install the plugin in your environment\n\n   ```bash\n   yarn workspace app add @janus-idp/backstage-plugin-feedback\n   ```\n\n2. Add configuration to app-config.yml\n\n   ```yaml\n   feedback:\n     # A ref to base entity under which global feedbacks gets stored\n     # in format: kind:namespace/name\n     baseEntityRef: 'component:default/example-website'\n\n     # Limit the number of characters for summary field\n     # should be between 1-255\n     summaryLimit: 240\n   ```\n\n3. Add `GlobalFeedbackPage`, `OpcFeedbackComponent` component to the `src/App.tsx`.\n\n   ```jsx\n   import {\n     feedbackPlugin,\n     GlobalFeedbackPage,\n     OpcFeedbackComponent,\n   } from '@janus-idp/backstage-plugin-feedback';\n\n   // ...\n   const app = createApp({\n     apis,\n     bindRoutes({ bind }) {\n       // ...\n       // Bind techdocs root route to feedback plugin externalRoute.viewDocs to add \"View Docs\" link in opc-feedback component\n       bind(feedbackPlugin.externalRoutes, {\n         viewDocs: techdocsPlugin.routes.root,\n       });\n     },\n     featureFlags: [\n       // ...\n     ],\n   });\n   const routes = (\n     <FlatRoutes>\n       // Insert this line to add feedback route\n       <Route path=\"/feedback\" element={<GlobalFeedbackPage />} />\n     </FlatRoutes>\n   );\n\n   export default app.createRoot(\n     <>\n       // ...\n       <AppRouter>\n         // ...\n         <OpcFeedbackComponent />\n       </AppRouter>\n     </>,\n   );\n   ```\n\n4. Then add the feedback route to sidebar to easily access `/feedback`, in `src/components/Root/Root.tsx`.\n\n   ```ts\n   import TextsmsOutlined  from '@material-ui/icons/TextsmsOutlined';\n   //...\n   export const Root = ({ children }: PropsWithChildren<{}>) => (\n     <SidebarPage>\n       <Sidebar>\n         // ...\n         <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n           // ...\n           // Insert these lines in SidebarGroup\n           <SidebarScrollWrapper>\n             <SidebarItem icon={TextsmsOutlined} to=\"feedback\" text=\"Feedback\" />\n           </SidebarScrollWrapper>\n           // ...\n         // ...\n     </SidebarPage>\n   )\n   ```\n\n5. Add `EntityFeedbackPage` component to the **Component page, Api page** in `src/components/catalog/EntityPage.tsx`.\n\n   ```ts\n   <EntityLayout.Route path=\"/feedback\" title=\"Feedback\">\n     <EntityFeedbackPage />\n   </EntityLayout.Route>\n   ```\n\n### Annotations\n\nTo configure only mail:\n\n- Add these annotations to your `catalog-info.yaml` file.\n\n```yaml\nmetadata:\n  annotations:\n    # Set to MAIL, if you want to recevie mail\n    # on every feedback.\n    feedback/type: 'MAIL'\n\n    # Type in your mail here, it will be kept in cc,\n    # while sending mail on feedback generation.\n    feedback/email-to: 'example@example.com'\n```\n\nTo configure Jira + mail:\n\n- Add these annotations to your `catalog-info.yaml` file.\n\n```yaml\nmetadata:\n  annotations:\n    # Set to JIRA to create ticket when\n    # creating feedbacks.\n    feedback/type: 'JIRA'\n\n    # Enter your jira project key,\n    jira/project-key: '<your-jira-project-key>'\n\n    # (optional) Enter the url of you jira server.\n    # If not set then it will use first host from app-config\n    feedback/host: '<your-jira-host-url>'\n\n    # (optional) Type in your mail here,\n    #  it will be kept in cc,\n    #  while sending mail on feedback generation.\n    feedback/email-to: 'example@example.com';\n```\n\n### Credits\n\n- @1-Platform for [opc-feedback](https://github.com/1-platform/op-components) component.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/feedback",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-08-19T17:40:22.697Z",
+  "version": "1.6.3",
+  "version_count": 35,
+  "versions": [
+    {
+      "date": "2024-08-19T17:40:22.697Z",
+      "version": "1.6.3"
+    },
+    {
+      "date": "2024-08-16T18:47:40.148Z",
+      "version": "1.6.2"
+    },
+    {
+      "date": "2024-08-15T16:11:57.560Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2024-07-26T01:23:08.286Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-07-24T14:31:33.294Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-07-05T07:17:10.778Z",
+      "version": "1.4.2"
+    },
+    {
+      "date": "2024-06-19T15:03:20.866Z",
+      "version": "1.4.1"
+    },
+    {
+      "date": "2024-06-13T21:31:11.109Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2024-06-13T10:24:03.475Z",
+      "version": "1.3.13"
+    },
+    {
+      "date": "2024-06-07T06:17:39.701Z",
+      "version": "1.3.12"
+    },
+    {
+      "date": "2024-06-05T16:09:29.419Z",
+      "version": "1.3.11"
+    },
+    {
+      "date": "2024-06-04T19:37:52.775Z",
+      "version": "1.3.10"
+    },
+    {
+      "date": "2024-06-04T08:27:25.812Z",
+      "version": "1.3.9"
+    },
+    {
+      "date": "2024-06-03T13:33:53.580Z",
+      "version": "1.3.8"
+    },
+    {
+      "date": "2024-05-31T18:20:11.205Z",
+      "version": "1.3.7"
+    }
+  ]
+}

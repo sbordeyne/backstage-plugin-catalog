@@ -1,0 +1,54 @@
+{
+  "author": "",
+  "created": "2026-07-08T00:17:21.234Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin: AI agent fleet view and per-agent traction/status cards",
+  "homepage": "https://github.com/Showcall/agent-catalog",
+  "keywords": [
+    "a2a",
+    "ai-agents",
+    "backstage",
+    "backstage-plugin",
+    "catalog",
+    "kagent"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brett-showcall"
+  ],
+  "name": "@showcall/backstage-plugin-agent-catalog",
+  "plugin_id": "agent-catalog",
+  "readme": "# @showcall/backstage-plugin-agent-catalog\n\n> _It's 10 PM. Do you know where your agents are?_\n\nThe frontend package for\n[Showcall Agent Catalog](https://github.com/Showcall/agent-catalog), an\ninventory of AI agents running across kagent, ARK, and arbitrary A2A services\nin Backstage.\n\nThis package adds:\n\n- an **Agents** sidebar item and `/agents` fleet page\n- owner, runtime, discovery source, reachability, and LLM-gateway usage columns\n- health findings, click-to-filter triage, shadow markers, and a column chooser\n- an Agent status and traction card on supported catalog entity pages\n\nAgent Catalog is currently a **technical preview**. Package APIs and\nconfiguration may change before `1.0`.\n\n## Compatibility\n\nThe fleet page and entity card require Backstage's **new frontend system**. The\ncompanion backend module uses Backstage's new backend system.\n\n## Install\n\nFrom the root of your Backstage app:\n\n```bash\nyarn --cwd packages/app add @showcall/backstage-plugin-agent-catalog\n```\n\nMost installations should also install the\n[backend module](https://www.npmjs.com/package/@showcall/backstage-plugin-agent-catalog-backend),\nwhich discovers agents and writes them into the Backstage catalog.\n\n## Register the plugin\n\nWhen your app uses `app.packages: all`, the new frontend system discovers the\ninstalled plugin automatically.\n\nFor an explicitly composed frontend, add the package's default export to the\napp features:\n\n```tsx\nimport agentCatalogPlugin from '@showcall/backstage-plugin-agent-catalog';\n\nexport default createApp({\n  features: [\n    // your existing features\n    agentCatalogPlugin,\n  ],\n});\n```\n\nThe plugin registers the `/agents` page, its navigation metadata, and the Agent\nentity card.\n\n### Custom sidebar\n\nIf your app composes a classic or custom sidebar explicitly, add:\n\n```tsx\nimport { AgentCatalogSidebarItem } from '@showcall/backstage-plugin-agent-catalog';\n\n<AgentCatalogSidebarItem />;\n```\n\nThe page and entity-card extensions still require the new frontend system.\n\n## Related packages\n\n- [`@showcall/backstage-plugin-agent-catalog-backend`](https://www.npmjs.com/package/@showcall/backstage-plugin-agent-catalog-backend)\n  discovers agents, model configurations, A2A cards, heuristic workloads, and\n  gateway usage.\n- [`@showcall/backstage-plugin-agent-catalog`](https://www.npmjs.com/package/@showcall/backstage-plugin-agent-catalog)\n  provides this fleet and entity UI.\n\n## Documentation\n\n- [Project overview and complete setup](https://github.com/Showcall/agent-catalog#readme)\n- [Local demo](https://github.com/Showcall/agent-catalog/blob/main/demo/README.md)\n- [Architecture](https://github.com/Showcall/agent-catalog/blob/main/docs/architecture.md)\n- [Roadmap](https://github.com/Showcall/agent-catalog/blob/main/docs/roadmap.md)\n- [Issues](https://github.com/Showcall/agent-catalog/issues)\n\nApache-2.0 licensed. See the\n[project license](https://github.com/Showcall/agent-catalog/blob/main/LICENSE).\n",
+  "repository": "https://github.com/Showcall/agent-catalog/tree/HEAD/plugins/plugin-agent-catalog",
+  "role": "frontend-plugin",
+  "scope": "@showcall",
+  "updated": "2026-07-12T17:57:51.703Z",
+  "version": "0.5.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-07-12T17:57:51.703Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-07-12T00:09:11.508Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-07-11T15:14:28.000Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-07-11T00:39:56.565Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-07-09T01:28:44.891Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-07-08T00:17:21.585Z",
+      "version": "0.1.0"
+    }
+  ]
+}

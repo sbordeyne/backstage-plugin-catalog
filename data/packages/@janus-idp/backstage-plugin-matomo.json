@@ -1,0 +1,95 @@
+{
+  "author": "The Backstage Community",
+  "created": "2023-09-22T17:39:31.763Z",
+  "deprecated": "",
+  "description": "The matomo plugin shows the basic analytics from [Matomo](https://matomo.org/)",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-matomo",
+  "plugin_id": "matomo",
+  "readme": "# Matomo Plugin\n\nThe matomo plugin shows the basic analytics from [Matomo](https://matomo.org/)\n\n![Matomo tab](./docs/matomo-tab.png)\n\n## Getting started\n\n1. Install the plugin\n\n```bash\nyarn workspace app add @janus-idp/backstage-plugin-matomo\n```\n\n2. Make sure the [Matomo backend plugin](../matomo-backend/README.md) is installed and configured\n\n### Entity Pages\n\n1. Add the plugin as a tab to website entity pages\n\n```ts\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport { MatomoPage } from '@janus-idp/plugin-matomo';\n\nconst websiteEntityPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/matomo\" title=\"Matomo\">\n      <MatomoPage />\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\n2. Add `matomo.io/site-id`annotation to `catalog-info-yaml`\n\n```yaml\nmetadata:\n  name: matomo-website\n  annotations:\n    matomo.io/site-id: '<YOUR_MATOMO_SITE_ID'\n```\n\n3. Add `contact us` and `matomo instance url` for user guidance\n\n```yaml\nmatomo:\n  frontendBaseUrl: ${MATOMO_INSTANCE_URL}\n  contactUsLink: mailto:${MATOMO_CONTACT_EMAIL}\n```\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/matomo",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-04T12:24:23.642Z",
+  "version": "1.10.1",
+  "version_count": 66,
+  "versions": [
+    {
+      "date": "2024-11-04T12:24:23.642Z",
+      "version": "1.10.1"
+    },
+    {
+      "date": "2024-10-30T20:18:38.846Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2024-10-29T18:59:32.641Z",
+      "version": "1.9.1"
+    },
+    {
+      "date": "2024-10-22T21:36:56.617Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2024-10-09T17:26:54.621Z",
+      "version": "1.8.5"
+    },
+    {
+      "date": "2024-10-08T18:29:58.092Z",
+      "version": "1.8.4"
+    },
+    {
+      "date": "2024-10-08T06:29:14.568Z",
+      "version": "1.8.3"
+    },
+    {
+      "date": "2024-10-01T18:27:39.884Z",
+      "version": "1.8.2"
+    },
+    {
+      "date": "2024-09-25T12:49:09.425Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2024-09-20T03:42:14.588Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2024-09-19T16:50:43.807Z",
+      "version": "1.7.4"
+    },
+    {
+      "date": "2024-08-19T17:43:57.186Z",
+      "version": "1.7.3"
+    },
+    {
+      "date": "2024-08-16T18:53:13.729Z",
+      "version": "1.7.2"
+    },
+    {
+      "date": "2024-08-15T16:15:08.810Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2024-07-26T01:29:09.282Z",
+      "version": "1.7.0"
+    }
+  ]
+}

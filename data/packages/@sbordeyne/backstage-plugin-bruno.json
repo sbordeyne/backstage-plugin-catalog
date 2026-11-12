@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2026-08-03T06:39:43.096Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin surfacing Bruno collection runs on the entity that owns them, with a pass/fail history chart and per-request results.",
+  "homepage": "https://sbordeyne.github.io/backstage-plugins/plugins/bruno/",
+  "keywords": [
+    "api-testing",
+    "backstage",
+    "backstage-plugin",
+    "bruno",
+    "frontend-plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dogeek0"
+  ],
+  "name": "@sbordeyne/backstage-plugin-bruno",
+  "plugin_id": "bruno",
+  "readme": "# bruno\n\nWelcome to the bruno plugin!\n\n> [!NOTE]\n>\n> This plugin was created through the Backstage CLI\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/bruno](http://localhost:3000/bruno).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/sbordeyne/backstage-plugins/tree/HEAD/plugins/bruno",
+  "role": "frontend-plugin",
+  "scope": "@sbordeyne",
+  "updated": "2026-08-16T20:50:54.170Z",
+  "version": "0.2.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-08-16T20:50:54.170Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-03T06:39:43.422Z",
+      "version": "0.1.0"
+    }
+  ]
+}

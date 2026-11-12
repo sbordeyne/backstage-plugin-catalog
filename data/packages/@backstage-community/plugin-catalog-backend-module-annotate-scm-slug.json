@@ -1,0 +1,63 @@
+{
+  "author": "",
+  "created": "2026-02-28T19:05:26.889Z",
+  "deprecated": "",
+  "description": "The annotate-scm-slug backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-catalog-backend-module-annotate-scm-slug",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/catalog/plugins/catalog-backend-module-annotate-scm-slug",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:26:52.612Z",
+  "version": "0.8.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2026-11-03T14:26:52.612Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-09-24T17:32:19.355Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-08-27T13:24:12.852Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-07-21T22:57:31.903Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-07-14T17:39:55.749Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-06-24T13:02:32.978Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-04-24T18:08:12.330Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-04-17T18:39:30.039Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-03-04T18:52:47.956Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-02-28T19:05:27.108Z",
+      "version": "0.1.0"
+    }
+  ]
+}

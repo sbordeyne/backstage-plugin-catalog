@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2026-09-01T08:59:36.587Z",
+  "deprecated": "",
+  "description": "This plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.",
+  "homepage": "https://github.com/openchoreo/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cncf-projects",
+    "kaviththiranga"
+  ],
+  "name": "@openchoreo/backstage-plugin-backend",
+  "plugin_id": "openchoreo",
+  "readme": "",
+  "repository": "https://github.com/openchoreo/backstage-plugins/tree/HEAD/plugins/openchoreo-backend",
+  "role": "backend-plugin",
+  "scope": "@openchoreo",
+  "updated": "2026-10-29T06:17:20.706Z",
+  "version": "1.3.3",
+  "version_count": 22,
+  "versions": [
+    {
+      "date": "2026-11-07T11:46:34.138Z",
+      "version": "1.4.0-m.2"
+    },
+    {
+      "date": "2026-10-29T11:43:41.136Z",
+      "version": "1.4.0-m.1"
+    },
+    {
+      "date": "2026-10-29T06:17:20.706Z",
+      "version": "1.3.3"
+    },
+    {
+      "date": "2026-10-22T14:09:31.316Z",
+      "version": "1.3.2"
+    },
+    {
+      "date": "2026-10-01T23:12:55.140Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2026-09-19T16:51:34.138Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-09-18T19:46:28.318Z",
+      "version": "1.3.0-rc.2"
+    },
+    {
+      "date": "2026-09-18T03:40:23.160Z",
+      "version": "1.3.0-rc.1"
+    },
+    {
+      "date": "2026-09-09T06:54:33.389Z",
+      "version": "1.2.5"
+    },
+    {
+      "date": "2026-09-01T09:01:41.685Z",
+      "version": "1.2.4"
+    },
+    {
+      "date": "2026-09-01T09:01:30.836Z",
+      "version": "1.2.3"
+    },
+    {
+      "date": "2026-09-01T09:01:20.366Z",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2026-09-01T09:01:09.741Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-09-01T09:00:58.499Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-09-01T09:00:48.015Z",
+      "version": "1.2.0-rc.2"
+    }
+  ]
+}

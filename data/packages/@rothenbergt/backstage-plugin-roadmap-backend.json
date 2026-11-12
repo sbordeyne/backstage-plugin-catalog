@@ -1,0 +1,79 @@
+{
+  "author": "",
+  "created": "2025-04-06T16:07:44.990Z",
+  "deprecated": "",
+  "description": "Backstage Roadmap plugin backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "rothenbergt"
+  ],
+  "name": "@rothenbergt/backstage-plugin-roadmap-backend",
+  "plugin_id": "roadmap",
+  "readme": "# Backstage Roadmap Plugin Backend\n\nThis is the backend part of the Roadmap Plugin for Backstage, providing API endpoints to manage a public product roadmap with features, voting, and comments.\n\n## Architecture\n\nThis plugin follows a layered architecture with clear separation of concerns:\n\n### 1. Database Layer\n\n- **RoadmapDatabaseClient**: A thin aggregate over per-table stores (**FeaturesStore**, **CommentsStore**, **VotesStore**)\n- Each store owns its table's queries and maps snake_case rows to the camelCase API types in one place (`database/tables.ts`), so column names never leak past this layer\n- Uses transactions for all write operations to ensure data consistency\n- Maps database errors to Backstage's error types for consistent error handling\n- Store tests run against both sqlite and Postgres via `TestDatabases`\n\n### 2. Service Layer\n\n- Implements business logic and validation rules\n- Services include:\n  - **FeatureService**: Feature management and validation\n  - **CommentService**: Comment creation and retrieval\n  - **VoteService**: Vote toggling and counting\n  - **PermissionService**: Authorization and permission checks\n  - **RoadmapEventPublisher**: Publishes every mutation to the Backstage events bus and broadcasts signals for live board updates (both optional and fire-and-forget; a missing events or signals service never fails a request)\n  - **RoadmapNotificationService**: Sends Backstage notifications for status changes, comments, and new suggestions\n\n### 3. Route Layer\n\n- RESTful API endpoints that connect to frontend\n- Routes include:\n  - `/features`: CRUD operations for roadmap items\n  - `/comments`: Add and retrieve comments for features\n  - `/votes`: Toggle votes and get vote counts\n  - `/permissions`: Check user permissions\n\n### 4. Error Handling\n\n- Uses Backstage's built-in error types and middleware\n- Errors bubble up through layers and are handled centrally\n- Provides consistent error responses with appropriate HTTP status codes\n\n## API Contract\n\nAll responses use camelCase field names and ISO 8601 UTC timestamps, regardless of datasource or database dialect. A feature looks like:\n\n```json\n{\n  \"id\": \"42\",\n  \"title\": \"Dark mode\",\n  \"description\": \"Support dark mode\",\n  \"status\": \"Suggested\",\n  \"author\": \"user:default/jdoe\",\n  \"votes\": 3,\n  \"boardPosition\": 0,\n  \"createdAt\": \"2026-07-04T10:15:30.000Z\",\n  \"updatedAt\": \"2026-07-04T12:00:00.000Z\"\n}\n```\n\nComments follow the same conventions (`featureId`, `createdAt`, `updatedAt`).\n\n## API Endpoints\n\n### Features\n\n- `GET /features/board-config`: Resolved board columns (labels, visibility, retention settings) and UI capability flags for the active datasource.\n- `GET /features`: Roadmap features for the board. With the **database** datasource, the list is filtered server-side using merged board config: hidden columns (`visible: false`) are omitted, and per-status **retention** hides stale items from this response. GitLab mode returns the existing issue list (no retention filtering added server-side).\n- `GET /features?includeBeyondRetention=true`: **Database only.** Same column-visibility rules as the default list, but items past their retention window are included. Ignored when `roadmap.source` is `gitlab`.\n- `POST /features`: Create a new feature suggestion\n- `GET /features/:id`: Get a specific feature\n- `PUT /features/:id/status`: Update feature status (admin only)\n- `PUT /features/:id`: Update title and/or description (**database** only; admins always; non-admins only when they are the author and the feature is **Suggested**). Returns **403** for GitLab.\n- `DELETE /features/:id`: Delete a feature (**database** only; admin, or author on **Suggested**). Returns **403** for GitLab.\n- `PUT /features/reorder`: Reorder features within a status column (**database**, admin). Returns **403** for GitLab.\n\n### Comments\n\n- `GET /comments?featureId=123`: Get comments for a feature\n- `POST /comments`: Add a comment to a feature\n- `DELETE /comments/:commentId`: Delete a comment (**database**, admin). Returns **403** for GitLab.\n\n### Votes\n\n- `POST /votes/:featureId`: Toggle a vote on a feature\n- `GET /votes/:featureId/count`: Get vote count for a feature\n- `GET /votes/counts?ids=123,456`: Get vote counts for multiple features\n- `GET /votes/:featureId/user`: Check if current user has voted\n\n### Permissions\n\n- `GET /permissions/check-admin`: Check if current user is an admin\n\n## Development\n\n### Board configuration (`app-config.yaml`)\n\nOptional `roadmap.columns` merges with built-in defaults. Each entry may set:\n\n- `status`: One of the `FeatureStatus` values (`Suggested`, `Planned`, `InProgress`, `Completed`, `Declined`).\n- `title`: Column label shown in the UI.\n- `visible`: When `false`, features in that status are omitted from list endpoints (default board keeps **In Progress** hidden).\n- `retentionDays` / `retentionAnchor` (`created` | `updated`): **Database** list filtering only; default list excludes older items; `includeBeyondRetention=true` opts in to the full set (still respecting hidden columns).\n\n### GitLab datasource freeze\n\nWhen `roadmap.source` is `gitlab`, behavior stays limited to what the GitLab integration already supported: read/list, create feature and comment, voting, and admin status changes via labels. New capabilities (title/description edit, deletes, creator self-service edit/delete, reorder, retention and `includeBeyondRetention`) are **not** implemented for GitLab; related routes return **403 Not allowed** and the frontend hides those actions based on `GET /features/board-config` capabilities.\n\n### Database Schema\n\nThe plugin sets up three main tables:\n\n- **features**: Roadmap items with title, description, status, `board_position` (ordering within a status), etc. Columns are snake_case; the store layer maps them to the camelCase API types.\n- **comments**: User comments on features\n- **votes**: User votes on features with unique constraint\n\n### Permission Model\n\n- Uses Backstage's permission framework\n- Allows configuration of admin users through app-config.yaml\n- Supports both config-based permissions and Backstage's permission framework\n\n### Error Handling Strategy\n\nThis plugin follows Backstage's error handling patterns:\n\n- `InputError`: For validation failures (400 errors)\n- `NotFoundError`: When resources don't exist (404 errors)\n- `NotAllowedError`: For authorization failures (403 errors)\n- `ConflictError`: For database conflicts (409 errors)\n\nErrors bubble up through layers to be handled by Backstage's middleware.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@rothenbergt",
+  "updated": "2026-07-11T18:48:42.588Z",
+  "version": "1.0.1",
+  "version_count": 14,
+  "versions": [
+    {
+      "date": "2026-07-11T18:48:42.588Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-07-05T11:05:25.089Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-07-04T16:24:55.098Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-07-04T15:18:30.907Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2026-04-25T22:37:12.359Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-04-25T15:46:24.521Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-04-23T23:49:07.750Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-04-16T20:39:56.972Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-02-26T23:07:42.725Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-02-26T22:26:29.739Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-10-11T19:25:50.200Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-04-06T17:32:36.597Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-04-06T16:36:03.878Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-04-06T16:07:45.246Z",
+      "version": "0.1.0"
+    }
+  ]
+}

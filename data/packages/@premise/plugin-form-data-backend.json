@@ -1,0 +1,38 @@
+{
+  "author": "Premise",
+  "created": "2023-03-10T18:44:55.724Z",
+  "deprecated": "",
+  "description": "Dynamic Data Form Extension (Frontend and Backend Plugins)",
+  "homepage": "https://premise.com/",
+  "keywords": [
+    "backstage",
+    "plugin",
+    "premisedata"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "nthings",
+    "premise_hazim",
+    "premisedata",
+    "tangent"
+  ],
+  "name": "@premise/plugin-form-data-backend",
+  "plugin_id": "",
+  "readme": "# form-data\n\nWelcome to the form-data backend plugin! This plugin is a [Backstage Backend Plugin](https://backstage.io/docs/plugins/backend-plugin) that allow you to write custom providers to add custom logic and build the data to be shown on the `dynamic-field-extension` for example for APIs that require authentication or to parse data that doesn't come on the required JSON Array String format.\n\n## Installation\n\n```\ncd packages/backend/\nyarn add @premise/plugin-form-data-backend\n```\n\n## Configuration\nCreate a `form-data.ts` file under `packages/backend/src/plugins` with the following content:\n```ts\nimport { createRouter } from '@premise/plugin-form-data-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\nimport { exampleRouter } from '../providers';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter(\n    {\n      logger: env.logger,\n      config: env.config,\n    },\n    [\n      {\n        path: '/example',\n        router: exampleRouter,\n      }\n    ],\n  );\n}\n```\n\nCreate a `providers` folder under `packages/backend/src` containing all of your custom providers for example:\n\n`example.ts`\n```ts\nimport express from 'express';\nimport Router from 'express-promise-router';\nimport { RouterOptions } from '@premise/plugin-form-data-backend';\n\nexport async function exampleRouter(\n  options: RouterOptions,\n): Promise<express.Router> {\n  const { logger } = options;\n\n  const router = Router();\n  \n  // You can add in here all of the endpoints you want   \n  router.get('/ping', async (_, response) => {\n    logger.info('Pong');\n    response.json(['pong']);\n  });\n  \n  return router;\n}\n```\n\nThen under `packages/backend/src/index.ts` import the plugin:\n```ts\nimport formData from './plugins/form-data';\n// ...\nconst formDataEnv = useHotMemoize(module, () => createEnv('form-data'));\n// ...\napiRouter.use('/form-data', await formData(formDataEnv));\n```\n\n## Usage with dynamic-pick-extension\n```yaml\nparameters:\n    - example:\n        title: Example\n        type: string\n        ui:field: DynamicPickExtension\n        ui:options:\n            # This is a provider added on the form-data-backend plugin\n            form_data: example/ping\n```\n\n## Contributing\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n",
+  "repository": "https://github.com/premisedata/dynamic-data-form-extension",
+  "role": "backend-plugin",
+  "scope": "@premise",
+  "updated": "2023-11-08T18:00:52.887Z",
+  "version": "0.0.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-11-08T18:00:52.887Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2023-03-10T18:44:55.970Z",
+      "version": "0.0.1"
+    }
+  ]
+}

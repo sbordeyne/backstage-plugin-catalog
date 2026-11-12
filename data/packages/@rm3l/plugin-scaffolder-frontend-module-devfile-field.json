@@ -1,0 +1,51 @@
+{
+  "author": "rm3l",
+  "created": "2023-10-13T13:14:21.379Z",
+  "deprecated": "",
+  "description": "Devfile Field Extensions (Frontend Plugin)",
+  "homepage": "https://devfile.io",
+  "keywords": [
+    "backstage",
+    "devfile",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "rm3l"
+  ],
+  "name": "@rm3l/plugin-scaffolder-frontend-module-devfile-field",
+  "plugin_id": "",
+  "readme": "# devfile-field-extension\n\nThis plugin is a Custom Field Extension for Backstage. It allows you to add a set of drop-down lists to pick a Devfile Stack version, a version, and a starter project.\nIt interacts with the configured [Devfile registry](https://registry.devfile.io/viewer) to load the list of available Devfile Stacks.\n\n## Preview\n\n![Devfile Selector Custom Field Extension Preview](https://github.com/rm3l/backstage-odo-devfile-plugin/assets/593208/e7fcc998-dc87-4603-977b-76f510fed3aa)\n\n## Installation\n\nFrom your Backstage instance root folder:\n```shell\nyarn add --cwd packages/app @rm3l/plugin-scaffolder-frontend-module-devfile-field\n```\n\n## Configuration\n\n1. Add the import to your `packages/app/src/App.tsx` on the frontend package of your Backstage instance:\n\n```js\n// packages/app/src/App.tsx\n\nimport { DevfileSelectorFieldExtension } from '@rm3l/plugin-scaffolder-frontend-module-devfile-field';\nimport { ScaffolderFieldExtensions } from '@backstage/plugin-scaffolder-react';\n```\n\n2. Then add the imported field extension as a child of `ScaffolderFieldExtensions` inside `Route`, like so:\n\n```js\n// packages/app/src/App.tsx\n\n<Route path=\"/create\" element={<ScaffolderPage />}>\n  <ScaffolderFieldExtensions>\n    <DevfileSelectorFieldExtension />\n  </ScaffolderFieldExtensions>\n</Route>\n```\n\n3. This custom field extension populates the dropdown lists from a Devfile Registry, which is expected to be proxied by Backstage at the following path: `/devfile-registry`. As such, you need to add the appropriate configuration to your `app-config.yaml` file under the `proxy.endpoints` field, like so:\n\n```yaml\n# app-config.yaml\n\nproxy:\n  endpoints:\n    '/devfile-registry':\n      target: 'https://registry.devfile.io'\n```\n\nYou should now see the custom field `DevfileSelectorExtension` and its dropdown lists populated if you navigate to the Template Editor page at http://localhost:3000/create/edit.\n\n## Usage\n\nTo use the extension in a Backstage Software Template, you can add the `ui:field` field to the parameter. The output of the extension is an object made up of the following fields:\n- `devfile`: the Devfile Stack selected by the user.\n- `version`: the Devfile Stack version selected by the user\n- `starter_project`: the Devfile Starter Project selected by the user. Optional.\n\n```yaml\nparameters:\n    - title: Provide details about the Devfile\n      required:\n        - devfile_data\n      properties:\n        devfile_data:\n          type: object\n          required:\n            - devfile\n            - version\n          properties:\n            devfile:\n              type: string\n            version:\n              type: string\n            starter_project:\n              type: string\n          ui:field: DevfileSelectorExtension\n          ui:autofocus: true\n          ui:options:\n            rows: 5\n```\n",
+  "repository": "https://github.com/rm3l/backstage-odo-devfile-plugin",
+  "role": "frontend-plugin",
+  "scope": "@rm3l",
+  "updated": "2023-11-06T13:08:01.075Z",
+  "version": "0.16.7",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2023-11-06T13:08:01.075Z",
+      "version": "0.16.7"
+    },
+    {
+      "date": "2023-11-05T23:23:31.246Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2023-11-04T22:23:07.524Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2023-11-03T10:37:11.286Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2023-10-13T13:17:23.094Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2023-10-13T13:14:21.666Z",
+      "version": "0.5.0-36"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2024-11-22T18:12:55.404Z",
+  "deprecated": "",
+  "description": "The data-registry backend module for the search plugin.",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-search-backend-module-data-registry",
+  "plugin_id": "search",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2025-07-17T09:03:53.942Z",
+  "version": "0.12.7",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2025-07-17T09:03:53.942Z",
+      "version": "0.12.7"
+    },
+    {
+      "date": "2025-06-19T17:52:00.751Z",
+      "version": "0.12.6"
+    },
+    {
+      "date": "2025-05-29T17:10:49.030Z",
+      "version": "0.12.5"
+    },
+    {
+      "date": "2025-04-18T11:50:31.520Z",
+      "version": "0.12.4"
+    },
+    {
+      "date": "2025-03-20T15:39:27.470Z",
+      "version": "0.12.3"
+    },
+    {
+      "date": "2025-02-21T09:43:51.524Z",
+      "version": "0.12.2"
+    },
+    {
+      "date": "2025-01-16T14:43:07.677Z",
+      "version": "0.12.1"
+    },
+    {
+      "date": "2024-12-19T10:34:27.536Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2024-11-22T18:12:55.738Z",
+      "version": "0.11.0"
+    }
+  ]
+}

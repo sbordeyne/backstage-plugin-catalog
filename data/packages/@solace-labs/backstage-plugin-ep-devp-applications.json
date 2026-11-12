@@ -1,0 +1,29 @@
+{
+  "author": "Solace Corporation",
+  "created": "2022-11-14T13:08:46.206Z",
+  "deprecated": "",
+  "description": "Solace Event Portal Applications Frontend Plugin for Backstage",
+  "homepage": "https://github.com/solace-iot-team/backstage-ep-devp-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dishantlangayan",
+    "solacecommunity",
+    "tamimi65"
+  ],
+  "name": "@solace-labs/backstage-plugin-ep-devp-applications",
+  "plugin_id": "",
+  "readme": "# Solace Event Portal: Applications UI Plugin for Backstage\n\n## Installation\n\n<!-- See [Solace Event Portal: Event API Products Plugins for Backstage Installation Guide](https://github.com/solace-iot-team/backstage-plugins-ep-event-api-products/blob/main/docs/install.md). -->\n\n## Usage\n\n<!-- For information about using the plugins, see the following documents:\n\n- [Reference](./docs/reference.md)\n- [Tutorial](./docs/tutorial.md) -->\n",
+  "repository": "https://github.com/solace-iot-team/backstage-ep-devp-plugins/tree/HEAD/plugins/ep-devp-applications",
+  "role": "frontend-plugin",
+  "scope": "@solace-labs",
+  "updated": "2022-11-14T13:08:46.452Z",
+  "version": "0.1.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2022-11-14T13:08:46.452Z",
+      "version": "0.1.1"
+    }
+  ]
+}

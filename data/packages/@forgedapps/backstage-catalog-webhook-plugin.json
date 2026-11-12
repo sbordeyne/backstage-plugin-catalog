@@ -1,0 +1,89 @@
+{
+  "author": "Forged Apps, LLC",
+  "created": "2024-10-29T03:20:20.394Z",
+  "deprecated": "",
+  "description": "Publish a Backstage catalog to a remote webhook. Designed by Forged Apps to synchronize Backstage with Atlassian Compass, but it can be used to push your catalog to any HTTP endpoint.",
+  "homepage": "https://github.com/forgedapps/backstage-catalog-webhook-plugin#readme",
+  "keywords": [
+    "atlassian",
+    "backstage",
+    "compass",
+    "plugin",
+    "webhook"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "jgentes"
+  ],
+  "name": "@forgedapps/backstage-catalog-webhook-plugin",
+  "plugin_id": "backstage-catalog-webhook-plugin",
+  "readme": "# Catalog Webhook Plugin for Backstage\n\nThis plugin enables your Backstage instance to periodically send catalog entity updates to a remote endpoint. It's useful for keeping external systems in sync with your Backstage catalog.\n\nThis plugin has been reviewed by Spotify and listed at [https://backstage.io/plugins](https://backstage.io/plugins).\n\n## Features\n\n- Periodically checks for changes in your Backstage catalog\n- Sends updated entities to a configurable remote endpoint\n- Uses ETags to efficiently track changes and minimize data transfer\n- Supports a secret key for webhook payload validation\n- Configurable update interval and entity request/send size\n- Ability to filter entities before Backstage catalog is queried\n- Cache reset functionality to force a full resync of all entities\n- Strict kind filtering through allow list configuration\n\n## Installation\n\nTo install this plugin in your Backstage instance, follow these steps:\n\n1. Install the plugin package in your Backstage backend:\n\n   ###### From your Backstage root directory:\n   ```bash   \n   yarn --cwd packages/backend add @forgedapps/backstage-catalog-webhook-plugin\n   ```\n\n2. Wire up the plugin to your backend:\n\n   Edit your `packages/backend/src/index.ts` file and add the following:\n\n   ```typescript\n   backend.add(import('@forgedapps/backstage-catalog-webhook-plugin'));\n   ```\n\n3. Configure the plugin in your `app-config.yaml`:\n\n   ```yaml\n   catalog:\n     webhook:\n       remoteEndpoint: 'https://your-remote-endpoint.com/webhook'\n       intervalMinutes: 10  # Optional, defaults to 10 if not specified\n       timeoutMinutes: 2  # Optional, defaults to 2 if not specified\n       secret: 'your-secret-key'  # Optional, but recommended for security\n       entityRequestSize: 500  # Optional, defaults to 500 if not specified\n       entitySendSize: 50  # Optional, defaults to 50 if not specified\n       allow: # Optional, strictly enforces which kinds can be processed\n         - kind: ['api']\n       entityFilter: # Optional, additional filters to apply\n         - kind: ['Component', 'API']  # Filter by kind (OR)\n         - metadata.namespace: ['my-namespace']  # Filter by namespace\n   ```\n\n4. Optionally, you can configure the remote webhook endpoint to respond to a `config` query parameter, which will allow it to send additional configuration to the plugin. This can be used to signal the plugin to reset its cache, apply filters before sending entities, or other behaviors in the future. The response should be a JSON object with the following properties:\n   \n   ```ts\n   {\n     \"resetCache\": boolean // (Optional) If true, will signal the plugin to clear its cache before sending entities.\n     \"entityFilter\": EntityFilterQuery // (Optional) An array of entity filters (case-insensitive) to apply when retrieving entities from Backstage. This can be used to limit the entities that are retrieved from the catalog each interval.\n   }\n   ```\n   See documentation for `EntityFilterQuery` [here](https://backstage.io/docs/reference/catalog-client.entityfilterquery/).\n   \n   The GET request `https://your-remote-endpoint.com/webhook?config` is sent to the remote endpoint once each interval prior to processing entities.\n\n## Configuration\n\nThe plugin supports the following configuration options:\n\n- `catalog.webhook.remoteEndpoint`: (Required) The URL of the remote endpoint where catalog updates will be sent.\n- `catalog.webhook.intervalMinutes`: (Optional) The interval in minutes between each update check. Defaults to 10 minutes if not specified.\n- `catalog.webhook.timeoutMinutes`: (Optional) The scheduler timeout in minutes for each processing run. Defaults to 2 minutes if not specified.\n- `catalog.webhook.secret`: (Optional) A secret key that will be sent with the webhook payload for validation by the receiving server. If not provided, the webhook will function without a secret.\n- `catalog.webhook.entityRequestSize`: (Optional) The number of entities to retrieve from Backstage per request. Defaults to 500 (max).\n- `catalog.webhook.entitySendSize`: (Optional) The number of entities to send to the remote endpoint at any one time. This is an important number as payloads can grow too large for the remote server to handle due to the amount of data stored for each entity in Backstage. Defaults to 100.\n- `catalog.webhook.allow`: (Optional) A list of entity kinds that are allowed to be processed. This acts as a strict filter - only entities of these kinds will be processed, regardless of any other filters. If not specified, all kinds are allowed.\n- `catalog.webhook.entityFilter`: (Optional) An array of entity filters to apply when retrieving entities from Backstage. Note that multiple filters are considered OR, not AND. This can be used to limit the entities that are retrieved from the catalog each interval. This value is overridden by the `config.entityFilter` value if it is received from the remote endpoint.\n\nNote: While the secret is optional, it's strongly recommended for security purposes. When configured, it allows the receiving server to validate the authenticity of incoming webhook payloads.\n\n### Persistent Cache Configuration\n\nBy default, Backstage uses an in-memory cache that is lost on restart. To ensure the plugin's ETag cache persists across restarts (preventing unnecessary resends of all entities), configure Backstage to use a persistent cache backend.\n\nAdd the following to your `app-config.yaml` to use Redis as a persistent cache:\n\n```yaml\nbackend:\n  cache:\n    store: redis\n    connection: 'redis://localhost:6379'  # Adjust to your Redis connection string\n```\n\nFor more details on cache configuration options, see the [Backstage cache documentation](https://backstage.io/docs/backend-system/core-services/cache/).\n\n## Usage\n\nOnce installed and configured, the plugin will automatically start sending catalog updates to the specified remote endpoint at the configured interval. No additional action is required.\n\nThe plugin will:\n\n1. Fetch entities from your Backstage catalog (respecting allowed kinds if configured)\n2. Check for changes since the last update using ETags\n3. Send only the changed entities to the remote endpoint\n4. Include the configured secret in the webhook payload for security (if provided)\n5. Log information about its operations, including any errors encountered\n\n### Filtering Entities\n\nThe plugin provides multiple layers of filtering:\n\n1. **Kind Filtering (allow list)**: This is the most restrictive filter and is applied first. If configured, only entities of the specified kinds will be processed, regardless of any other filters, including kind filters in entityFilter.\n\n   ```yaml\n   catalog:\n     webhook:\n       allow:\n         - kind: ['component', 'api', 'system'] # Restrict to these kinds only, cannot be bypassed\n   ```\n\n2. **Additional Filters (entityFilter)**: These filters are applied after the kind filter. You can use any valid Backstage filter here, including kind filters (though these will be further restricted by allowed kinds if it's configured).\n\n   ```yaml\n   catalog:\n     webhook:\n       allow:\n         - kind: ['component', 'api', 'system']\n       entityFilter:\n         - kind: ['Component', 'Location']  # Restrict to these kinds, can be bypassed by remote filters\n         - metadata.namespace: ['my-namespace'] # Note this is OR, so it will return in addition to kind matches\n   ```\n\n   In this example:\n   - First, only Components, APIs, and Systems are allowed (due to allow list)\n   - Then, filtering ensures only components, locations or entities in 'my-namespace' will be processed\n   - However, Locations are not allowed so they will not be included\n\n3. **Remote Filters**: Any filters received from the remote endpoint are combined with the above filters, with allowed kinds still being the most restrictive.\n\n### Cache Reset Functionality\n\nThe plugin includes a cache reset feature that can be triggered by the remote server. This is useful for troubleshooting scenarios where you need to force a full resync of all entities without restarting your Backstage instance.\n\nBefore checking Backstage for changed entities, it makes a request to the webhook endpoint with the `resetCache` query parameter. If the remote server responds with `true`, the plugin will clear its internal cache before the run, sending all entities rather than only those that have changed.\n\nThis feature is particularly helpful when:\n- The remote system has lost sync with Backstage\n- You need to rebuild the remote system's data\n- You're debugging entity synchronization issues\n\n### Webhook Payload and Validation\n\nThe webhook payload will be sent as a POST request with the following structure:\n\n```json\n{\n  \"batchId\": // Date.now() when the batch started processing, consistent until isFinalBatch is true,\n  \"entities\": // [...Backstage entities]\n  \"isFinalBatch\": // true when all entities have been sent, false otherwise\n}\n```\n\n### Validating Webhook Deliveries\n\nIf you've configured a secret key, the plugin will send a signature in the `X-Hub-Signature-256` header of each webhook request. This allows you to verify that the webhook payload was sent by your Backstage instance and hasn't been tampered with.\n\nTo validate the webhook delivery on your receiving server:\n\n1. Extract the signature from the `X-Hub-Signature-256` header.\n2. Compute the HMAC signature of the raw request body using your secret key.\n3. Compare the computed signature with the one in the header.\n\nHere's an example of how to validate the signature in Node.js:\n\n```javascript\nconst crypto = require('crypto');\n\nfunction validateWebhook(req, secret) {\n  const signature = req.headers['x-hub-signature-256'];\n  if (!signature) {\n    throw new Error('No X-Hub-Signature-256 found on request');\n  }\n\n  const [algorithm, hash] = signature.split('=');\n  if (algorithm !== 'sha256') {\n    throw new Error('Unexpected hash algorithm');\n  }\n\n  const hmac = crypto.createHmac(algorithm, secret);\n  const digest = hmac.update(req.body).digest('hex');\n\n  if (!crypto.timingSafeEqual(Buffer.from(hash), Buffer.from(digest))) {\n    throw new Error('Request body digest did not match X-Hub-Signature-256');\n  }\n\n  // If we reach here, the signature is valid\n  console.log('Webhook signature verified');\n}\n```\n\nIn this example, `req.body` should be the parsed JSON body of the request. Adjust this according to your server setup if needed.\n\nRemember to use a constant-time comparison function (like `crypto.timingSafeEqual`) to prevent timing attacks.\n\nOnly process the webhook payload if the signature is valid. This ensures that the request came from your Backstage instance and wasn't tampered with in transit.\n\n### Security Considerations\n\n- Keep your secret key secure and don't expose it in your code or version control.\n- Use HTTPS for your webhook endpoint to ensure the payload and headers are encrypted in transit.\n- Regularly rotate your secret key as a best practice.\n\n## Troubleshooting\n\nIf you encounter any issues:\n\n1. Check the Backstage logs for any error messages related to the webhook plugin.\n2. Ensure that the `remoteEndpoint` is correctly configured and accessible from your Backstage instance.\n3. Verify that your Backstage instance has the necessary permissions to fetch catalog entities.\n4. If using a secret, make sure it's correctly configured in both Backstage and the receiving server.\n5. If you're experiencing payload size errors, try reducing the `entitySendSize` variable.\n\n## Contributing\n\nContributions are welcome! Please feel free to submit a Pull Request.\n",
+  "repository": "https://github.com/forgedapps/backstage-catalog-webhook-plugin/tree/HEAD/.",
+  "role": "backend-plugin-module",
+  "scope": "@forgedapps",
+  "updated": "2026-01-29T22:48:20.824Z",
+  "version": "3.5.1",
+  "version_count": 25,
+  "versions": [
+    {
+      "date": "2026-01-29T22:48:20.824Z",
+      "version": "3.5.1"
+    },
+    {
+      "date": "2026-01-29T22:43:21.225Z",
+      "version": "3.5.0"
+    },
+    {
+      "date": "2025-09-25T01:41:15.986Z",
+      "version": "3.3.3"
+    },
+    {
+      "date": "2024-12-18T18:50:17.031Z",
+      "version": "3.3.2"
+    },
+    {
+      "date": "2024-12-18T03:14:54.995Z",
+      "version": "3.3.1"
+    },
+    {
+      "date": "2024-12-18T03:03:12.162Z",
+      "version": "3.3.0"
+    },
+    {
+      "date": "2024-12-15T21:28:26.810Z",
+      "version": "3.2.2"
+    },
+    {
+      "date": "2024-12-15T21:23:57.449Z",
+      "version": "3.2.1"
+    },
+    {
+      "date": "2024-12-05T20:25:17.272Z",
+      "version": "3.2.0"
+    },
+    {
+      "date": "2024-12-05T00:55:06.762Z",
+      "version": "3.1.0"
+    },
+    {
+      "date": "2024-12-04T19:03:04.204Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2024-11-19T00:31:09.085Z",
+      "version": "2.3.1"
+    },
+    {
+      "date": "2024-11-16T22:27:06.976Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2024-11-07T03:19:55.492Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2024-11-04T17:17:41.216Z",
+      "version": "2.2.0"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "author": "",
+  "created": "2025-10-31T19:52:57.378Z",
+  "deprecated": "",
+  "description": "Backstage authentication backend module for Coder OAuth2 provider",
+  "homepage": "",
+  "keywords": [
+    "auth-provider",
+    "authentication",
+    "backstage",
+    "coder",
+    "oauth2"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "coder-bot"
+  ],
+  "name": "@coder/plugin-auth-backend-module-coder-provider",
+  "plugin_id": "auth",
+  "readme": "",
+  "repository": "https://github.com/coder/backstage-plugins",
+  "role": "backend-plugin-module",
+  "scope": "@coder",
+  "updated": "2025-10-31T19:52:57.647Z",
+  "version": "0.1.0-alpha.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-10-31T19:52:57.647Z",
+      "version": "0.1.0-alpha.0"
+    }
+  ]
+}

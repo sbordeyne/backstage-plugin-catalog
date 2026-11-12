@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2026-02-15T13:57:40.399Z",
+  "deprecated": "",
+  "description": "A Backstage backend plugin that integrates towards n8n workflow automation",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "automation",
+    "backstage",
+    "n8n",
+    "workflow"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-n8n-backend",
+  "plugin_id": "n8n",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/n8n/plugins/n8n-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-05-11T09:16:11.590Z",
+  "version": "0.4.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-05-11T09:16:11.590Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-04-28T12:10:37.898Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-03-12T00:11:22.332Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-02-15T13:57:40.627Z",
+      "version": "0.1.0"
+    }
+  ]
+}

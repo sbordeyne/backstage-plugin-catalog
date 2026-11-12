@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2023-11-16T16:59:19.573Z",
+  "deprecated": "",
+  "description": "Website: [https://harness.io/](https://harness.io/)",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "abhinavrastogi",
+    "sjois"
+  ],
+  "name": "@harnessio/backstage-plugin-harness-srm",
+  "plugin_id": "",
+  "readme": "# Harness Service Reliability Management Plugin\n\nWebsite: [https://harness.io/](https://harness.io/)\n\nWelcome to the Harness Service Reliability Management plugin for Backstage!\n\n## Screenshots\n\n<img src=\"./src/assets/MonitoredServicesList.png\" />\n\n## Setup steps\n\n1. Open terminal and navigate to the _root of your Backstage app_. Then run\n\n```\nyarn add --cwd packages/app @harnessio/backstage-plugin-srm\n\nyarn install\n```\n\nIf you are looking to get started with Backstage, check out [backstage.io/docs](https://backstage.io/docs/getting-started/).\n\nFor testing purposes, you can also clone this repository to try out the plugin. It contains an example Backstage app setup which is pre-installed with Harness plugins. However, you must create a new Backstage app if you are looking to get started with Backstage.\n\n2. Configure proxy for harness in your `app-config.yaml` under the `proxy` config. Add your Harness Personal Access Token or Service Account Token for `x-api-key`. See the [Harness docs](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys) for generating an API Key.\n\n```yaml\n# In app-config.yaml\n\nproxy:\n  # ... existing proxy settings\n  '/harness':\n    target: 'https://app.harness.io/'\n    headers:\n      'x-api-key': '<YOUR PAT/SAT>'\n# ...\n```\n\nNotes:\n\n- Plugin uses token configured here to make Harness API calls. Make sure this token has the necessary permissions\n\n- Set the value of target to your on-prem URL if you are using the Harness on-prem offering\n\n3. Inside your Backstage's `EntityPage.tsx`, update the `srmContent` component to render `<EntityHarnessSrmContent />` whenever the service is using Harness SRM. Something like this -\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  EntityHarnessSrmContent,\n  isHarnessSRMAvailable\n} from '@harnessio/backstage-plugin-harness-srm';\n\n...\n\nconst srmContent = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isHarnessSRMAvailable}>\n      <EntityHarnessSrmContent />\n    </EntitySwitch.Case>\n\n    <EntitySwitch.Case>\n      <EmptyState\n        title=\"No SRM available for this entity\"\n        missing=\"info\"\n        description=\"You need to add an annotation to your component if you want to enable SRM for it. You can read more about annotations in Backstage by clicking the button below.\"\n        action={\n          <Button\n            variant=\"contained\"\n            color=\"primary\"\n            href=\"https://backstage.io/docs/features/software-catalog/well-known-annotations\"\n          >\n            Read more\n          </Button>\n        }\n      />\n    </EntitySwitch.Case>\n  </EntitySwitch>\n);\n\n...\n\nconst serviceEntityPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/srm\" title=\"Service Reliability\">\n      {srmContent}\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n\n...\n\n```\n\n4. Add required harness specific annotations to your software component's respective `catalog-info.yaml` file.\n\nHere is an example: [catalog-info.yaml](../../examples/catalog-harness-srm.yaml)\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    harness.io/services: |\n      labelA: <harness_service_url>\n\nspec:\n  type: service\n  # ...\n```\n\n## Other configurations\n\n- (Optional) Harness URL\n\nIf you have a separate Harness hosted URL other than `https://app.harness.io`, you can configure `baseUrl` for `harness` in `app-config.yaml` This step is optional. The default value of `harness.baseUrl` is https://app.harness.io/\n\n```yaml\n# In app-config.yaml\n\nharness:\n  baseUrl: https://app.harness.io/\n```\n\n## Features\n\n- Connect a Backstage service with a Harness project and view the Monitored Services associated with that service.\n- See details about Monitored Service - the changes, health score, and the SLOs asscoiated with it.\n- See details about the SLOs like their status, burn rate, target, error budget remaining for a given Monitored Service on clicking the dropdown.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@harnessio",
+  "updated": "2023-11-17T13:19:51.469Z",
+  "version": "0.2.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-11-17T13:19:51.469Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-11-16T16:59:19.967Z",
+      "version": "0.1.0"
+    }
+  ]
+}

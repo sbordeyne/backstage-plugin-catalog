@@ -1,0 +1,41 @@
+{
+  "author": "",
+  "created": "2026-09-19T08:19:43.480Z",
+  "deprecated": "",
+  "description": "Authenticated Jev decision backend for Backstage",
+  "homepage": "https://github.com/namayasai/backstage-jev-operations-support#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "jev",
+    "operations",
+    "platform-engineering"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "namayasai"
+  ],
+  "name": "@namayasai/backstage-plugin-jev-operations-support-backend",
+  "plugin_id": "jev-operations-support",
+  "readme": "# @namayasai/backstage-plugin-jev-operations-support-backend\n\nPart of [Jev Operations Support for Backstage](https://github.com/namayasai/backstage-jev-operations-support). See the repository [installation guide](https://github.com/namayasai/backstage-jev-operations-support/blob/main/docs/installation.md) for configuration and integration.\n\nApache-2.0. Experimental v0.4.0.\n",
+  "repository": "https://github.com/namayasai/backstage-jev-operations-support",
+  "role": "backend-plugin",
+  "scope": "@namayasai",
+  "updated": "2026-09-20T13:30:12.959Z",
+  "version": "0.4.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-09-20T13:30:12.959Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-09-19T13:10:23.561Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-09-19T08:19:43.817Z",
+      "version": "0.2.0"
+    }
+  ]
+}

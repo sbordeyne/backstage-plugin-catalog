@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2025-03-28T15:16:40.017Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-adoption-insights-backend",
+  "plugin_id": "adoption-insights",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/adoption-insights/plugins/adoption-insights-backend",
+  "role": "backend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-04T05:12:17.533Z",
+  "version": "1.1.1",
+  "version_count": 29,
+  "versions": [
+    {
+      "date": "2026-11-04T05:12:17.533Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-10-26T14:10:42.236Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-09-25T08:50:23.715Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2026-09-23T15:11:53.171Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-09-23T05:30:10.456Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-09-11T12:49:22.071Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-09-09T14:01:09.401Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-08-01T03:55:56.317Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2026-07-21T22:49:47.228Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-07-18T13:11:25.178Z",
+      "version": "0.8.4"
+    },
+    {
+      "date": "2026-06-23T11:04:47.340Z",
+      "version": "0.8.3"
+    },
+    {
+      "date": "2026-05-18T15:24:32.686Z",
+      "version": "0.8.2"
+    },
+    {
+      "date": "2026-05-05T15:10:41.703Z",
+      "version": "0.8.1"
+    },
+    {
+      "date": "2026-04-21T13:22:48.096Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-04-15T12:12:01.016Z",
+      "version": "0.7.1"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2023-08-17T02:20:21.839Z",
+  "deprecated": "",
+  "description": "A GCP IAP auth provider module for the Backstage auth backend",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-auth-backend-module-gcp-iap-provider",
+  "plugin_id": "auth",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/auth-backend-module-gcp-iap-provider",
+  "role": "backend-plugin-module",
+  "scope": "@backstage",
+  "updated": "2026-10-20T16:49:23.661Z",
+  "version": "0.4.20",
+  "version_count": 1022,
+  "versions": [
+    {
+      "date": "2026-11-11T02:57:32.539Z",
+      "version": "0.4.21-next.1"
+    },
+    {
+      "date": "2026-11-07T02:50:49.229Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T02:54:31.377Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T02:48:01.713Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-10-31T02:44:18.997Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:43:08.560Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T02:54:14.633Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T02:52:06.088Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:26:16.996Z",
+      "version": "0.4.21-next.0"
+    },
+    {
+      "date": "2026-10-20T16:49:23.661Z",
+      "version": "0.4.20"
+    },
+    {
+      "date": "2026-09-29T12:26:04.292Z",
+      "version": "0.4.20-next.1"
+    },
+    {
+      "date": "2026-09-28T03:08:34.424Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:03:16.097Z",
+      "version": "0.0.0-nightly-20260927023342"
+    },
+    {
+      "date": "2026-09-26T02:57:21.038Z",
+      "version": "0.0.0-nightly-20260926022852"
+    },
+    {
+      "date": "2026-09-25T02:58:11.769Z",
+      "version": "0.0.0-nightly-20260925022940"
+    }
+  ]
+}

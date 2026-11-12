@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-04-18T17:08:37.778Z",
+  "deprecated": "",
+  "description": "The gitea module for @backstage/plugin-scaffolder-backend",
+  "homepage": "https://github.com/backstage/backstage#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cmoulliard"
+  ],
+  "name": "@cmoulliard/plugin-scaffolder-backend-module-gitea",
+  "plugin_id": "",
+  "readme": "# scaffolder-backend-module-gitea\n\nWelcome to the `publish:gitea` action of the `scaffolder-gitea-backend`.\n\n## Getting started\n\nTo use this action, you will have to add the package using the following command to be executed at the root of your backstage project:\n\n```bash\nyarn --cwd packages/backend add @backstage/plugin-scaffolder-backend-module-gitea\n```\n\nConfigure the action (if not yet done):\n(you can check the [docs](https://backstage.io/docs/features/software-templates/writing-custom-actions#registering-custom-actions) to see all options):\n\nBefore to create a template, include to your `app-config.yaml` file the\ngitea host and credentials under the `integrations:` section\n\n```yaml\nintegrations:\n  gitea:\n    - host: gitea.com\n      username: '<GITEA_USER>'\n      password: '<GITEA_PASSWORD>'\n    - host: localhost:3333\n      username: '<GITEA_LOCALHOST_USER>'\n      password: '<GITEA_LOCALHOST_PASSWORD>'\n```\n\n**Important**: As backstage will issue HTTPS/TLS requests to the gitea instance, it is needed to configure `gitea` with a valid certificate or at least with a\nself-signed certificate `gitea cert --host localhost -ca` trusted by a CA authority. Don't forget to set the env var `NODE_EXTRA_CA_CERTS` to point to the CA file before launching backstage !\n\nWhen done, you can create a template which:\n\n- Declare the `RepoUrlPicker` within the `spec/parameters` section to select the gitea hosts\n- Include a step able to publish by example the newly generated project using the action `action: publish:gitea`\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: quarkus-web-template\n  title: Quarkus Hello world\n  description: Create a simple microservice using Quarkus\n  tags:\n    - java\n    - quarkus\nspec:\n  owner: quarkus\n  type: service\n  parameters:\n    - title: Git repository Information\n      required:\n        - repoUrl\n      properties:\n        repoUrl:\n          title: Repository Location\n          type: string\n          ui:field: RepoUrlPicker\n          ui:options:\n            allowedHosts:\n              - gitea.<YOUR_DOMAIN>:<PORT>\n              - localhost:<PORT>\n\n  steps:\n    - id: template\n      name: Generating component\n      action: fetch:template\n      input:\n        url: ./skeleton\n        values:\n          name: ${{ parameters.name }}\n\n    - id: publish\n      name: Publishing to a gitea git repository\n      action: publish:gitea\n      input:\n        description: This is ${{ parameters.component_id }}\n        repoUrl: ${{ parameters.repoUrl }}\n        defaultBranch: main\n\n    - id: register\n      if: ${{ parameters.dryRun !== true }}\n      name: Register\n      action: catalog:register\n      input:\n        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}\n        catalogInfoPath: 'main/catalog-info.yaml'\n\n  output:\n    links:\n      - title: Source Code Repository\n        url: ${{ steps.publish.output.remoteUrl }}\n      - title: Open Component in catalog\n        icon: catalog\n        entityRef: ${{ steps.register.output.entityRef }}\n```\n\nAccess the newly gitea repository created using the `repoContentsUrl` ;-)\n",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/scaffolder-backend-module-gitea",
+  "role": "backend-plugin-module",
+  "scope": "@cmoulliard",
+  "updated": "2024-04-18T17:08:38.065Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-04-18T17:08:38.065Z",
+      "version": "0.1.0"
+    }
+  ]
+}

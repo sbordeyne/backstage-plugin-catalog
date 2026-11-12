@@ -1,0 +1,36 @@
+{
+  "author": "Muvaffak Onus",
+  "created": "2022-11-06T23:25:47.857Z",
+  "deprecated": "",
+  "description": "A custom Backstage scaffolder action to apply any Kubernetes resource.",
+  "homepage": "https://github.com/muvaf/kubernetes-apply#readme",
+  "keywords": [
+    "apply",
+    "backstage",
+    "backstage-custom-action",
+    "backstage-plugin",
+    "backstage-scaffolder",
+    "backstage-template",
+    "kubectl",
+    "kubernetes"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "muvaf"
+  ],
+  "name": "@muvaf/kubernetes-apply",
+  "plugin_id": "",
+  "readme": "# Apply Kubernetes Manifests in Backstage\n\nThis custom scaffolder action allows you to do a server-side apply for any\nKubernetes manifest.\n\nI wrote this for a [KubeCon talk](https://github.com/muvaf/cloud-native-heroku/)\nwithout knowing much TypeScript. Be careful if you decide to use it.\n\n## Getting Started\n\nAdd to your Backstage app.\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @muvaf/kubernetes-apply\n```\n```bash\n# To be able to keep using the built-in actions.\nyarn add --cwd packages/backend @backstage/integration\n```\n\n**IMPORTANT NOTE**: Make sure the `ServiceAccount` of your Backstage app has the\nnecessary permissions to create the resources you want to create.\n\nAppend it to your existing actions in `packages/backend/src/plugins/scaffolder.ts`\n```typescript\nimport { CatalogClient } from '@backstage/catalog-client';\nimport { createRouter, createBuiltinActions } from '@backstage/plugin-scaffolder-backend';\nimport { ScmIntegrations } from '@backstage/integration';\nimport { Router } from 'express';\nimport type { PluginEnvironment } from '../types';\nimport { kubernetesApply } from \"@muvaf/kubernetes-apply\";\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const catalogClient = new CatalogClient({ discoveryApi: env.discovery });\n  const integrations = ScmIntegrations.fromConfig(env.config);\n\n  const builtInActions = createBuiltinActions({\n    integrations,\n    catalogClient,\n    config: env.config,\n    reader: env.reader,\n  });\n\n  const actions = [\n      ...builtInActions,\n      kubernetesApply()\n  ]\n\n  return await createRouter({\n    actions,\n    catalogClient,\n    logger: env.logger,\n    config: env.config,\n    database: env.database,\n    reader: env.reader,\n    identity: env.identity,\n  });\n}\n```\n\nDone! You can now use the action in your software templates.\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: hello-world-on-kubernetes\n  title: Hello World on Kubernetes\nspec:\n  steps:\n    - id: create-argocd-application\n      name: Create ArgoCD Application\n      action: kubernetes:apply\n      input:\n        namespaced: true\n        manifest: |\n          apiVersion: argoproj.io/v1alpha1\n          kind: Application\n          metadata:\n            name: deploy\n            namespace: ${{ parameters.serviceName }}\n          spec:\n            destination:\n              namespace: ${{ parameters.serviceName }}\n              server: https://kubernetes.default.svc\n            project: default\n            source:\n              chart: ${{ (parameters.repoUrl | parseRepoUrl).repo }}\n              repoURL: ghcr.io/${{ (parameters.repoUrl | parseRepoUrl).owner }}\n              targetRevision: 9.9.9\n            syncPolicy:\n              automated:\n                selfHeal: true\n              syncOptions:\n                - CreateNamespace=true\n```",
+  "repository": "https://github.com/muvaf/kubernetes-apply",
+  "role": "backend-plugin-module",
+  "scope": "@muvaf",
+  "updated": "2022-11-06T23:25:48.093Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2022-11-06T23:25:48.093Z",
+      "version": "0.1.0"
+    }
+  ]
+}

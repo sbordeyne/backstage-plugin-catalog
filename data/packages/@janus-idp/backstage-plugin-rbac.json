@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2023-10-23T11:45:36.645Z",
+  "deprecated": "",
+  "description": "The RBAC UI plugin offers a streamlined user interface for effectively managing permissions in your Backstage instance. It allows you to assign permissions to users and groups, empowering them to view, create, modify and delete Roles, provided they have t",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-rbac",
+  "plugin_id": "",
+  "readme": "# RBAC frontend plugin for Backstage\n\nThe RBAC UI plugin offers a streamlined user interface for effectively managing permissions in your Backstage instance. It allows you to assign permissions to users and groups, empowering them to view, create, modify and delete Roles, provided they have the necessary permissions.\n\n## For administrators\n\n### Installation\n\n#### Installing as a dynamic plugin?\n\nThe sections below are relevant for static plugins. If the plugin is expected to be installed as a dynamic one:\n\n- follow https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/dynamic-plugins.md#installing-a-dynamic-plugin-package-in-the-showcase\n- add content of `app-config.janus-idp.yaml` into `app-config.local.yaml`.\n\n#### Prerequisites\n\nFollow the RBAC backend plugin [README](https://github.com/janus-idp/backstage-plugins/blob/main/plugins/rbac-backend/README.md) to integrate rbac in your Backstage instance.\n\n---\n\n**NOTE**\n\n- For non-admin users, to enable create role button on Administration -> RBAC roles list page, the role associated with your user should have the following permission policies associated with it. Add the following in your permission policies configuration file:\n\n```CSV\np, role:default/team_a, catalog-entity, read, allow\np, role:default/team_a, policy-entity, read, allow\np, role:default/team_a, policy-entity, create, allow\ng, user:default/<login-id/user-name>, role:default/team_a\n```\n\n> Note: Even after applying above permissions if the create button is still disabled then please contact your administrator as you might be conditionally restricted to access the create button.\n\n- To fetch the permissions from other plugins like `Kubernetes` and `Jenkins` in the Role Form as mentioned [here](https://github.com/janus-idp/backstage-plugins/blob/main/plugins/rbac-backend/docs/permissions.md), add the following configuration in your `app-config.yaml`:\n\n```yaml title=\"app-config.yaml\"\npermission:\n  enabled: true\n  rbac:\n    pluginsWithPermission:\n      - kubernetes\n      - jenkins\n    admin:\n      users:\n        - name: user:default/<user-name>\n```\n\n---\n\n#### Procedure\n\n1. Install the RBAC UI plugin executing the following command from the Backstage root directory :\n\n   ```console\n   yarn workspace app add @janus-idp/backstage-plugin-rbac\n   ```\n\n2. Add Route in `packages/app/src/App.tsx`:\n\n   ```tsx title=\"packages/app/src/App.tsx\"\n   /* highlight-add-next-line */\n   import { RbacPage } from '@janus-idp/backstage-plugin-rbac';\n\n   <Route path=\"/rbac\" element={<RbacPage />} />;\n   ```\n\n3. Add **Administration** Sidebar Item in `packages/app/src/components/Root/Root.tsx`:\n\n   ```tsx title=\"packages/app/src/components/Root/Root.tsx\"\n   /* highlight-add-next-line */\n   import { Administration } from '@janus-idp/backstage-plugin-rbac';\n\n   export const Root = ({ children }: PropsWithChildren<{}>) => (\n    <SidebarPage>\n      <Sidebar>\n         ...\n         <Administration />\n         ...\n      <Sidebar>\n    </SidebarPage>\n   );\n   ```\n\n4. For users with vanilla backstage instance, would need to integrate [`Auth`](https://backstage.io/docs/auth/) in to the instance:\n\n   - ```yaml title=\"app-config.yaml\"\n     # see https://backstage.io/docs/auth/ to learn about auth providers\n     environment: development\n     providers:\n        # Plugin: GitHub\n        github:\n           development:\n           clientId: ${GITHUB_BUCKET_CLIENT_ID}\n           clientSecret: ${GITHUB_BUCKET_SECRET}\n        # Plugin: BitBucket\n        bitbucket:\n           development:\n           clientId: ${BIT_BUCKET_CLIENT_ID}\n           clientSecret: ${BIT_BUCKET_SECRET}\n        ...\n     ```\n\n   - Integrate the [`SignIn`](https://backstage.io/docs/auth/#sign-in-configuration) component to be able to sign-in to the Backstage instance.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/rbac",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-14T21:33:37.706Z",
+  "version": "1.20.16",
+  "version_count": 123,
+  "versions": [
+    {
+      "date": "2024-11-14T21:33:37.706Z",
+      "version": "1.20.16"
+    },
+    {
+      "date": "2024-11-04T12:24:40.605Z",
+      "version": "1.32.1"
+    },
+    {
+      "date": "2024-10-31T22:18:38.303Z",
+      "version": "1.29.7"
+    },
+    {
+      "date": "2024-10-30T20:18:54.468Z",
+      "version": "1.32.0"
+    },
+    {
+      "date": "2024-10-29T18:59:36.205Z",
+      "version": "1.31.1"
+    },
+    {
+      "date": "2024-10-22T21:37:06.998Z",
+      "version": "1.31.0"
+    },
+    {
+      "date": "2024-10-21T14:10:18.814Z",
+      "version": "1.24.2"
+    },
+    {
+      "date": "2024-10-09T20:45:40.111Z",
+      "version": "1.30.5"
+    },
+    {
+      "date": "2024-10-08T18:37:09.839Z",
+      "version": "1.30.4"
+    },
+    {
+      "date": "2024-10-08T06:33:29.142Z",
+      "version": "1.30.3"
+    },
+    {
+      "date": "2024-10-01T18:35:36.740Z",
+      "version": "1.30.2"
+    },
+    {
+      "date": "2024-09-25T12:56:40.881Z",
+      "version": "1.30.1"
+    },
+    {
+      "date": "2024-09-20T03:51:21.693Z",
+      "version": "1.30.0"
+    },
+    {
+      "date": "2024-09-19T16:58:16.997Z",
+      "version": "1.29.6"
+    },
+    {
+      "date": "2024-09-17T12:39:49.041Z",
+      "version": "1.29.5"
+    }
+  ]
+}

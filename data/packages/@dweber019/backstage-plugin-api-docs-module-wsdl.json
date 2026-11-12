@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2023-12-22T10:03:30.155Z",
+  "deprecated": "",
+  "description": "Additional functionalities for the api-docs plugin that renders the output of WSDL",
+  "homepage": "https://github.com/dweber019/backstage-plugins/tree/main/plugins/api-docs-module-wsdl",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "dweber019"
+  ],
+  "name": "@dweber019/backstage-plugin-api-docs-module-wsdl",
+  "plugin_id": "api-docs-module-wsdl",
+  "readme": "# @dweber019/backstage-plugin-api-docs-module-wsdl\n\nFrontend for the `@dweber019/backstage-plugin-api-docs-module-wsdl-backend` backend plugin.  \nYou need to install the backend plugin too.\n\n## Setup\n\n```\nyarn --cwd packages/app add @dweber019/backstage-plugin-api-docs-module-wsdl\n```\n\n### Add the wsdlDocsApiWidget to your apis\n\nAdd the widget to your `apiDocsConfigRef`.\n\n```ts\n// packages/app/apis.ts\n\nimport {\n  apiDocsModuleWsdlApiRef,\n  ApiDocsModuleWsdlClient,\n  wsdlApiWidget,\n} from '@dweber019/backstage-plugin-api-docs-module-wsdl';\n\nexport const apis: AnyApiFactory[] = [\n  createApiFactory({\n    api: apiDocsModuleWsdlApiRef,\n    deps: {\n      identityApi: identityApiRef,\n      discoveryApi: discoveryApiRef,\n    },\n    factory: ({ identityApi, discoveryApi }) =>\n      new ApiDocsModuleWsdlClient({ identityApi, discoveryApi }),\n  }),\n  createApiFactory({\n    api: apiDocsConfigRef,\n    deps: {},\n    factory: () => {\n      const definitionWidgets = defaultDefinitionWidgets();\n      return {\n        getApiDefinitionWidget: (apiEntity: ApiEntity) => {\n          if (apiEntity.spec.type.toLowerCase() === 'wsdl') {\n            return wsdlApiWidget(apiEntity);\n          }\n          return definitionWidgets.find(d => d.type === apiEntity.spec.type);\n        },\n      };\n    },\n  }),\n];\n```\n\n### Set the type in your api entities\n\nThis widget will render the generated `wsdl` descriptors with the provided `xslt` transformation.\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: API\nmetadata:\n  name: hello-world\n  description: Hello World example for WSDL\nspec:\n  type: wsdl\n  lifecycle: deprecated\n  owner: foo\n  definition:\n    $text: http://www.dneonline.com/calculator.asmx?wsdl\n```\n\nYou can find more examples in `./dev`.\n\n## Local development\n\nThere is a local setup at `plugins/api-docs-module-wsdl/dev` which can be started with `yarn --cwd plugins/api-docs-module-wsdl start` from the root.\n\n> Don't forget the local development backend as well.\n",
+  "repository": "https://github.com/dweber019/backstage-plugins/tree/HEAD/plugins/api-docs-module-wsdl",
+  "role": "frontend-plugin",
+  "scope": "@dweber019",
+  "updated": "2025-12-19T07:45:20.670Z",
+  "version": "0.1.2",
+  "version_count": 24,
+  "versions": [
+    {
+      "date": "2025-12-19T07:45:20.670Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-08-15T06:55:13.487Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-06-27T07:33:07.310Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-03-17T20:39:50.031Z",
+      "version": "0.0.20"
+    },
+    {
+      "date": "2025-01-20T10:42:50.816Z",
+      "version": "0.0.19"
+    },
+    {
+      "date": "2024-12-28T22:35:33.238Z",
+      "version": "0.0.18"
+    },
+    {
+      "date": "2024-10-21T10:44:54.955Z",
+      "version": "0.0.17"
+    },
+    {
+      "date": "2024-09-25T06:28:30.847Z",
+      "version": "0.0.16"
+    },
+    {
+      "date": "2024-08-30T23:44:17.824Z",
+      "version": "0.0.15"
+    },
+    {
+      "date": "2024-08-29T20:39:34.651Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2024-08-24T21:59:05.324Z",
+      "version": "0.0.13"
+    },
+    {
+      "date": "2024-07-29T00:33:07.343Z",
+      "version": "0.0.12"
+    },
+    {
+      "date": "2024-07-20T21:52:29.520Z",
+      "version": "0.0.11"
+    },
+    {
+      "date": "2024-07-06T08:23:26.327Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2024-06-02T10:36:03.073Z",
+      "version": "0.0.9"
+    }
+  ]
+}

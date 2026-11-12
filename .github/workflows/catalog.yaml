@@ -1,0 +1,75 @@
+name: Catalog
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  push:
+    branches: [master]
+  workflow_dispatch:
+    inputs:
+      full:
+        description: Refetch full metadata for every stored package
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: catalog
+  cancel-in-progress: false
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v5
+      - run: mise run install
+      - run: mise run lint
+
+  # Fetch, commit and deploy in one job: pushes made with GITHUB_TOKEN don't trigger workflows.
+  publish:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: jdx/mise-action@v5
+      - run: mise run install
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Refresh data from npm
+        if: github.event_name != 'push'
+        env:
+          FULL: ${{ inputs.full }}
+        # Full refresh on the 1st and 15th picks up README and maintainer changes.
+        run: |
+          day=$(date -u +%d)
+          if [ "$FULL" = "true" ] || [ "$day" = 01 ] || [ "$day" = 15 ]; then
+            mise run fetch -- --full
+          else
+            mise run fetch
+          fi
+
+      - name: Commit data
+        if: github.event_name != 'push'
+        run: |
+          git add data
+          if git diff --cached --quiet; then
+            echo "No data changes"
+          else
+            git commit -m "chore(data): refresh $(date -u +%F)"
+            git pull --rebase origin master
+            git push origin HEAD:master
+          fi
+
+      - name: Deploy site
+        run: |
+          mise run render
+          uv run properdocs gh-deploy --force --no-history --strict --message "deploy: {sha}"

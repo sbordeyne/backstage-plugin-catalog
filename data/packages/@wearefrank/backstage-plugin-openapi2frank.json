@@ -1,0 +1,72 @@
+{
+  "author": "MarcoNL1",
+  "created": "2024-09-27T08:44:54.796Z",
+  "deprecated": "",
+  "description": "This backstage plugin generates a Frank from an OpenAPI Spec that can be used in the WeAreFrank! Framework.",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "generator",
+    "openapi"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "diedekerkhof",
+    "jacodg",
+    "marconl1",
+    "matthijssmets",
+    "mhdirkse",
+    "philipsens"
+  ],
+  "name": "@wearefrank/backstage-plugin-openapi2frank",
+  "plugin_id": "openapi2frank",
+  "readme": "# OpenAPI2Frank\n\nWelcome to the OpenAPI2Frank plugin!\n\nThis plugin is used to convert OpenAPI specifications to Franks, which can be used in the Frank!Framework. <br/>\nIt generates a zip file containing XML files of the Franks and XSD files for each endpoint of the OpenAPI specification.\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nTo use this plugin, you need to install it in your project.\n\n```bash\nyarn add @wearefrank/backstage-plugin-openapi2frank\n```\n\nIf this command gives an error, try:\n\n```bash\nyarn workspace app add @wearefrank/backstage-plugin-openapi2frank\n```\n\nThen, you need to add it to your Backstage instance. You can do this by adding the following to your ```App.tsx``` file:<br/>\nThe ```App.tsx``` file is located at ```packages/app/src/App.tsx```\n\n```tsx\nimport { OpenapiAdaptPage } from '@wearefrank/backstage-plugin-openapi2frank';\n\n//<Flatroutes>\n    <Route path=\"/openapi-adapter\" element={<OpenapiAdaptPage />} />\n```\n\nAdd the following proxy to your ```app-config.yaml``` file:\n\n```yaml\nproxy:\n  endpoints:\n    '/openapi-frank-generator':\n      target: https://openapi-frank-generator.wearefrank.org/\n      credentials: dangerously-allow-unauthenticated\n```\n\nYou can add a navigation item to your sidebar by adding the following to your ```Root.tsx``` file located at ```packages/app/src/components/Root.tsx```, \nof course you can change the icon and the text to your liking:\n\n```tsx\nimport PublishIcon from '@material-ui/icons/Publish';\n\n// <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n      <SidebarItem icon={PublishIcon} to=\"openapi-adapter\" text=\"API Converter\" />\n```\n",
+  "repository": "https://github.com/MarcoNL1/openapi2frank-backstage",
+  "role": "frontend-plugin",
+  "scope": "@wearefrank",
+  "updated": "2025-02-03T15:14:33.156Z",
+  "version": "2.1.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2025-02-03T15:14:33.156Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2025-01-21T08:46:46.953Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-11-11T12:22:00.558Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2024-10-03T14:29:24.695Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-10-01T11:56:28.150Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2024-09-30T09:21:10.333Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2024-09-30T09:12:55.862Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-09-30T08:43:06.171Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-09-30T08:25:39.636Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-09-27T08:44:55.105Z",
+      "version": "1.0.0"
+    }
+  ]
+}

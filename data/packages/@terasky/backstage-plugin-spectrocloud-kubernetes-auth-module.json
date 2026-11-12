@@ -1,0 +1,66 @@
+{
+  "author": "",
+  "created": "2026-01-28T18:32:39.102Z",
+  "deprecated": "",
+  "description": "Kubernetes authentication module with SpectroCloud OIDC support",
+  "homepage": "https://terasky.com",
+  "keywords": [
+    "authentication",
+    "backstage",
+    "frontend",
+    "kubernetes",
+    "oidc",
+    "spectrocloud"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-spectrocloud-kubernetes-auth-module",
+  "plugin_id": "kubernetes-auth-spectrocloud",
+  "readme": "# spectrocloud-kubernetes-auth-module\n\nWelcome to the spectrocloud-kubernetes-auth-module plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-spectrocloud-kubernetes-auth-module/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-spectrocloud-kubernetes-auth-module)\n\nThe `spectrocloud-kubernetes-auth-module` for Backstage is a frontend module that extends the Kubernetes plugin to add SpectroCloud OIDC authentication support. It enables user-level authentication to Kubernetes clusters using SpectroCloud identity tokens, providing audit trails and eliminating the need for service account management.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/spectrocloud/auth/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.\n",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/spectrocloud-kubernetes-auth-module",
+  "role": "frontend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:52:59.158Z",
+  "version": "0.10.0",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2026-10-21T13:52:59.158Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-06-30T17:22:22.226Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-06-09T19:09:16.063Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2026-05-04T07:12:01.334Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-04-16T08:22:03.213Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-03-22T17:02:33.928Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-03-09T16:53:23.769Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-02-17T20:40:47.611Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-01-28T18:32:39.328Z",
+      "version": "0.1.0"
+    }
+  ]
+}

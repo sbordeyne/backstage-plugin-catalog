@@ -1,0 +1,49 @@
+{
+  "author": "",
+  "created": "2024-11-09T02:39:10.800Z",
+  "deprecated": "",
+  "description": "This is the frontend plugin for the `@liatrio/backstage-plugin-autogov-releases-card` plugin. It provides the necessary UI components and interactions for the backend service.",
+  "homepage": "https://github.com/liatrio/backstage-plugin-autogov#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "acramsay",
+    "amber-beasley-liatrio",
+    "casey.wilson",
+    "damien.storm",
+    "dbhagen",
+    "jgaither",
+    "jphayes-liatrio",
+    "misterc500",
+    "robertkelly",
+    "ssmathistad",
+    "wolftousen"
+  ],
+  "name": "@liatrio/backstage-plugin-autogov-releases-card",
+  "plugin_id": "autogov-releases-card",
+  "readme": "# @liatrio/backstage-plugin-autogov-releases-card\n\nThis is the frontend plugin for the `@liatrio/backstage-plugin-autogov-releases-card` plugin. It provides the necessary UI components and interactions for the backend service.\n\nSee the [root plugin documentation](https://github.com/liatrio/backstage-plugin-autogov) for additional information.\n\n## Installation\n\nTo install the frontend plugin, use the following command from a Backstage environment:\n\n```bash\nyarn add @liatrio/backstage-plugin-autogov-releases-card\n```\n\nAdditionally, you need to install the backend plugin:\n\n```bash\nyarn add @liatrio/backstage-plugin-autogov-releases-backend\n```\n\n## Integration\n\nTo integrate the frontend plugin with the backend plugin, follow these steps:\n\n1. Install both the frontend and backend plugins using the commands above.\n1. Configure the backend plugin in your Backstage application.\n1. Configure the frontend plugin in your Backstage application. Refer to the Backstage documentation for details on how to add frontend plugins.\n\n## Usage\n\nAfter installation and integration, you need to configure the plugin in your Backstage application. Refer to the Backstage documentation for details on how to add and configure plugins.\n\n## Contributing\n\nWe welcome contributions to improve this plugin. Please follow our [contributing guidelines](CONTRIBUTING.md).\n\n## License\n\nThis project is licensed under the terms of the APACHE-2.0 license. See the [LICENSE](LICENSE) file for details.\n\n## Support\n\nIf you have any questions or need support, please open an issue in our [GitHub repository](https://github.com/liatrio/backstage-plugin-autogov/issues).\n",
+  "repository": "https://github.com/liatrio/backstage-plugin-autogov/tree/HEAD/packages/backstage-plugin-autogov-releases-card",
+  "role": "frontend-plugin",
+  "scope": "@liatrio",
+  "updated": "2025-02-11T21:35:28.393Z",
+  "version": "1.6.4",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-02-11T21:35:28.393Z",
+      "version": "1.6.4"
+    },
+    {
+      "date": "2025-02-11T03:53:12.166Z",
+      "version": "1.6.3"
+    },
+    {
+      "date": "2024-11-09T22:53:10.712Z",
+      "version": "1.6.2"
+    },
+    {
+      "date": "2024-11-09T02:39:11.154Z",
+      "version": "1.6.1"
+    }
+  ]
+}

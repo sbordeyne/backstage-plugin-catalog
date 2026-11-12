@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2024-04-28T14:44:02.894Z",
+  "deprecated": "",
+  "description": "Welcome to the recommendations plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pfeifferj"
+  ],
+  "name": "@pfeifferj/backstage-plugin-recommendations",
+  "plugin_id": "",
+  "readme": "# recommendations\n\nWelcome to the recommendations plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/recommendations](http://localhost:3000/recommendations).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n\n1. Configure the plugin in your `app-config.yaml`:\n\nThe following is the minimum configuration required:\n\n```yaml\n# app-config.yaml\napp:\n  recommendations:\n    recommendationsapi: https://example.com/recs\n    feedbackapi: https://example.com/feedback\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@pfeifferj",
+  "updated": "2024-05-03T15:23:53.507Z",
+  "version": "0.0.5",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-05-03T15:23:53.507Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2024-05-03T11:03:40.666Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-05-01T17:42:53.768Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-05-01T15:24:43.148Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-04-28T14:44:03.151Z",
+      "version": "0.1.0"
+    }
+  ]
+}

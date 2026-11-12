@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2023-09-29T22:26:28.818Z",
+  "deprecated": "",
+  "description": "Backstage Grafana plugin wrapper for VMware Tanzu Developer Portal",
+  "homepage": "",
+  "keywords": [],
+  "license": "VMware General Terms",
+  "maintainers": [
+    "abraundmeier",
+    "afbonney",
+    "aliu-vmware",
+    "andyadnguyen",
+    "austinal",
+    "bsnchan",
+    "fouadhamdi",
+    "gweresch",
+    "jamieklassen",
+    "krisapplegate",
+    "mchinigo",
+    "mstergianis",
+    "sameer-broadcom"
+  ],
+  "name": "@vmware-tanzu/tdp-plugin-backstage-grafana",
+  "plugin_id": "",
+  "readme": "# Backstage Grafana Plugin Wrapper for VMware Tanzu Developer Portal\n\nThis plugin wraps the Backstage Grafana plugin which renders the Alerts and Dashboard Card in the Component's overview tab.\n\nBy downloading or using this package, you agree to be bound by the terms of the [VMware General Terms](https://www.vmware.com/vmware-general-terms.html).\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@vmware-tanzu",
+  "updated": "2024-03-22T19:22:59.155Z",
+  "version": "4.0.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2024-03-22T19:22:59.155Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2024-03-15T19:50:31.537Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-03-07T17:52:33.205Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-02-27T17:59:12.925Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2024-01-11T21:09:00.237Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2023-09-29T22:26:29.130Z",
+      "version": "0.0.2"
+    }
+  ]
+}

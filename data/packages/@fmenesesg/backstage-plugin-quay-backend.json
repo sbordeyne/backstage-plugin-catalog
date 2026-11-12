@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2022-12-27T16:00:04.159Z",
+  "deprecated": "",
+  "description": "Welcome to the plugin-quay-backend backend plugin! This plugin will show information about your docker images within quay",
+  "homepage": "https://github.com/fmenesesg/backstage-plugin-quay-backend",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fmenesesg"
+  ],
+  "name": "@fmenesesg/backstage-plugin-quay-backend",
+  "plugin_id": "",
+  "readme": "# plugin-quay-backend\n\nWelcome to the plugin-quay-backend backend plugin!\nThis plugin will show information about your docker images within quay\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\n### Enabling backend\n\n```bash\ncd packages/backend\nyarn add @fmenesesg/backstage-plugin-quay-backend\n```\n\nCreate a new file named `packages/backend/src/plugins/quay.ts`, and add the following to it\n\n```ts\nimport { createRouter } from '@fmenesesg/backstage-plugin-quay-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin({\n  logger,\n  config,\n}: PluginEnvironment): Promise<Router> {\n  return await createRouter({\n    logger,\n    config,\n  });\n}\n```\n\nAnd finally, wire this into the overall backend router. Edit `packages/backend/src/index.ts`\n\n```ts\nimport harbor from './plugins/quay';\n// ...\nasync function main() {\n  // ...\n  const quayEnv = useHotMemoize(module, () => createEnv('quay'));\n  // ...\n  apiRouter.use('/quay', await quay(quayEnv));\n\n```\n\n## Configuration\nThe plugin requires configuration in the Backstage app-config.yaml to connect to quay API.\n\n```yaml\nquay:\n  baseUrl: https://quay.io \n  # https://docs.quay.io/api/ \n  token: OAuth-2-Access-Token\n\n```\n\nAdding annotations and values to your component file.\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: System\nmetadata:\n  name: sample-system\n  description: \"A sample system\"\n  annotations:\n    quay.io/repository-slug: organization/repository\n```\n\n",
+  "repository": "https://github.com/fmenesesg/backstage-plugin-quay-backend",
+  "role": "backend-plugin",
+  "scope": "@fmenesesg",
+  "updated": "2022-12-27T20:52:19.447Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2022-12-27T20:52:19.447Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2022-12-27T20:31:14.012Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2022-12-27T16:00:04.436Z",
+      "version": "0.1.0"
+    }
+  ]
+}

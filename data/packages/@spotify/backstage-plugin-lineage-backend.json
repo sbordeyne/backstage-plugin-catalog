@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2024-11-22T18:11:49.576Z",
+  "deprecated": "",
+  "description": "A plugin to manage data lineage - backend side",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-lineage-backend",
+  "plugin_id": "lineage",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@spotify",
+  "updated": "2025-07-17T09:02:48.732Z",
+  "version": "0.13.6",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2025-07-17T09:02:48.732Z",
+      "version": "0.13.6"
+    },
+    {
+      "date": "2025-06-19T17:51:34.286Z",
+      "version": "0.13.5"
+    },
+    {
+      "date": "2025-05-29T17:09:55.001Z",
+      "version": "0.13.4"
+    },
+    {
+      "date": "2025-04-18T11:50:04.318Z",
+      "version": "0.13.3"
+    },
+    {
+      "date": "2025-03-20T15:38:27.583Z",
+      "version": "0.13.2"
+    },
+    {
+      "date": "2025-03-06T20:40:47.287Z",
+      "version": "0.13.1"
+    },
+    {
+      "date": "2025-02-21T09:42:45.585Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-01-17T17:08:33.674Z",
+      "version": "0.12.2"
+    },
+    {
+      "date": "2025-01-16T14:42:07.238Z",
+      "version": "0.12.1"
+    },
+    {
+      "date": "2024-12-19T10:33:25.496Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2024-12-04T15:40:59.747Z",
+      "version": "0.11.1"
+    },
+    {
+      "date": "2024-11-22T18:11:49.938Z",
+      "version": "0.11.0"
+    }
+  ]
+}

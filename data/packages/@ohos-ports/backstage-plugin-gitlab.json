@@ -1,0 +1,49 @@
+{
+  "author": "",
+  "created": "2026-11-10T07:34:38.960Z",
+  "deprecated": "",
+  "description": "<p align=\"center\">   <img src=\"https://avatars.githubusercontent.com/u/10090828?s=200&v=4\" width=\"200px\" alt=\"logo\"/> </p> <h1 align=\"center\">Backstage Plugin GitLab</h1>",
+  "homepage": "https://github.com/ohos-ports/ohos-ports#readme",
+  "keywords": [
+    "backstage",
+    "ci/cd",
+    "gitlab",
+    "harmonyos",
+    "immobiliare",
+    "immobiliarelabs",
+    "ohos-ports",
+    "openharmony"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ljry",
+    "lljry",
+    "louzen",
+    "npm_3rd_aoe",
+    "social4hyq",
+    "virtfans",
+    "w30010987",
+    "yzz_0126",
+    "z30010987",
+    "zhenghongfei"
+  ],
+  "name": "@ohos-ports/backstage-plugin-gitlab",
+  "plugin_id": "",
+  "readme": "<p align=\"center\">\n  <img src=\"https://avatars.githubusercontent.com/u/10090828?s=200&v=4\" width=\"200px\" alt=\"logo\"/>\n</p>\n<h1 align=\"center\">Backstage Plugin GitLab</h1>\n\n![release workflow](https://img.shields.io/github/workflow/status/immobiliare/backstage-plugin-gitlab/Release)\n[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier?style=flat-square)\n[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)\n![npm (scoped)](https://img.shields.io/npm/v/@immobiliarelabs/backstage-plugin-gitlab?style=flat-square)\n![license](https://img.shields.io/github/license/immobiliare/backstage-plugin-gitlab)\n\n> [Backstage](https://backstage.io/) plugins to interact with [GitLab](https://gitlab.com/)\n\n## Table of contents\n\n<!-- toc -->\n  * [Features](#features)\n  * [Screenshots](#screenshots)\n  * [Setup](#setup)\n  * [Old/New GitLab Versions](#oldnew-gitlab-versions)\n  * [Support & Contribute](#support--contribute)\n  * [License](#license)\n<!-- tocstop -->\n\n## Features\n\n-   List top 20 builds for a project\n-   List top 20 Merge Requests for a project\n-   List top 20 Issues for a project\n-   View Code Owners for a project\n-   View Contributors for a project\n-   View Languages used for a project\n-   View Pipeline status for a project\n-   Works for both project and personal tokens\n-   Pagination for builds\n-   Pagination for Merge Requests\n-   Merge Requests Statistics\n-   Support for Olds/New GitLab APIs version\n\n## Screenshots\n\n<img src=\"https://raw.githubusercontent.com/immobiliare/backstage-plugin-gitlab/main/src/assets/backstage_gitlab_pipeline_information.png\"  alt=\"Contributors Languages Pipeline Status\"/>\n<img src=\"https://raw.githubusercontent.com/immobiliare/backstage-plugin-gitlab/main/src/assets/backstage_gitlab_mr_and_issues.png\"  alt=\"Merge Request Information\"/>\n\n## Setup\n\n1. If you have a standalone app (you didn't clone this repo), then do\n\n```bash\n# From your Backstage root directory\ncd packages/app\nyarn add @immobiliarelabs/backstage-plugin-gitlab\n```\n\n2. Add a new GitLab tab to the entity page.\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n    isGitlabAvailable,\n    EntityGitlabContent,\n} from '@immobiliarelabs/backstage-plugin-gitlab';\n\n// Farther down at the serviceEntityPage declaration\nconst serviceEntityPage = (\n    <EntityLayout>\n        {/* Place the following section where you want the tab to appear */}\n        <EntityLayout.Route\n            if={isGitlabAvailable}\n            path=\"/gitlab\"\n            title=\"Gitlab\"\n        >\n            <EntityGitlabContent />\n        </EntityLayout.Route>\n    </EntityLayout>\n);\n```\n\n3. Add the GitLab cards to the Overview tab on the entity page(Optional).\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n    isGitlabAvailable,\n    EntityGitlabContent,\n    EntityGitlabLanguageCard,\n    EntityGitlabPeopleCard,\n    EntityGitlabMergeRequestsTable,\n    EntityGitlabMergeRequestStatsCard,\n    EntityGitlabPipelinesTable,\n} from '@immobiliarelabs/backstage-plugin-gitlab';\n\n//Farther down at the overviewContent declaration\n//You can add only selected widgets or all of them.\nconst overviewContent = (\n    <Grid container spacing={3} alignItems=\"stretch\">\n        <EntitySwitch>\n            <EntitySwitch.Case if={isGitlabAvailable}>\n                <Grid item md={6}>\n                    <EntityGitlabPeopleCard />\n                    <EntityGitlabLanguageCard />\n                    <EntityGitlabMergeRequestStatsCard />\n                    <EntityGitlabPipelinesTable />\n                    <EntityGitlabMergeRequestsTable />\n                </Grid>\n            </EntitySwitch.Case>\n        </EntitySwitch>\n    </Grid>\n);\n```\n\n4. Add integration:\n   In `app-config.yaml` add the integration for gitlab:\n\n```yaml\nintegrations:\n    gitlab:\n        - host: gitlab.com\n          token: ${GITLAB_TOKEN}\n```\n\n5. Add proxy config:\n\n```yaml\n'/gitlabci':\n    target: '${GITLAB_URL}/api/v4'\n    allowedMethods: ['GET']\n    headers:\n        PRIVATE-TOKEN: '${GITLAB_TOKEN}'\n```\n\n-   Default GitLab URL: `https://gitlab.com`\n-   GitLab Token should be with of scope `read_api` and can be generated from this [URL](https://gitlab.com/-/profile/personal_access_tokens)\n\n6. (**Optional**): You can also add plugin configurations in `app-config.yaml` file:\n\n```yaml\ngitlab:\n    # Default path for CODEOWNERS file\n    # Default: CODEOWNERS\n    defaultCodeOwnersPath: .gitlab/CODEOWNERS\n    # Proxy path\n    # Default: /gitlabci\n    proxyPath: /gitlabci\n```\n\n7. Add a `gitlab.com/project-id` annotation to your respective `catalog-info.yaml` files, on the [format](https://backstage.io/docs/architecture-decisions/adrs-adr002#format)\n\n```yaml\n# Example catalog-info.yaml entity definition file\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n    # ...\n    annotations:\n        gitlab.com/project-id: 'project-id' #1234. This must be in quotes and can be found under Settings --> General\n        # or\n        gitlab.com/project-slug: 'project-slug' # group_name/project_name\n        # You can change the CODEOWNERS path\n        # if it is not passed default specified in `app-config.yaml` is used\n        gitlab.com/codeowners-path: 'somewhere/CODEOWNERS'\nspec:\n    type: service\n    # ...\n```\n\n**Note:** `spec.type` can take values in ['website','library','service'] but to render GitLab Entity, Catalog must be of type `service`\n\n## Old/New GitLab Versions\n\nIf you have an old GitLab version, or a new one, we allow you to extend the GitLab Client as follow:\n\n`packages/app/src/api.ts`\n\n```ts\nimport { GitlabCIApiRef } from '@immobiliarelabs/backstage-plugin-gitlab';\nimport { CustomGitlabCIClient } from '@immobiliarelabs/backstage-plugin-gitlab';\nimport { discoveryApiRef, configApiRef } from '@backstage/core-plugin-api';\nimport { CustomGitlabCIClient } from 'packages/app/src/myCustomClient.ts';\n\nexport const apis: AnyApiFactory[] = [\n    createApiFactory({\n        api: GitlabCIApiRef,\n        deps: { configApi: configApiRef, discoveryApi: discoveryApiRef },\n        factory: ({ configApi, discoveryApi }) =>\n            new CustomGitlabCIClient({\n                discoveryApi,\n                baseUrl: configApi.getOptionalString('gitlab.baseUrl'),\n                proxyPath: configApi.getOptionalString('gitlab.proxyPath'),\n                codeOwnersPath: configApi.getOptionalString(\n                    'gitlab.defaultCodeOwnersPath'\n                ),\n            }),\n    }),\n];\n```\n\n`packages/app/src/myCustomClient.ts`\n\n```ts\nimport { GitlabCIClient } from '@immobiliarelabs/backstage-plugin-gitlab';\n\nexport class CustomGitlabCIClient extends GitlabCIClient {\n    // Override methods\n    async getPipelineSummary(projectID: string | undefined): Promise<PipelineSummary | undefined> {\n        this.callApi(...)\n        .\n        .\n        .\n    }\n}\n```\n\nsee [here](./src/api/GitlabCIClient.ts).\n\n\n## Support & Contribute\n\nMade with ❤️ by [ImmobiliareLabs](https://github.com/immobiliare) & [Contributors](./CONTRIBUTING.md#contributors)\n\nWe'd love for you to contribute to Backstage GitLab Plugin!\nIf you have any questions on how to use Backstage GitLab Plugin, bugs and enhancement please feel free to reach out by opening a [GitHub Issue](https://github.com/immobiliare/backstage-plugin-gitlab/issues).\n\n## License\n\nThis plugin is based on the original work of [loblaw-sre/backstage-plugin-gitlab](https://github.com/loblaw-sre/backstage-plugin-gitlab) by @satrox28 and @Balasundaram.\n\nThis plugin is under [Apache 2.0 license](LICENSE), see [NOTICE](NOTICE) for copyright.\n",
+  "repository": "https://github.com/ohos-ports/ohos-ports/tree/HEAD/ports/backstage-plugin-gitlab/2.1.3",
+  "role": "frontend-plugin",
+  "scope": "@ohos-ports",
+  "updated": "2026-11-10T07:36:46.251Z",
+  "version": "2.1.3-beta.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-11-10T07:36:46.251Z",
+      "version": "2.1.3-beta.1"
+    },
+    {
+      "date": "2026-11-10T07:34:38.960Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

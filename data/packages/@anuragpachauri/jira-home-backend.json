@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2025-01-22T07:38:52.603Z",
+  "deprecated": "",
+  "description": "Welcome to the **jira home backend Plugin**!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "anuragpachauri"
+  ],
+  "name": "@anuragpachauri/jira-home-backend",
+  "plugin_id": "jira-home-backend",
+  "readme": "# jira home Backend Plugin\n\nWelcome to the **jira home backend Plugin**!\n\n_This plugin was created through the Backstage CLI._\n\n---\n\n## Features\n\n- it run a query on jira cli to import issue based on user\n\n---\n\n## Limitations\n\n- Supports jira issue assigned to perticular user  **Azure Resource Graph API**.\n\n---\n\n## Setup\n\n### Installation and Configuration\n\nTo set up the jira home backend Plugin in your Backstage instance, follow these steps:\n\n#### 1. Install the Plugin\n\nRun the following command in the backend directory of your Backstage project:\n\n```bash\nyarn --cwd packages/app add @anuragpachauri/jira-home-backend\n```\n\n### Configuration\n\n#### 1. add these line in packages/backend/src/index.ts\n\n```bash\nbackend.add(import('@anuragpachauri/jira-home-backend'));\n\n```\n#### add configuration in app-config.yaml\n\n```bash\n\njira:\n  token: 'Basic JIRATOKEN'\n  baseUrl: https://<URL>/rest/api/2/\n  projectKey: 'project-key'\n  username: 'username'\n```\n\n\nAfter registration, add the azure resource plugin to Configure Front-end\n\nhttps://github.com/anuragpachauri/backstageMain/tree/main/plugins/jira-home\n\nFuture Enhancements\nSupport for additional Azure services beyond those accessible via the Resource Graph API.\n\nEnhanced filtering and sorting capabilities.\nFeedback\n\nFeel free to suggest changes or report issues by creating a GitHub issue.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@anuragpachauri",
+  "updated": "2025-04-09T11:37:03.627Z",
+  "version": "1.4.2",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2025-04-09T11:37:03.627Z",
+      "version": "1.4.2"
+    },
+    {
+      "date": "2025-04-09T10:49:32.199Z",
+      "version": "1.4.1"
+    },
+    {
+      "date": "2025-01-23T08:27:11.796Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2025-01-23T08:26:12.509Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2025-01-23T08:11:59.034Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2025-01-23T08:08:10.347Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-01-22T07:38:52.887Z",
+      "version": "1.0.0"
+    }
+  ]
+}

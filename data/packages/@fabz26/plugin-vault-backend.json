@@ -1,0 +1,66 @@
+{
+  "author": "",
+  "created": "2023-10-23T18:58:46.198Z",
+  "deprecated": "",
+  "description": "A Backstage backend plugin that integrates towards Vault",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "vault"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fabz26"
+  ],
+  "name": "@fabz26/plugin-vault-backend",
+  "plugin_id": "vault",
+  "readme": "# @backstage-community/plugin-vault-backend\n\nA backend for [Vault](https://www.vaultproject.io/), this plugin adds a few routes that are used by the frontend plugin to fetch the information from Vault.\n\n## Introduction\n\nVault is an identity-based secrets and encryption management system. A secret is anything that you want to tightly control access to, such as API encryption keys, passwords, or certificates. Vault provides encryption services that are gated by authentication and authorization methods.\n\nThis plugins allows you to view all the available secrets at a certain location, and redirect you to the official UI so backstage can rely on LIST permissions, which is safer.\n\n## Getting started\n\nTo get started, first you need a running instance of Vault. You can follow [this tutorial](https://learn.hashicorp.com/tutorials/vault/getting-started-intro?in=vault/getting-started) to install vault and start your server locally.\n\n1. When your Vault instance is up and running, then you will need to install the plugin into your app:\n\n   ```bash\n     # From your Backstage root directory\n     yarn --cwd packages/backend add @backstage-community/plugin-vault-backend\n   ```\n\n2. Create a file in `src/plugins/vault.ts` and add a reference to it in `src/index.ts`:\n\n   ```typescript\n   // In packages/backend/src/plugins/vault.ts\n   import { createRouter } from '@backstage-community/plugin-vault-backend';\n   import { Router } from 'express';\n   import { PluginEnvironment } from '../types';\n\n   export default async function createPlugin(\n     env: PluginEnvironment,\n   ): Promise<Router> {\n     return await createRouter({\n       logger: env.logger,\n       config: env.config,\n       scheduler: env.scheduler,\n     });\n   }\n   ```\n\n   ```diff\n   diff --git a/packages/backend/src/index.ts b/packages/backend/src/index.ts\n   index f2b14b2..2c64f47 100644\n   --- a/packages/backend/src/index.ts\n   +++ b/packages/backend/src/index.ts\n   @@ -22,6 +22,7 @@ import { Config } from '@backstage/config';\n    import app from './plugins/app';\n   +import vault from './plugins/vault';\n    import scaffolder from './plugins/scaffolder';\n   @@ -56,6 +57,7 @@ async function main() {\n      const authEnv = useHotMemoize(module, () => createEnv('auth'));\n   +  const vaultEnv = useHotMemoize(module, () => createEnv('vault'));\n      const proxyEnv = useHotMemoize(module, () => createEnv('proxy'));\n   @@ -63,6 +65,7 @@ async function main() {\n\n      const apiRouter = Router();\n      apiRouter.use('/catalog', await catalog(catalogEnv));\n   +  apiRouter.use('/vault', await vault(vaultEnv));\n      apiRouter.use('/scaffolder', await scaffolder(scaffolderEnv));\n   ```\n\n3. Add some extra configurations in your [`app-config.yaml`](https://github.com/backstage/backstage/blob/master/app-config.yaml).\n\n   ```yaml\n   vault:\n     baseUrl: http://your-internal-vault-url.svc\n     publicUrl: https://your-vault-url.example.com\n     auth:\n       type: static\n       secret: <VAULT_TOKEN>\n     secretEngine: 'customSecretEngine' # Optional. By default it uses 'secrets'. Can be overwritten by the annotation of the entity\n     kvVersion: <kv-version> # Optional. The K/V version that your instance is using. The available options are '1' or '2'\n     schedule: # Optional. If the token renewal is enabled this schedule will be used instead of the hourly one\n       frequency: { hours: 1 }\n       timeout: { hours: 1 }\n   ```\n\n4. Get a `VAULT_TOKEN` with **LIST** permissions, as it's enough for the plugin. You can check [this tutorial](https://learn.hashicorp.com/tutorials/vault/tokens) for more info.\n\n5. If you also want to use the `renew` functionality, you need to attach the following block to your custom policy, so that Backstage can perform a token-renew:\n   ```\n     # Allow tokens to renew themselves\n     path \"auth/token/renew-self\" {\n       capabilities = [\"update\"]\n     }\n   ```\n\n## Login via Kubernetes Auth Method\n\nAlternatively, it's also possible to make Backstage use the [Kubernetes auth method](https://developer.hashicorp.com/vault/docs/auth/kubernetes) to login into Vault. For that, the configuration should look like this:\n\n```yaml\nvault:\n  baseUrl: http://your-internal-vault-url.svc\n  publicUrl: https://your-vault-url.example.com\n  token:\n    type: kubernetes\n    role: <KUBERNETES_ROLE>\n    authPath: <KUBERNETES_AUTH_PATH> # Optional. It defaults to 'kubernetes', but you could set a different authPath if needed\n    serviceAccountTokenPath: <PATH_TO_JWT> # Optional. It defaults to '/var/run/secrets/kubernetes.io/serviceaccount/token'. Where the JWT token is located\n  secretEngine: 'customSecretEngine' # Optional. By default it uses 'secrets'. Can be overwritten by the annotation of the entity\n  kvVersion: <kv-version> # Optional. The K/V version that your instance is using. The available options are '1' or '2'\n```\n\nIn these cases the token renewal is not needed. The backend will automatically fetch the token for each request.\n\n## New Backend System\n\nThe Vault backend plugin has support for the [new backend system](https://backstage.io/docs/backend-system/), here's how you can set that up:\n\nIn your `packages/backend/src/index.ts` make the following changes:\n\n```diff\n  import { createBackend } from '@backstage/backend-defaults';\n  const backend = createBackend();\n  // ... other feature additions\n+ backend.add(import('@backstage-community/plugin-vault-backend');\n  backend.start();\n```\n\nThe token renewal is enabled automatically in the new backend system depending on the `app-config.yaml`. If the `schedule` is not defined there, no\ntask will be executed. If you want to use the default renewal scheduler (which runs hourly), set `schedule: true`. In case you want a custom schedule\njust use a configuration like the one set above.\n\n## Integration with the Catalog\n\nThe plugin can be integrated into each Component in the catalog. To allow listing the available secrets a new annotation must be added to the `catalog-info.yaml`:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    vault.io/secrets-path: path/to/secrets\n```\n\nThe path is relative to your secrets engine folder. So if you want to get the secrets for backstage and you have the following directory structure:\n\n    .\n    ├── ...\n    ├── secrets                 # Your secret engine name (usually it is `secrets`)\n    │   ├── test                # Folder with test secrets\n    │   │   ├── backstage       # In this folder there are secrets for Backstage\n    │   ├── other               # Other folder with more secrets inside\n    │   └── folder              # And another folder\n    └── ...\n\nYou will set the `vault.io/secret-path` to `test/backstage`. If the folder `backstage` contains other sub-folders, the plugin will fetch the secrets inside them and adapt the **View** and **Edit** URLs to point to the correct place.\n\nIn case you need to support different secret engines for entities of the catalog you can provide optional annotation to the entity in `catalog-info.yaml`:\n\n```diff\n apiVersion: backstage.io/v1alpha1\n kind: Component\n metadata:\n   # ...\n   annotations:\n     vault.io/secrets-path: path/to/secrets\n+    vault.io/secrets-engine: customSecretEngine # Optional. By default it uses the 'secretEngine' value from your app-config.\n```\n\nThat will overwrite the default secret engine from the configuration.\n\n## Renew token\n\nIn a secure Vault instance, it's usual that the tokens are refreshed after some time. In order to always have a valid token to fetch the secrets, it might be necessary to execute a renew action after some time. By default this is deactivated, but it can be easily activated and configured to be executed periodically (hourly by default, but customizable by the user within the app-config.yaml file). In order to do that, modify your `src/plugins/vault.ts` file to look like this one:\n\n```typescript\nimport { VaultBuilder } from '@backstage-community/plugin-vault-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const builder = await VaultBuilder.createBuilder({\n    logger: env.logger,\n    config: env.config,\n    scheduler: env.scheduler,\n  }).enableTokenRenew(\n    env.scheduler.createScheduledTaskRunner({\n      frequency: { minutes: 10 },\n      timeout: { minutes: 1 },\n    }),\n  );\n\n  const { router } = builder.build();\n\n  return router;\n}\n```\n\nIf the `taskRunner` is not set when calling the `enableTokenRenew`, the plugin will automatically check what is set in the `app-config.yaml` file. Refer to [the new backend system setup](#new-backend-system) for more information about it.\n\n## Features\n\n- List the secrets present in a certain path\n- Use different secret engines for different entities\n- Open a link to view the secret\n- Open a link to edit the secret\n- Renew the token automatically with a defined periodicity\n\nThe secrets cannot be edited/viewed from within Backstage to make it more secure. Backstage will only have permissions to LIST data from Vault or to renew its own token if that is needed. And the user who wants to edit/view a certain secret needs the correct permissions to do so.\n",
+  "repository": "https://github.com/TRANZACT/DevOps.SITH2.Backstage.Plugins.Vault-backend/tree/HEAD/",
+  "role": "backend-plugin",
+  "scope": "@fabz26",
+  "updated": "2024-09-18T17:08:19.458Z",
+  "version": "2.0.7",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2024-09-18T17:08:19.458Z",
+      "version": "2.0.7"
+    },
+    {
+      "date": "2024-09-13T20:55:08.578Z",
+      "version": "2.0.6"
+    },
+    {
+      "date": "2024-09-13T18:55:41.608Z",
+      "version": "2.0.5"
+    },
+    {
+      "date": "2024-09-11T19:24:53.091Z",
+      "version": "2.0.4"
+    },
+    {
+      "date": "2024-09-06T15:21:28.062Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2024-09-05T15:33:43.792Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2024-08-28T15:56:22.568Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-08-28T15:43:39.843Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-08-21T21:52:10.190Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2023-10-23T18:58:46.628Z",
+      "version": "1.0.0"
+    }
+  ]
+}

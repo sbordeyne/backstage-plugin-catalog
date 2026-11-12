@@ -1,0 +1,40 @@
+{
+  "author": "zeshanziya",
+  "created": "2024-09-24T06:31:08.725Z",
+  "deprecated": "",
+  "description": "Common functionalities for the backstage platformsh plugin",
+  "homepage": "https://github.com/axelerant/backstage-plugins",
+  "keywords": [
+    "backstage",
+    "platform.sh",
+    "platformsh",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "axl_platform"
+  ],
+  "name": "@axelerant/backstage-plugin-platformsh-common",
+  "plugin_id": "platformsh",
+  "readme": "# Platformsh Common\n\nCommon types and functionalities for the [Platformsh](https://github.com/axelerant/backstage-plugins/tree/main/plugins/platformsh) plugin.\n",
+  "repository": "https://github.com/axelerant/backstage-plugins/tree/HEAD/plugins/platformsh-common",
+  "role": "common-library",
+  "scope": "@axelerant",
+  "updated": "2025-02-21T11:52:34.021Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-02-21T11:52:34.021Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-09-25T11:06:53.098Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-09-24T06:31:09.018Z",
+      "version": "0.1.0"
+    }
+  ]
+}

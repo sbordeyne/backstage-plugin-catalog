@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:36:44.412Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates towards Lighthouse",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "lighthouse"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-lighthouse",
+  "plugin_id": "lighthouse",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/lighthouse/plugins/lighthouse",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:55:19.645Z",
+  "version": "0.28.0",
+  "version_count": 32,
+  "versions": [
+    {
+      "date": "2026-11-03T14:55:19.645Z",
+      "version": "0.28.0"
+    },
+    {
+      "date": "2026-09-23T11:20:12.568Z",
+      "version": "0.27.0"
+    },
+    {
+      "date": "2026-08-28T16:43:01.673Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-07-22T00:16:53.057Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-06-24T13:57:33.056Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-06-24T13:15:03.787Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-04-24T18:03:03.253Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-04-20T13:21:23.323Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-04-02T23:30:12.044Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-02-27T17:43:32.029Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-02-27T13:22:24.822Z",
+      "version": "0.18.1"
+    },
+    {
+      "date": "2026-01-28T22:29:49.392Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2025-12-24T22:07:04.018Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2025-11-27T17:01:16.087Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-10-17T17:37:17.358Z",
+      "version": "0.15.0"
+    }
+  ]
+}

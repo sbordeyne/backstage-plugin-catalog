@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-01-14T12:57:40.123Z",
+  "deprecated": "",
+  "description": "Welcome to the end of life plugin!",
+  "homepage": "https://github.com/dweber019/backstage-plugins/tree/main/plugins/endoflife",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "dweber019"
+  ],
+  "name": "@dweber019/backstage-plugin-endoflife",
+  "plugin_id": "endoflife",
+  "readme": "# End of life Plugin\n\nWelcome to the end of life plugin!\n\nThis plugin will show end of life data for entities from [endoflife.date](https://endoflife.date/) or your own data provided by a URL or integrations.\n\n![OpenShift](https://raw.githubusercontent.com/dweber019/backstage-plugins/main/plugins/endoflife/docs/example-open-shift.png)\n![Python](https://raw.githubusercontent.com/dweber019/backstage-plugins/main/plugins/endoflife/docs/example-python.png)\n\n## Setup\n\nInstall this plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @dweber019/backstage-plugin-endoflife\n```\n\n### Annotations\n\nYou can use the annotation `endoflife.date/products` to define products at [endoflife.date](https://endoflife.date/).  \nUse the product name in the [url address (e.g. angular)](https://endoflife.date/angular) for your annotation.\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Resource\nmetadata:\n  name: eol-angular\n  annotations:\n    endoflife.date/products: angular\n```\n\nYou can even use multiple products with a comma separated list.\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: eol-angular-nginx-app\n  annotations:\n    endoflife.date/products: angular,nginx\n```\n\nAdditionally, you can specify the version by using the [release column](https://endoflife.date/angular) (in the API called cycle).\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: eol-angular-nignx-version-app\n  annotations:\n    endoflife.date/products: angular@17,nginx@1.25\n```\n\nIn addition to loading information from [endoflife.date](https://endoflife.date/) you can load information from URL's\nor your repository by providing the annotations `endoflife.date/url-location` or `endoflife.date/source-location` and\nusing the type `EndOfLifeCycle` at `plugins/endoflife/src/api/types.ts`.\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: angular-app\n  annotations:\n    endoflife.date/url-location: https://gist.githubusercontent.com/dweber019/.../raw/.../versions.json\n```\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: 'angular-app'\n  annotations:\n    endoflife.date/source-location: /versions.json\n```\n\n> The `endoflife.date/source-location` has to be relative to your source repository\n\n> To use the `endoflife.date/source-location`, you need to install the [backend plugin](../endoflife-backend)\n\n> The annotations can't be combined and the order is `endoflife.date/products`, `endoflife.date/url-location`, `endoflife.date/source-location`\n\n### Entity Pages\n\nAdd the `EntityEndOfLifeCard` to the EntityPage.\n\nYou could use this directly on components like this\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  EntityEndOfLifeCard,\n  isEndOfLifeAvailable,\n} from '@dweber019/backstage-plugin-endoflife';\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    {entityWarningContent}\n    ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isEndOfLifeAvailable}>\n        <Grid item md={6}>\n          <EntityEndOfLifeCard />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n    ...\n  </Grid>\n);\n```\n\nor if you have resources representing technologies like databases or angular, you could use\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  EntityEndOfLifeCard,\n  isEndOfLifeAvailable,\n} from '@dweber019/backstage-plugin-endoflife';\n\nconst resourcePage = (\n  <EntityLayoutWrapper>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <Grid container spacing={3} alignItems=\"stretch\">\n        {entityWarningContent}\n        ...\n        <EntitySwitch>\n          <EntitySwitch.Case if={isEndOfLifeAvailable}>\n            <Grid item md={6}>\n              <EntityEndOfLifeCard variant=\"gridItem\" />\n            </Grid>\n          </EntitySwitch.Case>\n        </EntitySwitch>\n      </Grid>\n    </EntityLayout.Route>\n    ...\n  </EntityLayoutWrapper>\n);\n```\n\nor if you have API entities you could use the annotation `endoflife.date/source-location`\nto make version lifecycles visible to consumers.\n\n### Help text\n\nYou can customize the help text in the right upper corner by using the following configuration in `app-config.yaml`\n\n```yaml\nendOfLife:\n  helpText: |\n    # Custom help text\n\n    You can use markdown if you like\n```\n\n### Base Url\n\nIf you're hosting a local End of Life instance, configure the base url to your service in the `app-config.yaml`\n\n```yaml\nendOfLife:\n  baseUrl: https://endoflife.mycompany.com\n```\n\n## Troubleshooting\n\n### Behavior 'endoflife.date/products': angular\n\nUsing this annotation will result in a call to [Get all details](https://endoflife.date/docs/api).\n\n### Behavior 'endoflife.date/products': angular@17\n\nUsing this annotation will result in a call to [Single cycle details](https://endoflife.date/docs/api).\n\n### Behavior 'endoflife.date/products': angular@17,nginx\n\nUsing this annotation will result in multiple calls to the respective behavior above, depending on if the version is defined.\n\n### Wrong or missing data\n\nAll data is comming from [endoflife.date](https://endoflife.date/) and can be wrong or missing.  \nPlease correct this by [contributing](https://endoflife.date/contribute) back to the community.\n\n## Local development\n\nThere is a local setup at `plugins/endoflife/dev` which can be started with `yarn --cwd plugins/endoflife start` from the root.\n",
+  "repository": "https://github.com/dweber019/backstage-plugins/tree/HEAD/plugins/endoflife",
+  "role": "frontend-plugin",
+  "scope": "@dweber019",
+  "updated": "2025-12-19T07:45:21.568Z",
+  "version": "0.1.2",
+  "version_count": 24,
+  "versions": [
+    {
+      "date": "2025-12-19T07:45:21.568Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-08-15T06:55:14.075Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-06-27T07:33:07.506Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-06-03T10:17:05.533Z",
+      "version": "0.0.20"
+    },
+    {
+      "date": "2025-03-17T20:39:50.805Z",
+      "version": "0.0.19"
+    },
+    {
+      "date": "2025-01-20T10:42:51.536Z",
+      "version": "0.0.18"
+    },
+    {
+      "date": "2024-12-28T22:35:32.449Z",
+      "version": "0.0.17"
+    },
+    {
+      "date": "2024-10-21T10:44:55.492Z",
+      "version": "0.0.16"
+    },
+    {
+      "date": "2024-09-25T06:28:31.059Z",
+      "version": "0.0.15"
+    },
+    {
+      "date": "2024-08-29T20:39:34.722Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2024-08-24T21:59:05.372Z",
+      "version": "0.0.13"
+    },
+    {
+      "date": "2024-08-10T18:55:35.413Z",
+      "version": "0.0.12"
+    },
+    {
+      "date": "2024-07-29T00:33:07.360Z",
+      "version": "0.0.11"
+    },
+    {
+      "date": "2024-07-20T21:52:29.426Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2024-07-06T08:23:26.508Z",
+      "version": "0.0.9"
+    }
+  ]
+}

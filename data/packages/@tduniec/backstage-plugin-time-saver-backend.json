@@ -1,0 +1,86 @@
+{
+  "author": "tduniec",
+  "created": "2024-01-30T13:24:22.226Z",
+  "deprecated": "",
+  "description": "This plugin provides an implementation of charts and statistics related to your time savings that are coming from usage of your templates. Plugins is built from frontend and backend part. Backend plugin is responsible for scheduled stats parsing process a",
+  "homepage": "https://github.com/tduniec/backstage-timesaver-plugin#readme",
+  "keywords": [
+    "backstage",
+    "time-saver"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "tduniec"
+  ],
+  "name": "@tduniec/backstage-plugin-time-saver-backend",
+  "plugin_id": "time-saver",
+  "readme": "# Time Saver - backend\n\nThis plugin provides an implementation of charts and statistics related to your time savings that are coming from usage of your templates. Plugins is built from frontend and backend part. Backend plugin is responsible for scheduled stats parsing process and data storage.\n\n## Dependencies\n\n- [time-saver](https://github.com/tduniec/backstage-timesaver-plugin/tree/main/plugins/time-saver)\n- [time-saver-common](https://github.com/tduniec/backstage-timesaver-plugin/tree/main/plugins/time-saver-common)\n\n## Code\n\nhttps://github.com/tduniec/backstage-timesaver-plugin.git\n\n## Installation\n\n1. Install the plugin package in your Backstage app:\n\n```sh\n# From your Backstage root directory\nyarn add --cwd packages/backend @tduniec/backstage-plugin-time-saver-backend\n```\n\n2. Wire up the API implementation to your App in `timeSaver.ts` file in `packages/backend/src/plugins/`:\n\n```ts\nimport { createRouter } from '@tduniec/backstage-plugin-time-saver-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    logger: env.logger,\n    database: env.database,\n    config: env.config,\n    scheduler: env.scheduler,\n  });\n}\n```\n\nin `packages/backend/src/index.ts`\n\n```ts\n\nimport timeSaver from './plugins/timeSaver';\n\n...\n\nconst timeSaverEnv = useHotMemoize(module, () => createEnv('timesaver'));\n\n...\n\napiRouter.use('/time-saver', await timeSaver(timeSaverEnv)); // you should use authMiddleware if you are using it for backend\n\n```\n\n### New Backend - instalation\n\n1. Wire up the plugin in Backstage new backend system\n\nin `packages/backend/src/index.ts`\n\n```ts\nbackend.add(import('@tduniec/backstage-plugin-time-saver-backend'));\n```\n\n2. Install [time-saver](../time-saver/README.md) part if not installed already\n\n## Generate Statistics\n\nConfigure your template definition like described below:\nProvide an object under `metadata`. Provide quantities of saved time by each group executing one template in **_hours_** preferably\n\n```diff\n apiVersion: scaffolder.backstage.io/v1beta3\n kind: Template\n metadata:\n     name: example-template\n     title: create-github-project\n     description: Creates Github project\n+      substitute:\n+        engineering:\n+          devops: 1\n+          security: 4\n+          development_team: 2\n spec:\n     owner: group:default/backstage-admins\n     type: service\n```\n\nScheduler is running with its default setup every **5 minutes** to generate data from executed templates with these information.\n\n## Optional configuration\n\nIf your backend deployment is separate from your frontend you can use below config to override the setup\n\n```yaml\nts:\n  backendUrl: https://my-awesome-backstage.com\n```\n\nIf you want to use configurable **scheduler** [Optional]:\n\n```yaml\nts:\n  scheduler:\n    parallelProcessing: 100 # optional -> number of tasks to process one thread -> CPU impact: Default to 100\n    handler:\n      frequency: 'PT1H' # Frequency in ISO 8601 duration format\n      timeout: 'PT10M' # Timeout in ISO 8601 duration format\n      initialDelay: 'PT1M' # Initial delay in ISO 8601 duration format\n```\n\nDefault scheduler config: (frequency: 5M, timeout: 30M, initialDelay: 30S) can be overwritten by the above optional config.\n\n## Migration\n\nThis plugins supports backward compatibility with migration. You can specify your Time Saver metadata for each template name. Then the migration will be performed once executing the API request to `/migrate` endpoint of the plugin.\n\n### Setup\n\nThe configuration could be setup in 2 different ways: either using the app-config file or directly making a POST request to /migrate. Either way, a response in JSON format like the following will be sent back:\n\n```json\n{\n  \"updatedTemplates\": {\n    \"total\": 2,\n    \"list\": [\n      \"template:default/create-github-project\",\n      \"template:default/create-golang-project\"\n    ]\n  },\n  \"missingTemplates\": {\n    \"total\": 1,\n    \"list\": [\"template:default/create-perfect-world\"]\n  }\n}\n```\n\nwhere `updatedTemplates` are the correlated templates found in the scaffolder tasks database and `missingTemplates` are the ones not found.\n\n#### a) Migration classification through app-config file\n\nAdd the following to your `app-config.yaml` file:\n\n```yaml\nts:\n  backward:\n    config: |\n      [\n        {\n          \"entityRef\": \"template:default/create-github-project\",\n          \"engineering\": {\n            \"devops\": 8,\n            \"development_team\": 8,\n            \"security\": 3\n          }\n        } \n      ]\n    # extend this list if needed\n```\n\n**Note: In order for your new classification to take effect, you'll need to redeploy.**\n\n#### b) Migration classification through /migrate POST API call\n\nUse any endpoint testing tool like [curl](https://curl.se/), [postman](https://www.postman.com/) or [thunder client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) and send your new configuration in a POST request body as a JSON object. Make sure your POST request is using `Content-Type: application/json` headers.\n\nExample:\n\n```json\n[\n  {\n    \"entityRef\": \"template:default/create-github-project\",\n    \"engineering\": {\n      \"devsecops\": 3,\n      \"developer\": 1\n    }\n  },\n  {\n    \"entityRef\": \"template:default/create-golang-project\",\n    \"engineering\": {\n      \"devsecops\": 1,\n      \"developer\": 2\n    }\n  }\n  // extend this list if needed\n]\n```\n\nUsing curl:\n\n```shell\ncurl --header \"Content-Type: application/json\" \\\n  --request POST \\\n  --data '[{\"entityRef\":\"template:default/create-github-project\",\"engineering\":{\"devsecops\":3,\"developer\":1}},{\"entityRef\":\"template:default/create-golang-project\",\"engineering\":{\"devsecops\":1,\"developer\":2}}]' \\\n  http://localhost:7007/api/time-saver/migrate\n```\n\n### Sample Classification Configuration Generation API\n\nYou can also use Time Saver backend API to generate a sample configuration file based on different parameters. You'll get a response similar to the following:\n\n```JSON\n{\n  \"status\": \"OK\",\n  \"data\": [\n    {\n      \"entityRef\": \"template:default/create-github-project\",\n      \"engineering\": {\n        \"devops\": 8,\n        \"development_team\": 8,\n        \"security\": 3\n      }\n    },\n    {\n      \"entityRef\": \"template:default/create-nodejs-service\",\n      \"engineering\": {\n        \"devops\": 8,\n        \"development_team\": 8,\n        \"security\": 3\n      }\n    },\n    {\n      \"entityRef\": \"template:default/create-golang-service\",\n      \"engineering\": {\n        \"devops\": 8,\n        \"development_team\": 8,\n        \"security\": 3\n      }\n    }\n  ]\n}\n```\n\n#### a) Generating a sample classification configuration through a GET request\n\nUsing nothing but your browser, you can get a sample configuration like the one above. There's also the option to use the GET parameter `useScaffolderTasksEntries` with a boolean value to retrieve a list of template tasks in the scaffolder database. Otherwise, a sample list will be used to apply a sample classification.\n\nExample using cURL:\n\n```shell\ncurl http://localhost:7007/api/time-saver/generate-sample-classification?useScaffolderTasksEntries=true\n```\n\nExample response:\n\n```JSON\n{\n  \"status\": \"OK\",\n  \"data\": [\n    {\n      \"entityRef\": \"a20f844a-95c6-4844-9c42-9c4120349016\",\n      \"engineering\": {\n        \"devops\": 8,\n        \"development_team\": 8,\n        \"security\": 3\n      }\n    }\n  ]\n}\n```\n\n#### b) Generating a sample classification configuration through a POST request\n\nYou can also provide a sample configuration to be applied to either a pre-defined list of template tasks or a list from the scaffolder database. You must sent the following JSON object inside a POST body request:\n\n```JSON\n{\n  \"customClassificationRequest\": {\n    \"engineering\": {\n      \"architecture\": 1\n    }\n  },\n  \"options\": {\n    \"useScaffolderTasksEntries\": true\n  }\n}\n```\n\nBoth fields are optional. If no JSON object is sent, a similar reponse to that of a GET request will be obtained.\n\nExample using curl:\n\n```shell\ncurl --header \"Content-Type: application/json\" \\\n  --request POST \\\n  --data '{\"customClassificationRequest\":{\"engineering\":{\"architecture\":1}},\"options\":{\"useScaffolderTasksEntries\":true}}' \\\n  http://localhost:7007/api/time-saver/generate-sample-classification\n```\n\n### Excluding template executions from TS calculations\n\nif there is a need to exclude some of the template tasks in calculations there is a table **'ts_exclude_tasks_everywhere'** which conatins a list of **task_id**'s that need to be excluded. You can exclude tasks by appending the table in DB.\n",
+  "repository": "https://github.com/tduniec/backstage-timesaver-plugin",
+  "role": "backend-plugin",
+  "scope": "@tduniec",
+  "updated": "2026-03-30T21:00:49.728Z",
+  "version": "4.1.3",
+  "version_count": 34,
+  "versions": [
+    {
+      "date": "2026-03-30T21:00:49.728Z",
+      "version": "4.1.3"
+    },
+    {
+      "date": "2025-04-17T12:37:33.353Z",
+      "version": "4.1.2"
+    },
+    {
+      "date": "2024-12-23T14:08:01.732Z",
+      "version": "4.1.1"
+    },
+    {
+      "date": "2024-10-28T10:56:04.648Z",
+      "version": "4.1.0"
+    },
+    {
+      "date": "2024-10-14T12:13:19.658Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2024-10-09T09:40:08.223Z",
+      "version": "3.1.4"
+    },
+    {
+      "date": "2024-10-08T11:14:23.338Z",
+      "version": "3.1.3"
+    },
+    {
+      "date": "2024-10-08T10:48:37.273Z",
+      "version": "3.1.2"
+    },
+    {
+      "date": "2024-10-08T07:10:46.323Z",
+      "version": "3.1.1"
+    },
+    {
+      "date": "2024-09-30T13:01:12.771Z",
+      "version": "3.1.0"
+    },
+    {
+      "date": "2024-08-26T21:16:07.617Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2024-07-26T14:37:04.268Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2024-07-22T07:18:37.285Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2024-07-18T12:28:24.293Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2024-07-16T07:03:46.433Z",
+      "version": "2.2.0"
+    }
+  ]
+}

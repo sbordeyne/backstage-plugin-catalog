@@ -1,0 +1,57 @@
+{
+  "author": "Mia Platform Core Team",
+  "created": "2024-04-08T12:44:14.230Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://www.mia-platform.eu/",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE",
+  "maintainers": [
+    "bottarga",
+    "fedeold",
+    "giulioroggero"
+  ],
+  "name": "@mia-platform/backstage-plugin-frontend",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/mia-platform/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@mia-platform",
+  "updated": "2024-05-09T08:29:42.229Z",
+  "version": "1.1.1",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2024-05-09T08:29:42.229Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2024-04-24T15:34:28.391Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-04-24T14:52:29.469Z",
+      "version": "1.1.0-rc.0"
+    },
+    {
+      "date": "2024-04-12T10:19:21.775Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-04-10T14:23:03.652Z",
+      "version": "1.0.0-rc.9"
+    },
+    {
+      "date": "2024-04-08T13:21:58.482Z",
+      "version": "1.0.0-rc8"
+    },
+    {
+      "date": "2024-04-08T12:49:48.455Z",
+      "version": "1.0.0-rc.6"
+    },
+    {
+      "date": "2024-04-08T12:44:14.497Z",
+      "version": "0.1.2-0"
+    }
+  ]
+}

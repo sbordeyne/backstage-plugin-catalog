@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-01-13T11:07:59.667Z",
+  "deprecated": "",
+  "description": "Welcome to the entity-feedback backend plugin!",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "edubois10"
+  ],
+  "name": "@edubois10/plugin-entity-feedback-backend-dynamic",
+  "plugin_id": "entity-feedback",
+  "readme": "# Entity Feedback Backend\n\nWelcome to the entity-feedback backend plugin!\n\n## Installation\n\nNote: this plugin requires authentication and identity configured so Backstage can identify\nwhich user has rated the entity. If you are using the guest identity provider which comes\nout of the box, this plugin will not work when you test it.\n\n### Install the package\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/backend add @backstage-community/plugin-entity-feedback-backend\n```\n\n### Adding the plugin to your `packages/backend`\n\nYou'll need to add the plugin to the router in your `backend` package. You can do this by creating a file called `packages/backend/src/plugins/entityFeedback.ts`\n\n```tsx\nimport { createRouter } from '@backstage-community/plugin-entity-feedback-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default function createPlugin(env: PluginEnvironment): Promise<Router> {\n  return createRouter({\n    database: env.database,\n    discovery: env.discovery,\n    identity: env.identity,\n    logger: env.logger,\n  });\n}\n```\n\nWith the `entityFeedback.ts` router setup in place, add the router to `packages/backend/src/index.ts`:\n\n```diff\n+import entityFeedback from './plugins/entityFeedback';\n\nasync function main() {\n  ...\n  const createEnv = makeCreateEnv(config);\n\n  const catalogEnv = useHotMemoize(module, () => createEnv('catalog'));\n+ const entityFeedbackEnv = useHotMemoize(module, () => createEnv('entityFeedback'));\n\n  const apiRouter = Router();\n+ apiRouter.use('/entity-feedback', await entityFeedback(entityFeedbackEnv));\n  ...\n  apiRouter.use(notFoundHandler());\n\n```\n\n### New Backend System\n\nThe Entity Feedback backend plugin has support for the [new backend system](https://backstage.io/docs/backend-system/), here's how you can set that up:\nIn your `packages/backend/src/index.ts` make the following changes:\n\n```diff\n  import { createBackend } from '@backstage/backend-defaults';\n\n  const backend = createBackend();\n\n  // ... other feature additions\n\n+ backend.add(import(@backstage-community/plugin-entity-feedback-backend));\n\nbackend.start();\n```\n",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/entity-feedback/plugins/entity-feedback-backend",
+  "role": "backend-plugin",
+  "scope": "@edubois10",
+  "updated": "2025-01-13T11:08:00.030Z",
+  "version": "0.2.20",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-01-13T11:08:00.030Z",
+      "version": "0.2.20"
+    }
+  ]
+}

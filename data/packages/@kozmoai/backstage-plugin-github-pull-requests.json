@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:13.261Z",
+  "deprecated": "",
+  "description": "![a list of pull requests in the GitHub Pull Requests](./docs/list-of-pull-requests-and-stats-tab-view.png)",
+  "homepage": "https://glint.io/backstage/plugins/github-pull-requests/",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-github-pull-requests",
+  "plugin_id": "",
+  "readme": "# GitHub Pull Requests Plugin for Backstage\n\n![a list of pull requests in the GitHub Pull Requests](./docs/list-of-pull-requests-and-stats-tab-view.png)\n\n## Features\n\n- List Pull Requests for your repository, with filtering and search.\n- Show basic statistics widget about pull requests for your repository.\n  - Average time of PR until merge\n  - Merged to closed ratio\n  - Average size of PR (the average lines of changes in the PR)\n  - Average amount of file changed in a PR\n- It has two homepage plugin componenets\n  - Review requests\n  - Open pull requests\n\n## Plugin Configuration Requirements\n\nThis plugin relies on the [GitHub Authentication Provider](https://backstage.io/docs/auth/github/provider) for its access to GitHub.\n\nSearch filter works the same way it works in GitHub, but `glint-backstage-pull-requests/default-filter` annotation needs to be provided in component configuration. Adding a filter will result in applying that filter per default.\n\nIf this annotation is left out, no default filter will be applied when running the app.\n\n## Install the plugin\n\n```bash\ncd packages/app\nyarn add @kozmoai/backstage-plugin-github-pull-requests\n```\n\n## Add plugin API to your Backstage instance:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityGithubPullRequestsContent,\n  isGithubPullRequestsAvailable,\n} from '@kozmoai/backstage-plugin-github-pull-requests';\n...\n\nconst serviceEntityPage = (\n  <EntityLayout>\n    ...\n    <EntityLayout.Route\n      path=\"/pull-requests\"\n      title=\"Pull Requests\"\n      // Uncomment the line below if you'd like to only show the tab on entities with the correct annotations already set\n      // if={isGithubPullRequestsAvailable}\n    >\n      <EntityGithubPullRequestsContent />\n    </EntityLayout.Route>\n    ...\n  </EntityLayout>\n```\n\n4. Run backstage app with `yarn start` and navigate to services tabs.\n\n## Widget setup\n\n![a list of pull requests in the GitHub Pull Requests](./docs/github-pullrequests-widget.png)\n\n1. You must install plugin by following the steps above to add widget to your Overview\n\n2. Add widget to your Overview tab:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityGithubPullRequestsOverviewCard, isGithubPullRequestsAvailable } from '@kozmoai/backstage-plugin-github-pull-requests';\n\n...\n\nconst overviewContent = (\n  <Grid container spacing={3}>\n    ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isGithubPullRequestsAvailable}>\n        <Grid item md={6}>\n          <EntityGithubPullRequestsOverviewCard />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n    ...\n  </Grid>\n);\n\n```\n\n## Group Widget setup\n\n![a list of pull requests assigned to this team](./docs/list-of-team-assigned-prs.png)\n\n1. You must install plugin by following the steps above to add widget to your Group Entity Page\n\n2. Add widget to your group page:\n\n```ts\nimport {\n  EntityGithubGroupPullRequestsCard,\n  isGithubTeamPullRequestsAvailable,\n} from '@kozmoai/backstage-plugin-github-pull-requests';\n\n...\n\nconst groupPage = (\n  <Grid container spacing={3}>\n    ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isGithubTeamPullRequestsAvailable}>\n        <Grid item md={5} xs={12}>\n          <EntityGithubGroupPullRequestsCard/>\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n    ...\n  </Grid>\n);\n\n```\n\n## Add Homepage components to your homepage\n\n![A preview image of the components](./docs/homepage-components.png)\n\nIf you didn't set up the HomePage plugin you can see the official documentation about it [here](https://github.com/backstage/backstage/tree/master/plugins/home). You'll need to have it setup to be able to include this plugin.\n\nA reasonable default will be used as a search term for both cards but you may have reasonable to provide your own query. This can be done through the `query` prop available for both cards.\n\n**TIP**: You might want to filter by a specific Github org if you have users who share a single Github account for work and personal usage.\n\nYou can build up a query using [Github Advanced Search](https://github.com/search/advanced) and once you hit \"Search\", the query in the search bar is what you'll want to provide as your query prop.\n\n```tsx\n//packages/app/src/components/home/HomePage.tsx\n\nimport {\n  HomePageRequestedReviewsCard,\n  HomePageYourOpenPullRequestsCard,\n} from '@kozmoai/backstage-plugin-github-pull-requests';\n\n\nexport const HomePage = () => {\n  return (\n    ...\n\n      <Grid item md={6} xs={12}>\n        <HomePageRequestedReviewsCard />\n      </Grid>\n\n      <Grid item md={6} xs={12}>\n        <HomePageYourOpenPullRequestsCard query=\"org:kozmoai is:pr language:CSS\" />\n      </Grid>\n    ...\n  );\n};\n```\n\n## Features\n\n- List Pull Requests for your repository, with filtering and search (The searchbar is working like in github).\n- Show basic statistics widget about pull requests for your repository.\n- Possibility to add a variable on the backstage configuration of a catalog entity allowing to add a default search filter on github pull requests\n\n## Links\n\n- [Backstage](https://backstage.io)\n- Get hosted, managed Backstage for your company: https://glint.io\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-github-pull-requests",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:14.721Z",
+  "version": "2.5.25",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:14.721Z",
+      "version": "2.5.25"
+    },
+    {
+      "date": "2024-03-25T22:14:13.524Z",
+      "version": "2.5.24"
+    }
+  ]
+}

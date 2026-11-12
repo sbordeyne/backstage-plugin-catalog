@@ -1,0 +1,34 @@
+{
+  "author": "",
+  "created": "2026-07-16T11:47:42.205Z",
+  "deprecated": "",
+  "description": "Internal marketplace for on-the-job learning — mentorships, skill discovery, hack teams",
+  "homepage": "https://github.com/Estehsan/backstage-plugin-skill-bridge/tree/main/workspaces/skill-bridge/plugins/skill-bridge#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "developer-portal",
+    "mentorship",
+    "skill-bridge",
+    "skills"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "estehsantariq"
+  ],
+  "name": "@estehsaan/backstage-plugin-skill-bridge",
+  "plugin_id": "skill-bridge",
+  "readme": "",
+  "repository": "https://github.com/Estehsan/backstage-plugin-skill-bridge/tree/HEAD/workspaces/skill-bridge/plugins/skill-bridge",
+  "role": "frontend-plugin",
+  "scope": "@estehsaan",
+  "updated": "2026-07-16T11:47:42.523Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-07-16T11:47:42.523Z",
+      "version": "1.0.0"
+    }
+  ]
+}

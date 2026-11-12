@@ -1,0 +1,92 @@
+{
+  "author": "Digital.ai",
+  "created": "2024-05-23T07:01:37.159Z",
+  "deprecated": "",
+  "description": "Common functionalities for the dai-release plugin",
+  "homepage": "https://digital.ai/",
+  "keywords": [
+    "backstage",
+    "ci/cd",
+    "devops",
+    "digital.ai release",
+    "plugin",
+    "typescript"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "agavaldas",
+    "dai-npmjs-bot",
+    "geekzoo-dai",
+    "grantcroker-dai",
+    "gvolarevic-dai",
+    "jcaldas",
+    "msnively"
+  ],
+  "name": "@digital-ai/plugin-dai-release-common",
+  "plugin_id": "dai-release",
+  "readme": "# Digital.ai Release Common\n\nCommon types and functionalities for Release, to be shared between dai-release and dai-release-backend.\n\n## Links\n\nFor more information, see [Overview](https://docs.digital.ai/bundle/devops-release-version-v.24.1/page/release/concept/release-backstage-overview.html) and [Adding Release to Your Backstage IDP](https://docs.digital.ai/bundle/devops-release-version-v.24.1/page/release/concept/release-backstage-plugin.html)\n",
+  "repository": "https://github.com/digital-ai/backstage-release/tree/HEAD/.",
+  "role": "common-library",
+  "scope": "@digital-ai",
+  "updated": "2025-02-13T15:54:45.678Z",
+  "version": "0.1.2",
+  "version_count": 14,
+  "versions": [
+    {
+      "date": "2025-02-13T15:54:45.678Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-02-10T05:49:49.674Z",
+      "version": "0.1.2-alpha.2"
+    },
+    {
+      "date": "2025-01-13T12:12:12.816Z",
+      "version": "0.1.2-alpha.1"
+    },
+    {
+      "date": "2024-12-18T08:47:06.690Z",
+      "version": "0.1.2-alpha.0"
+    },
+    {
+      "date": "2024-11-12T06:45:56.620Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-10-21T06:56:43.096Z",
+      "version": "0.1.1-alpha.6"
+    },
+    {
+      "date": "2024-10-14T06:26:37.787Z",
+      "version": "0.1.1-alpha.4"
+    },
+    {
+      "date": "2024-09-25T09:28:53.512Z",
+      "version": "0.1.1-alpha.1"
+    },
+    {
+      "date": "2024-09-19T09:29:19.765Z",
+      "version": "0.1.1-alpha.0"
+    },
+    {
+      "date": "2024-06-12T10:12:28.763Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2024-06-04T08:40:46.525Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-05-28T13:33:38.104Z",
+      "version": "0.0.2-alpha.4"
+    },
+    {
+      "date": "2024-05-28T12:21:44.772Z",
+      "version": "0.0.2-alpha.3"
+    },
+    {
+      "date": "2024-05-23T07:01:37.464Z",
+      "version": "0.0.2-alpha.2"
+    }
+  ]
+}

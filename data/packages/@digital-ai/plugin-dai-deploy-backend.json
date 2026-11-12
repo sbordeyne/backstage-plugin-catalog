@@ -1,0 +1,80 @@
+{
+  "author": "Digital.ai",
+  "created": "2024-05-06T03:19:42.402Z",
+  "deprecated": "",
+  "description": "Backend functionalities for the dai-deploy backstage plugin",
+  "homepage": "https://digital.ai/",
+  "keywords": [
+    "backstage",
+    "ci/cd",
+    "devops",
+    "digital.ai deploy",
+    "plugin",
+    "typescript"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "agavaldas",
+    "dai-npmjs-bot",
+    "geekzoo-dai",
+    "grantcroker-dai",
+    "gvolarevic-dai",
+    "jcaldas",
+    "msnively"
+  ],
+  "name": "@digital-ai/plugin-dai-deploy-backend",
+  "plugin_id": "dai-deploy",
+  "readme": "# Dai Deploy Backend\n\nIt is a simple plugin that makes API requests to [Digital.ai](https://digital.ai/products/deploy/) Deploy\n\n## Setup\n\n### Installing and Configuring the Backend Plugin\n\n   The backend plugin needs to be added to your application. To do so:\n\n####  1.  Run the following command from the Backstage root directory:\n```shell\nyarn --cwd packages/backend add @digital-ai/plugin-dai-deploy-backend\n```\n\n#### 2. Create plugin file for deploy backend in the packages/backend/src/plugins/ directory.\n\n```ts\n// packages/backend/src/plugins/dai-deploy.ts\n \nimport { createRouter } from '@digital-ai/plugin-dai-deploy-backend';\nimport { Router } from 'express';\nimport type { PluginEnvironment } from '../types';\n\nexport default function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return createRouter({\n    logger: env.logger,\n    config: env.config,\n    permissions: env.permissions\n  });\n}\n```\n\n#### 3.  Modify your backend router to expose the APIs for deploy backend.\n```ts\n// packages/backend/src/index.ts\n\nimport daiDeploy from './plugins/dai-deploy';\n// ...\n\nasync function main() {\n   // ...\n   // Add this line under the other lines that follow the useHotMemoize pattern\n   const daiDeployEnv = useHotMemoize(module, () => createEnv('dai-deploy'));\n   // ...\n   // Insert this line under the other lines that add their routers to apiRouter in the same way\n   apiRouter.use('/dai-deploy', await daiDeploy(daiDeployEnv));\n```\n\n#### 4. Configure the deploy instance by adding the following to your app-config.yaml files.\n```yaml\ndaiDeploy:\n  host: <<deploy-instance-url>> #http://deploy-hostname:4516\n  username: ${username}\n  password: ${password}\n```\nNote: username and password must be set as environment variables.\n\n#### 5. Run yarn start-backend from the repo root directory.\n\n#### 6. Finally open http://localhost:7007/api/dai-deploy/health in a browser and returns {\"status\":\"ok\"}.\n\n## Links\nFor more information, see [Overview](https://docs.digital.ai/bundle/devops-deploy-version-v.24.1/page/deploy/concept/xl-deploy-backstage-overview.html) and [Adding Deploy to Your Backstage IDP](https://docs.digital.ai/bundle/devops-deploy-version-v.24.1/page/deploy/concept/xl-deploy-backstage-plugins.html)\n\n\n#### New Backend System\n\nThe Dai Deploy backend plugin has support for the [new backend system](https://backstage.io/docs/backend-system/), here's how you can set that up:\n\nIn your `packages/backend/src/index.ts` make the following changes:\n\n```diff\n  import { createBackend } from '@backstage/backend-defaults';\n\n  const backend = createBackend();\n\n  // ... other feature additions\n\n+ backend.add(import('@digital-ai/plugin-dai-deploy-backend'));\n\n  backend.start();\n```\n",
+  "repository": "https://github.com/digital-ai/backstage-deploy/tree/HEAD/.",
+  "role": "backend-plugin",
+  "scope": "@digital-ai",
+  "updated": "2025-04-08T13:59:17.309Z",
+  "version": "0.1.6",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2025-04-08T13:59:17.309Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2024-11-04T09:27:15.730Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-10-29T05:06:07.248Z",
+      "version": "0.1.5-alpha-0"
+    },
+    {
+      "date": "2024-06-04T08:49:52.469Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-05-29T06:50:20.395Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-05-14T15:54:29.258Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-05-06T10:48:09.578Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-05-06T09:35:50.874Z",
+      "version": "0.0.1-alpha-3"
+    },
+    {
+      "date": "2024-05-06T03:53:16.438Z",
+      "version": "0.0.1-alpha-2"
+    },
+    {
+      "date": "2024-05-06T03:41:30.382Z",
+      "version": "0.0.1-alpha-1"
+    },
+    {
+      "date": "2024-05-06T03:19:42.666Z",
+      "version": "0.0.1-alpha-0"
+    }
+  ]
+}

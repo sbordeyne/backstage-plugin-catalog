@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2026-07-23T13:11:46.954Z",
+  "deprecated": "",
+  "description": "Backstage.io Q&A plugin frontend",
+  "homepage": "https://github.com/drodil/backstage-plugin-qeta",
+  "keywords": [
+    "backstage",
+    "backstage.io",
+    "frontend",
+    "plugin"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "serhatboyraz"
+  ],
+  "name": "@serhatboyraz/backstage-plugin-qeta",
+  "plugin_id": "qeta",
+  "readme": "# qeta\r\n\r\nWelcome to the qeta plugin!\r\n\r\nQeta allows you to add Q&A section to your Backstage application.\r\nThis plugin requires that you also install\r\n[@serhatboyraz/backstage-plugin-qeta-backend](https://www.npmjs.com/package/@serhatboyraz/backstage-plugin-qeta-backend)\r\nplugin.\r\n\r\n## Adding to your application\r\n\r\nAdd the plugin to your frontend app:\r\n\r\n```bash\r\ncd packages/app && yarn add @serhatboyraz/backstage-plugin-qeta\r\n```\r\n\r\nExpose the questions page:\r\n\r\n```ts\r\n// packages/app/src/App.tsx\r\nimport { QetaPage } from '@serhatboyraz/backstage-plugin-qeta';\r\n\r\n// ...\r\n\r\nconst AppRoutes = () => (\r\n  <FlatRoutes>\r\n    // ...\r\n    <Route path=\"/qeta\" element={<QetaPage />} />\r\n    // ...\r\n  </FlatRoutes>\r\n);\r\n```\r\n\r\nAn interface for Q&A is now available at `/qeta`.\r\n",
+  "repository": "https://github.com/drodil/backstage-plugin-qeta",
+  "role": "frontend-plugin",
+  "scope": "@serhatboyraz",
+  "updated": "2026-07-23T17:02:52.174Z",
+  "version": "3.59.13",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-07-23T17:02:52.174Z",
+      "version": "3.59.13"
+    },
+    {
+      "date": "2026-07-23T14:35:38.750Z",
+      "version": "3.59.12"
+    },
+    {
+      "date": "2026-07-23T14:13:24.785Z",
+      "version": "3.59.11"
+    },
+    {
+      "date": "2026-07-23T13:11:47.289Z",
+      "version": "3.59.10"
+    }
+  ]
+}

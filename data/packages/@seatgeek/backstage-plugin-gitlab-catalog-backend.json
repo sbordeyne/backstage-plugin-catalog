@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2024-03-20T16:00:43.333Z",
+  "deprecated": "",
+  "description": "This plugin offers catalog integrations for ingesting data from gitlab API.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "seatgeek"
+  ],
+  "name": "@seatgeek/backstage-plugin-gitlab-catalog-backend",
+  "plugin_id": "gitlab-catalog",
+  "readme": "# @seatgeek/backstage-plugin-gitlab-catalog-backend\n\nThis plugin offers catalog integrations for ingesting data from gitlab API.\n\n[![npm latest version](https://img.shields.io/npm/v/@seatgeek/backstage-plugin-gitlab-catalog-backend/latest.svg)](https://www.npmjs.com/package/@seatgeek/backstage-plugin-gitlab-catalog-backend)\n\n## Installation\n\nInstall the `@seatgeek/backstage-plugin-gitlab-catalog-backend` package in your backend package using the [new backend](https://backstage.io/docs/plugins/new-backend-system/):\n\n```shell\n# From your Backstage root directory\nyarn add --cwd packages/backend @seatgeek/backstage-plugin-gitlab-catalog-backend\n```\n\nAdd the following config to your `app-config.yaml`:\n\n```yml\ngitlabCatalog:\n  host: ${GITLAB_HOST_CATALOG} # defaults to https://gitlab.com\n  token: ${GITLAB_TOKEN_CATALOG}\n```\n\nRequires `read_user` scope with administrator level permissions to be able to view the email, see [List Users (for administrators)](https://docs.gitlab.com/ee/api/users.html#for-administrators).\n\n## Processors\n\n### `GitlabUserProcessor`\n\nEnriches existing `User` entities with information from Gitlab, notably the user's Gitlab ID, based on the user's `.profile.email`.\n\n#### Installation\n\nAdd the following to your `packages/backend/index.ts`:\n\n```ts\n// in your imports\nimport { catalogModuleGitlabUserProcessor } from '@seatgeek/backstage-plugin-gitlab-catalog-backend';\n\n// in your catalog modules\nbackend.add(catalogModuleGitlabUserProcessor);\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@seatgeek",
+  "updated": "2025-08-13T11:51:38.100Z",
+  "version": "1.2.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2025-08-13T11:51:38.100Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2024-08-27T16:01:20.810Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2024-08-27T15:38:29.095Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2024-08-27T15:25:04.028Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-08-24T23:01:49.780Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-03-20T16:00:43.649Z",
+      "version": "1.0.0"
+    }
+  ]
+}

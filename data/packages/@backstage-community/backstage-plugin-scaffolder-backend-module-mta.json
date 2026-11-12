@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2024-10-11T13:09:42.261Z",
+  "deprecated": "",
+  "description": "The mta module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/backstage-plugin-scaffolder-backend-module-mta",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/mta/plugins/scaffolder-backend-module-mta",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-05-05T20:44:40.449Z",
+  "version": "0.5.1",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-05-05T20:44:40.449Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2025-09-25T14:59:29.916Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-04-18T00:54:23.946Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-03-15T01:48:17.793Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-11-08T20:15:22.992Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-11-06T14:25:18.573Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-10-11T13:09:42.669Z",
+      "version": "0.1.1"
+    }
+  ]
+}

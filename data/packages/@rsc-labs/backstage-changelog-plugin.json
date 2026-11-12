@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2023-10-19T16:35:29.087Z",
+  "deprecated": "",
+  "description": "Backstage Changelog Plugin is configurable and customizable plugin for viewing a changelog. You can write your own parser or use default one, which follows [Keep the changelog](https://keepachangelog.com/) notation.",
+  "homepage": "https://github.com/RSC-Labs/backstage-changelog-plugin#readme",
+  "keywords": [
+    "backstage",
+    "changelog",
+    "frontend",
+    "javascript",
+    "plugin",
+    "rsc-labs",
+    "typescript"
+  ],
+  "license": "MPL-2.0",
+  "maintainers": [
+    "szymkiewicz.radoslaw"
+  ],
+  "name": "@rsc-labs/backstage-changelog-plugin",
+  "plugin_id": "",
+  "readme": "# @rsc-labs/changelog-plugin\n\nBackstage Changelog Plugin is configurable and customizable plugin for viewing a changelog.\nYou can write your own parser or use default one, which follows [Keep the changelog](https://keepachangelog.com/) notation.\n\n### What is Changelog, why and who needs it?\nDescription from [Keep the changelog](https://keepachangelog.com/).\n\nA changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a project.\nIt is being created to make it easier for users and contributors to see precisely what notable changes have been made between each release (or version) of the project.\nPeople need changelog. Whether consumers or developers, the end users of software are human beings who care about what's in the software. When the software changes, people want to know why and how.\n\n# Getting started\n\nIf you haven't already, check out the [Backstage docs](https://backstage.io/docs/getting-started/) and create a Backstage application with\n```\nnpx @backstage/create-app\n```\n\nThen, you will need to install and configure the changelog plugins for the frontend and the backend.\nBackend plugin installation can be found here: [Backend plugin](https://github.com/RSC-Labs/backstage-changelog-plugin/tree/main/plugins/backstage-changelog-plugin-backend)\n\n## Frontend plugin\n\nInstall:\n```bash\ncd packages/app\nyarn add @rsc-labs/backstage-changelog-plugin\n```\n\nYou have two options how you can use Changelog functionality.\n\n### Card in Overview page:\n\nAdd the card to `packages/app/src/components/catalog/EntityPage.tsx`:\n```jsx\n// import:\nimport { EntityChangelogCard } from '@rsc-labs/backstage-changelog-plugin';\n\n// use it in entity view\nconst overviewContent = (\n  <Grid container\n  ...\n    <Grid item md={6} xs={12}>\n      <EntityChangelogCard />\n    </Grid>\n  </Grid>\n)\n```\n\n<img src='https://raw.githubusercontent.com/RSC-Labs/backstage-changelog-plugin/main/docs/changelog_entity_card.png' alt='Changelog card screenshot'>\n\n### Table in separated tab\n\nAdd content to `packages/app/src/components/catalog/EntityPage.tsx`:\n```jsx\n// import:\nimport { EntityChangelogContent } from '@rsc-labs/backstage-changelog-plugin';\n\nconst serviceEntityPage = (\n  <EntityLayout\n  ...\n    <EntityLayout.Route path=\"/changelog\" title=\"Changelog\">\n      <EntityChangelogContent/>\n    </EntityLayout.Route>\n  </Grid>\n)\n```\n\n<img src='https://raw.githubusercontent.com/RSC-Labs/backstage-changelog-plugin/main/docs/changelog_entity_content.png' alt='Changelog content screenshot'>\n\n### Frontend configuration\n\nWe have created parser, which shall be able to parse English version of [Keep the changelog](https://keepachangelog.com/).\nIf you have different notation in your organization, you can define your own parser and pass it to the plugin.\n\n#### How to create my own parser?\n\nInfo: If you have your own parser already created, it shall be inserted in following way:\n\n```jsx\nimport { myParser } from './yourParser';\n...\n<Grid item md={6} xs={12}>\n    <EntityChangelogCard parser={myParser} />\n</Grid>\n```\n\nParser is represented by following type:\n\n```jsx\n/**\n * Props for {@link EntityChangelogCard}.\n * Props for {@link EntityChangelogContent}\n * @public\n */\nexport interface EntityChangelogProps {\n    parser?(content: string) : ChangelogProps[]\n}\n  \n```\n\nIt shall take `string` as argument and shall produce array of `ChangelogProps` output which follows:\n\n```jsx\nexport type ChangelogAction = {\n    name: string,\n    counter: number,\n    content: string,\n    icon?: any\n}\n\nexport type ChangelogProps = {\n    versionNumber: string,\n    actions: ChangelogAction[],\n    versionContent: string | undefined\n}\n```\n\nEvery field matches corresponding information in ChangelogCard or ChangelogContent.\n\nLet's assume that your content follows \"Keep the changelog\" format, so your CHANGELOG looks like this:\n```md\n# Changelog\n\n## [1.1.1] - 2023-03-05\n\n### Added\n\n- Polish translation\n\n### Removed\n\n- Foreign translation\n\n```\n\nProperly mapping to ChangelogProps format is:\n```\nversionNumber = \"[1.1.1] - 2023-03-05\"\nactions = [\n  {\n    name: \"Added\",\n    counter: 1 // because there is only one change - Polish translation added\n    content: \"- Polish translation\",\n    icon: <some react component, for instance from MUI icons>\n  },\n  {\n    name: \"Removed\",\n    counter: 1 // because there is only one change - Foreign translation removed\n    content: \"- Foreign translation\",\n    icon: <some react component, for instance from MUI icons>\n  }\n]\nversionContent = \"\n### Added\n\n- Polish translation\n\n### Removed\n\n- Foreign translation\n\"\n```\n\nPlease remember that you need to return array of ChangelogProps because single ChangelogProps is related to one version (e.g. [1.1.1] - 2023-03-05) and its content.\n\n## TODO\n\n[ ] Unit tests\n\n[ ] Move logic from frontend to backend\n\n## Contribution\n\nContributions are welcome and they are greatly appreciated!\n\n## License\n\nLicensed under the Mozilla Public License, Version 2.0: https://www.mozilla.org/en-US/MPL/2.0/\n\n---\n\n© 2023 RSC https://rsoftcon.com/\n",
+  "repository": "https://github.com/RSC-Labs/backstage-changelog-plugin",
+  "role": "frontend-plugin",
+  "scope": "@rsc-labs",
+  "updated": "2024-04-19T14:58:43.378Z",
+  "version": "0.5.0",
+  "version_count": 14,
+  "versions": [
+    {
+      "date": "2024-04-19T14:58:43.378Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2023-12-03T16:48:23.008Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2023-12-03T16:04:09.163Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2023-12-03T16:00:58.856Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2023-11-08T18:39:02.182Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2023-11-08T16:07:44.786Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2023-11-06T18:02:29.082Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-11-05T19:28:03.556Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2023-10-22T10:38:12.110Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2023-10-22T10:33:08.513Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2023-10-20T17:44:03.211Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2023-10-20T15:44:04.964Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2023-10-20T15:31:56.695Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-10-19T16:35:29.382Z",
+      "version": "0.2.0"
+    }
+  ]
+}

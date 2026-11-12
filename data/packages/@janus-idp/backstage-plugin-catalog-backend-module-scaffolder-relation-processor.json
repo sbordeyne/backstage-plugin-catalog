@@ -1,0 +1,75 @@
+{
+  "author": "Red Hat",
+  "created": "2024-06-03T19:35:24.412Z",
+  "deprecated": "",
+  "description": "The scaffolder-relation-processor backend module for the catalog plugin.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-catalog-backend-module-scaffolder-relation-processor",
+  "plugin_id": "catalog",
+  "readme": "# ❗DEPRECATED❗\n\nThis package has been deprecated.\n\nPlease use the **[@backstage-community/plugin-catalog-backend-module-scaffolder-relation-processor](https://github.com/backstage/community-plugins/tree/main/workspaces/scaffolder-relation-processor/plugins/catalog-backend-module-scaffolder-relation-processor)** package instead.\n\n# Catalog Backend Module for Scaffolder Relation Catalog Processor\n\nThis is an extension module to the catalog-backend plugin, providing an additional catalog entity processor that adds a new relation that depends on the `spec.scaffoldedFrom` field to link scaffolder templates and the catalog entities they generated.\n\n## Getting Started\n\n1. Install the scaffolder relation catalog processor module using the following command:\n\n   ```console\n   yarn workspace backend add @janus-idp/backstage-plugin-catalog-backend-module-scaffolder-relation-processor\n   ```\n\n### Installing on the new backend system\n\nTo install this module into the [new backend system](https://backstage.io/docs/backend-system/), add the following into the `packages/backend/src/index.ts` file:\n\n```ts title=\"packages/backend/src/index.ts\nconst backend = createBackend();\n\n// highlight-add-start\nbackend.add(\n  import(\n    '@janus-idp/backstage-plugin-catalog-backend-module-scaffolder-relation-processor/alpha'\n  ),\n);\n// highlight-add-end\n\nbackend.start();\n```\n\n### Installing on the legacy backend system\n\nTo install this module into the legacy backend system, add the following to the `packages/backend/src/plugins/catalog.ts` file:\n\n```ts title=packages/backend/src/plugins/catalog.ts\n// highlight-add-start\nimport { ScaffolderRelationEntityProcessor } from '@janus-idp/backstage-plugin-catalog-backend-module-scaffolder-relation-processor';\n\n// highlight-add-end\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const builder = await CatalogBuilder.create(env);\n\n  /* ... other processors and/or providers ... */\n  // highlight-add-start\n  builder.addProcessor(new ScaffolderRelationEntityProcessor());\n  // highlight-add-end\n\n  const { processingEngine, router } = await builder.build();\n  await processingEngine.start();\n\n  return router;\n}\n```\n\n### Usage\n\nCatalog entities containing the `spec.scaffoldedFrom` field will have a relation link be formed between it and the `template` corresponding to the entity ref in the `spec.scaffoldedFrom` field.\n\nThis link can be viewed in the `relations` field of the Raw YAML view of a catalog entity when inspecting an entity. In the entity with the `spec.scaffoldedFrom` field, the relation type is `scaffoldedFrom` with a target pointing to the value of the `spec.scaffoldedFrom` field. Conversely, for the target template, it will have a relation type of `ScaffolderOf` with a target pointing to the entity with the `spec.scaffoldedFrom` field.\n\nThese relations should also appear on the `EntityCatalogGraphView` component from the `@backstage/plugin-catalog-graph` package (only if the entity corresponding to the entity ref exists in the catalog).\n\n#### Example graph view\n\n![scaffoldedFrom Relation Graph View](./docs/example-images/scaffoldedFromGraphView.png)\n![scaffolderOf Relation Graph View](./docs/example-images/scaffolderOfGraphView.png)\n\n#### Example Raw YAML view\n\n![scaffoldedFrom Relation YAML View](./docs/example-images/scaffoldedFromYAMLView.png)\n![scaffoldedOf Relation YAML View](./docs/example-images/scaffolderOfYAMLView.png)\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/catalog-backend-module-scaffolder-relation-processor",
+  "role": "backend-plugin-module",
+  "scope": "@janus-idp",
+  "updated": "2024-08-16T18:47:08.834Z",
+  "version": "1.3.2",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2024-08-16T18:47:08.834Z",
+      "version": "1.3.2"
+    },
+    {
+      "date": "2024-07-26T01:21:28.452Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2024-06-19T14:58:09.828Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2024-06-13T21:29:43.049Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-06-13T10:19:09.164Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2024-06-05T16:04:15.660Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-06-04T19:36:20.041Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-06-03T21:05:43.118Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-06-03T19:38:30.597Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-06-03T19:35:24.732Z",
+      "version": "0.1.0"
+    }
+  ]
+}

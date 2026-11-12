@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-02-19T12:34:58.392Z",
+  "deprecated": "",
+  "description": "`@facets-cloud/backstage-plugin-backend` is a plugin for the Backstage backend app. It provides a route that `@facets-cloud/backstage-plugin` will use to connect to Facets.cloud API.",
+  "homepage": "https://github.com/Facets-cloud/facets-backstage-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "facetsdev"
+  ],
+  "name": "@facets-cloud/backstage-plugin-backend",
+  "plugin_id": "facets-cloud",
+  "readme": "# @facets-cloud/backstage-plugin-backend\n\n`@facets-cloud/backstage-plugin-backend` is a plugin for the Backstage backend app. It provides a route that `@facets-cloud/backstage-plugin` will use to connect to Facets.cloud API.\n\n## Installation\n\n1. Install `@facets-cloud/backstage-plugin-backend` plugin with,\n\n```bash\nyarn workspace backend add @facets-cloud/backstage-plugin-backend\n```\n\n2. Add the plugin in `./packages/backend/src/index.ts` to your backend,\n\n```diff\n+ backend.add(import('@facets-cloud/backstage-plugin-backend'));\n\nbackend.start();\n```\n\n3. Add `proxy` and `facets-cloud` configuration to `app-config.yaml`. Note that adding auth in config is *not* recommended and it should be configured at user level in Facets.cloud settings. If there is no auth configured for user, and there is auth configured in `app-config.yaml`, this common authentication will be used for making api calls to Facets.cloud\n\n```diff\nproxy:\n  endpoints:\n    '/facets/api':\n      target: ${FACETS_CONTROL_PLANE_URL}\n\nfacets-cloud:\n  controlPlaneUrl: ${FACETS_CONTROL_PLANE_URL}\n  auth:\n    username: ${FACETS_USER_NAME}\n    accessToken: ${FACETS_ACCESS_TOKEN}\n```",
+  "repository": "https://github.com/Facets-cloud/facets-backstage-plugin",
+  "role": "backend-plugin",
+  "scope": "@facets-cloud",
+  "updated": "2025-02-19T12:34:58.667Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-02-19T12:34:58.667Z",
+      "version": "0.1.0"
+    }
+  ]
+}

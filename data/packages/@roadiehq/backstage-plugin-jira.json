@@ -1,0 +1,90 @@
+{
+  "author": "",
+  "created": "2020-11-20T14:18:07.182Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://roadie.io/backstage/plugins/jira/",
+  "keywords": [
+    "backstage",
+    "jira",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brianfletcher",
+    "roadie-bot",
+    "roadiehq-david",
+    "xantier"
+  ],
+  "name": "@roadiehq/backstage-plugin-jira",
+  "plugin_id": "backstage-plugin-jira",
+  "readme": "",
+  "repository": "https://github.com/RoadieHQ/roadie-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-jira",
+  "role": "frontend-plugin",
+  "scope": "@roadiehq",
+  "updated": "2026-10-26T10:02:33.975Z",
+  "version": "2.17.0",
+  "version_count": 105,
+  "versions": [
+    {
+      "date": "2026-10-26T10:02:33.975Z",
+      "version": "2.17.0"
+    },
+    {
+      "date": "2026-10-02T16:01:04.449Z",
+      "version": "2.16.1"
+    },
+    {
+      "date": "2026-09-29T13:25:49.505Z",
+      "version": "2.16.0"
+    },
+    {
+      "date": "2025-10-31T09:33:07.801Z",
+      "version": "2.14.0"
+    },
+    {
+      "date": "2025-09-12T09:18:14.294Z",
+      "version": "2.13.1"
+    },
+    {
+      "date": "2025-08-29T07:11:13.292Z",
+      "version": "2.13.0"
+    },
+    {
+      "date": "2025-08-28T07:10:51.521Z",
+      "version": "2.12.0"
+    },
+    {
+      "date": "2025-07-23T10:20:45.686Z",
+      "version": "2.11.0"
+    },
+    {
+      "date": "2025-07-18T13:04:38.868Z",
+      "version": "2.10.0"
+    },
+    {
+      "date": "2025-05-23T12:51:11.683Z",
+      "version": "2.9.0"
+    },
+    {
+      "date": "2025-03-07T13:54:03.519Z",
+      "version": "2.8.3"
+    },
+    {
+      "date": "2024-12-23T08:46:36.361Z",
+      "version": "2.8.2"
+    },
+    {
+      "date": "2024-11-25T16:16:27.279Z",
+      "version": "2.8.1"
+    },
+    {
+      "date": "2024-10-23T10:12:39.456Z",
+      "version": "2.8.0"
+    },
+    {
+      "date": "2024-10-11T16:01:58.977Z",
+      "version": "2.7.0"
+    }
+  ]
+}

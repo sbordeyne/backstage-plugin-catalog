@@ -1,0 +1,35 @@
+{
+  "author": "Andrei Lasenka",
+  "created": "2024-06-12T06:54:49.203Z",
+  "deprecated": "",
+  "description": "Welcome to the ios plugin!",
+  "homepage": "https://github.com/ocadotechnology-university/IOS/tree/main#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "laughugin"
+  ],
+  "name": "@laughugin/backstage-plugin-ios",
+  "plugin_id": "",
+  "readme": "# ios\n\nWelcome to the ios plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/ios](http://localhost:3000/ios).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/ocadotechnology-university/IOS.git#main",
+  "role": "frontend-plugin",
+  "scope": "@laughugin",
+  "updated": "2024-06-13T08:10:08.763Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-06-13T08:10:08.763Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-06-13T07:44:09.152Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-06-12T06:54:49.563Z",
+      "version": "0.1.0"
+    }
+  ]
+}

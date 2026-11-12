@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2024-11-18T06:57:19.230Z",
+  "deprecated": "",
+  "description": "Welcome to the example-fe backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "stkppx01"
+  ],
+  "name": "example-fe-backend",
+  "plugin_id": "",
+  "readme": "# example-fe\n\nWelcome to the example-fe backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/example-fe](http://localhost:3000/example-fe).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "",
+  "updated": "2024-11-19T02:40:32.249Z",
+  "version": "0.0.4",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-11-19T02:40:32.249Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-11-18T09:39:25.733Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-11-18T09:35:45.515Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-11-18T06:57:19.546Z",
+      "version": "0.0.1"
+    }
+  ]
+}

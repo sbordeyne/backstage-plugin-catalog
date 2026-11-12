@@ -1,0 +1,38 @@
+{
+  "author": "",
+  "created": "2024-11-11T20:02:32.572Z",
+  "deprecated": "",
+  "description": "The Headlamp plugin for Backstage embeds the Headlamp UI within your Backstage instance using an iframe. The plugin can be used in two modes:",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "illume",
+    "joaquimrocha",
+    "sniok",
+    "yolossn"
+  ],
+  "name": "@headlamp-k8s/backstage-plugin-headlamp",
+  "plugin_id": "headlamp",
+  "readme": "# Headlamp Plugin (beta)\n\nThe Headlamp plugin for Backstage embeds the Headlamp UI within your Backstage instance using an iframe. The plugin can be used in two modes:\n\n1. **Standalone Mode**: \n   - Simply displays an existing Headlamp instance using the URL configured in `app-config.yaml`\n   - Requires only configuring the `headlamp.url` parameter\n\n2. **Backend Integration Mode**:\n   - Works in conjunction with the headlamp-backend plugin\n   - Automatically starts a Headlamp server instance\n   - Uses the Kubernetes context specified in your `app-config.yaml` for interoperability with the backstage kubernetes plugin\n   - Provides a more integrated experience within Backstage\n\n## Configuration\n\nThe Headlamp plugin is configured by setting the `headlamp.url` in the `app-config.yaml` file.\n\n### 1. Install the plugin\n```bash\nyarn --cwd packages/app add @headlamp-k8s/backstage-plugin-headlamp\n```\n\n### 2. Add Headlamp route to `packages/app/src/App.tsx`\n\nAdd the following import\n```tsx\nimport { HeadlampPage } from '@headlamp-k8s/backstage-plugin-headlamp';\n```\n\nAdd the following route to the const routes\n```tsx\nconst routes = [\n    <FlatRoutes>\n    ...\n    <Route path=\"/headlamp\" element={<HeadlampPage />} />\n    </FlatRoutes>\n]\n```\n\n### 3. Add Headlamp to the Sidebar\n\nAdd the following import to `packages/app/src/components/Root/Root.tsx`\n\n```tsx\nimport { HeadlampIcon } from '@headlamp-k8s/backstage-plugin-headlamp';  \n```\n\nAdd the SidebarItem within any SidebarGroup in your Root component:\n\n```tsx\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n        <SidebarItem icon={HeadlampIcon} to=\"headlamp\" text=\"Headlamp\" />\n        {/* ... other items ... */}\n    </Sidebar>\n    {children}\n  </SidebarPage>\n);\n```\n\n### 4. Configure Headlamp url (Optional)\n\nIf you are deploying the Headlamp backend plugin ie using the backend integration mode, you can configure the url of the Headlamp instance by setting the `headlamp.url` parameter in the `app-config.yaml` file.\n\nexample:\n```yaml\nheadlamp:\n  url: https://headlamp.example.com\n```",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@headlamp-k8s",
+  "updated": "2025-10-21T06:48:46.432Z",
+  "version": "0.1.0-beta-3",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-10-21T06:48:46.432Z",
+      "version": "0.1.0-beta-3"
+    },
+    {
+      "date": "2025-01-22T10:49:14.353Z",
+      "version": "0.1.0-beta-2"
+    },
+    {
+      "date": "2024-11-11T20:02:32.855Z",
+      "version": "0.1.0-beta-1"
+    }
+  ]
+}

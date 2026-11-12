@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-07-09T12:27:22.940Z",
+  "deprecated": "",
+  "description": "This plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jawjawjaw"
+  ],
+  "name": "@netautomate/plugin-netorca-backend",
+  "plugin_id": "netorca",
+  "readme": "# netorca\n\nThis plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.\n\n## Installation\n\nThis plugin is installed via the `@netautomate/plugin-netorca-backend` package. To install it to your backend package, run the following command:\n\n```bash\n# From your root directory\nyarn --cwd packages/backend add @netautomate/plugin-netorca-backend\n```\n\nThen add the plugin to your backend in `packages/backend/src/index.ts`:\n\n```ts\nconst backend = createBackend();\n// ...\nbackend.add(import('@netautomate/plugin-netorca-backend'));\n```\n\n## Development\n\nThis plugin backend can be started in a standalone mode from directly in this\npackage with `yarn start`. It is a limited setup that is most convenient when\ndeveloping the plugin backend itself.\n\nIf you want to run the entire project, including the frontend, run `yarn dev` from the root directory.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@netautomate",
+  "updated": "2025-07-09T12:27:23.224Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-07-09T12:27:23.224Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "author": "Adrian Dantas",
+  "created": "2026-05-23T16:33:13.224Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for access token administration.",
+  "homepage": "https://github.com/PrimeDX/backstage-access-tokens-plugin#readme",
+  "keywords": [
+    "access-tokens",
+    "backstage",
+    "backstage-plugin",
+    "frontend-plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "adriandantas"
+  ],
+  "name": "@primedx/plugin-access-tokens",
+  "plugin_id": "access-tokens",
+  "readme": "# @primedx/plugin-access-tokens\n\nBackstage frontend plugin for access token administration.\n\nThis package adds the `/admin/access-tokens` UI for creating, listing, auditing, and revoking service tokens. It also contributes the personal access token user-settings route and OAuth consent feature when that capability is enabled. It registers these routes in the new frontend system, but it does not provide the backend API or raw token auth handling on its own.\n\nIt also exports `personalAccessTokensAuthPlugin`, an optional frontend feature\nthat owns `/oauth2/authorize/:sessionId` for the personal access token\nmint flow. Use it when you enable personal access tokens so users see a focused\n\"Create personal access token\" consent screen.\n\nA personal access token is a user-managed Backstage refresh token. It\nis exchanged at `/api/auth/v1/token` for short-lived Backstage API\ntokens that authenticate as the user principal; it is not sent directly\nas an API bearer token.\n\n## When To Use This Package\n\nInstall this package when you want access token management UI in your Backstage app.\n\nUse it together with:\n\n- `@primedx/plugin-access-tokens-backend` for the `/api/access-tokens/service` backend API and persistence\n- `@primedx/plugin-access-tokens-node` for the backend auth handler and permission exports\n\n## Install\n\nAdd the frontend plugin to your Backstage app workspace:\n\n```bash\nyarn --cwd packages/app add @primedx/plugin-access-tokens\n```\n\n## Minimum Working Setup\n\nRegister the frontend feature with `createApp({ features: [...] })`:\n\n```ts\n// packages/app/src/App.tsx\nimport { createApp } from '@backstage/frontend-defaults';\nimport accessTokensPlugin from '@primedx/plugin-access-tokens';\n\nconst app = createApp({\n  features: [\n    accessTokensPlugin,\n  ],\n});\n\nexport default app.createRoot();\n```\n\nThe admin page is registered at `/admin/access-tokens`. When user\ntokens are enabled, the package also contributes a `Personal Access\nTokens` tab to Backstage user settings at `/settings/personal-tokens`.\nNo extra route wiring is required in the default frontend setup.\nIf you prefer named imports, `accessTokensPlugin` is also exported by name.\n\nFor personal access tokens, register the companion consent feature before the main\nplugin:\n\n```ts\nimport accessTokensPlugin, {\n  personalAccessTokensAuthPlugin,\n} from '@primedx/plugin-access-tokens';\n\nconst app = createApp({\n  features: [personalAccessTokensAuthPlugin, accessTokensPlugin],\n});\n```\n\nDo not install another frontend feature that also registers `/oauth2`\nunless your app intentionally handles that route conflict.\n\n## Main Export\n\nThis package exports the frontend feature as:\n\n- the default export\n- `accessTokensPlugin`\n- `personalAccessTokensAuthPlugin` for the personal-token OAuth consent route\n\nIt also exports `rootRouteRef`, `personalAccessTokensRouteRef`, and\n`personalAccessTokensAuthRouteRef` for apps that need access to route references.\n\n## What This Package Does Not Include\n\nThis package only provides the UI layer.\n\nIt does not:\n\n- serve the `/api/access-tokens/service` endpoints\n- store tokens\n- verify raw service tokens in the backend auth layer\n- grant permissions by itself\n\nTo make the page functional, wire the backend and node packages into your Backstage backend and add a permission policy that grants `access-tokens:service:read`, `access-tokens:service:write`, and `access-tokens:service:revoke` where appropriate.\n\n## Learn More\n\n- [Root README](../../README.md) for the package overview and install order\n- [Install in an Existing App](../../docs/how-to/install.md) for full frontend and backend wiring\n- [REST API Reference](../../docs/reference/rest-api.md) for the backend contract this UI consumes\n- [Test the Plugin](../../docs/how-to/test.md) for post-install validation\n",
+  "repository": "https://github.com/PrimeDX/backstage-access-tokens-plugin/tree/HEAD/packages/plugin-access-tokens",
+  "role": "frontend-plugin",
+  "scope": "@primedx",
+  "updated": "2026-06-16T17:24:09.945Z",
+  "version": "0.2.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-06-16T17:24:09.945Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-05-23T16:33:13.462Z",
+      "version": "0.2.0"
+    }
+  ]
+}

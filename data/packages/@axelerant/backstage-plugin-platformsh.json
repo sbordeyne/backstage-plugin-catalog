@@ -1,0 +1,40 @@
+{
+  "author": "zeshanziya",
+  "created": "2024-09-24T06:28:48.408Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for Platform.sh integration!",
+  "homepage": "https://github.com/axelerant/backstage-plugins",
+  "keywords": [
+    "backstage",
+    "platform.sh",
+    "platformsh",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "axl_platform"
+  ],
+  "name": "@axelerant/backstage-plugin-platformsh",
+  "plugin_id": "platformsh",
+  "readme": "# Backstage Platform.sh Plugin\n\nA Backstage plugin that retrieves project details and environment data from Platform.sh.\n\n## Current Features\n\n- A page to list all projects from Platform.sh.\n- An entity card to display the current project details.\n- An entity card to display all environments for the current project.\n- Options to resume, pause, activate, deactivate, or delete development environments.\n- Permission support for environment actions.\n- Support for New Front End system\n\n## Future Development Plans\n\n- Display environment activities and logs\n- Create and deploy new or existing branches\n- Add a scaffolder action for deploying new services\n- Display metrics (Currently, there is no API endpoint available for this. Once available, we can consider adding it)\n\n## Setup\n\nThe following sections will guide you through setting up and running the Platform.sh plugin.\n\n### Platform.sh Backend\n\nBefore proceeding, ensure that you have set up the [Platform.sh Backend plugin](https://github.com/axelerant/backstage-plugins/tree/main/plugins/platformsh-backend).\n\n### Entity Annotation\n\nTo use the Platform.sh plugin, add the following annotation to the entities you want to associate with Platform.sh:\n\n```yaml\nplatform.sh/project-id: <platformsh-project-id>\n```\n\n### Installation\n\nTo get the Platform.sh component working, follow these steps:\n\n1. First, add the `@axelerant/backstage-plugin-platformsh` package to your frontend app:\n\n   ```bash\n   # From your Backstage root directory\n   yarn --cwd packages/app add @axelerant/backstage-plugin-platformsh\n   ```\n\n2. The Platform.sh plugin provides a page component to list all projects from Platform.sh.\n\n   - Add a route to `App.tsx`:\n\n     ```ts\n     // Import the page component\n     import { PlatformshPage } from '@axelerant/backstage-plugin-platformsh';\n\n     // Add the route\n     <Route path=\"/platformsh\" element={<PlatformshPage />} />;\n     ```\n\n   - Add a menu item to the sidebar in `Root.tsx`:\n\n     ```ts\n     // Import an icon\n     import StorageIcon from '@material-ui/icons/Storage';\n\n     // Add to the sidebar items list\n     <SidebarItem icon={StorageIcon} to=\"platformsh\" text=\"Platform.sh\" />;\n     ```\n\n3. The Platform.sh plugin provides an entity tab component named `EntityPlatformshContents`.\n\n   ```ts\n   // At the top imports\n   import { EntityPlatformshContents } from '@axelerant/backstage-plugin-platformsh';\n\n   // Add the tab to any entity page, using the service entity page as an example.\n   const serviceEntityPage = (\n     <EntityLayout>\n       {/* other tabs... */}\n       <EntityLayout.Route path=\"/platformsh\" title=\"Platform.sh\">\n         <EntityPlatformshContents />\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n   ```\n\n**Note:** This requires entities to have the Platform.sh annotation `platform.sh/project-id: <project-id>`. If not set, a missing annotation warning will be displayed.\n\nTo display the tab only for entities where `platform.sh/project-id: <project-id>` is available, the plugin provides a conditional export `isPlatformshAvailable`.\n\n```ts\n// At the top imports\nimport {\n  EntityPlatformshContents,\n  isPlatformshAvailable,\n} from '@axelerant/backstage-plugin-platformsh';\n\n// Add the tab conditionally based on annotation availability\nconst serviceEntityPage = (\n  <EntityLayout>\n    {/* other tabs... */}\n    <EntityLayout.Route\n      path=\"/platformsh\"\n      title=\"Platform.sh\"\n      if={isPlatformshAvailable}\n    >\n      <EntityPlatformshContents />\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n",
+  "repository": "https://github.com/axelerant/backstage-plugins/tree/HEAD/plugins/platformsh",
+  "role": "frontend-plugin",
+  "scope": "@axelerant",
+  "updated": "2025-02-24T04:30:09.615Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-02-24T04:30:09.615Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-09-25T11:06:53.136Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-09-24T06:28:48.723Z",
+      "version": "0.1.0"
+    }
+  ]
+}

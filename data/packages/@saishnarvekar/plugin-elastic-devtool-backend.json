@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2026-01-01T15:53:39.193Z",
+  "deprecated": "",
+  "description": "developing the plugin backend itself.",
+  "homepage": "https://github.com/SaishNarvekar/elastic-devtool#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "elasticsearch"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "saishnarvekar"
+  ],
+  "name": "@saishnarvekar/plugin-elastic-devtool-backend",
+  "plugin_id": "elastic-devtool",
+  "readme": "developing the plugin backend itself.\n\n# Elastic Dev Tool Plugin for Backstage (Backend)\n\n![Backstage Logo](https://backstage.io/img/logo.svg)\n\n> [!TIP]\n> Backend API for Elasticsearch management and query in Backstage.\n\n## Overview\n\n`@saishnarvekar/plugin-elastic-devtool-backend` provides the backend API and service layer for the Elastic Dev Tool plugin, enabling secure, robust Elasticsearch operations from your Backstage instance.\n\n## Features\n\n- REST API for Elasticsearch query and index management\n- Secure proxy to your Elasticsearch cluster\n- Cluster health and stats endpoints\n- Built with Backstage backend best practices\n\n### Screenshots\n\n**Home Interface**\n![Home Interface](https://raw.githubusercontent.com/SaishNarvekar/elastic-devtool/refs/heads/main/images/home.png)\n\n**Table Results View**\n![Table Results View](https://raw.githubusercontent.com/SaishNarvekar/elastic-devtool/refs/heads/main/images/table.png)\n\n## Installation\n\nAdd the backend plugin to your Backstage backend:\n\n```bash\nyarn --cwd packages/backend add @saishnarvekar/plugin-elastic-devtool-backend\n```\n\n## Usage\n\nRegister the plugin in your backend (e.g. in `packages/backend/src/index.ts`):\n\n```ts\nimport { elasticDevToolPlugin } from '@saishnarvekar/plugin-elastic-devtool-backend';\n\nconst backend = createBackend();\n// ...existing code...\nbackend.add(elasticDevToolPlugin());\n```\n\nConfigure your Elasticsearch connection in `app-config.yaml`:\n\n```yaml\nelastic-devtool:\n  elasticsearch:\n    node: 'https://localhost:9200'\n    username: 'elastic' # optional\n    password: 'password' # optional\n```\n\n## Development\n\nTo run the backend plugin in isolation for development:\n\n```bash\nyarn start\n```\n\nThis will launch a local backend server for rapid development and testing.\n\n## Resources\n\n- [Backstage Backend Plugins](https://backstage.io/docs/backend-system/)\n- [Elasticsearch Node.js Client](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/)\n- [Backstage Plugin Authoring](https://backstage.io/docs/plugins/)\n\n---\n\n> [!IMPORTANT]\n> Use together with [`@saishnarvekar/plugin-elastic-devtool`](https://www.npmjs.com/package/@saishnarvekar/plugin-elastic-devtool) for a complete frontend + backend solution.\n",
+  "repository": "https://github.com/SaishNarvekar/elastic-devtool",
+  "role": "backend-plugin",
+  "scope": "@saishnarvekar",
+  "updated": "2026-07-12T18:31:48.375Z",
+  "version": "0.1.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-07-12T18:31:48.375Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2026-06-27T14:33:54.886Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-01-04T18:55:27.253Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-01-01T15:53:39.444Z",
+      "version": "0.1.0"
+    }
+  ]
+}

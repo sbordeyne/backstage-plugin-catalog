@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2023-02-09T21:06:28.325Z",
+  "deprecated": "",
+  "description": "Welcome to the vision canvas plugin for backstage.",
+  "homepage": "https://github.com/software-in-rhythm/backstage-vision-canvas-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "kevin.van.ingen"
+  ],
+  "name": "@software-in-rhythm/backstage-vision-canvas-plugin",
+  "plugin_id": "",
+  "readme": "# Backstage vision canvas\n\nWelcome to the vision canvas plugin for backstage.\n\n![a preview of product canvas plugin](./docs/vision-canvas-example.png)\n\n## Getting started\nThis plugin needs to be installed. Read up on [docs/setup](/docs/setup.md)\n\n## Usage\nEnrich your backstage system catalog definitions with additional spec.\n\n```yaml\nspec: \n  owner: example-team \n  domain: example-domain \n  sir/visionCanvas:\n     vision: \"\n        - You vision\"\n     targetGroups:\n        - \"Your target group\"\n     needs:\n       - \"Put your needs first.\"\n     productsAndServices:\n       - \"Your products and services\"\n     businessGoals:\n       - \"Get some value\"\n```\n\n# Links\n[Backstage](https://backstage.io/)",
+  "repository": "https://github.com/software-in-rhythm/backstage-vision-canvas-plugin",
+  "role": "frontend-plugin",
+  "scope": "@software-in-rhythm",
+  "updated": "2023-02-09T21:06:28.550Z",
+  "version": "1.0.0-beta",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-02-09T21:06:28.550Z",
+      "version": "1.0.0-beta"
+    }
+  ]
+}

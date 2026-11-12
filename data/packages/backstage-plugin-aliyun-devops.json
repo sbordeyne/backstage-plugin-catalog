@@ -1,0 +1,36 @@
+{
+  "author": "SunnyWalden",
+  "created": "2025-08-15T10:42:10.977Z",
+  "deprecated": "",
+  "description": "Backstage plugin for Aliyun DevOps integration with pipeline management and monitoring",
+  "homepage": "https://github.com/sunnywalden/backstage-plugin-aliyun-devops#readme",
+  "keywords": [
+    "alibaba-cloud",
+    "aliyun",
+    "backstage",
+    "ci-cd",
+    "devops",
+    "pipeline",
+    "plugin",
+    "yunxiao"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sunnywalden"
+  ],
+  "name": "backstage-plugin-aliyun-devops",
+  "plugin_id": "",
+  "readme": "# Backstage 阿里云 DevOps 插件\n\n基于阿里云 DevOps API 的 Backstage 插件，提供流水线触发和状态展示功能。\n\n## 功能特性\n\n- **DevopsPipelineCard**: 展示流水线构建状态和执行日志\n- **DevopsTriggerButton**: 一键触发流水线构建\n- 实时状态更新和日志查看\n- 支持自定义构建参数和环境变量\n\n## 安装\n\n### 环境要求\n- Node.js 18-21 (推荐使用 18.x 或 20.x LTS)\n- Yarn 1.22+\n\n```bash\n# 在 Backstage 应用根目录下\nyarn add @internal/backstage-plugin-aliyun-devops\n```\n\n**重要提示：**\n- **Node.js 21.7.3 用户**: 请查看 [Node.js 21 快速开始指南](./QUICK_START_NODE21.md)\n- **遇到安装问题？** 请查看 [安装故障排除指南](./INSTALLATION_TROUBLESHOOTING.md)\n- **版本兼容性**: 请查看 [Node.js 兼容性说明](./NODE_COMPATIBILITY.md)\n\n## 配置\n\n### 1. 前端集成\n\n在 `packages/app/src/App.tsx` 中注册插件：\n\n```tsx\nimport { aliyunDevopsPlugin } from '@internal/backstage-plugin-aliyun-devops';\n\nconst app = createApp({\n  apis,\n  plugins: [\n    // ... 其他插件\n    aliyunDevopsPlugin,\n  ],\n});\n```\n\n### 2. 插件配置\n\n安装插件后，访问插件页面并点击\"配置\"按钮进行设置：\n\n1. **个人访问令牌**: 在云效控制台生成的个人访问令牌\n2. **组织 ID**: 云效组织的唯一标识符\n3. **项目 ID**: 默认项目的唯一标识符\n4. **API 端点**: 云效 API 服务端点（可选，默认为杭州区域）\n\n配置信息会安全地存储在浏览器本地存储中。\n\n## 使用方法\n\n### 方式一：使用自动配置组件（推荐）\n\n```tsx\nimport React from 'react';\nimport { Grid } from '@material-ui/core';\nimport { \n  DevopsPipelineCardWithConfig, \n  DevopsTriggerButtonWithConfig \n} from '@internal/backstage-plugin-aliyun-devops';\n\nexport const EntityDevOpsContent = () => {\n  return (\n    <Grid container spacing={3}>\n      <Grid item xs={12} md={8}>\n        <DevopsPipelineCardWithConfig\n          pipelineId=\"your-pipeline-id\"\n          title=\"构建状态\"\n        />\n      </Grid>\n      \n      <Grid item xs={12} md={4}>\n        <DevopsTriggerButtonWithConfig\n          pipelineId=\"your-pipeline-id\"\n          buttonText=\"部署到生产环境\"\n          onTriggerSuccess={(runId) => {\n            console.log('部署触发成功:', runId);\n          }}\n        />\n      </Grid>\n    </Grid>\n  );\n};\n```\n\n### 方式二：手动指定参数\n\n```tsx\nimport React from 'react';\nimport { Grid } from '@material-ui/core';\nimport { \n  DevopsPipelineCard, \n  DevopsTriggerButton \n} from '@internal/backstage-plugin-aliyun-devops';\n\nexport const EntityDevOpsContent = () => {\n  return (\n    <Grid container spacing={3}>\n      <Grid item xs={12} md={8}>\n        <DevopsPipelineCard\n          organizationId=\"your-org-id\"\n          projectId=\"your-project-id\"\n          pipelineId=\"your-pipeline-id\"\n          title=\"构建状态\"\n        />\n      </Grid>\n      \n      <Grid item xs={12} md={4}>\n        <DevopsTriggerButton\n          organizationId=\"your-org-id\"\n          projectId=\"your-project-id\"\n          pipelineId=\"your-pipeline-id\"\n          buttonText=\"部署到生产环境\"\n          onTriggerSuccess={(runId) => {\n            console.log('部署触发成功:', runId);\n          }}\n        />\n      </Grid>\n    </Grid>\n  );\n};\n```\n\n### 在 catalog-info.yaml 中添加注解\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-service\n  annotations:\n    aliyun.com/devops-organization-id: \"your-organization-id\"\n    aliyun.com/devops-project-id: \"your-project-id\"  \n    aliyun.com/devops-pipeline-id: \"your-pipeline-id\"\nspec:\n  type: service\n  lifecycle: production\n  owner: team-a\n```\n\n## API 参考\n\n### DevopsPipelineCard Props\n\n| 属性 | 类型 | 必需 | 描述 |\n|------|------|------|------|\n| organizationId | string | ✓ | 阿里云组织ID |\n| projectId | string | ✓ | 项目ID |\n| pipelineId | string | ✓ | 流水线ID |\n| title | string | | 卡片标题 |\n\n### DevopsTriggerButton Props\n\n| 属性 | 类型 | 必需 | 描述 |\n|------|------|------|------|\n| organizationId | string | ✓ | 阿里云组织ID |\n| projectId | string | ✓ | 项目ID |\n| pipelineId | string | ✓ | 流水线ID |\n| buttonText | string | | 按钮文本 |\n| variant | string | | 按钮样式 |\n| color | string | | 按钮颜色 |\n| disabled | boolean | | 是否禁用 |\n| onTriggerSuccess | function | | 触发成功回调 |\n| onTriggerError | function | | 触发失败回调 |\n\n## 开发\n\n```bash\n# 安装依赖\nyarn install\n\n# 启动开发服务器\nyarn start\n\n# 构建\nyarn build\n\n# 运行测试\nyarn test\n\n# 代码检查\nyarn lint\n```\n\n## 许可证\n\nApache-2.0",
+  "repository": "https://github.com/sunnywalden/backstage-plugin-aliyun-devops",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2025-08-15T10:42:11.243Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-08-15T10:42:11.243Z",
+      "version": "0.1.0"
+    }
+  ]
+}

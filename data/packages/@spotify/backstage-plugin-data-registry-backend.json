@@ -1,0 +1,79 @@
+{
+  "author": "",
+  "created": "2024-11-22T18:10:21.392Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-data-registry-backend",
+  "plugin_id": "data-registry",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@spotify",
+  "updated": "2025-07-17T09:01:20.069Z",
+  "version": "0.15.2",
+  "version_count": 14,
+  "versions": [
+    {
+      "date": "2025-07-17T09:01:20.069Z",
+      "version": "0.15.2"
+    },
+    {
+      "date": "2025-06-19T17:50:35.613Z",
+      "version": "0.15.1"
+    },
+    {
+      "date": "2025-05-29T17:08:27.324Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-04-18T11:48:52.455Z",
+      "version": "0.14.5"
+    },
+    {
+      "date": "2025-04-17T16:38:04.026Z",
+      "version": "0.14.4"
+    },
+    {
+      "date": "2025-03-20T15:37:03.864Z",
+      "version": "0.14.3"
+    },
+    {
+      "date": "2025-03-06T20:40:08.957Z",
+      "version": "0.14.2"
+    },
+    {
+      "date": "2025-02-21T09:41:14.707Z",
+      "version": "0.14.1"
+    },
+    {
+      "date": "2025-01-31T15:22:51.932Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-01-17T17:07:56.666Z",
+      "version": "0.13.1"
+    },
+    {
+      "date": "2025-01-16T14:40:42.884Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2024-12-19T10:32:02.295Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2024-12-04T15:39:53.487Z",
+      "version": "0.11.1"
+    },
+    {
+      "date": "2024-11-22T18:10:21.744Z",
+      "version": "0.11.0"
+    }
+  ]
+}

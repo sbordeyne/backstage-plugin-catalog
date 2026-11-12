@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-07-13T17:21:30.027Z",
+  "deprecated": "",
+  "description": "The marketplace backend module for the catalog plugin.",
+  "homepage": "https://github.com/redhat-developer/rhdh-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "oandriie"
+  ],
+  "name": "@oandriie/backstage-plugin-catalog-backend-module-marketplace",
+  "plugin_id": "catalog",
+  "readme": "# @oandriie/backstage-plugin-catalog-backend-module-marketplace\n\nThis is an extension module to the plugin-catalog-backend plugin, providing new kinds of entity and processors that can be used to ingest marketplace plugin data.\n\n## Getting Started\n\nThis marketplace catalog module introduces two new kinds to the software catalog called `Plugin` and `PluginList`.\n\n## Installation\n\n### Install the package\n\n```shell\n# From your Backstage root directory\nyarn --cwd packages/backend add @oandriie/backstage-plugin-catalog-backend-module-marketplace\n```\n\n### Adding the plugin to your packages/backend\n\n```typescript\nbackend.add(\n  import(\n    '@oandriie/backstage-plugin-catalog-backend-module-marketplace'\n  ),\n);\n```\n\n### Allow Plugin and PluginList to import via catalog\n\nAdd `Plugin` and `PluginList` kinds to the catalog rules in `app-config.yaml` to import this entities from external locations.\n\n```yaml\ncatalog:\n  rules:\n    - allow: [Component, System, API, Resource, Location, Plugin, PluginList]\n```\n\n## Plugin configuration YAML Guide:\n\nThis YAML file is used to add marketplace plugin to the Software catalog in your backstage application.\n\n```yaml\napiVersion: extensions.backstage.io/v1alpha1\nkind: Plugin\nmetadata:\n  name: tekton\n  title: Pipelines with Tekton\n  description: Easily view Tekton PipelineRun status for your services in Backstage.\nspec:\n  type: frontend-plugin\n  lifecycle: production\n  owner: redhat\n  categories:\n    - CI/CD\n  developer: Red Hat\n  icon: https://janus-idp.io/images/plugins/tekton.svg\n  description: |\n    # Tekton plugin for Backstage\n  installation:\n    markdown: |\n      # Setting up the Tekton plugin\n  packages:\n    - name: '@backstage/plugin-search-backend'\n      version: '^1.0.0, ^1.1.1'\n```\n\n## Structure Overview\n\nThe YAML file is structured into the following sections:\n\n- `spec.type`: Defines type of the plugin. Possible values are frontend-plugin, backend-plugin, backend-plugin-module\n- `spec.categories`: Defines the categories for the plugin.\n- `spec.description`: Description to show in the sidebar.\n- `spec.installation.markdown`: Installation guide for the plugin.\n- `spec.packages` - Defines all the package names to identify the installation status of the plugin. This field accepts both array of plugin names and JSON format. ie: name, version, backstage and distribution information.\n\n  **_NOTE:_** more examples of the plugins can be seen [here](https://github.com/redhat-developer/rhdh-plugins/tree/main/workspaces/marketplace/examples/plugins).\n\n### PluginList configuration YAML Guide:\n\nThis entity allows you to create a curated list of plugins. This YAML file is used to add marketplace `PluginList` to the Software catalog in your backstage application.\n\n```yaml\napiVersion: extensions.backstage.io/v1alpha1\nkind: PluginList\nmetadata:\n  name: featured-plugins\n  title: Featured Plugins\n  description: A set of great plugins! :)\nspec:\n  type: curated-list\n  lifecycle: production\n  owner: redhat\n  plugins:\n    - quay\n    - 3scale\n    - tekton\n    - topology\n```\n\n## Structure Overview\n\nThe YAML file is structured into the following sections:\n\n- `spec.plugins`: Defines a list of the plugins.\n\n  **_NOTE:_** more examples of the plugins can be seen [here](https://github.com/redhat-developer/rhdh-plugins/tree/main/workspaces/marketplace/examples/pluginlists).\n\n## Processors\n\nThis module provides different process used to ingest the `plugin` and `pluginList` entity into the software catalog.\n\n- **MarketplacePluginProcessors** - Ingests `Plugin` entity into the catalog.\n- **MarketplaceCollectionProcessors** - Ingests `PluginList` entity into the catalog.\n- **LocalPluginInstallStatusProcessor** - Add and Update `entity.spec.installStatus` based on the packages installed in backstage workspaces.\n- **DynamicPluginInstallStatusProcessor** - Add and Update `entity.spec.installStatus` based on the dynamic plugin installed in RHDH. This processor will work only when you have [scalprum-backend](https://github.com/janus-idp/backstage-showcase/tree/main/plugins/scalprum-backend) installed in your backstage instance.\n",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/marketplace/plugins/catalog-backend-module-marketplace",
+  "role": "backend-plugin-module",
+  "scope": "@oandriie",
+  "updated": "2025-07-13T18:19:09.894Z",
+  "version": "0.3.5",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-07-13T18:19:09.894Z",
+      "version": "0.3.5"
+    },
+    {
+      "date": "2025-07-13T17:21:30.304Z",
+      "version": "0.3.4"
+    }
+  ]
+}

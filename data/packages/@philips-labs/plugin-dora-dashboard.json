@@ -1,0 +1,29 @@
+{
+  "author": "",
+  "created": "2025-07-01T20:44:30.903Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "npalm",
+    "rjaegers",
+    "scottguymer"
+  ],
+  "name": "@philips-labs/plugin-dora-dashboard",
+  "plugin_id": "dora-dashboard",
+  "readme": "",
+  "repository": "https://github.com/philips-labs/argus-panoptes/tree/HEAD/workspaces/dora-explorer/plugins/dora-dashboard",
+  "role": "frontend-plugin",
+  "scope": "@philips-labs",
+  "updated": "2025-07-01T20:44:31.174Z",
+  "version": "0.2.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-07-01T20:44:31.174Z",
+      "version": "0.2.0"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "author": "Zaki Hanafiah",
+  "created": "2026-05-09T04:15:49.105Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "feature-flags",
+    "growthbook",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-growthbook",
+  "plugin_id": "backstage-community-growthbook",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/growthbook-flags/plugins/growthbook",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-05-09T04:15:49.387Z",
+  "version": "0.1.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-05-09T04:15:49.387Z",
+      "version": "0.1.1"
+    }
+  ]
+}

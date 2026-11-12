@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2023-02-07T12:33:49.846Z",
+  "deprecated": "",
+  "description": "The Quay plugin displays the information about your container images within the Quay registry in your Backstage application.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-quay",
+  "plugin_id": "",
+  "readme": "# Quay plugin for Backstage\n\nThe Quay plugin displays the information about your container images within the Quay registry in your Backstage application.\n\n## For administrators\n\n### Installation\n\n1. Install the Quay plugin using the following command:\n\n   ```console\n   yarn workspace app add @janus-idp/backstage-plugin-quay\n   ```\n\n### Configuration\n\n1. Set the proxy to the desired Quay server in the `app-config.yaml` file as follows:\n\n   ```yaml title=\"app-config.yaml\"\n   proxy:\n     '/quay/api':\n       target: 'https://quay.io'\n       headers:\n         X-Requested-With: 'XMLHttpRequest'\n         # Uncomment the following line to access a private Quay Repository using a token\n         # Authorization: 'Bearer <YOUR TOKEN>'\n       changeOrigin: true\n       # Change to \"false\" in case of using self hosted quay instance with a self-signed certificate\n       secure: true\n\n   quay:\n     # The UI url for Quay, used to generate the link to Quay\n     uiUrl: 'https://quay.io'\n   ```\n\n2. Enable an additional tab on the entity view page in `packages/app/src/components/catalog/EntityPage.tsx`:\n\n   ```tsx title=\"packages/app/src/components/catalog/EntityPage.tsx\"\n   /* highlight-add-next-line */\n   import { isQuayAvailable, QuayPage } from '@janus-idp/backstage-plugin-quay';\n\n   const serviceEntityPage = (\n     <EntityLayout>\n       {/* ... */}\n       {/* highlight-add-next-line */}\n       <EntityLayout.Route if={isQuayAvailable} path=\"/quay\" title=\"Quay\">\n         <QuayPage />\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n   ```\n\n3. Annotate your entity with the following annotations:\n\n   ```yaml title=\"catalog-info.yaml\"\n   metadata:\n     annotations:\n       'quay.io/repository-slug': `<ORGANIZATION>/<REPOSITORY>',\n   ```\n\n## For users\n\n### Using the Quay plugin in Backstage\n\nQuay is a front-end plugin that enables you to view the information about the container images.\n\n#### Prerequisites\n\n- Your Backstage application is installed and running.\n- You have installed the Quay plugin. For installation process, see [Installation](#installation).\n\n#### Procedure\n\n1. Open your Backstage application and select a component from the **Catalog** page.\n1. Go to the **Image Registry** tab.\n\n   The **Image Registry** tab in the Backstage UI contains a list of container images and related information, such as **TAG**, **LAST MODIFIED**, **SECURITY SCAN**, **SIZE**, **EXPIRES**, and **MANIFEST**.\n\n   ![quay-tab](./images/quay-plugin-backstage1.png)\n\n1. If a container image does not pass the security scan, select the security scan value of the image to check the vulnerabilities.\n\n   ![quay-tab](./images/quay-plugin-backstage2.png)\n\n   The vulnerabilities page displays the associated advisory with a link, severity, package name, and current and fixed versions.\n\n   ![quay-tab-vulnerabilities](./images/quay-plugin-backstage3.png)\n\n   The advisory link redirects to the Red Hat Security Advisory page that contains detailed information about the advisory, including the solution.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/quay",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-14T21:33:36.471Z",
+  "version": "1.7.12",
+  "version_count": 114,
+  "versions": [
+    {
+      "date": "2024-11-14T21:33:36.471Z",
+      "version": "1.7.12"
+    },
+    {
+      "date": "2024-11-14T05:00:33.557Z",
+      "version": "1.7.11"
+    },
+    {
+      "date": "2024-11-04T12:24:33.688Z",
+      "version": "1.14.1"
+    },
+    {
+      "date": "2024-10-31T22:18:37.881Z",
+      "version": "1.11.9"
+    },
+    {
+      "date": "2024-10-30T20:18:49.924Z",
+      "version": "1.14.0"
+    },
+    {
+      "date": "2024-10-29T18:59:33.458Z",
+      "version": "1.13.1"
+    },
+    {
+      "date": "2024-10-22T21:37:03.960Z",
+      "version": "1.13.0"
+    },
+    {
+      "date": "2024-10-09T20:44:37.327Z",
+      "version": "1.12.6"
+    },
+    {
+      "date": "2024-10-08T18:35:30.864Z",
+      "version": "1.12.5"
+    },
+    {
+      "date": "2024-10-08T06:32:23.359Z",
+      "version": "1.12.4"
+    },
+    {
+      "date": "2024-10-07T09:21:41.026Z",
+      "version": "1.12.3"
+    },
+    {
+      "date": "2024-10-01T18:33:54.027Z",
+      "version": "1.12.2"
+    },
+    {
+      "date": "2024-09-25T12:55:03.299Z",
+      "version": "1.12.1"
+    },
+    {
+      "date": "2024-09-20T03:49:42.839Z",
+      "version": "1.12.0"
+    },
+    {
+      "date": "2024-09-19T16:56:39.559Z",
+      "version": "1.11.8"
+    }
+  ]
+}

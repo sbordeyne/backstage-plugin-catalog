@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2023-03-10T12:27:49.377Z",
+  "deprecated": "",
+  "description": "Add the frontend plugin package:",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "v-ngu"
+  ],
+  "name": "backstage-plugin-bulletin-board",
+  "plugin_id": "",
+  "readme": "# Backstage Plugin Bulletin Board (Frontend Setup)\n\nAdd the frontend plugin package:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app backstage-plugin-bulletin-board\n```\n\nModify your app routes in `packages/app/src/App.tsx`:\n\n```diff\n+ import { BulletinBoardPage } from 'backstage-plugin-bulletin-board';\n\nconst routes = (\n\n  <FlatRoutes>\n    ...\n+   <Route path=\"/bulletin-board\" element={<BulletinBoardPage />} />\n    ...\n  </FlatRoutes>\n);\n\n```\n\nAdd a **Bulletin Board icon to the Sidebar**. In `packages/app/src/components/Root/Root.tsx` add:\n\n```diff\n+ import DashboardIcon from '@material-ui/icons/Dashboard';\n\n  <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n    ...\n+   <SidebarItem icon={DashboardIcon} to=\"bulletin-board\" text=\"Bulletin Board\" />\n    ...\n  </SideGroup>\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2023-05-17T11:43:08.204Z",
+  "version": "0.4.1",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2023-05-17T11:43:08.204Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2023-05-12T18:09:51.771Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2023-04-26T21:46:50.617Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2023-04-01T21:20:01.114Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-03-30T12:32:03.297Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-03-10T12:27:49.739Z",
+      "version": "0.2.0"
+    }
+  ]
+}

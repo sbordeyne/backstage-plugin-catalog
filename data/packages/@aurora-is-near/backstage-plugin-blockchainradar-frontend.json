@@ -1,0 +1,69 @@
+{
+  "author": "",
+  "created": "2023-07-04T16:49:53.789Z",
+  "deprecated": "",
+  "description": "See [the project's README](../../README.md).",
+  "homepage": "https://github.com/aurora-is-near/backstage-plugin-blockchainradar#readme",
+  "keywords": [],
+  "license": "CC0-1.0",
+  "maintainers": [],
+  "name": "@aurora-is-near/backstage-plugin-blockchainradar-frontend",
+  "plugin_id": "",
+  "readme": "# Blockchain plugin for Backstage\n\nSee [the project's README](../../README.md).\n",
+  "repository": "https://github.com/aurora-is-near/backstage-plugin-blockchainradar",
+  "role": "frontend-plugin",
+  "scope": "@aurora-is-near",
+  "updated": "2023-10-18T16:00:41.145Z",
+  "version": "1.0.14",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2023-10-18T16:00:41.145Z",
+      "version": "1.0.14"
+    },
+    {
+      "date": "2023-10-16T19:21:53.097Z",
+      "version": "1.0.12"
+    },
+    {
+      "date": "2023-09-01T09:31:53.168Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2023-08-30T20:28:05.869Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2023-08-29T15:08:14.823Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2023-08-14T13:38:53.200Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-08-12T08:13:22.041Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2023-07-21T21:10:01.549Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2023-07-15T01:01:08.892Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2023-07-05T02:11:06.185Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2023-07-04T20:20:21.020Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2023-07-04T16:49:54.011Z",
+      "version": "0.1.6"
+    }
+  ]
+}

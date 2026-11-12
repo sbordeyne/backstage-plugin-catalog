@@ -1,0 +1,32 @@
+{
+  "author": "Amazon Web Services",
+  "created": "2024-08-17T13:49:39.053Z",
+  "deprecated": "",
+  "description": "The Harmonix backend module for the catalog plugin.",
+  "homepage": "https://github.com/awslabs/harmonix#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "awsjim",
+    "z-sourcecode"
+  ],
+  "name": "@aws/backstage-plugin-catalog-backend-module-aws-apps-entities-processor",
+  "plugin_id": "catalog",
+  "readme": "# @aws/backstage-plugin-catalog-backend-module-aws-apps-entities-processor\n\nThe harmonix backend module for the catalog plugin.\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "https://github.com/awslabs/harmonix/tree/HEAD/backstage-plugins/plugins/catalog-backend-module-harmonix",
+  "role": "backend-plugin-module",
+  "scope": "@aws",
+  "updated": "2025-04-18T19:44:33.549Z",
+  "version": "0.4.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-04-18T19:44:33.549Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-08-17T13:49:39.366Z",
+      "version": "0.3.4"
+    }
+  ]
+}

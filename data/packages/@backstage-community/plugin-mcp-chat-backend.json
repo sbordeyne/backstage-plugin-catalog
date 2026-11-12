@@ -1,0 +1,98 @@
+{
+  "author": "Avik Kundu",
+  "created": "2025-10-16T08:40:37.474Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/backstage/community-plugins/tree/main/workspaces/mcp-chat/plugins/mcp-chat-backend",
+  "keywords": [
+    "ai",
+    "backstage",
+    "backstage-backend-plugin",
+    "backstage-plugin",
+    "chat",
+    "claude",
+    "gemini",
+    "litellm",
+    "llm",
+    "llm-integration",
+    "mcp",
+    "model-context-protocol",
+    "ollama",
+    "openai"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-mcp-chat-backend",
+  "plugin_id": "mcp-chat-backend",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/mcp-chat/plugins/mcp-chat-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-09-15T00:01:27.409Z",
+  "version": "0.14.1",
+  "version_count": 20,
+  "versions": [
+    {
+      "date": "2026-09-15T00:01:27.409Z",
+      "version": "0.14.1"
+    },
+    {
+      "date": "2026-08-28T20:42:45.594Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2026-07-21T22:38:44.418Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2026-07-21T19:20:33.102Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-05-08T14:57:02.879Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2026-05-02T19:46:49.231Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-04-26T05:30:44.943Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-03-29T18:43:05.014Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-03-12T11:40:41.835Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-02-07T08:59:20.143Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2026-01-30T07:12:58.132Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-01-19T16:00:25.102Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-12-19T14:24:23.197Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-11-28T15:16:00.739Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-11-10T08:09:58.896Z",
+      "version": "0.3.0"
+    }
+  ]
+}

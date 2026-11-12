@@ -1,0 +1,51 @@
+{
+  "author": "Solace Corporation",
+  "created": "2023-09-06T12:32:25.020Z",
+  "deprecated": "",
+  "description": "Welcome to the ep-devp-openapi plugin!",
+  "homepage": "https://github.com/solace-iot-team/backstage-ep-devp-plugins#readme",
+  "keywords": [
+    "api management",
+    "asyncapi",
+    "backstage",
+    "event portal",
+    "solace"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dishantlangayan",
+    "solacecommunity",
+    "tamimi65"
+  ],
+  "name": "@solace-labs/plugin-ep-devp-openapi",
+  "plugin_id": "",
+  "readme": "# ep-devp-openapi\n\nWelcome to the ep-devp-openapi plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/ep-devp-openapi](http://localhost:3000/ep-devp-openapi).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/solace-iot-team/backstage-ep-devp-plugins/tree/HEAD/plugins/ep-devp-openapi",
+  "role": "frontend-plugin",
+  "scope": "@solace-labs",
+  "updated": "2023-09-22T10:34:25.346Z",
+  "version": "1.0.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2023-09-22T10:34:25.346Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2023-09-21T11:33:10.245Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2023-09-20T10:33:58.942Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2023-09-19T12:07:37.989Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-09-06T12:32:25.283Z",
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:08:26.879Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-airbrake",
+  "plugin_id": "airbrake",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/airbrake/plugins/airbrake",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-01T15:33:31.263Z",
+  "version": "1.2.0",
+  "version_count": 31,
+  "versions": [
+    {
+      "date": "2026-11-01T15:33:31.263Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-09-23T16:35:21.706Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-09-23T11:13:50.606Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-08-27T11:45:56.392Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-07-21T22:58:01.042Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-06-24T13:05:41.739Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-05-31T22:48:54.500Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-04-24T18:07:22.733Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-04-03T00:30:48.706Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-02-27T17:48:07.960Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-01-28T22:34:36.334Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-01-16T21:01:50.139Z",
+      "version": "0.16.1"
+    },
+    {
+      "date": "2025-12-24T16:35:40.710Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-11-26T13:25:10.308Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-10-17T14:04:43.627Z",
+      "version": "0.14.0"
+    }
+  ]
+}

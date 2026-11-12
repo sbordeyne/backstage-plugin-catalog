@@ -1,0 +1,85 @@
+{
+  "author": "Solace Corporation",
+  "created": "2023-03-15T07:10:33.769Z",
+  "deprecated": "",
+  "description": "Search Frontend Plugin for Backstage",
+  "homepage": "https://github.com/solace-iot-team/backstage-ep-devp-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dishantlangayan",
+    "solacecommunity",
+    "tamimi65"
+  ],
+  "name": "@solace-labs/backstage-plugin-ep-devp-search",
+  "plugin_id": "",
+  "readme": "# Solace Event Portal: Search Frontend Plugin for Backstage\n",
+  "repository": "https://github.com/solace-iot-team/backstage-ep-devp-plugins/tree/HEAD/plugins/ep-devp-search",
+  "role": "frontend-plugin",
+  "scope": "@solace-labs",
+  "updated": "2023-09-20T10:33:59.371Z",
+  "version": "1.0.1",
+  "version_count": 21,
+  "versions": [
+    {
+      "date": "2023-09-20T10:33:59.371Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-09-06T11:47:16.600Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2023-05-31T05:09:12.642Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2023-05-04T07:30:31.341Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2023-04-30T10:10:15.415Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2023-04-28T10:20:02.296Z",
+      "version": "0.3.6"
+    },
+    {
+      "date": "2023-04-27T11:39:12.460Z",
+      "version": "0.3.5"
+    },
+    {
+      "date": "2023-04-26T11:26:40.226Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2023-04-26T07:21:20.182Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2023-04-21T13:47:24.304Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2023-04-21T12:08:10.443Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2023-04-15T06:59:22.684Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-04-06T06:53:12.462Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-04-05T10:59:59.978Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2023-04-05T09:43:19.718Z",
+      "version": "0.1.7"
+    }
+  ]
+}

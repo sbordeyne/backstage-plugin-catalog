@@ -1,0 +1,76 @@
+{
+  "author": "",
+  "created": "2024-01-30T02:59:55.606Z",
+  "deprecated": "",
+  "description": "The announcements backend module for the search plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "jmeridth",
+    "procore-oss-user"
+  ],
+  "name": "@procore-oss/backstage-plugin-search-backend-module-announcements",
+  "plugin_id": "search",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@procore-oss",
+  "updated": "2024-12-27T21:28:00.326Z",
+  "version": "1.0.0",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2024-12-27T21:28:00.326Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-12-09T15:26:41.639Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2024-10-13T15:57:23.794Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2024-09-29T17:01:01.280Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2024-09-29T03:42:41.150Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-08-27T18:37:25.784Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2024-08-21T14:15:49.318Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2024-05-19T15:56:14.628Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2024-04-30T17:54:50.579Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-04-04T13:24:59.834Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-02-13T17:01:40.238Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-02-05T15:55:49.366Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-01-30T02:59:56.024Z",
+      "version": "0.1.0"
+    }
+  ]
+}

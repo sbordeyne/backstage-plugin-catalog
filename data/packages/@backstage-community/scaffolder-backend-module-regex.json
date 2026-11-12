@@ -1,0 +1,32 @@
+{
+  "author": "Red Hat",
+  "created": "2024-11-07T19:58:27.622Z",
+  "deprecated": "",
+  "description": "The regex custom actions",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backend-plugin-module",
+    "backstage",
+    "lifecycle:active",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/scaffolder-backend-module-regex",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/scaffolder-backend-module-regex/plugins/regex-actions",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2024-11-07T19:58:27.976Z",
+  "version": "2.2.2",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-11-07T19:58:27.976Z",
+      "version": "2.2.2"
+    }
+  ]
+}

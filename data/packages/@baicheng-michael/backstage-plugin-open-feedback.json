@@ -1,0 +1,70 @@
+{
+  "author": "",
+  "created": "2024-07-09T16:53:44.572Z",
+  "deprecated": "",
+  "description": "This is the frontend for OpenFeedback.",
+  "homepage": "https://github.com/Baicheng-MiQ/backstage-open-feedback#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "feedback",
+    "frontend",
+    "open-source",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "baicheng-michael"
+  ],
+  "name": "@baicheng-michael/backstage-plugin-open-feedback",
+  "plugin_id": "open-feedback",
+  "readme": "# OpenFeedback Frontend\n\nThis is the frontend for OpenFeedback.\n\n## Adding the OpenFeedback Frontend to your Backstage Application\n\nFirstly you will want to add the `OpenFeedbackPage` component to your `packages/app/src/App.tsx` file under the `routes`. This will add the feedback page to your Backstage application.\n\nIn the `OpenFeedbackPage` you will be able to see all the feedback that has been collected from users, and you will also have the option to delete feedback if needed.\n\n```typescript\nconst routes = (\n  <FlatRoutes>\n    // Other routes\n    <Route path=\"/open-feedback\" element={<OpenFeedbackPage />} />\n  </FlatRoutes>\n);\n```\n\n## Using the OpenFeedbackModal Component\n\nTo use the `OpenFeedbackModal` component, you will need to add it to your `packages/app/src/components/Root/Root.tsx` file. This will add the feedback modal to your Backstage application, personally I like to add it under the search button, or above/with the user settings button.\n\nClicking on it will open a dialog box for users to send feedback.\n\n```typescript\nimport { OpenFeedbackModal } from '@baicheng-michael/backstage-plugin-open-feedback';\n\n// Inside your Root component\n<Sidebar>\n  {/* Other SidebarItems */}\n  <OpenFeedbackModal />\n  {/* Other SidebarItems */}\n</Sidebar>;\n```\n\n## Using the OpenFeedbackForm Component\n\nI would recommend using the `OpenFeedbackForm` on the [Backstage HomePage](https://backstage.io/docs/getting-started/homepage/#homepage) to collect feedback from users. This component can be added to any page, but it is more specifically designed for the Backstage HomePage.\n",
+  "repository": "https://github.com/Baicheng-MiQ/backstage-open-feedback",
+  "role": "frontend-plugin",
+  "scope": "@baicheng-michael",
+  "updated": "2024-07-18T10:41:42.421Z",
+  "version": "0.4.9",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2024-07-18T10:41:42.421Z",
+      "version": "0.4.9"
+    },
+    {
+      "date": "2024-07-18T10:28:32.431Z",
+      "version": "0.4.8"
+    },
+    {
+      "date": "2024-07-16T13:05:59.265Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2024-07-12T21:18:45.518Z",
+      "version": "0.4.6"
+    },
+    {
+      "date": "2024-07-11T16:38:04.482Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2024-07-11T14:55:27.737Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2024-07-11T14:27:40.001Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2024-07-10T12:27:22.804Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2024-07-10T12:19:11.197Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2024-07-09T16:53:44.809Z",
+      "version": "0.4.0"
+    }
+  ]
+}

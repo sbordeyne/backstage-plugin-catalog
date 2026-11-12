@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-03-22T12:56:29.301Z",
+  "deprecated": "",
+  "description": "The newrelic backend module for the soundcheck plugin.",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-soundcheck-backend-module-newrelic",
+  "plugin_id": "soundcheck",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2026-10-23T12:29:26.396Z",
+  "version": "0.5.2",
+  "version_count": 41,
+  "versions": [
+    {
+      "date": "2026-10-23T12:29:26.396Z",
+      "version": "0.5.2"
+    },
+    {
+      "date": "2026-09-17T14:14:56.783Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-08-20T15:32:10.666Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-07-17T16:17:17.541Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2026-06-19T07:53:25.798Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-05-26T11:52:31.700Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-04-17T09:04:34.942Z",
+      "version": "0.3.20"
+    },
+    {
+      "date": "2026-03-19T22:29:12.553Z",
+      "version": "0.3.19"
+    },
+    {
+      "date": "2026-02-19T17:01:10.249Z",
+      "version": "0.3.18"
+    },
+    {
+      "date": "2026-01-22T15:50:55.126Z",
+      "version": "0.3.17"
+    },
+    {
+      "date": "2025-12-19T12:54:36.856Z",
+      "version": "0.3.16"
+    },
+    {
+      "date": "2025-11-21T18:06:39.438Z",
+      "version": "0.3.15"
+    },
+    {
+      "date": "2025-10-17T16:14:58.299Z",
+      "version": "0.3.14"
+    },
+    {
+      "date": "2025-08-22T11:49:38.184Z",
+      "version": "0.3.13"
+    },
+    {
+      "date": "2025-07-17T09:06:24.453Z",
+      "version": "0.3.12"
+    }
+  ]
+}

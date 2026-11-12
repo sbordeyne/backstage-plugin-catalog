@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2024-08-03T14:50:07.692Z",
+  "deprecated": "",
+  "description": "Welcome to the `http` actions for the `scaffolder-backend`.",
+  "homepage": "https://github.com/davormilutinovic/roadie-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "davormilutinovic"
+  ],
+  "name": "@davormilutinovic/scaffolder-backend-module-http-request",
+  "plugin_id": "",
+  "readme": "# scaffolder-backend-module-http-request\n\nWelcome to the `http` actions for the `scaffolder-backend`.\n\nThis contains one action: `http:backstage:request`.\n\nThe `http:backstage:request` action allows the task to call any of the backstage APIs available to the user that triggers it. The action takes care of passing the authentication token of the user to the task execution so that the action can perform actions on behalf of the user that triggers it.\n\n## Getting started\n\nCreate your Backstage application using the Backstage CLI as described here:\nhttps://backstage.io/docs/getting-started/create-an-app\n\n> Note: If you are using this plugin in a Backstage monorepo that contains the code for `@backstage/plugin-scaffolder-backend`, you need to modify your internal build processes to transpile files from the `node_modules` folder as well.\n\nYou need to configure the action in your backend:\n\n## From your Backstage root directory\n\n```\ncd packages/backend\nyarn add @roadiehq/scaffolder-backend-module-http-request\n```\n\nConfigure the action:\n(you can check the [docs](https://backstage.io/docs/features/software-templates/writing-custom-actions#registering-custom-actions) to see all options):\n\n```typescript\n// packages/backend/src/plugins/scaffolder.ts\nconst actions = [\n  createHttpBackstageAction({ discovery }),\n  ...createBuiltinActions({\n    containerRunner,\n    integrations,\n    config,\n    catalogClient,\n    reader,\n  }),\n];\n\nreturn await createRouter({\n  containerRunner,\n  logger,\n  config,\n  database,\n  catalogClient,\n  reader,\n  actions,\n});\n```\n\n### New backend system\n\n## From your Backstage root directory\n\n```\ncd packages/backend\nyarn add @roadiehq/scaffolder-backend-module-http-request\n```\n\n```typescript\n// packages/backend/src/index.ts\nimport { createBackend } from '@backstage/backend-defaults';\nimport { createBackendModule } from '@backstage/backend-plugin-api';\n\nconst backend = createBackend();\nbackend.add(import('@backstage/plugin-proxy-backend/alpha'));\nbackend.add(import('@backstage/plugin-scaffolder-backend/alpha'));\nbackend.add(\n  import('@roadiehq/scaffolder-backend-module-http-request/new-backend'),\n);\nbackend.start();\n```\n\n### Supported methods\n\nAction supports following HTTP methods: `GET`, `HEAD`, `OPTIONS`, `POST`, `UPDATE`, `DELETE`, `PUT`, `PATCH`\n\nThe path should always point to a proxy entry with the following format: `proxy/<proxy-path>/<external-api-path>`\n\nYou can also point to the internal catalog apis like so: `/catalog/entities` See [https://backstage.io/docs/features/software-catalog/software-catalog-api/#get-entities](https://backstage.io/docs/features/software-catalog/software-catalog-api/#get-entities)\n\ni.e.: `/proxy/snyk/org/<some-org>/projects` or `/proxy/circleci/api/projects` (NB: the CircleCI proxy path is `circleci/api/` but Snyk is just `snyk/`)\n\n### Example of using GET method\n\n```yaml\n---\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: HTTP-testing\n  title: Http testing for post/get\n  description: Testing get functionality with get\nspec:\n  owner: roadie\n  type: service\n\n  parameters:\n    - title: Fill in some params\n      properties:\n        httpGetPath:\n          title: Get Path\n          type: string\n          description: The path you want to get on your backstage instance\n          ui:autofocus: true\n          ui:options:\n            rows: 5\n\n  steps:\n    - id: backstage_request\n      name: backstage request\n      action: http:backstage:request\n      input:\n        method: 'GET'\n        path: '/proxy/snyk/org/<some-org>/project/<some-project-id>/aggregated-issues'\n        headers:\n          test: 'hello'\n          foo: 'bar'\n\n  output:\n    getResponse: '{{ steps.backstage_request.output.body }}'\n    getCode: '{{ steps.backstage_request.output.code }}'\n    getHeaders: '{{ steps.backstage_request.output.headers }}'\n```\n\n### Example of using POST method\n\nIf the request requires a body, it can be specified using the body parameter. There are two options here\n\n1. `content-type: application/json` header is specified. Everything under `body` hash will be converted into JSON string\n2. `content-type: application/json` header is not specified. `body` treated as a plain string\n\n```yaml\nsteps:\n  - id: backstage_request\n    name: backstage request\n    action: http:backstage:request\n    input:\n      method: 'POST'\n      path: '/proxy/snyk/org/<some-org>/project/<some-project-id>/aggregated-issues'\n      headers:\n        content-type: 'application/json'\n      body:\n        name: 'test'\n        bar: 'foo'\n\noutput:\n  getResponse: '{{ steps.backstage_request.output.body }}'\n  getCode: '{{ steps.backstage_request.output.code }}'\n  getHeaders: '{{ steps.backstage_request.output.headers }}'\n```\n\nSnippet above will send the following HTTP request:\n\n```sh\n--------  127.0.0.1:53321 | POST /\nHeaders\n\"Accept\" : [\"*/*\"]\n\"Content-Type\" : [\"application/json\"]\n\"Connection\" : [\"close\"]\n\"User-Agent\" : [\"node-fetch/1.0 (+https://github.com/bitinn/node-fetch)\"]\n\"Content-Length\" : [\"27\"]\n00000000  7b 22 6e 61 6d 65 22 3a  22 74 65 73 74 22 2c 22  |{\"name\":\"test\",\"|\n00000010  62 61 72 22 3a 22 66 6f  6f 22 7d                 |bar\":\"foo\"}|\n```\n\nYou can also visit the `/create/actions` route in your Backstage application to find out more about the parameters this action accepts when it's installed to configure how you like.\n",
+  "repository": "https://github.com/davormilutinovic/roadie-backstage-plugins/tree/HEAD/plugins/scaffolder-actions/scaffolder-backend-module-http-request",
+  "role": "backend-plugin-module",
+  "scope": "@davormilutinovic",
+  "updated": "2024-08-03T16:45:10.410Z",
+  "version": "4.3.5",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-08-03T16:45:10.410Z",
+      "version": "4.3.5"
+    },
+    {
+      "date": "2024-08-03T16:03:50.982Z",
+      "version": "4.3.4"
+    },
+    {
+      "date": "2024-08-03T15:40:17.654Z",
+      "version": "4.3.3"
+    },
+    {
+      "date": "2024-08-03T14:50:07.978Z",
+      "version": "4.3.2"
+    }
+  ]
+}

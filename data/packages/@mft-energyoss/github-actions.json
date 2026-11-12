@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2025-09-17T11:46:57.484Z",
+  "deprecated": "",
+  "description": "The github-actions extension module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "github",
+    "github actions"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "emilmunksoe",
+    "prebiusta"
+  ],
+  "name": "@mft-energyoss/github-actions",
+  "plugin_id": "github-actions",
+  "readme": "",
+  "repository": "https://github.com/mft-energyOSS/backstage-github-plugins/tree/HEAD/.",
+  "role": "backend-plugin-module",
+  "scope": "@mft-energyoss",
+  "updated": "2025-11-13T11:54:33.974Z",
+  "version": "1.1.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-11-13T11:54:33.974Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-09-18T10:48:53.712Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-09-18T10:34:48.202Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-09-17T11:46:57.757Z",
+      "version": "1.0.0"
+    }
+  ]
+}

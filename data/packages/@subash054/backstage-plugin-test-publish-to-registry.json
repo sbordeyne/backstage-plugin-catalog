@@ -1,0 +1,43 @@
+{
+  "author": "subashraina54@gmail.com",
+  "created": "2024-05-11T19:48:35.276Z",
+  "deprecated": "",
+  "description": "Welcome to the test-publish-to-registry plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "subash4101"
+  ],
+  "name": "@subash054/backstage-plugin-test-publish-to-registry",
+  "plugin_id": "",
+  "readme": "# test-publish-to-registry\n\nWelcome to the test-publish-to-registry plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/test-publish-to-registry](http://localhost:3000/test-publish-to-registry).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@subash054",
+  "updated": "2024-05-26T02:02:35.243Z",
+  "version": "0.1.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-05-26T02:02:35.243Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-05-13T10:08:33.829Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-05-13T10:06:54.872Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-05-11T19:58:02.770Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-05-11T19:48:35.492Z",
+      "version": "0.1.0"
+    }
+  ]
+}

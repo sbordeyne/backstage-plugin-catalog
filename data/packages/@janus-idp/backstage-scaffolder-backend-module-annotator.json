@@ -1,0 +1,95 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-05-09T19:32:12.368Z",
+  "deprecated": "",
+  "description": "The annotator module for @backstage/plugin-scaffolder-backend",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-scaffolder-backend-module-annotator",
+  "plugin_id": "scaffolder",
+  "readme": "# Annotator custom action for Scaffolder Backstage\n\nThe annotator module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend).\n\nThis module allows users to create custom actions for annotating their entity objects. Additionally, it enables users to utilize existing custom actions provided by the module for annotating entities with timestamps and scaffolder entity references.\n\n## Installation\n\n### Available custom actions\n\n| Action                    |                                               Description                                               |\n| ------------------------- | :-----------------------------------------------------------------------------------------------------: |\n| `catalog:timestamping`    |   Adds the `backstage.io/createdAt` annotation containing the current timestamp to your entity object   |\n| `catalog:scaffolded-from` |           Adds `scaffoldedFrom` spec containing the template entityRef to your entity object            |\n| `catalog:annotate`        | Allows you to annotate your entity object with specified label(s), annotation(s) and spec property(ies) |\n\nTo begin, install the module package into the backend workspace of your backstage instance:\n\n```console\nyarn workspace backend add @janus-idp/backstage-scaffolder-backend-module-annotator\n```\n\n### Registering the annotator action plugin with the backend system\n\nTo install the module into the [backend system](https://backstage.io/docs/backend-system/), add the following into the `packages/backend/src/index.ts` file:\n\n```ts title=\"packages/backend/src/index.ts\nconst backend = createBackend();\n\n// highlight-add-start\nbackend.add(import('@janus-idp/backstage-scaffolder-backend-module-annotator'));\n// highlight-add-end\n\nbackend.start();\n```\n\n## Creating custom actions for your templates using the annotator module\n\n### Create the custom action\n\n#### The `createAnnotatorAction` action accepts the following parameters:\n\n| Parameter Name                     |   Type   | Required | Description                                                                                                                                                                                                                                     |\n| ---------------------------------- | :------: | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `actionId`                         | `string` |   Yes    | A unique id for the action. Default: `catalog:annotate`, please provide one or else it may conflict with the generic `catalog:annotate` custom action that is provided by this module.                                                          |\n| `actionDescription`                | `string` |    No    | A description of what the action accomplishes. Default: \"Creates a new scaffolder action to annotate the entity object with specified label(s), annotation(s) and spec property(ies).\"                                                          |\n| `loggerInfoMsg`                    | `string` |    No    | A message that will be logged upon the execution of the action. Default: \"Annotating your object\"                                                                                                                                               |\n| `annotateEntityObject.labels`      | `object` |    No    | Key-value pairs to be added to the `metadata.labels` of the entity                                                                                                                                                                              |\n| `annotateEntityObject.annotations` | `object` |    No    | Key-value pairs to be added to the `metadata.annotations` of the entity                                                                                                                                                                         |\n| `annotateEntityObject.spec`        | `object` |    No    | Key-value pairs to be added to the `spec` of the entity. The value for each key can either be a string or an object with the key `readFromContext`, enabling users to specify the path in the context from which the value should be retrieved. |\n\n1. Create your [custom action](https://backstage.io/docs/features/software-templates/writing-custom-actions#writing-your-custom-action)\n\n2. Add the annotator module package `@janus-idp/backstage-scaffolder-backend-module-annotator` into your module's `package.json`\n\n3. In the action file, add the following snippet to it:\n\n```ts createAddCompanyTitleAction.ts\n// highlight-add-start\nimport { createAnnotatorAction } from '@janus-idp/backstage-scaffolder-backend-module-annotator';\n\nexport const createAddCompanyTitleAction = () => {\n  return createAnnotatorAction(\n    'catalog:company-title',\n    'Creates a new `catalog:company-title` Scaffolder action to annotate scaffolded entities with the company title.',\n    'Annotating catalog-info.yaml with the company title',\n  );\n};\n// highlight-add-end\n```\n\n4. Install the custom action into your backstage instance following steps similar to the [installation instructions above](#installation)\n\n### Use your custom action in your desired template(s)\n\n#### The annotator template action accepts the following inputs\n\n#### Input\n\n| Parameter Name   |   Type   | Required | Description                                                                                                        |\n| ---------------- | :------: | :------: | ------------------------------------------------------------------------------------------------------------------ |\n| `labels`         | `object` |    No    | Key-value pairs to be added to the `metadata.labels` of the entity                                                 |\n| `annotations`    | `object` |    No    | Key-value pairs to be added to the `metadata.annotations` of the entity                                            |\n| `spec`           | `object` |    No    | Key-value pairs to be added to the `spec` of the entity                                                            |\n| `entityFilePath` | `string` |    No    | The file path from which the YAML representation of the entity should be read                                      |\n| `objectYaml`     | `object` |    No    | The YAML representation of the object/entity                                                                       |\n| `writeToFile`    | `string` |    No    | The file path where the YAML representation of the entity should be stored. Default value is './catalog-info.yaml' |\n\n#### Output\n\n| Name              |   Type   | Description                                                                                  |\n| ----------------- | :------: | -------------------------------------------------------------------------------------------- |\n| `annotatedObject` | `object` | The entity object marked with your specified annotation(s), label(s), and spec property(ies) |\n\nTo annotate the entity file, add your custom action to your template file after `Fetch Skeleton + Template` step. Please note that your custom action needs to be installed into the backstage instance running the software template.\n\n```yaml\n// highlight-add-start\n- id: company-title\n  name: Add company title to catalog-info.yaml\n  action: catalog:company-title\n  input:\n    labels: {\n      company: 'My Company'\n    }\n// highlight-add-end\n```\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/scaffolder-annotator-action",
+  "role": "backend-plugin-module",
+  "scope": "@janus-idp",
+  "updated": "2024-12-04T16:08:03.306Z",
+  "version": "2.3.0",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2024-12-04T16:08:03.306Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2024-11-04T12:24:45.844Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2024-10-30T20:19:03.934Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2024-10-29T18:59:36.615Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2024-10-22T21:37:06.351Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2024-10-11T15:49:49.154Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-10-02T21:00:44.744Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-09-20T03:53:59.495Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2024-09-06T15:07:39.821Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2024-07-25T23:06:54.317Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2024-07-24T21:48:34.979Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2024-06-13T21:48:53.129Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-06-13T10:39:06.987Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-06-04T19:31:01.371Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-05-31T06:15:09.549Z",
+      "version": "1.0.1"
+    }
+  ]
+}

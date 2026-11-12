@@ -1,0 +1,42 @@
+{
+  "author": "officialplatformguy",
+  "created": "2023-10-20T23:08:27.758Z",
+  "deprecated": "",
+  "description": "Welcome to the tool-links plugin!",
+  "homepage": "https://github.com/platformnow/landscape#readme",
+  "keywords": [
+    "backstage",
+    "frontend",
+    "homepage",
+    "links",
+    "plugin",
+    "tools"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "officialplatformguy"
+  ],
+  "name": "@platformnow/plugin-tool-links",
+  "plugin_id": "",
+  "readme": "# tool-links\n\nWelcome to the tool-links plugin!\n\nThis plugin allows you to add links for external tools to your Backstage instance Homepage.\n\n## Setup\n\nThe following sections will help you get the Tool-Links plugin setup and running\n\n### Backend\n\nYou need to setup the [Tool-Links backend plugin](https://github.com/platformnow/landscape/tree/master/plugins/tool-links-backend) before you move forward with any of these steps if you haven't already\n\n### Installation\n\nInstall this plugin:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @platformnow/tool-links\n```\n\n### Add the plugin to your `packages/app`\n\nAdd the root page that the playlist plugin provides to your app. You can\nchoose any path for the route, but we recommend the following:\n\n```diff\n// packages/app/src/App.tsx\n+import { ToolLinksComponent } from '@platformnow/plugin-tool-links';\n\n\n<FlatRoutes>\n  <Route path=\"/catalog\" element={<CatalogIndexPage />} />\n  <Route path=\"/catalog/:namespace/:kind/:name\" element={<CatalogEntityPage />}>\n    {entityPage}\n  </Route>\n+ <Route path=\"/tool-links\" element={<ToolLinksComponent />} />\n  ...\n</FlatRoutes>\n```\n\n### Add the Tools Link Component to your Homepage `packages/app/src/components/home`\n\nAdd the Tools Link Component to your Homepage so you can Add/Edit/Delete Categories and Links\n\n```diff\n// packages/app/src/components/home/Homepage.tsx\n+import {ToolLinksComponent} from '@platformnow/plugin-tool-links';\n\n<Grid container item xs={12}>\n+   <Grid item xs={12} md={6}>\n+     <ToolLinksComponent />\n+   </Grid>\n    <Grid item xs={12} md={6}>\n      <HomePageStarredEntities title=\"Favorites\" />\n    </Grid>\n    <Grid item md={6} xs={12}>\n      <HomePageRequestedReviewsCard />\n    </Grid>\n    ...\n</Grid>\n```\n\n## Features\n\n### View Tool Links\n\n![View Tool Links example](./docs/tool-links-closed.png)\n\n### View Tool Expanded\n\n![View Tool Links Expanded example](./docs/tool-links-expanded.png)\n\n### Create Category\n\n![Create New Category example](./docs/create-category.png)\n\n### Edit Category Name\n\n![Edit a Category Name](./docs/edit-category.png)\n\n### Delete Category\n\n![Delete a Category example](./docs/delete-category.png)\n\n### Create Links in a Category\n\nLinks can have an Icon image which must be placed in `packages/app/public/homepage/icons`\nOtherwise if left blank the default link image can be used.\n\n![Create New Link example](./docs/create-link.png)\n\n### Edit Links in a Category\n\n![Edit Links in a Category](./docs/edit-link.png)\n",
+  "repository": "https://github.com/platformnow/landscape/tree/HEAD/plugins/tool-links",
+  "role": "frontend-plugin",
+  "scope": "@platformnow",
+  "updated": "2023-10-21T16:23:54.851Z",
+  "version": "0.4.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2023-10-21T16:23:54.851Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2023-10-21T16:18:19.620Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-10-20T23:08:28.023Z",
+      "version": "0.2.0"
+    }
+  ]
+}

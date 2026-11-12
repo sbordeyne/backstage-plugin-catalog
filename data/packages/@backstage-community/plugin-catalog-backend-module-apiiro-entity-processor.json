@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-01-27T14:30:07.286Z",
+  "deprecated": "",
+  "description": "The apiiro-entity-processor backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-catalog-backend-module-apiiro-entity-processor",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/apiiro/plugins/catalog-backend-module-apiiro-entity-processor",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-06-25T06:21:19.517Z",
+  "version": "1.1.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-06-25T06:21:19.517Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-03-31T11:23:44.617Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-01-27T14:30:07.529Z",
+      "version": "0.1.0"
+    }
+  ]
+}

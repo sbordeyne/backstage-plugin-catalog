@@ -1,0 +1,45 @@
+{
+  "author": "",
+  "created": "2026-10-20T09:37:16.344Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin listing the supported Kubernetes and k0s releases",
+  "homepage": "https://github.com/cloudpunks/backstage-plugins/tree/master/plugins/kubernetes-versions-backend",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "k0s",
+    "kubernetes"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cloudpunkz",
+    "tboerger"
+  ],
+  "name": "@cloudpunks/backstage-plugin-kubernetes-versions-backend",
+  "plugin_id": "kubernetes-versions",
+  "readme": "# @cloudpunks/backstage-plugin-kubernetes-versions-backend\n\nBackend plugin that lists the Kubernetes and [k0s](https://k0sproject.io)\nreleases you want to offer, e.g. in a scaffolder template. It serves the newest\nrelease per minor for the minor of the newest stable Kubernetes release and the\n`supportedMinors - 1` minors below it, newest first:\n\n```json\n[{ \"minor\": \"1.36\", \"version\": \"v1.36.5\" }]\n```\n\nUse it with the field of\n[`@cloudpunks/backstage-plugin-scaffolder-kubernetes-versions`](../scaffolder-kubernetes-versions).\n\n## Installation\n\n```console\nyarn --cwd packages/backend add @cloudpunks/backstage-plugin-kubernetes-versions-backend\n```\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@cloudpunks/backstage-plugin-kubernetes-versions-backend'));\n```\n\n## Configuration\n\n```yaml\nkubernetesVersions:\n  # number of offered minors, counted down from the newest stable minor\n  supportedMinors: 3\n```\n\n## API\n\n| Endpoint                              | Source                                                                                                                                                     |\n| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `/api/kubernetes-versions/kubernetes` | `pkgs.k8s.io` apt repository of each minor, only versions with `kubelet`, `kubeadm` and `kubectl` for amd64. Minors without a repository yet are left out. |\n| `/api/kubernetes-versions/k0s`        | GitHub releases of `k0sproject/k0s`, newest `+k0s.N` build per minor. It may lag one minor behind Kubernetes.                                              |\n\nThe newest stable Kubernetes release comes from\n`https://dl.k8s.io/release/stable.txt`.\n\nRequests time out after 10 seconds and results are cached for eight hours, so a\nnew release can take that long to show up. After a failed load the source is\nleft alone for five minutes and the last loaded value is served, without one the\nrequest fails. GitHub is queried without a token (60 requests per hour and ip\naddress).\n",
+  "repository": "https://github.com/cloudpunks/backstage-plugins/tree/HEAD/plugins/kubernetes-versions-backend",
+  "role": "backend-plugin",
+  "scope": "@cloudpunks",
+  "updated": "2026-10-20T11:51:04.461Z",
+  "version": "0.1.1",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-10-20T11:51:04.461Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-10-20T09:47:04.543Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-20T09:39:55.648Z",
+      "version": "0.0.0"
+    },
+    {
+      "date": "2026-10-20T09:37:16.344Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

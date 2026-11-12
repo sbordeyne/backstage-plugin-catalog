@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-08-13T14:08:37.212Z",
+  "deprecated": "",
+  "description": "Common functionalities for the argo-workflows plugin",
+  "homepage": "",
+  "keywords": [
+    "argo-workflows",
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-argo-workflows-common",
+  "plugin_id": "argo-workflows",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/argo-workflows/plugins/argo-workflows-common",
+  "role": "common-library",
+  "scope": "@backstage-community",
+  "updated": "2026-08-19T00:27:55.582Z",
+  "version": "0.2.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-08-19T00:27:55.582Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-13T14:08:37.588Z",
+      "version": "0.1.0"
+    }
+  ]
+}

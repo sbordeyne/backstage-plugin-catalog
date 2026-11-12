@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:14.893Z",
+  "deprecated": "",
+  "description": "![a Jira plugin for Backstage](./docs/jira-plugin.gif). ![a Jira plugin Issues View for Backstage](./docs/jira-plugin-issues-view.png).",
+  "homepage": "https://glint.io/backstage/plugins/jira/",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-jira",
+  "plugin_id": "",
+  "readme": "# Jira Plugin for Backstage\n\n![a Jira plugin for Backstage](./docs/jira-plugin.gif).\n![a Jira plugin Issues View for Backstage](./docs/jira-plugin-issues-view.png).\n\n## Features\n\n- Show project details and tasks\n- View JIRA issues of the Project\n- Activity Stream\n\n## How to add Jira project dependency to Backstage app\n\n1. If you have standalone app (i.e., you didn't clone this repo), then do\n\n```bash\ncd packages/app\nyarn add @kozmoai/backstage-plugin-jira\n```\n\n2. Add proxy config:\n\n```yaml\n// app-config.yaml\nproxy:\n  '/jira/api':\n    target: <JIRA_URL>\n    headers:\n      Authorization:\n        $env: JIRA_TOKEN\n      Accept: 'application/json'\n      Content-Type: 'application/json'\n      X-Atlassian-Token: 'no-check'\n      # This is a workaround since Jira APIs reject browser origin requests. Any dummy string without whitespace works.\n      User-Agent: \"AnyRandomString\"\n\njira:\n  # Defaults to /jira/api and can be omitted if proxy is configured for that url\n  proxyPath: /jira/api\n  # Add it in case your JIRA instance is connected to Confluence, in order to filter those activities\n  confluenceActivityFilter: wiki@uuid\n  # Defaults to latest and can be omitted if you want to use the latest version of the api\n  apiVersion: latest\n```\n\n3. Set img-src in Content Security Policy\n\n```yaml\n// app-config.yaml\nbackend:\n  # ...\n  csp:\n    img-src:\n      # \"'self'\" and 'data' are from the backstage default but must be set since img-src is overriden\n      - \"'self'\"\n      - 'data:'\n      # Allow your Jira instance for @kozmoai/backstage-plugin-jira\n      - 'JIRA_URL'\n\n```\n\n4. Add plugin component to your Backstage instance:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityJiraOverviewCard,\n  isJiraAvailable,\n} from '@kozmoai/backstage-plugin-jira';\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isJiraAvailable}>\n        <Grid item md={6}>\n          <EntityJiraOverviewCard />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n  </Grid>\n);\n```\n\n## How to get the Confluence Activity Filter key\n\nTo filter the Confluence activities your instance needs to have the filter to select one or more types of activity from Confluence. You can check that out by executing the following command in your bash:\n\n```bash\ncurl -s -H \"Authorization: <TOKEN>\" <JIRA_URL>/rest/activity-stream/1.0/config | jq .\n```\n\nThen, check for a Confluence filter and copy the `key` value into the tag `jira.confluenceActivityFilter` in your Backstage's `app-config.yaml`.\n\n## How to use Jira plugin in Backstage\n\n1. Add annotation to the yaml config file of a component:\n\n```yaml\nmetadata:\n  annotations:\n    jira/project-key: <example-jira-project-key>\n    jira/component: <example-component> # optional, you might skip value to fetch data for all components\n    jira/label: <example-label> # optional, you might skip value to fetch data for all labels\n    jira/token-type: Bearer # optional, used for Activity stream feed. If you are using Basic auth you can skip this.\n```\n\nEven though you can use Bearer token please keep in mind that Activity stream feed will only contain entries that are visible to anonymous users. In order to view restricted content you will need to authenticate via Basic authentication, as described in official documentation (https://developer.atlassian.com/server/framework/atlassian-sdk/consuming-an-activity-streams-feed/#authentication).\n\n2. Get and provide `JIRA_TOKEN` as env variable:\n\n   1. Obtain your personal token from Jira: https://id.atlassian.com/manage-profile/security/api-tokens\n   2. Create a base64-encoded string by converting \"your-atlassian-account-mail:your-jira-token\",\n\n      ```js\n      // node\n      new Buffer('jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F').toString(\n        'base64',\n      );\n\n      // in your browser console\n      btoa('jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F');\n\n      // bash\n      echo -n 'jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F' | base64\n      ```\n\n      for example `jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F` converts to `amlyYS1tYWlsQGV4YW1wbGUuY29tOmhUQmdxVmNyY3hSWXBUNVRDelRBOUMwRg==`\n\n   3. Save the environmental variable `JIRA_TOKEN` with `Basic ` prefix, eg: `JIRA_TOKEN='Basic amlyYS1tYWlsQGV4YW1wbGUuY29tOmhUQmdxVmNyY3hSWXBUNVRDelRBOUMwRg=='`\n\n## Links\n\n- [Backstage](https://backstage.io)\n- Get hosted, managed Backstage for your company: https://glint.io\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-jira",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:14.761Z",
+  "version": "2.5.6",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:14.761Z",
+      "version": "2.5.6"
+    },
+    {
+      "date": "2024-03-25T22:14:15.197Z",
+      "version": "2.5.4"
+    }
+  ]
+}

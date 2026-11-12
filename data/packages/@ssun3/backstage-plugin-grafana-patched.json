@@ -1,0 +1,30 @@
+{
+  "author": "",
+  "created": "2025-07-27T05:22:08.635Z",
+  "deprecated": "",
+  "description": "A Backstage backend plugin that integrates towards Grafana",
+  "homepage": "https://github.com/backstage/community-plugins#readme",
+  "keywords": [
+    "backstage",
+    "grafana"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ssun3"
+  ],
+  "name": "@ssun3/backstage-plugin-grafana-patched",
+  "plugin_id": "grafana",
+  "readme": "# Grafana plugin for Backstage\n\nThe Grafana plugin is a frontend plugin that lists Grafana alerts and dashboards. It includes two components that can be integrated into Backstage:\n\n- The `EntityGrafanaDashboardsCard` component which can display dashboards for a specific entity\n- The `EntityGrafanaAlertsCard` component which can display recent alerts for a specific entity\n- The `EntityOverviewDashboardViewer` component which can embed an \"overview\" dashboard for a specific entity\n- The `DashboardViewer` component which can embed any dashboard\n\n## Setup\n\nFind [installation instructions](./docs/index.md#installation) in our documentation.\n\n## How does it look?\n\nEntity alerts card:\n\n![Alerts card](./docs/alerts_card.png)\n\nEntity dashboards card:\n\n![Dashboards card](./docs/dashboards_card.png)\n\n## Special thanks & Disclaimer\n\nThanks to K-Phoen for creating the grafana plugin found [here](https://github.com/K-Phoen/backstage-plugin-grafana). As an outcome\nof [this discussion](https://github.com/K-Phoen/backstage-plugin-grafana/issues/78), he gave us permission to keep working on this plugin.\n",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/grafana/plugins/grafana",
+  "role": "frontend-plugin",
+  "scope": "@ssun3",
+  "updated": "2025-07-27T05:22:08.957Z",
+  "version": "0.7.0-patched.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-07-27T05:22:08.957Z",
+      "version": "0.7.0-patched.1"
+    }
+  ]
+}

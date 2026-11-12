@@ -1,0 +1,49 @@
+{
+  "author": "",
+  "created": "2026-07-13T22:41:29.319Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for Massdriver: projects, environment graphs, instance details, and catalog entity cards — read-only, with live updates",
+  "homepage": "https://www.massdriver.cloud/",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "massdriver"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "christensenjoe",
+    "dwill-md",
+    "will.schoenberger"
+  ],
+  "name": "@massdriver/backstage-plugin",
+  "plugin_id": "massdriver",
+  "readme": "",
+  "repository": "https://github.com/massdriver-cloud/massdriver-backstage/tree/HEAD/plugins/massdriver",
+  "role": "frontend-plugin",
+  "scope": "@massdriver",
+  "updated": "2026-07-23T15:53:48.998Z",
+  "version": "1.0.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-07-23T15:53:48.998Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2026-07-20T18:20:21.644Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-07-17T18:39:52.471Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-07-13T23:04:46.480Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-07-13T22:41:29.733Z",
+      "version": "1.0.0"
+    }
+  ]
+}

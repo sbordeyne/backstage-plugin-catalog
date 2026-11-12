@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:17.399Z",
+  "deprecated": "",
+  "description": "![a list of builds in the Travis CI plugin for Backstage](./docs/travis-ci-plugin-1642x1027.png)",
+  "homepage": "https://glint.io/backstage/plugins/travis-ci/",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-travis-ci",
+  "plugin_id": "",
+  "readme": "# Travis CI Plugin for Backstage\n\n![a list of builds in the Travis CI plugin for Backstage](./docs/travis-ci-plugin-1642x1027.png)\n\n## Features\n\n- List Travis CI Builds\n- Retrigger builds\n\n## How to add Travis-ci project dependency to Backstage app\n\nIf you have your own backstage application without this plugin, here are instructions how to add it:\n\n1. In the `backstage/packages/app` project add the plugin as a `package.json` dependency:\n\n```bash\nyarn add @kozmoai/backstage-plugin-travis-ci\n```\n\n2. add configuration in `app-config.yaml` file in the root directory:\n\nIn the proxy object:\n\n```yml\nproxy:\n\n  ...\n\n  '/travisci/api':\n    target: https://api.travis-ci.com\n    changeOrigin: true\n    headers:\n      Authorization: ${TRAVISCI_AUTH_TOKEN}\n      travis-api-version: 3\n```\n\nand as a separate configuration object:\n\n```yml\ntravisci:\n  baseUrl: 'https://travis-ci.com/'\n```\n\n3. Import it into your Backstage application:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityTravisCIContent,\n  EntityTravisCIOverviewCard,\n  isTravisciAvailable,\n} from '@kozmoai/backstage-plugin-travis-ci';\n```\n\n4. Add plugin to the `EntityPage.tsx` source file:\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\nexport const cicdContent = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isTravisciAvailable}>\n      <EntityTravisCIContent />\n    </EntitySwitch.Case>\n    ...\n  </EntitySwitch>\n);\n```\n\n5. Add a recent Travis-CI builds widget/card to the overview tab to the [entityPage.tsx](https://github.com/backstage/backstage/blob/master/packages/app/src/components/catalog/EntityPage.tsx) source file:\n\n```tsx\nexport const cicdCard = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isTravisciAvailable}>\n      <Grid item sm={6}>\n        <EntityTravisCIOverviewCard />\n      </Grid>\n    </EntitySwitch.Case>\n  </EntitySwitch>\n);\n```\n\n## How to use Travis-ci plugin in Backstage\n\nTravis-ci plugin is a part of the Backstage sample app. To start using it for your component, you have to:\n\n1. Add an annotation to the yaml config file of a component:\n\n```yml\ntravis-ci.com/repo-slug: <owner-name>/<project-name>\n```\n\n2. Add your developer api key to the environment variables of your backstage backend server (you can find it in https://travis-ci.com/account/preferences), in the form of the word 'token' followed by your api key. So it should look like this:\n\n   `TRAVISCI_AUTH_TOKEN=\"token <your-api-key>\"`\n\n## Developing the plugin locally\n\nThe easiest way is to clone the plugin repo into the `plugins/` directory of your backstage code base:\n\n```sh\ngit clone https://github.com/kozmoai/backstage-plugin-travis-ci.git travis-ci\n```\n\nand run `yarn install` in the root backstage directory - it will create a symbolic link, so the dependency will be provided from the source code instead of node_modules package.\n\n## Links\n\n- [Backstage](https://backstage.io)\n- Get hosted, managed Backstage for your company: https://glint.io\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-travis-ci",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:15.934Z",
+  "version": "2.1.22",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:15.934Z",
+      "version": "2.1.22"
+    },
+    {
+      "date": "2024-03-25T22:14:17.668Z",
+      "version": "2.1.21"
+    }
+  ]
+}

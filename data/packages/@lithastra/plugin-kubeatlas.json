@@ -1,0 +1,33 @@
+{
+  "author": "",
+  "created": "2026-07-06T13:27:34.107Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin embedding KubeAtlas dependency-graph views into Entity pages",
+  "homepage": "https://github.com/lithastra/kubeatlas-backstage-plugin",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "dependency-graph",
+    "kubeatlas",
+    "kubernetes"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "lithastra-dev"
+  ],
+  "name": "@lithastra/plugin-kubeatlas",
+  "plugin_id": "",
+  "readme": "# KubeAtlas plugin for Backstage\n\n> **Stable (v1.0.x).** This plugin follows semver from v1.0.0 and tracks Headlamp-plugin feature parity. Pin a version and see the compatibility matrix below.\n\nA Backstage **frontend plugin** that embeds [KubeAtlas](https://github.com/lithastra/kubeatlas)\ndependency-graph views directly into your catalog Entity pages. It\nanswers *\"what does this service depend on, and what breaks if it\ngoes away?\"* without leaving Backstage.\n\n## What you get\n\n- **Dependency graph card** — the one-hop dependency neighbourhood of an\n  Entity's backing Kubernetes resource, rendered with Cytoscape.\n- **Blast radius card** — how many resources transitively depend on this\n  one, graded green / amber / red, with an expandable top-10 list.\n- **Admission policies card** — the Gatekeeper/Kyverno admission policies that enforce this Entity's resource, read from its `ENFORCES` edges (F-205). Degrades gracefully on servers that don't report them.\n- **Runtime calls (OTel) card** — the resource's top observed runtime-call peers from the OpenTelemetry overlay (`GET /api/v1/otel/overlay`), shown when the server is Tier 2 with `otel.enabled` (F-204). Shows a clear note when the overlay is unavailable.\n- **KubeAtlas Entity tab** — all four cards on a dedicated tab.\n\nIt talks directly to a KubeAtlas server's v1 API. It does **not** depend\non `@backstage/plugin-kubernetes` or any Backstage backend plugin.\n\n## Prerequisites\n\n- A running [KubeAtlas server](https://docs.kubeatlas.lithastra.com)\n  (>= v1.4) reachable from the browser. The **Admission policies** card\n  needs >= v1.4; the **Runtime calls (OTel)** card needs >= v1.5 with\n  `otel.enabled`.\n- Backstage >= 1.30 (see the compatibility matrix).\n\n## Install\n\n```bash\n# from your Backstage app\nyarn --cwd packages/app add @lithastra/plugin-kubeatlas\n```\n\n## Configure\n\nPoint the plugin at your KubeAtlas server in `app-config.yaml`:\n\n```yaml\nkubeatlas:\n  baseUrl: https://kubeatlas.example.com\n```\n\nWire the Entity tab into `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```tsx\nimport { EntityKubeAtlasContent } from '@lithastra/plugin-kubeatlas';\n\n// inside the service/component EntityLayout:\n<EntityLayout.Route path=\"/kubeatlas\" title=\"KubeAtlas\">\n  <EntityKubeAtlasContent />\n</EntityLayout.Route>\n```\n\nPrefer individual cards? `EntityDependencyGraphCard` and\n`EntityBlastRadiusCard` are exported too.\n\n### Mapping an Entity to a Kubernetes resource\n\nBy default the plugin looks up a `Deployment` named after the Entity in\nthe `default` namespace. Override per Entity with annotations:\n\n```yaml\nmetadata:\n  annotations:\n    kubeatlas.io/kind: StatefulSet\n    kubeatlas.io/name: orders-db\n    kubeatlas.io/namespace: shop\n```\n\nThe Backstage `backstage.io/kubernetes-namespace` annotation is honoured\nas a namespace fallback.\n\n## Compatibility\n\nSee [COMPAT_MATRIX.md](./COMPAT_MATRIX.md) for tested version\ncombinations.\n\n## Development\n\nThe plugin ships a standalone dev app that mounts the Entity tab against\na mock KubeAtlas API, so you can see the cards render without a cluster:\n\n```bash\nnpm install        # honours .npmrc (legacy-peer-deps, required by MUI v4)\nnpm start          # opens the dev app; visit /kubeatlas\n```\n\nGates:\n\n```bash\nnpm run lint\nnpm run tsc\nnpm test           # Jest unit tests with coverage\nnpm run build\n```\n\nEnd-to-end (Playwright drives the dev app):\n\n```bash\nnpx playwright install --with-deps chromium\nnpm run test:e2e\n```\n\nThe unit suite and the e2e both run in CI on every pull request\n(`.github/workflows/ci.yml` and `e2e.yml`).\n\n## License\n\nApache-2.0. See [LICENSE](./LICENSE).\n",
+  "repository": "https://github.com/lithastra/kubeatlas-backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@lithastra",
+  "updated": "2026-07-06T13:27:34.417Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-07-06T13:27:34.417Z",
+      "version": "1.0.0"
+    }
+  ]
+}

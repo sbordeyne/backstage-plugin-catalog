@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2025-11-29T15:06:20.193Z",
+  "deprecated": "",
+  "description": "CI/CD Statistics plugin module; Github CICD",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "cicd statistics",
+    "github"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "gavinelder"
+  ],
+  "name": "@gavinelder/plugin-cicd-statistics-module-github",
+  "plugin_id": "cicd-statistics",
+  "readme": "# cicd-statistics-module-github\n\nThis is an extension module to the `cicd-statistics` plugin, providing a `CicdStatisticsApiGithub` that you can use to extract the CI/CD statistics from your Github repository.\n\n## Getting started\n\n1. Install the `cicd-statistics` and `cicd-statistics-module-github` plugins in the `app` package.\n\n2. Configure your ApiFactory:\n   - You can optionally pass in a third argument to `CicdStatisticsApiGithub` of type [CicdDefaults](https://github.com/backstage/backstage/blob/2881c53cb383bf127c150f837f37fe535d8cf97b/plugins/cicd-statistics/src/apis/types.ts#L179) to alter the default CICD UI configuration\n\n```tsx\n// packages/app/src/apis.ts\nimport { configApiRef } from '@backstage/core-plugin-api';\nimport { scmAuthApiRef } from '@backstage/integration-react';\n\nimport { cicdStatisticsApiRef } from '@backstage-community/plugin-cicd-statistics';\nimport { CicdStatisticsApiGithub } from '@backstage-community/plugin-cicd-statistics-module-github';\n\nexport const apis: AnyApiFactory[] = [\n  createApiFactory({\n    api: cicdStatisticsApiRef,\n    deps: {\n      scmAuthApi: scmAuthApiRef,\n      configApi: configApiRef,\n    },\n    factory: ({ scmAuthApi, configApi }) => {\n      return new CicdStatisticsApiGithub({ scmAuthApi, configApi });\n    },\n  }),\n];\n```\n\n3. Add the component to your EntityPage:\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityCicdStatisticsContent } from '@backstage-community/plugin-cicd-statistics';\n\n<EntityLayout.Route path=\"/ci-cd-statistics\" title=\"CI/CD Statistics\">\n  <EntityCicdStatisticsContent />\n</EntityLayout.Route>;\n```\n\n## New Frontend System\n\n### Setup\n\nIf you're using [feature discovery](https://backstage.io/docs/frontend-system/architecture/app/#feature-discovery), the plugin should be automatically discovered and enabled. Otherwise, you can manually enable the plugin by adding it to your app:\n\n```tsx\n// packages/app/src/App.tsx\nimport cicdStatisticsPluginGithubModule from '@backstage-community/plugin-cicd-statistics-module-github/alpha';\n\nconst app = createApp({\n  features: [\n    // ...\n    cicdStatisticsPluginGithubModule,\n  ],\n});\n```\n\n### Extensions\n\nThe following extensions are available in the plugin:\n\n- `api:cicd-statistics/cicd-statistics-github-api`\n",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/cicd-statistics/plugins/cicd-statistics-module-github",
+  "role": "frontend-plugin-module",
+  "scope": "@gavinelder",
+  "updated": "2025-11-29T19:01:41.344Z",
+  "version": "0.9.5",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-11-29T19:01:41.344Z",
+      "version": "0.9.5"
+    },
+    {
+      "date": "2025-11-29T18:37:27.514Z",
+      "version": "0.9.4"
+    },
+    {
+      "date": "2025-11-29T16:32:51.165Z",
+      "version": "0.9.3"
+    },
+    {
+      "date": "2025-11-29T15:06:20.569Z",
+      "version": "0.9.2"
+    }
+  ]
+}

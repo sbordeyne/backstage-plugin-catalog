@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-02-05T04:22:09.760Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fjudith"
+  ],
+  "name": "@alithya-oss/backstage-plugin-aws-codepipeline-backend",
+  "plugin_id": "aws-codepipeline",
+  "readme": "",
+  "repository": "https://github.com/awslabs/backstage-plugins-for-aws/tree/HEAD/plugins/codepipeline/backend",
+  "role": "backend-plugin",
+  "scope": "@alithya-oss",
+  "updated": "2025-05-21T04:16:40.065Z",
+  "version": "0.5.7",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-05-21T04:16:40.065Z",
+      "version": "0.5.7"
+    },
+    {
+      "date": "2025-05-10T03:59:21.766Z",
+      "version": "0.5.6"
+    },
+    {
+      "date": "2025-02-05T04:22:10.076Z",
+      "version": "0.5.5"
+    }
+  ]
+}

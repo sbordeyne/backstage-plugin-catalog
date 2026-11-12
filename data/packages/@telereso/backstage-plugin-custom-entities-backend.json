@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2024-04-28T06:17:29.262Z",
+  "deprecated": "",
+  "description": "This is the backend plugin for [Frontend Plugin](../custom-entities/README.md)",
+  "homepage": "https://github.com/telereso/backstage-plugins#readme",
+  "keywords": [
+    "backstage",
+    "entities",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ahna92"
+  ],
+  "name": "@telereso/backstage-plugin-custom-entities-backend",
+  "plugin_id": "",
+  "readme": "# Custom Entities Backend\n\nThis is the backend plugin for [Frontend Plugin](../custom-entities/README.md)\n\n## Installation\n\n### Install the package\n\n```bash\nyarn --cwd packages/backend add @telereso/backstage-plugin-custom-entities-backend\n```\n\n### Adding the plugin to your `packages/backend`\n\nIn the new backend system add the following changes to `packages/backend/src/index.ts`\n\n```diff\n\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n\n+// Custom Entities\n+backend.add(import('@telereso/backstage-plugin-custom-entities-backend'));\n\nbackend.start();\n\n```\n\n### Configuration \n\nThe plugin has its own configuration in `app-config.yaml`\n\nLocal\n```yaml\ncustomEntities:\n  providers:\n    local:\n      dir: ../../../../examples\n      name: custom-entities.yaml\n```\n\nProduction\n```yaml\ncustomEntities:\n  providers:\n    googleGcs:\n      bucket: <your-bucket>\n      folder: backstage/catalog\n      name: custom-entities.yaml\n```\n\n#### providers\n\nThere are 2 options, one for local and the other one for production, \n\nIn local the `custom-entities.yaml` will be stored under `example` directory of root project\n\nIn production the plugin uses Google Cloud Storage\nYou can check [backstage integration with GCS](https://backstage.io/docs/integrations/google-cloud-storage/locations/)\n\nuse `bucket`, `folder` and `name` to customize how the file is stored in the bucket\n\n_Other providers will be introduced in the future, most likely will include database integration_\n\n### Read Entities \n\nLocally you can add the following location\n\n```yaml\ncatalog:\n  locations:\n    # Local example data, file locations are relative to the backend process, typically `packages/backend`\n    - type: file\n      target: ../../examples/custom-entities.yaml\n```\n\nIn production add the following changes in `app-config.produciton.yaml`\n\n```diff\nbackend:\n  baseUrl: \"https://${BACKEND_HOST}\"\n  auth:\n    keys:\n      - secret: ${BACKEND_SECRET}\n+  csp:\n+    script-src:\n+      - \"'self'\"\n+      - \"'unsafe-eval'\" # this is required for scaffolder usage, and ajv validation.\n+      - 'https://cdn.jsdelivr.net'\n+  reading:\n+    allow:\n+      - host: \"${BACKEND_HOST}\"\n        \ncatalog:\n  locations:\n+    - type: url\n+      target: \"https://${BACKEND_HOST}/api/custom-entities/v1/entities.yaml\"\n+      rules:\n+        - allow: [ User, Group, Component, System, API, Resource, Location ]\n```\n\nMake sure that `BACKEND_HOST` is same as `backend.baseUrl` host",
+  "repository": "https://github.com/telereso/backstage-plugins/tree/HEAD/plugins/custom-entities-backend",
+  "role": "backend-plugin",
+  "scope": "@telereso",
+  "updated": "2024-05-07T11:36:55.577Z",
+  "version": "0.7.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2024-05-07T11:36:55.577Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2024-04-30T18:25:30.972Z",
+      "version": "0.6.3"
+    },
+    {
+      "date": "2024-04-30T16:02:02.096Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2024-04-30T15:53:46.139Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2024-04-30T13:36:46.234Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2024-04-30T10:00:41.714Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-04-28T06:38:27.724Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-04-28T06:17:29.524Z",
+      "version": "0.2.0"
+    }
+  ]
+}

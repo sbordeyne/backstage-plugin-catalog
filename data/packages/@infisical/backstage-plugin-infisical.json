@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-04-11T22:48:42.001Z",
+  "deprecated": "",
+  "description": "![Backstage Loves Infisical](https://img.shields.io/badge/Backstage-loves%20Infisical-blue) ![License](https://img.shields.io/github/license/your-username/backstage-plugin-infisical)",
+  "homepage": "https://github.com/backstage/backstage#readme",
+  "keywords": [
+    "backstage",
+    "infisical",
+    "secrets"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "danielhougaard"
+  ],
+  "name": "@infisical/backstage-plugin-infisical",
+  "plugin_id": "infisical",
+  "readme": "# Backstage Infisical Plugin\n\n![Backstage Loves Infisical](https://img.shields.io/badge/Backstage-loves%20Infisical-blue)\n![License](https://img.shields.io/github/license/your-username/backstage-plugin-infisical)\n\nA plugin for [Backstage](https://backstage.io) that integrates with [Infisical](https://infisical.com) for secrets management. This plugin allows you to:\n\n- View, create, edit, and delete secrets in your Infisical projects\n- Navigate secrets across different folders and environments\n- Display secrets in a user-friendly table with access controls\n\n## Installation\n\n### For your Backstage app\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @infisical/backstage-plugin-infisical\n```\n\n### Backend plugin\nThis frontend plugin requires the corresponding backend plugin to be installed. Please follow the instructions in the [backend plugin repository](https://github.com/your-username/backstage-plugin-infisical-backend).\n\n## Configuration\n\n### App Configuration\n\n1. Add the plugin to your Backstage application by modifying your `packages/app/src/App.tsx`:\n\n```tsx\nimport { infisicalPlugin } from '@infisical/backstage-plugin-infisical';\n\nconst app = createApp({\n  // ... other configuration\n  plugins: [\n    // ... other plugins\n    infisicalPlugin,\n  ],\n});\n```\n\n2. Add the Infisical tab to your entity page in `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```tsx\nimport { EntityInfisicalContent } from '@infisical/backstage-plugin-infisical';\n\n// Add to the service entity page:\nconst serviceEntityPage = (\n  <EntityLayout>\n    {/* ...other tabs */}\n    <EntityLayout.Route path=\"/infisical\" title=\"Secrets\">\n      <EntityInfisicalContent />\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\n### Entity Configuration\n\nTo connect an entity to its Infisical project, add the following annotation to your entity yaml file:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: example-service\n  annotations:\n    infisical/projectId: <your-infisical-project-id>\n    infisical/environment: \"staging\"\n    infisical/secretPath: \"+/folder/nested\"\n```\n\n| Annotation | Required | Description |\n|------------|----------|-------------|\n| `infisical/projectId` | ✅ | The ID of your Infisical project |\n| `infisical/environment` | ❌ | Lock the view to a specific environment (e.g., \"development\", \"staging\", \"production\") |\n| `infisical/secretPath` | ❌ | Specify the folder path to display secrets from |\n\n\n#### Secret Path Behavior\n\nThe `infisical/secretPath` annotation controls both the starting location and navigation permissions:\n\n**Without \"+\" prefix (restricted navigation):**\n```yaml\ninfisical/secretPath: \"/folder/nested\"\n```\n- Shows secrets only from the specified path\n- **Disables** folder navigation - users cannot navigate to subfolders\n- Ideal for restricting access to a specific folder level\n\n**With \"+\" prefix (allowed navigation):**\n```yaml\ninfisical/secretPath: \"+/folder/nested\"\n```\n- Shows secrets starting from the specified path (without the \"+\")\n- **Enables** folder navigation - users can navigate to subfolders\n- Ideal for setting a starting point while allowing exploration\n\n**Examples:**\n\n| Configuration | Behavior |\n|---------------|----------|\n| `infisical/secretPath: \"/api/config\"` | View only `/api/config`, no subfolder navigation |\n| `infisical/secretPath: \"+/api/config\"` | Start at `/api/config`, allow navigation to subfolders |\n| No `secretPath` annotation | Start at root (`/`), allow full navigation |\n\n\n## Features\n\n### Secret Management\n\n- **View Secrets**: Browse secrets in a table with support for hiding sensitive values\n- **Create Secrets**: Add new secrets with key, value, and optional comments\n- **Update Secrets**: Modify existing secret values and metadata\n- **Delete Secrets**: Remove secrets that are no longer needed\n\n### Folder Navigation\n\n- **Folder Browsing**: Navigate the folder structure of your Infisical project\n- **Breadcrumb Navigation**: Easily navigate up and down the folder hierarchy\n\n### Environment Support\n\n- **Environment Selection**: View and manage secrets across different environments (Development, Staging, Production, etc.)\n- **Environment-specific Secrets**: Each environment has its own set of secrets\n\n### Search and Filtering\n\n- **Instant Filtering**: Quickly find secrets by filtering the table by key, value, or comment\n\n## Development\n\n### Getting Started\n\n1. Clone the repository\n2. Install dependencies:\n```bash\nyarn install\n```\n3. Run the plugin in isolation:\n```bash\nyarn start\n```\n\n### Running Tests\n\nRun all tests:\n```bash\nyarn test\n```\n\nRun tests with coverage:\n```bash\nyarn test:coverage\n```\n\n### Building\n\n```bash\nyarn build\n```\n",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/infisical",
+  "role": "frontend-plugin",
+  "scope": "@infisical",
+  "updated": "2025-06-13T19:56:10.120Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-06-13T19:56:10.120Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-04-11T22:48:42.326Z",
+      "version": "0.1.0"
+    }
+  ]
+}

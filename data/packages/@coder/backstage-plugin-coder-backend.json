@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2025-10-15T22:03:27.333Z",
+  "deprecated": "",
+  "description": "Backend plugin for Coder OAuth2 authentication flow",
+  "homepage": "",
+  "keywords": [
+    "authentication",
+    "backstage",
+    "coder",
+    "oauth2"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "coder-bot"
+  ],
+  "name": "@coder/backstage-plugin-coder-backend",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@coder",
+  "updated": "2025-10-15T22:03:27.619Z",
+  "version": "0.4.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-10-15T22:03:27.619Z",
+      "version": "0.4.0"
+    }
+  ]
+}

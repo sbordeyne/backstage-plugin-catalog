@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2024-01-08T16:06:16.717Z",
+  "deprecated": "",
+  "description": "Welcome to the hello plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "joostvdg"
+  ],
+  "name": "@kearos/plugin-hello",
+  "plugin_id": "",
+  "readme": "# hello\n\nWelcome to the hello plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/hello](http://localhost:3000/hello).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@kearos",
+  "updated": "2024-01-16T10:23:46.872Z",
+  "version": "0.2.1",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-01-16T10:23:46.872Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-01-10T13:07:00.783Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-01-08T16:06:16.997Z",
+      "version": "0.1.0"
+    }
+  ]
+}

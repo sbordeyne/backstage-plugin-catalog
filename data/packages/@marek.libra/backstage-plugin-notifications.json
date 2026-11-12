@@ -1,0 +1,34 @@
+{
+  "author": "",
+  "created": "2024-01-22T13:46:08.357Z",
+  "deprecated": "",
+  "description": "Frontend part of the notifications providing the Notifications API, Notifications page, left-side menu item and other REACT components.",
+  "homepage": "https://janus-idp.io/",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "marek.libra"
+  ],
+  "name": "@marek.libra/backstage-plugin-notifications",
+  "plugin_id": "",
+  "readme": "# Notifications\n\nThis Backstage front-end plugin provides:\n\n- the `Notifications` page listing notifications from the logged-in user's perspective\n- the NotificationsApi for accessing the notifications backend from front-end plugins\n- an active item to the main left side menu to both notify the user about new messages and provide navigation to the Notifications page\n- an alert about new system notifications\n\n## Getting started\n\n### Prerequisities\n\nHave `@janus-idp/plugin-notifications-backend` installed and running.\n\n### Add NPM dependency\n\n```\ncd packages/app\nyarn add @janus-idp/plugin-notifications\n```\n\n### Add left-side menu item\n\nIn the `packages/app/src/components/Root/Root.tsx`:\n\n```\nimport { NotificationsSidebarItem } from '@janus-idp/plugin-notifications';\n\n...\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n    ...\n      {/* New code: */}\n      <SidebarDivider />\n      <NotificationsSidebarItem pollingInterval={5000} />\n\n      {/* Existing code for reference: */}\n      <SidebarSpace />\n      <SidebarSpace />\n      <SidebarDivider />\n      <SidebarDivider />\n      <SidebarGroup\n        <SidebarGroup label=\"Settings\"\n```\n\n### Add to router\n\nIn the `packages/app/src/App.tsx`:\n\n```\nimport { NOTIFICATIONS_ROUTE, NotificationsPage } from '@janus-idp/plugin-notifications';\n...\n\nexport const AppBase = () => {\n    ...\n      {/* New code: */}\n      <Route path={NOTIFICATIONS_ROUTE} element={<NotificationsPage />} />\n```\n\n## How to use the NotificationApi\n\n```\nimport { notificationsApiRef, Notification } from '@janus-idp/plugin-notifications';\n\n...\n\nconst notificationsApi = useApi(notificationsApiRef);\nconst notifications: Notification[] = await notificationsApi.getNotifications(params);\n\n```\n\nSee `src/api/notificationsApi.ts` for more details.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins",
+  "role": "frontend-plugin",
+  "scope": "@marek.libra",
+  "updated": "2024-01-23T11:41:30.113Z",
+  "version": "1.0.11",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-01-23T11:41:30.113Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2024-01-22T13:46:08.688Z",
+      "version": "1.0.10"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:15:11.530Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates towards FOSSA",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "fossa"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-fossa",
+  "plugin_id": "fossa",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/fossa/plugins/fossa",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-16T18:40:15.201Z",
+  "version": "0.12.1",
+  "version_count": 17,
+  "versions": [
+    {
+      "date": "2026-10-16T18:40:15.201Z",
+      "version": "0.12.1"
+    },
+    {
+      "date": "2026-04-17T18:34:23.973Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-01-31T19:46:39.473Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-12-24T22:22:17.623Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-11-10T15:39:44.150Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-10-03T07:17:37.048Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-08-14T14:11:01.829Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-07-04T12:22:08.331Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-04-11T21:14:55.696Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2025-03-22T22:35:54.634Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-02-02T17:07:16.954Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-12-23T17:34:43.908Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-10-19T01:24:03.824Z",
+      "version": "0.2.71"
+    },
+    {
+      "date": "2024-09-28T16:33:51.180Z",
+      "version": "0.2.70"
+    },
+    {
+      "date": "2024-09-24T12:26:04.683Z",
+      "version": "0.2.69"
+    }
+  ]
+}

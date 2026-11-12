@@ -1,0 +1,93 @@
+{
+  "author": "Red Hat",
+  "created": "2023-05-15T21:54:55.455Z",
+  "deprecated": "",
+  "description": "This plugin provides an implementation of the Backstage Analytics API for Segment. Once installed and configured, analytics events will be sent to Segment as your users navigate and use your Backstage instance.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "lifecycle:active",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-analytics-provider-segment",
+  "plugin_id": "analytics-provider-segment",
+  "readme": "# Analytics Module: Segment\n\nThis plugin provides an implementation of the Backstage Analytics API for\nSegment. Once installed and configured, analytics events will be sent to\nSegment as your users navigate and use your Backstage instance.\n\nThis plugin contains no other functionality.\n\n## Installation\n\n1. Install the plugin package in your Backstage app:\n\n   ```console\n   yarn workspace app add @janus-idp/backstage-plugin-analytics-provider-segment\n   ```\n\n## Configuration\n\n1. Wire up the API implementation to your App in `packages/app/src/apis.ts`:\n\n   ```tsx title=\"packages/app/src/apis.ts\"\n   /* highlight-add-start */\n   import {\n     analyticsApiRef,\n     configApiRef,\n     identityApiRef,\n   } from '@backstage/core-plugin-api';\n\n   import { SegmentAnalytics } from '@janus-idp/backstage-plugin-analytics-provider-segment';\n\n   /* highlight-add-end */\n\n   export const apis: AnyApiFactory[] = [\n     // Other APIs...\n     // Instantiate and register the GA Analytics API Implementation.\n     /* highlight-add-start */\n     createApiFactory({\n       api: analyticsApiRef,\n       deps: { configApi: configApiRef, identityApi: identityApiRef },\n       factory: ({ configApi, identityApi }) =>\n         SegmentAnalytics.fromConfig(configApi, identityApi),\n     }),\n     /* highlight-add-end */\n   ];\n   ```\n\n2. Configure the plugin in your `app-config.yaml`:\n\nThe following is the minimum configuration required to start sending analytics\nevents to Segment. All that's needed is your Segment Write Key\n\n```yaml title=\"app-config.yaml\"\napp:\n  analytics:\n    segment:\n      # highlight-start\n      writeKey: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      maskIP: true # prevents IP addresses from being sent if true\n      # highlight-end\n```\n\n## Debugging and Testing\n\nIn pre-production environments, you may wish to set additional configurations\nto turn off reporting to Analytics. You can do so like this:\n\n```yaml title=\"app-config.yaml\"\napp:\n  analytics:\n    segment:\n      # highlight-next-line\n      testMode: true # prevents data from being sent if true\n```\n\nYou might commonly set the above in an `app-config.local.yaml` file, which is\nnormally `gitignore`'d but loaded and merged in when Backstage is bootstrapped.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/analytics-provider-segment",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-04T12:24:08.832Z",
+  "version": "1.10.1",
+  "version_count": 65,
+  "versions": [
+    {
+      "date": "2024-11-04T12:24:08.832Z",
+      "version": "1.10.1"
+    },
+    {
+      "date": "2024-10-30T20:18:24.410Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2024-10-29T18:59:29.015Z",
+      "version": "1.9.1"
+    },
+    {
+      "date": "2024-10-22T21:36:43.977Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2024-10-09T17:20:23.816Z",
+      "version": "1.8.5"
+    },
+    {
+      "date": "2024-10-08T18:23:20.544Z",
+      "version": "1.8.4"
+    },
+    {
+      "date": "2024-10-08T06:26:06.652Z",
+      "version": "1.8.3"
+    },
+    {
+      "date": "2024-10-01T18:21:21.346Z",
+      "version": "1.8.2"
+    },
+    {
+      "date": "2024-09-25T12:43:07.815Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2024-09-20T03:33:43.049Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2024-09-19T16:44:44.544Z",
+      "version": "1.7.3"
+    },
+    {
+      "date": "2024-08-16T18:45:05.559Z",
+      "version": "1.7.2"
+    },
+    {
+      "date": "2024-08-15T16:09:41.545Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2024-07-25T23:11:18.253Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2024-07-23T22:29:41.960Z",
+      "version": "1.6.0"
+    }
+  ]
+}

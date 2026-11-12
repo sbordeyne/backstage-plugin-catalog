@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-05-13T14:50:59.682Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-linkerd",
+  "plugin_id": "linkerd",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/linkerd/plugins/linkerd",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:56:43.501Z",
+  "version": "0.25.0",
+  "version_count": 32,
+  "versions": [
+    {
+      "date": "2026-11-03T14:56:43.501Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-09-23T15:46:45.936Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-08-27T14:07:48.576Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-07-22T00:18:18.072Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-06-24T13:17:20.665Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-06-24T12:29:22.876Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-05-08T18:36:27.557Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-04-03T16:23:00.589Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-02-27T13:23:44.948Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-01-28T22:31:56.677Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-12-24T22:19:50.675Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-10-17T17:38:55.007Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-10-02T14:38:06.345Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-08-30T15:10:08.468Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-07-23T18:25:15.667Z",
+      "version": "0.11.0"
+    }
+  ]
+}

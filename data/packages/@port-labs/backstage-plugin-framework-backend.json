@@ -1,0 +1,48 @@
+{
+  "author": "",
+  "created": "2024-12-24T09:50:18.217Z",
+  "deprecated": "",
+  "description": "This is part of the Backstage Plugin SDK. which cuts down the time to build a plugin.",
+  "homepage": "https://backstage-plugin.getport.io/",
+  "keywords": [
+    "backstage",
+    "framework",
+    "getport",
+    "port",
+    "port-labs"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "danielsinaimain",
+    "dormeiri-port",
+    "gilmor-port",
+    "guy-s-port",
+    "hadorco",
+    "irar-port",
+    "noyah",
+    "teitelbaum"
+  ],
+  "name": "@port-labs/backstage-plugin-framework-backend",
+  "plugin_id": "framework",
+  "readme": "# Port Backstage Backend Plugin\n\nThis is part of the Backstage Plugin SDK. which cuts down the time to build a plugin.\n\nRead more about the Port Backstage Plugin in the [docs](https://backstage-plugin.getport.io/)\n",
+  "repository": "https://github.com/port-labs/backstage-plugin/tree/HEAD/backstage-plugins/plugins/backend-plugin",
+  "role": "backend-plugin",
+  "scope": "@port-labs",
+  "updated": "2025-01-12T12:18:12.014Z",
+  "version": "0.1.6",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-01-12T12:18:12.014Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2024-12-24T11:01:51.266Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-12-24T09:50:18.559Z",
+      "version": "0.1.4"
+    }
+  ]
+}

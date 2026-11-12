@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2024-04-07T05:06:30.686Z",
+  "deprecated": "",
+  "description": "adds support for the spec.parent attribute on the ResourceComponent entity, so that nested ResourceComponents are shown like that in the Catalog Graph.",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "paulpogo"
+  ],
+  "name": "@paulpogo/plugin-catalog-backend-module-iac-support",
+  "plugin_id": "",
+  "readme": "# @paulpogo/plugin-iac-support-backend\n\nThis Package supplies the `\"backend\"` components for the IaC Support Backstage plugin.\n\nTo build it use the `yarn --tsc` command\n\nTo create the package use the `yarn tsc` command\n\nTo push the package to the NPM repo use `npm publish --access public` \n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@paulpogo",
+  "updated": "2024-04-20T03:59:23.629Z",
+  "version": "0.0.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-04-20T03:59:23.629Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-04-07T06:00:02.784Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-04-07T05:51:53.649Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2024-04-07T05:06:30.962Z",
+      "version": "0.0.0"
+    }
+  ]
+}

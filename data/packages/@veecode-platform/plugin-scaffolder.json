@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2023-06-15T15:43:20.796Z",
+  "deprecated": "",
+  "description": "The Backstage plugin that helps you create new things - veeCode version",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/plugin-scaffolder",
+  "plugin_id": "",
+  "readme": "# Scaffolder Frontend\n\nThis is the React frontend for the default Backstage [software\ntemplates](https://backstage.io/docs/features/software-templates/).\nThis package supplies interfaces related to showing available templates in the\nBackstage catalog and the workflow to create software using those templates.\n\n## Installation\n\nThis `@backstage/plugin-scaffolder` package comes installed by default in any\nBackstage application created with `npx @backstage/create-app`, so installation\nis not usually required.\n\nTo check if you already have the package, look under\n`packages/app/package.json`, in the `dependencies` block, for\n`@backstage/plugin-scaffolder`. The instructions below walk through restoring\nthe plugin, if you previously removed it.\n\n### Install the package\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @backstage/plugin-scaffolder\n```\n\n### Add the plugin to your `packages/app`\n\nAdd the root page that the scaffolder plugin provides to your app. You can\nchoose any path for the route, but we recommend the following:\n\n```diff\n// packages/app/src/App.tsx\n+import { ScaffolderPage } from '@backstage/plugin-scaffolder';\n\n\n<FlatRoutes>\n  <Route path=\"/catalog\" element={<CatalogIndexPage />} />\n  <Route path=\"/catalog/:namespace/:kind/:name\" element={<CatalogEntityPage />}>\n    {entityPage}\n  </Route>\n+  <Route path=\"/create\" element={<ScaffolderPage />} />;\n  ...\n</FlatRoutes>\n```\n\nThe scaffolder plugin also has one external route that needs to be bound for it\nto function: the `registerComponent` route which should link to the page where\nthe user can register existing software component. In a typical setup, the\nregister component route will be linked to the `catalog-import` plugin's import\npage:\n\n```diff\n// packages/app/src/App.tsx\n+import { scaffolderPlugin } from '@backstage/plugin-scaffolder';\n+import { catalogImportPlugin } from '@backstage/plugin-catalog-import';\n\nconst app = createApp({\n  // ...\n  bindRoutes({ bind }) {\n+    bind(scaffolderPlugin.externalRoutes, {\n+      registerComponent: catalogImportPlugin.routes.importPage,\n+    });\n  },\n});\n```\n\nYou may also want to add a link to the scaffolder page to your application\nsidebar:\n\n```diff\n// packages/app/src/components/Root/Root.tsx\n+import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';\n\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n+      <SidebarItem icon={CreateComponentIcon} to=\"create\" text=\"Create...\" />;\n      ...\n    </Sidebar>\n```\n\n### Troubleshooting\n\nIf you encounter the [issue of closing EventStream](https://github.com/backstage/backstage/issues/5535)\nwhich auto-updates logs during task execution, you can enable long polling. To do so,\nupdate your `packages/app/src/apis.ts` file to register a `ScaffolderClient` with the\n`useLongPollingLogs` set to `true`. By default, it is `false`.\n\n```typescript\nimport {\n  createApiFactory,\n  discoveryApiRef,\n  fetchApiRef,\n  identityApiRef,\n} from '@backstage/core-plugin-api';\nimport {\n  scaffolderApiRef,\n  ScaffolderClient,\n} from '@backstage/plugin-scaffolder';\n\nexport const apis: AnyApiFactory[] = [\n  createApiFactory({\n    api: scaffolderApiRef,\n    deps: {\n      discoveryApi: discoveryApiRef,\n      identityApi: identityApiRef,\n      scmIntegrationsApi: scmIntegrationsApiRef,\n      fetchApi: fetchApiRef,\n    },\n    factory: ({ scmIntegrationsApi, discoveryApi, identityApi, fetchApi }) =>\n      new ScaffolderClient({\n        discoveryApi,\n        identityApi,\n        scmIntegrationsApi,\n        fetchApi,\n        useLongPollingLogs: true,\n      }),\n  }),\n  // ... other factories\n```\n\nThis replaces the default implementation of the `scaffolderApiRef`.\n\n## Links\n\n- [scaffolder-backend](https://github.com/backstage/backstage/tree/master/plugins/scaffolder-backend)\n  provides the backend API for this frontend.\n",
+  "repository": "https://github.com/veecode-platform/backstage-plugins/tree/HEAD/plugins/scaffolder",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2024-04-02T18:17:07.985Z",
+  "version": "1.18.4",
+  "version_count": 37,
+  "versions": [
+    {
+      "date": "2024-04-02T18:17:07.985Z",
+      "version": "1.18.4"
+    },
+    {
+      "date": "2024-03-07T20:23:35.177Z",
+      "version": "1.18.3"
+    },
+    {
+      "date": "2024-03-04T11:01:28.035Z",
+      "version": "1.18.2"
+    },
+    {
+      "date": "2023-12-29T14:57:28.448Z",
+      "version": "1.16.11"
+    },
+    {
+      "date": "2023-12-28T19:46:12.749Z",
+      "version": "1.16.10"
+    },
+    {
+      "date": "2023-12-28T19:17:07.739Z",
+      "version": "1.16.9"
+    },
+    {
+      "date": "2023-12-28T18:16:09.515Z",
+      "version": "1.16.8"
+    },
+    {
+      "date": "2023-12-28T17:22:22.308Z",
+      "version": "1.16.7"
+    },
+    {
+      "date": "2023-12-08T12:24:12.633Z",
+      "version": "1.16.6"
+    },
+    {
+      "date": "2023-12-05T20:42:24.050Z",
+      "version": "1.16.5"
+    },
+    {
+      "date": "2023-12-01T14:18:15.945Z",
+      "version": "1.16.4"
+    },
+    {
+      "date": "2023-12-01T13:45:24.932Z",
+      "version": "1.16.3"
+    },
+    {
+      "date": "2023-11-29T19:19:44.136Z",
+      "version": "1.14.24"
+    },
+    {
+      "date": "2023-11-23T18:20:37.001Z",
+      "version": "1.14.23"
+    },
+    {
+      "date": "2023-11-17T15:01:45.861Z",
+      "version": "1.14.22"
+    }
+  ]
+}

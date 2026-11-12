@@ -1,0 +1,76 @@
+{
+  "author": "",
+  "created": "2025-09-24T08:24:21.419Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-bui-test",
+  "plugin_id": "bui-test",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/theme/plugins/bui-test",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-26T13:54:27.236Z",
+  "version": "0.6.0",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-10-26T13:54:27.236Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-09-29T09:24:56.379Z",
+      "version": "0.5.3"
+    },
+    {
+      "date": "2026-09-28T14:07:13.453Z",
+      "version": "0.5.2"
+    },
+    {
+      "date": "2026-09-09T21:56:49.230Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-07-22T22:16:05.617Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-03-26T09:14:32.361Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-03-13T10:03:22.026Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-01-01T16:04:05.174Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-11-18T11:49:52.337Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-09-30T10:52:01.937Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-09-24T09:00:50.489Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2025-09-24T08:24:21.670Z",
+      "version": "0.0.0"
+    }
+  ]
+}

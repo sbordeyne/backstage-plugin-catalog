@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2022-09-02T09:36:36.429Z",
+  "deprecated": "",
+  "description": "A backstage plugin for showing Azure resoources",
+  "homepage": "https://github.com/vippsas/backstage-azure-resource-frontend",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "gormv",
+    "kajahanne",
+    "tinolazreg",
+    "vipps-roarmjelde",
+    "vippsinfra"
+  ],
+  "name": "@vippsno/plugin-azure-resources",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@vippsno",
+  "updated": "2023-02-16T18:20:15.561Z",
+  "version": "1.0.8",
+  "version_count": 14,
+  "versions": [
+    {
+      "date": "2023-02-16T18:20:15.561Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2023-02-16T17:13:15.381Z",
+      "version": "1.0.8-beta1"
+    },
+    {
+      "date": "2022-12-21T11:22:47.690Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2022-12-15T12:52:24.920Z",
+      "version": "1.0.7-beta6"
+    },
+    {
+      "date": "2022-12-15T11:50:57.633Z",
+      "version": "1.0.7-beta5"
+    },
+    {
+      "date": "2022-12-15T11:11:22.762Z",
+      "version": "1.0.7-beta4"
+    },
+    {
+      "date": "2022-12-15T11:06:57.164Z",
+      "version": "1.0.7-beta3"
+    },
+    {
+      "date": "2022-12-15T10:40:30.461Z",
+      "version": "1.0.7-beta2"
+    },
+    {
+      "date": "2022-12-14T14:58:15.831Z",
+      "version": "1.0.7-beta1"
+    },
+    {
+      "date": "2022-09-22T12:58:43.672Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2022-09-22T12:46:27.009Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2022-09-05T09:24:08.832Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2022-09-05T08:38:51.584Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2022-09-02T09:36:36.628Z",
+      "version": "1.0.2"
+    }
+  ]
+}

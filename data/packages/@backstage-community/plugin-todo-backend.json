@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-17T12:59:18.342Z",
+  "deprecated": "",
+  "description": "A Backstage backend plugin that lets you browse TODO comments in your source code",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-todo-backend",
+  "plugin_id": "todo",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/todo/plugins/todo-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-02T13:24:15.836Z",
+  "version": "0.27.0",
+  "version_count": 34,
+  "versions": [
+    {
+      "date": "2026-11-02T13:24:15.836Z",
+      "version": "0.27.0"
+    },
+    {
+      "date": "2026-09-23T13:26:13.396Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-08-27T14:51:08.386Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-07-22T00:22:16.637Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-06-24T13:09:30.468Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-06-11T14:03:53.853Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-04-27T11:53:16.648Z",
+      "version": "0.21.1"
+    },
+    {
+      "date": "2026-04-24T18:09:31.312Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-04-16T16:05:59.952Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-04-03T16:24:38.852Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-03-04T18:50:08.593Z",
+      "version": "0.18.1"
+    },
+    {
+      "date": "2026-02-27T13:25:01.731Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-01-28T22:26:13.342Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2025-12-24T22:08:11.220Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-11-27T17:02:22.270Z",
+      "version": "0.15.0"
+    }
+  ]
+}

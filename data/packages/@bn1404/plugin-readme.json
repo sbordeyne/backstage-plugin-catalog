@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-02-07T07:32:57.284Z",
+  "deprecated": "",
+  "description": "Welcome to the readme plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bn1404"
+  ],
+  "name": "@bn1404/plugin-readme",
+  "plugin_id": "",
+  "readme": "# Readme plugin\n\nWelcome to the readme plugin!\n\n![readme-card](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/readme/media/readme-card.png)\n\n## Introduction\n\nThe `Readme-plugin` enables easy access and viewing of the README file. By having information such as the project's purpose, usage instructions, or installation details as a central part of the EntityPage, we hope to improve the `onboarding and understanding of entities`.\n\nThe plugin **supports all ScmIntegrations**, like Gerrit & GitLab. This makes it possible for organizations with many Source Code Integrations to use the same plugin.\n\nIt also supports various file extentions such as README.md, README.MD, README.txt, README, and README.rst.\n\n### Where can the plugin find my README file?\n\nThe README.md file is always retrieved from the same directory as the `catalog-info.yaml file`, also known as the `entity source location`. If you wish to view the path where the plugin looks for your README.md file, you can find it in the backstage.io/source-location annotation in the catalog-info.yaml file. This annotation is automatically added to your entity, so there is no need to add it manually.\n\nThe displays README files with one of the following file types: **md**, **MD**, **rst**, or **txt**. The plugin can also handle symlinks.\n\nCurrently, placing your README.md file elsewhere than in the same directory as the `catalog-info.yaml file` repository is not supported.\n\n## Readme Backend\n\nYou **need** to set up the [Readme Backend](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/readme-backend) plugin before you move forward with any of these steps if you haven't already.\n\n## Getting started\n\n1. First, install the plugin into your app:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @axis-backstage/plugin-readme\n```\n\n2. Then, modify your entity page in `EntityPage.tsx` to include the `ReadmeCard` component that is exported from the plugin to `overviewContent``.\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport { ReadmeCard } from '@axis-backstage/plugin-readme';\n\nconst overviewContent = (\n...\n  <Grid item md={6} xs={12}>\n      <ReadmeCard />\n  </Grid>\n  ...\n)\n```\n\n## Layout\n\nThe readme card is located in the overview page on the entity page. From the card header it is also possible to open a dialog displaying the full README.md.\n\n![readme-card](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/readme/media/readme-card.png)\n\n![readme-dialog](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/readme/media/readme-dialog.png)\n\n### Troubleshooting\n\n#### \"No README.md file found at the source location...\"\n\nThis message indicates that the backend cannot find your README.md file. Ensure that the README.md file is indeed located in the same directory as the `catalog-info.yaml file`. If you are still unable to locate it, try scheduling an entity refresh by clicking the \"Schedule Entity Refresh\" button in the AboutCard of the entity.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@bn1404",
+  "updated": "2024-02-07T07:32:57.508Z",
+  "version": "0.5.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-02-07T07:32:57.508Z",
+      "version": "0.5.1"
+    }
+  ]
+}

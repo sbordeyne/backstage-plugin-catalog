@@ -1,0 +1,33 @@
+{
+  "author": "",
+  "created": "2026-08-03T06:40:09.233Z",
+  "deprecated": "",
+  "description": "Tech Insights fact retriever for tech stack detection via GitHub.",
+  "homepage": "https://sbordeyne.github.io/backstage-plugins/plugins/tech-insights-stack/",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "fact-retriever",
+    "github",
+    "tech-insights"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dogeek0"
+  ],
+  "name": "@sbordeyne/plugin-tech-insights-backend-module-stack",
+  "plugin_id": "tech-insights",
+  "readme": "",
+  "repository": "https://github.com/sbordeyne/backstage-plugins/tree/HEAD/plugins/tech-insights-backend-module-stack",
+  "role": "backend-plugin-module",
+  "scope": "@sbordeyne",
+  "updated": "2026-08-03T06:40:09.503Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-08-03T06:40:09.503Z",
+      "version": "0.1.0"
+    }
+  ]
+}

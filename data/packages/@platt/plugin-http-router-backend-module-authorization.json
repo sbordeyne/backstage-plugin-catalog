@@ -1,0 +1,57 @@
+{
+  "author": "",
+  "created": "2024-01-04T00:15:46.383Z",
+  "deprecated": "",
+  "description": "Authorization backend module for HTTP Router",
+  "homepage": "https://github.com/ap-communications/platt-backstage-plugin/tree/main/plugins/http-router-backend-module-authorization",
+  "keywords": [
+    "authorization",
+    "backend",
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "apc-kamezaki",
+    "takizawa"
+  ],
+  "name": "@platt/plugin-http-router-backend-module-authorization",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/ap-communications/platt-backstage-plugin/tree/HEAD/plugins/http-router-backend-module-authorization",
+  "role": "backend-plugin-module",
+  "scope": "@platt",
+  "updated": "2024-04-22T04:22:38.934Z",
+  "version": "2.5.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2024-04-22T04:22:38.934Z",
+      "version": "2.5.0"
+    },
+    {
+      "date": "2024-04-01T01:18:18.085Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2024-03-26T02:31:35.062Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2024-02-21T05:35:08.752Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2024-02-19T00:18:28.492Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2024-01-24T01:16:02.773Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2024-01-04T00:15:46.704Z",
+      "version": "2.0.0"
+    }
+  ]
+}

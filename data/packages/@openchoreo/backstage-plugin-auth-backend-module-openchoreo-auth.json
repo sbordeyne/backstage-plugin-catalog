@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2026-09-01T08:28:38.826Z",
+  "deprecated": "",
+  "description": "OpenChoreo authentication backend module for Backstage. Works with any OIDC-compliant IDP configured in OpenChoreo.",
+  "homepage": "https://github.com/openchoreo/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cncf-projects",
+    "kaviththiranga"
+  ],
+  "name": "@openchoreo/backstage-plugin-auth-backend-module-openchoreo-auth",
+  "plugin_id": "auth",
+  "readme": "",
+  "repository": "https://github.com/openchoreo/backstage-plugins/tree/HEAD/plugins/auth-backend-module-openchoreo-auth",
+  "role": "backend-plugin-module",
+  "scope": "@openchoreo",
+  "updated": "2026-10-29T06:15:17.542Z",
+  "version": "1.3.3",
+  "version_count": 22,
+  "versions": [
+    {
+      "date": "2026-11-07T11:45:26.152Z",
+      "version": "1.4.0-m.2"
+    },
+    {
+      "date": "2026-10-29T11:44:06.030Z",
+      "version": "1.4.0-m.1"
+    },
+    {
+      "date": "2026-10-29T06:15:17.542Z",
+      "version": "1.3.3"
+    },
+    {
+      "date": "2026-10-22T14:09:53.385Z",
+      "version": "1.3.2"
+    },
+    {
+      "date": "2026-10-01T23:11:13.898Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2026-09-19T16:50:18.994Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-09-18T19:44:55.274Z",
+      "version": "1.3.0-rc.2"
+    },
+    {
+      "date": "2026-09-18T03:38:25.877Z",
+      "version": "1.3.0-rc.1"
+    },
+    {
+      "date": "2026-09-09T06:54:45.625Z",
+      "version": "1.2.5"
+    },
+    {
+      "date": "2026-09-01T08:29:39.625Z",
+      "version": "1.2.4"
+    },
+    {
+      "date": "2026-09-01T08:29:35.861Z",
+      "version": "1.2.3"
+    },
+    {
+      "date": "2026-09-01T08:29:31.806Z",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2026-09-01T08:29:26.127Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-09-01T08:29:21.180Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-09-01T08:29:14.600Z",
+      "version": "1.2.0-rc.2"
+    }
+  ]
+}

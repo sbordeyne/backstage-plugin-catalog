@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2023-08-23T02:24:36.418Z",
+  "deprecated": "",
+  "description": "The gitlab-provider backend module for the auth plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-auth-backend-module-gitlab-provider",
+  "plugin_id": "auth",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/auth-backend-module-gitlab-provider",
+  "role": "backend-plugin-module",
+  "scope": "@backstage",
+  "updated": "2026-10-20T16:51:11.866Z",
+  "version": "0.4.8",
+  "version_count": 1015,
+  "versions": [
+    {
+      "date": "2026-11-11T02:54:57.571Z",
+      "version": "0.4.9-next.1"
+    },
+    {
+      "date": "2026-11-07T02:50:15.050Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T02:58:40.754Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T02:48:19.684Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-10-31T02:44:32.746Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:43:42.592Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T02:52:21.814Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T02:51:11.877Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:26:01.845Z",
+      "version": "0.4.9-next.0"
+    },
+    {
+      "date": "2026-10-20T16:51:11.866Z",
+      "version": "0.4.8"
+    },
+    {
+      "date": "2026-09-29T12:25:39.375Z",
+      "version": "0.4.8-next.1"
+    },
+    {
+      "date": "2026-09-28T03:08:51.210Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:02:21.566Z",
+      "version": "0.0.0-nightly-20260927023342"
+    },
+    {
+      "date": "2026-09-26T02:57:16.334Z",
+      "version": "0.0.0-nightly-20260926022852"
+    },
+    {
+      "date": "2026-09-25T02:58:58.642Z",
+      "version": "0.0.0-nightly-20260925022940"
+    }
+  ]
+}

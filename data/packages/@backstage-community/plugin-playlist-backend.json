@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:17:46.392Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-playlist-backend",
+  "plugin_id": "playlist",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/playlist/plugins/playlist-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-27T16:51:03.330Z",
+  "version": "0.26.0",
+  "version_count": 33,
+  "versions": [
+    {
+      "date": "2026-10-27T16:51:03.330Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-09-22T16:14:33.339Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-08-26T13:51:24.541Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-07-20T18:32:48.487Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-06-23T16:27:35.956Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-06-01T19:38:16.193Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-04-24T20:53:55.517Z",
+      "version": "0.20.1"
+    },
+    {
+      "date": "2026-04-21T14:42:59.155Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-03-25T13:09:59.307Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-02-24T14:38:12.819Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-01-28T14:03:56.615Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2025-12-23T14:49:27.707Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-12-04T16:10:17.007Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-11-10T15:54:17.148Z",
+      "version": "0.14.1"
+    },
+    {
+      "date": "2025-10-15T18:20:46.343Z",
+      "version": "0.14.0"
+    }
+  ]
+}

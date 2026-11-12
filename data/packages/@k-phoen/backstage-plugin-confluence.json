@@ -1,0 +1,79 @@
+{
+  "author": "",
+  "created": "2022-03-06T01:09:57.901Z",
+  "deprecated": "",
+  "description": "This plugin integrates Confluence documents to Backstage' search engine.",
+  "homepage": "https://github.com/K-Phoen/backstage-plugin-confluence",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "kphoen"
+  ],
+  "name": "@k-phoen/backstage-plugin-confluence",
+  "plugin_id": "",
+  "readme": "# Confluence search plugin [![](https://img.shields.io/npm/v/@k-phoen/backstage-plugin-confluence.svg)](https://www.npmjs.com/package/@k-phoen/backstage-plugin-confluence)\n\nThis plugin integrates Confluence documents to Backstage' search engine.\n\n**Note:** it is used in combination with its [backend counter-part](../search-confluence-backend/).\n\n## How does it look?\n\nSearch results:\n\n![Search results](./docs/confluence_search_result.png)\n\n## Installation\n\nAdd the plugin to your frontend app:\n\n```bash\ncd packages/app && yarn add @k-phoen/backstage-plugin-confluence\n```\n\nNicely display Confluence search results:\n\n```typescript\n// packages/app/src/components/search/SearchPage.tsx\n\nimport { DocsIcon } from '@backstage/core-components';\nimport { ConfluenceResultListItem } from '@k-phoen/backstage-plugin-confluence';\n\n// ...\n<SearchType.Accordion\n  name=\"Result Type\"\n  types={[\n    // ...\n    {\n      value: 'confluence',\n      name: 'Confluence',\n      icon: <DocsIcon />,\n    },\n  ]}\n/>\n\n<SearchResult>\n  // ...\n  <ConfluenceResultListItem />\n</SearchResult>\n```\n\n## License\n\nThis library is under the [MIT](../../LICENSE) license.\n",
+  "repository": "https://github.com/K-Phoen/backstage-plugin-confluence/tree/HEAD/plugins/search-confluence",
+  "role": "frontend-plugin",
+  "scope": "@k-phoen",
+  "updated": "2023-03-11T15:30:35.184Z",
+  "version": "0.0.15",
+  "version_count": 14,
+  "versions": [
+    {
+      "date": "2023-03-11T15:30:35.184Z",
+      "version": "0.0.15"
+    },
+    {
+      "date": "2023-03-11T14:46:09.402Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2023-02-20T00:10:50.317Z",
+      "version": "0.0.13"
+    },
+    {
+      "date": "2023-01-16T14:45:18.215Z",
+      "version": "0.0.12"
+    },
+    {
+      "date": "2022-11-15T23:57:03.567Z",
+      "version": "0.0.11"
+    },
+    {
+      "date": "2022-09-25T16:53:29.500Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2022-08-31T00:00:18.609Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2022-07-04T14:45:53.011Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2022-06-25T21:41:44.865Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2022-05-20T23:43:20.553Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2022-04-30T14:19:04.607Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2022-04-07T23:11:55.349Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2022-03-23T23:04:21.877Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2022-03-06T01:09:58.130Z",
+      "version": "0.0.1"
+    }
+  ]
+}

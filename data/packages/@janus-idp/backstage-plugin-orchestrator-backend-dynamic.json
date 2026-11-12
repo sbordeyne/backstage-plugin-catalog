@@ -1,0 +1,97 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-01-17T16:16:03.443Z",
+  "deprecated": "",
+  "description": "Welcome to the backend package for the Orchestrator plugin!",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "orchestrator",
+    "plugin",
+    "support:tech-preview",
+    "workflows"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-orchestrator-backend-dynamic",
+  "plugin_id": "orchestrator",
+  "readme": "# Orchestrator Backend Plugin for Backstage\n\nWelcome to the backend package for the Orchestrator plugin!\n\nFor more information about the Orchestrator plugin, see the [Orchestrator Plugin documentation](https://github.com/janus-idp/backstage-plugins/tree/main/plugins/orchestrator) on GitHub.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/orchestrator-backend",
+  "role": "backend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-10-15T07:05:57.345Z",
+  "version": "2.3.0",
+  "version_count": 96,
+  "versions": [
+    {
+      "date": "2024-10-15T07:05:57.345Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2024-10-11T15:51:29.842Z",
+      "version": "2.2.2"
+    },
+    {
+      "date": "2024-10-10T15:36:09.446Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2024-10-10T14:09:44.340Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2024-10-09T20:43:57.188Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2024-10-08T18:34:15.508Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-10-06T11:53:47.428Z",
+      "version": "1.23.0"
+    },
+    {
+      "date": "2024-10-05T07:51:43.941Z",
+      "version": "1.22.16"
+    },
+    {
+      "date": "2024-10-01T18:33:06.198Z",
+      "version": "1.22.15"
+    },
+    {
+      "date": "2024-09-30T13:06:03.104Z",
+      "version": "1.22.14"
+    },
+    {
+      "date": "2024-09-29T10:56:54.997Z",
+      "version": "1.22.13"
+    },
+    {
+      "date": "2024-09-26T16:28:12.403Z",
+      "version": "1.22.12"
+    },
+    {
+      "date": "2024-09-25T12:54:19.732Z",
+      "version": "1.22.11"
+    },
+    {
+      "date": "2024-09-24T13:36:28.222Z",
+      "version": "1.22.10"
+    },
+    {
+      "date": "2024-09-23T19:06:29.203Z",
+      "version": "1.22.9"
+    }
+  ]
+}

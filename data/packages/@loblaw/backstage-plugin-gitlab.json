@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2021-08-16T20:08:57.039Z",
+  "deprecated": "",
+  "description": "[![Version](https://img.shields.io/npm/v/@loblaw/backstage-plugin-gitlab.svg)](https://www.npmjs.com/package/@loblaw/backstage-plugin-gitlab) ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg) [![Downloads](https://img",
+  "homepage": "https://github.com/loblaw-sre/backstage-plugin-gitlab#readme",
+  "keywords": [
+    "backstage",
+    "ci/cd",
+    "gitlab",
+    "loblaw"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "satrox28"
+  ],
+  "name": "@loblaw/backstage-plugin-gitlab",
+  "plugin_id": "",
+  "readme": "# Backstage GitLab Plugin\n\n[![Version](https://img.shields.io/npm/v/@loblaw/backstage-plugin-gitlab.svg)](https://www.npmjs.com/package/@loblaw/backstage-plugin-gitlab)\n![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)\n[![Downloads](https://img.shields.io/npm/dm/@loblaw/backstage-plugin-gitlab.svg)](https://www.npmjs.com/package/@loblaw/backstage-plugin-gitlab)\n[![License](https://img.shields.io/badge/license-Apache_License_2.0-blue.svg)](https://opensource.org/licenses/Apache_License_2.0)\n![Stars Badge](https://img.shields.io/github/stars/loblaw-sre/backstage-plugin-gitlab)\n[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/loblaw-sre/backstage-plugin-gitlab)\n\n![Build Status](https://github.com/loblaw-sre/backstage-plugin-gitlab/workflows/Node.js%20Package/badge.svg)\n![](https://img.shields.io/github/commit-activity/m/loblaw-sre/backstage-plugin-gitlab)\n![](https://img.shields.io/github/contributors/loblaw-sre/backstage-plugin-gitlab)\n![](https://img.shields.io/github/last-commit/loblaw-sre/backstage-plugin-gitlab)\n\n![Language](https://img.shields.io/github/languages/top/loblaw-sre/backstage-plugin-gitlab?color=green&logo=typescript&logoColor=blue)\n![](https://img.shields.io/github/issues/loblaw-sre/backstage-plugin-gitlab)\n![](https://img.shields.io/github/issues-closed/loblaw-sre/backstage-plugin-gitlab)\n[![Repo Size](https://img.shields.io/github/repo-size/loblaw-sre/backstage-plugin-gitlab)](https://github.com/loblaw-sre/backstage-plugin-gitlab)\n[![](https://img.shields.io/github/languages/code-size/loblaw-sre/backstage-plugin-gitlab)](https://github.com/loblaw-sre/backstage-plugin-gitlab)\n[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Floblaw-sre%2Fbackstage-plugin-gitlab&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visitors&edge_flat=false)](https://hits.seeyoufarm.com)\n\n\nWebsite: [https://gitlab.com/](https://gitlab.com/)\n\n<img src=\"https://raw.githubusercontent.com/loblaw-sre/backstage-plugin-gitlab/main/src/assets/Backstage_Gitlab_Pipeline_Information.png\"  alt=\"Contributors Languages Pipeline Status\"/>\n<img src=\"https://raw.githubusercontent.com/loblaw-sre/backstage-plugin-gitlab/main/src/assets/Backstage_Gitlab_Merge_Request_information.png\"  alt=\"Merge Request Information\"/>\n<img src=\"https://raw.githubusercontent.com/loblaw-sre/backstage-plugin-gitlab/main/src/assets/Backstage_Gitlab_Issue_Information.png\"  alt=\"Issue Information\"/>\n\n## Setup\n\n1. If you have a standalone app (you didn't clone this repo), then do\n\n```bash\n# From your Backstage root directory\ncd packages/app\nyarn add @loblaw/backstage-plugin-gitlab\n```\n\n\n2. Add a new GitLab tab to the entity page.\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport { isGitlabAvailable, EntityGitlabContent } from '@loblaw/backstage-plugin-gitlab';\n\n// Farther down at the serviceEntityPage declaration\nconst serviceEntityPage = (\n  <EntityLayout>\n    {/* Place the following section where you want the tab to appear */}\n    <EntityLayout.Route if={isGitlabAvailable} path=\"/gitlab\" title=\"Gitlab\">\n       <EntityGitlabContent />\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n3. Add the GitLab cards to the Overview tab on the entity page(Optional).\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  isGitlabAvailable,\n  EntityGitlabContent,\n  EntityGitlabLanguageCard,\n  EntityGitlabContributorsCard,\n  EntityGitlabMergeRequestsTable,\n  EntityGitlabMergeRequestStatsCard,\n  EntityGitlabPipelinesTable\n} from '@loblaw/backstage-plugin-gitlab';\n\n//Farther down at the overviewContent declaration\n//You can add only selected widgets or all of them.\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    <EntitySwitch>\n      <EntitySwitch.Case if={isGitlabAvailable}>\n        <Grid item md={6}>\n          <EntityGitlabContributorsCard />\n          <EntityGitlabLanguageCard />\n          <EntityGitlabMergeRequestStatsCard />\n          <EntityGitlabPipelinesTable />\n          <EntityGitlabMergeRequestsTable />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n  </Grid>\n);\n```\n\n4. Add integration:\nIn `app-config.yaml` add the integration for gitlab:\n```\nintegrations:\n  gitlab:\n    - host: gitlab.com\n      token: ${GITLAB_TOKEN}\n```\n\n5. Add proxy config:\n\n```\n  '/gitlabci':\n    target: '${GITLAB_URL}/api/v4'\n    allowedMethods: ['GET']\n    headers:\n      PRIVATE-TOKEN: '${GITLAB_TOKEN}'\n```\n\n* Default GitLab URL: `https://gitlab.com`\n* GitLab Token should be with of scope `read_api` and can be generated from this [URL](https://gitlab.com/-/profile/personal_access_tokens)\n\n5. Add a `gitlab.com/project-id` annotation to your respective `catalog-info.yaml` files, on the [format](https://backstage.io/docs/architecture-decisions/adrs-adr002#format)\n\n```yaml\n# Example catalog-info.yaml entity definition file\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n      gitlab.com/project-id: 'project-id' #1234. This must be in quotes and can be found under Settings --> General\n      or\n      gitlab.com/project-slug: 'project-slug' # group_name/project_name\nspec:\n  type: service\n  # ...\n```\n\n**Note:** `spec.type` can take values in ['website','library','service'] but to render GitLab Entity, Catalog must be of type `service`\n\n## Features\n\n- List top 20 builds for a project\n- List top 20 Merge Requests for a project\n- List top 20 Issues for a project\n- View Contributors for a project\n- View Languages used for a project\n- View Pipeline status for a project\n- Works for both project and personal tokens\n- Pagination for builds\n- Pagination for Merge Requests\n- Merge Requests Statistics\n",
+  "repository": "https://github.com/loblaw-sre/backstage-plugin-gitlab",
+  "role": "frontend-plugin",
+  "scope": "@loblaw",
+  "updated": "2022-08-02T15:47:48.439Z",
+  "version": "0.1.24",
+  "version_count": 20,
+  "versions": [
+    {
+      "date": "2022-08-02T15:47:48.439Z",
+      "version": "0.1.24"
+    },
+    {
+      "date": "2022-03-18T19:05:53.101Z",
+      "version": "0.1.23"
+    },
+    {
+      "date": "2022-03-07T20:19:33.021Z",
+      "version": "0.1.22"
+    },
+    {
+      "date": "2022-02-11T22:21:37.866Z",
+      "version": "0.1.21"
+    },
+    {
+      "date": "2022-02-04T22:28:03.820Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2022-01-28T19:33:37.675Z",
+      "version": "0.1.18"
+    },
+    {
+      "date": "2022-01-21T21:35:48.112Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2021-10-29T17:01:47.110Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2021-10-22T19:31:39.755Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2021-10-01T16:34:52.931Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2021-09-23T21:16:46.279Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2021-09-10T18:09:22.818Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2021-09-02T17:59:00.298Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2021-08-26T15:59:31.622Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2021-08-20T18:10:45.906Z",
+      "version": "0.1.9"
+    }
+  ]
+}

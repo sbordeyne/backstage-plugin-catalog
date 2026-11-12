@@ -1,0 +1,34 @@
+{
+  "author": "",
+  "created": "2026-05-18T22:39:51.232Z",
+  "deprecated": "",
+  "description": "A dynamic React extension for the Backstage Scaffolder allowing users to inject environment-specific variables and secrets.",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "environment",
+    "frontend",
+    "matrix",
+    "plugin",
+    "scaffolder"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "leooelx"
+  ],
+  "name": "@leooelx/plugin-scaffolder-environment-matrix-field",
+  "plugin_id": "scaffolder",
+  "readme": "# @leooelx/plugin-scaffolder-environment-matrix-field\n\nA dynamic Material UI React extension for the Backstage Scaffolder allowing users to inject environment-specific variables and secrets into Software Templates.\n\n## Why this plugin?\nThe default Scaffolder UI lacks a robust structure for prompting users to input variables (like Database Connection Strings, Vault Secrets, or API Keys) that change depending on the CI/CD pipeline environment (e.g., DEV, HML, PRD).\n\nThis component solves this by providing a clean, dynamic matrix where developers can overwrite default values per environment, directly in the Backstage UI during template instantiation.\n\n## Installation\n\n```bash\nyarn workspace app add @leooelx/plugin-scaffolder-environment-matrix-field\n```\n\n## Configuration\n\nRegister the custom field extension in your `packages/app/src/App.tsx`:\n\n```tsx\nimport { environmentMatrixFieldExtension } from '@leooelx/plugin-scaffolder-environment-matrix-field';\n\nconst app = createApp({\n  // ...\n  components: {\n    // ...\n  },\n  scaffolder: {\n    customFieldExtensions: [environmentMatrixFieldExtension],\n  },\n});\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@leooelx",
+  "updated": "2026-05-18T22:39:51.529Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-05-18T22:39:51.529Z",
+      "version": "1.0.0"
+    }
+  ]
+}

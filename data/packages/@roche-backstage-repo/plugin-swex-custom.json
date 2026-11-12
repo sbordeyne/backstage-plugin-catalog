@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2024-01-19T15:53:40.460Z",
+  "deprecated": "",
+  "description": "To run an end-to-end **Software Excellence Portal** we need -\r 1. Backstage running instance\r 2. Portal Frontend\r 3. [Portal Backend](https://code.roche.com/software-excellence-portal/portal-backend/-/blob/main/README.md)",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sunilvermanpm"
+  ],
+  "name": "@roche-backstage-repo/plugin-swex-custom",
+  "plugin_id": "",
+  "readme": "# Portal Frontend\r\n\r\nTo run an end-to-end **Software Excellence Portal** we need -\r\n1. Backstage running instance\r\n2. Portal Frontend\r\n3. [Portal Backend](https://code.roche.com/software-excellence-portal/portal-backend/-/blob/main/README.md)\r\n\r\n**Backstage running instance**\r\n1. Install backstage by following [this link](https://backstage.io/docs/getting-started/).\r\n\r\n**Setup Portal Frontend**\r\n\r\n1. Add the plugin to your frontend app:\r\n\r\n>     cd packages/app && yarn add @roche-backstage-repo/plugin-swex-custom\r\n\r\n\r\n2. Expose the main page in **packages/app/src/App.tsx**\r\n\r\n>       import { SwexCustomPage } from '@roche-backstage-repo/plugin-swex-custom';\r\n\r\n>       <Route path=\"/swex\" element={<SwexCustomPage/>} />\r\n    \r\n\r\n3. Add the navigation in the frontend **packages/app/src/components/Root/Root.tsx**:\r\n\r\n>       <SidebarItem icon={ExtensionIcon} to=\"swex-custom\" text=\"SW Excellence\" />\r\n\r\n4. Start your frontend app, will be accessible to http://localhost:3000\r\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@roche-backstage-repo",
+  "updated": "2024-02-14T18:07:45.649Z",
+  "version": "0.1.6",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-02-14T18:07:45.649Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2024-02-14T15:48:00.975Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-02-14T15:44:05.542Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-01-19T15:55:55.770Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-01-19T15:53:40.749Z",
+      "version": "0.1.2"
+    }
+  ]
+}

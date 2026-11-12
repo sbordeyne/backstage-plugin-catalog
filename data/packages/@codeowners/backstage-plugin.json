@@ -1,0 +1,53 @@
+{
+  "author": "",
+  "created": "2023-03-29T00:07:17.960Z",
+  "deprecated": "",
+  "description": "Welcome to the codeowners plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "chris-at-codex",
+    "derrick_codex",
+    "karlclement"
+  ],
+  "name": "@codeowners/backstage-plugin",
+  "plugin_id": "",
+  "readme": "# CODEOWNERS.com Backstage Plugin\n\nWelcome to the codeowners plugin!\n\n## Backstage Configuration\nYou'll need to configure a proxy to CODEOWNERS.com and place the CODEOWNERS.com cards in your catalog entity pages.\n\n### Create a CODEOWNERS.com Personal Access Token\n1. Login to your [CODEOWNERS.com account](https://app.codeowners.com/signin)\n2. Create a Personal Access Token (PAT)\n3. Set your PAT as an environment variable, `CODEOWNERS_API_KEY` in the environment where you run Backstage.\n\n### Configure API Proxy\nConfigure Backstage so that the Codeowners plugin can communicate to the codeowners.com API:\n\n```yaml\n# in app-config.yaml\nproxy:\n  '/codeowners/api':\n    target: https://api.codeowners.com/api/v1\n    headers:\n      Authorization: Bearer ${CODEOWNERS_API_KEY}\n```\n\nReminder: Be sure to create `CODEOWNERS_API_KEY` environment variable where you run your Backstage server.\n\n### Add the CODEOWNERS.com Settings Page\n1. Add a route to the Codeowners settings page:\n```tsx\n// packages/app/src/App.tsx\nimport { CodeownersSettingsPage } from \"@codeowners/backstage-plugin\";\n\nconst routes = (\n  <FlatRoutes>\n    {/* snip... */}\n    <Route path=\"/codeowners\" element={<CodeownersSettingsPage />} />\n  </FlatRoutes>\n);\n```\n\n2. Create a link in the Backstage sidebar to the Codeowners settings page\n```tsx\n// packages/app/src/components/Root/Root.tsx\nimport { CodeownersIcon } from \"@codeowners/backstage-plugin\";\n\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n      {/* snip...  */}\n      <SidebarItem icon={CodeownersIcon} to=\"codeowners\" text=\"CODEOWNERS.com\" />\n    </Sidebar>\n  </SidebarPage>\n);\n```\n\n### Add the CODEOWNERS.com Backstage Plugin Cards\nAdd the CODEOWNERS.com module to your Backstage instance:\n\n```bash\nyarn add --cwd packages/app @codeowners/backstage-plugin\n```\nImport the cards you want to use in the Backstage entity overview page:\n```tsx\n // packages/app/src/components/catalog/EntityPage.tsx\n\n // Add the following in the imports\n import { ServiceCodeownersCard, RecentChangesCard } from \"@codeowners/backstage-plugin\";\n```\n\nIn the same file, look for the `overviewContent` object and add the cards you want to use in its `Grid`:\n\n```tsx\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    {entityWarningContent}\n    { /*  snip other cards... */ }\n    <Grid item xs={4}>\n      <ServiceCodeownersCard />\n    </Grid>\n    <Grid item xs={8}>\n      <RecentChangesCard />\n    </Grid>\n  </Grid>\n);\n```",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@codeowners",
+  "updated": "2023-06-08T15:32:21.075Z",
+  "version": "0.2.1",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2023-06-08T15:32:21.075Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-06-08T15:18:09.720Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2023-04-25T15:44:54.759Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-04-05T18:31:56.519Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-04-04T22:23:09.861Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-03-29T21:34:00.970Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-03-29T00:07:18.354Z",
+      "version": "0.1.0"
+    }
+  ]
+}

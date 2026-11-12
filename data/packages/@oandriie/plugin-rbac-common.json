@@ -1,0 +1,34 @@
+{
+  "author": "Red Hat",
+  "created": "2024-12-11T14:53:34.385Z",
+  "deprecated": "",
+  "description": "Common functionalities for the rbac-common plugin",
+  "homepage": "https://github.com/AndrienkoAleksandr/community-plugins#readme",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "oandriie"
+  ],
+  "name": "@oandriie/plugin-rbac-common",
+  "plugin_id": "rbac",
+  "readme": "# @backstage-community/plugin-rbac-common\n\nThe RBAC plugin provides your Backstage instance with role based access control and policy management.\n\nFor more information about RBAC plugin, see the [RBAC plugin documentation](https://github.com/backstage/community-plugins/tree/main/workspaces/rbac/plugins/rbac-backend) on GitHub.\n",
+  "repository": "https://github.com/AndrienkoAleksandr/community-plugins/tree/HEAD/workspaces/rbac/plugins/rbac-common",
+  "role": "common-library",
+  "scope": "@oandriie",
+  "updated": "2026-02-16T09:23:54.776Z",
+  "version": "1.24.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-02-16T09:23:54.776Z",
+      "version": "1.24.0"
+    },
+    {
+      "date": "2024-12-11T14:53:34.614Z",
+      "version": "1.12.3"
+    }
+  ]
+}

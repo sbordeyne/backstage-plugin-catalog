@@ -1,0 +1,92 @@
+{
+  "author": "",
+  "created": "2020-08-09T10:35:06.698Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://roadie.io/backstage/plugins/travis-ci/",
+  "keywords": [
+    "backstage",
+    "ci-cd",
+    "plugin",
+    "travis",
+    "travis-ci"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brianfletcher",
+    "roadie-bot",
+    "roadiehq-david",
+    "xantier"
+  ],
+  "name": "@roadiehq/backstage-plugin-travis-ci",
+  "plugin_id": "backstage-plugin-travis-ci",
+  "readme": "",
+  "repository": "https://github.com/RoadieHQ/roadie-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-travis-ci",
+  "role": "frontend-plugin",
+  "scope": "@roadiehq",
+  "updated": "2026-10-02T15:59:13.894Z",
+  "version": "2.4.1",
+  "version_count": 91,
+  "versions": [
+    {
+      "date": "2026-10-02T15:59:13.894Z",
+      "version": "2.4.1"
+    },
+    {
+      "date": "2026-09-29T13:26:52.047Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2025-10-31T09:33:35.077Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2025-07-23T10:21:12.394Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2025-03-07T13:54:04.679Z",
+      "version": "2.1.28"
+    },
+    {
+      "date": "2024-12-23T08:46:37.036Z",
+      "version": "2.1.27"
+    },
+    {
+      "date": "2024-10-03T08:29:20.291Z",
+      "version": "2.1.26"
+    },
+    {
+      "date": "2024-09-26T11:00:28.690Z",
+      "version": "2.1.25"
+    },
+    {
+      "date": "2024-08-28T09:41:32.184Z",
+      "version": "2.1.24"
+    },
+    {
+      "date": "2024-05-08T12:02:24.386Z",
+      "version": "2.1.23"
+    },
+    {
+      "date": "2024-04-03T15:39:49.703Z",
+      "version": "2.1.22"
+    },
+    {
+      "date": "2024-02-29T12:59:08.935Z",
+      "version": "2.1.21"
+    },
+    {
+      "date": "2024-02-27T12:27:17.544Z",
+      "version": "2.1.20"
+    },
+    {
+      "date": "2023-12-01T07:43:37.067Z",
+      "version": "2.1.17"
+    },
+    {
+      "date": "2023-11-10T15:43:28.842Z",
+      "version": "2.1.16"
+    }
+  ]
+}

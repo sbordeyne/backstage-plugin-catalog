@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2024-01-18T02:27:25.637Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-signals-backend",
+  "plugin_id": "signals",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/signals-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage",
+  "updated": "2026-10-20T17:08:12.958Z",
+  "version": "0.3.20",
+  "version_count": 845,
+  "versions": [
+    {
+      "date": "2026-11-11T03:13:31.279Z",
+      "version": "0.3.21-next.2"
+    },
+    {
+      "date": "2026-11-07T03:07:46.970Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T03:11:28.008Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T03:05:53.400Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-11-03T18:59:18.678Z",
+      "version": "0.3.21-next.1"
+    },
+    {
+      "date": "2026-10-31T02:58:34.207Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:56:16.929Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T03:11:18.958Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T03:09:12.811Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:44:04.109Z",
+      "version": "0.3.21-next.0"
+    },
+    {
+      "date": "2026-10-20T17:08:12.958Z",
+      "version": "0.3.20"
+    },
+    {
+      "date": "2026-10-06T19:40:36.627Z",
+      "version": "0.3.20-next.2"
+    },
+    {
+      "date": "2026-09-29T12:39:41.482Z",
+      "version": "0.3.20-next.1"
+    },
+    {
+      "date": "2026-09-28T03:26:23.582Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:19:39.003Z",
+      "version": "0.0.0-nightly-20260927023342"
+    }
+  ]
+}

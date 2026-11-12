@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-11-18T19:48:15.512Z",
+  "deprecated": "",
+  "description": "Este plugin para Backstage fornece funcionalidades para gerenciar projetos do comitê de arquitetura (ARB).",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg"
+  ],
+  "name": "@veecode/plugin-arb-dynamic-dynamic",
+  "plugin_id": "",
+  "readme": "# ARB - Comitê de Arquitetura Plugin\r\n\r\nEste plugin para Backstage fornece funcionalidades para gerenciar projetos do comitê de arquitetura (ARB).\r\n\r\n## Funcionalidades\r\n\r\n- Listar todos os projetos apresentados e pendentes de apresentação em comitê de arquitetura (ARB)\r\n- Criar novos projetos para apresentação\r\n- Atualizar os projetos existentes\r\n- Deletar os projetos\r\n\r\n## Estrutura de Dados\r\n\r\nCada projeto ARB possui os seguintes campos:\r\n\r\n- Nome do projeto\r\n- Nome do responsável\r\n- Status do projeto (Aprovado, Reprovado, Pendente, Aprovado c/ ressalvas)\r\n- Motivo\r\n- Observações\r\n- Data de apresentação\r\n- Link da documentação\r\n- Link da gravação do ARB\r\n- Número do chamado\r\n- Aprovações - Arquitetura, Infra, Segurança, FinOps, Identidades, Monitoria\r\n\r\n## Armazenamento\r\n\r\nTodos os projetos são armazenados como arquivos JSON em um repositório no Azure Repos, com números sequenciais (1.json, 2.json, etc).\r\n\r\n## Instalação\r\n\r\n### Pré-requisitos\r\n\r\n- Um Backstage instalado via Helm Chart em um cluster Kubernetes\r\n- Acesso ao repositório Azure Repos para armazenamento dos projetos\r\n\r\n### Configuração do plugin dinâmico\r\n\r\n1. Construa o plugin:\r\n\r\n```bash\r\ncd backstage-plugin-arb\r\nyarn install\r\nyarn build\r\n```\r\n\r\n2. Copie o pacote construído para o volume compartilhado do Backstage no cluster Kubernetes.\r\n\r\n3. Configure o Backstage para carregar o plugin dinamicamente, adicionando ao `app-config.yaml`:\r\n\r\n```yaml\r\nbackend:\r\n  dynamicPlugins:\r\n    frontend:\r\n      - package: '@internal/plugin-arb'\r\n        path: [path-to-dynamic-plugins]/plugin-arb\r\n```\r\n\r\n4. Configure as credenciais de acesso ao Azure Repos:\r\n\r\n```yaml\r\narb:\r\n  azureRepos:\r\n    baseUrl: 'https://dev.azure.com'\r\n    token: ${ARB_AZURE_TOKEN}\r\n    organization: 'sua-organizacao'\r\n    project: 'seu-projeto'\r\n    repository: 'seu-repositorio'\r\n```\r\n\r\n5. Configure o item de menu para aparecer na sidebar (sem precisar modificar o código fonte do Backstage):\r\n\r\n```yaml\r\napp:\r\n  sidebar:\r\n    items:\r\n      - id: arb-navigation-item\r\n        title: ARB\r\n        to: /arb\r\n        icon: list-alt\r\n```\r\n\r\n6. Reinicie o Backstage para carregar o plugin.\r\n\r\n## Desenvolvimento\r\n\r\nPara executar o plugin em modo de desenvolvimento:\r\n\r\n```bash\r\ncd backstage-plugin-arb\r\nyarn start\r\n```\r\n\r\n## API\r\n\r\nO plugin fornece uma API REST para interagir com os projetos ARB:\r\n\r\n- `GET /api/arb/projects` - Listar todos os projetos\r\n- `GET /api/arb/projects/:id` - Buscar um projeto específico\r\n- `POST /api/arb/projects` - Criar um novo projeto\r\n- `PUT /api/arb/projects/:id` - Atualizar um projeto\r\n- `DELETE /api/arb/projects/:id` - Deletar um projeto\r\n\r\n## Licença\r\n\r\nApache-2.0\r\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode",
+  "updated": "2025-11-18T19:48:15.820Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-11-18T19:48:15.820Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "author": "",
+  "created": "2022-04-17T17:39:41.995Z",
+  "deprecated": "",
+  "description": "Welcome to the cloud-carbon-footprint plugin!",
+  "homepage": "https://github.com/cloud-carbon-footprint/ccf-backstage-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "austin-garrard"
+  ],
+  "name": "@austin-garrard/backstage-plugin-frontend",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/cloud-carbon-footprint/ccf-backstage-plugin/tree/HEAD/plugins/frontend",
+  "role": "frontend-plugin",
+  "scope": "@austin-garrard",
+  "updated": "2022-04-17T17:39:42.214Z",
+  "version": "0.0.1",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2022-04-19T04:09:06.597Z",
+      "version": "0.0.1-canary.25"
+    },
+    {
+      "date": "2022-04-19T03:59:37.579Z",
+      "version": "0.0.1-canary.24"
+    },
+    {
+      "date": "2022-04-19T03:50:40.672Z",
+      "version": "0.0.1-canary.23"
+    },
+    {
+      "date": "2022-04-19T03:07:20.528Z",
+      "version": "0.0.1-alpha.22"
+    },
+    {
+      "date": "2022-04-17T18:53:47.619Z",
+      "version": "0.0.1-alpha.20"
+    },
+    {
+      "date": "2022-04-17T18:14:20.742Z",
+      "version": "0.0.1-alpha.19"
+    },
+    {
+      "date": "2022-04-17T18:01:18.200Z",
+      "version": "0.0.1-alpha.18"
+    },
+    {
+      "date": "2022-04-17T17:39:42.214Z",
+      "version": "0.0.1"
+    }
+  ]
+}

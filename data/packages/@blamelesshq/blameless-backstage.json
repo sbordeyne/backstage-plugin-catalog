@@ -1,0 +1,87 @@
+{
+  "author": "Blameless",
+  "created": "2024-03-05T16:59:02.608Z",
+  "deprecated": "",
+  "description": "Welcome to the blameless backstage backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "ISC",
+  "maintainers": [
+    "blamelessbot",
+    "cgrant-fh",
+    "dillonad",
+    "lima-blameless",
+    "pablo-blameless"
+  ],
+  "name": "@blamelesshq/blameless-backstage",
+  "plugin_id": "",
+  "readme": "# blameless Plugin\n\nWelcome to the blameless backstage backend plugin!\n\n\n## Overview\n\n**Backstage Backend Sync Plugin** is a backend plugin designed specifically for Blameless clients who need to synchronize their entities effortlessly. \nWith this plugin, clients can seamlessly sync their entities with blameless on a periodic interval, ensuring consistency and accuracy.\n\n\n## Installation\n\nTo install the Blameless backstage plugin.\nrun the following command in the root of your backstage app\nYou can install MyNpmPackage via yarn:\n\n```bash\n  yarn --cwd packages/backend add @blamelesshq/blameless-backstage app\n```\n \n## Requirments\n\nTo utilize the Blameless plugin, please ensure that the following config are added to you config yaml file:\n\n\n```yaml\nblameless:\n  authKey: your blameless-key # xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n  baseUrl: your blameless base url # https://example.blameless.com\n  interval: 30 # in minutes\n  kinds:\n    - Component\n```\n\n## Usage\n\nTo use the plugin add the following code to your \n``` packages/backend/src/index.ts ```\n\n#### For the new Backend system\n  ```Javascript\n  // packages/backend/src/index.ts\n\n  import { createBackend } from '@backstage/backend-defaults';\n\n  const backend = createBackend();\n  backend.add(import('@backstage/plugin-app-backend/alpha'));\n  backend.add(import('@backstage/plugin-catalog-backend/alpha'));\n  backend.add(import('@backstage/plugin-scaffolder-backend/alpha'));\n  backend.add(\n    import('@backstage/plugin-catalog-backend-module-scaffolder-entity-model'),\n  );\n  ... \n  backend.add(import('@blamelesshq/blameless-backstage')); //<<-- Add the blameless plugin \n  ....\n\n  ```\n\n\n#### For the old Backend system\n\n  Create new file under the plugins call it blameless\n  ```Javascript\n  // packages/backend/src/plugins/blameless.ts\n  import {createRouter} from '@blamelesshq/blameless-backstage';\n  import { Router } from 'express';\n  import { PluginEnvironment } from '../types';\n\n  export default async function createPlugin(\n    env: PluginEnvironment,\n  ): Promise<Router> {\n    // Here is where you will add all of the required initialization code that\n    // your backend plugin needs to be able to start!\n\n    // The env contains a lot of goodies, but our router currently only\n    // needs a logger\n    return await createRouter({\n      logger: env.logger,\n    });\n  }\n  ```\n  Add the following the index file\n  ```Javascript\n  // packages/backend/src/index.ts\n  import blameless from './plugins/blameless';\n\n  ...\n  const blamelessEnv = useHotMemoize(module, () => createEnv('blameless'));\n  \n  ....\n  apiRouter.use('/blameless', await blameless(blamelessEnv));\n  ```\n",
+  "repository": "https://github.com/blamelesshq/backstage-plugin",
+  "role": "backend-plugin",
+  "scope": "@blamelesshq",
+  "updated": "2024-04-11T21:47:37.177Z",
+  "version": "0.1.30",
+  "version_count": 19,
+  "versions": [
+    {
+      "date": "2024-04-11T21:47:37.177Z",
+      "version": "0.1.30"
+    },
+    {
+      "date": "2024-03-14T15:05:04.362Z",
+      "version": "0.1.29"
+    },
+    {
+      "date": "2024-03-12T20:40:42.554Z",
+      "version": "0.1.28"
+    },
+    {
+      "date": "2024-03-12T20:09:55.796Z",
+      "version": "0.1.27"
+    },
+    {
+      "date": "2024-03-07T15:21:14.819Z",
+      "version": "0.1.26"
+    },
+    {
+      "date": "2024-03-07T14:59:26.661Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2024-03-07T14:56:41.409Z",
+      "version": "0.1.24"
+    },
+    {
+      "date": "2024-03-07T14:55:01.591Z",
+      "version": "0.1.23"
+    },
+    {
+      "date": "2024-03-07T14:54:04.518Z",
+      "version": "0.1.22"
+    },
+    {
+      "date": "2024-03-07T14:52:17.829Z",
+      "version": "0.1.21"
+    },
+    {
+      "date": "2024-03-06T22:47:11.734Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2024-03-06T22:45:26.477Z",
+      "version": "0.1.19"
+    },
+    {
+      "date": "2024-03-06T22:36:10.960Z",
+      "version": "0.1.18"
+    },
+    {
+      "date": "2024-03-06T21:10:12.060Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2024-03-06T21:07:01.818Z",
+      "version": "0.1.16"
+    }
+  ]
+}

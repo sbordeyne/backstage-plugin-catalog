@@ -1,0 +1,48 @@
+{
+  "author": "",
+  "created": "2024-02-26T17:18:18.998Z",
+  "deprecated": "",
+  "description": "A module for the scaffolder backend that lets you template projects using copier",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "abigailalexander",
+    "akademy",
+    "coretl",
+    "m-chan",
+    "peterc-dls",
+    "vbediamond"
+  ],
+  "name": "@diamondlightsource/plugin-scaffolder-backend-module-copier",
+  "plugin_id": "",
+  "readme": "# scaffolder-backend-module-copier\n\nWelcome to the `fetch:copier` action for the `scaffolder-backend`.\n\n## Getting started\n\nYou need to configure the action in your backend:\n\n## From your Backstage root directory\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @diamondlightsource/plugin-scaffolder-backend-module-copier\n```\n\nConfigure the action within `packages/backend/src/plugins/scaffolder.ts`:\n(you can check the [docs](https://backstage.io/docs/features/software-templates/writing-custom-actions#registering-custom-actions) to see all options):\n\n```typescript\nimport { CatalogClient } from '@backstage/catalog-client';\nimport { ScmIntegrations } from '@backstage/integration';\nimport {\n  createBuiltinActions,\n  createRouter,\n} from '@backstage/plugin-scaffolder-backend';\nimport { createFetchCopierAction } from '@backstage/plugin-scaffolder-backend-module-copier';\nimport { Router } from 'express';\nimport type { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const catalogClient = new CatalogClient({\n    discoveryApi: env.discovery,\n  });\n  const integrations = ScmIntegrations.fromConfig(env.config);\n  \n  const builtInActions = createBuiltinActions({\n    integrations,\n    catalogClient,\n    config: env.config,\n    reader: env.reader,\n  });\n  const actions = [\n    ...builtInActions, \n    createFetchCopierAction({ integrations, reader: env.reader })\n  ];\n  \n  return await createRouter({\n    catalogClient,\n    actions,\n    logger: env.logger,\n    config: env.config,\n    database: env.database,\n    reader: env.reader,\n    identity: env.identity,\n    scheduler: env.scheduler,\n  });\n}\n```\n\nAfter that you can use the action in your template:\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: copier-demo\n  title: Copier Test\n  description: Copier example\nspec:\n  owner: backstage/techdocs-core\n  type: service\n\n  parameters:\n    - title: Fill in some steps\n      required:\n        - name\n        - owner\n      properties:\n        name:\n          title: Name\n          type: string\n          description: Unique name of the component\n          ui:autofocus: true\n          ui:options:\n            rows: 5\n        owner:\n          title: Owner\n          type: string\n          description: Owner of the component\n          ui:field: OwnerPicker\n          ui:options:\n            allowedKinds:\n              - Group\n        system:\n          title: System\n          type: string\n          description: System of the component\n          ui:field: EntityPicker\n          ui:options:\n            allowedKinds:\n              - System\n            defaultKind: System\n\n    - title: Choose a location\n      required:\n        - repoUrl\n        - dryRun\n      properties:\n        repoUrl:\n          title: Repository Location\n          type: string\n          ui:field: RepoUrlPicker\n          ui:options:\n            allowedHosts:\n              - github.com\n        dryRun:\n          title: Only perform a dry run, don't publish anything\n          type: boolean\n          default: false\n\n  steps:\n    - id: fetch-base\n      name: Fetch Base\n      action: fetch:copier\n      input:\n        url: \"<complete url to template repo>\"\n        values:\n          name: ${{ parameters.name }}\n          owner: ${{ parameters.owner }}\n          system: ${{ parameters.system }}\n          destination: ${{ parameters.repoUrl | parseRepoUrl }}\n\n    - id: publish\n      if: ${{ parameters.dryRun !== true }}\n      name: Publish\n      action: publish:github\n      input:\n        allowedHosts:\n          - github.com\n        description: This is ${{ parameters.name }}\n        repoUrl: ${{ parameters.repoUrl }}\n\n    - name: Results\n      if: ${{ parameters.dryRun }}\n      action: debug:log\n      input:\n        listWorkspace: true\n\n  output:\n    links:\n      - title: Repository\n        url: ${{ steps.publish.output.remoteUrl }}\n```\n\nYou can also visit the `/create/actions` route in your Backstage application to find out more about the parameters this action accepts when it's installed to configure how you like.\n\n### Environment setup\n\nThe environment needs to have `copier` installed and be available in the `PATH`.\n\nYou can do so by including the following lines in the last step of your Dockerfile:\n\n```dockerfile\nRUN apt-get update && apt-get install -y --no-install-recommends python3-pip\nRUN pip install --break-system-packages copier\n```\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@diamondlightsource",
+  "updated": "2024-03-22T08:56:21.621Z",
+  "version": "0.3.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-03-22T08:56:21.621Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2024-03-01T15:20:35.454Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2024-02-26T17:52:11.765Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2024-02-26T17:46:58.553Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-02-26T17:18:19.296Z",
+      "version": "0.3.0"
+    }
+  ]
+}

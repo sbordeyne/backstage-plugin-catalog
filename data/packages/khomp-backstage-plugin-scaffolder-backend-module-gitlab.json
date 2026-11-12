@@ -1,0 +1,37 @@
+{
+  "author": "Marcio Pacheco",
+  "created": "2024-05-23T21:07:12.459Z",
+  "deprecated": "",
+  "description": "Welcome to the Gitlab Module for Scaffolder.",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "marcio.pacheco"
+  ],
+  "name": "khomp-backstage-plugin-scaffolder-backend-module-gitlab",
+  "plugin_id": "",
+  "readme": "# scaffolder-backend-module-gitlab\n\nWelcome to the Gitlab Module for Scaffolder.\n\nHere you can find all Gitlab related features to improve your scaffolder:\n\n## Getting started\n\n## From your Backstage root directory\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/backend add @backstage/plugin-scaffolder-backend-module-gitlab\n```\n\nConfigure the action:\n(you can check the [docs](https://backstage.io/docs/features/software-templates/writing-custom-actions#registering-custom-actions) to see all options):\n\n```typescript\n// packages/backend/src/plugins/scaffolder.ts\n\nimport {\n  createGitlabProjectAccessTokenAction,\n  createGitlabProjectDeployTokenAction,\n  createGitlabProjectVariableAction,\n  createGitlabGroupEnsureExistsAction,\n  createGitlabIssueAction,\n} from '@backstage/plugin-scaffolder-backend-module-gitlab';\n\n// Create BuiltIn Actions\nconst builtInActions = createBuiltinActions({\n  integrations,\n  catalogClient,\n  config: env.config,\n  reader: env.reader,\n});\n\n// Add Gitlab Actions\nconst actions = [\n  ...builtInActions,\n  createGitlabProjectAccessTokenAction({ integrations: integrations }),\n  createGitlabProjectDeployTokenAction({ integrations: integrations }),\n  createGitlabProjectVariableAction({ integrations: integrations }),\n  createGitlabGroupEnsureExistsAction({ integrations: integrations }),\n  createGitlabIssueAction({ integrations: integrations }),\n];\n\n// Create Scaffolder Router\nreturn await createRouter({\n  containerRunner,\n  catalogClient,\n  actions,\n  logger: env.logger,\n  config: env.config,\n  database: env.database,\n  reader: env.reader,\n});\n```\n\nAfter that you can use the action in your template:\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: gitlab-demo\n  title: Gitlab DEMO\n  description: Scaffolder Gitlab Demo\nspec:\n  owner: backstage/techdocs-core\n  type: service\n\n  parameters:\n    - title: Fill in some steps\n      required:\n        - name\n      properties:\n        name:\n          title: Name\n          type: string\n          description: Unique name of the component\n          ui:autofocus: true\n          ui:options:\n            rows: 5\n    - title: Choose a location\n      required:\n        - repoUrl\n      properties:\n        repoUrl:\n          title: Repository Location\n          type: string\n          ui:field: RepoUrlPicker\n          ui:options:\n            allowedHosts:\n              - gitlab.com\n\n  steps:\n    - id: fetch\n      name: Fetch\n      action: fetch:template\n      input:\n        url: https://github.com/TEMPLATE\n        values:\n          name: ${{ parameters.name }}\n    - id: createGitlabGroup\n      name: Ensure Gitlab group exists\n      action: gitlab:group:ensureExists\n      input:\n        repoUrl: ${{ parameters.repoUrl }}\n        path:\n          - path\n          - to\n          - group\n\n    - id: publish\n      name: Publish\n      action: publish:gitlab\n      input:\n        description: This is ${{ parameters.name }}\n        repoUrl: ${{ parameters.repoUrl }}?owner=${{ steps.createGitlabGroup.output.groupId }}\n        sourcePath: pimcore\n        defaultBranch: main\n\n    - id: gitlab-deploy-token\n      name: Create Deploy Token\n      action: gitlab:projectDeployToken:create\n      input:\n        repoUrl: ${{ parameters.repoUrl }}\n        projectId: \"${{ steps['publish'].output.projectId }}\"\n        name: ${{ parameters.name }}-secret\n        username: ${{ parameters.name }}-secret\n        scopes: ['read_registry']\n\n    - id: gitlab-access-token\n      name: Gitlab Project Access Token\n      action: gitlab:projectAccessToken:create\n      input:\n        repoUrl: ${{ parameters.repoUrl }}\n        projectId: \"${{ steps['publish-manifest'].output.projectId }}\"\n        name: ${{ parameters.name }}-access-token\n        accessLevel: 40\n        scopes: ['read_repository', 'write_repository']\n\n    - id: gitlab-project-variable\n      name: Gitlab Project Variable\n      action: gitlab:projectVariable:create\n      input:\n        repoUrl: ${{ parameters.repoUrl }}\n        projectId: \"${{ steps['publish'].output.projectId }}\"\n        key: 'VARIABLE_NAME'\n        value: \"${{ steps['gitlab-access-token'].output.access_token }}\"\n        variableType: 'env_var'\n        masked: true\n        variableProtected: false\n        raw: false\n        environmentScope: '*'\n\n    - id: register\n      name: Register\n      action: catalog:register\n      input:\n        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}\n        catalogInfoPath: '/catalog-info.yaml'\n\n    - id: gitlabIssue\n      name: Issues\n      action: gitlab:issues:create\n      input:\n        repoUrl: ${{ parameters.repoUrl }}\n        token: ${{ secrets.USER_OAUTH_TOKEN }}\n        projectId: 1111111\n        title: Test Issue\n        assignees:\n          - 2222222\n        description: This is the description of the issue\n        confidential: true\n        createdAt: 2022-09-27 18:00:00.000\n        dueDate: 2024-09-28 12:00:00.000\n        epicId: 3333333\n        labels: phase1:label1,phase2:label2\n  output:\n    links:\n      - title: Repository\n        url: ${{ steps['publish'].output.remoteUrl }}\n      - title: Link to new issue\n        url: ${{ steps['gitlabIssue'].output.issueUrl }}\n```\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "",
+  "updated": "2024-05-24T21:09:21.744Z",
+  "version": "1.0.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-05-24T21:09:21.744Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-05-23T21:09:08.708Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-05-23T21:07:12.649Z",
+      "version": "1.0.0"
+    }
+  ]
+}

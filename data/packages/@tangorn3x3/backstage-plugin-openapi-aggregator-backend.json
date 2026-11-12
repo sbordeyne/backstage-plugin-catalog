@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-08-17T18:01:02.252Z",
+  "deprecated": "",
+  "description": "```shell npm login",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "tangorn3x3"
+  ],
+  "name": "@tangorn3x3/backstage-plugin-openapi-aggregator-backend",
+  "plugin_id": "openapi-aggregator",
+  "readme": "\n```shell\nnpm login\n\ncd ./plugins/openapi-aggregator-backend/\n/Users/maksimbeliakov/.nvm/versions/node/v20.17.0/bin/node /Users/maksimbeliakov/Projects/PERSONAL/backstage-app/.yarn/releases/yarn-4.4.1.cjs build\n\n# удалить старый архив, упаковать и опубликовать\n\nnpm pack && \\\nnpm publish ./tangorn3x3-backstage-plugin-openapi-aggregator-backend-*.tgz --access public && \\\nrm -f ./tangorn3x3-backstage-plugin-openapi-aggregator-backend-*.tgz\n```",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@tangorn3x3",
+  "updated": "2025-08-17T18:01:02.544Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-08-17T18:01:02.544Z",
+      "version": "0.1.0"
+    }
+  ]
+}

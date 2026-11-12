@@ -1,0 +1,63 @@
+{
+  "author": "",
+  "created": "2024-05-29T11:57:25.495Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "bartgolsteijn",
+    "gertjanmaas",
+    "herberttn",
+    "jeroenknoops",
+    "mfklauberg",
+    "nadavsinai",
+    "npalm",
+    "philips-software-fa",
+    "scottguymer"
+  ],
+  "name": "@philips-software/backstage-plugin-search-confluence-backend",
+  "plugin_id": "search-confluence",
+  "readme": "",
+  "repository": "https://github.com/philips-software/philips-backstage-plugins/tree/HEAD/workspaces/confluence/plugins/search-confluence-backend",
+  "role": "backend-plugin",
+  "scope": "@philips-software",
+  "updated": "2025-10-06T08:10:40.960Z",
+  "version": "2.5.3",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2025-10-06T08:10:40.960Z",
+      "version": "2.5.3"
+    },
+    {
+      "date": "2025-01-28T15:30:38.217Z",
+      "version": "2.4.1"
+    },
+    {
+      "date": "2025-01-28T14:18:47.861Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2025-01-28T08:25:49.982Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2024-11-15T12:03:00.204Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2024-08-19T11:15:51.730Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-06-24T11:57:40.670Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-05-29T11:57:25.776Z",
+      "version": "1.0.0"
+    }
+  ]
+}

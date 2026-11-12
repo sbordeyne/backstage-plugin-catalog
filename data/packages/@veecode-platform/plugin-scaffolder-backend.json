@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2023-11-09T20:08:33.708Z",
+  "deprecated": "",
+  "description": "The Backstage backend plugin that helps you create new things",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/plugin-scaffolder-backend",
+  "plugin_id": "",
+  "readme": "# Scaffolder Backend\n\nThis is the backend for the default Backstage [software\ntemplates](https://backstage.io/docs/features/software-templates/).\nThis provides the API for the frontend [scaffolder\nplugin](https://github.com/backstage/backstage/tree/master/plugins/scaffolder),\nas well as the built-in template actions, tasks and stages.\n\n## Installation\n\nThis `@veecode-platform/plugin-scaffolder-backend` package comes installed by default\nin any Backstage application created with `npx @backstage/create-app`, so\ninstallation is not usually required.\n\nTo check if you already have the package, look under\n`packages/backend/package.json`, in the `dependencies` block, for\n`@veecode-platform/plugin-scaffolder-backend`. The instructions below walk through\nrestoring the plugin, if you previously removed it.\n\n### Install the package\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/backend add @backstage/plugin-scaffolder-backend\n```\n\n### Adding the plugin to your `packages/backend`\n\nYou'll need to add the plugin to the router in your `backend` package. You can\ndo this by creating a file called `packages/backend/src/plugins/scaffolder.ts`\nwith contents matching [scaffolder.ts in the create-app\ntemplate](https://github.com/backstage/backstage/blob/master/packages/create-app/templates/default-app/packages/backend/src/plugins/scaffolder.ts).\n\nWith the `scaffolder.ts` router setup in place, add the router to\n`packages/backend/src/index.ts`:\n\n```diff\n+import scaffolder from './plugins/scaffolder';\n\nasync function main() {\n  ...\n  const createEnv = makeCreateEnv(config);\n\n  const catalogEnv = useHotMemoize(module, () => createEnv('catalog'));\n+  const scaffolderEnv = useHotMemoize(module, () => createEnv('scaffolder'));\n\n  const apiRouter = Router();\n+  apiRouter.use('/scaffolder', await scaffolder(scaffolderEnv));\n  ...\n  apiRouter.use(notFoundHandler());\n\n```\n\n### Adding templates\n\nAt this point the scaffolder backend is installed in your backend package, but\nyou will not have any templates available to use. These need to be [added to the\nsoftware\ncatalog](https://backstage.io/docs/features/software-templates/adding-templates).\n\nTo get up and running and try out some templates quickly, you can or copy the\ncatalog locations from the [create-app\ntemplate](https://github.com/backstage/backstage/blob/master/packages/create-app/templates/default-app/app-config.yaml.hbs).\n",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/scaffolder-backend",
+  "role": "backend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2024-04-02T18:17:09.903Z",
+  "version": "1.21.5",
+  "version_count": 18,
+  "versions": [
+    {
+      "date": "2024-04-02T18:17:09.903Z",
+      "version": "1.21.5"
+    },
+    {
+      "date": "2024-03-07T20:23:37.629Z",
+      "version": "1.21.4"
+    },
+    {
+      "date": "2024-03-04T11:01:30.362Z",
+      "version": "1.21.3"
+    },
+    {
+      "date": "2023-12-29T14:57:30.322Z",
+      "version": "1.19.11"
+    },
+    {
+      "date": "2023-12-28T19:46:14.431Z",
+      "version": "1.19.10"
+    },
+    {
+      "date": "2023-12-28T19:17:09.465Z",
+      "version": "1.19.9"
+    },
+    {
+      "date": "2023-12-28T18:16:11.261Z",
+      "version": "1.19.8"
+    },
+    {
+      "date": "2023-12-28T17:22:24.146Z",
+      "version": "1.19.7"
+    },
+    {
+      "date": "2023-12-08T12:24:14.679Z",
+      "version": "1.19.6"
+    },
+    {
+      "date": "2023-12-05T20:42:26.068Z",
+      "version": "1.19.5"
+    },
+    {
+      "date": "2023-12-01T14:18:17.778Z",
+      "version": "1.19.4"
+    },
+    {
+      "date": "2023-12-01T13:45:26.856Z",
+      "version": "1.19.3"
+    },
+    {
+      "date": "2023-11-29T19:19:45.873Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2023-11-23T18:20:38.892Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2023-11-17T15:01:47.873Z",
+      "version": "1.0.5"
+    }
+  ]
+}

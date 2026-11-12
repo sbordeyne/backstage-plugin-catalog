@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:48:51.156Z",
+  "deprecated": "",
+  "description": "Backstage plugin to visualize resource information and Puppet facts from PuppetDB.",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "puppet",
+    "puppetdb"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-puppetdb",
+  "plugin_id": "puppetdb",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/puppetdb/plugins/puppetdb",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-31T16:35:13.896Z",
+  "version": "0.24.0",
+  "version_count": 29,
+  "versions": [
+    {
+      "date": "2026-10-31T16:35:13.896Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-09-24T17:17:59.169Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-08-27T14:31:23.626Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-07-22T00:21:01.693Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-06-24T13:08:18.769Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-06-24T12:27:48.443Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-04-24T18:00:29.642Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-04-03T16:22:21.240Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-02-27T13:23:10.718Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-01-28T22:25:14.426Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-12-24T16:34:30.297Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-11-26T13:24:04.062Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-10-17T17:39:12.948Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-10-06T11:22:43.168Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-08-30T15:08:12.330Z",
+      "version": "0.10.0"
+    }
+  ]
+}

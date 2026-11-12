@@ -1,0 +1,77 @@
+{
+  "author": "",
+  "created": "2025-09-25T08:44:31.837Z",
+  "deprecated": "",
+  "description": "Welcome to the global-header plugin.",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/plugin-veecode-global-header",
+  "plugin_id": "veecode-global-header",
+  "readme": "# global-header\n\nWelcome to the global-header plugin.\n\n## Getting started\n\nThis plugin defines a global header for VeeCode DevPortal (an open-source Backstage distro).\n\nLook for VeeCode DevPortal documentation to learn how to install and configure this plugin:\n\n- [VeeCode DevPortal Customization](https://docs.platform.vee.codes/devportal/customization/)\n- [VeeCode DevPortal Global Header Documentation](https://docs.platform.vee.codes/devportal/customization/custom-header)\n\n## Requirements\n\nThis plugin requires other standard plugins to be installed in order to work properly:\n\n- Notifications plugin: the `NotificationButton` component is used to display notifications in the global header.\n- Signals plugin: in order to show notifications in real time, `NotificationButton` also requires the Signals plugin (it is optional, but required for real time notifications).\n\nBoth plugins are included by default in VeeCode DevPortal (statically linked).\n\nIf you disable the `NotificationButton` component in the global header configuration, then you don't need to install these plugins.\n\n## Static configuration\n\nTo statically configure the global header using its defaults you need to add the following import to `Root.tsx`:\n\n```tsx\nimport { \n  GlobalHeaderComponent, \n  defaultGlobalHeaderComponentsMountPoints \n} from '@veecode-platform/plugin-veecode-global-header';\n```\n\nAnd then you can add the `GlobalHeaderComponent` accondingly to your needs:\n\n```tsx\n      <div id=\"rhdh-above-sidebar-header-container\">\n        {/* update globalHeaderMountPoints config to test Global header */}\n        <GlobalHeaderComponent\n          globalHeaderMountPoints={defaultGlobalHeaderComponentsMountPoints}\n        />\n      </div>\n```\n\n## Dynamic configuration\n\nTo dynamically configure the global header using its defaults you need to add a dynamicPlugins snippet like this:\n\n```yaml\ndynamicPlugins:\n  rootDirectory: dynamic-plugins-root\n  frontend:\n    veecode-platform.plugin-veecode-global-header:\n      mountPoints:\n        - mountPoint: application/header\n          importName: GlobalHeader\n          config:\n            position: above-sidebar # above-main-content | above-sidebar\n```\n\nThere are several extension points available to customize the global header. You can disable buttons, change icons and logos, and more. Look for more details in the [VeeCode DevPortal Global Header Documentation](https://docs.platform.vee.codes/devportal/customization/custom-header).\n\nTODO: add example of one dynamic configuration with all custom mount points.\n\n## Sending notifications\n\nYou need to send notifications to the DevPortal backend in order to show them in the global header. The Backstage hosting app configured in this repository exposes the backend APIs directly with a plain text token for simplicity.\n\nYou can use the following `curl` command to send a notification:\n\n```bash\nNOTIFY_TOKEN=\"mysecrettoken\"\n\ncurl -X POST http://localhost:7007/api/notifications/notifications \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $NOTIFY_TOKEN\" \\\n  -d '{\n        \"recipients\": {\n          \"type\": \"broadcast\"\n        },\n        \"payload\": {\n          \"title\": \"Title of broadcast message\",\n          \"description\": \"The description of the message.\",\n          \"link\": \"http://example.com/link\",\n          \"severity\": \"high\",\n          \"topic\": \"general\"\n        }\n      }'\n```\n\nWe have made available a helper script at `/scripts/send-notification.sh` to make it easier to send notifications. You can run it like this:\n\n```bash\n./scripts/send-notification.sh \"Your custom message here\"\n```\n\n## Source code\n\nThis plugin is part of the [VeeCode DevPortal Plugins Repository](https://github.com/veecode-platform/devportal-plugins).\n\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2026-03-20T12:44:25.045Z",
+  "version": "1.1.0",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-03-20T12:44:25.045Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-03-06T18:21:08.035Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2025-10-15T10:52:16.339Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-10-15T08:16:35.416Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-10-01T19:58:42.701Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2025-10-01T18:38:21.706Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2025-10-01T17:33:22.881Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2025-09-30T12:38:27.116Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2025-09-26T11:23:47.459Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2025-09-26T11:05:40.403Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-09-25T14:35:16.971Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2025-09-25T08:44:32.118Z",
+      "version": "0.1.5"
+    }
+  ]
+}

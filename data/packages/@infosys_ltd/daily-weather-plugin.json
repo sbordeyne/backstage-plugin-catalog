@@ -1,0 +1,45 @@
+{
+  "author": "Infosys",
+  "created": "2025-03-10T10:54:29.933Z",
+  "deprecated": "",
+  "description": "The Daily Weather Plugin for Backstage provides real-time weather information for a specified location using the Weatherstack API.",
+  "homepage": "https://github.com/Infosys/daily-weather-plugin",
+  "keywords": [
+    "backstage",
+    "plugin",
+    "utility",
+    "weather"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aditya_kr",
+    "ambrishr"
+  ],
+  "name": "@infosys_ltd/daily-weather-plugin",
+  "plugin_id": "weather",
+  "readme": "# Daily Weather Plugin for Backstage\n\nThe Daily Weather Plugin for Backstage provides real-time weather information for a specified location using the Weatherstack API. This plugin includes a secure backend proxy configuration to fetch weather data without exposing your API key.\n\n---\n\n## Installation\n\nTo install the plugin, run the following command:\n\n```bash\nyarn --cwd packages/app add @infosys_ltd/daily-weather-plugin\n```\n\nAfter installation, create an account on [Weatherstack](https://weatherstack.com/) and generate your API Access Key.\n\n---\n\n## Configuration\n\n### Backend Proxy Configuration\n\nUpdate your `app-config.yaml` file with the following proxy configuration:\n\n```yaml\nproxy:\n  endpoints:\n    '/weather':\n      target: 'http://api.weatherstack.com/current?access_key=YOUR_API_KEY&query=YOUR_DEFAULT_LOCATION'\n      changeOrigin: true\n```\n\n**Important Notes:**\n- Replace `YOUR_API_KEY` with your Weatherstack API key.\n- Replace `YOUR_DEFAULT_LOCATION` with the desired default location (e.g., `Stockholm`).\n\nThis configuration ensures:\n- The `access_key` (API key) is securely embedded in the proxy target URL.\n- The `query` parameter specifies the default location for weather data.\n\n---\n\n## Using Environment Variables (Optional)\n\nInstead of hardcoding the `access_key` and `query` in the configuration file, you can dynamically set them via environment variables. This approach is more secure and flexible.\n\nSet the following environment variables in your CLI:\n\n```bash\nexport WEATHERSTACK_ACCESS_KEY=your_api_key_here\nexport WEATHERSTACK_DEFAULT_LOCATION=your_default_location_here\n```\n\nThen update the `app-config.yaml` as follows:\n\n```yaml\nproxy:\n  endpoints:\n    '/weather':\n      target: 'http://api.weatherstack.com/current?access_key=${WEATHERSTACK_ACCESS_KEY}&query=${WEATHERSTACK_DEFAULT_LOCATION}'\n      changeOrigin: true\n```\n\n---\n\n### Example Screenshots\n\n**Weather Plugin Configuration:**\n\n![Weather Plugin Page](https://github.com/Infosys/daily-weather-plugin/blob/main/plugins/weather/src/docs/weatherplugin.png)\n\n---\n\n## Contributing\n\nContributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.\n\n---\n\n## License\n\nThis project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.\n",
+  "repository": "https://github.com/Infosys/daily-weather-plugin",
+  "role": "frontend-plugin",
+  "scope": "@infosys_ltd",
+  "updated": "2025-05-08T11:46:08.207Z",
+  "version": "1.1.1",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-05-08T11:46:08.207Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2025-05-08T09:34:29.457Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-03-11T06:08:25.618Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-03-10T10:54:30.225Z",
+      "version": "1.0.1"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2025-11-10T17:30:20.998Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that displays random inspirational quotes using the Quotable API.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "madisonewebb28"
+  ],
+  "name": "backstage-plugin-quote-page",
+  "plugin_id": "quote-page",
+  "readme": "# backstage-plugin-quote-page\n\nA Backstage plugin that displays random inspirational quotes using the Quotable API.\n\n## Features\n\n- Display random quotes with authors\n- Refresh to get new quotes\n- Beautiful Material-UI design\n- Fast and lightweight\n\n## Installation\n\n1. Install the plugin in your Backstage app:\n\n```bash\nyarn add backstage-plugin-quote-page\n```\n\n2. Add the plugin to your app's `App.tsx`:\n\n```typescript\nimport { QuotePagePage } from 'backstage-plugin-quote-page';\n\n// In your routes:\n<Route path=\"/quote-page\" element={<QuotePagePage />} />\n```\n\n3. (Optional) Add a sidebar item in `Root.tsx`:\n\n```typescript\nimport FormatQuoteIcon from '@material-ui/icons/FormatQuote';\n\n// In your sidebar:\n<SidebarItem icon={FormatQuoteIcon} to=\"quote-page\" text=\"Random Quotes\" />\n```\n\n## Development\n\nTo run the plugin in isolation for development:\n\n```bash\nyarn install\nyarn start\n```\n\n## API\n\nThis plugin uses the [Quotable API](https://api.quotable.io) to fetch random quotes.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2025-11-10T18:21:21.084Z",
+  "version": "0.1.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2025-11-10T18:21:21.084Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-11-10T18:15:08.461Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-11-10T18:00:45.400Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-11-10T17:52:51.722Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-11-10T17:30:21.291Z",
+      "version": "0.1.0"
+    }
+  ]
+}

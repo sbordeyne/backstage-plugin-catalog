@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-10-14T13:46:32.655Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brianfletcher",
+    "roadie-bot",
+    "roadiehq-david",
+    "xantier"
+  ],
+  "name": "@roadiehq/backstage-plugin-wiz",
+  "plugin_id": "backstage-plugin-wiz",
+  "readme": "",
+  "repository": "https://github.com/RoadieHQ/roadie-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-wiz",
+  "role": "frontend-plugin",
+  "scope": "@roadiehq",
+  "updated": "2026-10-02T15:59:40.958Z",
+  "version": "2.4.2",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2026-10-02T15:59:40.958Z",
+      "version": "2.4.2"
+    },
+    {
+      "date": "2026-09-29T14:13:13.326Z",
+      "version": "2.4.1"
+    },
+    {
+      "date": "2026-09-29T13:29:30.291Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2025-11-11T13:54:15.793Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2025-10-31T09:33:39.976Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2025-07-23T10:21:17.662Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2025-07-16T10:51:38.745Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2025-03-21T12:04:01.000Z",
+      "version": "1.0.9"
+    },
+    {
+      "date": "2025-03-07T13:54:05.698Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2024-12-09T13:24:33.393Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2024-11-19T09:33:20.862Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2024-10-23T21:26:56.571Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2024-10-23T10:12:39.758Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2024-10-18T08:52:04.172Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-10-14T15:00:42.302Z",
+      "version": "1.0.2"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-03-12T14:26:11.520Z",
+  "deprecated": "",
+  "description": "Welcome to the MTA plugin for Backstage!",
+  "homepage": "https://github.com/backstage/community-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ibolton336"
+  ],
+  "name": "@ianbolton/backstage-plugin-mta-frontend",
+  "plugin_id": "mta-frontend",
+  "readme": "# MTA Plugin (Migration Toolkit for Applications)\n\nWelcome to the MTA plugin for Backstage!\n\nThis plugin provides integration with the Migration Toolkit for Applications (MTA) service, allowing\nyou to manage and analyze applications for migration.\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access\nit by running `yarn start` in the root directory, and then navigating to\n[/mta](http://localhost:3000/mta).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory. This\nmethod of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev)\ndirectory.\n\n## Authentication Setup\n\nThis plugin requires proper authentication with Keycloak to access the MTA API. If authentication is\nnot set up correctly, you may experience 401 errors that can cause navigation issues in the UI.\n\n**Important:** You must configure your Keycloak client with the appropriate scopes to use this\nplugin.\n\nSee our [RHDH Setup Guide](https://konveyor.github.io/rhdh-documentation/) for detailed instructions\non setting up the Keycloak client.\n\n## Deployment\n\nFor information on deploying this plugin with Red Hat Developer Hub (RHDH), see:\n\n- [RHDH Setup Guide](https://konveyor.github.io/rhdh-documentation/) - Comprehensive guide for\n  deploying with RHDH\n\n## Troubleshooting\n\nIf you encounter issues with navigation or authentication:\n\n1. Ensure your Keycloak client is properly configured with the required scopes\n2. Check that your authentication tokens are valid\n3. Verify that your Backstage instance has the correct configuration\n\n### Authentication Error Handling\n\nThis plugin includes improved error handling for authentication issues:\n\n- Graceful handling of 401 errors without page navigation disruptions\n- Detailed error messages with specific instructions for fixing Keycloak configuration\n- Retry buttons that allow users to attempt requests again after fixing authentication issues\n- Prevention of hard refreshes and URL issues when authentication errors occur\n\nFor more details on authentication setup and troubleshooting, see our\n[RHDH Setup Guide](https://konveyor.github.io/rhdh-documentation/).\n",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/mta/plugins/mta-frontend",
+  "role": "frontend-plugin",
+  "scope": "@ianbolton",
+  "updated": "2025-06-07T00:44:49.087Z",
+  "version": "0.1.27",
+  "version_count": 25,
+  "versions": [
+    {
+      "date": "2025-06-07T00:44:49.087Z",
+      "version": "0.1.27"
+    },
+    {
+      "date": "2025-06-07T00:42:51.773Z",
+      "version": "0.1.26"
+    },
+    {
+      "date": "2025-06-07T00:36:15.257Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2025-06-07T00:31:46.628Z",
+      "version": "0.1.24"
+    },
+    {
+      "date": "2025-06-07T00:27:15.625Z",
+      "version": "0.1.23"
+    },
+    {
+      "date": "2025-06-07T00:23:28.338Z",
+      "version": "0.1.21"
+    },
+    {
+      "date": "2025-06-07T00:04:18.752Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2025-06-06T16:52:50.871Z",
+      "version": "0.1.19"
+    },
+    {
+      "date": "2025-06-06T16:37:20.787Z",
+      "version": "0.1.18"
+    },
+    {
+      "date": "2025-06-06T16:08:13.231Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2025-06-06T16:00:54.815Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2025-06-06T15:50:59.625Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2025-06-06T15:37:43.055Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2025-06-06T15:16:45.363Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2025-06-06T15:09:11.159Z",
+      "version": "0.1.12"
+    }
+  ]
+}

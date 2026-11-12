@@ -1,0 +1,76 @@
+{
+  "author": "",
+  "created": "2025-02-16T13:18:58.757Z",
+  "deprecated": "",
+  "description": "This plugin provides backend functionality for integrating Wiz security information into your Backstage instance.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bengry",
+    "wizsecurity"
+  ],
+  "name": "@wiz-sec/backstage-plugin-wiz-backend",
+  "plugin_id": "wiz",
+  "readme": "# Wiz Backend Plugin for Backstage\n\nThis plugin provides backend functionality for integrating Wiz security information into your Backstage instance.\n\n## Features\n\n- Fetch and display Wiz issues\n- Access vulnerability findings\n- Query issue statistics and severity counts\n- Support for cloud resources and version control repositories\n- Built-in authentication and error handling for Wiz API\n- Response caching, request concurrency limiting, and automatic retry with\n  backoff on Wiz API rate limits (HTTP 429), so large catalogs render\n  reliably without exhausting the tenant rate limit\n\n## Installation\n\n### Add the Backend Plugin\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @wiz-sec/backstage-plugin-wiz-backend\n```\n\n## Configuration\n\nAdd the following to your `packages/backend/src/index.ts`:\n\n```typescript\n\n...\nimport { createBackend } from '@backstage/backend-defaults';\nconst backend = createBackend();\n\nbackend.add(import ('@wiz-sec/backstage-plugin-wiz-backend'));\n...\n```\n\nAdd the following to your `app-config.yaml`:\n\n```yaml\nwiz:\n  clientId: ${WIZ_CLIENT_ID}\n  clientSecret: ${WIZ_CLIENT_SECRET}\n  authUrl: ${WIZ_AUTH_URL}\n  apiEndpointUrl: ${WIZ_API_URL}\n```\n\nRequired environment variables:\n\n- `WIZ_CLIENT_ID`: Your Wiz service account client ID\n- `WIZ_CLIENT_SECRET`: Your Wiz service account client secret\n- `WIZ_AUTH_URL`: Authentication URL for Wiz API (typically 'https://auth.app.wiz.io/oauth/token')\n- `WIZ_API_URL`: Wiz API endpoint URL\n\n### Performance & rate-limit tuning (optional)\n\nTo keep large Backstage catalogs from exhausting the Wiz tenant rate limit, the\nbackend caches GraphQL responses, caps concurrent requests, and retries on\nrate-limit responses with backoff. All three are optional and have sensible\ndefaults:\n\n```yaml\nwiz:\n  # ...credentials above...\n  cacheTtlSeconds: 300 # cache Wiz responses for 5 minutes (default: 300)\n  maxConcurrentRequests: 5 # max in-flight Wiz requests per backend (default: 5)\n  maxRetries: 3 # retries on HTTP 429 / RATE_LIMIT_EXCEEDED (default: 3)\n```\n\n- `cacheTtlSeconds`: how long to cache Wiz GraphQL responses. Lower it for\n  fresher data, raise it to reduce API load. Set via the standard Backstage\n  cache service — responses are stored in-memory by default; configure\n  `backend.cache` (e.g. Redis) to share the cache across multiple backend\n  replicas.\n- `maxConcurrentRequests`: upper bound on simultaneous Wiz GraphQL calls per\n  backend instance.\n- `maxRetries`: retry attempts when Wiz returns HTTP 429 or a\n  `RATE_LIMIT_EXCEEDED` GraphQL error. The plugin honors the `Retry-After`\n  header when present, otherwise uses exponential backoff with jitter. After\n  retries are exhausted the request fails with a `RATE_LIMITED` error.\n\n## API Endpoints\n\nThe plugin exposes the following endpoints:\n\n### GET /wiz-issues\n\nFetches issues based on provided filters.\n\nQuery parameters:\n\n- `project`: Filter by project ID\n- `relatedEntity`: Filter by related entity information\n- `search`: Search term for filtering issues\n\n### GET /wiz-vulnerabilities\n\nFetches vulnerability findings.\n\nQuery parameters:\n\n- `projectId`: Filter by project ID\n- `assetId`: Filter by asset ID\n- `vulnerabilityExternalId`: Filter by external vulnerability ID\n\n### GET /wiz-issues-stats\n\nFetches issue statistics including severity counts and grouped counts.\n\nQuery parameters:\n\n- Same as /wiz-issues\n\n## Error Handling\n\nThe plugin implements comprehensive error handling with the following error types:\n\n- `MISSING_CONFIG`: Configuration error\n- `UNAUTHORIZED`: Authentication error\n- `FORBIDDEN`: Permission error\n- `API_ERROR`: General API error\n- `INVALID_REQUEST`: Invalid request error\n- `RATE_LIMITED`: Wiz API rate limit hit (HTTP 429) and exhausted retries;\n  returned with HTTP status 429 so the frontend can show a distinct\n  \"rate limit reached\" state instead of a generic error\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@wiz-sec",
+  "updated": "2026-07-08T12:33:08.149Z",
+  "version": "1.0.12",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2026-07-08T12:33:08.149Z",
+      "version": "1.0.12"
+    },
+    {
+      "date": "2026-05-10T13:16:07.056Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2026-05-06T20:43:15.087Z",
+      "version": "1.0.10"
+    },
+    {
+      "date": "2026-05-04T12:36:18.758Z",
+      "version": "1.0.9"
+    },
+    {
+      "date": "2026-03-22T21:58:39.931Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2026-03-22T20:57:42.039Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2026-03-05T14:07:34.897Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2026-03-01T10:00:53.412Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2026-02-08T13:13:22.554Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2025-12-18T09:25:16.977Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2025-11-25T11:26:20.270Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-02-16T14:09:30.318Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-02-16T13:18:59.096Z",
+      "version": "1.0.0"
+    }
+  ]
+}

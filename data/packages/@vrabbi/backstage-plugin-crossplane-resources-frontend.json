@@ -1,0 +1,55 @@
+{
+  "author": "",
+  "created": "2024-12-10T14:40:35.454Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@vrabbi/backstage-plugin-crossplane-resources-frontend",
+  "plugin_id": "crossplane-resources-frontend",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@vrabbi",
+  "updated": "2024-12-26T18:28:58.558Z",
+  "version": "1.1.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2024-12-26T18:28:58.558Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-12-24T13:51:46.867Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-12-19T11:38:04.481Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-12-18T10:36:49.071Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2024-12-15T21:00:17.342Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2024-12-11T17:45:44.112Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-12-10T21:53:20.062Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-12-10T14:40:35.810Z",
+      "version": "0.1.0"
+    }
+  ]
+}

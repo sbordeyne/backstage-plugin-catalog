@@ -1,0 +1,55 @@
+{
+  "author": "",
+  "created": "2026-02-17T20:41:18.345Z",
+  "deprecated": "",
+  "description": "Welcome to the Template Builder plugin!",
+  "homepage": "https://www.terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-template-builder",
+  "plugin_id": "template-builder",
+  "readme": "# template-builder\n\nWelcome to the Template Builder plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-template-builder/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-template-builder)\n\nThe `template-builder` plugin for Backstage provides a visual, drag-and-drop WYSIWYG editor for creating and editing Backstage Software Templates. It features an interactive workflow canvas with React Flow, real-time YAML synchronization with Monaco editor, intelligent autocomplete for actions and parameters, and a comprehensive input designer for all field types including custom field extensions. The editor supports template validation, automatic graph layout (horizontal/vertical), and allows downloading templates as YAML files.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/template-builder/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.\n",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/template-builder",
+  "role": "frontend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:56:27.422Z",
+  "version": "0.10.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2026-10-21T13:56:27.422Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-06-30T17:22:55.963Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-06-09T19:09:55.142Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2026-05-04T07:12:31.377Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-04-16T08:22:32.592Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-03-22T17:03:03.688Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-03-09T16:53:52.764Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-02-17T20:41:18.675Z",
+      "version": "0.2.0"
+    }
+  ]
+}

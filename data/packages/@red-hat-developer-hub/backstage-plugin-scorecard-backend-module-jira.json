@@ -1,0 +1,91 @@
+{
+  "author": "Red Hat",
+  "created": "2025-10-24T12:26:50.850Z",
+  "deprecated": "",
+  "description": "The jira backend module for the scorecard plugin.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-jira",
+  "plugin_id": "scorecard",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/scorecard/plugins/scorecard-backend-module-jira",
+  "role": "backend-plugin-module",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-04T05:12:08.668Z",
+  "version": "4.6.1",
+  "version_count": 42,
+  "versions": [
+    {
+      "date": "2026-11-04T05:12:08.668Z",
+      "version": "4.6.1"
+    },
+    {
+      "date": "2026-10-26T14:14:51.174Z",
+      "version": "4.6.0"
+    },
+    {
+      "date": "2026-10-13T18:17:45.273Z",
+      "version": "4.5.2"
+    },
+    {
+      "date": "2026-10-12T17:06:59.939Z",
+      "version": "4.5.1"
+    },
+    {
+      "date": "2026-10-12T08:12:07.526Z",
+      "version": "4.5.0"
+    },
+    {
+      "date": "2026-10-07T13:53:31.077Z",
+      "version": "4.4.2"
+    },
+    {
+      "date": "2026-09-23T05:49:11.044Z",
+      "version": "4.4.1"
+    },
+    {
+      "date": "2026-09-21T11:49:30.325Z",
+      "version": "4.4.0"
+    },
+    {
+      "date": "2026-09-16T17:19:01.379Z",
+      "version": "4.3.1"
+    },
+    {
+      "date": "2026-08-07T18:46:40.316Z",
+      "version": "4.2.0"
+    },
+    {
+      "date": "2026-08-04T14:08:15.457Z",
+      "version": "4.1.0"
+    },
+    {
+      "date": "2026-08-03T16:17:03.987Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2026-07-31T15:41:33.391Z",
+      "version": "3.0.1"
+    },
+    {
+      "date": "2026-07-29T22:57:46.697Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2026-07-10T13:01:48.240Z",
+      "version": "2.8.1"
+    }
+  ]
+}

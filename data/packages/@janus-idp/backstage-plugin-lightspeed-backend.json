@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2024-09-17T17:35:55.069Z",
+  "deprecated": "",
+  "description": "This is the lightspeed backend plugin that enables you to interact with any LLM server running a model with OpenAI's API compatibility.",
+  "homepage": "https://janus-idp.io/",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-lightspeed-backend",
+  "plugin_id": "lightspeed",
+  "readme": "# Lightspeed Backend\n\nThis is the lightspeed backend plugin that enables you to interact with any LLM server running a model with OpenAI's API compatibility.\n\n## Getting Started\n\n### Installing the plugin\n\n```bash\nyarn add --cwd packages/backend  @janus-idp/backstage-plugin-lightspeed-backend\n```\n\n### Configuring the Backend\n\n#### Old Backend System\n\n1. Create a new file `packages/backend/src/plugins/lightspeed.ts`, and add the following\n\n```ts title=\"packages/backend/src/plugins/lightspeed.ts\"\nimport { Router } from 'express';\n\nimport { createRouter } from '@janus-idp/backstage-plugin-lightspeed-backend';\n\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    config: env.config,\n    logger: env.logger,\n    discovery: env.discovery,\n    catalogApi: env.catalogApi,\n  });\n}\n```\n\n1. Next, in your overall backend router (typically `packages/backend/src/index.ts`) add a route for `/lightspeed`:\n\n```ts title=\"packages/backend/src/index.ts\"\nimport lightspeed from './plugins/lightspeed';\n\n// ...\nasync function main() {\n  // ...\n  // Add the following line\n  const lightspeedEnv = useHotMemoize(module, () => createEnv('lightspeed'));\n  // ...\n  // Add the following line under the other lines that add their routers to apiRouter\n  apiRouter.use('/lightspeed', await lightspeed(lightspeedEnv));\n  // ...\n}\n```\n\n#### New Backend System\n\nAdd the following to your `packages/backend/src/index.ts` file:\n\n```ts title=\"packages/backend/src/index.ts\"\nconst backend = createBackend();\n\n// Add the following line\nbackend.add(import('@janus-idp/backstage-plugin-lightspeed-backend'));\n\nbackend.start();\n```\n\n### Plugin Configurations\n\nAdd the following proxy configurations into your `app-config.yaml` file:\n\n```yaml\nproxy:\n  endpoints:\n    '/lightspeed/api':\n      target: '<LLM server URL>'\n      headers:\n        content-type: 'application/json'\n        Authorization: 'Bearer <api-token>'\n      secure: true\n      changeOrigin: true\n      credentials: 'dangerously-allow-unauthenticated' # No Backstage credentials are required to access this proxy target\n```\n\nExample local development configuration:\n\n```yaml\nproxy:\n  endpoints:\n    '/lightspeed/api':\n      target: 'https://localhost:443/v1'\n      headers:\n        content-type: 'application/json'\n        Authorization: 'Bearer js92n-ssj28dbdk902' # dummy token\n      secure: true\n      changeOrigin: true\n      credentials: 'dangerously-allow-unauthenticated' # No Backstage credentials are required to access this proxy target\n```\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/lightspeed-backend",
+  "role": "backend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-09-17T17:35:55.417Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-09-17T17:35:55.417Z",
+      "version": "0.1.0"
+    }
+  ]
+}

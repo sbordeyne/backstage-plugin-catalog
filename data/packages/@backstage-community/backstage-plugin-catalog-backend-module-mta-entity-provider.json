@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2024-10-11T13:09:33.695Z",
+  "deprecated": "",
+  "description": "The mta-entity-provider backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/backstage-plugin-catalog-backend-module-mta-entity-provider",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/mta/plugins/catalog-backend-module-mta-entity-provider",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-05-05T20:44:23.234Z",
+  "version": "0.4.1",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-05-05T20:44:23.234Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-09-25T14:59:12.540Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-04-18T00:54:08.652Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-03-15T01:48:08.746Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-11-08T20:15:13.801Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-10-11T13:09:34.067Z",
+      "version": "0.1.1"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2024-12-20T19:57:46.199Z",
+  "deprecated": "",
+  "description": "The GCP module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "tdabasinskas"
+  ],
+  "name": "@datolabs/plugin-scaffolder-backend-module-gcp",
+  "plugin_id": "scaffolder-backend-module-gcp",
+  "readme": "",
+  "repository": "https://github.com/datolabs-io/backstage-plugins/tree/HEAD/workspaces/scaffolder-backend-module-gcp/plugins/scaffolder-backend-module-gcp",
+  "role": "backend-plugin-module",
+  "scope": "@datolabs",
+  "updated": "2026-05-22T06:50:37.611Z",
+  "version": "0.4.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-05-22T06:50:37.611Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-03-29T18:20:28.035Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-03-24T17:34:21.782Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-02-17T14:24:41.350Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-12-20T19:57:46.517Z",
+      "version": "0.1.0"
+    }
+  ]
+}

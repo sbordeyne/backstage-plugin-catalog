@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-07-01T13:55:13.266Z",
+  "deprecated": "",
+  "description": "The kubernetes backend module for the soundcheck plugin.",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-soundcheck-backend-module-kubernetes",
+  "plugin_id": "soundcheck",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2026-10-23T12:32:51.333Z",
+  "version": "0.6.2",
+  "version_count": 37,
+  "versions": [
+    {
+      "date": "2026-10-23T12:32:51.333Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2026-09-17T14:10:41.021Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2026-08-20T15:32:03.224Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-07-17T16:17:10.770Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-06-19T07:53:20.309Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-05-26T11:52:26.004Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-04-17T09:04:28.428Z",
+      "version": "0.3.19"
+    },
+    {
+      "date": "2026-03-19T22:29:06.407Z",
+      "version": "0.3.18"
+    },
+    {
+      "date": "2026-02-19T17:01:03.957Z",
+      "version": "0.3.17"
+    },
+    {
+      "date": "2026-01-22T15:50:49.367Z",
+      "version": "0.3.16"
+    },
+    {
+      "date": "2025-12-19T12:54:31.028Z",
+      "version": "0.3.15"
+    },
+    {
+      "date": "2025-11-21T18:06:32.257Z",
+      "version": "0.3.14"
+    },
+    {
+      "date": "2025-10-17T16:14:50.003Z",
+      "version": "0.3.13"
+    },
+    {
+      "date": "2025-08-22T11:49:30.448Z",
+      "version": "0.3.12"
+    },
+    {
+      "date": "2025-07-17T09:06:16.929Z",
+      "version": "0.3.11"
+    }
+  ]
+}

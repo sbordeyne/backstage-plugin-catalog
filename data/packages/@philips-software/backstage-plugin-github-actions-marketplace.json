@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-01-28T14:18:04.066Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "bartgolsteijn",
+    "gertjanmaas",
+    "herberttn",
+    "jeroenknoops",
+    "mfklauberg",
+    "nadavsinai",
+    "npalm",
+    "philips-software-fa",
+    "scottguymer"
+  ],
+  "name": "@philips-software/backstage-plugin-github-actions-marketplace",
+  "plugin_id": "github-actions-marketplace",
+  "readme": "",
+  "repository": "https://github.com/philips-software/philips-backstage-plugins/tree/HEAD/workspaces/github-marketplace/plugins/github-actions-marketplace",
+  "role": "frontend-plugin",
+  "scope": "@philips-software",
+  "updated": "2025-01-28T14:18:04.480Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-01-28T14:18:04.480Z",
+      "version": "1.0.0"
+    }
+  ]
+}

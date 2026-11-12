@@ -1,0 +1,57 @@
+{
+  "author": "",
+  "created": "2026-02-10T04:14:53.822Z",
+  "deprecated": "",
+  "description": "A frontend-only Backstage plugin that provides Excalidraw-style (hand-drawn, sketchy) node and edge renderers for the [catalog graph](https://backstage.io/docs/features/software-catalog/catalog-graph). Use it with `EntityCatalogGraphCard` and `CatalogGrap",
+  "homepage": "https://github.com/milanmayr/backstage-plugin-roughjs-catalog-graph",
+  "keywords": [
+    "backstage",
+    "catalog",
+    "excalidraw",
+    "graph",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "milanmayr"
+  ],
+  "name": "@milanmayr/backstage-plugin-catalog-graph-excalidraw",
+  "plugin_id": "catalog-graph-excalidraw",
+  "readme": "# Catalog Graph Excalidraw\n\nA frontend-only Backstage plugin that provides Excalidraw-style (hand-drawn, sketchy) node and edge renderers for the [catalog graph](https://backstage.io/docs/features/software-catalog/catalog-graph). Use it with `EntityCatalogGraphCard` and `CatalogGraphPage` from `@backstage/plugin-catalog-graph`.\n\n## Installation\n\nAdd the plugin to your Backstage app:\n\n```bash\nyarn add @internal/backstage-plugin-catalog-graph-excalidraw\n```\n\nIf you use a monorepo with workspaces, add the package to your app's `package.json` dependencies (e.g. `\"@internal/backstage-plugin-catalog-graph-excalidraw\": \"^0.1.0\"` or a workspace reference).\n\nThe plugin requires:\n\n- `@backstage/plugin-catalog-graph` (you already have this if you show the catalog graph)\n- `@backstage/core-components`\n- `@backstage/theme`\n- `react`\n\n## Usage\n\nThe plugin exports `ExcalidrawNode` and `ExcalidrawEdge` (and a convenience object `excalidrawGraphRenderers`). Pass them as `renderNode` and `renderEdge` wherever you use the catalog graph.\n\n### 1. Catalog graph page (standalone)\n\nIn the file where you render `CatalogGraphPage` (e.g. `packages/app/src/App.tsx`):\n\n```tsx\nimport { CatalogGraphPage, Direction } from '@backstage/plugin-catalog-graph';\nimport { ExcalidrawNode, ExcalidrawEdge } from '@internal/backstage-plugin-catalog-graph-excalidraw';\n\n// In your routes:\n<Route\n  path=\"/catalog-graph\"\n  element={\n    <CatalogGraphPage\n      initialState={{ maxDepth: 1, direction: Direction.TOP_BOTTOM }}\n      renderNode={ExcalidrawNode}\n      renderEdge={ExcalidrawEdge}\n    />\n  }\n/>\n```\n\n### 2. Entity catalog graph cards\n\nIn the file where you use `EntityCatalogGraphCard` (e.g. `packages/app/src/components/catalog/EntityPage.tsx`):\n\n```tsx\nimport { EntityCatalogGraphCard } from '@backstage/plugin-catalog-graph';\nimport { ExcalidrawNode, ExcalidrawEdge } from '@internal/backstage-plugin-catalog-graph-excalidraw';\n\n// For each EntityCatalogGraphCard, add the renderers:\n<EntityCatalogGraphCard\n  variant=\"gridItem\"\n  height={400}\n  renderNode={ExcalidrawNode}\n  renderEdge={ExcalidrawEdge}\n/>\n```\n\nAdd `renderNode={ExcalidrawNode}` and `renderEdge={ExcalidrawEdge}` to every `EntityCatalogGraphCard` instance (overview cards, diagram tab, etc.) where you want the Excalidraw style.\n\n### Convenience object\n\nYou can use the bundled object to avoid repeating imports:\n\n```tsx\nimport { excalidrawGraphRenderers } from '@internal/backstage-plugin-catalog-graph-excalidraw';\n\n<CatalogGraphPage\n  renderNode={excalidrawGraphRenderers.renderNode}\n  renderEdge={excalidrawGraphRenderers.renderEdge}\n/>\n```\n\n## Layout and spacing\n\nNode spacing (distance between nodes) is controlled by `@backstage/plugin-catalog-graph` and its layout defaults. The plugin does not currently expose `nodeMargin` or `rankMargin` to `DependencyGraph`. To get more space between nodes, you would need the upstream catalog-graph plugin to support and forward those props, or to use a custom graph wrapper that does.\n\n## Development\n\nFrom the plugin directory:\n\n```bash\nyarn start\n```\n\nThis opens a dev app with a sample graph page at `/excalidraw-graph` so you can develop and test the renderers in isolation.\n\n## License\n\nApache-2.0\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@milanmayr",
+  "updated": "2026-02-10T05:38:29.503Z",
+  "version": "0.1.6",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-02-10T05:38:29.503Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2026-02-10T05:35:49.743Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2026-02-10T05:26:54.458Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2026-02-10T04:35:09.376Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2026-02-10T04:27:32.791Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-02-10T04:18:03.940Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-02-10T04:14:54.093Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+site_name: Backstage Plugin Catalog
+site_description: Every Backstage plugin published on npm, refreshed daily.
+site_url: https://sbordeyne.github.io/backstage-plugin-catalog/
+repo_url: https://github.com/sbordeyne/backstage-plugin-catalog
+repo_name: sbordeyne/backstage-plugin-catalog
+edit_uri: ""
+docs_dir: docs
+
+nav:
+  - Home: index.md
+  - Roles: roles/index.md
+  - Scopes: scopes/index.md
+  - Tags: tags.md
+
+# Generated pages are reached from listings, not the nav.
+not_in_nav: |
+  /plugins/
+  /roles/
+  /scopes/
+
+# README links and anchors come from third parties; don't fail the strict build on them.
+validation:
+  omitted_files: info
+  absolute_links: info
+  unrecognized_links: info
+  anchors: info
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tracking
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+plugins:
+  - search
+  - tags
+
+hooks:
+  - src/backstage_catalog/hooks.py
+
+extra_css:
+  - stylesheets/catalog.css
+
+extra_javascript:
+  - javascripts/catalog.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg

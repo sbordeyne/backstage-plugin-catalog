@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2026-09-19T13:14:15.206Z",
+  "deprecated": "",
+  "description": "Opt-in Jev fact retriever for Backstage Tech Insights",
+  "homepage": "https://github.com/namayasai/backstage-jev-operations-support#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "jev",
+    "operations",
+    "tech-insights"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "namayasai"
+  ],
+  "name": "@namayasai/backstage-plugin-jev-operations-support-tech-insights",
+  "plugin_id": "tech-insights",
+  "readme": "# Jev Tech Insights module\n\nThis optional backend module registers an opt-in Jev fact retriever with the\nBackstage Community Tech Insights backend. See the repository\n[Tech Insights guide](../../docs/tech-insights.md) for installation and\nconfiguration. It requires the 0.4.0 parent backend package, whose `/client`\nexport it imports.\n\nApache-2.0. Experimental v0.4.0.\n",
+  "repository": "https://github.com/namayasai/backstage-jev-operations-support",
+  "role": "backend-plugin-module",
+  "scope": "@namayasai",
+  "updated": "2026-09-20T13:34:21.182Z",
+  "version": "0.4.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-09-20T13:34:21.182Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-09-19T13:14:15.863Z",
+      "version": "0.3.0"
+    }
+  ]
+}

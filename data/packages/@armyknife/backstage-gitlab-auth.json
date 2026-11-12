@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-03-02T14:20:28.894Z",
+  "deprecated": "",
+  "description": "GitLab authentication for Backstage",
+  "homepage": "",
+  "keywords": [
+    "authentication",
+    "backstage",
+    "gitlab"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "armyknife"
+  ],
+  "name": "@armyknife/backstage-gitlab-auth",
+  "plugin_id": "",
+  "readme": "# Backstage GitLab Authentication\n\nThis package provides GitLab authentication for Backstage.\n\n## Installation\n\n```bash\n# npm\nnpm install @armyknife/backstage-gitlab-auth\n\n# yarn\nyarn add @armyknife/backstage-gitlab-auth\n```\n\n## Usage\n\nCreate a file called `app-config.gitlab.yaml` in your Backstage root directory:\n\n```yaml\nauth:\n  environment: development\n  providers:\n    gitlab:\n      development:\n        clientId: ${GITLAB_CLIENT_ID}\n        clientSecret: ${GITLAB_CLIENT_SECRET}\n        # For self-hosted GitLab instances\n        audience: https://gitlab.example.com\n        # Optional: for self-hosted instances\n        baseUrl: https://gitlab.example.com\n        # Optional: for self-hosted instances\n        apiBaseUrl: https://gitlab.example.com/api/v4\n\n# Catalog configuration for GitLab\ncatalog:\n  providers:\n    gitlab:\n      myGitlabInstance:\n        host: gitlab.example.com # or gitlab.com for GitLab SaaS\n        token: ${GITLAB_TOKEN}\n        group: my-organization # Optional: filter by group\n        entityFilename: catalog-info.yaml # Optional: default is catalog-info.yaml\n```\n\nThen, in your `packages/app/src/App.tsx` file:\n\n```typescript\nimport { gitlabAuthApiRef, GitLabAuth } from '@armyknife/backstage-gitlab-auth';\n\n// Inside your createApp configuration:\napis: [\n  // ... other API factories\n  createApiFactory({\n    api: gitlabAuthApiRef,\n    deps: {\n      discoveryApi: discoveryApiRef,\n      oauthRequestApi: oauthRequestApiRef,\n      configApi: configApiRef,\n    },\n    factory: ({ discoveryApi, oauthRequestApi, configApi }) =>\n      GitLabAuth.create({\n        discoveryApi,\n        oauthRequestApi,\n        configApi,\n      }),\n  }),\n]\n```\n\n## Environment Variables\n\nYou'll need to set the following environment variables:\n\n```bash\nGITLAB_CLIENT_ID=your-gitlab-client-id\nGITLAB_CLIENT_SECRET=your-gitlab-client-secret\nGITLAB_TOKEN=your-gitlab-personal-access-token\n```\n\n## License\n\nApache-2.0\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@armyknife",
+  "updated": "2025-03-02T14:20:29.185Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-03-02T14:20:29.185Z",
+      "version": "0.1.0"
+    }
+  ]
+}

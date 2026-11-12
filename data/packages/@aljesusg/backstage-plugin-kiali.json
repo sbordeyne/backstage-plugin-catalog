@@ -1,0 +1,34 @@
+{
+  "author": "",
+  "created": "2024-02-07T09:06:05.658Z",
+  "deprecated": "",
+  "description": "The Kiali Plugin This plugin exposes information about your entity-specific ServiceMesh objects.",
+  "homepage": "https://janus-idp.io/",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aljesusg"
+  ],
+  "name": "@aljesusg/backstage-plugin-kiali",
+  "plugin_id": "",
+  "readme": "# Kiali plugin for Backstage\n\nThe Kiali Plugin\nThis plugin exposes information about your entity-specific ServiceMesh objects.\n\n## Capabilities\n\nThe Kiali plugin has the following capabilities:\n\n- Overview\n  - Metrics by namespace\n  - Health by namespace\n  - Canary info\n  - Istio Config warnings\n\n## For administrators\n\n### Setting up the Kiali plugin\n\n#### Prerequisites\n\n- The following annotation is added to the entity's `catalog-info.yaml` file to identify whether an entity contains the Kubernetes resources:\n\n  ```yaml\n  annotations:\n    ...\n\n    backstage.io/kubernetes-id: <BACKSTAGE_ENTITY_NAME>\n  ```\n\n  You can also add the `backstage.io/kubernetes-namespace` annotation to identify the Kubernetes resources using the defined namespace.\n\n  ```yaml\n  annotations:\n    ...\n\n    backstage.io/kubernetes-namespace: <RESOURCE_NS>\n  ```\n\n- The following annotation is added to the `catalog-info.yaml` file of entity to view the latest `PipelineRun` in the CI/CD tab of the application:\n\n  ```yaml\n  annotations:\n    ...\n\n    janus-idp.io/kiali-enabled : 'true'\n  ```\n\n- A custom label selector can be added, which Backstage uses to find the Kubernetes resources. The label selector takes precedence over the ID annotations.\n\n  ```yaml\n  annotations:\n    ...\n\n    backstage.io/kubernetes-label-selector: 'app=my-app,component=front-end'\n  ```\n\n- The following label is added to the resources so that the Kubernetes plugin gets the Kubernetes resources from the requested entity:\n\n  ```yaml\n  labels:\n    ...\n\n    backstage.io/kubernetes-id: <BACKSTAGE_ENTITY_NAME>`\n  ```\n\n  ***\n\n  **NOTE**\n\n  When using the label selector, the mentioned labels must be present on the resource.\n\n  ***\n\n#### Procedure\n\n1. Install the Kiali plugin using the following commands:\n\n   ```console\n   yarn workspace app add @janus-idp/backstage-plugin-kiali\n   ```\n\n2. Enable the **Kiali** tab on the entity view page using the `packages/app/src/components/catalog/EntityPage.tsx` file:\n\n   ```tsx title=\"packages/app/src/components/catalog/EntityPage.tsx\"\n   /* highlight-add-next-line */\n   import { EntityKialiContent } from '@janus-idp/backstage-plugin-kiali';\n\n   const serviceEntityPage = (\n     <EntityLayout>\n       {/* ... */}\n       {/* highlight-add-start */}\n       <EntityLayout.Route path=\"/kiali\" title=\"kiali\">\n         <EntityKialiContent />\n       </EntityLayout.Route>\n       {/* highlight-add-end */}\n     </EntityLayout>\n   );\n   ```\n\n3. Configure you `app-config.yaml` with kiali configuration\n\n```yaml\ncatalog:\n  providers:\n    # highlight-add-start\n    kiali:\n      # Required. Kiali endpoint\n      url: ${KIALI_ENDPOINT}\n      # Optional. Required by token authentication\n      serviceAccountToken: ${KIALI_SERVICE_ACCOUNT_TOKEN}\n      # Optional. defaults false\n      skipTLSVerify: true\n      # Optional\n      caData: ${KIALI_CONFIG_CA_DATA}\n      # Optional. Local path to CA file\n      caFile: ''\n      # Optional. Time in seconds that session is enabled, defaults to 1 minute.\n      sessionTime: 60\n      # highlight-add-end\n```\n\nAuthentication methods:\n\n- anonymous [Read docs about this authentication in kiali.io](https://kiali.io/docs/configuration/authentication/anonymous/)\n- token [Read docs about this authentication in kiali.io](https://kiali.io/docs/configuration/authentication/token/)\n\nThe following table describes the parameters that you can configure to enable the plugin under `catalog.providers.keycloakOrg.<ENVIRONMENT_NAME>` object in the `app-config.yaml` file:\n\n| Name                  | Description                                                                                                          | Default Value | Required                                |\n| --------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------- | --- |\n| `url`                 | Location of the kIALI server, such as `https://localhost:4000`                                                       | \"\"            | Yes                                     |     |\n| `serviceAccountToken` | Service Account Token which is used for querying data from Kiali                                                     | \"\"            | Yes if using token based authentication |\n| `skipTLSVerify`       | Skip TLS certificate verification presented by the API server                                                        | false         | No                                      |\n| `caData`              | Base64-encoded certificate authority bundle in PEM format                                                            | \"\"            | No                                      |\n| `caFile`              | Filesystem path (on the host where the Backstage process is running) to a certificate authority bundle in PEM format | \"\"            | No                                      |\n| `sessionTime`         | Time in seconds that session is enabled                                                                              | 60            | No                                      |\n\n## For users\n\n1. Open your Backstage application and select a component from the **Catalog** page.\n\n![catalog-list](./images/catalog-list.png)\n\n2. Check that you entity has the annotations.\n\n![entity](./images/entity.png)\n\n3. Go to the **Kiali** tab.\n\n   The **Kiali** tab displays the Overview view associated to a Servicemesh.\n\n   ![overview-tab](./images/overview_tab.png)\n\n   There is also a **Go To Kiali Graph** option at the bottom of each card, which redirects you to the **Graph in the Kiali Standalone**.\n\n## Development\n\nTo develop/contribute in kiali plugin follow [these instructions](./DEVELOPMENT.md)\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins",
+  "role": "frontend-plugin",
+  "scope": "@aljesusg",
+  "updated": "2024-02-07T09:37:32.041Z",
+  "version": "1.8.5",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-02-07T09:37:32.041Z",
+      "version": "1.8.5"
+    },
+    {
+      "date": "2024-02-07T09:06:06.039Z",
+      "version": "1.8.4"
+    }
+  ]
+}

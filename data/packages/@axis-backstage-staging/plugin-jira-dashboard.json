@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-21T16:00:56.839Z",
+  "deprecated": "",
+  "description": "Welcome to the Jira Dashboard plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "glundh"
+  ],
+  "name": "@axis-backstage-staging/plugin-jira-dashboard",
+  "plugin_id": "",
+  "readme": "# Jira Dashboard plugin\n\nWelcome to the Jira Dashboard plugin!\n\n![project-card](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/jira-dashboard/media/project-card.png)\n\n## Introduction\n\nThe **Jira Dashboard** plugin allows you to fetch and display Jira issues for your entity. You get quickly access to issue summaries to achieve better task visibility and more efficient project management. The issue overview that is provided can be customized to display the information that is relevant for your entity, by defining Jira filters and components.\n\nThis plugin supports both **Jira Software** and **Jira Cloud**.\n\nBy default, the issue views that are provided are **incoming issues**, **open issues** and **assigned to you**.\n\n## Jira Dashboard backend\n\nYou **need** to set up the [Jira Dashboard Backend](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/jira-dashboard-backend) plugin before you move forward with any of these steps if you haven't already.\n\n## Getting Started\n\n1. First, install the plugin into your app:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @axis-backstage/plugin-jira-dashboard\n```\n\n2. Then, modify your entity page in `EntityPage.tsx` to include the `EntityJiraDashboardContent` component and the `isJiraDashboardAvailable` function. Both are exported from the plugin. The example below show how you can add the plugin to the `defaultEntityPage`:\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityJiraDashboardContent, isJiraDashboardAvailable } from '@axis-backstage/plugin-jira-dashboard';\n\nconst defaultEntityPage = (\n  <EntityLayout.Route\n    if={isJiraDashboardAvailable}\n    path=\"/jira-dashboard\"\n    title=\"Jira Dashboard\"\n  >\n    <EntityJiraDashboardContent />\n  </EntityLayout.Route>\n  ...\n);\n```\n\nOPTIONAL: The function `isJiraDashboardAvailable` checks for the annotation `jira.com`. You can choose to check for another annotation by passing the prop `annotationPrefix` into the function. See example below.\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityJiraDashboardContent, isJiraDashboardAvailable } from '@axis-backstage/plugin-jira-dashboard';\n\nconst defaultEntityPage = (\n  <EntityLayout.Route\n    if={entity => isJiraDashboardAvailable(entity, 'jira')}\n    path=\"/jira-dashboard\"\n    title=\"Jira Dashboard\"\n  >\n    <EntityJiraDashboardContent />\n  </EntityLayout.Route>\n  ...\n);\n```\n\n### Integration with the Catalog\n\nTo enable the Jira Dashboard plugin for your entity, the entity yaml must have the following annotation:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    jira.com/project-key: value # The key of the Jira project to track for this entity\n```\n\n### Optional annotations\n\nIf you want to track specific components or filters for your entity, you can add the optional annotations `components` and `filters-ids`. You can specify an endless number of Jira components or filters.\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    jira.com/project-key: value # The key of the Jira project to track for this entity\n    jira.com/components: component,component,component # Jira component name separated with a comma. The Roadie Backstage Jira Plugin Jira annotation `/component` is also supported here by default\n    jira.com/filter-ids: 12345,67890 # Jira filter id separated with a comma\n```\n\n## Layout\n\nThe issue overview is located under the tab \"Jira Dashboard\" on the entity page. The overview displays information about the specific Jira project, and then renders one table for each type of issue view. In each view you can see the priority, assignee and status for that issue.\n\n![overview](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/jira-dashboard/media/overview.png)\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@axis-backstage-staging",
+  "updated": "2024-03-21T17:00:41.945Z",
+  "version": "0.7.4",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-03-21T17:00:41.945Z",
+      "version": "0.7.4"
+    },
+    {
+      "date": "2024-03-21T16:00:57.134Z",
+      "version": "0.7.3"
+    }
+  ]
+}

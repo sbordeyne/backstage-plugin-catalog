@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-04-02T21:43:38.893Z",
+  "deprecated": "",
+  "description": "The runtime-direct backend module for the renovate plugin.",
+  "homepage": "https://github.com/secustor/backstage-plugins",
+  "keywords": [
+    "backstage",
+    "renovate"
+  ],
+  "license": "LGPL-3.0-or-later",
+  "maintainers": [
+    "secustor"
+  ],
+  "name": "@secustor/backstage-plugin-renovate-backend-module-runtime-direct",
+  "plugin_id": "renovate",
+  "readme": "",
+  "repository": "https://github.com/secustor/backstage-plugins/tree/HEAD/plugins/renovate-backend-module-runtime-direct",
+  "role": "backend-plugin-module",
+  "scope": "@secustor",
+  "updated": "2026-10-16T12:31:09.404Z",
+  "version": "4.2.0",
+  "version_count": 48,
+  "versions": [
+    {
+      "date": "2026-10-16T12:31:09.404Z",
+      "version": "4.2.0"
+    },
+    {
+      "date": "2026-07-28T15:33:10.529Z",
+      "version": "4.1.0"
+    },
+    {
+      "date": "2026-04-14T16:35:46.435Z",
+      "version": "4.0.2"
+    },
+    {
+      "date": "2026-03-26T18:10:51.434Z",
+      "version": "4.0.1"
+    },
+    {
+      "date": "2026-02-28T10:07:03.060Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2026-01-25T20:25:19.665Z",
+      "version": "3.1.1"
+    },
+    {
+      "date": "2025-12-23T23:56:52.604Z",
+      "version": "3.1.0"
+    },
+    {
+      "date": "2025-11-26T20:21:51.859Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2025-10-16T06:13:35.480Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2025-08-20T13:48:03.695Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2025-07-14T23:09:54.839Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2025-06-17T22:08:15.514Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2025-06-12T21:08:45.107Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-05-21T08:44:39.725Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-05-11T11:54:14.426Z",
+      "version": "1.0.0"
+    }
+  ]
+}

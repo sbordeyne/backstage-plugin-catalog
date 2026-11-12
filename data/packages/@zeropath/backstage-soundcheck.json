@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2025-11-16T19:55:00.322Z",
+  "deprecated": "",
+  "description": "Zeropath fact collector for Backstage Soundcheck.",
+  "homepage": "https://github.com/ZeroPathAI/backstage-soundcheck#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ezeropath"
+  ],
+  "name": "@zeropath/backstage-soundcheck",
+  "plugin_id": "soundcheck",
+  "readme": "# Zeropath Soundcheck Backend Module\n\nThis package provides a Zeropath fact collector for the Backstage Soundcheck\nbackend plugin. It enables Soundcheck to query Zeropath repositories for issue\ncounts, PR scanning status, and security posture metrics.\n\n## Installation\n\nPublish the package or link it into your Backstage instance, then add it as a\ndependency of your backend:\n\n```sh\nyarn workspace backend add @zeropath/backstage-soundcheck\n```\n\nRegister the module in `packages/backend/src/index.ts` (or the relevant\nregistration file):\n\n```ts\nbackend.add(import('@zeropath/backstage-soundcheck'));\n```\n\n## Configuration\n\nProvide credentials and collector scheduling via `app-config.yaml`:\n\n```yaml\nsoundcheck:\n  collectors:\n    zeropath:\n      baseUrl: https://zeropath.com\n      organizationId: ${ZEROPATH_ORGANIZATION_ID}\n      tokenId: ${ZEROPATH_TOKEN_ID}\n      tokenSecret: ${ZEROPATH_TOKEN_SECRET}\n      repositorySlugAnnotation: github.com/project-slug\n      repositorySlugPrefix: my-org\n      collects:\n        - frequency:\n            cron: '0 * * * *'\n```\n\nAll sensitive values should be supplied via environment variables or an\nexternal secrets store.\n\n### Quick start with the bundled example\n\nIf you want a ready-to-use setup that automatically enrolls every component in\nSoundcheck, copy the contents of\n[`examples/zeropath-soundcheck.yaml`](./examples/zeropath-soundcheck.yaml) into\nyour Backstage configuration. It contains:\n\n- A collector schedule that targets all `Component` entities (no opt-in work).\n- Guarded checks that show a \"repository not linked\" message instead of\n  failing whenever the `github.com/project-slug` annotation is missing.\n- A `zeropath-security-posture` track that surfaces the linked/pr-scanning and\n  severity checks in the Soundcheck UI.\n\nAfter pasting the example config, restart the backend (or run the\n`soundcheck-refresh-applicable-entities` job) so the widened filters take\neffect.\n\n### Demo checklist / suggested flow\n\nWhen recording a walkthrough for customers, we recommend covering the\nfollowing:\n\n1. **Prerequisites** – point out the required Zeropath env vars and\n   `repositorySlugAnnotation`, and verify that catalog entities contain the\n   matching `github.com/project-slug` annotation.\n2. **Collector wiring** – show how the backend module is registered and how the\n   `collects` schedule automatically covers every component.\n3. **Soundcheck configuration** – walk through the example track definition so\n   users see how checks map to the Zeropath facts.\n4. **Live demo** – in Backstage, open:\n   - The Soundcheck sidebar overview to highlight the new \"Zeropath Security\n     Posture\" track.\n   - An entity that passes all checks.\n   - An entity without a Zeropath repo to show the \"not linked\" message.\n5. **Investigating results** – click \"View details\" on a check to show the raw\n   facts and explain how customers can tweak thresholds/messages.\n\nIncluding this flow in your video makes it clear how to get started and how to\ninterpret the Zeropath data inside Soundcheck.\n\n## Development\n\nThis package requires the Backstage CLI and relies on the Soundcheck backend\nfrom Spotify. Run `yarn backstage-cli package build` to produce distributable\nartifacts once dependencies are available.\n",
+  "repository": "https://github.com/ZeroPathAI/backstage-soundcheck",
+  "role": "backend-plugin-module",
+  "scope": "@zeropath",
+  "updated": "2025-12-08T14:24:47.177Z",
+  "version": "0.1.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2025-12-08T14:24:47.177Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-12-07T02:14:23.835Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-11-16T20:28:58.597Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-11-16T20:01:55.955Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-11-16T19:55:00.639Z",
+      "version": "0.1.0"
+    }
+  ]
+}

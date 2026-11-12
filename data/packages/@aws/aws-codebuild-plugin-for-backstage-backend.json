@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-03-14T02:33:32.580Z",
+  "deprecated": "",
+  "description": "This a backend plugin package for Backstage related to AWS CodeBuild. For more information see the [documentation](../README.md).",
+  "homepage": "https://github.com/awslabs/backstage-plugins-for-aws#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "nialt"
+  ],
+  "name": "@aws/aws-codebuild-plugin-for-backstage-backend",
+  "plugin_id": "aws-codebuild",
+  "readme": "# AWS CodeBuild plugin for Backstage - Backend\n\nThis a backend plugin package for Backstage related to AWS CodeBuild. For more information see the [documentation](../README.md).\n",
+  "repository": "https://github.com/awslabs/backstage-plugins-for-aws/tree/HEAD/plugins/codebuild/backend",
+  "role": "backend-plugin",
+  "scope": "@aws",
+  "updated": "2026-08-06T03:37:40.897Z",
+  "version": "0.10.0",
+  "version_count": 17,
+  "versions": [
+    {
+      "date": "2026-08-06T03:37:40.897Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-04-23T15:04:17.192Z",
+      "version": "0.9.2"
+    },
+    {
+      "date": "2025-11-07T18:59:36.575Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2025-09-19T02:25:18.176Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-06-27T23:31:22.574Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2024-11-29T23:31:30.363Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2024-09-19T05:06:09.241Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2024-08-29T23:05:29.994Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-08-29T22:03:34.776Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2024-07-09T16:58:01.782Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2024-05-31T03:00:25.632Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2024-05-08T02:46:26.896Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-04-26T02:39:14.706Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-04-03T23:00:54.660Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-03-30T02:15:17.007Z",
+      "version": "0.2.0"
+    }
+  ]
+}

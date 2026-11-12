@@ -1,0 +1,86 @@
+{
+  "author": "Red Hat",
+  "created": "2024-11-04T21:55:20.585Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-ocm",
+  "plugin_id": "ocm",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/ocm/plugins/ocm",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-09-23T16:32:45.271Z",
+  "version": "5.22.0",
+  "version_count": 37,
+  "versions": [
+    {
+      "date": "2026-09-23T16:32:45.271Z",
+      "version": "5.22.0"
+    },
+    {
+      "date": "2026-09-15T00:08:43.650Z",
+      "version": "5.21.2"
+    },
+    {
+      "date": "2026-09-04T11:45:31.371Z",
+      "version": "5.21.1"
+    },
+    {
+      "date": "2026-08-28T20:46:32.027Z",
+      "version": "5.20.0"
+    },
+    {
+      "date": "2026-07-21T19:42:48.833Z",
+      "version": "5.19.0"
+    },
+    {
+      "date": "2026-05-16T22:49:40.558Z",
+      "version": "5.18.0"
+    },
+    {
+      "date": "2026-04-26T05:31:56.684Z",
+      "version": "5.17.0"
+    },
+    {
+      "date": "2026-03-25T15:42:58.217Z",
+      "version": "5.16.0"
+    },
+    {
+      "date": "2026-03-15T20:48:11.473Z",
+      "version": "5.15.1"
+    },
+    {
+      "date": "2026-03-10T22:02:29.357Z",
+      "version": "5.15.0"
+    },
+    {
+      "date": "2026-02-18T17:33:33.355Z",
+      "version": "5.14.0"
+    },
+    {
+      "date": "2026-01-30T21:58:50.042Z",
+      "version": "5.13.0"
+    },
+    {
+      "date": "2026-01-27T13:02:55.488Z",
+      "version": "5.12.0"
+    },
+    {
+      "date": "2025-12-19T20:00:51.469Z",
+      "version": "5.11.1"
+    },
+    {
+      "date": "2025-12-19T13:18:49.210Z",
+      "version": "5.11.0"
+    }
+  ]
+}

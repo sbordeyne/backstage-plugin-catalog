@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2025-01-08T01:19:35.821Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-marketplace-backend",
+  "plugin_id": "extensions",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/marketplace/plugins/marketplace-backend",
+  "role": "backend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2025-12-19T20:48:47.900Z",
+  "version": "0.13.2",
+  "version_count": 33,
+  "versions": [
+    {
+      "date": "2025-12-19T20:48:47.900Z",
+      "version": "0.13.2"
+    },
+    {
+      "date": "2025-12-09T23:23:42.506Z",
+      "version": "0.13.1"
+    },
+    {
+      "date": "2025-12-09T09:54:56.584Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-11-17T12:48:19.613Z",
+      "version": "0.12.2"
+    },
+    {
+      "date": "2025-11-10T18:45:07.825Z",
+      "version": "0.12.1"
+    },
+    {
+      "date": "2025-11-07T15:39:11.183Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-10-08T19:55:26.217Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-09-29T20:19:07.661Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-09-26T21:47:02.637Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-08-19T00:58:49.327Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-07-28T21:05:58.174Z",
+      "version": "0.7.4"
+    },
+    {
+      "date": "2025-07-23T13:12:36.643Z",
+      "version": "0.7.3"
+    },
+    {
+      "date": "2025-07-21T13:47:35.970Z",
+      "version": "0.7.2"
+    },
+    {
+      "date": "2025-07-16T12:52:14.544Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2025-07-14T11:15:09.302Z",
+      "version": "0.7.0"
+    }
+  ]
+}

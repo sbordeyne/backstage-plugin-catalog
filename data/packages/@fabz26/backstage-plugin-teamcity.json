@@ -1,0 +1,34 @@
+{
+  "author": "",
+  "created": "2024-09-06T16:57:34.939Z",
+  "deprecated": "",
+  "description": "![Test Workflow](https://github.com/Weyn/backstage-teamcity/actions/workflows/main.yml/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/Weyn/backstage-teamcity/badge.svg?branch=main)](https://coveralls.io/github/Weyn/backstage-teamcity?bra",
+  "homepage": "https://github.com/TRANZACT/DevOps.SITH2.Backtage.Plugins.Teamcity",
+  "keywords": [
+    "backstage",
+    "teamcity"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fabz26"
+  ],
+  "name": "@fabz26/backstage-plugin-teamcity",
+  "plugin_id": "teamcity",
+  "readme": "![Test Workflow](https://github.com/Weyn/backstage-teamcity/actions/workflows/main.yml/badge.svg)\n[![Coverage Status](https://coveralls.io/repos/github/Weyn/backstage-teamcity/badge.svg?branch=main)](https://coveralls.io/github/Weyn/backstage-teamcity?branch=main)\n\n# Backstage teamcity plugin\n\nWelcome to the teamcity plugin for Backstage!\n\n## Getting started\nInstall via yarn\n```\nyarn add --cwd packages/app backstage-plugin-teamcity\n```\n\nIn: packages\\app\\src\\components\\catalog\\EntityPage.tsx file add:\n```\nimport { isTeamcityAvailable, EntityTeamcityContent } from 'backstage-plugin-teamcity';\n```\n\nThen under cicdContent block in the EntityPage.tsx file paste:\n```\n    <EntitySwitch.Case if={isTeamcityAvailable}>\n        <Grid item sm={12}>\n            <EntityTeamcityContent/>\n        </Grid>\n    </EntitySwitch.Case>\n```\n\nAs a final step add the proxy to the app-config.local.yaml or prod depending on the env.\n\n```\nproxy:\n  '/teamcity-proxy/':\n    target: 'http://localhost:8111'\n    headers:\n      Authorization: 'Basic BASIC_AUTH'\n      Accept: 'application/json'\n```\n\n# Project catalog flag requirement\n```\n  annotations:\n    teamcity/project-id: TEAMCITY_NAME\n```\n\n# Screenshots\n![error](https://github.com/Weyn/backstage-teamcity/blob/main/assets/sample.jpg)\n![error](https://github.com/Weyn/backstage-teamcity/blob/main/assets/history.jpg)\n![error](https://github.com/Weyn/backstage-teamcity/blob/main/assets/log.jpg)\n\n# Future plans\n* More tests\n* Run button",
+  "repository": "https://github.com/TRANZACT/DevOps.SITH2.Backtage.Plugins.Teamcity/tree/HEAD/.",
+  "role": "frontend-plugin",
+  "scope": "@fabz26",
+  "updated": "2024-09-19T20:33:30.451Z",
+  "version": "1.0.4",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-09-19T20:33:30.451Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2024-09-06T16:57:35.242Z",
+      "version": "1.0.3"
+    }
+  ]
+}

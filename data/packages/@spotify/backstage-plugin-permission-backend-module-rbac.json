@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-02-22T13:58:12.030Z",
+  "deprecated": "",
+  "description": "Control access to actions and data in Backstage with ease.",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-permission-backend-module-rbac",
+  "plugin_id": "permission",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2026-10-23T12:26:16.190Z",
+  "version": "0.4.20",
+  "version_count": 33,
+  "versions": [
+    {
+      "date": "2026-10-23T12:26:16.190Z",
+      "version": "0.4.20"
+    },
+    {
+      "date": "2026-09-17T14:09:01.972Z",
+      "version": "0.4.19"
+    },
+    {
+      "date": "2026-08-20T15:29:28.139Z",
+      "version": "0.4.18"
+    },
+    {
+      "date": "2026-07-17T16:14:40.306Z",
+      "version": "0.4.17"
+    },
+    {
+      "date": "2026-06-19T07:24:21.813Z",
+      "version": "0.4.16"
+    },
+    {
+      "date": "2026-05-26T11:49:51.965Z",
+      "version": "0.4.15"
+    },
+    {
+      "date": "2026-04-17T09:01:50.357Z",
+      "version": "0.4.14"
+    },
+    {
+      "date": "2026-03-19T22:26:23.433Z",
+      "version": "0.4.13"
+    },
+    {
+      "date": "2026-02-19T16:58:30.393Z",
+      "version": "0.4.12"
+    },
+    {
+      "date": "2026-01-22T15:48:05.318Z",
+      "version": "0.4.11"
+    },
+    {
+      "date": "2025-12-19T12:51:47.393Z",
+      "version": "0.4.10"
+    },
+    {
+      "date": "2025-11-21T18:03:13.311Z",
+      "version": "0.4.9"
+    },
+    {
+      "date": "2025-10-17T16:11:16.424Z",
+      "version": "0.4.8"
+    },
+    {
+      "date": "2025-08-22T11:46:01.870Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2025-07-17T09:02:55.856Z",
+      "version": "0.4.6"
+    }
+  ]
+}

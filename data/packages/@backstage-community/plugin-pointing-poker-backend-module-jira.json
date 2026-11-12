@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-10-28T02:27:01.388Z",
+  "deprecated": "",
+  "description": "Jira ticket provider module for the Pointing Poker Backstage plugin",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-pointing-poker-backend-module-jira",
+  "plugin_id": "pointing-poker",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/pointing-poker/plugins/pointing-poker-backend-module-jira",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-10-28T02:27:58.962Z",
+  "version": "0.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-10-28T02:27:58.962Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-28T02:27:01.388Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

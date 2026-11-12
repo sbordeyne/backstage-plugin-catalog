@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2023-03-18T21:27:09.367Z",
+  "deprecated": "",
+  "description": "Welcome to the backstage-plugin-armorcode-backend backend plugin!",
+  "homepage": "https://github.com/adamlonsdale/backstage-plugin-armorcode-backend",
+  "keywords": [
+    "armorcode",
+    "backstage",
+    "vulnerability"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "adamlonsdale"
+  ],
+  "name": "@adamlonsdale/backstage-plugin-armorcode-backend",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-armorcode-backend\n\nWelcome to the backstage-plugin-armorcode-backend backend plugin!\n\n\n## Getting started\n\n## Installation\nThis plugin needs to be added to an existing backstage instance.\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @adamlonsdale/backstage-plugin-armorcode-backend\n```\n\nCreate a file called armorcode.ts inside `packages/backend/src/plugins/` and add the following:\n\n### armorcode.ts\n```typescript\nimport { createRouter } from '@adamlonsdale/backstage-plugin-armorcode-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {  \n  return await createRouter({\n    logger: env.logger,\n    config: env.config,\n  });\n}\n```\n\nAnd import the plugin to `packages/backend/src/index.ts`.\n### src/index.ts\n```diff\ndiff --git a/packages/backend/src/index.ts b/packages/backend/src/index.ts\nindex c4736a5..5822302 100644\n--- a/packages/backend/src/index.ts\n+++ b/packages/backend/src/index.ts\n@@ -28,6 +28,7 @@ import scaffolder from './plugins/scaffolder';\n import proxy from './plugins/proxy';\n import techdocs from './plugins/techdocs';\n import search from './plugins/search';\n+import armorcode from './plugins/armorcode';\n import { PluginEnvironment } from './types';\n import { ServerPermissionClient } from '@backstage/plugin-permission-node';\n import { DefaultIdentityClient } from '@backstage/plugin-auth-node';\n@@ -85,6 +86,7 @@ async function main() {\n   const techdocsEnv = useHotMemoize(module, () => createEnv('techdocs'));\n   const searchEnv = useHotMemoize(module, () => createEnv('search'));\n   const appEnv = useHotMemoize(module, () => createEnv('app'));\n+  const armorocdeEnv = useHotMemoize(module, () => createEnv('armorocde'));\n\n   const apiRouter = Router();\n   apiRouter.use('/catalog', await catalog(catalogEnv));\n@@ -93,6 +95,7 @@ async function main() {\n   apiRouter.use('/techdocs', await techdocs(techdocsEnv));\n   apiRouter.use('/proxy', await proxy(proxyEnv));\n   apiRouter.use('/search', await search(searchEnv));\n+  apiRouter.use('/armorcode', await armorcode(armorcodeEnv));\n\n   // Add backends ABOVE this line; this 404 handler is the catch-all fallback\n   apiRouter.use(notFoundHandler());\n\n```\n\n## Configuration\n\nAdd the following into your `app-config.yaml`\n### Config\n```yaml\narmorcode:\n  host: https://app.armorocde.com\n  token: YOUR_API_TOKEN\n```\n\nAdd the following into your catalog\n### Catalog\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: backstage\n  annotations:\n    armorcode/project: YOUR_PROJECT_NAME/YOUR_PROJECT_VERSION\n```",
+  "repository": "https://github.com/adamlonsdale/backstage-plugin-armorcode-backend",
+  "role": "backend-plugin",
+  "scope": "@adamlonsdale",
+  "updated": "2023-04-23T00:02:09.174Z",
+  "version": "0.0.4",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-04-23T00:02:09.174Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2023-03-18T21:27:09.639Z",
+      "version": "0.0.1-alpha"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "author": "",
+  "created": "2024-05-14T10:33:57.457Z",
+  "deprecated": "",
+  "description": "---",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aziz.haddad",
+    "humanitec2",
+    "louisbennett"
+  ],
+  "name": "@humanitec/backstage-plugin-dynamic",
+  "plugin_id": "humanitec",
+  "readme": "# @humanitec/backstage-plugin-dynamic\n\n---\n\n:warning: __This is the dynamic version of a Backstage plugin intended for [Red Hat Developer Hub](https://developers.redhat.com/rhdh/overview). If you are interest in the regular Humanitec Backstage plugins, checkout the [README](https://github.com/humanitec/humanitec-backstage-plugins?tab=readme-ov-file#humanitec-backstage-plugins).__ :warning:\n\n---\n\n# @humanitec/backstage-plugin\n\n`@humanitec/backstage-plugin` is a plugin for the Backstage frontend app. It shows information about environments, workloads and resources on an entity page.\n\n![screenshot](./screenshot.png)\n\n## Requirements\n\nThis plugin requires `@humanitec/backstage-plugin-backend` because it connects to the backend to make requests to the Humanitec API.\n\n## Installation\n\n### Entity card\n\nFirst, install the plugin to your backstage app:\n\n```bash\nyarn workspace app add @humanitec/backstage-plugin\n```\n\nThen in your Entity Page (`./packages/app/src/components/catalog/EntityPage.tsx`) add the `HumanitecCardComponent`:\n\n```diff\n+ import { HumanitecCardComponent } from '@humanitec/backstage-plugin';\n...\nconst overviewContent = (\n  <Grid container>\n    ...\n+   <Grid item md={6}>\n+     <HumanitecCardComponent />\n+   </Grid>\n  </Grid>\n)\n```\n\nIn case the Humanitec component should only be display when the entity has Humanitec annotations configured,\nthe code could look like the following:\n\n```diff\n+ import { HumanitecCardComponent, hasHumanitecAnnotations } from '@humanitec/backstage-plugin';\n...\nconst overviewContent = (\n  <Grid container>\n    ...\n+   <EntitySwitch>\n+     <EntitySwitch.Case if={hasHumanitecAnnotations}>\n+       <Grid item md={6}>\n+         <HumanitecCardComponent />\n+       </Grid>\n+     </EntitySwitch.Case>\n+   </EntitySwitch>\n  </Grid>\n)\n```\n\nAdd annotations to types that have Humanitec apps display:\n\n```yaml\n# ./catalog-humanitec-workloads.yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: name-of-application-workload # 🚨 CHANGE\n  description: Humanitec Workload Environments\n  annotations:\n    \"humanitec.com/orgId\": \"my-humanitec-organization\" # 🚨 CHANGE\n    \"humanitec.com/appId\": \"my-humanitec-application\" # 🚨 CHANGE\nspec:\n  type: service\n  owner: john@example.com\n  lifecycle: experimental\n```\n\nLastly in your `./app-config.yaml`, add configuration to `humanitec`:\n\n```diff\nhumanitec:\n  orgId: my-humanitec-organization\n  token: ${HUMANITEC_TOKEN} # without Bearer\n```\n\nWhen you start your backstage app be sure to pass in `HUMANITEC_TOKEN` that you must generate from your Humanitec dashboard.\n\n### Scaffolding field extension\n\nFor an enhanced scaffolding experience (`./packages/app/src/App.tsx`) add the `ValidateHumanitecAppIDFieldExtension`, which validates that the provided input is a valid Humanitec Application ID.\n\n```diff\n+ import { ValidateHumanitecAppIDFieldExtension } from '@humanitec/backstage-plugin';\n...\nconst routes = (\n  <FlatRoutes>\n    ...\n    <Route path=\"/create\" element={<ScaffolderPage />}>\n      <ScaffolderFieldExtensions>\n+       <ValidateHumanitecAppIDFieldExtension />\n      </ScaffolderFieldExtensions>\n    </Route>\n    ...\n  </FlatRoutes>\n)\n```\n\nOnce this has been added, `ui:field: ValidateHumanitecAppID` is available inside scaffolding templates.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@humanitec",
+  "updated": "2025-04-08T19:17:23.939Z",
+  "version": "0.9.7",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2025-04-08T19:17:23.939Z",
+      "version": "0.9.7"
+    },
+    {
+      "date": "2024-12-16T15:20:33.213Z",
+      "version": "0.9.6"
+    },
+    {
+      "date": "2024-10-25T13:57:39.328Z",
+      "version": "0.9.5"
+    },
+    {
+      "date": "2024-10-21T14:27:46.040Z",
+      "version": "0.9.4"
+    },
+    {
+      "date": "2024-10-10T19:51:53.878Z",
+      "version": "0.9.3"
+    },
+    {
+      "date": "2024-09-19T11:32:00.801Z",
+      "version": "0.9.2"
+    },
+    {
+      "date": "2024-09-19T08:49:54.197Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2024-08-23T14:10:44.286Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2024-06-26T12:35:53.959Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2024-06-18T12:20:53.415Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2024-05-15T14:34:07.368Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2024-05-14T10:33:57.880Z",
+      "version": "0.5.3"
+    }
+  ]
+}

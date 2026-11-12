@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:15:30.240Z",
+  "deprecated": "",
+  "description": "CI/CD Statistics plugin module; Gitlab CICD",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "cicd statistics",
+    "gitlab"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-cicd-statistics-module-gitlab",
+  "plugin_id": "cicd-statistics",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/cicd-statistics/plugins/cicd-statistics-module-gitlab",
+  "role": "frontend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:29:01.374Z",
+  "version": "0.22.0",
+  "version_count": 33,
+  "versions": [
+    {
+      "date": "2026-11-03T14:29:01.374Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-09-23T15:51:44.106Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-08-27T13:56:18.645Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-08-21T17:56:18.630Z",
+      "version": "0.19.1"
+    },
+    {
+      "date": "2026-07-21T22:58:27.077Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-06-24T13:10:16.624Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-05-31T20:35:07.335Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-04-24T18:06:45.090Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-03-11T14:49:34.040Z",
+      "version": "0.15.2"
+    },
+    {
+      "date": "2026-03-04T18:49:55.741Z",
+      "version": "0.15.1"
+    },
+    {
+      "date": "2026-01-28T22:45:20.932Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2026-01-16T21:03:10.821Z",
+      "version": "0.14.1"
+    },
+    {
+      "date": "2025-12-24T22:04:34.852Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-12-08T13:35:45.103Z",
+      "version": "0.13.1"
+    },
+    {
+      "date": "2025-11-27T17:10:45.852Z",
+      "version": "0.13.0"
+    }
+  ]
+}

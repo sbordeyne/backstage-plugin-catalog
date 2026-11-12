@@ -1,0 +1,30 @@
+{
+  "author": "Red Hat",
+  "created": "2026-09-03T11:38:36.723Z",
+  "deprecated": "",
+  "description": "Node.js library for the scorecard plugin",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "durandom"
+  ],
+  "name": "@rhdh-parasol/backstage-plugin-scorecard-node",
+  "plugin_id": "scorecard",
+  "readme": "",
+  "repository": "https://github.com/rhdh-parasol/rhdh-plugins/tree/HEAD/workspaces/scorecard/plugins/scorecard-node",
+  "role": "node-library",
+  "scope": "@rhdh-parasol",
+  "updated": "2026-09-03T11:38:37.022Z",
+  "version": "5.0.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-09-03T11:38:37.022Z",
+      "version": "5.0.1"
+    }
+  ]
+}

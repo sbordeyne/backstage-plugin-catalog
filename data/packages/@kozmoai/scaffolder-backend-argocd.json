@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:23.377Z",
+  "deprecated": "",
+  "description": "Welcome to the `argocd` actions for the `scaffolder-backend`.",
+  "homepage": "https://github.com/kozmoai/glint-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/scaffolder-backend-argocd",
+  "plugin_id": "",
+  "readme": "# scaffolder-backend-argocd\n\nWelcome to the `argocd` actions for the `scaffolder-backend`.\n\nThis contains one action: `argocd:create-resources`.\n\nThe `argocd:create-resources` action allows the task to call any of the Argo CD instance APIs available to the user that triggers it.\n\n## Getting started\n\nCreate your Backstage application using the Backstage CLI as described here:\nhttps://backstage.io/docs/getting-started/create-an-app\n\n> Note: If you are using this plugin in a Backstage monorepo that contains the code for `@backstage/plugin-scaffolder-backend`, you need to modify your internal build processes to transpile files from the `node_modules` folder as well.\n\n> Note: To use this scaffolder action you need to ensure the Argo CD user you are utilizing has the `create` permission for both `projects` and `applications`\n\nYou need to configure the action in your backend as well as your software template:\n\n### From your Backstage root directory\n\n```\ncd packages/backend\nyarn add @kozmoai/scaffolder-backend-argocd\n```\n\nConfigure the action:\n(you can check the [docs](https://backstage.io/docs/features/software-templates/writing-custom-actions#registering-custom-actions) to see all options):\n\n```typescript\n// packages/backend/src/plugins/scaffolder.ts\n\nconst actions = [\n  createArgoCdResources({ config, logger }),\n  ...createBuiltinActions({\n    containerRunner,\n    integrations,\n    config,\n    catalogClient,\n    reader,\n  }),\n];\n\nreturn await createRouter({\n  containerRunner,\n  logger,\n  config,\n  database,\n  catalogClient,\n  reader,\n  actions,\n});\n```\n\n### From your software template yaml file\n\nUnder `spec.steps[]` insert the below. In the below we reference items in the `spec.paramters[]` section.\n\n```\n    - id: create-argocd-resources\n      name: Create ArgoCD Resources\n      action: argocd:create-resources\n      input:\n        appName: ${{ parameters.name }}-nonprod\n        argoInstance: ${{ parameters.argoinstance }}\n        namespace: ${{ parameters.namespace }}\n        repoUrl: ${{ steps.publish.output.remoteUrl }}\n        labelValue: ${{ parameters.name }}\n        path: \"kubernetes/nonprod\"\n```\n\n> If needed there is an optional parameter of `projectName` as well.\n\n## Contributed By American Airlines\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/scaffolder-actions/scaffolder-backend-argocd",
+  "role": "backend-plugin-module",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:19.722Z",
+  "version": "1.1.25",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:19.722Z",
+      "version": "1.1.25"
+    },
+    {
+      "date": "2024-03-25T22:14:23.655Z",
+      "version": "1.1.24"
+    }
+  ]
+}

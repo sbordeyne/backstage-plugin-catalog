@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2023-11-05T16:01:03.429Z",
+  "deprecated": "",
+  "description": "Plugin that exposes an API to interact with OpenAI and serve the [frontend](https://github.com/enfuse/backstage-chatgpt-plugin) chatgpt plugin",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@vrabbi/plugin-chatgpt-backend",
+  "plugin_id": "",
+  "readme": "# ChatGPT Plugin Backend\n\nPlugin that exposes an API to interact with OpenAI and serve the [frontend](https://github.com/enfuse/backstage-chatgpt-plugin) chatgpt plugin\n\n\n# Installation\nNavigate to root of Backstage installation and run\n```sh\n# From root directory of your Backstage installation\nyarn add --cwd packages/backend @enfuse/plugin-chatgpt-backend\n```\n\n# Configuration\n1. This plugin requires an OpenAI API Key. This should be provided in the backstage configuration as shown below:\n\n```yml\n//app-config.yml or app-config-local.yml\n\nopenai:\n  apiKey: <openai-api-key>\n  \n```\nThis can be generated here: [ChatGPT API keys](https://platform.openai.com/account/api-keys).\n\n3. Create a `chatgpt.ts` file inside your `packages/backend/src/plugins` directory and include the following:\n\n\n``` js\n\nimport { createRouter } from '@enfuse/plugin-chatgpt-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    logger: env.logger,\n    config: env.config\n  });\n}\n```\n\n4. Inside your `packages/backend/src/index.ts` file, find the section where backend environments and routes are set up and include the following:\n\n``` js\nimport chatGPTBackend from './plugins/chatgpt';\n\n...\n  const chatgptEnv = useHotMemoize(module, () => createEnv('chatgpt-backend'));\n\n  apiRouter.use('/chatgpt', await chatGPTBackend(chatgptEnv));\n\n```\n\n5. Test your backend plugin installation by having backstage running and curling the endpoint\n\n``` bash\ncurl localhost:7007/api/chatgpt/health\n```\n\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@vrabbi",
+  "updated": "2023-11-05T17:37:13.997Z",
+  "version": "2.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-11-05T17:37:13.997Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2023-11-05T16:01:03.832Z",
+      "version": "2.0.0"
+    }
+  ]
+}

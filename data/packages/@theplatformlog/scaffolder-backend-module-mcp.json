@@ -1,0 +1,34 @@
+{
+  "author": "Naga15",
+  "created": "2026-06-10T09:20:16.350Z",
+  "deprecated": "",
+  "description": "Backstage scaffolder backend module that lets templates invoke any Model Context Protocol (MCP) server tool. Inverse of plugin-mcp-actions-backend.",
+  "homepage": "https://theplatformlog.dev/mcp-scaffolder-client",
+  "keywords": [
+    "agent",
+    "ai",
+    "backstage",
+    "mcp",
+    "model-context-protocol",
+    "scaffolder"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "naga156"
+  ],
+  "name": "@theplatformlog/scaffolder-backend-module-mcp",
+  "plugin_id": "scaffolder",
+  "readme": "# Scaffolder Backend Module — MCP\r\n\r\nA Backstage scaffolder backend module that lets templates call tools on\r\n[Model Context Protocol](https://modelcontextprotocol.io/) servers.\r\n\r\nIt is the **inverse** of [`plugin-mcp-actions-backend`](../mcp-actions-backend/README.md),\r\nwhich exposes Backstage's own actions to external MCP clients. This module makes\r\nBackstage itself an MCP **client**, so any tool from any MCP server can be\r\ninvoked as a step in a scaffolder template.\r\n\r\n## Installation\r\n\r\n```bash\r\nyarn --cwd packages/backend add @backstage/plugin-scaffolder-backend-module-mcp\r\n```\r\n\r\nRegister the module on the backend:\r\n\r\n```ts\r\n// packages/backend/src/index.ts\r\nbackend.add(import('@backstage/plugin-scaffolder-backend-module-mcp'));\r\n```\r\n\r\n## Configuration\r\n\r\nDeclare one or more MCP servers under `scaffolder.mcpServers`. The first call\r\nto a server lazily spawns its process; subsequent calls reuse the connection.\r\nOnly the **stdio** transport is supported today.\r\n\r\n```yaml\r\nscaffolder:\r\n  mcpServers:\r\n    fs:\r\n      command: npx\r\n      args: ['-y', '@modelcontextprotocol/server-filesystem', '/workspace']\r\n    fetch:\r\n      command: uvx\r\n      args: ['mcp-server-fetch']\r\n      timeoutMs: 30000\r\n```\r\n\r\n| Field       | Type                    | Default | Notes                                                                                                    |\r\n| ----------- | ----------------------- | ------- | -------------------------------------------------------------------------------------------------------- |\r\n| `transport` | `'stdio'`               | `stdio` | Only `stdio` is implemented in this release.                                                             |\r\n| `command`   | `string` (required)     | —       | Executable to spawn.                                                                                     |\r\n| `args`      | `string[]`              | `[]`    | Arguments passed to the command.                                                                         |\r\n| `env`       | `Record<string,string>` | `{}`    | Additional env vars; merged on top of the backend's `process.env`. Marked `secret` in the config schema. |\r\n| `cwd`       | `string`                | —       | Working directory for the spawned process.                                                               |\r\n| `timeoutMs` | `number`                | `60000` | Per-tool-call timeout in milliseconds.                                                                   |\r\n\r\n## Usage in a template\r\n\r\n```yaml\r\nsteps:\r\n  - id: read-config\r\n    name: Read repo config via MCP filesystem server\r\n    action: mcp:call\r\n    input:\r\n      server: fs\r\n      tool: read_file\r\n      arguments:\r\n        path: /workspace/template.yaml\r\n\r\n  - id: fetch-spec\r\n    name: Fetch OpenAPI spec via MCP fetch server\r\n    action: mcp:call\r\n    input:\r\n      server: fetch\r\n      tool: fetch\r\n      arguments:\r\n        url: https://example.com/openapi.yaml\r\n```\r\n\r\nThe action returns the raw MCP tool response under `steps.<id>.output.result`,\r\ntypically an object of the shape `{ content: [{ type: 'text', text: '...' }] }`.\r\n\r\n## Lifecycle\r\n\r\nThe module registers a shutdown hook via `coreServices.lifecycle` that closes\r\nall open MCP client connections during graceful shutdown.\r\n\r\n## Limitations\r\n\r\n- **stdio only.** HTTP and SSE transports are not wired up yet.\r\n- **Single generic action.** A future revision may dynamically register one\r\n  scaffolder action per discovered MCP tool (e.g. `mcp.fs:read_file`), so\r\n  templates can declare the tool name in the step `action:` field.\r\n- **No per-call auth.** Credentials are baked into the server config; per-call\r\n  pass-through (e.g. forwarding a user's token to an HTTP MCP server) will land\r\n  with the HTTP transport.\r\n",
+  "repository": "https://github.com/Naga15/platformlog-plugins/tree/HEAD/packages/scaffolder-backend-module-mcp",
+  "role": "backend-plugin-module",
+  "scope": "@theplatformlog",
+  "updated": "2026-06-10T09:20:16.699Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-06-10T09:20:16.699Z",
+      "version": "0.1.0"
+    }
+  ]
+}

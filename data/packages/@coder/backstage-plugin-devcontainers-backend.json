@@ -1,0 +1,48 @@
+{
+  "author": "",
+  "created": "2024-03-11T21:18:07.875Z",
+  "deprecated": "",
+  "description": "Automatically detect development containers (Dev Container) files in your repositories on GitHub/GitLab/Bitbucket, and have Backstage automatically tag them in the background!",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "bitbucket",
+    "devcontainers",
+    "developer-tools",
+    "github",
+    "gitlab",
+    "ide",
+    "vscode"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "coder-bot"
+  ],
+  "name": "@coder/backstage-plugin-devcontainers-backend",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@coder",
+  "updated": "2024-05-14T22:26:33.438Z",
+  "version": "0.1.1",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-05-14T22:26:33.438Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-03-27T15:10:52.816Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2024-03-14T21:51:31.858Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-03-11T21:18:08.134Z",
+      "version": "0.0.1"
+    }
+  ]
+}

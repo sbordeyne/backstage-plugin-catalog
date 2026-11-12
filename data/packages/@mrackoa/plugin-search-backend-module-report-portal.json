@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-04-15T10:59:41.232Z",
+  "deprecated": "",
+  "description": "The report-portal-collator backend module for the search plugin.",
+  "homepage": "https://github.com/mrackoa/community-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mrackoa"
+  ],
+  "name": "@mrackoa/plugin-search-backend-module-report-portal",
+  "plugin_id": "search",
+  "readme": "# @backstage-community/plugin-search-backend-module-report-portal\n\nThe report-portal-collator backend module for the search plugin.\n\n_This plugin was created through the Backstage CLI_\n\n## Installation\n\n1. Run the following command to install report portal search collator module:\n\n   ```sh\n   yarn workspace backend add @backstage-community/plugin-search-backend-module-report-portal\n   ```\n\n2. Add the module after search plugin in you `backend/src/index.ts`\n   ```js title=\"backend/src/index.ts\"\n   backend.add(import('@backstage-community/plugin-search-backend'));\n   backend.add(\n     import('@backstage-community/plugin-search-backend-module-report-portal'),\n   );\n   ```\n\n## Config:\n\nYou may also want to add configuration parameters to your app-config, for example for controlling the scheduled indexing interval. These parameters should be placed under the `search.collators.reportPortal` key.See [config](./config.d.ts) file for up to date options.\n\n```yaml\nsearch:\n  collators:\n    reportPortal:\n      # Configure schdeule for indexing\n      schedule: # Example :down:\n        frequency: { minutes: 10 }\n        timeout: { minutes: 5 }\n        initialDelay: { seconds: 3 }\n      # Base location for collated resources, should be same as your frontend plugin route.\n      locationTemplate: '/report-portal'\n```\n",
+  "repository": "https://github.com/mrackoa/community-plugins/tree/HEAD/workspaces/report-portal/plugins/search-backend-module-report-portal",
+  "role": "backend-plugin-module",
+  "scope": "@mrackoa",
+  "updated": "2025-04-15T12:09:04.212Z",
+  "version": "1.0.3",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-04-15T12:09:04.212Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2025-04-15T11:15:56.002Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-04-15T10:59:41.475Z",
+      "version": "1.0.1"
+    }
+  ]
+}

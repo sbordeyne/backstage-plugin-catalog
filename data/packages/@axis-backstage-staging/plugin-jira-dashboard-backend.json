@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-03-21T16:00:56.880Z",
+  "deprecated": "",
+  "description": "A plugin that makes requests to [Atlassian REST API](https://developer.atlassian.com/server/jira/platform/rest-apis/) to get issues and project information from Jira.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "glundh"
+  ],
+  "name": "@axis-backstage-staging/plugin-jira-dashboard-backend",
+  "plugin_id": "",
+  "readme": "# Jira Dashboard Backend\n\nA plugin that makes requests to [Atlassian REST API](https://developer.atlassian.com/server/jira/platform/rest-apis/) to get issues and project information from Jira.\n\nThe frontend plugin that displays this information is [Jira Dashboard](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/jira-dashboard).\n\n## Setup\n\nThe following sections will help you get the Jira Dashboard Backend plugin setup and running.\n\n### Installation\n\nInstall the plugin by following the example below:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/backend add @axis-backstage/plugin-jira-dashboard-backend\n```\n\n### Configuration\n\nThe Jira Dashboard plugin requires the following YAML to be added to your app-config.yaml:\n\n```yaml\njiraDashboard:\n  token: ${JIRA_TOKEN}\n  baseUrl: ${JIRA_BASE_URL}\n  userEmailSuffix: ${JIRA_EMAIL_SUFFIX}\n  annotationPrefix: ${JIRA_ANNOTATION_PREFIX} # Optional\n```\n\n#### Configuration Details:\n\n- `JIRA_TOKEN`: The API token to authenticate towards Jira. It can be found by visiting Atlassians page at https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/. In case you are using a Bearer or Basic token, you need to add it in the beginning of the token. For instance: `Bearer your-secret-token`\n  > Note: The JIRA_TOKEN variable from [Roadie's Backstage Jira plugin](https://roadie.io/backstage/plugins/jira) can not be reused here because of the added encoding in this token.\n- `JIRA_BASE_URL`: The base url for Jira in your company, including the API version. For instance: https://jira.se.your-company.com/rest/api/2/\n- `JIRA_EMAIL_SUFFIX`: The email suffix used for retrieving a specific Jira user in a company. For instance: @your-company.com\n- `JIRA_ANNOTATION_PREFIX`: Optional annotation prefix for retrieving a custom annotation. Defaut value is jira.com. If you want to configure the plugin to be compatible with [Roadie's Backstage Jira Plugin](https://roadie.io/backstage/plugins/jira/), use the following annotation prefix:\n\n```yaml\njiraDashboard:\n   {/* required configs... */}\n  annotationPrefix: jira\n```\n\n### Integrating\n\nHere's how to get the backend plugin up and running:\n\n1. Create a new file named `packages/backend/src/plugins/jiraDashboard.ts`, and add the following to it:\n\n   ```ts\n   import { createRouter } from '@axis-backstage/plugin-jira-dashboard-backend';\n   import { Router } from 'express';\n   import { PluginEnvironment } from '../types';\n\n   export default async function createPlugin(\n     env: PluginEnvironment,\n   ): Promise<Router> {\n     return await createRouter({\n       logger: env.logger,\n       config: env.config,\n       discovery: env.discovery,\n       identity: env.identity,\n       tokenManager: env.tokenManager,\n     });\n   }\n   ```\n\n2. Wire this into the overall backend router by adding the following to `packages/backend/src/index.ts`:\n\n   ```ts\n   import jiraDashboard from './plugins/jiraDashboard';\n   ...\n\n   async function main() {\n     // Add this line under the other lines that follow the useHotMemoize pattern\n    const jiraDashboardEnv = useHotMemoize(module, () => createEnv('jira-dashboard'),\n\n     // Add this under the lines that add their routers to apiRouter\n    apiRouter.use('/jira-dashboard', await jiraDashboard(jiraDashboardEnv));\n   }\n   ```\n\n3. Now run `yarn start-backend` from the repo root.\n\n4. In another terminal, run the command: `curl localhost:7007/api/jira-dashboard/health`. The request should return `{\"status\":\"ok\"}`.\n\n### New Backend System\n\nThe Jira Dashboard backend plugin has support for the [new backend system](https://backstage.io/docs/backend-system/). Here is how you can set it up:\n\nIn your `packages/backend/src/index.ts` make the following changes:\n\n```diff\n+ import { jiraDashboardPlugin } from '@axis-backstage/plugin-jira-dashboard-backend';\n\nconst backend = createBackend();\n+ backend.add(jiraDashboardPlugin());\n// ... other feature additions\n\nbackend.start();\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@axis-backstage-staging",
+  "updated": "2024-03-21T16:00:57.131Z",
+  "version": "0.7.2",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-03-21T16:00:57.131Z",
+      "version": "0.7.2"
+    }
+  ]
+}

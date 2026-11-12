@@ -1,0 +1,91 @@
+{
+  "author": "Solace Corporation",
+  "created": "2023-03-15T07:10:29.087Z",
+  "deprecated": "",
+  "description": "Solace Event Portal Manage Apps Frontend Plugin for Backstage",
+  "homepage": "https://github.com/solace-iot-team/backstage-ep-devp-plugins#readme",
+  "keywords": [
+    "api management",
+    "asyncapi",
+    "backstage",
+    "event portal",
+    "solace"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dishantlangayan",
+    "solacecommunity",
+    "tamimi65"
+  ],
+  "name": "@solace-labs/backstage-plugin-ep-devp-manage-apps",
+  "plugin_id": "",
+  "readme": "# Solace Event Portal: Manage Apps UI Plugin for Backstage\n\n> :warning: **experimental**\n",
+  "repository": "https://github.com/solace-iot-team/backstage-ep-devp-plugins/tree/HEAD/plugins/ep-devp-manage-apps",
+  "role": "frontend-plugin",
+  "scope": "@solace-labs",
+  "updated": "2023-10-27T15:51:55.997Z",
+  "version": "1.0.10",
+  "version_count": 35,
+  "versions": [
+    {
+      "date": "2023-10-27T15:51:55.997Z",
+      "version": "1.0.10"
+    },
+    {
+      "date": "2023-10-14T18:53:09.021Z",
+      "version": "1.0.9"
+    },
+    {
+      "date": "2023-10-14T17:42:21.505Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2023-10-14T13:21:06.642Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2023-09-30T15:41:39.620Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2023-09-27T22:09:15.869Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2023-09-22T10:34:25.653Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2023-09-20T10:33:58.868Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2023-09-19T12:07:37.962Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2023-09-13T15:51:48.609Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-09-06T11:47:16.483Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2023-05-31T05:09:08.494Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2023-05-04T07:30:28.227Z",
+      "version": "0.8.1"
+    },
+    {
+      "date": "2023-04-30T10:10:09.899Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2023-04-28T10:19:58.748Z",
+      "version": "0.7.9"
+    }
+  ]
+}

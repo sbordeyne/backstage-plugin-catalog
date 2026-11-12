@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-07-13T17:21:00.472Z",
+  "deprecated": "",
+  "description": "This plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.",
+  "homepage": "https://github.com/redhat-developer/rhdh-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "oandriie"
+  ],
+  "name": "@oandriie/backstage-plugin-marketplace-backend",
+  "plugin_id": "extensions",
+  "readme": "# marketplace\n\nThis plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.\n\n## Installation\n\nThis plugin is installed via the `@oandriie/backstage-plugin-marketplace-backend` package. To install it to your backend package, run the following command:\n\n```bash\n# From your root directory\nyarn --cwd packages/backend add @oandriie/backstage-plugin-marketplace-backend\n```\n\nThen add the plugin to your backend in `packages/backend/src/index.ts`:\n\n```ts\nconst backend = createBackend();\n// ...\nbackend.add(\n  import('@oandriie/backstage-plugin-marketplace-backend'),\n);\n```\n\n### Plugin Configurations\n\nAdd the following extensions configuration in your `app-config.yaml` file:\n\n```yaml\nextensions:\n  ### Example for how to enable installation to a file.\n  installation:\n    enabled: true\n    saveToSingleFile:\n      file: <path-to>/dynamic-plugins.yaml\n```\n\n## Development\n\nThis plugin backend can be started in a standalone mode from directly in this\npackage with `yarn start`. It is a limited setup that is most convenient when\ndeveloping the plugin backend itself.\n\nIf you want to run the entire project, including the frontend, run `yarn start` from the root directory.\n",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/marketplace/plugins/marketplace-backend",
+  "role": "backend-plugin",
+  "scope": "@oandriie",
+  "updated": "2025-07-13T18:18:44.645Z",
+  "version": "0.6.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-07-13T18:18:44.645Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2025-07-13T17:21:00.761Z",
+      "version": "0.6.1"
+    }
+  ]
+}

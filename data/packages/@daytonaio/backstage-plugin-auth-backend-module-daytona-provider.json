@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2024-09-09T08:58:15.552Z",
+  "deprecated": "",
+  "description": "The daytona-provider backend module for the auth plugin.",
+  "homepage": "",
+  "keywords": [
+    "auth-module",
+    "backstage",
+    "daytona",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "gdraganic",
+    "mdzaja",
+    "vedran.jukic",
+    "zzorica"
+  ],
+  "name": "@daytonaio/backstage-plugin-auth-backend-module-daytona-provider",
+  "plugin_id": "",
+  "readme": "# @daytonaio/backstage-plugin-auth-backend-module-daytona-provider\n\nThe daytona-provider backend module for the auth plugin.\n\n_This plugin was created through the Backstage CLI_\n\n## Description\n\nThe package provides Backstage module to implement authentication via `auth` plugin. It uses OIDC for authentication with Daytona Keycloak to directly authenticate the user from Daytona and login with any of the two common sign-in resolvers.\n\n- `emailMatchingUserEntityProfileEmail`: To match the user email with the Backstage user profile email\n- `emailLocalPartMatchingUserEntityName`: To match the local part of the user email with the Backstage user profile email. Suppose, if the user email is `example@daytonaio`, then a Backstage user profile with the name `example` must exist. Refer [examples/org.yaml](../../examples/org.yaml) for a test implementation.\n\n## Configuration\n\nThe Daytona module configuration will be under `auth` in `app-config.yaml` as below.\n\n```yaml\nauth:\n  session:\n    secret: dummy\n  environment: production\n  # see https://backstage.io/docs/auth/ to learn about auth providers\n  providers:\n    # See https://backstage.io/docs/auth/guest/provider\n    daytona:\n      production:\n        clientId: <daytona-client-id>\n        clientSecret: <daytona-client-secret>\n        metadataUrl: https://id.<your-daytona-domain>/realms/default/.well-known/openid-configuration\n        prompt: auto\n        signIn:\n          resolvers:\n            - resolver: emailLocalPartMatchingUserEntityName\n```\n\nIn the above configuration, below are the options need to be handled.\n- `auth.session.secret` must be provided as required in Backstage authentication.\n- add `daytona` under the `auth.providers` section, where multiple environments can be configured and then referred in `auth.environment`.\n- add your Daytona Backstage client ID and secret. If you're using the provided `backstage.json`, then your client ID will be `backstage` in `default` realm and secret can be fetched by logging to `https://id.<your-daytona-domain>`.\n- sign-in resolvers can be as provided, either `emailMatchingUserEntityProfileEmail` or `emailLocalPartMatchingUserEntityName`.\n\n## Installation and Setup\n\nThe plugin can be installed by running the below command in Backstage root directory and later, adding the following in your Backstage backend.\n\n```sh\n# From your Backstage root directory\nyarn --cwd packages/backend add @daytonaio/backstage-plugin-auth-backend-module-daytona-provider\n```\n\n```ts\n// In packages/backend/src/index.ts\n\n// Add the Daytona auth plugin provider\nbackend.add(import('@daytonaio/backstage-plugin-auth-backend-module-daytona-provider'));\n```\n",
+  "repository": "https://github.com/daytonaio/backstage-plugins/tree/HEAD/plugins/auth-backend-module-daytona-provider",
+  "role": "backend-plugin-module",
+  "scope": "@daytonaio",
+  "updated": "2024-09-10T15:32:39.970Z",
+  "version": "0.1.4",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-09-10T15:32:39.970Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-09-09T08:58:15.813Z",
+      "version": "0.1.3"
+    }
+  ]
+}

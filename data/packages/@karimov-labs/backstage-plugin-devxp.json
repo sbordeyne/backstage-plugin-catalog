@@ -1,0 +1,65 @@
+{
+  "author": "karimov-labs",
+  "created": "2026-03-24T14:06:35.569Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for developer intelligence — masked identity management, CSV upload, and unmask tooling.",
+  "homepage": "https://devxp.net",
+  "keywords": [
+    "backstage",
+    "developer-intelligence",
+    "devxp",
+    "identity-masking",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "karimov-labs"
+  ],
+  "name": "@karimov-labs/backstage-plugin-devxp",
+  "plugin_id": "devxp",
+  "readme": "# @karimov-labs/backstage-plugin-devxp\n\nA Backstage frontend plugin that provides a **Developer Intelligence** dashboard for managing masked developer identities. It lets platform teams populate a real-name → masked-hash mapping database via CSV upload or automatic GitHub organization sync, and look up or verify masked identities — all without exposing real names to third-party analytics tools.\n\nThis plugin is the UI counterpart to [`@karimov-labs/backstage-plugin-devxp-backend`](https://www.npmjs.com/package/@karimov-labs/backstage-plugin-devxp-backend), which must be installed alongside it.\n\nBuilt for use with the [DevXP](https://devxp.net) developer analytics platform.\n\n---\n\n## Features\n\n- **Dashboard tab**\n  - Configuration health indicators (salt, API token, endpoint, project ID)\n  - Total mapping count\n  - GitHub Auto-Sync Configurations table — shows all registered GitHub Apps with status and last-sync timestamp\n  - Inline unmask tester — enter a 16-char hex hash, get the real name back instantly\n  - Triggers automatic GitHub member sync on page load (throttled to once per 24 hours server-side)\n- **Settings tab**\n  - **GitHub Organization Auto-Sync** — register a GitHub App (github.com or GitHub Enterprise Server) to automatically pull all organization members and store their hashed identities\n    - Collapsible setup guide with a pre-configured GitHub App creation link\n    - Per-config activate/deactivate toggle and manual sync button\n    - Full CRUD: register, activate, deactivate, delete\n  - **CSV Upload** — upload a plain-text file with one real developer name per line to bulk-import mappings\n  - **Mappings Table** — browse all stored pairs (masked hash → real name) with per-row delete\n- Hashing algorithm matches [dev-xp-analyzer](https://github.com/karimov-labs/dev-xp-analyzer): `SHA-256(salt + realName)`, first 16 hex chars\n\n---\n\n## Requirements\n\n| Dependency | Version |\n|---|---|\n| Backstage | >= 1.30 |\n| `@karimov-labs/backstage-plugin-devxp-backend` | `^1.1.0` |\n| React | `^18` |\n\n---\n\n## Installation\n\n### 1. Install the packages\n\n```bash\n# yarn (Backstage default)\nyarn workspace app add @karimov-labs/backstage-plugin-devxp\nyarn workspace backend add @karimov-labs/backstage-plugin-devxp-backend\n\n# npm\nnpm install @karimov-labs/backstage-plugin-devxp\nnpm install @karimov-labs/backstage-plugin-devxp-backend\n```\n\n---\n\n### 2. Add the frontend plugin to your app\n\nEdit `packages/app/src/App.tsx`:\n\n```tsx\nimport devxpPlugin from '@karimov-labs/backstage-plugin-devxp';\n\nexport default createApp({\n  features: [\n    // ... other plugins\n    devxpPlugin,\n  ],\n});\n```\n\n---\n\n### 3. Add a sidebar navigation item\n\nIn your sidebar component (e.g. `packages/app/src/modules/nav/Sidebar.tsx`), add:\n\n```tsx\nimport AssessmentIcon from '@material-ui/icons/Assessment';\n\n// inside your sidebar menu group:\n<SidebarItem icon={AssessmentIcon} to=\"/devxp\" text=\"Dev Intelligence\" />\n```\n\n---\n\n### 4. Register the backend plugin\n\nEdit `packages/backend/src/index.ts`:\n\n```ts\nbackend.add(import('@karimov-labs/backstage-plugin-devxp-backend'));\n```\n\n---\n\n### 5. Configure app-config.yaml\n\n```yaml\ndevxp:\n  # Salt used for SHA-256 hashing — must match the salt used in dev-xp-analyzer\n  salt: ${DEVXP_SALT}\n\n  # Whether developer names are masked in the analytics tool\n  masked: true\n\n  # dev-xp-analyzer API credentials (optional — only needed if calling the analyzer API)\n  apiToken: ${DEVXP_API_TOKEN}\n  apiEndpoint: ${DEVXP_API_ENDPOINT}\n  projectId: ${DEVXP_PROJECT_ID}\n```\n\nSet the corresponding environment variables before starting Backstage:\n\n```bash\nexport DEVXP_SALT=\"your-secret-salt\"\nexport DEVXP_API_TOKEN=\"your-api-token\"       # optional\nexport DEVXP_API_ENDPOINT=\"https://...\"        # optional\nexport DEVXP_PROJECT_ID=\"your-project-id\"     # optional\n```\n\n> **Security note:** The salt, API token, and GitHub App private keys are consumed exclusively by the backend and are never sent to the browser.\n\n---\n\n## Usage\n\nNavigate to `/devxp` in your Backstage instance.\n\n### Dashboard tab\n\n| Section | Description |\n|---|---|\n| Configuration Status | Green/red indicators for salt, API token, endpoint, and project ID |\n| Developer Mappings | Total count of stored masked ↔ real name pairs |\n| GitHub Auto-Sync Configurations | Read-only list of all registered GitHub Apps — organization, hostname, client ID, active status, and last-sync time |\n| Unmask Tester | Enter a 16-character hex masked name and press Enter (or click Unmask) to look up the real name |\n\nThe Dashboard also silently triggers a background auto-sync of all active GitHub configurations when the page is first loaded. The server throttles this to at most once every 24 hours per backend process.\n\n### Settings tab\n\n#### GitHub Organization Auto-Sync\n\nRegister one or more GitHub Apps to automatically pull your organization's member list and store hashed mappings.\n\n| Section | Description |\n|---|---|\n| Setup guide | Collapsible step-by-step instructions with a pre-configured GitHub App creation link (permissions pre-filled) |\n| Register GitHub App | Form to add a new sync configuration (see below) |\n| Configuration table | Lists all registered apps; click the status chip to toggle active/inactive; use the sync icon to trigger an immediate sync; use the delete icon to remove |\n\n**Registration form fields:**\n\n| Field | Description |\n|---|---|\n| GitHub Org Name | The login name of your GitHub organization (e.g. `acme-corp`) |\n| GitHub Hostname | `github.com` for GitHub.com, or your GitHub Enterprise Server hostname (e.g. `github.acme.com`) |\n| App Client ID | Shown on the GitHub App's General settings tab (e.g. `Iv1.a1b2c3d4e5f67890`) |\n| App Private Key (PEM) | Full contents of the `.pem` file downloaded from the GitHub App's Private keys section |\n\n**Setting up a GitHub App (quick start):**\n\n1. Click **\"Click here to pre-configure and create your GitHub App\"** in the setup guide — this opens GitHub with the app name and `Members: Read-only` permission pre-filled.\n2. Scroll to *Organization permissions* and confirm **Members → Read-only** is checked.\n3. After creating the app, copy the **Client ID** from the General tab.\n4. Scroll to *Private keys* and click **Generate a private key**; paste the downloaded `.pem` contents into the form.\n5. [Install the app](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app) in your GitHub organization.\n\n#### CSV Upload\n\nUpload a plain-text file with one real developer name per line. The plugin hashes each name with `SHA-256(salt + name)` and stores the mapping. A header row of `name` (case-insensitive) is automatically skipped.\n\n#### Developer Mappings Table\n\nLists all stored hash → real-name pairs with per-row delete buttons. This table reflects both CSV-imported and GitHub-synced entries.\n\n---\n\n## API\n\nThe frontend communicates with the backend via the Backstage discovery API at `/api/devxp/`. See the [`@karimov-labs/backstage-plugin-devxp-backend` README](https://www.npmjs.com/package/@karimov-labs/backstage-plugin-devxp-backend) for full endpoint documentation.\n\n---\n\n## License\n\nApache-2.0\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@karimov-labs",
+  "updated": "2026-04-10T11:01:45.380Z",
+  "version": "1.3.1",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2026-04-10T11:01:45.380Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2026-04-01T13:37:49.406Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-03-29T06:38:27.441Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-03-29T06:18:05.509Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-03-26T07:31:19.120Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-03-26T07:04:48.468Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-03-24T14:22:12.678Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-03-24T14:16:01.346Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-03-24T14:06:35.857Z",
+      "version": "1.0.0"
+    }
+  ]
+}

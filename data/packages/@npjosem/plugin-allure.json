@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-05-28T08:11:03.604Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates with Allure",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jxroyo"
+  ],
+  "name": "@npjosem/plugin-allure",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/JoseMRoyo/npjosem/tree/HEAD/workspaces/allure/plugins/allure",
+  "role": "frontend-plugin",
+  "scope": "@npjosem",
+  "updated": "2024-05-28T08:11:03.903Z",
+  "version": "0.1.51",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-05-28T08:11:03.903Z",
+      "version": "0.1.51"
+    }
+  ]
+}

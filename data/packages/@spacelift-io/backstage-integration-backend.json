@@ -1,0 +1,78 @@
+{
+  "author": "",
+  "created": "2025-06-10T14:45:08.741Z",
+  "deprecated": "",
+  "description": "Backstage plugin for integrating Spacelift.io with Backstage",
+  "homepage": "https://spacelift.io",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "category/cloud",
+    "category/infrastructure",
+    "cloud",
+    "devops",
+    "iac",
+    "infrastructure-as-code",
+    "spacelift"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "cube2222_spacelift",
+    "sladminspace"
+  ],
+  "name": "@spacelift-io/backstage-integration-backend",
+  "plugin_id": "spacelift-io",
+  "readme": "# Spacelift Backend Plugin\n\nThis backend plugin for Backstage integrates with Spacelift to provide information about your Spacelift stacks and runs.\n\n## Installation\n\n1. Install the plugin package in your Backstage backend:\n\n   ```bash\n   # From your Backstage root directory\n   yarn --cwd packages/backend add @spacelift-io/backstage-integration-backend\n   ```\n\n2. Add the plugin to your backend in `packages/backend/src/index.ts`:\n\n   ```ts\n   // packages/backend/src/index.ts\n   import { createBackend } from '@backstage/backend-defaults';\n\n   const backend = createBackend();\n   // ...\n   backend.add(import('@spacelift-io/backstage-integration-backend'));\n   // ...\n   await backend.start();\n   ```\n\n## Configuration\n\nTo use this plugin, you need to configure it in your `app-config.yaml`. Add the following section:\n\n```yaml\nspacelift:\n  hostUrl: '<your-subdomain>.app.spacelift.io' # Your Spacelift instance URL (WITHOUT https://)\n  apiKey: ${SPACELIFT_API_KEY} # Your Spacelift API Key ID\n  apiSecret: ${SPACELIFT_API_SECRET} # Your Spacelift API Key Secret\n  readOnly: false # Optional: Set to true to disable trigger functionality (default: false)\n```\n\nMake sure to replace `<your-subdomain>` with your actual Spacelift subdomain.\nThe `apiKey` and `apiSecret` should be stored securely, for example, as environment variables.\n\n### Read-Only Mode\n\nYou can enable read-only mode by setting `readOnly: true` in your configuration. When enabled:\n\n- The trigger run functionality will be disabled\n- Users will not be able to trigger runs from the frontend\n- The backend will return a `403 Forbidden` error if someone attempts to trigger a run via the API\n- All other read operations (viewing stacks, etc.) will continue to work normally\n\nThis is useful for environments where you want to provide visibility into Spacelift stacks without allowing users to trigger runs.\n\n> **Tip:** For additional security, admins can also create a Spacelift API key with read-only permissions. This ensures write operations are disabled at the API key level, providing defense-in-depth even if the `readOnly` configuration is accidentally omitted.\n\n## Compatibility\n\nThis plugin requires:\n\n- `@backstage/backend-plugin-api` >= 1.3.0\n- `@backstage/backend-defaults` >= 0.9.0\n- `@backstage/catalog-client` >= 1.9.1\n\nIt is compatible with Backstage 1.17.0 or later.\n\n## Frontend Plugin\n\nThis backend plugin is intended to be used with the [Spacelift Frontend Plugin](https://github.com/spacelift-io/backstage-plugins/blob/main/packages/spacelift-io-frontend/README.md).\n\n## Spacelift Documentation\n\nFor more information about Spacelift and its API, please refer to the [official Spacelift documentation](https://docs.spacelift.io/integrations/external-integrations/backstage).\n",
+  "repository": "https://github.com/spacelift-io/backstage-plugins",
+  "role": "backend-plugin",
+  "scope": "@spacelift-io",
+  "updated": "2026-08-31T10:56:48.393Z",
+  "version": "0.3.3",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2026-08-31T10:56:48.393Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2026-08-28T07:47:14.149Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2026-03-26T09:21:27.188Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-03-25T16:09:43.461Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-01-26T14:47:38.043Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-01-12T17:10:16.674Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-06-16T09:50:09.685Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-06-12T12:27:01.179Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-06-11T13:36:20.952Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-06-11T08:40:13.898Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-06-10T14:45:09.049Z",
+      "version": "0.0.0"
+    }
+  ]
+}

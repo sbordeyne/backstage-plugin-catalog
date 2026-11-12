@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2024-06-28T08:35:43.770Z",
+  "deprecated": "",
+  "description": "The Gitpod Backstage Plugin is the official integration of Gitpod's cloud development environments into Spotify's Backstage.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "gitpod-publish"
+  ],
+  "name": "@gitpod/backstage-plugin-gitpod",
+  "plugin_id": "",
+  "readme": "# Gitpod Backstage Plugin\n\nThe Gitpod Backstage Plugin is the official integration of Gitpod's cloud development environments into Spotify's Backstage. \n\nIt enables developers to start workspaces directly from their Backstage instance. This plugin aims to streamline the development workflow, providing teams with easy access and efficient management of their cloud development environments.\n\n## Getting started\n\nTo get started with the Gitpod plugin in your Backstage app, follow these steps:\n\n1. **Install the plugin**:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @gitpod/backstage-plugin-gitpod\n```\n\n2. **Add the Gitpod component to a page in your app:**\n\nFor instance, add it to `overviewContent` in `EntityPage.tsx`:\n\n```jsx \nimport { GitpodButton } from '@gitpod/backstage-plugin-gitpod';\n//....\nconst HomePage = () => (\n    // ...\n      <Grid item md={3} xs={6}>\n          <GitpodButton />\n      </Grid>\n    // ... \n);\n```\n\n3. **Setup entity annotations**:\n\nCurrently, the Gitpod Backstage plugin support importing the URL of the repository from the following [entity annotations](https://backstage.io/docs/features/software-catalog/descriptor-format#annotations-optional):\n\n- `github.com/project-slug`\n- `gitlab.com/project-slug`\n- `bitbucket.org/project-slug`\n- `repo-url` (for any repository defined by its full URL)\n\n4. **Configure the Gitpod URL**:\n\nAdd your Gitpod URL to your `app-config.yaml` - this can either be Gitpod Cloud or Dedicated.\n\n```yaml\ngitpod:\n  baseUrl: 'https://gitpod.io'\n```\n\n## Contributing\n\nWe welcome contributions to the Gitpod Backstage plugin! If you have any feature requests or would like to raise a pull request, please feel free to leave an issue.\n\n## Links\n\n- [Gitpod](https://www.gitpod.io)\n- [Internal Developer Portals and Gitpod](https://www.gitpod.io/docs/integrations/internal-developer-portals)\n- [Backstage](https://backstage.io)\n- [Learn more about Backstage plugins](https://backstage.io/docs/plugins/)\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@gitpod",
+  "updated": "2024-08-22T16:23:03.133Z",
+  "version": "0.1.13",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2024-08-22T16:23:03.133Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2024-08-22T16:10:26.509Z",
+      "version": "0.1.13-2"
+    },
+    {
+      "date": "2024-08-22T13:53:39.967Z",
+      "version": "0.1.13-1"
+    },
+    {
+      "date": "2024-08-22T13:50:24.036Z",
+      "version": "0.1.13-0"
+    },
+    {
+      "date": "2024-08-19T16:55:44.641Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2024-08-19T16:31:38.592Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2024-06-28T08:35:44.045Z",
+      "version": "0.1.9"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2026-08-27T13:45:04.359Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin for LiteLLM RAG chat — streaming proxy + vector store listing.",
+  "homepage": "https://github.com/acarmisc/backstage-plugin-ai-conversation#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "acarmisc"
+  ],
+  "name": "@acarmisc/backstage-plugin-ai-conversation-backend",
+  "plugin_id": "ai-conversation",
+  "readme": "# @acarmisc/backstage-plugin-ai-conversation-backend\n\nBackend of [AI Conversation for Backstage](https://github.com/acarmisc/backstage-plugin-ai-conversation).\nIt mints a short-lived LiteLLM key per conversation, bound to one of the\nuser's teams, retrieves context from LiteLLM vector stores, adds skill and\nstyle prompts on the server and streams the answer to the browser. It also\nstores feedback, per-turn analytics and, optionally, conversations.\n\n## Install\n\nRequires the [LiteLLM Governance plugin](https://github.com/acarmisc/backstage-plugin-litellm-govai)\nbackend (`@acarmisc/backstage-plugin-litellm-backend`), installed and\nconfigured with the same `litellm` block.\n\n```bash\nyarn --cwd packages/backend add @acarmisc/backstage-plugin-ai-conversation-backend\n```\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@acarmisc/backstage-plugin-ai-conversation-backend'));\n```\n\n## Configuration\n\n```yaml\nlitellm:\n  baseUrl: http://litellm:4000\n  masterKey: ${LITELLM_MASTER_KEY}\n  aiConversation:\n    defaultModel: gpt-4o\n    maxRequestBudget: 5\n    teamRequired: true\n    persistence:\n      enabled: false\n      ttlDays: 30\n```\n\nEvery key: [docs/configuration.md](https://github.com/acarmisc/backstage-plugin-ai-conversation/blob/main/docs/configuration.md).\n\n## What it adds\n\n- Routes under `/api/ai-conversation` ([API reference](https://github.com/acarmisc/backstage-plugin-ai-conversation/blob/main/docs/api.md)),\n  all behind Backstage user authentication.\n- Database tables `chat_message_feedback`, `chat_events` and `chat_threads`,\n  created by its migrations on startup.\n- A scheduled task that deletes stored conversations after `ttlDays`.\n- Bundled skills (`code-reviewer`, `data-analyst`, `technical-writer`) and\n  support for `chat-skill` catalog entities ([skills](https://github.com/acarmisc/backstage-plugin-ai-conversation/blob/main/docs/skills.md)).\n\nSecurity model and known gaps: [SECURITY.md](https://github.com/acarmisc/backstage-plugin-ai-conversation/blob/main/SECURITY.md).\n",
+  "repository": "https://github.com/acarmisc/backstage-plugin-ai-conversation",
+  "role": "backend-plugin",
+  "scope": "@acarmisc",
+  "updated": "2026-10-05T08:16:09.718Z",
+  "version": "0.20.1",
+  "version_count": 17,
+  "versions": [
+    {
+      "date": "2026-10-05T08:16:09.718Z",
+      "version": "0.20.1"
+    },
+    {
+      "date": "2026-10-05T07:23:01.112Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-10-05T05:47:19.305Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-09-21T19:36:33.837Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-09-21T14:05:23.218Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-09-07T18:57:18.467Z",
+      "version": "0.16.1"
+    },
+    {
+      "date": "2026-09-05T12:30:12.928Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-09-04T13:16:49.463Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2026-09-04T08:49:55.659Z",
+      "version": "0.14.2"
+    },
+    {
+      "date": "2026-09-04T08:08:39.414Z",
+      "version": "0.14.1"
+    },
+    {
+      "date": "2026-09-04T07:08:34.693Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2026-09-03T16:36:13.391Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2026-08-28T08:35:35.356Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-08-28T05:35:19.533Z",
+      "version": "0.11.1"
+    },
+    {
+      "date": "2026-08-27T19:11:31.027Z",
+      "version": "0.11.0"
+    }
+  ]
+}

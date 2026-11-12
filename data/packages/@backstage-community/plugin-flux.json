@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2025-10-17T20:42:17.132Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-flux",
+  "plugin_id": "flux",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/flux/plugins/flux",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-17T21:27:43.639Z",
+  "version": "0.3.7",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-10-17T21:27:43.639Z",
+      "version": "0.3.7"
+    },
+    {
+      "date": "2026-10-02T13:40:58.753Z",
+      "version": "0.3.6"
+    },
+    {
+      "date": "2026-10-02T11:52:03.336Z",
+      "version": "0.3.5"
+    },
+    {
+      "date": "2026-09-23T15:40:21.212Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2026-07-22T13:52:13.581Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2026-06-28T19:50:04.089Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2026-04-25T04:04:29.956Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-04-02T00:38:23.685Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-04-02T00:12:16.896Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2025-12-27T02:50:30.742Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-12-12T16:12:00.085Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-10-17T20:42:17.430Z",
+      "version": "0.1.0"
+    }
+  ]
+}

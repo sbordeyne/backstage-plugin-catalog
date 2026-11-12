@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2026-04-28T19:36:00.295Z",
+  "deprecated": "",
+  "description": "Welcome to the kaizen-core plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "emmtabor-org"
+  ],
+  "name": "@kaizen-cib/plugin-kaizen-core",
+  "plugin_id": "kaizen-core",
+  "readme": "# kaizen-core\r\n\r\nWelcome to the kaizen-core plugin!\r\n\r\n_This plugin was created through the Backstage CLI_\r\n\r\n## Getting started\r\n\r\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/kaizen-core](http://localhost:3000/kaizen-core).\r\n\r\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\r\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\r\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\r\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@kaizen-cib",
+  "updated": "2026-05-04T21:11:47.736Z",
+  "version": "0.2.15",
+  "version_count": 15,
+  "versions": [
+    {
+      "date": "2026-05-04T21:11:47.736Z",
+      "version": "0.2.15"
+    },
+    {
+      "date": "2026-05-04T20:07:31.831Z",
+      "version": "0.2.13"
+    },
+    {
+      "date": "2026-05-04T19:59:03.640Z",
+      "version": "0.2.12"
+    },
+    {
+      "date": "2026-04-30T13:27:47.935Z",
+      "version": "0.2.11"
+    },
+    {
+      "date": "2026-04-29T23:40:24.192Z",
+      "version": "0.2.10"
+    },
+    {
+      "date": "2026-04-29T23:06:25.834Z",
+      "version": "0.2.9"
+    },
+    {
+      "date": "2026-04-29T22:59:04.794Z",
+      "version": "0.2.8"
+    },
+    {
+      "date": "2026-04-29T22:53:28.350Z",
+      "version": "0.2.7"
+    },
+    {
+      "date": "2026-04-29T22:40:35.931Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2026-04-29T22:30:00.102Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2026-04-29T22:03:57.993Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2026-04-29T21:42:54.014Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2026-04-29T16:01:37.444Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-04-29T13:27:24.735Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-04-28T19:36:00.595Z",
+      "version": "0.2.0"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "author": "",
+  "created": "2026-09-27T16:36:29.113Z",
+  "deprecated": "",
+  "description": "Plugin per cercare nella documentazione Backstage (docs/) tramite AI agent. Supporta Antigravity, Claude Code e OpenCode.",
+  "homepage": "",
+  "keywords": [
+    "antigravity",
+    "backstage",
+    "claude",
+    "claude-code",
+    "devops",
+    "documentation",
+    "opencode",
+    "plugin",
+    "search"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "aphasia0"
+  ],
+  "name": "search-devops-doc",
+  "plugin_id": "",
+  "readme": "# search-devops-doc\n\nPlugin multi-piattaforma per cercare nella documentazione [Backstage](https://backstage.io) direttamente dal tuo AI coding assistant.\n\nClona in modo efficiente solo la cartella `docs/` dal repo [backstage/backstage](https://github.com/backstage/backstage) e fornisce strumenti di ricerca full-text basati su Node.js. Zero dipendenze esterne.\n\nSupporta: **Antigravity** · **Claude Code** · **OpenCode**\n\n---\n\n## Installazione\n\n```bash\nnpm install search-devops-doc\n```\n\n**Fatto.** L'installer rileva automaticamente le piattaforme presenti sulla tua macchina (Antigravity, Claude Code, OpenCode) e copia i file nelle posizioni corrette.\n\nLa documentazione Backstage viene clonata automaticamente al primo utilizzo (sparse checkout, solo `docs/`).\n\n> **Nota:** se la folder di destinazione non ha un `package.json`, creane uno prima con `npm init -y`.\n\n### Cosa succede sotto il cofano\n\n1. `npm install` scarica il pacchetto in `node_modules/`\n2. Lo script `postinstall` parte automaticamente e:\n   - Rileva le piattaforme installate (`~/.gemini`, `~/.claude`, `~/.config/opencode`)\n   - Copia plugin, skill e tool nelle directory corrette di ciascuna piattaforma\n3. Al primo comando di ricerca, la documentazione viene clonata automaticamente\n\n### Reinstallazione manuale (opzionale)\n\nSe vuoi reinstallare in un secondo momento:\n\n```bash\nnpx search-devops-doc-install\n```\n\n---\n\n## Comandi\n\nTutti i comandi sono disponibili tramite lo script `search.mjs`:\n\n```bash\nnode scripts/search.mjs <comando> [argomenti] [opzioni]\n```\n\n### `search <query>` — Ricerca full-text\n\nCerca una stringa o una regex in tutti i file `.md` della documentazione.\n\n```bash\nnode scripts/search.mjs search \"software catalog\"\nnode scripts/search.mjs search \"kubernetes\" --max-results=5 --context=5\nnode scripts/search.mjs search \"auth.*provider\" --case-sensitive\n```\n\n| Opzione | Default | Descrizione |\n|---------|---------|-------------|\n| `--max-results=N` | 20 | Numero massimo di risultati |\n| `--context=N` | 3 | Righe di contesto attorno al match |\n| `--case-sensitive` | off | Ricerca case-sensitive |\n\n### `topics` — Argomenti principali\n\nMostra tutte le cartelle di primo livello in `docs/` con il conteggio dei file.\n\n```bash\nnode scripts/search.mjs topics\n```\n\n### `list [subpath]` — Elenco file\n\nElenca tutti i file `.md`, opzionalmente sotto un sotto-percorso.\n\n```bash\nnode scripts/search.mjs list\nnode scripts/search.mjs list features\nnode scripts/search.mjs list getting-started\n```\n\n### `read <filepath>` — Leggi un file\n\nLegge e stampa il contenuto di un file Markdown specifico. Accetta path relativi a `docs/`.\n\n```bash\nnode scripts/search.mjs read overview/what-is-backstage.md\nnode scripts/search.mjs read features/software-catalog/software-catalog-overview.md\n```\n\n---\n\n## Uso con l'AI Agent\n\nUna volta installato, l'agent utilizza automaticamente la skill quando fai domande sulla documentazione Backstage.\n\n**Esempi di domande:**\n- \"Come configuro il software catalog in Backstage?\"\n- \"Quali plugin sono disponibili per Kubernetes?\"\n- \"Come funziona TechDocs?\"\n- \"Come configuro l'autenticazione con GitHub?\"\n\nL'agent segue questo workflow:\n1. `topics` → panoramica della struttura\n2. `search \"<keywords>\"` → trova i file rilevanti\n3. `read <file>` → legge il contenuto\n4. Sintetizza e risponde citando le fonti\n\n---\n\n## Piattaforme Supportate\n\n### Antigravity (Google)\n\nL'installer copia il plugin in `~/.gemini/config/plugins/search-devops-doc/`.\nAntigravity scopre automaticamente `plugin.json` e la skill `SKILL.md`.\n\n**Attivazione:** automatica quando chiedi qualcosa su Backstage.\n\n### Claude Code (Anthropic)\n\nL'installer copia:\n- Gli script in `~/.claude/tools/search-devops-doc/`\n- La skill in `~/.claude/skills/search-devops-doc.md`\n\n**Attivazione:** usa il comando `/user:search-devops-doc` oppure chiedi direttamente su Backstage.\n\n### OpenCode\n\nL'installer copia il custom tool in `~/.config/opencode/tools/`.\n\n**Attivazione:** automatica, il tool è disponibile all'agent.\n\n---\n\n## Struttura del Progetto\n\n```\nsearch-devops-doc/\n├── plugin.json                              # Manifesto plugin (Antigravity)\n├── package.json                             # npm + postinstall automatico\n├── scripts/\n│   ├── install.mjs                          # Auto-installer multi-piattaforma\n│   ├── setup.mjs                            # Clone sparse della documentazione\n│   └── search.mjs                           # Motore di ricerca Node.js\n├── skills/\n│   └── search-devops-doc/\n│       └── SKILL.md                         # Istruzioni agent (Antigravity)\n├── claude-code/\n│   └── skills/\n│       └── search-devops-doc.md             # Skill per Claude Code\n├── opencode/\n│   └── tools/\n│       └── search-devops-doc.mjs            # Custom tool per OpenCode\n└── .data/                                   # (generata al primo utilizzo)\n    └── backstage-docs/docs/                 # ~750+ file Markdown\n```\n\n---\n\n## Aggiornamento Documentazione\n\nLa documentazione viene aggiornata con un semplice `git pull`:\n\n```bash\n# Dalla directory dove è installato il plugin\nnode scripts/setup.mjs\n```\n\nPer forzare un re-clone completo:\n\n```bash\nnode scripts/setup.mjs --force\n```\n\n---\n\n## Sviluppo\n\n```bash\n# Clona il repo\ngit clone <repo-url>\ncd search-devops-doc\n\n# Scarica la documentazione\nnode scripts/setup.mjs\n\n# Testa i comandi\nnode scripts/search.mjs topics\nnode scripts/search.mjs search \"techdocs\"\nnode scripts/search.mjs list features\nnode scripts/search.mjs read overview/what-is-backstage.md\n\n# Testa l'installer\nnode scripts/install.mjs\n\n# Pubblica su npm\nnpm publish\n```\n\n## Licenza\n\nMIT\n",
+  "repository": "",
+  "role": "",
+  "scope": "",
+  "updated": "2026-09-27T17:02:01.569Z",
+  "version": "1.3.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-09-27T17:02:01.569Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-09-27T16:54:42.053Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-09-27T16:47:10.733Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-09-27T16:36:29.334Z",
+      "version": "1.0.0"
+    }
+  ]
+}

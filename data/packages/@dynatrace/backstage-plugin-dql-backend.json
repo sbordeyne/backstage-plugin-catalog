@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-05-23T13:18:08.086Z",
+  "deprecated": "",
+  "description": "Package name: `@dynatrace/backstage-plugin-dql-backend`",
+  "homepage": "https://github.com/Dynatrace/backstage-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dyladan",
+    "dynatrace-nodejs",
+    "kamtschatka",
+    "toddbaert"
+  ],
+  "name": "@dynatrace/backstage-plugin-dql-backend",
+  "plugin_id": "dql",
+  "readme": "# Dynatrace DQL Plugin Backend\n\nPackage name: `@dynatrace/backstage-plugin-dql-backend`\n\nWelcome to the DQL backend plugin for Dynatrace!\n\nThe aim of the plugin is to provide live data from Dynatrace by running DQL\nagainst it.\n\n## Development\n\nThe backend can be started locally using `yarn start`, this starts the backend\non [localhost:7007/dql](http://localhost:7007/dql).\n\n## Behind a corporate proxy\n\nIf your application is behind a corporate proxy, set `HTTPS_PROXY` as an\nenvironment variable. This will be passed to `HttpsProxyAgent` as `agent` in the\nfetch request.\n\nThere is another method, you can open firewall for Dynatrace tokenUrl\nhttps://sso.dynatrace.com and https://xxxxxxxx.apps.dynatrace.com. In that case,\nyou don't need HTTPS_PROXY.\n",
+  "repository": "https://github.com/Dynatrace/backstage-plugin/tree/HEAD/plugins\\dql-backend",
+  "role": "backend-plugin",
+  "scope": "@dynatrace",
+  "updated": "2026-06-03T12:21:16.760Z",
+  "version": "2.8.0",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2026-06-03T12:21:16.760Z",
+      "version": "2.8.0"
+    },
+    {
+      "date": "2026-05-06T11:46:48.787Z",
+      "version": "2.7.0"
+    },
+    {
+      "date": "2026-04-07T09:02:33.963Z",
+      "version": "2.6.1"
+    },
+    {
+      "date": "2026-03-05T13:44:41.895Z",
+      "version": "2.6.0"
+    },
+    {
+      "date": "2026-02-05T10:01:06.203Z",
+      "version": "2.5.0"
+    },
+    {
+      "date": "2025-10-29T13:59:01.071Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2025-09-08T14:15:17.120Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2025-07-18T07:27:34.696Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2025-03-12T13:00:52.720Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2025-02-12T14:34:34.050Z",
+      "version": "2.1.5"
+    },
+    {
+      "date": "2025-01-07T13:40:53.832Z",
+      "version": "2.1.4"
+    },
+    {
+      "date": "2024-11-11T08:00:24.574Z",
+      "version": "2.1.3"
+    },
+    {
+      "date": "2024-09-17T14:16:37.012Z",
+      "version": "2.1.2"
+    },
+    {
+      "date": "2024-09-03T14:44:31.625Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2024-06-25T07:58:44.749Z",
+      "version": "2.0.0"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2025-05-13T15:13:14.590Z",
+  "deprecated": "",
+  "description": "The gitea backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-catalog-backend-module-gitea",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog-backend-module-gitea",
+  "role": "backend-plugin-module",
+  "scope": "@backstage",
+  "updated": "2026-10-20T16:56:24.627Z",
+  "version": "0.1.17",
+  "version_count": 433,
+  "versions": [
+    {
+      "date": "2026-11-11T02:58:48.194Z",
+      "version": "0.1.18-next.1"
+    },
+    {
+      "date": "2026-11-07T02:54:14.376Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T02:58:22.890Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T02:51:57.778Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-10-31T02:48:41.983Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:45:52.303Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T02:56:12.739Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T02:55:01.855Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:28:44.352Z",
+      "version": "0.1.18-next.0"
+    },
+    {
+      "date": "2026-10-27T02:58:46.964Z",
+      "version": "0.0.0-nightly-20261027023041"
+    },
+    {
+      "date": "2026-10-20T16:56:24.627Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2026-10-06T19:36:03.819Z",
+      "version": "0.1.17-next.2"
+    },
+    {
+      "date": "2026-09-29T12:29:45.119Z",
+      "version": "0.1.17-next.1"
+    },
+    {
+      "date": "2026-09-28T03:12:38.105Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:05:59.472Z",
+      "version": "0.0.0-nightly-20260927023342"
+    }
+  ]
+}

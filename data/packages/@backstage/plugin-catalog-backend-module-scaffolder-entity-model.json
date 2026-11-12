@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2023-09-12T14:26:34.257Z",
+  "deprecated": "",
+  "description": "Adds support for the scaffolder specific entity model (e.g. the Template kind) to the catalog backend plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-catalog-backend-module-scaffolder-entity-model",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog-backend-module-scaffolder-entity-model",
+  "role": "backend-plugin-module",
+  "scope": "@backstage",
+  "updated": "2026-10-20T16:59:24.967Z",
+  "version": "0.2.25",
+  "version_count": 1044,
+  "versions": [
+    {
+      "date": "2026-11-11T03:01:33.250Z",
+      "version": "0.2.26-next.2"
+    },
+    {
+      "date": "2026-11-07T02:56:40.541Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T02:59:51.390Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T02:53:52.724Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-11-03T18:53:45.037Z",
+      "version": "0.2.26-next.1"
+    },
+    {
+      "date": "2026-10-31T02:49:21.048Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:48:30.994Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T02:59:29.206Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T02:56:53.953Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:34:53.338Z",
+      "version": "0.2.26-next.0"
+    },
+    {
+      "date": "2026-10-27T02:58:11.796Z",
+      "version": "0.0.0-nightly-20261027023041"
+    },
+    {
+      "date": "2026-10-20T16:59:24.967Z",
+      "version": "0.2.25"
+    },
+    {
+      "date": "2026-09-29T12:35:35.210Z",
+      "version": "0.2.25-next.1"
+    },
+    {
+      "date": "2026-09-28T03:17:03.546Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:08:32.233Z",
+      "version": "0.0.0-nightly-20260927023342"
+    }
+  ]
+}

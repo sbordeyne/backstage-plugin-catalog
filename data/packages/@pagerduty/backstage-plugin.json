@@ -1,0 +1,91 @@
+{
+  "author": "",
+  "created": "2023-11-06T15:26:28.117Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates towards PagerDuty",
+  "homepage": "https://pagerduty.github.io/backstage-plugin-docs/index.html",
+  "keywords": [
+    "backstage",
+    "pagerduty",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bzmwillemsen",
+    "dobs",
+    "pagerduty-owner",
+    "smcallister-pd",
+    "t1agob"
+  ],
+  "name": "@pagerduty/backstage-plugin",
+  "plugin_id": "pagerduty",
+  "readme": "",
+  "repository": "https://github.com/PagerDuty/backstage-plugins/tree/HEAD/plugins/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@pagerduty",
+  "updated": "2026-07-03T10:04:09.966Z",
+  "version": "0.21.0",
+  "version_count": 354,
+  "versions": [
+    {
+      "date": "2026-07-03T10:04:09.966Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-05-15T15:49:37.198Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-04-30T16:04:34.159Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-03-04T10:13:56.472Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-01-15T10:13:38.621Z",
+      "version": "0.17.1"
+    },
+    {
+      "date": "2026-01-14T11:47:56.701Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2025-12-12T16:32:11.011Z",
+      "version": "0.16.4"
+    },
+    {
+      "date": "2025-11-07T16:53:25.017Z",
+      "version": "0.16.3"
+    },
+    {
+      "date": "2025-11-07T15:38:22.199Z",
+      "version": "0.16.3-alpha.0"
+    },
+    {
+      "date": "2025-10-17T17:10:14.507Z",
+      "version": "0.16.2"
+    },
+    {
+      "date": "2025-10-17T16:16:43.754Z",
+      "version": "0.16.2-alpha.0"
+    },
+    {
+      "date": "2025-10-13T08:35:15.309Z",
+      "version": "0.16.1"
+    },
+    {
+      "date": "2025-10-06T09:32:00.913Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-10-01T14:59:06.910Z",
+      "version": "0.15.10-next.1"
+    },
+    {
+      "date": "2025-10-01T14:04:11.319Z",
+      "version": "0.15.10-next.0"
+    }
+  ]
+}

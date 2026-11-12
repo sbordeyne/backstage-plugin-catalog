@@ -1,0 +1,34 @@
+{
+  "author": "",
+  "created": "2023-08-06T03:23:28.803Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that helps you manage projects in GCP",
+  "homepage": "https://backstage.io/",
+  "keywords": [
+    "backstage",
+    "google cloud"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andythehood"
+  ],
+  "name": "@andythehood/plugin-gcp-projects",
+  "plugin_id": "",
+  "readme": "# gcp-projects\n\nWelcome to the gcp-projects plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/gcp-projects](http://localhost:3000/gcp-projects).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/gcp-projects",
+  "role": "frontend-plugin",
+  "scope": "@andythehood",
+  "updated": "2023-08-06T04:36:01.360Z",
+  "version": "0.0.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-08-06T04:36:01.360Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2023-08-06T03:23:29.101Z",
+      "version": "0.0.1"
+    }
+  ]
+}

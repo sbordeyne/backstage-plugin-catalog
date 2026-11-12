@@ -1,0 +1,35 @@
+{
+  "author": "Balaji Sivasubramanian",
+  "created": "2026-02-16T18:53:33.693Z",
+  "deprecated": "",
+  "description": "Visual editor for creating and managing Backstage scaffolder templates with live YAML preview, flow visualization, and GitHub integration",
+  "homepage": "https://github.com/balajisiva/backstage-template-builder#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "developer-portal",
+    "scaffolder",
+    "templates",
+    "visual-editor",
+    "yaml"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "balajisiva"
+  ],
+  "name": "@balajisiva/backstage-plugin-template-builder",
+  "plugin_id": "template-builder",
+  "readme": "# Backstage Template Builder Plugin\n\nA Backstage frontend plugin that provides a visual editor for creating and managing Backstage scaffolder templates.\n\n## Features\n\n- **Visual template editor** — Create and edit scaffolder templates using structured forms instead of hand-editing YAML\n- **Live YAML view** — Always see the generated YAML side-by-side to retain transparency and control\n- **Execution flow visualization** — Understand how scaffolder steps execute through a clear, step-by-step flow view\n- **Action discovery** — Browse and add common scaffolder actions (fetch, publish, catalog, custom actions)\n- **Preview experience** — See what the end-user form will look like before publishing the template\n- **GitHub integration** — Load templates from GitHub and push changes back\n\n## Installation\n\nThis plugin is designed to be installed in a Backstage monorepo.\n\n### 1. Add the plugin to your Backstage app\n\nIn your `packages/app/package.json`, add the dependency:\n\n```json\n{\n  \"dependencies\": {\n    \"@internal/plugin-backstage-template-builder\": \"^0.1.0\"\n  }\n}\n```\n\n### 2. Add the route to your app\n\nIn `packages/app/src/App.tsx`, import and add the route:\n\n```tsx\nimport { TemplateBuilderPage } from '@internal/plugin-backstage-template-builder';\n\n// Inside <FlatRoutes>\n<Route path=\"/template-builder\" element={<TemplateBuilderPage />} />\n```\n\n### 3. Add to the sidebar (optional)\n\nIn `packages/app/src/components/Root/Root.tsx`:\n\n```tsx\nimport CodeIcon from '@material-ui/icons/Code';\n\n// Inside <SidebarPage>\n<SidebarItem icon={CodeIcon} to=\"/template-builder\" text=\"Template Builder\" />\n```\n\n## Development\n\nTo run the plugin in isolation for development:\n\n```bash\ncd plugins/backstage-template-builder\nyarn start\n```\n\nThis will start the plugin in development mode at http://localhost:3000\n\n## GitHub Integration\n\nThe plugin uses direct GitHub API calls for loading and pushing templates. Users need to provide a GitHub Personal Access Token with:\n\n**Classic Token:**\n- `repo` scope (full control of private repositories)\n\n**Fine-grained Token:**\n- Contents: Read and Write\n- Metadata: Read\n\nTokens are stored in localStorage for persistence.\n\n## Architecture\n\n- **Frontend-only plugin** — No backend services required\n- **State management** — React Context + useReducer\n- **YAML generation** — js-yaml library\n- **Drag-and-drop** — @dnd-kit\n- **UI components** — Radix UI primitives with Tailwind CSS\n\n## License\n\nMIT\n",
+  "repository": "https://github.com/balajisiva/backstage-template-builder/tree/HEAD/plugins/backstage-template-builder",
+  "role": "frontend-plugin",
+  "scope": "@balajisiva",
+  "updated": "2026-02-16T18:53:34.092Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-02-16T18:53:34.092Z",
+      "version": "0.1.0"
+    }
+  ]
+}

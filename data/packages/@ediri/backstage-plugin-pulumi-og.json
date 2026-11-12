@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2023-09-27T16:20:42.051Z",
+  "deprecated": "",
+  "description": "- Display relevant Pulumi information about an entity within Backstage, such as the Pulumi stack, organization, project   name, and project description. - Show the Pulumi activity view for an entity within Backstage.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ediri"
+  ],
+  "name": "@ediri/backstage-plugin-pulumi-og",
+  "plugin_id": "",
+  "readme": "## Pulumi Plugin\n\n- Display relevant Pulumi information about an entity within Backstage, such as the Pulumi stack, organization, project\n  name, and project description.\n- Show the Pulumi activity view for an entity within Backstage.\n\n### Requirements\n\n- Setup of the Pulumi plugin for Backstage requires a Pulumi Organization admin to generate a Pulumi access token for\n  the Backstage application.\n\n### Feature Overview\n\n#### Pulumi Card (Component Overview)\n\n<img src=\"../doc/component.png\" width=\"500\">\n\n#### Pulumi Card (System Overview)\n\n<img src=\"../doc/system.png\" width=\"500\">\n\n#### Pulumi Activity View\n\n<img src=\"../doc/activity.png\" width=\"500\">\n\n### Support\n\nIf you need any help with this plugin, feel free to reach out to me!\n\n### Integration Walk-through\n\n#### Install the plugin\n\nThe file paths mentioned in the following steps are relative to your app's root directory — for example, the directory\ncreated by following the [Getting Started](https://backstage.io/docs/getting-started/) guide and creating your app with\n`npx @backstage/create-app`.\n\nFirst, install the Pulumi plugin via a CLI:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @pulumi/backstage-plugin-pulumi\n```\n\nNext, add the plugin to `EntityPage.tsx` in `packages/app/src/components/catalog` by adding the following code snippets.\n\nAdd the following imports to the top of the file:\n\n```tsx\nimport {\n    isPulumiAvailable,\n    EntityPulumiCard,\n    EntityPulumiMetdataCard,\n    PulumiComponent\n} from '@pulumi/backstage-plugin-pulumi';\n```\n\nThen create a new constant for the Pulumi Component:\n\n```tsx\nconst pulumiContent = (\n    <EntitySwitch>\n        <EntitySwitch.Case if={isPulumiAvailable}>\n            <PulumiComponent/>\n        </EntitySwitch.Case>\n    </EntitySwitch>\n);\n```\n\nFind const `overviewContent` in `EntityPage.tsx`, and add the following snippet inside the outermost Grid defined there,\njust before the closing `</Grid>` tag:\n\n```tsx\n<EntitySwitch>\n    <EntitySwitch.Case if={isPulumiAvailable}>\n        <Grid item md={6}>\n            <EntityPulumiCard variant=\"gridItem\"/>\n        </Grid>\n    </EntitySwitch.Case>\n</EntitySwitch>\n```\n\nNow find the `serviceEntityPage` constant in `EntityPage.tsx`, and add the following snippet inside:\n\n```tsx\n<EntityLayout.Route path=\"/pulumi\" title=\"Pulumi\" if={isPulumiAvailable}>\n    {pulumiContent}\n</EntityLayout.Route>\n```\n\nLastly, find the `systemPage` constant in `EntityPage.tsx`, and add the following snippet inside after the\nclosing `</Grid>` tag of the `<EntityAboutCard variant=\"gridItem\" />`:\n\n```tsx\n  <EntitySwitch>\n    <EntitySwitch.Case if={isPulumiAvailable}>\n        <Grid item md={6}>\n            <EntityPulumiMetdataCard/>\n        </Grid>\n    </EntitySwitch.Case>\n</EntitySwitch>\n```\n\n#### Configure the plugin\n\nFirst, annotate your component/resource entity with the following:\n\n```yaml\nannotations:\n  pulumi.com/project-slug: [ Pulumi Cloud Name: org/stackname/stack ]\n```\n\nAnd your system entity with the following:\n\n```yaml\nannotations:\n  pulumi.com/orga-slug: <Pulumi Cloud: org>\n```\n\nNext, provide the API token that the client will use to make requests to the Pulumi Cloud API.\n\nAdd the proxy configuration in `app-config.yaml`:\n\n```yaml\nproxy:\n  '/pulumi':\n    target: 'https://api.pulumi.com/api'\n    changeOrigin: true\n    headers:\n      Authorization: token ${PULUMI_ACCESS_TOKEN}\n      Accept: application/vnd.pulumi+8\n      Content-Type: application/json\n```\n\nThen, start the backend, passing the PagerDuty API token as an environment variable:\n\n```bash\nexport PULUMI_ACCESS_TOKEN='<PULUMI_ACCESS_TOKEN>' \nyarn start\n```\n\nThis will proxy the request by adding an `Authorization` header with the provided token.\n\n#### How to Uninstall\n\n1. Remove any configuration added in Backstage yaml files, such as the proxy configuration in `app-config.yaml` and the integration key in an entity's annotations.\n1. Remove the added code snippets from `EntityPage.tsx`\n1. Remove the plugin package:\n\n```bash\n# From your Backstage root directory\nyarn remove --cwd packages/app @pulumi/backstage-plugin-pulumi\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@ediri",
+  "updated": "2023-09-27T16:20:42.399Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-09-27T16:20:42.399Z",
+      "version": "0.1.0"
+    }
+  ]
+}

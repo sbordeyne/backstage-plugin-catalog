@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2023-04-26T13:12:12.062Z",
+  "deprecated": "",
+  "description": "The regex custom actions",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backend-plugin-module",
+    "backstage",
+    "lifecycle:active",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-scaffolder-backend-module-regex",
+  "plugin_id": "scaffolder",
+  "readme": "# Regex actions for Backstage\n\nThis plugin provides [Backstage](https://backstage.io/) template [actions](https://backstage.io/docs/features/software-templates/builtin-actions) for [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).\n\nThe following actions are currently supported in this plugin:\n\n- [String replacement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace)\n\n## Prerequisites\n\n- A [Backstage](https://backstage.io/docs/getting-started/) project\n\n## Installation\n\nRun the following command to install the action package in your Backstage project:\n\n```console\nyarn workspace backend add @janus-idp/backstage-scaffolder-backend-module-regex\n```\n\n### Installing the action on the new backend\n\nAdd the following to your `packages/backend/src/index.ts` file:\n\n```ts title=\"packages/backend/src/index.ts\"\nconst backend = createBackend();\n\n// Add the following line\nbackend.add(import('@janus-idp/backstage-scaffolder-backend-module-regex'));\n\nbackend.start();\n```\n\n## Usage\n\n### Action : regex:replace\n\n| Parameter Name             |   Type   | Required | Description                                                                     |\n| -------------------------- | :------: | :------: | ------------------------------------------------------------------------------- |\n| `regExps[].pattern`        |  string  |   Yes    | The regex pattern to match the value like in `String.prototype.replace()`       |\n| `regExps[].flags`          | string[] |    No    | The flags for the regex, possible values are: `g`, `m`, `i`, `y`, `u`, `s`, `d` |\n| `regExps[].replacement`    |  string  |   Yes    | The replacement value for the regex like in `String.prototype.replace()`        |\n| `regExps[].values[].key`   |  string  |   Yes    | The key to access the regex value                                               |\n| `regExps[].values[].value` |  string  |   Yes    | The input value of the regex                                                    |\n\n> **Warning**\n>\n> The `regExps[].pattern` string cannot have a leading or trailing forward slash\n>\n> The `regExps[].values[].key` values must all be unique since the key is used for `values.<key>` to access the return value\n\n#### Output\n\n| Name           |  Type  | Description                                                                                        |\n| -------------- | :----: | -------------------------------------------------------------------------------------------------- |\n| `values.<key>` | string | A new string, with one, some, or all matches of the pattern replaced by the specified replacement. |\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/regex-actions",
+  "role": "backend-plugin-module",
+  "scope": "@janus-idp",
+  "updated": "2024-11-04T12:24:45.726Z",
+  "version": "2.2.1",
+  "version_count": 59,
+  "versions": [
+    {
+      "date": "2024-11-04T12:24:45.726Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2024-10-30T20:19:03.004Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2024-10-29T18:59:37.142Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2024-10-22T21:37:06.180Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2024-10-11T15:51:36.540Z",
+      "version": "2.0.4"
+    },
+    {
+      "date": "2024-10-09T20:46:36.650Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2024-10-08T18:37:42.395Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2024-10-01T18:36:09.667Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-09-27T16:59:43.675Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-09-25T12:57:12.801Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2024-09-20T03:53:24.474Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2024-09-19T16:58:48.655Z",
+      "version": "1.7.2"
+    },
+    {
+      "date": "2024-08-16T19:01:19.918Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2024-07-26T01:40:06.438Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2024-07-24T14:48:26.489Z",
+      "version": "1.6.0"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "author": "",
+  "created": "2026-07-16T08:58:44.015Z",
+  "deprecated": "",
+  "description": "Common functionalities for the intelligent-assistant plugin",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-intelligent-assistant-common",
+  "plugin_id": "intelligent-assistant",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/intelligent-assistant/plugins/intelligent-assistant-common",
+  "role": "common-library",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-15T14:19:13.755Z",
+  "version": "5.3.10",
+  "version_count": 26,
+  "versions": [
+    {
+      "date": "2026-10-15T14:19:13.755Z",
+      "version": "5.3.10"
+    },
+    {
+      "date": "2026-10-13T17:23:51.571Z",
+      "version": "5.3.9"
+    },
+    {
+      "date": "2026-10-13T09:54:31.257Z",
+      "version": "5.3.8"
+    },
+    {
+      "date": "2026-10-12T17:23:41.934Z",
+      "version": "5.3.7"
+    },
+    {
+      "date": "2026-10-01T09:16:14.331Z",
+      "version": "5.3.6"
+    },
+    {
+      "date": "2026-09-30T09:14:03.023Z",
+      "version": "5.3.5"
+    },
+    {
+      "date": "2026-09-29T18:54:25.712Z",
+      "version": "5.3.4"
+    },
+    {
+      "date": "2026-09-24T21:27:07.784Z",
+      "version": "5.3.3"
+    },
+    {
+      "date": "2026-09-23T06:19:57.918Z",
+      "version": "5.3.2"
+    },
+    {
+      "date": "2026-09-22T10:09:15.548Z",
+      "version": "5.3.1"
+    },
+    {
+      "date": "2026-09-21T23:52:06.021Z",
+      "version": "5.3.0"
+    },
+    {
+      "date": "2026-09-16T14:05:52.443Z",
+      "version": "5.2.0"
+    },
+    {
+      "date": "2026-09-15T14:37:57.066Z",
+      "version": "5.1.0"
+    },
+    {
+      "date": "2026-09-11T14:45:34.172Z",
+      "version": "5.0.2"
+    },
+    {
+      "date": "2026-09-09T14:02:14.002Z",
+      "version": "5.0.1"
+    }
+  ]
+}

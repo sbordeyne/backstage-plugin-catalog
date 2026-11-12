@@ -1,0 +1,65 @@
+{
+  "author": "",
+  "created": "2023-10-25T17:25:35.922Z",
+  "deprecated": "",
+  "description": "The official OpsLevel back-end Backstage plugin for fetching catalog and service maturity details.",
+  "homepage": "https://github.com/OpsLevel/backstage-plugin-backend#readme",
+  "keywords": [
+    "backstage",
+    "maturity score",
+    "service maturity",
+    "service quality"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "adamj-at-opslevel",
+    "katerberg-opslevel",
+    "kenrose",
+    "kyle-opslevel",
+    "opslevel-ops",
+    "patrick_at_opslevel"
+  ],
+  "name": "@opslevel/backstage-maturity-backend",
+  "plugin_id": "backstage-maturity-backend",
+  "readme": "[![Overall](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fapp.opslevel.com%2Fapi%2Fservice_level%2FL6pkRwdgleo4ZoLC4IaR0LaNwaesYvv7LP70yg-qpwI)](https://app.opslevel.com/services/backstage-plugin-backend/maturity-report)\n[![npm](https://img.shields.io/npm/v/@opslevel/backstage-maturity-backend)](https://www.npmjs.com/package/@opslevel/backstage-maturity-backend)\n\n# OpsLevel Maturity Backend Plugin\nThis plugin, in combination with the [frontend plugin](https://github.com/OpsLevel/backstage-plugin), provides automatic, scheduled\nexport functionality of users, groups, and components from Backstage into OpsLevel.\n\n## Installation\n\n### Step 1\n\nIn the root directory of your Backstage installation, run the following command:\n\n```bash\nyarn add --cwd packages/backend @opslevel/backstage-maturity-backend @backstage/plugin-proxy-backend\n```\n\n### Step 2\n\nOpen the `index.ts` file in the `packages/backend/src` subdirectory of your Backstage installation with the code editor of your choice.\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@backstage/plugin-proxy-backend'));\nbackend.add(import('@opslevel/backstage-maturity-backend'));\n```\n\n### Step 3\n\nSet up the necessary configuration in your Backstage instance's `app-config.yaml`. Note: that this configuration is the same as for installing the installing the [frontend plugin](https://github.com/OpsLevel/backstage-plugin), if you've already done the changes in `app-config.yaml` for the frontend plugin, you don't need to do this again.\n\n### Set Up the Proxy Configuration\n\nAdd a proxy configuration for OpsLevel. Replace `<your_OpsLevel_API_token>` with a token from https://app.opslevel.com/api_tokens (or, if you're running a self-hosted OpsLevel instance, the `/api_tokens` page on your OpsLevel instance).\n\n```yaml\nproxy:\n  endpoints:\n    '/opslevel':\n      target: 'https://app.opslevel.com'\n      credentials: 'dangerously-allow-unauthenticated'\n      headers:\n        X-Custom-Source: backstage\n        Authorization: Bearer <your_OpsLevel_API_token>\n      allowedHeaders: ['GraphQL-Visibility']\n```\n\nIf you're running Self-Hosted OpsLevel, replace `target` with your URL.\n\n### Set Up the Base OpsLevel URL\n\n```yaml\nopslevel:\n  baseUrl: 'https://app.opslevel.com'\n```\n\nIf you're running Self-Hosted OpsLevel, replace `baseUrl` with your URL.\n",
+  "repository": "https://github.com/OpsLevel/backstage-plugin-backend/tree/HEAD/.",
+  "role": "backend-plugin",
+  "scope": "@opslevel",
+  "updated": "2024-12-12T21:30:27.455Z",
+  "version": "4.0.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2024-12-12T21:30:27.455Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2024-07-16T17:18:25.192Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2024-05-15T13:24:40.288Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2024-03-15T21:37:27.802Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-03-15T15:50:29.528Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2023-11-16T16:10:56.148Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2023-11-13T22:40:53.981Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2023-10-25T17:25:36.359Z",
+      "version": "1.0.6"
+    }
+  ]
+}

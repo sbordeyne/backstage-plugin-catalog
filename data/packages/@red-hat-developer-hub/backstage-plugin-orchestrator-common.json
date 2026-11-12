@@ -1,0 +1,93 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-11-25T12:09:14.346Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "orchestrator",
+    "plugin",
+    "workflows"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-orchestrator-common",
+  "plugin_id": "orchestrator",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/orchestrator/plugins/orchestrator-common",
+  "role": "common-library",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-10T13:05:24.575Z",
+  "version": "3.12.2",
+  "version_count": 56,
+  "versions": [
+    {
+      "date": "2026-11-10T13:05:24.575Z",
+      "version": "3.12.2"
+    },
+    {
+      "date": "2026-11-04T05:07:14.400Z",
+      "version": "3.12.1"
+    },
+    {
+      "date": "2026-10-26T16:00:52.912Z",
+      "version": "3.12.0"
+    },
+    {
+      "date": "2026-10-14T10:50:27.557Z",
+      "version": "3.11.1"
+    },
+    {
+      "date": "2026-09-08T14:43:47.099Z",
+      "version": "3.11.0"
+    },
+    {
+      "date": "2026-08-31T14:01:44.755Z",
+      "version": "3.10.0"
+    },
+    {
+      "date": "2026-08-11T22:56:28.093Z",
+      "version": "3.9.0"
+    },
+    {
+      "date": "2026-07-27T06:11:15.223Z",
+      "version": "3.8.0"
+    },
+    {
+      "date": "2026-07-17T12:54:31.791Z",
+      "version": "3.7.3"
+    },
+    {
+      "date": "2026-07-06T15:40:52.361Z",
+      "version": "3.7.2"
+    },
+    {
+      "date": "2026-06-23T08:30:35.451Z",
+      "version": "3.7.1"
+    },
+    {
+      "date": "2026-06-22T08:50:20.030Z",
+      "version": "3.4.5"
+    },
+    {
+      "date": "2026-06-18T05:27:14.331Z",
+      "version": "3.7.0"
+    },
+    {
+      "date": "2026-05-05T13:41:01.239Z",
+      "version": "3.6.4"
+    },
+    {
+      "date": "2026-04-29T12:13:59.152Z",
+      "version": "3.6.3"
+    }
+  ]
+}

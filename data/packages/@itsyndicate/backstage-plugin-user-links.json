@@ -1,0 +1,79 @@
+{
+  "author": "ITsyndicate",
+  "created": "2024-11-05T09:02:05.823Z",
+  "deprecated": "",
+  "description": "## Description Welcome to the User Links plugin! This extention add to your users editible custom links. [photo]()",
+  "homepage": "https://itsyndicate.org",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "maksym_yemleninov",
+    "volodymyr.voitovych"
+  ],
+  "name": "@itsyndicate/backstage-plugin-user-links",
+  "plugin_id": "user-links",
+  "readme": "# User Links\n\n## Description\nWelcome to the User Links plugin!\nThis extention add to your users editible custom links.\n[photo]()\n\n## Functionality\nFrom user profile, add and remove associated links.\n\n## Instalation\nFrom backstage dir:\n\n```\nyarn --cwd packages/app add @internal/backstage-plugin-user-links\n```\nIn ```packages/app/src/components/catalog/EntityPage.tsx``` update\n```ts\nimport { UserLinksCard } @internal/backstage-plugin-user-links\n...\nconst userPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <Grid container spacing={3}>\n        ...\n        <Grid item xs={12} md={6}>\n          <UserLinksCard/>\n        </Grid>\n\n      </Grid>\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n",
+  "repository": "https://github.com/itsyndicate/itsyndicate-devops-platform-plugins/tree/HEAD/workspaces/user-links/user-links",
+  "role": "frontend-plugin",
+  "scope": "@itsyndicate",
+  "updated": "2024-11-15T11:19:40.553Z",
+  "version": "0.1.70",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2024-11-15T11:19:40.553Z",
+      "version": "0.1.70"
+    },
+    {
+      "date": "2024-11-15T11:07:17.709Z",
+      "version": "0.1.65"
+    },
+    {
+      "date": "2024-11-12T14:30:58.171Z",
+      "version": "0.1.60"
+    },
+    {
+      "date": "2024-11-12T12:31:18.792Z",
+      "version": "0.1.50"
+    },
+    {
+      "date": "2024-11-12T11:54:59.823Z",
+      "version": "0.1.45"
+    },
+    {
+      "date": "2024-11-12T11:50:23.682Z",
+      "version": "0.1.40"
+    },
+    {
+      "date": "2024-11-12T10:46:56.501Z",
+      "version": "0.1.35"
+    },
+    {
+      "date": "2024-11-12T10:19:55.639Z",
+      "version": "0.1.30"
+    },
+    {
+      "date": "2024-11-05T10:26:49.160Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2024-11-05T10:15:23.422Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2024-11-05T09:14:09.341Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2024-11-05T09:02:06.087Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2024-11-05T08:50:31.897Z",
+      "version": "0.1.5"
+    }
+  ]
+}

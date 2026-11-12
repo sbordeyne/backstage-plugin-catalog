@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2024-10-11T13:09:39.241Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/backstage-plugin-mta-frontend",
+  "plugin_id": "mta-frontend",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/mta/plugins/mta-frontend",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-05-05T20:44:34.264Z",
+  "version": "0.4.2",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-05-05T20:44:34.264Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2025-12-15T22:17:14.570Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-09-25T14:59:23.968Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-04-18T00:54:18.301Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-03-15T01:48:14.446Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-11-08T20:15:19.922Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-10-11T13:09:39.625Z",
+      "version": "0.1.1"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:11:51.060Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-newrelic-dashboard",
+  "plugin_id": "newrelic-dashboard",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/newrelic/plugins/newrelic-dashboard",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:55:18.986Z",
+  "version": "0.29.0",
+  "version_count": 35,
+  "versions": [
+    {
+      "date": "2026-11-03T14:55:18.986Z",
+      "version": "0.29.0"
+    },
+    {
+      "date": "2026-09-23T11:19:34.439Z",
+      "version": "0.28.0"
+    },
+    {
+      "date": "2026-08-28T16:30:57.642Z",
+      "version": "0.27.0"
+    },
+    {
+      "date": "2026-07-22T00:17:23.411Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-06-24T13:03:08.036Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-05-31T22:48:53.959Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-04-24T18:02:51.951Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-04-03T16:21:15.157Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-04-02T23:29:22.036Z",
+      "version": "0.21.1"
+    },
+    {
+      "date": "2026-02-27T13:23:08.962Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-01-28T22:26:46.312Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-01-16T21:03:56.946Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2025-12-24T22:06:44.123Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2025-11-27T17:07:24.318Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2025-11-12T19:50:58.754Z",
+      "version": "0.16.1"
+    }
+  ]
+}

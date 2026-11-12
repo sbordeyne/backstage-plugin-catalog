@@ -1,0 +1,54 @@
+{
+  "author": "",
+  "created": "2024-02-16T20:48:38.405Z",
+  "deprecated": "",
+  "description": "The Ansible Automation Platform (AAP) Backstage provider plugin synchronizes the accessible templates including job templates and workflow job templates from AAP into the [Backstage](https://backstage.io/) catalog.",
+  "homepage": "https://janus-idp.io/",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mathianasj"
+  ],
+  "name": "@mathianasj/backstage-plugin-aap-backend",
+  "plugin_id": "",
+  "readme": "# Ansible Automation Platform Backstage provider plugin\n\nThe Ansible Automation Platform (AAP) Backstage provider plugin synchronizes the accessible templates including job templates and workflow job templates from AAP into the [Backstage](https://backstage.io/) catalog.\n\n## For administrators\n\n### Installation and configuration\n\nThe AAP Backstage provider plugin allows the configuration of one or multiple providers using the `app-config.yaml` configuration file of Backstage.\n\n#### Legacy Backend Procedure\n\n1. Run the following command to install the AAP Backstage provider plugin:\n\n   ```console\n   yarn workspace backend add @janus-idp/backstage-plugin-aap-backend\n   ```\n\n1. Use `aap` marker to configure the `app-config.yaml` file of Backstage as follows:\n\n   ```yaml title=\"app-config.yaml\"\n   catalog:\n     providers:\n       aap:\n         dev:\n           baseUrl: <URL>\n           authorization: 'Bearer ${AAP_AUTH_TOKEN}'\n           owner: <owner>\n           system: <system>\n           schedule: # optional; same options as in TaskScheduleDefinition\n             # supports cron, ISO duration, \"human duration\" as used in code\n             frequency: { minutes: 1 }\n             # supports ISO duration, \"human duration\" as used in code\n             timeout: { minutes: 1 }\n   ```\n\n1. Configure the scheduler using one of the following options:\n\n   - **Method 1**: If the scheduler is configured inside the `app-config.yaml` using the schedule config key mentioned previously, add the following code to `packages/backend/src/plugins/catalog.ts` file:\n\n     ```ts title=\"packages/backend/src/plugins/catalog.ts\"\n     /* highlight-add-next-line */\n     import { AapResourceEntityProvider } from '@janus-idp/backstage-plugin-aap-backend';\n\n     export default async function createPlugin(\n       env: PluginEnvironment,\n     ): Promise<Router> {\n       const builder = await CatalogBuilder.create(env);\n\n       /* ... other processors and/or providers ... */\n       /* highlight-add-start */\n       builder.addEntityProvider(\n         AapResourceEntityProvider.fromConfig(env.config, {\n           logger: env.logger,\n           scheduler: env.scheduler,\n         }),\n       );\n       /* highlight-add-end */\n\n       const { processingEngine, router } = await builder.build();\n       await processingEngine.start();\n       return router;\n     }\n     ```\n\n     ***\n\n     **NOTE**\n\n     If you have made any changes to the schedule in the `app-config.yaml` file, then restart to apply the changes.\n\n     ***\n\n   - **Method 2**: Add a schedule directly inside the `packages/backend/src/plugins/catalog.ts` file as follows:\n\n     ```ts title=\"packages/backend/src/plugins/catalog.ts\"\n     /* highlight-add-next-line */\n     import { AapResourceEntityProvider } from '@janus-idp/backstage-plugin-aap-backend';\n\n     export default async function createPlugin(\n       env: PluginEnvironment,\n     ): Promise<Router> {\n       const builder = await CatalogBuilder.create(env);\n\n       /* ... other processors and/or providers ... */\n       /* highlight-add-start */\n       builder.addEntityProvider(\n         AapResourceEntityProvider.fromConfig(env.config, {\n           logger: env.logger,\n           schedule: env.scheduler.createScheduledTaskRunner({\n             frequency: { minutes: 30 },\n             timeout: { minutes: 3 },\n           }),\n         }),\n       );\n       /* highlight-add-end */\n\n       const { processingEngine, router } = await builder.build();\n       await processingEngine.start();\n       return router;\n     }\n     ```\n\n   ***\n\n   **NOTE**\n\n   If both the `schedule` (hard-coded schedule) and `scheduler` (`app-config.yaml` schedule) option are provided in the `packages/backend/src/plugins/catalog.ts`, the `scheduler` option takes precedence. However, if the schedule inside the `app-config.yaml` file is not configured, then the `schedule` option is used.\n\n   ***\n\n#### New Backend Procedure\n\n1. Run the following command to install the AAP Backstage provider plugin:\n\n   ```console\n   yarn workspace backend add @janus-idp/backstage-plugin-aap-backend\n   ```\n\n1. Use `aap` marker to configure the `app-config.yaml` file of Backstage . The default schedule is a frequency of 30 minutes and a timeout of 3 minutes, please configure the schedule in the `app-config.yaml` as per your requirement.\n\n   ```yaml title=\"app-config.yaml\"\n   catalog:\n     providers:\n       aap:\n         dev:\n           baseUrl: <URL>\n           authorization: 'Bearer ${AAP_AUTH_TOKEN}'\n           owner: <owner>\n           system: <system>\n           schedule: # optional (defaults to the configurations below if not provided); same options as in TaskScheduleDefinition\n             # supports cron, ISO duration, \"human duration\" as used in code\n             frequency: { minutes: 30 }\n             # supports ISO duration, \"human duration\" as used in code\n             timeout: { minutes: 3 }\n   ```\n\n1. Add the following code to the `packages/backend/src/index.ts` file:\n\n   ```ts title=\"packages/backend/src/index.ts\"\n   const backend = createBackend();\n\n   /* highlight-add-next-line */\n   backend.add(import('@janus-idp/backstage-plugin-aap-backend/alpha'));\n\n   backend.start();\n   ```\n\n### Troubleshooting\n\nWhen you start your Backstage application, you can see the following log lines:\n\n```log\n[1] 2023-02-13T15:26:09.356Z catalog info Discovered ResourceEntity API type=plugin target=AapResourceEntityProvider:dev\n[1] 2023-02-13T15:26:09.423Z catalog info Discovered ResourceEntity Red Hat Event (DEV, v1.2.0) type=plugin target=AapResourceEntityProvider:dev\n[1] 2023-02-13T15:26:09.620Z catalog info Discovered ResourceEntity Red Hat Event (TEST, v1.1.0) type=plugin target=AapResourceEntityProvider:dev\n[1] 2023-02-13T15:26:09.819Z catalog info Discovered ResourceEntity Red Hat Event (PROD, v1.1.0) type=plugin target=AapResourceEntityProvider:dev\n[1] 2023-02-13T15:26:09.819Z catalog info Applying the mutation with 3 entities type=plugin target=AapResourceEntityProvider:dev\n```\n\n## For users\n\n### Accessing templates from Ansible Automation Platform in Backstage\n\nOnce the AAP Backstage provider plugin is configured successfully, it synchronizes the templates including job templates and workflow job templates from AAP and displays them on the Backstage Catalog page as Resources.\n\n#### Prerequisites\n\n- Your Backstage application is installed and running.\n- You have installed the AAP Backstage provider plugin. For installation and configuration instructions, see [Installation and configuration](#installation-and-configuration).\n\n#### Procedure\n\n1. Open your Backstage application and Go to the **Catalog** page.\n1. Select **Resource** from the **Kind** drop-down and **job template** or **workflow job template** from the **Type** drop-down on the left side of the page.\n\n   ![aap-backend-plugin-backstage](./images/aap-backend-plugin-user1.png)\n\n   A list of all the available templates from AAP appears on the page.\n\n1. Select a template from the list.\n\n   The **OVERVIEW** tab appears containing different cards, such as:\n\n   - **About**: Provides detailed information about the template.\n   - **Relations**: Displays the visual representation of the template and associated aspects.\n   - **Links**: Contains links to the AAP dashboard and the details page of the template.\n   - **Has subcomponents**: Displays a list of associated subcomponents.\n\n     ![aap-backend-plugin-backstage-details](./images/aap-backend-plugin-user2.png)\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins",
+  "role": "backend-plugin",
+  "scope": "@mathianasj",
+  "updated": "2024-02-27T19:56:19.406Z",
+  "version": "1.5.8",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2024-02-27T19:56:19.406Z",
+      "version": "1.5.8"
+    },
+    {
+      "date": "2024-02-27T19:39:57.746Z",
+      "version": "1.5.7"
+    },
+    {
+      "date": "2024-02-16T21:33:53.095Z",
+      "version": "1.5.6"
+    },
+    {
+      "date": "2024-02-16T21:19:28.501Z",
+      "version": "1.5.5"
+    },
+    {
+      "date": "2024-02-16T21:06:46.076Z",
+      "version": "1.5.4"
+    },
+    {
+      "date": "2024-02-16T21:01:14.610Z",
+      "version": "1.5.3"
+    },
+    {
+      "date": "2024-02-16T20:48:38.679Z",
+      "version": "1.5.2"
+    }
+  ]
+}

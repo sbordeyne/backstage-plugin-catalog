@@ -1,0 +1,85 @@
+{
+  "author": "Parseable",
+  "created": "2025-07-12T10:20:49.885Z",
+  "deprecated": "",
+  "description": "Backstage plugin for integrating with Parseable log streams",
+  "homepage": "https://parseable.com",
+  "keywords": [
+    "backstage",
+    "logs",
+    "monitoring",
+    "parseable",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "parseablehq"
+  ],
+  "name": "@parseable/backstage-plugin-logstream",
+  "plugin_id": "parseable-logstream",
+  "readme": "# Parseable Dataset Plugin for Backstage\n\nThis plugin allows engineers to pull their own Parseable datasets directly onto an entity page in Backstage.\n\n<img width=\"1919\" height=\"957\" alt=\"Screenshot 2025-07-14 at 8 05 07 AM\" src=\"https://github.com/user-attachments/assets/1e288c00-995d-4087-b70d-a201dd475829\" />\n\n## Features\n\n- View datasets from Parseable directly in Backstage\n- Select from available datasets the user has access to\n- Copy log entries to clipboard\n\n## Installation\n\n1. Install the plugin in your Backstage app:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @parseable/backstage-plugin-logstream\n```\n\n2. Configure the plugin in your `app-config.yaml`:\n\n```yaml\n# app-config.yaml\nparseable:\n  basicAuthCredential: ${PARSEABLE_B64_CRED}  # For demo.parseable.com, use: YWRtaW46YWRtaW4=\n```\n\nYou need to set the `PARSEABLE_B64_CRED` environment variable with the Base64 encoded credentials for Parseable (in the format `username:password`).\n\n**Quick Start with Demo Server:**\n```bash\nexport PARSEABLE_B64_CRED=YWRtaW46YWRtaW4=  # admin:admin for demo.parseable.com\n```\n\n3. Add the plugin to your Backstage app:\n\n```tsx\n// packages/app/src/App.tsx\nimport { parseableLogstreamPlugin } from '@parseable/backstage-plugin-logstream';\n\nconst app = createApp({\n  // ...\n  plugins: [\n    // ...\n    parseableLogstreamPlugin,\n  ],\n});\n```\n\n4. Add the plugin to your entity page:\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityParseableLogstreamContent,\n  isParseableLogstreamAvailable,\n} from '@parseable/backstage-plugin-logstream';\n\n// Add to your entity page layout\nconst serviceEntityPage = (\n  <EntityLayout>\n    {/* ... other tabs ... */}\n    <EntityLayout.Route\n      path=\"/parseable\"\n      title=\"Logs\"\n      if={isParseableLogstreamAvailable}\n    >\n      <EntityParseableLogstreamContent />\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\n## Configuration\n\n### Entity Annotation\n\nTo enable the Parseable dataset for an entity, add the following annotation to your `catalog-info.yaml`:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: example-service\n  annotations:\n    parseable.io/base-url: https://demo.parseable.com  # Use demo server for testing\n  # ...\nspec:\n  type: service\n  # ...\n```\n\n### Environment Variables\n\n- `PARSEABLE_B64_CRED`: Base64 encoded credentials for Parseable in the format `username:password`\n  - **For demo.parseable.com**: Use `admin:admin` (Base64: `YWRtaW46YWRtaW4=`)\n  - **For production**: Set your actual Parseable credentials\n\n## Example Entity YAML\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: example-service\n  description: An example service with Parseable logs\n  annotations:\n    parseable.io/base-url: https://demo.parseable.com\nspec:\n  type: service\n  lifecycle: production\n  owner: team-a\n  system: system-a\n```\n\n## Development\n\nTo start the plugin in development mode:\n\n```bash\n# From the plugin directory\nyarn start\n```\n\nTo build the plugin:\n\n```bash\n# From the plugin directory\nyarn build\n```\n\n## Publishing\n\nThis plugin is published to the npm registry under the `@parseable` organization. To publish a new version:\n\n```bash\n# From the plugin directory\nyarn build\nnpm publish\n```\n\nNote: You need to be a member of the @parseable organization on npm and logged in via `npm login` to publish.\n\n## Contributing\n\nContributions are welcome! Please feel free to submit a Pull Request.\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/parseablehq/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@parseable",
+  "updated": "2025-09-16T06:22:25.577Z",
+  "version": "0.5.1",
+  "version_count": 14,
+  "versions": [
+    {
+      "date": "2025-09-16T06:22:25.577Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2025-09-16T06:16:29.994Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-09-16T05:59:53.643Z",
+      "version": "0.4.8"
+    },
+    {
+      "date": "2025-09-16T05:55:21.901Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2025-09-16T05:54:25.490Z",
+      "version": "0.4.6"
+    },
+    {
+      "date": "2025-09-16T05:53:12.747Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2025-09-16T05:39:42.427Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2025-09-16T04:12:51.068Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2025-09-16T04:10:55.807Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2025-09-16T04:09:29.947Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-09-16T04:08:17.006Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-09-16T03:52:52.797Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-07-14T02:28:44.220Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-07-12T10:20:50.316Z",
+      "version": "0.1.0"
+    }
+  ]
+}

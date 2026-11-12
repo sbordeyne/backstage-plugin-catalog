@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2023-07-25T10:25:37.184Z",
+  "deprecated": "",
+  "description": "The Ansible Automation Platform (AAP) Backstage provider plugin synchronizes the accessible templates including job templates and workflow job templates from AAP into the [Backstage](https://backstage.io/) catalog.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-aap-backend",
+  "plugin_id": "catalog",
+  "readme": "# Ansible Automation Platform Backstage provider plugin\n\nThe Ansible Automation Platform (AAP) Backstage provider plugin synchronizes the accessible templates including job templates and workflow job templates from AAP into the [Backstage](https://backstage.io/) catalog.\n\n## For administrators\n\n### Installation and configuration\n\nThe AAP Backstage provider plugin allows the configuration of one or multiple providers using the `app-config.yaml` configuration file of Backstage.\n\n#### Backend Procedure\n\n1. Run the following command to install the AAP Backstage provider plugin:\n\n   ```console\n   yarn workspace backend add @janus-idp/backstage-plugin-aap-backend\n   ```\n\n1. Use `aap` marker to configure the `app-config.yaml` file of Backstage . The default schedule is a frequency of 30 minutes and a timeout of 3 minutes, please configure the schedule in the `app-config.yaml` as per your requirement.\n\n   ```yaml title=\"app-config.yaml\"\n   catalog:\n     providers:\n       aap:\n         dev:\n           baseUrl: <URL>\n           authorization: 'Bearer ${AAP_AUTH_TOKEN}'\n           owner: <owner>\n           system: <system>\n           schedule: # optional (defaults to the configurations below if not provided); same options as in TaskScheduleDefinition\n             # supports cron, ISO duration, \"human duration\" as used in code\n             frequency: { minutes: 30 }\n             # supports ISO duration, \"human duration\" as used in code\n             timeout: { minutes: 3 }\n   ```\n\n1. Add the following code to the `packages/backend/src/index.ts` file:\n\n   ```ts title=\"packages/backend/src/index.ts\"\n   const backend = createBackend();\n\n   /* highlight-add-next-line */\n   backend.add(import('@janus-idp/backstage-plugin-aap-backend'));\n\n   backend.start();\n   ```\n\n### Troubleshooting\n\nWhen you start your Backstage application, you can see the following log lines:\n\n```log\n[1] 2023-02-13T15:26:09.356Z catalog info Discovered ResourceEntity API type=plugin target=AapResourceEntityProvider:dev\n[1] 2023-02-13T15:26:09.423Z catalog info Discovered ResourceEntity Red Hat Event (DEV, v1.2.0) type=plugin target=AapResourceEntityProvider:dev\n[1] 2023-02-13T15:26:09.620Z catalog info Discovered ResourceEntity Red Hat Event (TEST, v1.1.0) type=plugin target=AapResourceEntityProvider:dev\n[1] 2023-02-13T15:26:09.819Z catalog info Discovered ResourceEntity Red Hat Event (PROD, v1.1.0) type=plugin target=AapResourceEntityProvider:dev\n[1] 2023-02-13T15:26:09.819Z catalog info Applying the mutation with 3 entities type=plugin target=AapResourceEntityProvider:dev\n```\n\n## For users\n\n### Accessing templates from Ansible Automation Platform in Backstage\n\nOnce the AAP Backstage provider plugin is configured successfully, it synchronizes the templates including job templates and workflow job templates from AAP and displays them on the Backstage Catalog page as Resources.\n\n#### Prerequisites\n\n- Your Backstage application is installed and running.\n- You have installed the AAP Backstage provider plugin. For installation and configuration instructions, see [Installation and configuration](#installation-and-configuration).\n\n#### Procedure\n\n1. Open your Backstage application and Go to the **Catalog** page.\n1. Select **Resource** from the **Kind** drop-down and **job template** or **workflow job template** from the **Type** drop-down on the left side of the page.\n\n   ![aap-backend-plugin-backstage](./images/aap-backend-plugin-user1.png)\n\n   A list of all the available templates from AAP appears on the page.\n\n1. Select a template from the list.\n\n   The **OVERVIEW** tab appears containing different cards, such as:\n\n   - **About**: Provides detailed information about the template.\n   - **Relations**: Displays the visual representation of the template and associated aspects.\n   - **Links**: Contains links to the AAP dashboard and the details page of the template.\n   - **Has subcomponents**: Displays a list of associated subcomponents.\n\n     ![aap-backend-plugin-backstage-details](./images/aap-backend-plugin-user2.png)\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/aap-backend",
+  "role": "backend-plugin-module",
+  "scope": "@janus-idp",
+  "updated": "2025-01-30T21:26:23.594Z",
+  "version": "2.4.0",
+  "version_count": 71,
+  "versions": [
+    {
+      "date": "2025-01-30T21:26:23.594Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2024-12-04T16:08:00.621Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2024-11-04T12:24:08.705Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2024-10-30T20:18:24.310Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2024-10-29T18:59:28.437Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2024-10-22T21:36:43.782Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2024-10-11T15:49:59.969Z",
+      "version": "2.0.4"
+    },
+    {
+      "date": "2024-10-09T17:19:25.293Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2024-10-08T18:22:22.417Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2024-10-01T18:20:18.119Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-09-26T16:25:22.875Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-09-25T12:41:14.504Z",
+      "version": "1.10.1"
+    },
+    {
+      "date": "2024-09-20T03:31:48.236Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2024-09-19T16:42:50.819Z",
+      "version": "1.9.4"
+    },
+    {
+      "date": "2024-08-16T18:43:12.793Z",
+      "version": "1.9.3"
+    }
+  ]
+}

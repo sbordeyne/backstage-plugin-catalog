@@ -1,0 +1,33 @@
+{
+  "author": "",
+  "created": "2024-06-06T07:48:41.916Z",
+  "deprecated": "",
+  "description": "A Backstage catalog backend module that helps integrate towards Microsoft Graph",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "wangzheng422"
+  ],
+  "name": "@wangzheng422/plugin-catalog-backend-module-msgraph",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/wangzheng422/backstage/tree/HEAD/plugins/catalog-backend-module-msgraph",
+  "role": "backend-plugin-module",
+  "scope": "@wangzheng422",
+  "updated": "2024-06-06T09:21:37.227Z",
+  "version": "0.5.26",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-06-06T09:21:37.227Z",
+      "version": "0.5.26"
+    },
+    {
+      "date": "2024-06-06T07:48:42.160Z",
+      "version": "0.5.27-next.2"
+    }
+  ]
+}

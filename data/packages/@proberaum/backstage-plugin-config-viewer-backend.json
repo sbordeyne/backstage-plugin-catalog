@@ -1,0 +1,40 @@
+{
+  "author": "",
+  "created": "2025-10-23T23:11:41.295Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "christoph-jerolimov",
+    "jerolimov"
+  ],
+  "name": "@proberaum/backstage-plugin-config-viewer-backend",
+  "plugin_id": "config-viewer",
+  "readme": "",
+  "repository": "https://github.com/proberaum/backstage-plugins/tree/HEAD/workspaces/config-viewer/plugins/config-viewer-backend",
+  "role": "backend-plugin",
+  "scope": "@proberaum",
+  "updated": "2026-02-28T16:49:25.540Z",
+  "version": "0.13.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-02-28T16:49:25.540Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-11-18T17:46:16.584Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-10-24T20:13:12.093Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-10-23T23:11:41.583Z",
+      "version": "0.1.0"
+    }
+  ]
+}

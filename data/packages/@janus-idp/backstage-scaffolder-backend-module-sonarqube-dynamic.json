@@ -1,0 +1,93 @@
+{
+  "author": "Red Hat",
+  "created": "2023-12-07T23:41:48.495Z",
+  "deprecated": "",
+  "description": "The sonarqube module for @backstage/plugin-scaffolder-backend",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-scaffolder-backend-module-sonarqube-dynamic",
+  "plugin_id": "scaffolder",
+  "readme": "# SonarQube actions for Backstage\n\nThis module provides [Backstage](https://backstage.io/) template [actions](https://backstage.io/docs/features/software-templates/builtin-actions) for [SonarQube](https://docs.sonarqube.org/latest/).\n\nThe following actions are currently supported in this module:\n\n- Create a SonarQube [project](https://docs.sonarqube.org/latest/user-guide/project-page/)\n\n## Prerequisites\n\n- A [Backstage](https://backstage.io/docs/getting-started/) project\n- A [SonarQube](https://docs.sonarqube.org/latest/) instance\n\n## Installation\n\nRun the following command to install the action package in your Backstage project:\n\n```console\nyarn workspace backend add @janus-idp/backstage-scaffolder-backend-module-sonarqube\n```\n\n### Installing the action on the new backend\n\nAdd the following to your `packages/backend/src/index.ts` file:\n\n```ts title=\"packages/backend/src/index.ts\"\nconst backend = createBackend();\n\n// Add the following line\nbackend.add(import('@janus-idp/backstage-scaffolder-backend-module-sonarqube'));\n\nbackend.start();\n```\n\n## Configuration\n\nAdd the SonarQube actions to your templates, see the [examples](./examples/templates) directory of this repository for complete usage examples\n\n```yaml\naction: sonarqube:create-project\nid: 'create-sonar-project'\nname: 'Create SonarQube Project'\ninput:\n  baseUrl: 'https://sonarqube.com'\n  token: '4518a13e-093f-4b66-afac-46a1aece3149'\n  name: 'My SonarQube Project'\n  key: 'my-sonarqube-project'\n  branch: 'main'\n  visibility: 'public'\n```\n\n## Usage\n\n### Action: sonarqube:create-project\n\n#### Input\n\n| Parameter Name |  Type  | Required | Description                                                                                                              | Example                 |\n| -------------- | :----: | :------: | ------------------------------------------------------------------------------------------------------------------------ | ----------------------- |\n| baseUrl        | string |   Yes    | SonarQube Instance base URL                                                                                              | <http://sonar.acme.org> |\n| name           | string |   Yes    | Name of the project to be created in SonarQube                                                                           | My Project              |\n| key            | string |   Yes    | Key of the project to be created in SonarQube                                                                            | my-project              |\n| branch         | string |    No    | Key of the main branch of the project. If not provided, the default main branch key will be used.                        | main                    |\n| visibility     | string |    No    | Whether the created project should be visible to everyone, or only specific user/groups.                                 | private or public       |\n| token          | string |    No    | SonarQube authentication [token](https://docs.sonarqube.org/latest/user-guide/user-account/generating-and-using-tokens/) |                         |\n| username       | string |    No    | SonarQube username                                                                                                       |                         |\n| password       | string |    No    | SonarQube password                                                                                                       |                         |\n\n> **Warning**\n>\n> Either the `token` or `username` and `password` input combination are required.\n> If the three of them are provided, the `token` will take precedence\n\n#### Output\n\n| Name       |  Type  | Description                                  |\n| ---------- | :----: | -------------------------------------------- |\n| projectUrl | string | SonarQube project URL created by this action |\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/sonarqube-actions",
+  "role": "backend-plugin-module",
+  "scope": "@janus-idp",
+  "updated": "2024-10-11T15:52:00.627Z",
+  "version": "2.0.4",
+  "version_count": 40,
+  "versions": [
+    {
+      "date": "2024-10-11T15:52:00.627Z",
+      "version": "2.0.4"
+    },
+    {
+      "date": "2024-10-09T20:47:45.928Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2024-10-08T18:38:53.713Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2024-10-01T18:37:25.161Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-09-27T16:58:39.657Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-09-25T12:58:55.012Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2024-09-20T03:55:43.750Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2024-09-19T17:00:00.747Z",
+      "version": "1.7.2"
+    },
+    {
+      "date": "2024-08-16T19:02:32.348Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2024-07-26T01:41:48.489Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2024-07-24T14:50:17.761Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-06-19T15:21:07.381Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2024-06-13T21:50:34.845Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-06-13T10:40:17.982Z",
+      "version": "1.4.13"
+    },
+    {
+      "date": "2024-06-05T16:25:45.097Z",
+      "version": "1.4.12"
+    }
+  ]
+}

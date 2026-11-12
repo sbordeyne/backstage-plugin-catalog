@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2026-07-23T13:11:19.812Z",
+  "deprecated": "",
+  "description": "Backstage.io Q&A plugin backend",
+  "homepage": "https://github.com/drodil/backstage-plugin-qeta",
+  "keywords": [
+    "backend",
+    "backstage",
+    "backstage.io",
+    "plugin"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "serhatboyraz"
+  ],
+  "name": "@serhatboyraz/backstage-plugin-qeta-backend",
+  "plugin_id": "qeta",
+  "readme": "# qeta-backend\r\n\r\nWelcome to the qeta-backend backend plugin!\r\n\r\n_This plugin was created through the Backstage CLI_\r\n\r\n## Getting started\r\n\r\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\r\nstart` in the root directory, and then navigating to [/qeta-backend](http://localhost:3000/qeta-backend).\r\n\r\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\r\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\r\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\r\n\r\n## Add to your application\r\n\r\n### Adding backend\r\n\r\nCreate new file to packages/backend/src/plugins/qeta.ts:\r\n\r\n```ts\r\nimport {\r\n  createRouter,\r\n  DatabaseQetaStore,\r\n} from '@serhatboyraz/backstage-plugin-qeta-backend';\r\nimport { PluginEnvironment } from '../types';\r\n\r\nexport default async function createPlugin({\r\n  logger,\r\n  database,\r\n  identity,\r\n  config,\r\n}: PluginEnvironment) {\r\n  const db = await DatabaseQetaStore.create({\r\n    database: database,\r\n  });\r\n  return await createRouter({\r\n    logger,\r\n    database: db,\r\n    identity,\r\n    config,\r\n  });\r\n}\r\n```\r\n\r\n> [!IMPORTANT]  \r\n> If you are using the `@serhatboyraz/backstage-plugin-search-backend-module-qeta` for search collator, please pass also\r\n> `TokenManager` to the `createRouter` method.\r\n\r\nNow add this plugin to your packages/backend/src/index.ts:\r\n\r\n```ts\r\nimport qeta from './plugins/qeta';\r\nconst qetaEnv = useHotMemoize(module, () => createEnv('qeta'));\r\napiRouter.use('/qeta', await qeta(qetaEnv));\r\n```\r\n\r\n## New Backend System\r\n\r\nThe qeta backend plugin has support for the [new backend system](https://backstage.io/docs/backend-system/), here's how you can set that up:\r\n\r\nIn your `packages/backend/src/index.ts` make the following changes:\r\n\r\n```diff\r\n  import { createBackend } from '@backstage/backend-defaults';\r\n  const backend = createBackend();\r\n  // ... other feature additions\r\n+ backend.add(import('@serhatboyraz/backstage-plugin-qeta-backend'));\r\n  backend.start();\r\n```\r\n\r\n### Integration with `@backstage/plugin-search`\r\n\r\n> [!WARNING]  \r\n> This is going to be deprecated. Please use the `@serhatboyraz/backstage-plugin-search-backend-module-qeta` instead\r\n\r\n**packages/backend/src/index.ts**\r\n\r\n```ts\r\napiRouter.use('/search', await search(searchEnv, qetaEnv.database));\r\n```\r\n\r\n**backend/src/plugins/search.ts**\r\n\r\n```typescript\r\nimport { PluginDatabaseManager } from '@backstage/backend-common';\r\nimport { QetaCollatorFactory } from '@serhatboyraz/backstage-plugin-qeta-backend';\r\n\r\nexport default async function createPlugin(\r\n  env: PluginEnvironment,\r\n  qetaDatabase: PluginDatabaseManager,\r\n): Promise<Router> {\r\n  const indexBuilder = new IndexBuilder({\r\n    logger: env.logger,\r\n    searchEngine,\r\n  });\r\n\r\n  indexBuilder.addCollator({\r\n    schedule,\r\n    factory: QetaCollatorFactory.fromConfig(env.config, {\r\n      logger: env.logger,\r\n      database: qetaDatabase,\r\n    }),\r\n  });\r\n\r\n  const { scheduler } = await indexBuilder.build();\r\n  scheduler.start();\r\n  // ...\r\n}\r\n```\r\n",
+  "repository": "https://github.com/drodil/backstage-plugin-qeta",
+  "role": "backend-plugin",
+  "scope": "@serhatboyraz",
+  "updated": "2026-07-23T17:02:59.345Z",
+  "version": "3.59.13",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-07-23T17:02:59.345Z",
+      "version": "3.59.13"
+    },
+    {
+      "date": "2026-07-23T14:35:47.565Z",
+      "version": "3.59.12"
+    },
+    {
+      "date": "2026-07-23T14:11:24.302Z",
+      "version": "3.59.11"
+    },
+    {
+      "date": "2026-07-23T13:11:20.108Z",
+      "version": "3.59.10"
+    }
+  ]
+}

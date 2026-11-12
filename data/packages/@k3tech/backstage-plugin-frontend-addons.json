@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2024-10-02T00:01:05.035Z",
+  "deprecated": "",
+  "description": "🎯 **K3T Backstage Plugin Frontend Addons** - A powerful solution for extending components in Backstage through a smart, template-based addon marketplace.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "alansferreira",
+    "kode3tech"
+  ],
+  "name": "@k3tech/backstage-plugin-frontend-addons",
+  "plugin_id": "",
+  "readme": "# Entity Addons Plugin\n\n🎯 **K3T Backstage Plugin Frontend Addons** - A powerful solution for extending components in Backstage through a smart, template-based addon marketplace.\n\nThis Backstage frontend plugin provides a marketplace-like experience for extending component capabilities through reusable addon templates. It intelligently filters and displays only relevant addons for your components based on their template origin.\n\n---\n\n## 🎬 📊 Live Presentation Preview\n\n> **Interactive Presentation Available!** Watch our comprehensive guide covering architecture, setup, best practices, and more.\n>\n> 🌐 **Bilingual**: Portuguese (BR) & English | 📱 **Responsive** | 🎨 **Neon Theme** | ⌨️ **Keyboard Navigation**\n\n### ▶️ [**OPEN PRESENTATION** 🎥](./docs/presentation/index.html)\n\n<details>\n<summary><strong>Presentation Details</strong></summary>\n\n- **17 Interactive Slides** covering the entire plugin\n- **Language Switcher** in top-right corner (PT-BR / EN-US)\n- **Instant Language Switching** - your preference is saved\n- **Navigation**: Arrow keys or spacebar to navigate\n- **Content Includes**:\n  - Architecture & template binding system\n  - Installation & configuration\n  - API reference & components\n  - Real-world examples\n  - Best practices\n  - Troubleshooting guide\n  - FAQ section\n\n**Quick Tips:**\n- Press `F11` for fullscreen mode\n- Use arrow keys `←` `→` or spacebar to navigate\n- Click language buttons in top-right to switch\n- Available in Brazilian Portuguese (default) and English\n\n</details>\n\n---\n\n## ✨ Key Features\n\n- **🔌 Template-based Addons**: Create reusable addon templates that enhance existing components\n- **🎯 Smart Filtering**: Automatically discover addons relevant to your component's template origin\n- **👁️ Visual Discovery**: Display addons in a grid with template cards showing title, description, and metadata\n- **⚡ One-Click Integration**: Pre-populate the scaffolder form with the current component reference\n- **🔗 Git-native**: Addons can directly modify component repositories with automated commits\n- **🏗️ Flexible Architecture**: Full support for different template types and custom annotations\n- **📦 Lightweight**: Optimized plugin with zero side effects and minimal dependencies\n\n## 🎯 Architecture & How It Works\n\nThis plugin uses an **intelligent two-level template binding system**:\n\n```\n┌─────────────────────────────────────────────────────────────┐\n│         BACKSTAGE CATALOG                                    │\n│                                                              │\n│  ┌──────────────┐              ┌──────────────────────┐    │\n│  │  COMPONENT   │ ─────────┬──▶ │  ADDON TEMPLATES     │    │\n│  │              │          │    │  (addon-of link)     │    │\n│  │ Origin:      │          │    │                      │    │\n│  │ microservice-│──────────┘    │ ✓ Add Monitoring     │    │\n│  │ template     │               │ ✓ Add Logging        │    │\n│  └──────────────┘               │ ✓ Add Security       │    │\n│                                 │ ✓ Add CI/CD          │    │\n│                                 └──────────────────────┘    │\n│                                                              │\n└─────────────────────────────────────────────────────────────┘\n```\n\n**How It Works:**\n\n1. **Template Origin** (Component Metadata): Stores which template was used to create the component\n   ```yaml\n   metadata:\n     k3t.io:\n       scaffolder-origin: template:default/microservice-template\n   ```\n\n2. **Addon Templates** (Scaffolder Templates): Templates marked with `metadata.k3t.addon-compatible-to` (array) that reference the origin\n   ```yaml\n   metadata:\n     k3t:\n       addon-compatible-to:\n         - template:default/microservice-template\n   ```\n\n3. **Addon Discovery** (Smart Query): When viewing the \"Addons\" tab, the plugin queries the catalog for matching templates\n   \n4. **Pre-filled Scaffolder** (Automatic Integration): Clicking an addon pre-populates the scaffolder with the component reference as `entity_ref`\n\n## 📦 Installation\n\n```bash\nyarn add @k3tech/backstage-plugin-frontend-addons\n```\n\n## 🚀 Quick Start\n\n### Step 1: Install the Plugin\n\nAdd the plugin to your Backstage instance by updating `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```tsx\nimport { EntityAddonsContent } from '@k3tech/backstage-plugin-frontend-addons';\n\nconst defaultEntityPage = (\n  <EntityLayout>\n    {/* ... other routes ... */}\n    <EntityLayout.Route path=\"/addons\" title=\"Addons\">\n      <EntityAddonsContent variant=\"gridItem\" />\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\n### Step 2: Annotate Your Components with Template Origin\n\nUpdate your `catalog-info.yaml`:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-microservice\n  k3t.io:\n    scaffolder-origin: template:default/microservice-template\n  annotations:\n    backstage.io/repo-url: https://github.com/my-org/my-microservice\nspec:\n  type: service\n  lifecycle: production\n  owner: my-team\n```\n\n### Step 3: Create Addon Templates\n\nCreate scaffolder templates with the `metadata.k3t.addon-compatible-to` field:\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: add-monitoring\n  title: 📊 Add Monitoring & Observability\n  description: Integrate Prometheus, Grafana and intelligent alerts\n  k3t:\n    addon-compatible-to:\n      - template:default/microservice-template\n  tags:\n    - monitoring\n    - observability\n    - infrastructure\n\nspec:\n  type: Service\n  \n  parameters:\n    - title: 🎯 Target Configuration\n      required:\n        - entity_ref\n      properties:\n        entity_ref:\n          title: Select Component\n          type: string\n          description: Which microservice do you want to monitor?\n          ui:field: EntityPicker\n          ui:options:\n            defaultNamespace: default\n            allowedKinds:\n              - Component\n            catalogFilter:\n              - kind: ['Component']\n                'metadata.k3t.io.scaffolder-origin': 'template:default/microservice-template'\n        \n        monitoring_tool:\n          title: 🔧 Monitoring Tool\n          type: string\n          enum:\n            - prometheus\n            - datadog\n            - newrelic\n            - elastic\n          description: Which solution do you prefer?\n        \n        enable_alerts:\n          title: 🔔 Enable Alerts\n          type: boolean\n          default: true\n\n  steps:\n    - id: fetch_component\n      name: 📦 Fetch Component Information\n      action: catalog:fetch\n      input:\n        entityRef: ${{ parameters.entity_ref }}\n\n    - id: clone_repo\n      name: 🔄 Clone Repository\n      action: git:clone:azure\n      input:\n        defaultBranch: main\n        repoUrl: ${{ steps.fetch_component.output.entity.metadata.annotations[\"backstage.io/repo-url\"] }}\n\n    - id: apply_monitoring\n      name: 📊 Apply Monitoring Configuration\n      action: fetch:template\n      input:\n        url: ./templates/${{ parameters.monitoring_tool }}\n        targetPath: ./monitoring\n        values:\n          monitoring_tool: ${{ parameters.monitoring_tool }}\n          enable_alerts: ${{ parameters.enable_alerts }}\n          component_name: ${{ steps.fetch_component.output.entity.metadata.name }}\n\n    - id: commit\n      name: 💾 Commit Changes\n      action: git:commit:azure\n      input:\n        createBranch: false\n        defaultBranch: feat/add-${{ parameters.monitoring_tool }}-monitoring\n        commitMessage: \"feat: add ${{ parameters.monitoring_tool }} monitoring and observability\"\n        gitAuthorName: 'Backstage Addon Bot'\n\n  output:\n    links:\n      - title: 📊 View Component in Catalog\n        icon: catalog\n        entityRef: ${{ parameters.entity_ref }}\n      - title: 🔧 Repository\n        url: ${{ steps.fetch_component.output.entity.metadata.annotations[\"backstage.io/repo-url\"] }}\n```\n\n## Configuration\n\n### Template Binding Annotations\n\nTwo key annotations enable the plugin's functionality:\n\n#### Component Annotation: `metadata.k3t.io.scaffolder-origin`\nApplied to components to specify which template they were created from:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-service\n  k3t.io:\n    scaffolder-origin: template:default/microservice-template\n  annotations:\n    backstage.io/repo-url: https://github.com/my-org/my-service\nspec:\n  type: service\n  owner: my-team\n```\n\n#### Template Annotation: `metadata.k3t.addon-compatible-to`\nApplied to addon templates to indicate which component template origin they are compatible with:\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: add-monitoring\n  title: Add Monitoring\n  description: Add monitoring and observability to microservices\n  k3t:\n    addon-compatible-to:\n      - template:default/microservice-template\nspec:\n  type: Service\n  parameters:\n    - title: Select Target Component\n      required:\n        - entity_ref\n      properties:\n        entity_ref:\n          title: Component to Enhance\n          type: string\n          ui:field: EntityPicker\n          ui:options:\n            defaultNamespace: default\n            allowedKinds:\n              - Component\n            catalogFilter:\n              - kind: ['Component']\n                'metadata.annotations.k3t.io/scaffolder-origin': 'template:default/microservice-template'\n        \n        monitoring_tool:\n          title: Monitoring Tool\n          type: string\n          enum:\n            - prometheus\n            - datadog\n            - newrelic\n          description: Select monitoring solution\n\n  steps:\n    - id: fetch_component\n      name: Fetch Component Repository Info\n      action: catalog:fetch\n      input:\n        entityRef: ${{ parameters.entity_ref }}\n\n    - id: clone\n      name: Clone Repository\n      action: git:clone:azure\n      input:\n        defaultBranch: main\n        repoUrl: ${{ steps.fetch_component.output.entity.metadata.annotations[\"backstage.io/repo-url\"] }}\n\n    - id: apply_monitoring\n      name: Apply Monitoring Configuration\n      action: fetch:template\n      input:\n        url: ./monitoring-templates/${{ parameters.monitoring_tool }}\n        targetPath: ./\n        values:\n          monitoring_tool: ${{ parameters.monitoring_tool }}\n\n    - id: commit\n      name: Commit Changes\n      action: git:commit:azure\n      input:\n        createBranch: false\n        defaultBranch: feat/add-monitoring\n        commitMessage: \"feat: add ${{ parameters.monitoring_tool }} monitoring\"\n        gitAuthorName: 'Backstage Bot'\n\n  output:\n    links:\n      - title: View Component\n        icon: catalog\n        entityRef: ${{ parameters.entity_ref }}\n      - title: Repository\n        url: ${{ steps.fetch_component.output.entity.metadata.annotations[\"backstage.io/repo-url\"] }}\n```\n\n## API Reference\n\n### EntityAddonsContent\n\nThe main component for displaying available addons for an entity.\n\n```typescript\nimport { EntityAddonsContent } from '@k3tech/backstage-plugin-frontend-addons';\n```\n\n**Props:**\n- `variant?: string` - Display variant (default: `'gridItem'`)\n\n**Features:**\n- Automatically detects the current entity's template origin\n- Queries the catalog for all matching addon templates\n- Displays results in an interactive grid\n- Pre-populates scaffolder with entity reference\n\n### Exported Components\n\n```typescript\nexport { entityAddonsPlugin } from './plugin';\nexport { EntityAddonsComponent, EntityAddonsContent } from './components/EntityAddons';\nexport { TemplateCard, TemplateCardGridItem } from './components/TemplateCard';\n```\n\n## Advanced Usage Examples\n\n### Example 1: Multiple Addon Categories\n\nCreate different addon templates for different aspects:\n\n```yaml\n# Addon for adding CI/CD\nannotations:\n  k3t/supported-by: template:default/backend-service\n  backstage.io/addon-category: infrastructure\n\n---\n# Addon for adding security scanning\nannotations:\n  k3t/supported-by: template:default/backend-service\n  backstage.io/addon-category: security\n\n---\n# Addon for documentation setup\nannotations:\n  k3t/supported-by: template:default/backend-service\n  backstage.io/addon-category: documentation\n```\n\n### Example 2: Conditional Addon Parameters\n\nConfigure addons to accept component-specific metadata:\n\n```yaml\nsteps:\n  - id: fetch_component\n    name: Load Component Details\n    action: catalog:fetch\n    input:\n      entityRef: ${{ parameters.entity_ref }}\n\n  - id: apply_addon\n    name: Apply Based on Component Type\n    action: fetch:template\n    input:\n      url: ./templates\n      values:\n        component_owner: ${{ steps.fetch_component.output.entity.metadata.annotations[\"backstage.io/owner\"] }}\n        component_lifecycle: ${{ steps.fetch_component.output.entity.spec.lifecycle }}\n```\n\n## Troubleshooting\n\n### Addons Not Showing\n\n1. **Verify the annotation format**: Ensure `k3t.io/scaffolder-origin` in your component exactly matches `k3t/supported-by` in your addon template\n2. **Check catalog sync**: Run `backstage-cli catalog:refresh` to ensure templates are indexed\n3. **Validate YAML**: Use a YAML validator to ensure proper formatting\n\n### Pre-population Not Working\n\n1. **Check component reference**: Component must be accessible in the catalog\n2. **Verify EntityPicker configuration**: Ensure catalog filters match your component annotations\n3. **Test URL encoding**: The component ref is URL-encoded; verify special characters are handled\n\n## Best Practices\n\n- **Naming**: Use consistent, descriptive names for addon templates (e.g., `add-logging`, `add-security-scanning`)\n- **Documentation**: Add clear descriptions to addon templates so users understand what they do\n- **Testing**: Test addon templates with sample components before promoting to production\n- **Git Workflow**: Use feature branches (e.g., `feat/addon-name`) to keep changes organized\n- **Metadata**: Include ownership and lifecycle information in component annotations for better governance\n\n## Contributing\n\nContributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.\n\n## License\n\nThis plugin is licensed under the [Apache-2.0 License](LICENSE).\n",
+  "repository": "https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/tree/HEAD/.",
+  "role": "frontend-plugin",
+  "scope": "@k3tech",
+  "updated": "2026-09-29T03:59:39.601Z",
+  "version": "2.0.8",
+  "version_count": 17,
+  "versions": [
+    {
+      "date": "2026-09-29T03:59:39.601Z",
+      "version": "2.0.8"
+    },
+    {
+      "date": "2026-09-29T03:59:11.717Z",
+      "version": "2.0.7"
+    },
+    {
+      "date": "2025-11-19T01:15:40.263Z",
+      "version": "2.0.5"
+    },
+    {
+      "date": "2025-11-19T00:31:17.586Z",
+      "version": "2.0.4"
+    },
+    {
+      "date": "2025-11-18T22:33:29.403Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2025-11-18T22:18:14.591Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2025-11-07T01:56:39.253Z",
+      "version": "1.6.5"
+    },
+    {
+      "date": "2025-11-07T01:22:01.330Z",
+      "version": "1.6.4"
+    },
+    {
+      "date": "2025-11-07T01:08:43.379Z",
+      "version": "1.6.3"
+    },
+    {
+      "date": "2025-11-06T02:13:34.820Z",
+      "version": "1.6.2"
+    },
+    {
+      "date": "2025-11-05T19:00:03.514Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2025-11-05T18:37:51.162Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-10-02T00:33:16.764Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2024-10-02T00:32:21.225Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2024-10-02T00:19:24.577Z",
+      "version": "0.1.11"
+    }
+  ]
+}

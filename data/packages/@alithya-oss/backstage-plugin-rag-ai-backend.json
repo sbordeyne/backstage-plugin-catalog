@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-02-05T04:20:46.334Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fjudith"
+  ],
+  "name": "@alithya-oss/backstage-plugin-rag-ai-backend",
+  "plugin_id": "rag-ai",
+  "readme": "",
+  "repository": "https://github.com/RoadieHQ/roadie-backstage-plugins/tree/HEAD/plugins/backend/rag-ai-backend",
+  "role": "backend-plugin",
+  "scope": "@alithya-oss",
+  "updated": "2025-05-21T04:15:25.734Z",
+  "version": "2.0.8",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-05-21T04:15:25.734Z",
+      "version": "2.0.8"
+    },
+    {
+      "date": "2025-05-10T03:57:37.402Z",
+      "version": "2.0.7"
+    },
+    {
+      "date": "2025-02-05T04:20:46.616Z",
+      "version": "2.0.6"
+    }
+  ]
+}

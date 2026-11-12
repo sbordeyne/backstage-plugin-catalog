@@ -1,0 +1,34 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-10-01T12:26:46.246Z",
+  "deprecated": "",
+  "description": "Welcome to the backend package for the Orchestrator plugin!",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "orchestrator",
+    "plugin",
+    "support:tech-preview",
+    "workflows"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "marek.libra"
+  ],
+  "name": "@marek.libra/backstage-plugin-orchestrator-backend-dynamic",
+  "plugin_id": "orchestrator",
+  "readme": "# Orchestrator Backend Plugin for Backstage\n\nWelcome to the backend package for the Orchestrator plugin!\n\nFor more information about the Orchestrator plugin, see the [Orchestrator Plugin documentation](https://github.com/janus-idp/backstage-plugins/tree/main/plugins/orchestrator) on GitHub.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/orchestrator-backend",
+  "role": "backend-plugin",
+  "scope": "@marek.libra",
+  "updated": "2024-10-01T12:26:46.957Z",
+  "version": "1.22.12",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-10-01T12:26:46.957Z",
+      "version": "1.22.12"
+    }
+  ]
+}

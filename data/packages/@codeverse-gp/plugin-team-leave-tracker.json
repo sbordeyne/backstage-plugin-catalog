@@ -1,0 +1,36 @@
+{
+  "author": "CodeVerse-GP",
+  "created": "2026-07-18T13:24:09.302Z",
+  "deprecated": "",
+  "description": "A Backstage plugin for tracking team leave and vacation.",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "leave-tracker",
+    "plugin",
+    "vacation"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "grvpandey11"
+  ],
+  "name": "@codeverse-gp/plugin-team-leave-tracker",
+  "plugin_id": "team-leave-tracker",
+  "readme": "",
+  "repository": "https://github.com/CodeVerse-GP/leave-tracker/tree/HEAD/plugins/team-leave-tracker",
+  "role": "frontend-plugin",
+  "scope": "@codeverse-gp",
+  "updated": "2026-07-25T15:43:02.267Z",
+  "version": "1.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-07-25T15:43:02.267Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-07-18T13:24:09.624Z",
+      "version": "1.0.0"
+    }
+  ]
+}

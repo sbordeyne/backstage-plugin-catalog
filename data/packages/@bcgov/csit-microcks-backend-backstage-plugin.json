@@ -1,0 +1,80 @@
+{
+  "author": "",
+  "created": "2026-04-21T18:05:21.086Z",
+  "deprecated": "",
+  "description": "This Backstage backend plugin synchronizes API mocks defined in a repository into a **Microcks** server.",
+  "homepage": "https://github.com/bcgov/csit-backstage-microcks-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "akroon3r",
+    "bc-gov-common-services",
+    "bradenmitchell",
+    "citzcodemvp",
+    "danebenal",
+    "danilomeireles",
+    "dgboss",
+    "fbarreta",
+    "galen.gray",
+    "irfan.charania",
+    "jimmypalelil",
+    "jleach",
+    "jujaga",
+    "kolezhannochka",
+    "mgranbois",
+    "michael.nelson.gov.bc.ca",
+    "mkernohanbc",
+    "nicoledegreef",
+    "omprakashmishra",
+    "parcjason",
+    "paul.howells",
+    "qqnluaq",
+    "sahejmundi",
+    "sheaphillips",
+    "shellyxuehan",
+    "sidmclaughlin",
+    "stoews",
+    "supriya-arora",
+    "taylorfries",
+    "ty2k"
+  ],
+  "name": "@bcgov/csit-microcks-backend-backstage-plugin",
+  "plugin_id": "csit-microcks",
+  "readme": "# CSIT Microcks Backend Plugin\n\nThis Backstage backend plugin synchronizes API mocks defined in a repository into a **Microcks** server.\n\nThe plugin reads configuration from catalog entities, determines the desired state of mocks, and reconciles Microcks so that the correct mock services exist.\n\nThe system is intentionally designed to be **deterministic**, **observable**, and **fail fast**.\n\n---\n\n# Installation\n\nInstall the plugin in your Backstage backend.\n\n```\nyarn add @bcgov/csit-microcks-backend-backstage-plugin\n```\n\nRegister the plugin in your backend.\n\nExample (`packages/backend/src/index.ts`):\n\n```\nbackend.add(import('@bcgov/csit-microcks-backend-backstage-plugin'));\n```\n\nRestart the backend after installing the plugin.\n\n---\n\n# Configuration\n\nBackstage `app-config.yaml` must define a Microcks server.\n\nExample:\n\n```\ncsitMicrocks:\n  server:\n    baseUrl: https://csit-microcks-apps-gov-bc-ca.dev.api.gov.bc.ca\n    auth:\n      type: keycloak\n      issuerUrl: https://authz-b8840c-dev.apps.gold.devops.gov.bc.ca/auth/realms/aps\n      clientId: devhub-microcks-sync\n      clientSecret: ${BACKSTAGE_MICROCKS_CLIENT_SECRET}\n```\n\nIf this configuration is missing:\n\n- The processor continues queuing jobs\n- The worker **will not claim jobs**\n\n---\n\n# Keycloak Service Client Configuration\n\nThe backend plugin authenticates to Microcks using the **OAuth 2.0 client credentials flow** via Keycloak.\n\nA **Keycloak confidential client with a service account** must be created so the plugin can obtain access tokens.\n\nRecommended client id:\n\n```\ndevhub-microcks-sync\n```\n\nThe client id is configurable in `app-config.yaml`.\n\nThe service client must be granted the role:\n\n```\nmicrocks-app → manager\n```\n\nThis role allows the plugin to perform Microcks operations such as importing artifacts and managing services.\n\n---\n\n## Keycloak 26 Setup\n\nCreate the client in the same Keycloak realm used by Microcks.\n\n### 1. Create the Client\n\n1. Open the **Keycloak Admin Console**\n2. Select the **Microcks realm**\n3. Navigate to **Clients**\n4. Click **Create client**\n\nConfigure:\n\nClient ID\n\n```\ndevhub-microcks-sync\n```\n\nClient Type\n\n```\nOpenID Connect\n```\n\nClick **Next**.\n\nEnable the following settings:\n\n- Client authentication\n- Service accounts roles\n\nSave the client.\n\n---\n\n### 2. Obtain the Client Secret\n\n1. Open the client you created\n2. Navigate to the **Credentials** tab\n3. Copy the **Client Secret**\n\nStore the secret securely. It should **not be committed to source control**.\n\n---\n\n### 3. Assign the Required Role\n\n1. Open the client\n2. Navigate to **Service Account Roles**\n3. Change the filter to **Filter by clients**\n4. Select:\n\n```\nmicrocks-app\n```\n\n5. Assign the role:\n\n```\nmanager\n```\n\nThe service client can now perform Microcks management operations.\n\n---\n\n# Entity Configuration\n\nCatalog entities enable Microcks synchronization using the annotation:\n\n```\nbcgov/microcks-config-ref\n```\n\nExample:\n\n```\nmetadata:\n  annotations:\n    bcgov/microcks-config-ref: ./microcks.yaml\n```\n\nThe referenced file defines one or more mocks.\n\nExample structure:\n\n```\nspec:\n  mocks:\n    - mockId: default\n      openapi:\n        path: openapi.yaml\n      artifacts:\n        - kind: examples\n          path: examples\n```\n\nArtifacts may reference:\n\n- local repository paths\n- URLs\n\nMultiple mocks per API are supported.\n\n---\n\n# Architecture\n\n```mermaid\nflowchart LR\n\nA[Backstage Catalog Entity] --> B[CsitMicrocksProcessor]\n\nB --> C[(csit_microcks_sync_status)]\n\nC --> D[MicrocksSyncWorker]\n\nD --> E[MicrocksSyncJobRunner]\n\nE --> F[MicrocksDesiredStateLoader]\nE --> G[MicrocksReconciler]\nE --> H[MicrocksClient]\n\nF --> I[Repository Artifacts]\n\nH --> J[Microcks Server]\n\nB --> K[(csit_microcks_sync_events)]\nE --> K\n```\n\n## Flow Summary\n\n1. A catalog entity references a `microcks.yaml` file.\n2. The **Catalog Processor** reads this file and records desired sync state.\n3. The **Background Worker** polls the database for pending jobs.\n4. Each job is executed by the **Job Runner**.\n5. The job runner loads artifacts, reconciles Microcks services, and records events.\n\nBoth the **processor** and **worker** emit events for observability.\n\n---\n\n# Developer Workflow\n\nThis section describes what happens when a developer updates `microcks.yaml` in a repository.\n\nUnderstanding this flow helps when debugging synchronization behavior.\n\n---\n\n## Step 1 — Developer Updates microcks.yaml\n\nA developer modifies the mock configuration referenced by a catalog entity.\n\nExample changes:\n\n- add a new mock\n- update OpenAPI\n- add example responses\n- remove a mock\n\nThe change is committed to the repository.\n\n---\n\n## Step 2 — Backstage Catalog Processing\n\nDuring the next catalog refresh:\n\n`CsitMicrocksProcessor`\n\nruns for the entity.\n\nThe processor:\n\n1. Detects the annotation\n\n```\nbcgov/microcks-config-ref\n```\n\n2. Loads the `microcks.yaml` file.\n3. Parses mock definitions.\n4. Computes a **fingerprint hash** of inputs.\n5. Upserts rows in:\n\n```\ncsit_microcks_sync_status\n```\n\n### Possible outcomes\n\n| Scenario | Result |\n|--------|--------|\n| New mock | `desired_action = reconcile` |\n| Updated configuration | `desired_action = reconcile` |\n| Removed mock | `desired_action = delete` |\n| No changes | no new job created |\n\nThe processor **does not communicate with Microcks**.\n\nIts responsibility is to determine **desired state** and record synchronization jobs.\n\nProcessor activity is also recorded in the event table for observability.\n\n---\n\n## Step 3 — Job Appears in Database\n\nExample record:\n\n| field | value |\n|-----|------|\n| entity_ref | component:default/my-api |\n| mock_id | default |\n| desired_action | reconcile |\n| microcks_version_id | bk-8ad514d6fc316e04-default |\n| status | pending |\n\nThe record waits to be claimed by the worker.\n\n---\n\n## Step 4 — Worker Claims the Job\n\n`MicrocksSyncWorker` periodically polls the database.\n\nThe worker:\n\n1. checks configuration\n2. verifies global backoff is not active\n3. claims a job using a **lease**\n\n```\nclaimNextPending()\n```\n\nThe job status transitions to **leased**.\n\n---\n\n## Step 5 — Job Runner Executes the Sync\n\nExecution is delegated to:\n\n```\nMicrocksSyncJobRunner\n```\n\nThe runner performs the following steps.\n\n### 1) Load Desired State\n\n```\nMicrocksDesiredStateLoader\n```\n\nLoads:\n\n- OpenAPI specification\n- example artifacts\n- metadata\n\nArtifacts may come from:\n\n- repository files\n- URLs\n\n### 2) Scan Existing Microcks Services\n\nOwnership is determined using:\n\n```\nbk-<entityHash>\n```\n\nExample:\n\n```\nbk-8ad514d6fc316e04-*\n```\n\n### 3) Reconcile Desired vs Existing\n\n`MicrocksReconciler` determines:\n\n- services owned by the entity\n- exact version matches\n- services to delete\n- whether action is `create` or `update`\n\n### 4) Upload Artifacts\n\nArtifacts are uploaded using:\n\n```\nMicrocksClient.uploadArtifacts()\n```\n\nBefore upload:\n\n```\nMicrocksArtifactIdentityStamper\n```\n\ninjects deterministic identity metadata.\n\n### 5) Delete Stale Services\n\nAny services owned by the entity that are not part of the desired version set are deleted.\n\nThis ensures:\n\n```\nMicrocks always reflects the desired configuration\n```\n\n---\n\n## Step 6 — Job Completion\n\nIf successful:\n\n```\nstatus = completed\n```\n\nThe worker records events in:\n\n```\ncsit_microcks_sync_events\n```\n\nExample events:\n\n- reconcile_started\n- artifact_upload_started\n- artifact_upload_finished\n- reconcile_finished\n\n---\n\n# Versioning Model\n\nMicrocks service versions are deterministic.\n\nFormat\n\n```\nbk-<entityHash>-<mockId>\n```\n\nExample\n\n```\nbk-8ad514d6fc316e04-default\nbk-8ad514d6fc316e04-swagger\nbk-8ad514d6fc316e04-sdpr\n```\n\nOwnership of services is determined by the prefix:\n\n```\nbk-<entityHash>\n```\n\n---\n\n# Reconciliation Model\n\nReconciliation is handled by:\n\n```\nMicrocksReconciler\n```\n\nThe worker ensures that **only the desired versions exist in Microcks**.\n\n---\n\n# Fail Fast Behavior\n\nIf desired state cannot be loaded:\n\n1. A failure event is recorded\n2. Microcks services owned by the failed mock are deleted\n3. The sync record is marked `error`\n\n---\n\n# Database Tables\n\n## csit_microcks_sync_status\n\nTracks synchronization jobs.\n\n| Field | Description |\n|------|-------------|\n| id | primary key |\n| entity_ref | Backstage entity reference |\n| mock_id | mock identifier |\n| desired_action | reconcile or delete |\n| microcks_version_id | deterministic Microcks version |\n| fingerprint_hash | processor fingerprint |\n| status | pending, completed, error |\n\n---\n\n## csit_microcks_sync_events\n\nStores detailed sync history.\n\n| Field | Description |\n|------|-------------|\n| entity_ref | entity reference |\n| mock_id | mock identifier |\n| sync_status_id | sync record id |\n| event_type | event category |\n| level | info or error |\n| message | event message |\n\n---\n\n# Important Classes\n\n| Class | Responsibility |\n|------|---------------|\n| `CsitMicrocksProcessor` | Reads entity configuration and queues sync jobs |\n| `MicrocksSyncWorker` | Polls database and orchestrates job execution |\n| `MicrocksSyncJobRunner` | Executes a single sync job |\n| `MicrocksDesiredStateLoader` | Loads artifacts |\n| `MicrocksClient` | Communicates with the Microcks API |\n| `MicrocksReconciler` | Determines required actions |\n| `MicrocksTokenProvider` | Handles authentication tokens |\n| `MicrocksArtifactIdentityStamper` | Injects deterministic artifact identity |\n| `MicrocksSyncStore` | Database access layer |\n\n---\n\n# Design Principles\n\n### Deterministic Versioning\n\nMicrocks service versions derive from entity identity and `mockId`.\n\n### Fail Fast Behavior\n\nInvalid configuration immediately removes owned mocks.\n\n### Explicit Ownership\n\nService ownership is determined by the entity version prefix.\n\n### Observable Operations\n\nAll actions emit events to `csit_microcks_sync_events`.\n\n### Small Focused Components\n\nWorker orchestration, job execution, reconciliation, and storage are separated into focused classes.",
+  "repository": "https://github.com/bcgov/csit-backstage-microcks-plugin/tree/HEAD/plugins/csit-microcks-backend",
+  "role": "backend-plugin",
+  "scope": "@bcgov",
+  "updated": "2026-04-29T21:40:06.065Z",
+  "version": "0.1.1-main.c822a801",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-04-29T21:40:06.065Z",
+      "version": "0.1.1-main.c822a801"
+    },
+    {
+      "date": "2026-04-27T18:29:45.483Z",
+      "version": "0.1.0-feature.aps-4105-connect-pipelines.86dd1a72"
+    },
+    {
+      "date": "2026-04-27T17:16:46.106Z",
+      "version": "0.1.0-feature.aps-4105-connect-pipelines.b0745ca4"
+    },
+    {
+      "date": "2026-04-23T19:50:12.588Z",
+      "version": "0.1.0-feature.aps-4105-connect-pipelines.063bfdb8"
+    },
+    {
+      "date": "2026-04-23T18:54:04.480Z",
+      "version": "0.1.0-feature.aps-4105-connect-pipelines.fdf9b14e"
+    },
+    {
+      "date": "2026-04-23T18:49:52.628Z",
+      "version": "0.1.0-feature.aps-4105-connect-pipelines.45701585"
+    },
+    {
+      "date": "2026-04-21T18:05:21.329Z",
+      "version": "0.0.0"
+    }
+  ]
+}

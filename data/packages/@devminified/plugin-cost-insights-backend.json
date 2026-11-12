@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-05-15T11:11:00.706Z",
+  "deprecated": "",
+  "description": "Welcome to the cost insights backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "frontendrock"
+  ],
+  "name": "@devminified/plugin-cost-insights-backend",
+  "plugin_id": "cost-insights",
+  "readme": "# Plugin Cost Insights Backend\n\nWelcome to the cost insights backend plugin!\n\nCost insights backend is a plugin to fetch data from cloud platform using nOps APIs.\n\n## Install\n\n```bash\n# Run from backstage root directory\nyarn packages/backend add @devminified/plugin-cost-insights-backend\n```\n\n## Configuration\n\nConfigure `app-config.yaml` file:\n\n```yaml\n// Other configuration\nbackend:\n    costInsights:\n        baseUrl: // nops api base url\n        apiKey: // nops api key\n// Other configuration\n```\n\n## Usage\n\nTo expose endpoints at `/api/cost-insights` \n\n```ts\n// packages/backend/src/index.ts\n\n/* remainig code */\n\nbackend.add(import('@devminified/plugin-cost-insights-backend'));\n\n/* remaining code */\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@devminified",
+  "updated": "2025-05-15T12:59:53.408Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-05-15T12:59:53.408Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-05-15T11:11:01.003Z",
+      "version": "0.1.0"
+    }
+  ]
+}

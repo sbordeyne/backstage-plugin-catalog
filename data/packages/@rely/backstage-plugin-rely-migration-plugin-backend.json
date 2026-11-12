@@ -1,0 +1,48 @@
+{
+  "author": "Rely.io",
+  "created": "2024-03-18T17:56:01.667Z",
+  "deprecated": "",
+  "description": "A Backstage plugin export backstage data to Rely.",
+  "homepage": "https://docs.rely.io/overview/what-is-rely",
+  "keywords": [
+    "backstage",
+    "migration",
+    "plugin",
+    "rely"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fabioaraujoorg"
+  ],
+  "name": "@rely/backstage-plugin-rely-migration-plugin-backend",
+  "plugin_id": "",
+  "readme": "\n# Rely Migration Plugin for Backstage\n\nWelcome to the `rely-migration-plugin` for Backstage by Rely.io. This plugin seamlessly integrates with Backstage to export essential data to the Rely.io Identity Data Provider (IDP). It offers two modes of operation: a one-time data export via a dedicated endpoint, and an automated, scheduled data export using a cron job.\n\n## Features\n- **One-time Export**: Easily migrate your data to Rely.io with a single API call.\n- **Scheduled Export**: Set up a cron job to regularly export data, ensuring continuous synchronization with Rely.io.\n\n## Installation\nTo get started with the Rely Migration Plugin, follow these installation steps:\n\n1. **Install the Plugin**: \n   ```bash\n   cd packages/backend && yarn add @rely/backstage-plugin-rely-migration-plugin-backend\n   ```\n\n2. **Create the Plugin File**: \n   In your Backstage backend, create a new file at `packages/backend/src/plugins/rely.ts` with the following content:\n   ```typescript\n   import { PluginEnvironment } from '../types';\n   import { createRouter } from '@rely/backstage-plugin-rely-migration-plugin-backend';\n   import { parseConfigs } from '@rely/backstage-plugin-rely-migration-plugin-backend';\n\n   export default async function createPlugin(env: PluginEnvironment) {\n     const routerOptions = await parseConfigs(env);\n     return await createRouter(routerOptions);\n   }\n   ```\n\n3. **Update the Backend Index**: \n   Modify `packages/backend/src/index.ts` to include the Rely plugin:\n   ```typescript\n   import rely from './plugins/rely';\n   ...\n   const relyEnv = useHotMemoize(module, () => createEnv('rely'));\n   ...\n   apiRouter.use('/rely', await rely(relyEnv));\n   ```\n\n4. **Configure Proxy and Rely in `app-config.yaml`**: \n   Add the following configuration to your `app-config.yaml`:\n   ```yaml\n   proxy:\n     '/rely':\n       target: https://magneto.rely.io\n       headers:\n         Authorization: Bearer <WEBHOOK_API_TOKEN_ON https://webapp.rely.io/settings>\n\n   rely:\n     # Enable/disable gzip\n     cron:\n       enabled: true\n       schedule: '0 * * * *'\n     # Define entity filters for data export\n     entityFilters: []\n       # Example filters:\n       # - kind: ['API', 'Component']\n       # - metadata.name: 'a'\n       #   metadata.namespace: 'b'\n   ```\n\n## How to Use\n- **One-time Export**: Trigger the endpoint `/api/rely/migrate` to start a one-time export.\n- **Scheduled Export**: If the cron job is enabled in the configuration, the plugin will automatically export data at specified intervals.\n\n## Configuration Details\n- `cron.enabled`: Enable or disable the cron job for scheduled exports.\n- `cron.schedule`: Define the cron schedule for automated data exports.\n- `entityFilters`: Specify filters for the entities to be exported. For more details on structuring these filters, refer to the [Backstage EntityFilterQuery documentation](https://backstage.io/docs/reference/catalog-client.entityfilterquery/).\n\n## Development and Local Testing\n- **Running in the Backstage App**: Start the Backstage app (`yarn start` at the root) and navigate to `/rely-migration-plugin`.\n- **Isolated Plugin Development**: Run `yarn start` in the plugin directory for faster iteration, startup, and hot reloads. This setup is intended for local development only.\n\n---\n\nThank you for choosing Rely.io for your identity management solutions. We are committed to providing seamless integration and top-notch support for Backstage users. For any issues or contributions, please feel free to open an issue or pull request in our repository.\n",
+  "repository": "https://gitlab.com/detech.ai/rely-migration-plugin-backend",
+  "role": "backend-plugin",
+  "scope": "@rely",
+  "updated": "2024-03-18T23:50:08.517Z",
+  "version": "0.5.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-03-18T23:50:08.517Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-03-18T23:20:46.578Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-03-18T21:41:40.320Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-03-18T21:31:44.350Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-03-18T17:56:01.897Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2023-01-05T15:32:18.967Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-pulse-backend",
+  "plugin_id": "pulse",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@spotify",
+  "updated": "2026-06-19T07:24:32.483Z",
+  "version": "0.16.16",
+  "version_count": 47,
+  "versions": [
+    {
+      "date": "2026-06-19T07:24:32.483Z",
+      "version": "0.16.16"
+    },
+    {
+      "date": "2026-05-26T11:50:03.784Z",
+      "version": "0.16.15"
+    },
+    {
+      "date": "2026-04-17T09:02:02.534Z",
+      "version": "0.16.14"
+    },
+    {
+      "date": "2026-03-19T22:26:36.595Z",
+      "version": "0.16.13"
+    },
+    {
+      "date": "2026-02-19T16:58:42.748Z",
+      "version": "0.16.12"
+    },
+    {
+      "date": "2026-01-22T15:48:18.482Z",
+      "version": "0.16.11"
+    },
+    {
+      "date": "2025-12-19T12:52:00.452Z",
+      "version": "0.16.10"
+    },
+    {
+      "date": "2025-11-21T18:03:27.904Z",
+      "version": "0.16.9"
+    },
+    {
+      "date": "2025-10-17T16:11:34.020Z",
+      "version": "0.16.8"
+    },
+    {
+      "date": "2025-08-22T11:46:19.238Z",
+      "version": "0.16.7"
+    },
+    {
+      "date": "2025-07-17T09:03:10.935Z",
+      "version": "0.16.6"
+    },
+    {
+      "date": "2025-05-29T17:10:17.240Z",
+      "version": "0.16.5"
+    },
+    {
+      "date": "2025-03-20T15:38:47.796Z",
+      "version": "0.16.4"
+    },
+    {
+      "date": "2025-03-06T20:41:05.566Z",
+      "version": "0.16.3"
+    },
+    {
+      "date": "2025-02-21T09:43:08.193Z",
+      "version": "0.16.2"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2025-04-01T15:29:50.462Z",
+  "deprecated": "",
+  "description": "The slack backend module for the notifications plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-notifications-backend-module-slack",
+  "plugin_id": "notifications",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/notifications-backend-module-slack",
+  "role": "backend-plugin-module",
+  "scope": "@backstage",
+  "updated": "2026-10-20T17:00:23.081Z",
+  "version": "0.4.7",
+  "version_count": 439,
+  "versions": [
+    {
+      "date": "2026-11-11T03:06:58.472Z",
+      "version": "0.4.8-next.1"
+    },
+    {
+      "date": "2026-11-07T03:01:19.133Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T03:05:35.562Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T02:59:46.359Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-10-31T02:54:38.690Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:51:21.870Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T03:04:25.033Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T03:02:39.042Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:36:39.785Z",
+      "version": "0.4.8-next.0"
+    },
+    {
+      "date": "2026-10-27T03:02:52.460Z",
+      "version": "0.0.0-nightly-20261027023041"
+    },
+    {
+      "date": "2026-10-20T17:00:23.081Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2026-09-29T12:35:51.028Z",
+      "version": "0.4.7-next.1"
+    },
+    {
+      "date": "2026-09-28T03:19:04.912Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:13:13.873Z",
+      "version": "0.0.0-nightly-20260927023342"
+    },
+    {
+      "date": "2026-09-26T03:08:54.252Z",
+      "version": "0.0.0-nightly-20260926022852"
+    }
+  ]
+}

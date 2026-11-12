@@ -1,0 +1,69 @@
+{
+  "author": "",
+  "created": "2024-09-02T15:37:59.092Z",
+  "deprecated": "",
+  "description": "A Backstage catalog backend module that helps integrate towards Microsoft Graph",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "lantezana"
+  ],
+  "name": "@lantezana/plugin-catalog-backend-module-msgraph",
+  "plugin_id": "catalog",
+  "readme": "# Catalog Backend Module for Microsoft Graph\n\nThis is an extension module to the `plugin-catalog-backend` plugin, providing a `MicrosoftGraphOrgEntityProvider`\nthat can be used to ingest organization data from the Microsoft Graph API.\nThis provider is useful if you want to import users and groups from Entra Id (formerly Azure Active Directory) or Office 365.\n\n## Getting Started\n\n1. Choose your authentication method - all methods supported by [DefaultAzureCredential](https://docs.microsoft.com/en-us/javascript/api/overview/azure/identity-readme?view=azure-node-latest#defaultazurecredential)\n\n   - For local dev, use Azure CLI, Azure PowerShell or Visual Studio Code for authentication\n   - If your infrastructure supports Managed Identity, use that\n   - Otherwise use an App Registration\n\n1. If using Managed Identity or App Registration for authentication, grant the following application permissions (not delegated)\n\n   - `GroupMember.Read.All`\n   - `User.Read.All`\n\n1. Configure the entity provider:\n\n```yaml\n# app-config.yaml\ncatalog:\n  providers:\n    microsoftGraphOrg:\n      providerId:\n        target: https://graph.microsoft.com/v1.0\n        authority: https://login.microsoftonline.com\n        # If you don't know you tenantId, you can use Microsoft Graph Explorer\n        # to query it\n        tenantId: ${AZURE_TENANT_ID}\n        # Optional ClientId and ClientSecret if you don't want to use `DefaultAzureCredential`\n        # for authentication\n        # Client Id and Secret can be created under Certificates & secrets in\n        # the App registration in the Microsoft Azure Portal.\n        clientId: ${AZURE_CLIENT_ID}\n        clientSecret: ${AZURE_CLIENT_SECRET}\n        # Optional mode for querying which defaults to \"basic\".\n        # By default, the Microsoft Graph API only provides the basic feature set\n        # for querying. Certain features are limited to advanced querying capabilities.\n        # (See https://docs.microsoft.com/en-us/graph/aad-advanced-queries)\n        queryMode: basic # basic | advanced\n        # Optional configuration block\n        user:\n          # Optional parameter to include the expanded resource or collection referenced\n          # by a single relationship (navigation property) in your results.\n          # Only one relationship can be expanded in a single request.\n          # See https://docs.microsoft.com/en-us/graph/query-parameters#expand-parameter\n          # Can be combined with userGroupMember[...] instead of userFilter.\n          expand: manager\n          # Optional filter for user, see Microsoft Graph API for the syntax\n          # See https://docs.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties\n          # and for the syntax https://docs.microsoft.com/en-us/graph/query-parameters#filter-parameter\n          # This and userGroupMemberFilter are mutually exclusive, only one can be specified\n          filter: accountEnabled eq true and userType eq 'member'\n          # Set to false to not load user photos.\n          loadPhotos: true\n          # See  https://docs.microsoft.com/en-us/graph/api/resources/schemaextension?view=graph-rest-1.0\n          select: ['id', 'displayName', 'description']\n        # Optional configuration block\n        userGroupMember:\n          # Optional filter for users, use group membership to get users.\n          # (Filtered groups and fetch their members.)\n          # This and userFilter are mutually exclusive, only one can be specified\n          # See https://docs.microsoft.com/en-us/graph/search-query-parameter\n          filter: \"displayName eq 'Backstage Users'\"\n          # Optional search for users, use group membership to get users.\n          # (Search for groups and fetch their members.)\n          # This and userFilter are mutually exclusive, only one can be specified\n          search: '\"description:One\" AND (\"displayName:Video\" OR \"displayName:Drive\")'\n        # Optional configuration block\n        group:\n          # Optional parameter to include the expanded resource or collection referenced\n          # by a single relationship (navigation property) in your results.\n          # Only one relationship can be expanded in a single request.\n          # See https://docs.microsoft.com/en-us/graph/query-parameters#expand-parameter\n          # Can be combined with userGroupMember[...] instead of userFilter.\n          expand: member\n          # Optional filter for group, see Microsoft Graph API for the syntax\n          # See https://docs.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties\n          filter: securityEnabled eq false and mailEnabled eq true and groupTypes/any(c:c+eq+'Unified')\n          # Optional search for groups, see Microsoft Graph API for the syntax\n          # See https://docs.microsoft.com/en-us/graph/search-query-parameter\n          search: '\"description:One\" AND (\"displayName:Video\" OR \"displayName:Drive\")'\n          # Optional select for groups, this will allow you work with schemaExtensions\n          # in order to add extra information to your groups that can be used on your custom groupTransformers\n          # See  https://docs.microsoft.com/en-us/graph/api/resources/schemaextension?view=graph-rest-1.0\n          select: ['id', 'displayName', 'description']\n        schedule: # optional; same options as in TaskScheduleDefinition\n          # supports cron, ISO duration, \"human duration\" as used in code\n          frequency: { hours: 1 }\n          # supports ISO duration, \"human duration\" as used in code\n          timeout: { minutes: 50 }\n          # supports ISO duration, \"human duration\" as used in code\n          initialDelay: { seconds: 15},\n```\n\n`user.filter` and `userGroupMember.filter` are mutually exclusive, only one can be provided. If both are provided, an error will be thrown.\n\nBy default, all users are loaded. If you want to filter users based on their attributes, use `user.filter`. `userGroupMember.filter` can be used if you want to load users based on their group membership.\n\n3. The package is not installed by default, therefore you have to add a\n   dependency to `@backstage/plugin-catalog-backend-module-msgraph` to your\n   backend package.\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/backend add @backstage/plugin-catalog-backend-module-msgraph\n```\n\n4. The `MicrosoftGraphOrgEntityProvider` is not registered by default, so you\n   have to register it in the catalog plugin. Pass the target to reference a\n   provider from the configuration.\n\n```diff\n // packages/backend/src/plugins/catalog.ts\n+import { MicrosoftGraphOrgEntityProvider } from '@backstage/plugin-catalog-backend-module-msgraph';\n\n export default async function createPlugin(\n   env: PluginEnvironment,\n ): Promise<Router> {\n   const builder = await CatalogBuilder.create(env);\n\n+  builder.addEntityProvider(\n+    MicrosoftGraphOrgEntityProvider.fromConfig(env.config, {\n+      logger: env.logger,\n+      scheduler,\n+    }),\n+  );\n```\n\nInstead of configuring the refresh schedule inside the config (per provider instance),\nyou can define it in code (for all of them):\n\n```diff\n-      scheduler,\n+      schedule: env.scheduler.createScheduledTaskRunner({\n+        frequency: { hours: 1 },\n+        timeout: { minutes: 50 },\n+        initialDelay: { seconds: 15},\n+      }),\n```\n\n## Customize the Processor or Entity Provider\n\nIn case you want to customize the ingested entities, the `MicrosoftGraphOrgEntityProvider`\nallows to pass transformers for users, groups and the organization.\n\n1. Create a transformer:\n\n```ts\nexport async function myGroupTransformer(\n  group: MicrosoftGraph.Group,\n  groupPhoto?: string,\n): Promise<GroupEntity | undefined> {\n  if (\n    (\n      group as unknown as {\n        creationOptions: string[];\n      }\n    ).creationOptions.includes('ProvisionGroupHomepage')\n  ) {\n    return undefined;\n  }\n\n  // Transformations may change namespace, change entity naming pattern, fill\n  // profile with more or other details...\n\n  // Create the group entity on your own, or wrap the default transformer\n  return await defaultGroupTransformer(group, groupPhoto);\n}\n```\n\n2. Add the transformer:\n\n```diff\n builder.addEntityProvider(\n   MicrosoftGraphOrgEntityProvider.fromConfig(env.config, {\n     logger: env.logger,\n     scheduler,\n+    groupTransformer: myGroupTransformer,\n   }),\n );\n```\n",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog-backend-module-msgraph",
+  "role": "backend-plugin-module",
+  "scope": "@lantezana",
+  "updated": "2024-09-02T21:29:49.486Z",
+  "version": "1.1.1",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2024-09-02T21:29:49.486Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2024-09-02T20:57:34.609Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-09-02T20:22:58.046Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2024-09-02T20:02:04.631Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2024-09-02T19:07:17.643Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2024-09-02T18:44:02.692Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2024-09-02T17:17:20.714Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2024-09-02T17:04:56.069Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-09-02T16:52:57.132Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-09-02T16:39:51.600Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-09-02T15:37:59.369Z",
+      "version": "1.0.0"
+    }
+  ]
+}

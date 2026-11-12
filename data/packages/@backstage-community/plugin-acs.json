@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2025-03-22T20:06:24.997Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-acs",
+  "plugin_id": "acs",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/acs/plugins/acs",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-09-17T19:14:55.645Z",
+  "version": "0.3.0",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2026-09-17T19:14:55.645Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-05-04T13:30:57.939Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-12-04T19:01:00.735Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-08-04T04:26:15.896Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-07-25T16:25:35.479Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2025-04-20T17:08:46.282Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2025-04-04T18:50:58.690Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2025-03-28T16:02:30.021Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-03-22T20:06:25.243Z",
+      "version": "0.0.1"
+    }
+  ]
+}

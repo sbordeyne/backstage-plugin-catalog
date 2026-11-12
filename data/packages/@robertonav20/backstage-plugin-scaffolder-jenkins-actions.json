@@ -1,0 +1,45 @@
+{
+  "author": "",
+  "created": "2024-10-26T00:41:22.104Z",
+  "deprecated": "",
+  "description": "The backstage-plugin-scaffolder-jenkins-actions module for @backstage/plugin-scaffolder-backend",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "robertonav20"
+  ],
+  "name": "@robertonav20/backstage-plugin-scaffolder-jenkins-actions",
+  "plugin_id": "backstage-plugin-scaffolder-jenkins-actions",
+  "readme": "# Backstage Plugin Scaffolder Jenkins Actions - Alpha\n\nThe backstage-plugin-scaffolder-jenkins-actions module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend).\n\nThis plugin was created through the Backstage CLI\n\n## Supported Action\n\n| Action | Description |\n| --- | --- |\n| build | Run a job |\n| copy | Create a joby from another |\n| create | Create a job given a xml|\n| destroy  | Destroy a job |\n| disable  | Disable a job |\n| enable  | Enable a job |\n\n## How to configure Jenkins client\n\nAn example of configuration to create jenkins client.\n\n```yaml\njenkins:\n  baseUrl: http://jenkins.local:8080\n  username: admin\n  password: admin\n  crumbIssuerEnabled: true\n```\n\n## How to use it\n\nBelow, there is an example for each action\n\n- Build job\n\n  **Action input parameters**\n\n  | Action | Description |\n  | --- | --- |\n  | *jobName* | Name of job |\n  | *jobParameters* | optional job parameters (object) to execute it |\n\n  **Template Step**\n\n  ```yaml\n  - id: jenkins-job-build\n    name: Jenkins Job Build\n    action: jenkins:job:build\n    input:\n      jobName: first-job\n      jobParameters: some-value\n  ```\n\n- Copy job\n\n  **Action input parameters**\n\n  | Action | Description |\n  | --- | --- |\n  | *sourceJobName* | Name of source job |\n  | *targetJobName* | Name of target job |\n\n  **Template Step**\n\n  ```yaml\n  - id: jenkins-job-copy\n    name: Jenkins Job Copy\n    action: jenkins:job:copy\n    input:\n      sourceJobName: source-job\n      targetJobName: target-job\n  ```\n\n- Create job\n\n  **Action input parameters**\n\n  | Action | Description |\n  | --- | --- |\n  | *jobName* | Name of job |\n  | *jobXml* | Jenkins xml to create job |\n\n  ```yaml\n  - id: jenkins-job-create\n    name: Jenkins Job Create\n    action: jenkins:job:create\n    input:\n      jobName: first-job\n      jobXml: |\n        <flow-definition plugin=\"workflow-job@1447.v559b_c710cd2e\">\n        ... Jenkins content XML, was omitted for semplicity\n        </flow-definition>\n  ```\n\n- Destroy job\n\n  **Action input parameters**\n\n  | Action | Description |\n  | --- | --- |\n  | *jobName* | Name of job |\n\n  ```yaml\n  - id: jenkins-job-destroy\n    name: Jenkins Job Destroy\n    action: jenkins:job:destroy\n    input:\n      jobName: first-job\n  ```\n\n- Disable job\n\n  **Action input parameters**\n\n  | Action | Description |\n  | --- | --- |\n  | *jobName* | Name of job |\n\n  ```yaml\n    - id: jenkins-job-disable\n      name: Jenkins Job Disable\n      action: jenkins:job:disable\n      input:\n        jobName: first-job\n  ```\n\n- Enable job\n\n  **Action input parameters**\n\n  | Action | Description |\n  | --- | --- |\n  | *jobName* | Name of job |\n  | *jobParameters* | optional job parameters (object) to execute it |\n\n  ```yaml\n    - id: jenkins-job-enable\n      name: Jenkins Job Enable\n      action: jenkins:job:enable\n      input:\n        jobName: first-job\n  ```\n\n**`NOTE: no output will be provided after action excution`**\n\n## Useful Links\n\nThe jenkins client used is available here <https://github.com/silas/node-jenkins#readme>\n\nHere the link to npm package <https://www.npmjs.com/package/@robertonav20/backstage-plugin-scaffolder-jenkins-actions>\n",
+  "repository": "https://github.com/robertonav20/backstage-plugin-scaffolder-jenkins-actions",
+  "role": "backend-plugin-module",
+  "scope": "@robertonav20",
+  "updated": "2024-11-11T18:26:01.866Z",
+  "version": "0.0.1-alpha5",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-11-11T18:26:01.866Z",
+      "version": "0.0.1-alpha5"
+    },
+    {
+      "date": "2024-11-02T11:59:28.203Z",
+      "version": "0.0.1-alpha4"
+    },
+    {
+      "date": "2024-11-02T11:48:53.043Z",
+      "version": "0.0.1-alpha3"
+    },
+    {
+      "date": "2024-10-26T11:29:41.677Z",
+      "version": "0.0.1-alpha2"
+    },
+    {
+      "date": "2024-10-26T00:41:22.412Z",
+      "version": "0.0.1-alpha1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2026-05-26T21:36:56.936Z",
+  "deprecated": "",
+  "description": "This is a modern, decoupled frontend plugin for Backstage, designed to be published as an independent NPM package.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "igorfcfs"
+  ],
+  "name": "@igorfcfs/backstage-plugin-example",
+  "plugin_id": "",
+  "readme": "# Backstage Example Frontend Plugin\r\n\r\nThis is a modern, decoupled frontend plugin for Backstage, designed to be published as an independent NPM package.\r\n\r\n## Features\r\n\r\n- **Only Frontend**: No backend dependencies or logic.\r\n- **Decoupled**: Ready for distribution as a standalone library.\r\n- **Modern**: Uses `createPlugin` and `createRoutableExtension` from Backstage Core Plugin API.\r\n- **Lazy Loading**: Main page is loaded asynchronously for better performance.\r\n\r\n## Getting Started\r\n\r\n### Prerequisites\r\n\r\n- Node.js\r\n- Yarn\r\n- A Backstage application instance.\r\n\r\n### Development\r\n\r\nTo start the development server:\r\n\r\n```bash\r\nyarn start\r\n```\r\n\r\n### Build\r\n\r\nTo build the package for publication:\r\n\r\n```bash\r\nyarn build\r\n```\r\n\r\n### Publication\r\n\r\nTo publish to NPM:\r\n\r\n1. Ensure the `name` in `package.json` is unique and follows your organization's naming conventions.\r\n2. Run:\r\n```bash\r\nnpm publish --access public\r\n```\r\n\r\n## Integration into Backstage\r\n\r\n### 1. Installation\r\n\r\n```bash\r\nyarn --cwd packages/app add @internal/backstage-plugin-example\r\n```\r\n\r\n### 2. Register Route in App.tsx\r\n\r\nIn your Backstage host application's `packages/app/src/App.tsx`:\r\n\r\n```tsx\r\nimport { ExamplePage } from '@internal/backstage-plugin-example';\r\n\r\n// Inside FlatRoutes\r\n<Route path=\"/example\" element={<ExamplePage />} />\r\n```\r\n\r\n### 3. Add to Sidebar\r\n\r\nIn `packages/app/src/components/Root/Root.tsx`:\r\n\r\n```tsx\r\n// Use any available icon from your host app\r\nimport ExtensionIcon from '@material-ui/icons/Extension';\r\n\r\n// Inside Sidebar scroll container\r\n<SidebarItem icon={ExtensionIcon} to=\"example\" text=\"Example Plugin\" />\r\n```\r\n\r\n## Project Structure\r\n\r\n- `src/index.ts`: Public API and exports.\r\n- `src/plugin.ts`: Plugin and extension definitions.\r\n- `src/routes.ts`: Route reference definitions.\r\n- `src/components/`: React components.\r\n- `package.json`: NPM package configuration and dependencies.\r\n- `tsconfig.json`: TypeScript compiler settings.\r\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@igorfcfs",
+  "updated": "2026-05-26T21:36:57.385Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-05-26T21:36:57.385Z",
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "author": "",
+  "created": "2023-07-07T13:22:37.516Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates towards GitHub Actions - veeCode version",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "github",
+    "github actions"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/plugin-github-actions",
+  "plugin_id": "",
+  "readme": "# GitHub Actions Plugin\n\nWebsite: [https://github.com/actions](https://github.com/actions)\n\n## Screenshots\n\nTBD\n\n## Setup\n\n### Generic Requirements\n\n1. Provide OAuth credentials:\n   1. [Create an OAuth App](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/) in the GitHub organization with the callback URL set to `http://localhost:7007/api/auth/github/handler/frame`.\n   2. Take the Client ID and Client Secret from the newly created app's settings page and put them into `AUTH_GITHUB_CLIENT_ID` and `AUTH_GITHUB_CLIENT_SECRET` environment variables.\n2. Annotate your component with a correct GitHub Actions repository and owner:\n\n   The annotation key is `github.com/project-slug`.\n\n   Example:\n\n   ```yaml\n   apiVersion: backstage.io/v1alpha1\n   kind: Component\n   metadata:\n     name: backstage\n     description: backstage.io\n     annotations:\n       github.com/project-slug: 'backstage/backstage'\n   spec:\n     type: website\n     lifecycle: production\n     owner: user:guest\n   ```\n\n### Standalone app requirements\n\n1. Install the plugin dependency in your Backstage app package:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @backstage/plugin-github-actions\n```\n\n2. Add to the app `EntityPage` component:\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityGithubActionsContent,\n  isGithubActionsAvailable,\n} from '@backstage/plugin-github-actions';\n\n// You can add the tab to any number of pages, the service page is shown as an\n// example here\nconst serviceEntityPage = (\n  <EntityLayout>\n    {/* other tabs... */}\n    <EntityLayout.Route path=\"/github-actions\" title=\"GitHub Actions\">\n      <EntityGithubActionsContent />\n    </EntityLayout.Route>\n```\n\n3. Run the app with `yarn start` and the backend with `yarn start-backend`.\n   Then navigate to `/github-actions/` under any entity.\n\n### Self-hosted / Enterprise GitHub\n\nThe plugin will try to use `backstage.io/source-location` or `backstage.io/managed-by-location`\nannotations to figure out the location of the source code.\n\n1. Add the `host` and `apiBaseUrl` to your `app-config.yaml`\n\n```yaml\n# app-config.yaml\n\nintegrations:\n  github:\n    - host: 'your-github-host.com'\n      apiBaseUrl: 'https://api.your-github-host.com'\n```\n\n## Features\n\n- List workflow runs for a project\n- Dive into one run to see a job steps\n- Retry runs\n- Pagination for runs\n\n## Limitations\n\n- There is a limit of 100 apps for one OAuth client/token pair\n- The OAuth application must be at the GitHub organization level in order to display the workflows. If you do\n  not see any workflows, confirm the OAuth application was created in the organization and not a specific user account.\n",
+  "repository": "https://github.com/veecode-platform/backstage-plugins/tree/HEAD/plugins/github-actions",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2023-07-25T11:52:24.171Z",
+  "version": "0.6.3",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2023-07-25T11:52:24.171Z",
+      "version": "0.6.3"
+    },
+    {
+      "date": "2023-07-18T23:58:37.469Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2023-07-17T13:38:17.310Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2023-07-07T14:52:27.901Z",
+      "version": "0.6.1-next.4"
+    },
+    {
+      "date": "2023-07-07T14:41:45.000Z",
+      "version": "0.6.1-next.3"
+    },
+    {
+      "date": "2023-07-07T14:33:08.988Z",
+      "version": "0.6.1-next.2"
+    },
+    {
+      "date": "2023-07-07T14:03:39.388Z",
+      "version": "0.6.1-next.1"
+    },
+    {
+      "date": "2023-07-07T13:22:37.821Z",
+      "version": "0.6.1-next.0"
+    }
+  ]
+}

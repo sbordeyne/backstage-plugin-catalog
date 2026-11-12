@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2024-12-18T20:29:51.973Z",
+  "deprecated": "",
+  "description": "Automatically launch Devpod workspaces for your Backstage services",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "devcontainers",
+    "devpod"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@vrabbi/backstage-plugin-devpod",
+  "plugin_id": "devpod",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@vrabbi",
+  "updated": "2024-12-24T13:52:10.457Z",
+  "version": "1.0.1",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-12-24T13:52:10.457Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-12-19T11:38:16.446Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-12-18T20:29:52.322Z",
+      "version": "0.1.0"
+    }
+  ]
+}

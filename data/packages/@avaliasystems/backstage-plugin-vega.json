@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2022-10-21T05:51:16.624Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "avalia-npm-user"
+  ],
+  "name": "@avaliasystems/backstage-plugin-vega",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-vega\n\n\n\n## Overview\n\nThe Vega plugin allows you to render a [Vega.js](https://vega.github.io/vega/) specification in your Backstage pages.\n\n![](./docs/dashboard.png)\n\n\n\n## How to use the Vega plugin\n\n1. Install the plugin from the root directory\n\n```bash\nyarn add @avaliasystems/backstage-plugin-vega\n```\n\n2. Create a vega specification\n\n```\ntouch `app/public/demo/vega-widget/git-authors.json`\n```\n\n3. Add the widget to a page and reference the vega specification\n\n```\nimport {\n  VegaWidget,\n  VegaLibrary,\n} from '@avaliasystems/plugin-backstage-plugin-vega';\n```\n\n```\nconst useStyles = makeStyles(() => ({\n  grid: {\n    display: 'flex',\n  },\n  item: {\n    padding: '1rem',\n    flexGrow: 1,\n    flexShrink: 1,\n    height: '350px',\n    width: '300px'\n  },\n}));\n```\n\n```\n<div className={classes.grid}>\n  <div className={classes.item}>\n    <VegaWidget\n      library={VegaLibrary.VEGA}\n      specUrl=\"/demo/vega-widget/git-authors.json\"\n    />\n  </div>\n  <div className={classes.item}>\n    <VegaWidget\n      library={VegaLibrary.VEGA}\n      specUrl=\"/demo/vega-widget/monthly-commits-line.json\"\n      overrideConfig\n    />\n  </div>\n</div>\n```\n\n\n\n## TODO\n\n* **Improve dynamic sizing**. There are different ways to manage the size of charts rendered by Vega. If you provide fixed width and height, this is easy to handle. However, if you want the chart to use available space as the user resizes the window, the situation is a bit tricky. As demonstrated in the `Vega (grid)` example page, we have a solution for this use case. However, it requires all DOM ancestors to have the `overflow: auto` property set.\n* **Add wrapper components**. At the moment, the page developer has to create the \"frame\" into which the Vega widget will be rendered. In the example pages, the page developer is creating and styling the grid that will host the charts. This gives a lot of flexibility to developers, but it has some onboarding cost. We plan to add some ready-to-use components that would make it faster to create dashboard pages, or widget \"rows\" in an entity tab.\n* **Improve and document theming**. It is possible to update a Vega specification, both when it is first loaded and afterwards. With some conventions in the Vega specifications, it is possible to inject Backstage theme properties into the chart. We have already made some experiments and it works well, but have work to improve and document the solution.\n\n\n\n## Notes\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/backstage-plugin-vega](http://localhost:3000/backstage-plugin-vega).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@avaliasystems",
+  "updated": "2022-10-21T06:05:10.670Z",
+  "version": "0.3.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2022-10-21T06:05:10.670Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2022-10-21T05:51:16.835Z",
+      "version": "0.3.0"
+    }
+  ]
+}

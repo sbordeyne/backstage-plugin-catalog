@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-06-28T08:16:57.112Z",
+  "deprecated": "",
+  "description": "The Gitpod Backstage Plugin is the official integration of Gitpod's cloud development environments into Spotify's Backstage.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "filiptronicek"
+  ],
+  "name": "filip-test-gitpod-io-backstage-plugin-gitpod",
+  "plugin_id": "",
+  "readme": "# Gitpod Backstage Plugin\n\nThe Gitpod Backstage Plugin is the official integration of Gitpod's cloud development environments into Spotify's Backstage. \n\nIt enables developers to start workspaces directly from their Backstage instance. This plugin aims to streamline the development workflow, providing teams with easy access and efficient management of their cloud development environments.\n\n## Getting started\n\nTo get started with the Gitpod plugin in your Backstage app, follow these steps:\n\n1. **Install the plugin**:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @gitpod-io/backstage-plugin-gitpod\n```\n\n2. **Add the Gitpod component to a page in your app:**\n\n```jsx \nimport { GitpodButton } from '@gitpod-io/backstage-plugin-gitpod';\n//....\nconst HomePage = () => (\n    // ...\n      <Grid item md={3} xs={6}>\n          <GitpodButton />\n      </Grid>\n    // ... \n);\n```\n\n4. **Configure the Gitpod URL**:\n\nAdd your Gitpod URL to your `app-config.yaml` - this can either be Gitpod Cloud or Dedicated.\n\n```yaml\ngitpod:\n  baseUrl: 'https://gitpod.io'\n```\n\n## Contributing\n\nWe welcome contributions to the Gitpod Backstage plugin! If you have any feature requests or would like to raise a pull request, please feel free to leave an issue.\n\n## Links\n\n- [Gitpod](https://www.gitpod.io)\n- [Internal Developer Portals and Gitpod](https://www.gitpod.io/docs/integrations/internal-developer-portals)\n- [Backstage](https://backstage.io)\n- [Learn more about Backstage plugins](https://backstage.io/docs/plugins/)\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2024-06-28T08:23:37.822Z",
+  "version": "0.1.8",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-06-28T08:23:37.822Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2024-06-28T08:16:57.478Z",
+      "version": "0.1.7"
+    }
+  ]
+}

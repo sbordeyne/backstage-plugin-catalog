@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-05-04T12:46:41.539Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ritzy0717"
+  ],
+  "name": "@rk-apim-1/backstage-plugin-wso2-api-manager-backend",
+  "plugin_id": "wso2-api-manager",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/wso2-api-manager-backend",
+  "role": "backend-plugin",
+  "scope": "@rk-apim-1",
+  "updated": "2026-05-04T13:20:59.719Z",
+  "version": "0.0.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-05-04T13:20:59.719Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2026-05-04T12:46:41.755Z",
+      "version": "0.0.1"
+    }
+  ]
+}

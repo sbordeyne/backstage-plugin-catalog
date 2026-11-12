@@ -1,0 +1,75 @@
+{
+  "author": "",
+  "created": "2025-04-01T10:57:33.586Z",
+  "deprecated": "",
+  "description": "![a Jira plugin for Backstage](./docs/jira-plugin.gif). ![a Jira plugin Issues View for Backstage](./docs/jira-plugin-issues-view.png).",
+  "homepage": "https://your-homepage-url.com/",
+  "keywords": [
+    "backstage",
+    "jira",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "parsenio"
+  ],
+  "name": "@parsenio/backstage-plugin-jira-tst",
+  "plugin_id": "dlt-backstage-plugin-jira-tst",
+  "readme": "# Jira Plugin for Backstage\n\n![a Jira plugin for Backstage](./docs/jira-plugin.gif).\n![a Jira plugin Issues View for Backstage](./docs/jira-plugin-issues-view.png).\n\n## Features\n\nEntity Page components:\n\n- EntityJiraOverviewCard\n  - Show project details and tasks\n  - View JIRA issues of the Project\n  - Activity Stream\n- EntityJiraActivityStreamCard\n  - Activity Stream only\n- EntityJiraQueryCard\n  - Show results of a JQL query provided by annotation or props\n\nHome Page components:\n\n- HomePageMyJiraTicketsCard\n  - Show my assigned JIRA tickets\n\n## Annotations\n\n- jira/component: A jira component name\n  - Used by EntityJiraOverviewCard to filter by a single component\n  - Can be used in JQL expressions used by EntityJiraQueryCard e.g. \"component IN ({{ component }})\"\n- jira/project-key: a jira project key\n  - Used by EntityJiraOverviewCard to get issues related to a single project\n  - Can be used in JQL expressions used by EntityJiraQueryCard e.g. \"project = ({{ project }})\"\n- jira/label: One or more jira labels\n  - Used by EntityJiraOverviewCard to filter by labels. Use CSV to specify multiple labels.\n  - Can be used in JQL expressions used by EntityJiraQueryCard e.g. \"label IN ({{ label }})\"\n- jira/team: the ID of a Jira team\n  - Can be used in JQL expressions used by EntityJiraQueryCard e.g. \"'Team[Team]' = '{{ team }}'\"\n\n## How to add Jira project dependency to Backstage app\n\n1. If you have standalone app (i.e., you didn't clone this repo), then do\n\n```bash\ncd packages/app\nyarn add @roadiehq/backstage-plugin-jira\n```\n\n2. Add proxy config:\n\n```yaml\n# app-config.yaml\nproxy:\n  '/jira/api':\n    target: <JIRA_URL>\n    headers:\n      Authorization: ${JIRA_TOKEN}\n      Accept: 'application/json'\n      Content-Type: 'application/json'\n      X-Atlassian-Token: 'no-check'\n      # This is a workaround since Jira APIs reject browser origin requests. Any dummy string without whitespace works.\n      User-Agent: 'AnyRandomString'\n\njira:\n  # Defaults to /jira/api and can be omitted if proxy is configured for that url\n  proxyPath: /jira/api\n  # Add it in case your JIRA instance is connected to Confluence, in order to filter those activities\n  confluenceActivityFilter: wiki@uuid\n  # Defaults to latest and can be omitted if you want to use the latest version of the api\n  apiVersion: latest\n```\n\n3. Set img-src in Content Security Policy\n\n```yaml\n# app-config.yaml\nbackend:\n  # ...\n  csp:\n    img-src:\n      # \"'self'\" and 'data' are from the backstage default but must be set since img-src is overriden\n      - \"'self'\"\n      - 'data:'\n      # Allow your Jira instance for @roadiehq/backstage-plugin-jira\n      - 'JIRA_URL'\n```\n\n4. Add plugin component to your Backstage instance:\n\n```jsx\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityJiraOverviewCard,\n  isJiraAvailable,\n} from '@roadiehq/backstage-plugin-jira';\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isJiraAvailable}>\n        <Grid item md={6}>\n          <EntityJiraOverviewCard />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n  </Grid>\n);\n```\n\n## How to get the Confluence Activity Filter key\n\nTo filter the Confluence activities your instance needs to have the filter to select one or more types of activity from Confluence. You can check that out by executing the following command in your bash:\n\n```bash\ncurl -s -H \"Authorization: <TOKEN>\" <JIRA_URL>/rest/activity-stream/1.0/config | jq .\n```\n\nThen, check for a Confluence filter and copy the `key` value into the tag `jira.confluenceActivityFilter` in your Backstage's `app-config.yaml`.\n\n## How to use Jira plugin in Backstage\n\n1. Add annotation to the yaml config file of a component:\n\n```yaml\nmetadata:\n  annotations:\n    jira/project-key: <example-jira-project-key>\n    jira/component: <example-component> # optional, you might skip value to fetch data for all components\n    jira/label: <example-label> # optional, you might skip value to fetch data for all labels\n    jira/token-type: Bearer # optional, used for Activity stream feed. If you are using Basic auth you can skip this.\n```\n\nEven though you can use Bearer token please keep in mind that Activity stream feed will only contain entries that are visible to anonymous users. In order to view restricted content you will need to authenticate via Basic authentication, as described in official documentation (https://developer.atlassian.com/server/framework/atlassian-sdk/consuming-an-activity-streams-feed/#authentication).\n\n2. Get and provide `JIRA_TOKEN` as env variable:\n\n   1. Obtain your personal token from Jira: https://id.atlassian.com/manage-profile/security/api-tokens\n   2. Create a base64-encoded string by converting \"your-atlassian-account-mail:your-jira-token\",\n\n      ```\n      // node\n      new Buffer('jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F').toString(\n        'base64',\n      );\n\n      // in your browser console\n      btoa('jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F');\n\n      // bash\n      echo -n 'jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F' | base64\n      ```\n\n      for example `jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F` converts to `amlyYS1tYWlsQGV4YW1wbGUuY29tOmhUQmdxVmNyY3hSWXBUNVRDelRBOUMwRg==`\n\n   3. Save the environmental variable `JIRA_TOKEN` with `Basic ` prefix, eg: `JIRA_TOKEN='Basic amlyYS1tYWlsQGV4YW1wbGUuY29tOmhUQmdxVmNyY3hSWXBUNVRDelRBOUMwRg=='`\n\n## Add Homepage components to your home page\n\nThe `HomePageMyJiraTicketsCard` component displays the Open and In Progress JIRA tickets that are assigned to the provided `userId`.\n![HomePageMyJiraTicketsCard](./docs/my-jira-tickets-card.png)\n\nTo add the component to your Homepage:\n\n```jsx\n//packages/app/src/components/home/HomePage.tsx\n\nimport { HomePageMyJiraTicketsCard } from '@roadiehq/backstage-plugin-jira';\n\nexport const HomePage = () => {\n  return (\n    // ...\n    <Grid item md={6} xs={12}>\n      <HomePageMyJiraTicketsCard userId=\"roadie\" />\n    </Grid>\n    // ...\n  );\n};\n```\n\n## Links\n\n- [Backstage](https://backstage.io)\n- Get hosted, managed Backstage for your company: https://roadie.io\n\n---\n\nRoadie gives you a hassle-free, fully customisable SaaS Backstage. Find out more here: [https://roadie.io](https://roadie.io).\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@parsenio",
+  "updated": "2025-04-07T11:56:02.098Z",
+  "version": "1.0.11",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2025-04-07T11:56:02.098Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2025-04-07T11:52:15.135Z",
+      "version": "1.0.10"
+    },
+    {
+      "date": "2025-04-03T08:23:56.772Z",
+      "version": "1.0.9"
+    },
+    {
+      "date": "2025-04-02T16:41:43.749Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2025-04-02T16:27:15.179Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2025-04-02T16:20:19.800Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2025-04-02T15:13:40.691Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2025-04-02T10:34:05.984Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2025-04-01T11:06:47.706Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2025-04-01T11:03:46.928Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2025-04-01T10:59:49.493Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-04-01T10:57:33.850Z",
+      "version": "1.0.0"
+    }
+  ]
+}

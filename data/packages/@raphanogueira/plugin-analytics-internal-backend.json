@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2025-07-16T18:03:44.442Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "ISC",
+  "maintainers": [
+    "raphanogueira"
+  ],
+  "name": "@raphanogueira/plugin-analytics-internal-backend",
+  "plugin_id": "analytics-internal-backend",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@raphanogueira",
+  "updated": "2025-10-13T12:50:34.420Z",
+  "version": "0.0.6",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-10-13T12:50:34.420Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2025-07-18T18:54:53.803Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2025-07-16T18:07:28.704Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-07-16T18:03:44.676Z",
+      "version": "0.0.1"
+    }
+  ]
+}

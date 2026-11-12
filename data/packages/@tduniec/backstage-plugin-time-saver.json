@@ -1,0 +1,86 @@
+{
+  "author": "tduniec",
+  "created": "2024-01-30T13:25:02.681Z",
+  "deprecated": "",
+  "description": "This plugin provides an implementation of charts and statistics related to your time savings that are coming from usage of your templates. Plugins is built from frontend and backend part. This part of plugin `frontend` is responsible of providing views wi",
+  "homepage": "https://github.com/tduniec/backstage-timesaver-plugin#readme",
+  "keywords": [
+    "backstage",
+    "time-saver"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "tduniec"
+  ],
+  "name": "@tduniec/backstage-plugin-time-saver",
+  "plugin_id": "time-saver",
+  "readme": "# Time Saver\n\nThis plugin provides an implementation of charts and statistics related to your time savings that are coming from usage of your templates. Plugins is built from frontend and backend part. This part of plugin `frontend` is responsible of providing views with charts describing data collected from `backend` part of plugin.\n\n## Dependencies\n\n- [time-saver-backend](https://github.com/tduniec/backstage-timesaver-plugin/tree/main/plugins/time-saver-backend)\n- [time-saver-common](https://github.com/tduniec/backstage-timesaver-plugin/tree/main/plugins/time-saver-common)\n\n## Code\n\nhttps://github.com/tduniec/backstage-timesaver-plugin.git\n\n## Screens\n\n![Screenshot of the AllStats plugin Charts](https://raw.githubusercontent.com/tduniec/backstage-timesaver-plugin/main/plugins/time-saver/docs/tsAllStats.png)\n![Screenshot of the AllStats2 plugin Charts](https://raw.githubusercontent.com/tduniec/backstage-timesaver-plugin/main/plugins/time-saver/docs/tsAllStats2.png)\n![Screenshot of the ByTeam plugin Charts](https://raw.githubusercontent.com/tduniec/backstage-timesaver-plugin/main/plugins/time-saver/docs/tsByTeam.png)\n![Screenshot of the ByTemplate plugin Charts](https://raw.githubusercontent.com/tduniec/backstage-timesaver-plugin/main/plugins/time-saver/docs/tsByTemplate.png)\n\n## Installation\n\n1. Install the plugin package in your Backstage app:\n\n   ```sh\n   # From your Backstage root directory\n   yarn add --cwd packages/app @tduniec/backstage-plugin-time-saver\n   ```\n\n   Once installed, the plugin is automatically available in your app through the default feature discovery. For more details and alternative installation methods, see [installing plugins](https://backstage.io/docs/frontend-system/building-apps/installing-plugins).\n\n1. Install [time-saver-backend](../time-saver-backend/README.md) part if not installed already\n\n## Installation (Legacy Frontend)\n\n1. Install the plugin package in your Backstage app:\n\n```sh\n# From your Backstage root directory\nyarn add --cwd packages/app @tduniec/backstage-plugin-time-saver\n```\n\n2. Now open the `packages/app/src/App.tsx` file\n3. Then after all the import statements add the following line:\n\n   ```tsx\n   import { TimeSaverPage } from '@tduniec/backstage-plugin-time-saver';\n   ```\n\n4. In this same file just before the closing `</ FlatRoutes>`, this will be near the bottom of the file, add this line:\n\n   ```tsx\n   <Route path=\"/time-saver\" element={<TimeSaverPage />} />\n   ```\n\n5. Next open the `packages/app/src/components/Root/Root.tsx` file\n6. We want to add this icon import after all the existing import statements:\n\n   ```tsx\n   import Timelapse from '@material-ui/icons/Timelapse';\n   ```\n\n7. Then add this line just after the `<SidebarSettings />` line:\n\n   ```tsx\n   <SidebarItem icon={Timelapse} to=\"time-saver\" text=\"timeSaver\" />\n   ```\n\n8. Now run `yarn dev` from the root of your project and you should see the DevTools option show up just below Settings in your sidebar and clicking on it will get you to the [Info tab](#info)\n9. Install [time-saver-backend](../time-saver-backend/README.md) part if not installed already\n\n## Generate Statistics\n\nConfigure your template definition like described below:\nProvide an object under `metadata`. Provide quantities of saved time by each group executing one template in **_hours_** preferably\n\n```diff\n apiVersion: scaffolder.backstage.io/v1beta3\n kind: Template\n metadata:\n     name: example-template\n     title: create-github-project\n     description: Creates Github project\n+      substitute:\n+        engineering:\n+          devops: 1\n+          security: 4\n+          development_team: 2\n spec:\n     owner: group:default/backstage-admins\n     type: service\n```\n\nScheduler is running with its default setup every **5 minutes** to generate data from executed templates with these information.\n\n## Migration\n\nThis plugins supports backward compatibility with migration. You can specify your Time Saver metadata for each template name. Then the migration will be performed once executing the API request to `/migrate` endpoint of the plugin.\n\nConfigure your backward time savings here:\n\nOpen the `app-config.yaml` file\n\n```yaml\nts:\n  backward:\n    config: |\n      [\n        {\n          \"entityRef\": \"template:default/create-github-project\",\n          \"engineering\": {\n            \"devops\": 8,\n            \"development_team\": 8,\n            \"security\": 3\n          }\n        }\n      ]\n    # extend this list if needed\n```\n\n## TimeSaverPage optional customization\n\n1. TimeSaverPage has now exported props that can help you customize your page headers. By default it is an empty header\n\n```tsx\n<TimeSaverPage\n  title=\"Backstage TS plugin!\"\n  subtitle=\"Check saved time with TS plugin!\"\n  headerLabel={{ Owner: 'Sample Company', Lifecycle: 'production' }}\n/>\n```\n\n2. Stats table config:\n\nBy default Table stats Time Summaries are provided in hours, below you can find optional config that can change it to days.\n\n```yaml\nts:\n  frontend:\n    table:\n      showInDays: true # if true, the table shows days [boolean]\n      hoursPerDay: 8 # how many hours count as a day [number]\n```\n",
+  "repository": "https://github.com/tduniec/backstage-timesaver-plugin",
+  "role": "frontend-plugin",
+  "scope": "@tduniec",
+  "updated": "2026-03-30T21:00:36.639Z",
+  "version": "2.2.0",
+  "version_count": 19,
+  "versions": [
+    {
+      "date": "2026-03-30T21:00:36.639Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2025-01-03T09:52:48.645Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2024-10-28T11:10:47.403Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-10-14T12:13:13.551Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-10-08T10:48:34.951Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2024-07-26T14:36:54.816Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2024-07-22T07:18:32.109Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2024-06-27T09:34:51.601Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-05-14T18:44:19.501Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-04-11T17:28:14.945Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2024-03-20T08:36:43.580Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2024-02-19T14:48:04.150Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2024-02-15T14:31:14.339Z",
+      "version": "0.1.6-0"
+    },
+    {
+      "date": "2024-02-06T09:57:00.307Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-02-06T09:32:49.438Z",
+      "version": "0.1.4"
+    }
+  ]
+}

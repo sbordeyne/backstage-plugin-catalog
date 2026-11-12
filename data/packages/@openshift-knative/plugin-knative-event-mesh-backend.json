@@ -1,0 +1,30 @@
+{
+  "author": "",
+  "created": "2024-05-14T12:09:38.417Z",
+  "deprecated": "",
+  "description": "Please see https://github.com/knative-extensions/backstage-plugins for the upstream plugin.",
+  "homepage": "https://github.com/openshift-knative/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aliok",
+    "cardil",
+    "creydr",
+    "pierdipi"
+  ],
+  "name": "@openshift-knative/plugin-knative-event-mesh-backend",
+  "plugin_id": "",
+  "readme": "# OpenShift fork of Knative Event Mesh plugin\n\nPlease see https://github.com/knative-extensions/backstage-plugins for the upstream plugin.\n",
+  "repository": "https://github.com/openshift-knative/backstage-plugins/tree/HEAD/backstage/plugins/knative-event-mesh-backend",
+  "role": "backend-plugin",
+  "scope": "@openshift-knative",
+  "updated": "2024-05-14T12:09:38.733Z",
+  "version": "1.33.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-05-14T12:09:38.733Z",
+      "version": "1.33.0"
+    }
+  ]
+}

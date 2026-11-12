@@ -1,0 +1,30 @@
+{
+  "author": "Red Hat",
+  "created": "2025-11-19T20:13:18.606Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg"
+  ],
+  "name": "@veecode/backstage-plugin-scaffolder-backend-module-azure-dynamic",
+  "plugin_id": "scaffolder",
+  "readme": "ERROR: No README data found!",
+  "repository": "https://github.com/redhat-developer/rhdh/tree/HEAD/dynamic-plugins/wrappers/backstage-plugin-scaffolder-backend-module-azure-dynamic",
+  "role": "backend-plugin-module",
+  "scope": "@veecode",
+  "updated": "2025-11-19T20:13:19.116Z",
+  "version": "0.2.12",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-11-19T20:13:19.116Z",
+      "version": "0.2.12"
+    }
+  ]
+}

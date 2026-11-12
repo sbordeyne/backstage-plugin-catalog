@@ -1,0 +1,76 @@
+{
+  "author": "",
+  "created": "2023-08-04T01:25:23.434Z",
+  "deprecated": "",
+  "description": "To install `yarn --cwd packages/backend add @rafaysystems/backstage-plugin-rafay-backend`",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "kutumba-rafay",
+    "manoj-rafay"
+  ],
+  "name": "@rafaysystems/backstage-plugin-rafay-backend",
+  "plugin_id": "",
+  "readme": "# Rafay Systems backend plugin\n\nTo install `yarn --cwd packages/backend add @rafaysystems/backstage-plugin-rafay-backend`\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@rafaysystems",
+  "updated": "2024-06-12T21:25:11.310Z",
+  "version": "0.1.17",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2024-06-12T21:25:11.310Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2024-06-12T20:37:56.318Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2024-06-12T05:25:33.410Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2024-06-12T04:53:45.569Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2024-04-22T21:56:25.330Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2024-01-29T16:17:05.762Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2024-01-24T21:31:53.501Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2023-08-24T21:48:37.686Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2023-08-24T19:19:53.401Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2023-08-24T18:27:50.911Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2023-08-04T02:28:47.780Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2023-08-04T02:16:55.177Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2023-08-04T01:25:23.669Z",
+      "version": "0.1.3"
+    }
+  ]
+}

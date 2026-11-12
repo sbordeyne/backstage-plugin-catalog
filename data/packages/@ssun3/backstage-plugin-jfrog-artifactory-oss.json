@@ -1,0 +1,34 @@
+{
+  "author": "ssun3",
+  "created": "2025-07-16T10:17:57.345Z",
+  "deprecated": "",
+  "description": "JFrog Artifactory plugin for Backstage with REST API support for OSS version",
+  "homepage": "https://github.com/ssun3/community-plugins",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ssun3"
+  ],
+  "name": "@ssun3/backstage-plugin-jfrog-artifactory-oss",
+  "plugin_id": "jfrog-artifactory",
+  "readme": "# JFrog Artifactory Plugin with OSS Support\n\nThis is a fork of the official Backstage JFrog Artifactory plugin that adds REST API support for JFrog Artifactory OSS (free version).\n\n## Changes from Original\n\n- ✅ Added REST API support for JFrog OSS compatibility\n- ✅ Auto-detection of API mode (GraphQL vs REST)\n- ✅ Works with both Enterprise and OSS versions\n- ✅ Graceful fallback when GraphQL is not available\n\nThe Jfrog Artifactory plugin displays information about your container images within the Jfrog Artifactory registry.\n\n## For administrators\n\n### Installation and configuration\n\n#### Procedure\n\n1. Run the following command to install the Jfrog Artifactory plugin:\n\n   ```console\n   yarn workspace app add @ssun3/backstage-plugin-jfrog-artifactory-oss\n   ```\n\n1. Set the proxy to the desired Artifactory server in the `app-config.yaml` file as follows:\n\n   ```yaml title=\"app-config.yaml\"\n   proxy:\n     endpoints:\n       '/jfrog-artifactory/api':\n         target: 'http://<hostname>:8082' # or https://<customer>.jfrog.io\n         headers:\n           # Authorization: 'Bearer <YOUR TOKEN>'\n         # Change to \"false\" in case of using self hosted artifactory instance with a self-signed certificate\n         secure: true\n\n   # Optional: Configure API mode (GraphQL vs REST)\n   jfrogArtifactory:\n     # API mode: 'graphql' | 'rest' | 'auto' (default: 'auto')\n     # - 'graphql': Use GraphQL API (requires JFrog Enterprise license)\n     # - 'rest': Use REST API (works with JFrog OSS/free version)\n     # - 'auto': Try GraphQL first, fallback to REST if unavailable\n     apiMode: 'auto'\n   ```\n\nIf you have multiple instances of artifactory supported, you can set up multiple proxy target paths as follows:\n\n```yaml title=\"app-config.yaml\"\nproxy:\n  endpoints:\n    '/jfrog-instance1': # This is a local alias for the proxy endpoint, not the actual Artifactory hostname\n      target: 'https://<hostname1>'\n      # Rest of the config for hostname1\n    '/jfrog-instance2':\n      target: 'https://<hostname2>'\n```\n\n1. Enable the **JFROG ARTIFACTORY** tab on the entity view page in `packages/app/src/components/catalog/EntityPage.tsx`:\n\n   ```ts title=\"packages/app/src/components/catalog/EntityPage.tsx\"\n   /* highlight-add-start */\n   import {\n     isJfrogArtifactoryAvailable,\n     JfrogArtifactoryPage,\n   } from '@ssun3/backstage-plugin-jfrog-artifactory-oss';\n\n   /* highlight-add-end */\n\n   const serviceEntityPage = (\n     <EntityLayout>\n       // ...\n       {/* highlight-add-start */}\n       <EntityLayout.Route\n         if={isJfrogArtifactoryAvailable}\n         path=\"/jfrog-artifactory\"\n         title=\"Jfrog Artifactory\"\n       >\n         <JfrogArtifactoryPage />\n       </EntityLayout.Route>\n       {/* highlight-add-end */}\n     </EntityLayout>\n   );\n   ```\n\n1. Annotate your entity with the following annotations:\n\n   ```yaml title=\"catalog-info.yaml\"\n   metadata:\n     annotations:\n       'jfrog-artifactory/image-name': '<IMAGE-NAME>'\n       # if your app supports multiple artifactory instances,\n       # you'll need to specify the instance proxy target path your image belongs to\n       'jfrog-artifactory/target-proxy': '/<PROXY-TARGET>' # e.g. `/jfrog-instance1` from the example above\n   ```\n\n### JFrog Artifactory OSS Compatibility\n\nThis plugin supports both JFrog Artifactory Enterprise (with GraphQL API) and JFrog Artifactory OSS (free version with REST API). \n\n#### Features by Edition:\n\n| Feature | Enterprise (GraphQL) | OSS (REST API) |\n|---------|---------------------|----------------|\n| View container images | ✅ | ✅ |\n| View image tags | ✅ | ✅ |\n| View image size | ✅ | ✅ |\n| View modification dates | ✅ | ✅ |\n| View repositories | ✅ | ✅ |\n| View download statistics | ✅ | ✅* |\n| View vulnerabilities | ✅ | ❌ |\n| View licenses | ✅ | ❌ |\n\n*Download statistics in OSS may be limited depending on your configuration.\n\nTo use with JFrog Artifactory OSS, set the API mode to 'rest':\n\n```yaml\njfrogArtifactory:\n  apiMode: 'rest'\n```\n\n## For users\n\n### Using the Jfrog Artifactory plugin in Backstage\n\nJfrog Artifactory is a front-end plugin that enables you to view the information about the container images that are available in your Jfrog Artifactory registry.\n\n#### Prerequisites\n\n- Your Backstage application is installed and running.\n- You have installed the Jfrog Artifactory plugin. For installation and configuration steps, see [Installation and configuration](#installation-and-configuration).\n\n#### Procedure\n\n1. Open your Backstage application and select a component from the **Catalog** page.\n\n1. Go to the **JFROG ARTIFACTORY** tab.\n\n   ![jfrog-tab](./images/jfrog-plugin-user1.png)\n\n   The **JFROG ARTIFACTORY** tab contains a list of container images and related information, such as **VERSION**, **REPOSITORIES**, **MANIFEST**, **MODIFIED**, and **SIZE**.\n",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/jfrog-artifactory/plugins/jfrog-artifactory",
+  "role": "frontend-plugin",
+  "scope": "@ssun3",
+  "updated": "2025-07-16T11:21:11.294Z",
+  "version": "1.0.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-07-16T11:21:11.294Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-07-16T10:17:57.604Z",
+      "version": "1.0.0"
+    }
+  ]
+}

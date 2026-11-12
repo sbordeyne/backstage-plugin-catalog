@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-02-24T09:21:18.463Z",
+  "deprecated": "",
+  "description": "dynamic plugin for backstage kubernetes-deploy scaffolder action",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pfeifferj"
+  ],
+  "name": "@pfeifferj/backstage-scaffolder-backend-module-kubernetes-deploy-dynamic",
+  "plugin_id": "",
+  "readme": "# Dynamic Plugin Wrapper for Kubernetes-Deploy\n\nincludes:\n\n```yaml\n- @pfeifferj/plugin-scaffolder-backend-module-kubernetes-deploy\n- @pfeifferj/plugin-scaffolder-backend-module-read-file\n```\n\n## Quickstart\n\n`❯ oc edit cm developer-hub-dynamic-plugins -n rhdh`\n\n```yaml\napiVersion: v1\ndata:\n  dynamic-plugins.yaml: |\n    includes:\n      - dynamic-plugins.default.yaml\n    plugins:\n      - package: '@pfeifferj/backstage-scaffolder-backend-module-kubernetes-deploy-dynamic'\n        integrity: 'sha512-25kS7j/apKsL4jidmPH8tCmcpUIKSfxv1Vq2N3qNB+hj2oWhcnOp7Cf/HLxE8ZGHVW8eg6wgoY8DlHficLkQAA=='\n        disabled: false\nkind: ConfigMap\nmetadata:\n  labels:\n    app.kubernetes.io/instance: developer-hub\n    app.kubernetes.io/name: backstage\n    janus-idp.io/app: backstage-developer-hub\n  name: developer-hub-dynamic-plugins\n  namespace: rhdh\n```\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@pfeifferj",
+  "updated": "2024-02-24T09:21:18.738Z",
+  "version": "1.0.20",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-02-24T09:21:18.738Z",
+      "version": "1.0.20"
+    }
+  ]
+}

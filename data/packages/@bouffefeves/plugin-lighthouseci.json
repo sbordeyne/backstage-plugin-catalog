@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2022-12-16T07:22:57.551Z",
+  "deprecated": "",
+  "description": "Welcome to the lighthouseci plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bouffefeves"
+  ],
+  "name": "@bouffefeves/plugin-lighthouseci",
+  "plugin_id": "",
+  "readme": "# lighthouseci\n\nWelcome to the lighthouseci plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/lighthouseci](http://localhost:3000/lighthouseci).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@bouffefeves",
+  "updated": "2022-12-16T07:22:57.850Z",
+  "version": "0.0.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2022-12-16T07:22:57.850Z",
+      "version": "0.0.1"
+    }
+  ]
+}

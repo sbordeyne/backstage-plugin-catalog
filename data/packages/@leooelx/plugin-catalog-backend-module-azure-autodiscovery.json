@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2026-05-18T22:38:42.735Z",
+  "deprecated": "",
+  "description": "A resilient Backstage Catalog Entity Provider for Azure DevOps that automatically discovers repositories bypassing Rate Limits via Audit Logs.",
+  "homepage": "",
+  "keywords": [
+    "autodiscovery",
+    "azure",
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "leooelx"
+  ],
+  "name": "@leooelx/plugin-catalog-backend-module-azure-autodiscovery",
+  "plugin_id": "catalog",
+  "readme": "# @leooelx/plugin-catalog-backend-module-azure-autodiscovery\n\nA highly resilient, Enterprise-Grade Backstage Catalog Entity Provider for Azure DevOps.\n\n## Why this plugin?\nLarge enterprises struggle with maintaining `catalog-info.yaml` files across thousands of legacy Azure DevOps repositories. Furthermore, standard ingestors often hit `HTTP 429 Rate Limit` exceptions when synchronizing massive organizations.\n\nThis module introduces a **Zero-Touch Auto-Discovery** mechanism and an **O(1) Audit Log Polling** strategy. It only invalidates the Backstage ACL cache when actual security changes happen in Azure DevOps, drastically reducing HTTP requests and preventing catalog deadlocks.\n\n## Features\n- **Auto-Discovery:** Ingests Azure Repositories dynamically as Components. No `catalog-info.yaml` required.\n- **SRE Watchdogs:** Built-in Mutex and timeout mechanisms via Decorator Pattern to prevent catalog deadlocks.\n- **Fail-Closed Security:** Native integration with Backstage RBAC permissions.\n\n## Installation\n\n```bash\nyarn workspace backend add @leooelx/plugin-catalog-backend-module-azure-autodiscovery\n```\n\n## Configuration\n\nIn your `packages/backend/src/index.ts`, add the module to the new backend system:\n\n```typescript\nimport { AzureDevOpsRepositoryEntityProvider } from '@leooelx/plugin-catalog-backend-module-azure-autodiscovery';\n\n// ... (Integration with Catalog Extension Point)\n```\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@leooelx",
+  "updated": "2026-05-18T22:38:42.937Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-05-18T22:38:42.937Z",
+      "version": "1.0.0"
+    }
+  ]
+}

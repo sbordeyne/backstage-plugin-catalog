@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-04-04T14:39:02.305Z",
+  "deprecated": "",
+  "description": "Thanks for using our plugin created for retrieving OWASP's Dependencytrack information in Backstage. This plugin is still in development.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "adelosrios"
+  ],
+  "name": "@adelosrios/plugin-dependencytrack",
+  "plugin_id": "",
+  "readme": "# Dependencytrack plugin\r\nThanks for using our plugin created for retrieving OWASP's Dependencytrack information in Backstage. This plugin is still in development.\r\n\r\n## Installation\r\nRun this command from the `app` package directory:\r\n```shell\r\nyarn add @adelosrios/plugin-dependencytrack\r\n```\r\n\r\n## Configuration\r\n### Configuring the service\r\nAdd config in `app-config.yaml`.\r\nIntegration:\r\n```yaml\r\ndependencytrack:\r\n  baseUrl: <DEPENDENCYTRACK_INSTANCE_URL>\r\n```\r\nProxy:\r\n```yaml\r\nproxy:\r\n  '/dependencytrack':\r\n    target: <DEPENDENCYTRACK_API_URL>  \r\n    allowedMethods: ['GET']\r\n    headers:\r\n      X-Api-Key: '<DEPENDENCYTRACK_API_KEY>'\r\n```\r\n\r\nDon't forget to replace the placeholders identified by the carets.\r\n\r\n### Add cards to overview tab\r\n```tsx\r\n// packages\\app\\src\\components\\catalog\\EntityPage.tsx\r\nimport { EntityDependencytrackSummaryCard, EntityDependencytrackFindingCard, isDependencytrackAvailable } from '@adelosrios/plugin-dependencytrack';\r\n\r\n// In the overviewContent. You can add one or both.\r\n\r\n// Metrics card\r\n<EntitySwitch>\r\n    <EntitySwitch.Case if={isDependencytrackAvailable}>\r\n    <Grid item md={6}>\r\n        <EntityDependencytrackSummaryCard/>\r\n    </Grid>\r\n    </EntitySwitch.Case>\r\n</EntitySwitch>\r\n\r\n// Findings card\r\n<EntitySwitch>\r\n    <EntitySwitch.Case if={isDependencytrackAvailable}>\r\n    <Grid item md={12}>\r\n        <EntityDependencytrackFindingCard/>\r\n    </Grid>\r\n    </EntitySwitch.Case>\r\n</EntitySwitch>\r\n```\r\n\r\n### Add to catalog-info.yaml\r\nAdd `dependencytrack/project-name-version` to your `catalog-info.yaml`:\r\n```yaml\r\n# Example catalog-info.yaml entity definition file\r\napiVersion: backstage.io/v1alpha1\r\nkind: Component\r\nmetadata:\r\n  # ...\r\n  annotations:\r\n  dependencytrack/project-name-version: <projectName:projectVersion> # solar:3.0\r\n```",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@adelosrios",
+  "updated": "2024-04-04T16:47:57.923Z",
+  "version": "0.2.9",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-04T16:47:57.923Z",
+      "version": "0.2.9"
+    },
+    {
+      "date": "2024-04-04T14:39:02.585Z",
+      "version": "0.2.8"
+    }
+  ]
+}

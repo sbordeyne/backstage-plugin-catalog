@@ -1,0 +1,41 @@
+{
+  "author": "CodeVerse-GP",
+  "created": "2026-08-01T12:43:49.637Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin that ingests and aggregates portal usage analytics (entity counts, DAU/WAU, sessions, logins).",
+  "homepage": "https://github.com/CodeVerse-GP/adoption-analytics/tree/main/plugins/adoption-analytics-backend#readme",
+  "keywords": [
+    "adoption",
+    "analytics",
+    "backstage",
+    "backstage-plugin",
+    "metrics"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "grvpandey11"
+  ],
+  "name": "@codeverse-gp/plugin-adoption-analytics-backend",
+  "plugin_id": "adoption-analytics",
+  "readme": "",
+  "repository": "https://github.com/CodeVerse-GP/adoption-analytics/tree/HEAD/plugins/adoption-analytics-backend",
+  "role": "backend-plugin",
+  "scope": "@codeverse-gp",
+  "updated": "2026-11-03T02:44:39.113Z",
+  "version": "1.1.1",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-11-03T02:44:39.113Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-08-09T16:43:15.084Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-08-01T12:43:49.941Z",
+      "version": "1.0.0"
+    }
+  ]
+}

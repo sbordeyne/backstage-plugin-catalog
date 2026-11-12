@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2025-03-07T10:38:56.434Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/dapr-sandbox/dapr-backstage/blob/main/plugins/dapr/README.md",
+  "keywords": [
+    "backstage",
+    "dapr"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dapr.io",
+    "whitwaldo"
+  ],
+  "name": "@dapr/backstage-plugin-dapr",
+  "plugin_id": "dapr",
+  "readme": "",
+  "repository": "https://github.com/dapr-sandbox/dapr-backstage/tree/HEAD/plugins/dapr",
+  "role": "frontend-plugin",
+  "scope": "@dapr",
+  "updated": "2025-03-18T15:22:02.201Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-03-18T15:22:02.201Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-03-11T19:33:53.764Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-03-07T10:38:56.762Z",
+      "version": "0.1.0"
+    }
+  ]
+}

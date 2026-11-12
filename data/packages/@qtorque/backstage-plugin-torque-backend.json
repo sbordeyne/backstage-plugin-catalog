@@ -1,0 +1,49 @@
+{
+  "author": "",
+  "created": "2023-01-23T16:55:41.239Z",
+  "deprecated": "",
+  "description": "`@qtorque/backstage-plugin-torque-backend` is a plugin for the Backstage backend app. It provides a route that `@qtorque/backstage-plugin-torque` is using to communicate with Torque API and scaffolder action to create a service and all needed infrastructi",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "davidbquali",
+    "dmytro.d-quali",
+    "qualiit"
+  ],
+  "name": "@qtorque/backstage-plugin-torque-backend",
+  "plugin_id": "",
+  "readme": "# @qtorque/backstage-plugin-torque-backend\n\n`@qtorque/backstage-plugin-torque-backend` is a plugin for the Backstage backend app. It provides a route that `@qtorque/backstage-plugin-torque` is using to communicate with Torque API and scaffolder action to create a service and all needed infrastruction with Torque.\n\n## Installation\n\n1. Install `@qtorque/backstage-plugin-torque-backend` plugin with,\n\n```bash\nyarn workspace backend add @qtorque/backstage-plugin-torque-backend\n```\n\n2. Create `./packages/backend/src/plugins/torque.ts` with the following content,\n\n```ts\nimport { createRouter } from '@qtorque/backstage-plugin-torque-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    logger: env.logger,\n    config: env.config,\n  });\n}\n```\n\n3. Add `torque` api route to `./packages/backend/src/index.ts`.\n\n```diff\nimport search from './plugins/search';\n+ import torque from './plugins/torque';\n\nconst searchEnv = useHotMemoize(module, () => createEnv('search'));\n+ const torqueEnv = useHotMemoize(module, () => createEnv('torque'));\n\nconst apiRouter = Router();\napiRouter.use('/catalog', await catalog(catalogEnv));\n+ apiRouter.use('/torque', await torque(torqueEnv));\n```\n\n4. Add configuration to `app-config.yaml`\n\n```yaml\ntorque:\n  token: ${TORQUE_TOKEN} # without Bearer\n  executionHost: ${TORQUE_AGENT_NAME} # the name of agent registered in Torque\n  serverUrl: ${TORQUE_URL} # default is https://portal.qtorque.io\n  ghAccessToken: ${GITHUB_TOKEN} # github token\n```\n\n## Scaffolder Actions\n\nThis plugin provides the following scaffolder actions:\n\n### create-app\n\n`create-app` will prepare an infrastructure in Torque and create an environment for service. \n\n#### Installation\n\nTo make this action available, you can add it to your scaffolder plugin configuration in `./packages/backend/src/plugins/scaffolder.ts`\n\n```diff\n# import createTorqueApp action\n+ import { createTorqueApp } from \"@qtorque/backstage-plugin-torque-backend\";\n\n# register the action\n  const actions = [\n    ...builtInActions,\n    createTorqueApp({\n+      token: config.getString('torque.token'),\n+      executionHost: config.getString('torque.executionHost'),\n+      ghAccessToken: config.getString('torque.ghAccessToken'),\n+      serverUrl: config.getOptionalString('torque.serverUrl')\n    })\n  ];\n```\n\n### Usage\n\nAdd the action to your template,\n\n```yaml\n    - name: Deploy with Torque\n      id: torque-app-id\n      action: torque:create-app\n      input:\n        serviceName: ${{ parameters.componentName }} # The name of service that will be created in Torque. \n        # Will be used as space, assets repo, blueprint repo and grain names\n        assetRepo: ${{ steps.publish.output.remoteUrl }} # The asset repo that will be connected to Torque\n        blueprintRepo: ${{ steps.publish.output.remoteUrl }} # The blueprints repo that will be connected to Torque\n        serviceAccount: 'default' # A k8s service account to assign to agent\n        namespace: default # A k8s namespace to assign to agent\n        blueprintName: ${{ parameters.componentName }} # The name of a blueprint you that will be a source for sandbox environment\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@qtorque",
+  "updated": "2023-03-20T16:51:36.247Z",
+  "version": "0.1.5",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2023-03-20T16:51:36.247Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2023-03-20T13:43:38.413Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2023-03-17T15:26:20.718Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-01-25T15:21:32.145Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-01-24T11:48:55.495Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-01-23T16:55:41.563Z",
+      "version": "0.1.0"
+    }
+  ]
+}

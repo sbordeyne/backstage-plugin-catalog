@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-11-19T14:14:06.360Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "tduniec"
+  ],
+  "name": "@tduniec/plugin-template-designer",
+  "plugin_id": "template-designer",
+  "readme": "",
+  "repository": "https://github.com/tduniec/template-designer-plugin/tree/HEAD/./plugins/temlplate-designer",
+  "role": "frontend-plugin",
+  "scope": "@tduniec",
+  "updated": "2026-02-16T22:21:35.567Z",
+  "version": "0.4.8",
+  "version_count": 23,
+  "versions": [
+    {
+      "date": "2026-02-16T22:21:35.567Z",
+      "version": "0.4.8"
+    },
+    {
+      "date": "2026-02-15T23:51:42.977Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2026-01-30T23:43:57.469Z",
+      "version": "0.4.6"
+    },
+    {
+      "date": "2026-01-25T21:23:11.154Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2026-01-12T23:13:02.760Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2025-12-29T23:14:14.895Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2025-12-23T00:12:37.742Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2025-12-21T23:43:11.987Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-12-20T22:23:52.509Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-12-04T22:37:46.082Z",
+      "version": "0.3.7"
+    },
+    {
+      "date": "2025-12-01T16:30:33.075Z",
+      "version": "0.3.6"
+    },
+    {
+      "date": "2025-12-01T15:52:36.882Z",
+      "version": "0.3.5"
+    },
+    {
+      "date": "2025-12-01T15:39:28.485Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2025-11-28T23:47:59.808Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2025-11-28T23:17:20.711Z",
+      "version": "0.3.2"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "author": "",
+  "created": "2024-12-29T15:01:20.794Z",
+  "deprecated": "",
+  "description": "The env0 scaffolder module for Backstage",
+  "homepage": "https://www.env0.com",
+  "keywords": [],
+  "license": "MPL-2.0",
+  "maintainers": [
+    "botenv0",
+    "erezro",
+    "murarustefaan.env0",
+    "yaron-env0"
+  ],
+  "name": "@env0/backstage-scaffolder-backend-env0",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/env0/env0-backstage-plugin",
+  "role": "backend-plugin-module",
+  "scope": "@env0",
+  "updated": "2025-02-11T13:53:50.356Z",
+  "version": "0.2.1",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-02-11T13:53:50.356Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-01-07T13:38:55.652Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-12-29T15:01:21.105Z",
+      "version": "0.1.0"
+    }
+  ]
+}

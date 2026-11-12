@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:36:42.922Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-entity-feedback",
+  "plugin_id": "entity-feedback",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/entity-feedback/plugins/entity-feedback",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-30T15:07:04.650Z",
+  "version": "0.25.0",
+  "version_count": 35,
+  "versions": [
+    {
+      "date": "2026-10-30T15:07:04.650Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-10-12T17:47:16.595Z",
+      "version": "0.24.1"
+    },
+    {
+      "date": "2026-09-30T21:13:34.393Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-09-22T16:15:27.530Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-08-26T13:15:26.272Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-07-28T19:02:16.661Z",
+      "version": "0.21.1"
+    },
+    {
+      "date": "2026-07-20T18:32:35.536Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-06-23T18:40:08.197Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-06-01T16:48:06.522Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-04-21T14:19:31.624Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-03-25T13:07:15.779Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-02-24T16:47:44.226Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-01-28T13:40:40.788Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-12-23T14:48:56.657Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-12-04T16:11:08.090Z",
+      "version": "0.13.0"
+    }
+  ]
+}

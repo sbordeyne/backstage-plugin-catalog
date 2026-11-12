@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2024-03-10T19:31:48.610Z",
+  "deprecated": "",
+  "description": "## Overview This is a plugin which can parse any csv file and present it to backstage. Here is an example using this plugin: The Backstage Onboarding Tasks Plugin is designed to streamline the onboarding process for new employees within an organization. B",
+  "homepage": "",
+  "keywords": [],
+  "license": "",
+  "maintainers": [
+    "mexl"
+  ],
+  "name": "@mexl/backstage-plugin-csvloader",
+  "plugin_id": "",
+  "readme": "# Backstage CSV Loader Plugin\n\n## Overview\nThis is a plugin which can parse any csv file and present it to backstage. Here is an example using this plugin: The Backstage Onboarding Tasks Plugin is designed to streamline the onboarding process for new employees within an organization. By fetching onboarding tasks from a CSV file hosted on GitHub, this plugin provides a dynamic, easy-to-update mechanism for administrators to manage and for new employees to access their onboarding tasks directly within Backstage.\n\n## Features\n![2024-03-10 00_11_45-Onboarding tsx - onboardinglist  WSL_ Ubuntu-22 04  - Visual Studio Code](https://github.com/automationpi/backstage-plugin-csvloader/assets/82222256/b9011db9-bcb7-4033-81fb-9a5c49ca6eed)\n\n- **Dynamic CSV Task Loading**: This plugin can parse any CSV file and present it within Backstage. This ensures easy updates and management of onboarding tasks, making it a dynamic solution for onboarding new employees.\n\n- **User-Friendly Task Display**: The plugin presents tasks in an organized, user-friendly interface within Backstage, making it easy for new employees to access and complete their onboarding tasks.\n\n## Getting Started\nTo use the Backstage CSV Onboarding Tasks Plugin, follow these steps:\n\n1. Install the plugin in your Backstage app.\n2. Host your CSV file with the onboarding tasks on GitHub.\n3. Configure the plugin to fetch tasks from your CSV file.\n\n## Support\n\nIf you encounter any issues or have questions, please file an issue on the GitHub repository.\n\n## License\n\nDistributed under the MIT License. \n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@mexl",
+  "updated": "2024-03-10T21:56:36.417Z",
+  "version": "1.0.5",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-03-10T21:56:36.417Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2024-03-10T19:35:11.662Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2024-03-10T19:33:11.835Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-03-10T19:31:48.957Z",
+      "version": "1.0.1"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2026-07-23T13:11:26.447Z",
+  "deprecated": "",
+  "description": "The OpenAI backend module for the qeta plugin.",
+  "homepage": "https://github.com/drodil/backstage-plugin-qeta",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "serhatboyraz"
+  ],
+  "name": "@serhatboyraz/backstage-plugin-qeta-backend-module-openai",
+  "plugin_id": "qeta",
+  "readme": "# backstage-plugin-qeta-backend-module-openai\r\n\r\nThe openai backend module for the qeta plugin.\r\n\r\nThis plugin provides means to use OpenAI API to create answers to questions. It works\r\nalso as a reference for creating new AI backend modules for the qeta plugin.\r\n\r\n## Installation\r\n\r\nInstallation starts by installing the backend module to the backend package.\r\n\r\n```bash\r\nyarn workspace backend add @serhatboyraz/backstage-plugin-qeta-backend-module-openai\r\n```\r\n\r\nNext, add it to your `packages/backend/src/index.ts`:\r\n\r\n```ts\r\nimport { createBackend } from '@backstage/backend-defaults';\r\nconst backend = createBackend();\r\n// ... other plugins\r\nbackend.add(import('@serhatboyraz/backstage-plugin-qeta-backend-module-openai'));\r\nbackend.start();\r\n```\r\n\r\nAdditionally you need to add the necessary config to your `app-config.yaml`:\r\n\r\n```yaml\r\nqeta:\r\n  openai:\r\n    apiKey: 'your-openai-key'\r\n```\r\n",
+  "repository": "https://github.com/drodil/backstage-plugin-qeta",
+  "role": "backend-plugin-module",
+  "scope": "@serhatboyraz",
+  "updated": "2026-07-23T17:03:21.715Z",
+  "version": "3.59.13",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-07-23T17:03:21.715Z",
+      "version": "3.59.13"
+    },
+    {
+      "date": "2026-07-23T14:37:09.618Z",
+      "version": "3.59.12"
+    },
+    {
+      "date": "2026-07-23T14:11:35.006Z",
+      "version": "3.59.11"
+    },
+    {
+      "date": "2026-07-23T13:11:26.751Z",
+      "version": "3.59.10"
+    }
+  ]
+}

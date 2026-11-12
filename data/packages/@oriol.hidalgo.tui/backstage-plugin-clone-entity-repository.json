@@ -1,0 +1,27 @@
+{
+  "author": "TUI MM",
+  "created": "2022-08-02T14:09:27.293Z",
+  "deprecated": "",
+  "description": "Welcome to the Backstage Clone Entity Repository plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "oriol.hidalgo.tui"
+  ],
+  "name": "@oriol.hidalgo.tui/backstage-plugin-clone-entity-repository",
+  "plugin_id": "",
+  "readme": "# Backstage Plugin:  Clone Entity Repository\n\n## Installation\n\nAdd the plugin as a package.json dependency\n\n```shell\n  yarn add --cwd packages/app @oriol.hidalgo.tui/backstage-plugin-clone-entity-repository\n```\n\nImport the plugin on the EntityPage.tsx\n\n```shell\n# packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityCloneEntityRepoCard,\n  isCloneEntityRepoAvailable\n} from '@oriol.hidalgo.tui/backstage-plugin-clone-entity-repository';\n```\n\nAdd the EntityCloneEntityRepoCard on the EntityPage.tsx\n\n```shell\n# packages/app/src/components/catalog/EntityPage.tsx\n  \nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n  ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isCloneEntityRepoAvailable}>\n        <Grid item>\n          <EntityCloneEntityRepoCard/>\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n  ...\n  </Grid>\n} \n```\n\nTo activate the plugin, any of the two available annotations have to be declared on the catalog-info.yaml\n\n```shell\nmetadata:\n  ...\n  annotations:\n    clone-repo/https: 'CLONE REPO URI'\n    clone-repo/ssh: 'CLONE REPO URI'\n    ...\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@oriol.hidalgo.tui",
+  "updated": "2022-08-02T14:09:27.591Z",
+  "version": "0.0.5",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2022-08-02T14:09:27.591Z",
+      "version": "0.0.5"
+    }
+  ]
+}

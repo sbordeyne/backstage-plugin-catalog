@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2020-07-07T13:49:39.930Z",
+  "deprecated": "",
+  "description": "The Backstage backend plugin that renders technical documentation for your components",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "techdocs"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-techdocs-backend",
+  "plugin_id": "techdocs",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/techdocs-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage",
+  "updated": "2026-11-02T15:10:45.257Z",
+  "version": "2.4.1",
+  "version_count": 1933,
+  "versions": [
+    {
+      "date": "2026-11-11T03:14:09.676Z",
+      "version": "2.4.2-next.2"
+    },
+    {
+      "date": "2026-11-07T03:08:56.799Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T03:12:34.077Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T03:07:33.013Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-11-03T18:59:23.711Z",
+      "version": "2.4.2-next.1"
+    },
+    {
+      "date": "2026-11-02T15:10:45.257Z",
+      "version": "2.4.1"
+    },
+    {
+      "date": "2026-10-31T03:04:27.663Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:58:01.792Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T03:12:51.150Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T03:10:02.576Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:43:40.797Z",
+      "version": "2.4.1-next.0"
+    },
+    {
+      "date": "2026-10-27T03:06:35.356Z",
+      "version": "0.0.0-nightly-20261027023041"
+    },
+    {
+      "date": "2026-10-20T17:08:43.773Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2026-10-06T19:41:37.338Z",
+      "version": "2.4.0-next.2"
+    },
+    {
+      "date": "2026-09-29T12:40:07.635Z",
+      "version": "2.3.1-next.1"
+    }
+  ]
+}

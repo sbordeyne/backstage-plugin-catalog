@@ -1,0 +1,49 @@
+{
+  "author": "Avik Kundu",
+  "created": "2025-12-02T15:55:47.849Z",
+  "deprecated": "",
+  "description": "A reusable Backstage backend plugin that provides RAG (Retrieval-Augmented Generation) capabilities including embedding providers and vector stores for knowledge retrieval.",
+  "homepage": "https://github.com/lucifergene/backstage-community-plugins/tree/main/workspaces/mcp-chat/plugins/knowledge-base-backend",
+  "keywords": [
+    "backstage",
+    "backstage-backend-plugin",
+    "backstage-plugin",
+    "chromadb",
+    "embedding",
+    "gemini",
+    "knowledge-base",
+    "openai",
+    "pinecone",
+    "rag",
+    "retrieval-augmented-generation",
+    "vector-database",
+    "vector-store"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "avik6028"
+  ],
+  "name": "@lucifergene/plugin-knowledge-base-backend",
+  "plugin_id": "knowledge-base",
+  "readme": "# Knowledge Base Backend Plugin\n\nA reusable Backstage backend plugin that provides RAG (Retrieval-Augmented Generation) capabilities including embedding providers and vector stores for knowledge retrieval.\n\n## Features\n\n- **Embedding Providers**: Support for OpenAI and Gemini embedding models\n- **Vector Stores**: Support for Pinecone and ChromaDB\n- **Document Management**: Upload, search, list, and delete documents\n- **Flexible Configuration**: Array-based configuration for easy provider switching\n- **Service-Based API**: Clean integration pattern for other plugins\n\n## Installation\n\nThis plugin is designed to be used as a dependency by other Backstage plugins.\n\n```bash\n# In your plugin's package.json\n{\n  \"dependencies\": {\n    \"@lucifergene/plugin-knowledge-base-backend\": \"workspace:^\"\n  }\n}\n```\n\n## Configuration\n\nAdd the following to your `app-config.yaml`:\n\n```yaml\nknowledgeBase:\n  # Embedding providers (first in array is active)\n  embeddingProviders:\n    - id: gemini\n      token: ${GEMINI_API_KEY}\n      model: gemini-embedding-001\n      dimensions: 3072\n    - id: openai\n      token: ${OPENAI_API_KEY}\n      model: text-embedding-3-small\n      dimensions: 1536\n\n  # Vector stores (first in array is active)\n  vectorStores:\n    - id: pinecone\n      apiKey: ${PINECONE_API_KEY}\n      indexName: knowledge-base\n    - id: chromadb\n      baseUrl: http://localhost:8000\n      indexName: knowledge-base\n```\n\n## Usage\n\n### In Your Plugin\n\n```typescript\nimport { getKnowledgeBaseService } from '@lucifergene/plugin-knowledge-base-backend';\n\nexport const yourPlugin = createBackendPlugin({\n  pluginId: 'your-plugin',\n  register(env) {\n    env.registerInit({\n      deps: {\n        logger: coreServices.logger,\n        config: coreServices.rootConfig,\n      },\n      async init({ logger, config }) {\n        // Get knowledge base service\n        const kbService = await getKnowledgeBaseService({ logger, config });\n\n        // Upload documents\n        await kbService.uploadDocuments(\n          [\n            {\n              fileName: 'example.yaml',\n              content: 'apiVersion: v1\\nkind: Pod\\n...',\n            },\n          ],\n          {\n            maxChunkLength: 1000,\n            chunkOverlap: 200,\n            delimiter: '\\n',\n          },\n        );\n\n        // Search knowledge base\n        const results = await kbService.search('kubernetes deployment', {\n          topK: 3,\n          filter: { format: 'yaml' },\n        });\n\n        // List documents\n        const docs = await kbService.listDocuments();\n\n        // Delete document\n        await kbService.deleteDocument('example.yaml');\n\n        // Get status\n        const status = await kbService.getStatus();\n      },\n    });\n  },\n});\n```\n\n## Supported Providers\n\n### Embedding Providers\n\n| Provider   | Models                                                                       | Dimensions |\n| ---------- | ---------------------------------------------------------------------------- | ---------- |\n| **Gemini** | `gemini-embedding-001`, `text-embedding-004`                                 | 768-3072   |\n| **OpenAI** | `text-embedding-3-small`, `text-embedding-3-large`, `text-embedding-ada-002` | 1536-3072  |\n\n### Vector Stores\n\n| Provider     | Type        | Notes                               |\n| ------------ | ----------- | ----------------------------------- |\n| **Pinecone** | Managed     | Requires API key and index creation |\n| **ChromaDB** | Self-hosted | Requires running ChromaDB instance  |\n\n## API Reference\n\n### KnowledgeBaseService\n\n```typescript\ninterface KnowledgeBaseService {\n  uploadDocuments(files, settings): Promise<UploadedDocument[]>;\n  listDocuments(namespace?): Promise<DocumentInfo[]>;\n  deleteDocument(fileName, namespace?): Promise<{ deletedCount: number }>;\n  search(query, options?): Promise<SearchResult[]>;\n  getStatus(): Promise<KnowledgeBaseStatus>;\n}\n```\n\n## Migration from k8s-ai-assistant-backend\n\nIf you're migrating from the old embedded RAG implementation:\n\n1. Update `package.json`:\n\n```json\n{\n  \"dependencies\": {\n    \"@lucifergene/plugin-knowledge-base-backend\": \"workspace:^\"\n  }\n}\n```\n\n2. Update configuration namespace from `k8sAiAssistant` to `knowledgeBase`\n\n3. Replace imports:\n\n```typescript\n// Before\nimport { DocumentService } from '../services/DocumentService';\nimport { EmbeddingProvider } from '../providers/base-embedding-provider';\n\n// After\nimport {\n  KnowledgeBaseService,\n  getKnowledgeBaseService,\n} from '@lucifergene/plugin-knowledge-base-backend';\n```\n\n4. Update service initialization:\n\n```typescript\n// Before\nconst documentService = new DocumentService(\n  embeddingProvider,\n  vectorStore,\n  logger,\n);\n\n// After\nconst knowledgeBaseService = await getKnowledgeBaseService({ logger, config });\n```\n\n## Future Plans\n\n- Support for additional embedding providers (Cohere, HuggingFace)\n- Support for additional vector stores (Qdrant, Weaviate)\n- Advanced chunking strategies\n- Metadata filtering improvements\n- Multi-namespace support\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/lucifergene/backstage-community-plugins/tree/HEAD/workspaces/mcp-chat/plugins/knowledge-base-backend",
+  "role": "backend-plugin",
+  "scope": "@lucifergene",
+  "updated": "2025-12-03T10:45:33.077Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-12-03T10:45:33.077Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-12-02T16:04:49.012Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-12-02T15:55:48.312Z",
+      "version": "0.1.0"
+    }
+  ]
+}

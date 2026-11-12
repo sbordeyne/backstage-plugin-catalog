@@ -1,0 +1,52 @@
+{
+  "author": "",
+  "created": "2025-10-15T14:52:07.538Z",
+  "deprecated": "",
+  "description": "This package is the frontend counterpart of the `stack-overflow-teams` plugin for Backstage.",
+  "homepage": "https://github.com/StackExchange/backstage-stackoverflow#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "abovedave",
+    "dancormier",
+    "estoesmoises",
+    "giamir",
+    "itstoragesvc",
+    "stacks-bot"
+  ],
+  "name": "@stackoverflow/backstage-plugin-stack-overflow-teams",
+  "plugin_id": "stack-overflow-teams",
+  "readme": "# Stack Internal Frontend Plugin\n\nThis package is the frontend counterpart of the `stack-overflow-teams` plugin for Backstage.\n\n## Areas of Responsibility\n\nIt provides the UI and interacts with the [backend service](https://github.com/EstoesMoises/backstage-stackoverflow/tree/main/plugins/stack-overflow-teams-backend) to fetch data from your Stack Internal Enterprise instance.\n\n### Backend Dependency\n\nTo fully utilize this plugin, you must also install and configure the corresponding **backend package** (`@stackoverflow/backstage-plugin-stack-overflow-teams-backend`) in your Backstage backend. The frontend plugin relies on the backend for API communication and authentication handling.\n\n## More details\n\n### Enhanced `<StackOverflowSearchResultListItem />`\n\nThis component is a modified version of the [community plugin.](https://github.com/backstage/community-plugins/tree/main/workspaces/stack-overflow/plugins/stack-overflow/src/search/StackOverflowSearchResultListItem)\n\nIt adds a more Stack Overflow Internal-like interface, including additional information such as the questions' score, user role, user reputation, and timestamp.\n\n---\n\n### Individual Frontend Components\n\n- **`<StackOverflowMe />`**\n  \n  Displays information about the authenticated user.\n\n- **`<StackOverflowPostQuestionModal />`**\n  \n  Provides a form for users to create a new Stack Overflow Internal question. Once submitted, an API request is executed to create the question.\n  \n  This form listens to the `'openAskQuestionModal'` event. You can utilize this anywhere in your Backstage UI. To invoke the form, add the component to your UI along with a button that dispatches the event. Example:\n\n  ```tsx\n  <SidebarItem\n    icon={StackOverflowIcon}\n    onClick={() => window.dispatchEvent(new Event('openAskQuestionModal'))}\n    text=\"Ask a Question\"\n  />\n  \n  <StackOverflowPostQuestionModal />\n  ```\n\n- **`<StackOverflowQuestion />`**\n  \n  Retrieves questions from the API. Uses API pagination to navigate all pages of questions available to the instance.\n\n- **`<StackOverflowTags />`**\n  \n  Retrieves tags from the API. Uses standard pagination, displaying only the first 30 API results.\n\n- **`<StackOverflowUsers />`**\n  \n  Retrieves users from the API. Uses standard pagination, displaying only the first 30 API results.\n\n- **`<StackOverflowHub />`**\n  \n  Various components collectively create this informative hub.\n\n## Authentication Components\n\n- **`<StackAuthStart />`**\n  \n  Initiates **`/auth/start`** on the backend.\n\n- **`<StackAuthLoading />`**\n  \n  Handles the loading state during authentication.\n\n- **`<StackAuthCallback />`**\n  \n  Receives the code and state from your Stack Internal Enterprise instance as part of the OAuth process and initiates **`/callback`** in the backend.\n\n- **`<StackAuthSuccess />`**\n  \n  Displays authentication success state.\n\n- **`<StackAuthFailed />`**\n  \n  Displays authentication failure state.\n\n### Page\n\n- **`<StackOverflowTeamsPage />`**\n  \n  This page triggers authentication components, bundles, and orchestrates everything for you so you don't have to use the authentication components separately. If authenticated, it will return the `<StackOverflowHub />`.\n\n### API Requests\n\nThe frontend plugin creates an API Ref for Stack Internal, which can be found under the `/api` folder. **All API requests from the frontend are directed to Backstage's backend**.\n\n## New frontend system\n\nThe plugin supports both the legacy frontend system and the [new frontend system](https://backstage.io/docs/frontend-system/). Everything documented above is the legacy interface and keeps working unchanged; the new frontend system is served from the separate `/alpha` entry point.\n\nIn an app created with `@backstage/frontend-defaults`, install the plugin by adding it to your features:\n\n```tsx\n// packages/app/src/index.tsx\nimport { createApp } from '@backstage/frontend-defaults';\nimport stackOverflowTeamsPlugin from '@stackoverflow/backstage-plugin-stack-overflow-teams/alpha';\n\nconst app = createApp({\n  features: [stackOverflowTeamsPlugin],\n});\n```\n\nIf your app discovers features automatically through `app.packages` config, no code change is needed at all.\n\n### Extensions\n\n| Extension ID                                                | What it does                                                                                                                  |\n| :---------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |\n| `page:stack-overflow-teams`                                  | The Stack Internal hub, mounted at `/stack-overflow-teams`.                                                                     |\n| `page:stack-overflow-teams/ask-question`                     | Trigger route for the ask-a-question modal at `/stack-overflow-teams/ask`. Renders nothing; see below.                          |\n| `nav-item:stack-overflow-teams`                              | The \"Stack Internal\" sidebar item.                                                                                             |\n| `nav-item:stack-overflow-teams/ask-question`                 | The \"Ask a Question\" sidebar item.                                                                                             |\n| `api:stack-overflow-teams`                                   | The Stack Internal API client, talking to the backend plugin.                                                                   |\n| `search-result-list-item:stack-overflow-teams`               | Renders indexed Stack Internal questions on the search page.                                                                    |\n| `search-filter-result-type:stack-overflow-teams`             | Adds \"Stack Internal\" to the search page result type filter.                                                                    |\n| `app-root-element:stack-overflow-teams/ask-question-modal`   | Mounts `<StackOverflowPostQuestionModal />` at the app root, so the `openAskQuestionModal` event works from anywhere in the app. |\n\n#### How the \"Ask a Question\" nav item works\n\nClicking it opens the modal over whatever page you are on. Nothing navigates, nothing remounts, and the page underneath keeps its state.\n\nGetting there takes a small amount of machinery, because the new frontend system has no `onClick` nav item: `NavItemBlueprint` only accepts a `routeRef`, and the nav bar is rendered by the app rather than by plugins. So the plugin:\n\n1. mounts a trigger route at `/stack-overflow-teams/ask` that renders nothing, purely so the route ref resolves and the nav item can point at it, and\n2. intercepts clicks on that link in the capture phase, before the router sees them, and opens the modal instead.\n\nIf the route is reached some other way — a bookmark, a pasted URL — the modal still opens and the router steps back out to the page you came from, or to the hub.\n\nThe `openAskQuestionModal` window event is unchanged and still works from anywhere in the app, so your own triggers keep working:\n\n```tsx\n<button onClick={() => window.dispatchEvent(new Event('openAskQuestionModal'))}>\n  Ask a question\n</button>\n```\n\nAll of them are enabled by default and can be configured or disabled through `app.extensions` config, for example:\n\n```yaml\napp:\n  extensions:\n    # Serve the hub from a different path. Remember to update\n    # stackoverflow.redirectUri to match, since the OAuth flow returns here.\n    - page:stack-overflow-teams:\n        config:\n          path: /stack-internal\n    # Opt out of the sidebar item\n    - nav-item:stack-overflow-teams: false\n```\n\n### Local development\n\n`packages/app-next` in this repository is a small app on the new frontend system with this plugin installed. Run it against the backend with:\n\n```bash\nyarn start:next\n```\n",
+  "repository": "https://github.com/StackExchange/backstage-stackoverflow",
+  "role": "frontend-plugin",
+  "scope": "@stackoverflow",
+  "updated": "2026-08-11T20:27:28.650Z",
+  "version": "1.7.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-08-11T20:27:28.650Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2026-01-19T16:42:13.842Z",
+      "version": "1.6.3"
+    },
+    {
+      "date": "2026-01-19T16:15:17.765Z",
+      "version": "1.6.2"
+    },
+    {
+      "date": "2026-01-12T01:51:42.988Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2026-01-09T18:51:10.499Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2025-10-15T14:52:07.813Z",
+      "version": "1.5.0"
+    }
+  ]
+}

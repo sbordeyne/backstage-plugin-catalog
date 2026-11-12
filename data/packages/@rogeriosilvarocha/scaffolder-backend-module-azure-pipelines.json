@@ -1,0 +1,33 @@
+{
+  "author": "Parfümerie Douglas GmbH",
+  "created": "2024-01-26T01:09:15.896Z",
+  "deprecated": "",
+  "description": "A collection of Backstage scaffolder backend modules for Azure pipelines.",
+  "homepage": "https://github.com/rogeriorocha/scaffolder-backend-module-azure-pipelines#readme",
+  "keywords": [
+    "azure-devops",
+    "azure-pipelines",
+    "backstage",
+    "backstage-plugin",
+    "backstage-template"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "rogeriosilvarocha"
+  ],
+  "name": "@rogeriosilvarocha/scaffolder-backend-module-azure-pipelines",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/rogeriorocha/scaffolder-backend-module-azure-pipelines",
+  "role": "backend-plugin-module",
+  "scope": "@rogeriosilvarocha",
+  "updated": "2024-01-26T01:09:16.181Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-01-26T01:09:16.181Z",
+      "version": "1.0.0"
+    }
+  ]
+}

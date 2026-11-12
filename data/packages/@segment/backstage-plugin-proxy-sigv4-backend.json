@@ -1,0 +1,57 @@
+{
+  "author": "",
+  "created": "2023-11-27T22:16:57.376Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin that configures endpoints for signing and proxying HTTP requests with AWS SigV4",
+  "homepage": "https://github.com/segmentio/segment-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "segment-admin",
+    "segmentio",
+    "twilio-supply-chain"
+  ],
+  "name": "@segment/backstage-plugin-proxy-sigv4-backend",
+  "plugin_id": "proxy-sigv4",
+  "readme": "# AWS SigV4 Proxy backend plugin\n\nBackend plugin that enables proxy definitions to be declared in, and read from, `app-config.yaml` (just like the\nbuilt-in [`proxy-backend` plugin][1]) that will be signed using the [AWS Signature Version 4 (SigV4) request-signing\nalgorithm][2].\n\nLoosely modeled after the official [AWS SigV4 Proxy project (awslabs/aws-sigv4-proxy)][3].\n\n## Getting started\n\nThis plugin has already been added to the Backstage app in this repository, meaning you'll be able to try out\nthe plugin by firstly adding your [Proxy Sigv4 Configuration](#configuration) to the `app-config.yaml` located in\nthe root folder of this repository. After that, you should be able to access it by starting the app, and then navigating\nto [/api/proxy-sigv4/\\*](http://localhost:7007/api/proxy-sigv4/*).\n\nThis backend plugin can also be started in a standalone mode via `yarn start` from within this package; however, it will\nhave limited functionality and this process is most convenient when developing the plugin itself. If you develop using\nthe standalone server, note that the plugin is mounted at the backend root and _not_ under `/api/`:\n[/proxy-sigv4/\\*](http://localhost:7007/proxy-sigv4/*).\n\n## Installation\n\n### Add the backend plugin as a dependency to `packages/backend`\n\n```sh\nyarn add --cwd packages/backend '@segment/backstage-plugin-proxy-sigv4-backend'\n```\n\n### New Backend System\n\nThe AWS SigV4 Proxy backend plugin has support for the [new backend system](https://backstage.io/docs/backend-system/). In your `packages/backend/src/index.ts` file, make the following changes:\n\n```diff\n  import { createBackend } from '@backstage/backend-defaults';\n  const backend = createBackend();\n  // ... other feature additions\n\n+ // proxy-sigv4 plugin installation\n+ backend.add(import('@segment/backstage-plugin-proxy-sigv4-backend'));\n\n  backend.start();\n```\n\n### Legacy Backend System\n\n#### Create a new backend plugin wrapper module\n\nIf you are still using the legacy backend system, you'll need to add the plugin to the router in your `backend` package.\n\nYou can do this by creating a file called `packages/backend/src/plugins/proxy-sigv4.ts`. Example content for\n`proxy-sigv4.ts` could be something like this.\n\n```ts\n// packages/backend/src/plugins/proxy-sigv4.ts\n\nimport { createRouter } from '@segment/backstage-plugin-proxy-sigv4-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin({\n  logger,\n  config,\n}: PluginEnvironment): Promise<Router> {\n  return await createRouter({ logger, config });\n}\n```\n\n#### Initialize the wrapper module and mount the router in `packages/backend`\n\nWith the `proxy-sigv4.ts` router setup in place, add the router to `packages/backend/src/index.ts`:\n\n```diff\n // packages/backend/src/index.ts\n\n+import proxySigV4 from './plugins/proxy-sigv4';\n\n async function main() {\n   ...\n   const createEnv = makeCreateEnv(config);\n   ...\n\n   const proxyEnv = useHotMemoize(module, () => createEnv('proxy'));\n+  const proxySigV4Env = useHotMemoize(module, () => createEnv('proxy-sigv4'));\n\n   const apiRouter = Router();\n\n   apiRouter.use('/proxy', await proxy(proxyEnv));\n+  apiRouter.use('/proxy-sigv4', await proxySigV4(proxySignV4Env));\n   ...\n }\n```\n\n## Configuration\n\nProxy routes can be configured using either a short or expanded form.\n\n### Short form\n\nThe short form is useful when the default [`AWS.CredentialProviderChain`][4] resolves to a set of AWS credentials that\nhave the permissions necessary to invoke the target API directly.\n\nThis is commonplace when the [IAM instance profile][5] has been configured with a role that has been granted access on\nthe target API and no additional [`AssumeRole` call][6] is required.\n\nThis is also useful during local development when the shell environment used to start the application already has AWS\ncredentials exported into the shell's environment variables.\n\n```yaml\nproxysigv4:\n  '/some-local-path': https://<API ID>.execute-api.<region>.amazonaws.com\n```\n\n### Expanded form\n\nThe expanded form is necessary when:\n\n- `AssumeRole` call _is_ required, _or_ if the target API service and region cannot\n  be automatically derived from the URL (commonplace when a custom domain name has been configured for an API Gateway\n  endpoint).\n- The service if not possible to determine it automatically.\n- The region if not possible to determine it automatically.\n\n```yaml\nproxysigv4:\n  '/some-local-path':\n    target: 'https://<API ID>.execute-api.<region>.amazonaws.com'\n    roleArn: 'arn:aws:iam::<account>:role/<name>'\n    roleSessionName: tempAssumeRoleSession ## optional\n    service: '<service>' ## optional\n    region: '<region>' ## optional\n```\n\n### New Auth Services - Unauthorized Requests\n\nWhen using the new backend system with the [new auth services](https://backstage.io/docs/tutorials/auth-service-migration/), the `proxy-sigv4` backend plugin will by default allow unauthenticated requests.\n\nTo prevent this behavior, provide the following configuration:\n\n```yaml\nproxysigv4:\n  allowUnauthenticatedRequests: false\n```\n\nDoing so will not add the auth policty that allows unauthenticated requests.\n\n### Schema\n\nRefer to [`config.d.ts`][7] for the full plugin type definition.\n\n## Limitations\n\n1. No response streaming.\n1. No configuration of the forwarded or received headers allowlist.\n1. No ability to override or manually configure target URL `service` and `region` properties\n   - CNAME'd endpoints are therefore not currently supported\n1. Target URLs that lack a trailing slash (`/`) will always have one implicitly applied.\n   - e.g.: `https://example.com/foo` will be treated as `https://example.com/foo/`\n1. Target URLs with a path prefix _may_ be susceptible to path traversal attacks; test coverage for this is poor.\n\n## Links\n\n- [AWS Signature Version 4 (SigV4) request-signing algorithm][2]\n- [Full plugin config schema (`config.d.ts`)][7]\n\n[1]: https://github.com/backstage/backstage/tree/v1.3.1/plugins/proxy-backend\n[2]: https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html\n[3]: https://github.com/awslabs/aws-sigv4-proxy\n[4]: https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CredentialProviderChain.html#defaultProviders-property\n[5]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html\n[6]: https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html\n[7]: ./config.d.ts\n",
+  "repository": "https://github.com/segmentio/segment-backstage-plugins/tree/HEAD/plugins/proxy-sigv4-backend",
+  "role": "backend-plugin",
+  "scope": "@segment",
+  "updated": "2026-08-27T15:33:15.562Z",
+  "version": "0.6.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2026-08-27T15:33:15.562Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-08-24T20:51:57.236Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-01-23T18:32:57.173Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-09-25T16:16:13.165Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2024-08-30T21:04:59.230Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-08-30T19:27:06.671Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-04-05T19:02:05.329Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-11-27T22:16:57.675Z",
+      "version": "0.1.0"
+    }
+  ]
+}

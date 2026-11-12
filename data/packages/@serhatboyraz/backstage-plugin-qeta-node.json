@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2026-07-23T13:11:11.594Z",
+  "deprecated": "",
+  "description": "Backstage.io Q&A plugin node",
+  "homepage": "https://github.com/drodil/backstage-plugin-qeta",
+  "keywords": [
+    "backstage",
+    "backstage.io",
+    "node",
+    "plugin"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "serhatboyraz"
+  ],
+  "name": "@serhatboyraz/backstage-plugin-qeta-node",
+  "plugin_id": "qeta",
+  "readme": "# backstage-plugin-qeta-node\r\n\r\nWelcome to the Node.js library package for the qeta plugin!\r\n\r\n_This plugin was created through the Backstage CLI_\r\n",
+  "repository": "https://github.com/drodil/backstage-plugin-qeta",
+  "role": "node-library",
+  "scope": "@serhatboyraz",
+  "updated": "2026-07-23T17:03:12.370Z",
+  "version": "3.59.13",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-07-23T17:03:12.370Z",
+      "version": "3.59.13"
+    },
+    {
+      "date": "2026-07-23T14:36:15.474Z",
+      "version": "3.59.12"
+    },
+    {
+      "date": "2026-07-23T14:11:13.947Z",
+      "version": "3.59.11"
+    },
+    {
+      "date": "2026-07-23T13:11:11.933Z",
+      "version": "3.59.10"
+    }
+  ]
+}

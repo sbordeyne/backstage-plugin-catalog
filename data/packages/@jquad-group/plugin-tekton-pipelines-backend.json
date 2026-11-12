@@ -1,0 +1,67 @@
+{
+  "author": "",
+  "created": "2022-11-10T17:13:58.484Z",
+  "deprecated": "",
+  "description": "This is the Tekton Pipelines Backend part.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jquad-group"
+  ],
+  "name": "@jquad-group/plugin-tekton-pipelines-backend",
+  "plugin_id": "",
+  "readme": "# Tekton Pipelines Backend Plugin\n\nThis is the Tekton Pipelines Backend part. \n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nAccess the backend  by running `yarn start` in the plugin directory, and then navigating to [/tekton-pipelines-backend](http://localhost:3000/tekton-pipelines-backend).\n\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@jquad-group",
+  "updated": "2023-05-07T14:51:50.396Z",
+  "version": "0.3.3",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2023-05-07T14:51:50.396Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2023-04-21T14:55:48.972Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2023-01-25T00:16:07.234Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2023-01-24T23:49:35.109Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2022-12-17T09:02:06.497Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2022-12-07T20:33:12.182Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2022-11-20T16:54:39.921Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2022-11-14T15:06:38.347Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2022-11-10T20:52:36.381Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2022-11-10T17:15:40.712Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2022-11-10T17:13:58.757Z",
+      "version": "0.2.0-debug"
+    }
+  ]
+}

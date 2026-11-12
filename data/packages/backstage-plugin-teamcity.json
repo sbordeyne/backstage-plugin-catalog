@@ -1,0 +1,62 @@
+{
+  "author": "",
+  "created": "2022-10-11T20:01:31.864Z",
+  "deprecated": "",
+  "description": "Welcome to the teamcity plugin for Backstage!",
+  "homepage": "https://github.com/Weyn/backstage-teamcity",
+  "keywords": [
+    "backstage",
+    "teamcity"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "weyni91"
+  ],
+  "name": "backstage-plugin-teamcity",
+  "plugin_id": "",
+  "readme": "![Test Workflow](https://github.com/Weyn/backstage-teamcity/actions/workflows/main.yml/badge.svg)\n[![Coverage Status](https://coveralls.io/repos/github/Weyn/backstage-teamcity/badge.svg?branch=main)](https://coveralls.io/github/Weyn/backstage-teamcity?branch=main)\n\n# Backstage teamcity plugin\n\nWelcome to the teamcity plugin for Backstage!\n\n## Getting started\nInstall via yarn\n```\nyarn add --cwd packages/app backstage-plugin-teamcity\n```\n\nIn: packages\\app\\src\\components\\catalog\\EntityPage.tsx file add:\n```\nimport { isTeamcityAvailable, EntityTeamcityContent } from 'backstage-plugin-teamcity';\n```\n\nThen under cicdContent block in the EntityPage.tsx file paste:\n```\n    <EntitySwitch.Case if={isTeamcityAvailable}>\n        <Grid item sm={12}>\n            <EntityTeamcityContent/>\n        </Grid>\n    </EntitySwitch.Case>\n```\n\nAs a final step add the proxy to the app-config.local.yaml or prod depending on the env.\n\n```\nproxy:\n  '/teamcity-proxy/':\n    target: 'http://localhost:8111'\n    headers:\n      Authorization: 'Basic BASIC_AUTH'\n      Accept: 'application/json'\n```\n\n# Project catalog flag requirement\n```\n  annotations:\n    teamcity/project-id: TEAMCITY_NAME\n```\n\n# Screenshots\n![error](https://github.com/Weyn/backstage-teamcity/blob/main/assets/sample.jpg)\n![error](https://github.com/Weyn/backstage-teamcity/blob/main/assets/history.jpg)\n![error](https://github.com/Weyn/backstage-teamcity/blob/main/assets/log.jpg)\n\n# Developing\n\n## Installing packages\nRun `yarn install`\n\n## Running tests\n\nTo run tests execute `yarn test a`\n\n# Future plans\n* More tests\n* Run button",
+  "repository": "https://github.com/Weyn/backstage-teamcity",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2024-05-09T21:58:40.367Z",
+  "version": "1.0.3",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2024-05-09T21:58:40.367Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2022-10-16T22:19:54.302Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2022-10-16T22:10:26.695Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2022-10-16T17:27:44.208Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2022-10-13T22:18:56.590Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2022-10-12T21:17:53.733Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2022-10-12T21:11:39.658Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2022-10-12T18:32:07.606Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2022-10-11T20:01:32.157Z",
+      "version": "0.1.0"
+    }
+  ]
+}

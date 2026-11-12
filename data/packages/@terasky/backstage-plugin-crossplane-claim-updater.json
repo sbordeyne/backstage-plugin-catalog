@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2025-01-19T22:03:40.738Z",
+  "deprecated": "",
+  "description": "The crossplane claim updater plugin for Backstage",
+  "homepage": "https://www.terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-crossplane-claim-updater",
+  "plugin_id": "crossplane-claim-updater",
+  "readme": "# Crossplane Claim Updater Plugin\n\nWelcome to the crossplane-claim-updater plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-crossplane-claim-updater/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-crossplane-claim-updater)\n\nThe Crossplane Claim Updater plugin provides a form component for updating Crossplane claim manifests in Git repositories. It uses the OpenAPI schema from the corresponding XRD to generate a dynamic form for updating claim specifications.\n\n## Features\n\n- Dynamic form generation based on XRD OpenAPI schemas\n- Support for GitHub repositories through Backstage's SCM integration\n- Automatic PR creation with changes\n- Support for both entity annotations and manual URL input\n- Preserves file paths and directory structure\n\n## Installation\nFrom your Backstage root directory, run:\n```bash\nyarn add --cwd packages/app @terasky/backstage-plugin-crossplane-claim-updater\n```\nAdding the plugins field extension to your Backstage apps scaffolder route:\n```typescript\n// packages/app/src/App.tsx\nimport { GitClaimUpdaterExtension } from '@terasky/backstage-plugin-crossplane-claim-updater';\nimport { ScaffolderFieldExtensions } from '@backstage/plugin-scaffolder-react';\n\nconst routes = (\n  <FlatRoutes>\n    ...\n    <Route path=\"/create\" element={<ScaffolderPage />}>\n      <ScaffolderFieldExtensions>\n        <GitClaimUpdaterExtension />\n      </ScaffolderFieldExtensions>\n    </Route>\n    ...\n  </FlatRoutes>\n);\n```\nIntegrate the plugin with the entity scaffolder plugin:\n```typescript\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { GitClaimUpdaterExtension } from '@terasky/backstage-plugin-crossplane-claim-updater';\nimport { ScaffolderFieldExtensions } from '@backstage/plugin-scaffolder-react';\n\nconst crossplaneEntityPage = (\n  <EntityLayout>\n    ...\n    <EntityLayout.Route path=\"/scaffolder\" title=\"Entity Scaffolder\">\n        <EntityScaffolderContent\n          templateGroupFilters={[\n            {\n              title: 'Management Templates',\n              filter: (entity, template) =>\n                template.metadata?.labels?.target === 'component' &&\n                entity.metadata?.annotations?.['backstage.io/managed-by-location']?.split(\":\")[0] === 'cluster origin',\n            },\n          ]}\n          buildInitialState={entity => ({\n              entity: stringifyEntityRef(entity)\n            }\n          )}\n          ScaffolderFieldExtensions={\n            <ScaffolderFieldExtensions>\n              <RepoUrlPickerFieldExtension />\n              <EntityPickerFieldExtension />\n              <GitClaimUpdaterExtension />\n            </ScaffolderFieldExtensions>\n          }\n        />\n    </EntityLayout.Route>\n    ...\n  </EntityLayoutWrapper>\n);\n```\n\n## Add the Example Template to your Backstage app\nThe example template is located in the templates directory.\nThis template utilizes the GitClaimUpdaterExtension to update a claim manifest in a GitHub repository.",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/crossplane-claim-updater",
+  "role": "frontend-plugin",
+  "scope": "@terasky",
+  "updated": "2025-02-24T17:36:05.722Z",
+  "version": "1.0.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2025-02-24T17:36:05.722Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2025-02-19T15:13:02.260Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2025-02-02T14:47:27.658Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2025-01-21T21:19:58.569Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-01-21T19:58:13.914Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-01-19T22:03:41.034Z",
+      "version": "0.1.0"
+    }
+  ]
+}

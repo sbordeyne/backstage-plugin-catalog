@@ -1,0 +1,46 @@
+{
+  "author": "",
+  "created": "2024-11-25T08:26:03.837Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates with CircleCI",
+  "homepage": "https://circleci.com/docs/spotify-backstage/",
+  "keywords": [
+    "backstage",
+    "circleci"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "piotr.pasich"
+  ],
+  "name": "@piotr.pasich/circleci-backstage-plugin",
+  "plugin_id": "",
+  "readme": "# CircleCI Plugin\n\nWebsite: [https://circleci.com/](https://circleci.com/)\n\n## Screenshots\n\n<img src=\"https://raw.githubusercontent.com/CircleCI-Public/backstage-plugin/main/plugins/circleci/src/assets/screenshot-pipeline-list.png\" />\n<img src=\"https://raw.githubusercontent.com/CircleCI-Public/backstage-plugin/main/plugins/circleci/src/assets/screenshot-build-details.png\" />\n<img src=\"https://raw.githubusercontent.com/CircleCI-Public/backstage-plugin/main/plugins/circleci/src/assets/screenshot-build-steps.png\" />\n\n## Setup\n\n1. If you have a standalone app (you didn't clone this repo), then do\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @piotr.pasich/circleci-backstage-plugin\n```\n\n2. Add the `EntityCircleCIContent` extension to the entity page in your app:\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityCircleCIContent,\n  isCircleCIAvailable,\n} from '@circleci/backstage-plugin';\n\n// For example in the CI/CD section\nconst cicdContent = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isCircleCIAvailable}>\n      <EntityCircleCIContent />\n    </EntitySwitch.Case>\n```\n\n4. Add proxy config:\n\n```yaml\n# In app-config.yaml\nproxy:\n  '/circleci/api':\n    target: https://circleci.com/api/v1.1\n    headers:\n      Circle-Token: ${CIRCLECI_AUTH_TOKEN}\n  '/circleci/private':\n      target: https://circleci.com/api/private\n      headers:\n        Circle-Token: ${CIRCLECI_AUTH_TOKEN}\n```\n\n5. Get and provide a `CIRCLECI_AUTH_TOKEN` as an environment variable (see the [CircleCI docs](https://circleci.com/docs/api/#add-an-api-token)).\n6. Add an annotation to your respective `catalog-info.yaml` files, with the format `circleci.com/project-slug: <git-provider>/<owner>/<project>` (See reference in [ADR002](https://backstage.io/docs/architecture-decisions/adrs-adr002#format)).\n\n```yaml\n# Example catalog-info.yaml entity definition file\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    # This also supports bitbucket/xxx/yyy\n    circleci.com/project-slug: github/my-org/my-repo\nspec:\n  type: service\n  # ...\n```\n\n## Features\n\n- List top 50 builds for a project\n- Dive into one build to see logs\n- Polling (logs only)\n- Retry builds\n- Works for both project and personal tokens\n- Pagination for builds\n\n## Limitations\n\n- CircleCI has pretty strict rate limits per token, be careful with opened tabs\n- CircleCI doesn't provide a way to auth by 3rd party (e.g. GitHub) token, nor by calling their OAuth endpoints, which currently stands in the way of better auth integration with Backstage (reference [feature request](https://ideas.circleci.com/api-feature-requests/p/allow-circleci-api-calls-using-github-auth) and [discussion topic](https://discuss.circleci.com/t/circleci-api-authorization-with-github-token/5356))\n\n## Release Notes\n\n### v0.1.1\n\n- Update README.md's screenshots and assets path.\n\n### v0.1.0\n\n- New release under CircleCI\n- Please watch out for new updates in the coming weeks\n\n\n### v0.1.4\n\n- Revert changes that removed build preview functionality\n- Fix issue with calling CircleCI API protected by CORS by adding a proxy and replacing calls to CircleCI API with calls to the proxy\n",
+  "repository": "https://github.com/CircleCI-Public/backstage-plugin/tree/HEAD/plugins/circleci",
+  "role": "frontend-plugin",
+  "scope": "@piotr.pasich",
+  "updated": "2024-11-25T09:18:12.620Z",
+  "version": "0.1.5",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-11-25T09:18:12.620Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-11-25T08:55:29.468Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-11-25T08:49:54.392Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-11-25T08:27:54.462Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-11-25T08:26:04.082Z",
+      "version": "0.1.1"
+    }
+  ]
+}

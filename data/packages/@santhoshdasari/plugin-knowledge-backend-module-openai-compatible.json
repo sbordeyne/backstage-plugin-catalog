@@ -1,0 +1,36 @@
+{
+  "author": "D S Santhosh",
+  "created": "2026-09-08T17:29:13.440Z",
+  "deprecated": "",
+  "description": "OpenAI-compatible embeddings and chat for Backstage RAG. Works with OpenAI, Ollama, Gemini and any compatible endpoint.",
+  "homepage": "https://github.com/santhoshdasari786/developer-portal#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "embeddings",
+    "gemini",
+    "knowledge",
+    "ollama",
+    "openai",
+    "rag"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "santhoshdasari"
+  ],
+  "name": "@santhoshdasari/plugin-knowledge-backend-module-openai-compatible",
+  "plugin_id": "knowledge",
+  "readme": "",
+  "repository": "https://github.com/santhoshdasari786/developer-portal/tree/HEAD/plugins/knowledge-backend-module-openai-compatible",
+  "role": "backend-plugin-module",
+  "scope": "@santhoshdasari",
+  "updated": "2026-09-08T17:29:13.779Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-09-08T17:29:13.779Z",
+      "version": "0.1.0"
+    }
+  ]
+}

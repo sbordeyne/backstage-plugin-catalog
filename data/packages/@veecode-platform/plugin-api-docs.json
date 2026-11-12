@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2023-06-13T20:04:06.724Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that helps represent API entities in the frontend",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/plugin-api-docs",
+  "plugin_id": "api-docs",
+  "readme": "# API Documentation\n\n> Disclaimer:\n> If you are looking for documentation on the experimental new frontend system support, please go [here](./README-alpha.md).\n\nThis is an extension for the catalog plugin that provides components to discover and display API entities.\nAPIs define the interface between components, see the [system model](https://backstage.io/docs/features/software-catalog/system-model) for details.\nThey are defined in machine readable formats and provide a human readable documentation.\n\nThe plugin provides a standalone list of APIs, as well as an integration into the API tab of a catalog entity.\n\n![Standalone API list](./docs/api_list.png)\n![OpenAPI Definition](./docs/openapi_definition.png)\n![Integration into components](./docs/entity_tab_api.png)\n\nRight now, the following API formats are supported:\n\n- [OpenAPI](https://swagger.io/specification/) 2 & 3\n- [AsyncAPI](https://www.asyncapi.com/docs/reference/specification/latest) 2 & 3\n- [GraphQL](https://graphql.org/learn/schema/)\n\nOther formats are displayed as plain text, but this can easily be extended.\n\nTo fill the catalog with APIs, [provide entities of kind API](https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api).\nTo link that a component provides or consumes an API, see the [`providesApis`](https://backstage.io/docs/features/software-catalog/descriptor-format#specprovidesapis-optional) and [`consumesApis`](https://backstage.io/docs/features/software-catalog/descriptor-format#specconsumesapis-optional) properties on the Component kind.\n\n## Getting Started\n\n> The plugin is already added when using `npx @backstage/create-app` so you can skip these steps.\n\n1. Install the API docs plugin\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @backstage/plugin-api-docs\n```\n\n2. Add the `ApiExplorerPage` extension to the app:\n\n```tsx\n// In packages/app/src/App.tsx\n\nimport { ApiExplorerPage } from '@backstage/plugin-api-docs';\n\n<Route path=\"/api-docs\" element={<ApiExplorerPage />} />;\n```\n\n3. Add one of the provided widgets to the EntityPage:\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport {\n  EntityAboutCard,\n  EntityApiDefinitionCard,\n  EntityConsumingComponentsCard,\n  EntityProvidingComponentsCard,\n} from '@backstage/plugin-api-docs';\n\nconst apiPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <Grid container spacing={3}>\n        <Grid item xs={12} md={6}>\n          <EntityAboutCard />\n        </Grid>\n        <Grid container>\n          <Grid item md={12}>\n            <Grid item xs={12} md={6}>\n              <EntityProvidingComponentsCard />\n            </Grid>\n            <Grid item xs={12} md={6}>\n              <EntityConsumingComponentsCard />\n            </Grid>\n          </Grid>\n        </Grid>\n      </Grid>\n    </EntityLayout.Route>\n\n    <EntityLayout.Route path=\"/definition\" title=\"Definition\">\n      <Grid container spacing={3}>\n        <Grid item xs={12}>\n          <EntityApiDefinitionCard />\n        </Grid>\n      </Grid>\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n\n// ...\n\nexport const entityPage = (\n  <EntitySwitch>\n    // ...\n    <EntitySwitch.Case if={isKind('api')} children={apiPage} />\n    // ...\n  </EntitySwitch>\n);\n```\n\nThere are other components to discover in [`./src/components`](./src/components) that are also added by the default app.\n\n## Customizations\n\n### Custom API Renderings\n\nYou can add support for additional API types by providing a custom implementation for the `apiDocsConfigRef`.\nYou can also use this to override the rendering of one of the already supported types.\n\nThis is an example with a made-up renderer for SQL schemas:\n\n```tsx\n// packages/app/src/apis.tsx\n\nimport { ApiEntity } from '@backstage/catalog-model';\nimport {\n  ApiDefinitionWidget,\n  apiDocsConfigRef,\n  defaultDefinitionWidgets,\n} from '@backstage/plugin-api-docs';\nimport { SqlRenderer } from '...';\n\n// ...\n\nexport const apis: AnyApiFactory[] = [\n  // ...\n\n  createApiFactory({\n    api: apiDocsConfigRef,\n    deps: {},\n    factory: () => {\n      // load the default widgets\n      const definitionWidgets = defaultDefinitionWidgets();\n      return {\n        getApiDefinitionWidget: (apiEntity: ApiEntity) => {\n          // custom rendering for sql\n          if (apiEntity.spec.type === 'sql') {\n            return {\n              type: 'sql',\n              title: 'SQL',\n              component: definition => <SqlRenderer definition={definition} />,\n            } as ApiDefinitionWidget;\n          }\n\n          // fallback to the defaults\n          return definitionWidgets.find(d => d.type === apiEntity.spec.type);\n        },\n      };\n    },\n  }),\n];\n```\n\n### Implementing OAuth 2 Authorization Code flow with Swagger UI\n\n#### Adding `oauth2-redirect.html` to support OAuth2 `redirect_uri` route\n\nThe Swagger UI package by expects to have a route to `/oauth2-redirect.html` which processes\nthe redirect callback for the OAuth2 Authorization Code flow, however, this file is not installed\nby this plugin.\n\nGrab a copy of [`oauth2-redirect.html`](https://github.com/swagger-api/swagger-ui/blob/master/dist/oauth2-redirect.html)\nand put it in the `app/public/` directory in order to enable Swagger UI to complete this redirection.\n\nThis also may require you to adjust `Content Security Policy` header settings of your Backstage application, so that the script in `oauth2-redirect.html` can be executed. Since the script is static we can add the hash of it directly to our CSP policy, which we do by adding the following to the `csp` section of the app configuration:\n\n```yaml\nscript-src:\n  - \"'self'\"\n  - \"'unsafe-eval'\" # this is required for scaffolder usage, and ajv validation.\n  - \"'sha256-GeDavzSZ8O71Jggf/pQkKbt52dfZkrdNMQ3e+Ox+AkI='\" # oauth2-redirect.html\n```\n\n#### Configuring your OAuth2 Client\n\nYou'll need to make sure your OAuth2 client has been registered in your OAuth2 Authentication Server (AS)\nwith the appropriate `redirect_uris`, `scopes` and `grant_types`. For example, if your AS supports\nthe [OAuth 2.0 Dynamic Client Registration Protocol](https://tools.ietf.org/html/rfc7591), an example\nPOST request body would look like this:\n\n```json\n{\n    \"client_name\": \"Example Backstage api-docs plugin Swagger UI Client\",\n    \"redirect_uris\": [\n        \"https://www.getpostman.com/oauth2/callback\",\n        \"http://localhost:3000/oauth2-redirect.html\"\n        \"https://<yourhost>/oauth2-redirect.html\"\n    ],\n    \"scope\": \"read_pets write_pets\",\n    \"grant_types\": [\n        \"authorization_code\"\n    ]\n}\n```\n\nThe above `redirect_uris` are:\n\n- [Postman](https://www.postman.com/) testing: `https://www.getpostman.com/oauth2/callback`\n- Local Backstage app development: `http://localhost:3000/oauth2-redirect.html`\n- Backstage app production: `https://<yourhost>/oauth2-redirect.html`\n\n#### Configuring OAuth2 in your OpenAPI 3.0 schema\n\nTo configure [OAuth 2 Authorization Code](https://swagger.io/docs/specification/authentication/oauth2/) flow\nin your OpenAPI 3.0 schema you'll need something like this snippet:\n\n```yaml\ncomponents:\n  securitySchemes:\n    oauth:\n      type: oauth2\n      description: OAuth2 service\n      flows:\n        authorizationCode:\n          authorizationUrl: https://api.example.com/oauth2/authorize\n          tokenUrl: https://api.example.com/oauth2/token\n          scopes:\n            read_pets: read your pets\n            write_pets: modify pets in your account\nsecurity:\n  oauth:\n    - [read_pets, write_pets]\n```\n\n### Adding `requestInterceptor` to Swagger UI\n\nTo configure a [`requestInterceptor` for Swagger UI](https://github.com/swagger-api/swagger-ui/tree/master/flavors/swagger-ui-react#requestinterceptor-proptypesfunc) you'll need to add the following to your `api.tsx`:\n\n```tsx\n...\nimport { OpenApiDefinitionWidget, apiDocsConfigRef, defaultDefinitionWidgets } from '@backstage/plugin-api-docs';\nimport { ApiEntity } from '@backstage/catalog-model';\n\nexport const apis: AnyApiFactory[] = [\n...\ncreateApiFactory({\n    api: apiDocsConfigRef,\n    deps: {},\n    factory: () => {\n      // Overriding openapi definition widget to add header\n      const requestInterceptor = (req: any) => {\n        req.headers.append('myheader', 'wombats');\n        return req;\n      };\n      const definitionWidgets = defaultDefinitionWidgets().map(obj => {\n        if (obj.type === 'openapi') {\n          return {\n            ...obj,\n            component: (definition) => <OpenApiDefinitionWidget definition={definition} requestInterceptor={requestInterceptor} />,\n          }\n        }\n        return obj;\n      });\n\n      return {\n        getApiDefinitionWidget: (apiEntity: ApiEntity) => {\n          return definitionWidgets.find(d => d.type === apiEntity.spec.type);\n        },\n      };\n    },\n  })\n```\n\nIn the same way as the `requestInterceptor` you can override any property of Swagger UI\n\n### Provide Specific Supported Methods to Swagger UI\n\nThis can be done through utilising the\n[supportedSubmitMethods prop](https://github.com/swagger-api/swagger-ui/tree/master/flavors/swagger-ui-react#supportedsubmitmethods-proptypesarrayofproptypesoneofget-put-post-delete-options-head-patch-trace).\nIf you wish to limit the HTTP methods available for the `Try It Out` feature of an OpenAPI API\ncomponent, you will need to add the following to your `api.tsx`, listing the permitted methods for\nyour API in the `supportedSubmitMethods` parameter:\n\n```tsx\n...\nimport {\n  OpenApiDefinitionWidget,\n  apiDocsConfigRef,\n  defaultDefinitionWidgets,\n} from '@backstage/plugin-api-docs';\nimport { ApiEntity } from '@backstage/catalog-model';\n\nexport const apis: AnyApiFactory[] = [\n...\n  createApiFactory({\n    api: apiDocsConfigRef,\n    deps: {},\n    factory: () => {\n      const supportedSubmitMethods = ['get', 'post', 'put', 'delete'];\n      const definitionWidgets = defaultDefinitionWidgets().map(obj => {\n        if (obj.type === 'openapi') {\n          return {\n            ...obj,\n            component: definition => (\n              <OpenApiDefinitionWidget\n                definition={definition}\n                supportedSubmitMethods={supportedSubmitMethods}\n              />\n            ),\n          };\n        }\n        return obj;\n      });\n\n      return {\n        getApiDefinitionWidget: (apiEntity: ApiEntity) => {\n          return definitionWidgets.find(d => d.type === apiEntity.spec.type);\n        }\n      };\n    }\n  })\n]\n\n```\n\nN.B. if you wish to disable the `Try It Out` feature for your API, you can provide an empty list to\nthe `supportedSubmitMethods` parameter.\n\n### Custom Resolvers for AsyncApi\n\nYou can override the default http/https resolvers, for example to add authentication to requests to internal schema registries by providing the `resolvers` prop to the `AsyncApiDefinitionWidget`. This is an example:\n\n```tsx\n...\nimport {\n  AsyncApiDefinitionWidget,\n  apiDocsConfigRef,\n  defaultDefinitionWidgets,\n} from '@backstage/plugin-api-docs';\nimport { ApiEntity } from '@backstage/catalog-model';\n\nexport const apis: AnyApiFactory[] = [\n...\n  createApiFactory({\n    api: apiDocsConfigRef,\n    deps: {},\n    factory: () => {\n      const myCustomResolver = {\n        schema: 'https',\n        order: 1,\n        canRead: true,\n        async read(uri: any) {\n          const response = await fetch(request, {\n            headers: {\n              X-Custom: 'Custom',\n            },\n          });\n          return response.text();\n        },\n      };\n\n      const definitionWidgets = defaultDefinitionWidgets().map(obj => {\n        if (obj.type === 'asyncapi') {\n          return {\n            ...obj,\n            component: (definition) => (\n              <AsyncApiDefinitionWidget definition={definition} resolvers={[myCustomResolver]} />\n            ),\n          };\n        }\n        return obj;\n      });\n\n      return {\n        getApiDefinitionWidget: (apiEntity: ApiEntity) => {\n          return definitionWidgets.find(d => d.type === apiEntity.spec.type);\n        },\n      };\n    }\n  })\n]\n```\n\n### Pagination\n\nYou can add pagination support to `ApiExplorerPage` extension.\n\nThis is an example:\n\n```tsx\n// In packages/app/src/App.tsx\n\nimport { ApiExplorerPage } from '@backstage/plugin-api-docs';\n\n<Route\n  path=\"/api-docs\"\n  element={<ApiExplorerPage pagination={{ mode: 'offset', limit: 20 }} />}\n/>;\n```\n\n## Links\n\n- [The Backstage homepage](https://backstage.io)\n",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/api-docs",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2024-11-08T15:21:41.328Z",
+  "version": "0.11.12-next.1",
+  "version_count": 42,
+  "versions": [
+    {
+      "date": "2024-11-08T15:21:41.328Z",
+      "version": "0.11.12-next.1"
+    },
+    {
+      "date": "2024-04-02T18:17:04.089Z",
+      "version": "0.11.4"
+    },
+    {
+      "date": "2024-03-07T20:23:29.695Z",
+      "version": "0.11.3"
+    },
+    {
+      "date": "2024-03-04T11:01:22.390Z",
+      "version": "0.11.2"
+    },
+    {
+      "date": "2023-12-29T14:57:24.963Z",
+      "version": "0.10.11"
+    },
+    {
+      "date": "2023-12-28T19:46:09.615Z",
+      "version": "0.10.10"
+    },
+    {
+      "date": "2023-12-28T19:17:04.680Z",
+      "version": "0.10.9"
+    },
+    {
+      "date": "2023-12-28T18:16:05.832Z",
+      "version": "0.10.8"
+    },
+    {
+      "date": "2023-12-28T17:22:19.226Z",
+      "version": "0.10.7"
+    },
+    {
+      "date": "2023-12-08T12:24:08.935Z",
+      "version": "0.10.6"
+    },
+    {
+      "date": "2023-12-05T20:42:20.548Z",
+      "version": "0.10.5"
+    },
+    {
+      "date": "2023-12-01T14:18:12.022Z",
+      "version": "0.10.4"
+    },
+    {
+      "date": "2023-12-01T13:45:19.550Z",
+      "version": "0.10.3"
+    },
+    {
+      "date": "2023-11-29T19:19:40.942Z",
+      "version": "0.9.28"
+    },
+    {
+      "date": "2023-11-23T18:20:33.790Z",
+      "version": "0.9.27"
+    }
+  ]
+}

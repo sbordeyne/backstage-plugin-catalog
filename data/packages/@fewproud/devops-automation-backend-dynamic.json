@@ -1,0 +1,55 @@
+{
+  "author": "",
+  "created": "2024-10-03T05:24:02.187Z",
+  "deprecated": "",
+  "description": "Welcome to the ibm-devops-automation-backend backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fewproud"
+  ],
+  "name": "@fewproud/devops-automation-backend-dynamic",
+  "plugin_id": "devops-automation-backend",
+  "readme": "# ibm-devops-automation-backend\n\nWelcome to the ibm-devops-automation-backend backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/ibm-devops-automation-backend/health](http://localhost:7007/api/ibm-devops-automation-backend/health).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@fewproud",
+  "updated": "2024-11-18T00:52:22.374Z",
+  "version": "0.1.12",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2024-11-18T00:52:22.374Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2024-11-12T07:47:04.066Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2024-11-12T04:33:33.611Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2024-11-12T03:27:32.002Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2024-10-31T12:18:43.223Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2024-10-31T00:07:42.562Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2024-10-17T00:56:27.740Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2024-10-03T05:24:02.638Z",
+      "version": "0.1.5"
+    }
+  ]
+}

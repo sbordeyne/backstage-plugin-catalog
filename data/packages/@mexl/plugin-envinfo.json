@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-05-01T10:46:30.128Z",
+  "deprecated": "",
+  "description": "Welcome to the envinfo plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mexl"
+  ],
+  "name": "@mexl/plugin-envinfo",
+  "plugin_id": "",
+  "readme": "# envinfo\n\nWelcome to the envinfo plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nPrerquisite : This requires https://www.npmjs.com/package/@mexl/plugin-envinfo-backend working before you implement envinfo\n\nWhen you're working with multiple backstage environments, it can be challenging to differentiate between non-production environments, especially in the world of cloud deployment. However, there is a plugin that can help with this problem. This plugin constantly displays the current environment, so if real users are using a demo or sandbox environment, they have a clear understanding of the environment they are using. Additionally, it helps developers by displaying the current version deployed in each environment at all times. This can be incredibly useful for keeping track of changes and ensuring that everyone is on the same page when it comes to the environment they are working in.\n\nFollowing is an example how it looks\n![state](./asset/state.png)\n\n\nAlso if you click on the envinfo bar this comes up with more information which can be configured in app-config.yaml, refer to plugin-envinfo-backend\n\n![dialog](./assets/dialog.png)\n\n## Add dependency to App.tsx\n\n```javascript\nimport { SystemInfo } from '@mexl/plugin-envinfo';\n```\n\n\n## Add app route in root for this to be visible on backstage page\n\n```javascript\n<AppRouter>\n      <Root>\n      <SystemInfo />\n        {routes}\n      </Root>\n</AppRouter>\n```\n\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@mexl",
+  "updated": "2024-05-01T10:48:51.188Z",
+  "version": "0.2.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-05-01T10:48:51.188Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-05-01T10:46:30.343Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "author": "Red Hat",
+  "created": "2024-12-11T14:53:35.712Z",
+  "deprecated": "",
+  "description": "This plugin seamlessly integrates with the [Backstage permission framework](https://backstage.io/docs/permissions/overview/) to empower you with robust role-based access control capabilities within your Backstage environment.",
+  "homepage": "https://github.com/AndrienkoAleksandr/community-plugins#readme",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "oandriie"
+  ],
+  "name": "@oandriie/plugin-rbac-backend",
+  "plugin_id": "rbac",
+  "readme": "# RBAC backend plugin for Backstage\n\nThis plugin seamlessly integrates with the [Backstage permission framework](https://backstage.io/docs/permissions/overview/) to empower you with robust role-based access control capabilities within your Backstage environment.\n\nThe Backstage permission framework is a core component of the Backstage project, designed to provide meticulous control over resource and action access. Our RBAC plugin harnesses the power of this framework, allowing you to tailor access permissions without the need for coding. Instead, you can effortlessly manage your access policies through User interface embedded within Backstage or via the configuration files.\n\nWith the RBAC plugin, you'll have the means to efficiently administer permissions within your Backstage instance by assigning them to users and groups.\n\n## Prerequisites\n\nBefore you dive into utilizing the RBAC plugin for Backstage, there are a few essential prerequisites to ensure a seamless experience. Please review the following requirements to make sure your environment is properly set up\n\n### Setup Permission Framework\n\n**NOTE**: This section is only relevant if you are still on the old backend system.\n\nTo effectively utilize the RBAC plugin, you must have the Backstage permission framework in place. If you're using the Red Hat Developer Hub, some of these steps may have already been completed for you. However, for other Backstage application instances, please verify that the following prerequisites are satisfied:\n\nYou need to [set up the permission framework in Backstage](https://backstage.io/docs/permissions/getting-started/).Since this plugin provides a dynamic policy that replaces the traditional one, there's no need to create a policy manually. Please note that one of the requirements for permission framework is enabling the [service-to-service authentication](https://backstage.io/docs/auth/service-to-service-auth/#setup). Ensure that you complete these authentication setup steps as well.\n\n### Identity resolver\n\nThe permission framework, and consequently, this RBAC plugin, rely on the concept of group membership. To ensure smooth operation, please follow the [Sign-in identities and resolvers](https://backstage.io/docs/auth/identity-resolver/) documentation. It's crucial that when populating groups, you include any groups that you plan to assign permissions to.\n\n## Installation\n\nTo integrate the RBAC plugin into your Backstage instance, follow these steps.\n\n### Installing the plugin\n\nAdd the RBAC plugin packages as dependencies by running the following command.\n\n```SHELL\nyarn workspace backend add @backstage-community/plugin-rbac-backend\n```\n\n**NOTE**: If you are using Red Hat Developer Hub, backend plugin is pre-installed and you do not need this step.\n\n### Configuring the Backend\n\n#### New Backend System\n\nThe RBAC plugin supports the integration with the new backend system.\n\nAdd the RBAC plugin to the `packages/backend/src/index.ts` file and remove the Allow All Permission policy module.\n\n```diff\n// permission plugin\nbackend.add(import('@backstage/plugin-permission-backend'));\n- backend.add(\n-    import('@backstage/plugin-permission-backend-module-allow-all-policy'),\n-  );\n+ backend.add(import('@backstage-community/plugin-rbac-backend'));\n```\n\n### Configure policy admins\n\nThe RBAC plugin empowers you to manage permission policies for users and groups with a designated group of individuals known as policy administrators. These administrators are granted access to the RBAC plugin's REST API and user interface as well as the ability to read from the catalog.\n\nYou can specify the policy administrators in your application configuration as follows:\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    admin:\n      users:\n        - name: user:default/alice\n        - name: group:default/admins\n```\n\nThe RBAC plugin also enables you to grant users the title of 'super user,' which provides them with unrestricted access throughout the Backstage instance.\n\nYou can specify the super users in your application configuration as follows:\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    admin:\n      superUsers:\n        - name: user:default/alice\n        - name: user:default/mike\n```\n\nFor more information on the available API endpoints accessible to the policy administrators, refer to the [API documentation](./docs/apis.md).\n\n### Configure default role\n\nYou can optionally assign a default role to all authenticated users by using `defaultPermissions.defaultRole`.\nThis ensures that every authenticated user receives the specified role in addition to any other roles they may have.\nYou can also define baseline permissions for that role using `defaultPermissions.basicPermissions`.\nThis is especially useful when using [Sign-In without Users in the Catalog](https://backstage.io/docs/auth/identity-resolver/#sign-in-without-users-in-the-catalog).\n\n```YAML\npermission:\n  rbac:\n    defaultPermissions:\n      defaultRole: role:default/my-default-role\n      basicPermissions:\n        - permission: catalog.entity.read\n          action: read\n          effect: allow\n        - permission: catalog-entity\n          action: read\n        - permission: catalog.entity.create\n          action: create\n```\n\nIf configured, the RBAC backend will automatically include the default role in each authenticated user's roles and evaluate the configured `basicPermissions` for that role.\nWhen `defaultPermissions.defaultRole` is set, `defaultPermissions.basicPermissions` must contain at least one permission entry.\n\n### Configure plugins with permission\n\nIn order for the RBAC UI to display the available permissions provided by installed plugins, you must supply the corresponding list of plugin IDs. There are two ways to achieve this:\n\n- Application configuration(`app-config.yaml`)\n- REST API\n\n#### Configure plugins with Application configuration\n\nYou can specify the plugins with permissions in your application configuration as follows:\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    pluginsWithPermission:\n      - catalog\n      - scaffolder\n      - permission\n    admin:\n      users:\n        - name: user:default/alice\n        - name: group:default/admins\n```\n\n#### Configure plugins with REST API\n\nYou can specify the plugins with permissions using the corresponding [REST API](./docs/apis.md#plugin-ids-that-support-the-backstage-permission-framework).\n\nCurl Examples:\n\nGet the object containing the list of plugin IDs:\n\n```\ncurl -X GET \"http://localhost:7007/api/permission/plugins/id\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $token\" -v\n```\n\nAdd more plugin IDs:\n\n```\ncurl -X POST \"http://localhost:7007/api/permission/plugins/id\" \\\n  -d '{ \"ids\": [ \"permission\", \"scaffolder\" ] }' \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $token\" -v\n```\n\nRemove plugin IDs:\n\n```\ncurl -X DELETE \"http://localhost:7007/api/permission/plugins/id\" \\\n  -d '{ \"ids\": [ \"permission\", \"scaffolder\" ] }' \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $token\" -v\n```\n\nNotice: The REST API does not allow deletion of plugin IDs that were provided via application configuration, in order to prevent an inconsistent state after a deployment restart. These ID values can only be removed through the configuration file.\n\nFor more information on the available permissions, refer to the [RBAC permissions documentation](./docs/permissions.md).\n\n### Configuring policies via file\n\nThe RBAC plugin also allows you to import policies from an external file. These policies are defined in the [Casbin rules format](https://casbin.org/docs/category/the-basics), known for its simplicity and clarity. For a quick start, please refer to the format details in the provided link.\n\nHere's an example of an external permission policies configuration file named `rbac-policy.csv`:\n\n```CSV\np, role:default/team_a, catalog-entity, read, deny\np, role:default/team_b, catalog.entity.create, create, deny\n\ng, user:default/bob, role:default/team_a\n\ng, group:default/team_b, role:default/team_b\n```\n\n---\n\n**NOTE**: When you add a role in the permission policies configuration file, ensure that the role is associated with at least one permission policy with the `allow` effect.\n\n---\n\nYou can specify the path to this configuration file in your application configuration:\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    policies-csv-file: /some/path/rbac-policy.csv\n```\n\nAlso, there is an additional configuration value that allows for the reloading of the CSV file without the need to restart.\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    policies-csv-file: /some/path/rbac-policy.csv\n    policyFileReload: true\n```\n\nFor more information on the available permissions, refer to the [RBAC permissions documentation](./docs/permissions.md).\n\nWe also have a fairly strict validation for permission policies and roles based on the originating role's source information, refer to the [api documentation](./docs/apis.md).\n\n### Configuring conditional policies via file\n\nThe RBAC plugin allows you to import conditional policies from an external file. User can defined conditional policies for roles created with the help of the policies-csv-file. Conditional policies should be defined as object sequences in the YAML format.\n\nYou can specify the path to this configuration file in your application configuration:\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    conditionalPoliciesFile: /some/path/conditional-policies.yaml\n    policies-csv-file: /some/path/rbac-policy.csv\n```\n\nAlso, there is an additional configuration value that allows for the reloading of the file without the need to restart.\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    conditionalPoliciesFile: /some/path/conditional-policies.yaml\n    policies-csv-file: /some/path/rbac-policy.csv\n    policyFileReload: true\n```\n\nThis feature supports nested conditional policies.\n\nExample of the conditional policies file:\n\n```yaml\n---\nresult: CONDITIONAL\nroleEntityRef: role:default/test\npluginId: catalog\nresourceType: catalog-entity\npermissionMapping:\n  - read\n  - update\nconditions:\n  rule: IS_ENTITY_OWNER\n  resourceType: catalog-entity\n  params:\n    claims:\n      - group:default/team-a\n      - group:default/team-b\n---\nresult: CONDITIONAL\nroleEntityRef: role:default/test\npluginId: catalog\nresourceType: catalog-entity\npermissionMapping:\n  - delete\nconditions:\n  rule: IS_ENTITY_OWNER\n  resourceType: catalog-entity\n  params:\n    claims:\n      - group:default/team-a\n```\n\nInformation about condition policies format you can find in the doc: [Conditional policies documentation](./docs/conditions.md). There is only one difference: yaml format compare to json. But yaml and json are back convertiable.\n\n### Configuring Database Storage for policies\n\nThe RBAC plugin offers the option to store policies in a database. It supports two database storage options:\n\n- sqlite3: Suitable for development environments.\n- postgres: Recommended for production environments.\n\nEnsure that you have already configured the database backend for your Backstage instance, as the RBAC plugin utilizes the same database configuration.\n\n### Optional maximum depth\n\nThe RBAC plugin also includes an option max depth feature for organizations with potentially complex group hierarchy, this configuration value will ensure that the RBAC plugin will stop at a certain depth when building user graphs.\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    maxDepth: 1\n```\n\nThe maxDepth must be greater than 0 to ensure that the graphs are built correctly. Also the graph will be built with a hierarchy of 1 + maxDepth.\n\nMore information about group hierarchy can be found in the doc: [Group hierarchy](./docs/group-hierarchy.md).\n\n### Optional RBAC provider module support\n\nWe also include the ability to create and load in RBAC backend plugin modules that can be used to make connections to third part access management tools. For more information, consult the [RBAC Providers documentation](./docs/providers.md).\n\n### Optional configuration to control policy decision precedence\n\nControls the evaluation order between permission policies (basic) and conditional policies for resource permissions.\n\n- Default: `conditional` (conditional policies take precedence when present)\n- Set to `basic` to evaluate basic permission policy first\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    policyDecisionPrecedence: basic # or conditional\n```\n",
+  "repository": "https://github.com/AndrienkoAleksandr/community-plugins/tree/HEAD/workspaces/rbac/plugins/rbac-backend",
+  "role": "backend-plugin",
+  "scope": "@oandriie",
+  "updated": "2026-02-16T12:11:41.401Z",
+  "version": "7.8.2",
+  "version_count": 19,
+  "versions": [
+    {
+      "date": "2026-02-16T12:11:41.401Z",
+      "version": "7.8.2"
+    },
+    {
+      "date": "2026-02-16T12:06:29.321Z",
+      "version": "7.8.1"
+    },
+    {
+      "date": "2026-02-16T09:23:55.594Z",
+      "version": "7.8.0"
+    },
+    {
+      "date": "2025-02-20T00:56:32.214Z",
+      "version": "6.2.13"
+    },
+    {
+      "date": "2025-02-19T10:22:34.451Z",
+      "version": "6.2.12"
+    },
+    {
+      "date": "2025-02-17T15:26:41.544Z",
+      "version": "6.2.11"
+    },
+    {
+      "date": "2025-02-17T13:57:40.623Z",
+      "version": "6.2.10"
+    },
+    {
+      "date": "2025-02-13T15:17:11.390Z",
+      "version": "6.2.9"
+    },
+    {
+      "date": "2025-02-13T14:12:18.262Z",
+      "version": "6.2.8"
+    },
+    {
+      "date": "2025-02-13T10:56:41.838Z",
+      "version": "6.2.7"
+    },
+    {
+      "date": "2025-01-27T23:16:09.837Z",
+      "version": "6.2.6"
+    },
+    {
+      "date": "2025-01-27T20:34:17.883Z",
+      "version": "6.2.5"
+    },
+    {
+      "date": "2025-01-27T20:23:41.702Z",
+      "version": "6.2.3"
+    },
+    {
+      "date": "2025-01-27T20:15:35.611Z",
+      "version": "6.2.2"
+    },
+    {
+      "date": "2025-01-27T18:12:20.442Z",
+      "version": "6.2.1"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-02-22T14:00:00.919Z",
+  "deprecated": "",
+  "description": "The datadog backend module for the soundcheck plugin.",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-soundcheck-backend-module-datadog",
+  "plugin_id": "soundcheck",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2026-10-23T12:28:41.158Z",
+  "version": "0.7.2",
+  "version_count": 41,
+  "versions": [
+    {
+      "date": "2026-10-23T12:28:41.158Z",
+      "version": "0.7.2"
+    },
+    {
+      "date": "2026-09-17T14:11:40.289Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2026-08-20T15:31:25.845Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-07-17T16:16:34.420Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2026-06-19T07:26:10.155Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2026-05-26T11:51:55.466Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-04-17T09:03:56.610Z",
+      "version": "0.5.19"
+    },
+    {
+      "date": "2026-03-19T22:28:34.169Z",
+      "version": "0.5.18"
+    },
+    {
+      "date": "2026-02-19T17:00:33.173Z",
+      "version": "0.5.17"
+    },
+    {
+      "date": "2026-01-22T15:50:16.722Z",
+      "version": "0.5.16"
+    },
+    {
+      "date": "2025-12-19T12:53:58.212Z",
+      "version": "0.5.15"
+    },
+    {
+      "date": "2025-11-21T18:05:53.074Z",
+      "version": "0.5.14"
+    },
+    {
+      "date": "2025-10-17T16:14:05.877Z",
+      "version": "0.5.13"
+    },
+    {
+      "date": "2025-08-22T11:48:46.847Z",
+      "version": "0.5.12"
+    },
+    {
+      "date": "2025-07-17T09:05:39.331Z",
+      "version": "0.5.11"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "author": "ArchHypo",
+  "created": "2026-02-19T02:02:39.318Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin for HypoStage: REST API, database migrations, and hypothesis services.",
+  "homepage": "https://github.com/ArchHypo/hypo-stage#readme",
+  "keywords": [
+    "archhypo",
+    "architecture",
+    "backend-plugin",
+    "backstage",
+    "backstage-plugin",
+    "express",
+    "hypothesis"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "zeevolution"
+  ],
+  "name": "@archhypo/plugin-hypo-stage-backend",
+  "plugin_id": "hypo-stage",
+  "readme": "# HypoStage Backend Plugin\n\nBackend plugin for [HypoStage](https://github.com/ArchHypo/hypo-stage): REST API, database, and services for architectural hypothesis management in [Backstage](https://backstage.io).\n\n**Package:** `@archhypo/plugin-hypo-stage-backend`\n\n> **Important:** The frontend package `@archhypo/plugin-hypo-stage` must be installed in the same Backstage app to use this backend.\n\n---\n\n## Features\n\n- **HypothesisService** — CRUD for hypotheses and technical planning; uncertainty/impact changes are tied to technical planning actions with dedicated event types (`TECHNICAL_PLANNING_CREATE`, `TECHNICAL_PLANNING_UPDATE`)\n- **REST API** — Full API for the frontend\n- **Database** — Knex migrations; PostgreSQL or SQLite; `hypothesisEvents` tracks evolution with optional `technicalPlanningId` FK\n- **Catalog integration** — Entity refs and team filtering\n\n---\n\n## Compatibility\n\n- **Backstage:** v1.16.0+\n- **Node.js:** 20+\n\n---\n\n## Installation\n\n### 1. Install packages\n\nFrom your Backstage app root:\n\n```bash\nyarn --cwd packages/app add @archhypo/plugin-hypo-stage\nyarn --cwd packages/backend add @archhypo/plugin-hypo-stage-backend\n```\n\n### 2. Register the backend plugin\n\nIn `packages/backend/src/index.ts`:\n\n```ts\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n// ... other plugins ...\nbackend.add(import('@archhypo/plugin-hypo-stage-backend'));\nbackend.start();\n```\n\n### 3. Configure the database\n\nThe plugin uses Backstage's database. Add to `app-config.yaml`:\n\n**PostgreSQL (recommended):**\n\n```yaml\nbackend:\n  database:\n    client: pg\n    connection:\n      host: ${POSTGRES_HOST}\n      port: ${POSTGRES_PORT}\n      user: ${POSTGRES_USER}\n      password: ${POSTGRES_PASSWORD}\n      database: backstage\n    plugin:\n      hypo-stage:\n        connection:\n          database: backstage_plugin_hypo_stage\n```\n\n**SQLite (dev):**\n\n```yaml\nbackend:\n  database:\n    client: better-sqlite3\n    connection: ':memory:'\n```\n\nMigrations run automatically when the backend starts. No manual step required.\n\n### 4. CORS (cross-origin requests)\n\nThe plugin **does not** hardcode allowed browser origins. When the frontend is served from a different origin than the backend (typical in local dev: app on port **3000**, backend on **7007**), set **`backend.cors`** in your Backstage **`app-config.yaml`** (or `app-config.local.yaml`). Backstage’s backend applies these settings globally.\n\nMinimal example (matches the default app template style):\n\n```yaml\nbackend:\n  cors:\n    origin: http://localhost:3000\n    methods: [GET, HEAD, PATCH, POST, PUT, DELETE]\n    credentials: true\n```\n\nFor more options (`allowedHeaders`, `OPTIONS`, multiple origins), see the [HypoStage repo `app-config.example.yaml`](https://github.com/ArchHypo/hypo-stage/blob/main/app-config.example.yaml) and [Backstage configuration docs](https://backstage.io/docs/conf/).\n\n---\n\n## REST API\n\nThe plugin mounts these routes under the Backstage backend:\n\n| Method | Path | Description |\n|--------|------|-------------|\n| `GET` | `/hypotheses` | List hypotheses (query: entityRef, team, focus) |\n| `POST` | `/hypotheses` | Create hypothesis |\n| `GET` | `/hypotheses/:id` | Get hypothesis by ID |\n| `PUT` | `/hypotheses/:id` | Update hypothesis |\n| `DELETE` | `/hypotheses/:id` | Delete hypothesis |\n| `GET` | `/hypotheses/:id/events` | Get evolution events |\n| `GET` | `/hypotheses/entity-refs` | List entity refs for autocomplete |\n| `GET` | `/hypotheses/teams` | List teams for filter |\n| `GET` | `/hypotheses/referenced-entity-refs` | Entity refs referenced by hypotheses |\n| `GET` | `/hypotheses/stats` | Aggregated stats |\n| `POST` | `/hypotheses/:id/technical_plannings` | Add technical planning item |\n| `PUT` | `/technical_plannings/:id` | Update technical planning item |\n| `DELETE` | `/technical_plannings/:id` | Delete technical planning item |\n\n---\n\n## Database\n\n### Migrations\n\nMigrations run automatically on backend startup. Located in `migrations/`:\n\n| Migration | Tables |\n|-----------|--------|\n| `20250716_000001_create_hypothesis.js` | `hypothesis` |\n| `20250827_000002_create_hypothesis_events.js` | `hypothesisEvents` (evolution history) |\n| `20250902_00003_create_technical_planning.js` | `technicalPlanning` |\n| `20260303_000004_add_technical_planning_id_to_events.js` | Adds `technicalPlanningId` FK to `hypothesisEvents` (links events to technical planning) |\n\n### Plugin-specific database\n\nFor production, use a dedicated database per plugin. Configure `backend.database.plugin.hypo-stage.connection` as shown above. The main `backend.database.connection` can point to the default Backstage DB; the plugin uses its own connection when `plugin.hypo-stage` is set.\n\n---\n\n## Frontend configuration\n\nThe frontend must be configured separately. See the [frontend package README](https://www.npmjs.com/package/@archhypo/plugin-hypo-stage) or [repository](https://github.com/ArchHypo/hypo-stage) for:\n\n- Routes and sidebar\n- API registration (`HypoStageApiRef` / `HypoStageApiClient`)\n\n---\n\n## Documentation\n\nFull documentation, Docker, standalone run, and E2E tests: [github.com/ArchHypo/hypo-stage](https://github.com/ArchHypo/hypo-stage)\n",
+  "repository": "https://github.com/ArchHypo/hypo-stage/tree/HEAD/hypo-stage-backend",
+  "role": "backend-plugin",
+  "scope": "@archhypo",
+  "updated": "2026-10-22T06:44:35.229Z",
+  "version": "1.0.1",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-10-22T06:44:35.229Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-04-12T22:32:31.684Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-02-19T02:26:33.165Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-02-19T02:16:41.747Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-02-19T02:02:39.602Z",
+      "version": "0.1.0"
+    }
+  ]
+}

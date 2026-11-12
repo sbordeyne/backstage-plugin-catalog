@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-10-07T12:32:56.247Z",
+  "deprecated": "",
+  "description": "The ingestor-github backend module for the ai-assistant plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sweetoburrito"
+  ],
+  "name": "@sweetoburrito/backstage-plugin-ai-assistant-backend-module-ingestor-github",
+  "plugin_id": "ai-assistant",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@sweetoburrito",
+  "updated": "2026-01-09T10:11:27.129Z",
+  "version": "0.4.0",
+  "version_count": 42,
+  "versions": [
+    {
+      "date": "2026-03-05T06:57:58.164Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2026-02-05T09:44:30.688Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2026-02-05T09:40:12.034Z",
+      "version": "0.0.0-snapshot-20260205093948"
+    },
+    {
+      "date": "2026-02-05T08:49:16.665Z",
+      "version": "0.0.0-snapshot-20260205084853"
+    },
+    {
+      "date": "2026-01-30T14:18:51.610Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-01-30T13:58:39.928Z",
+      "version": "0.0.0-snapshot-20260130135825"
+    },
+    {
+      "date": "2026-01-09T10:11:27.129Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-01-09T10:07:43.838Z",
+      "version": "0.0.0-snapshot-20260109100733"
+    },
+    {
+      "date": "2026-01-08T13:52:31.850Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2026-01-08T13:36:45.216Z",
+      "version": "0.0.0-snapshot-20260108133622"
+    },
+    {
+      "date": "2026-01-08T12:46:17.546Z",
+      "version": "0.0.0-snapshot-20260108124555"
+    },
+    {
+      "date": "2025-12-10T13:53:08.175Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2025-12-10T13:49:15.523Z",
+      "version": "0.0.0-snapshot-20251210134851"
+    },
+    {
+      "date": "2025-12-10T12:10:55.011Z",
+      "version": "0.0.0-snapshot-20251210121031"
+    },
+    {
+      "date": "2025-11-26T14:05:01.053Z",
+      "version": "0.3.2"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2023-10-24T07:52:01.184Z",
+  "deprecated": "",
+  "description": "This is a `Maven` actions plugin for the `scaffolder-backend` in Backstage.",
+  "homepage": "",
+  "keywords": [],
+  "license": "ISC",
+  "maintainers": [
+    "gcornacchia"
+  ],
+  "name": "@gcornacchia/backstage-plugin-scaffolder-maven-actions",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-scaffolder-git-actions package\n\nThis is a `Maven` actions plugin for the `scaffolder-backend` in Backstage.\n\nThis contains a collection of actions for using with git:\n\n- maven\n\n## Prerequisites\n- Maven must be installed in the environment your Backstage instance is running in\n\n## Getting started\n\nIn the root directory of your Backstage project:\n\n```\nyarn add --cwd packages/backend @gcornacchia/backstage-plugin-scaffolder-maven-actions\n```\n\nAdd the actions you'd like to the scaffolder:\n\n```typescript\n// packages/backend/src/plugins/scaffolder.ts\n\nimport { mavenAction } from \"@gcornacchia/backstage-plugin-scaffolder-maven-actions\";\nimport { ScmIntegrations } from '@backstage/integration';\nimport { createBuiltinActions, createRouter } from '@backstage/plugin-scaffolder-backend';\n\n...\n\nconst integrations = ScmIntegrations.fromConfig(env.config);\nconst builtInActions = createBuiltinActions({\n  catalogClient,\n  integrations,\n  config: env.config,\n  reader: env.reader\n});\n\nconst actions = [\n  mavenAction(),\n  ...builtInActions\n];\n\nreturn await createRouter({\n  logger: env.logger,\n  config: env.config,\n  database: env.database,\n  reader: env.reader,\n  catalogClient,\n  actions\n});\n```\n\n## Example of using the generic git action\n```yaml\n---\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: maven-demo\n  title: My custom maven action\n  description: scaffolder action to execute a maven command\nspec:\n  owner: demo\n  type: service\n\n  parameters:\n    - title: Generic Maven\n      properties:\n        repoUrl:\n          title: Command\n          type: string\n          description: Maven command to run\n        workingDirectory:\n          title: Working Directory\n          type: string\n          description: The working directory within the scaffolder workspace to run the command\n        args:\n          title: Args\n          type: array\n          description: Arguments to pass to the clone command\n\n  steps:\n    - id: maven\n      name: maven\n      action: maven\n      input:\n        command: ${{ parameters.command }} # ex: 'clean package' \n        workingDirectory: ${{ parameters.workingDirectory }} # ex: './my-working-directory' - will execute the command in the specified directory relative to the scaffolder workspace\n        args: ${{ parameters.args }} # ex: ['-P', 'Profile'] - will add '-P Profile' to the arguments passed to the maven command\n```",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@gcornacchia",
+  "updated": "2023-10-24T07:52:01.523Z",
+  "version": "1.0.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-10-24T07:52:01.523Z",
+      "version": "1.0.0"
+    }
+  ]
+}

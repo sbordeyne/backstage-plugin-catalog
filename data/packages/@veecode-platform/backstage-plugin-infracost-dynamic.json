@@ -1,0 +1,28 @@
+{
+  "author": "",
+  "created": "2025-06-30T09:09:02.355Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-infracost-dynamic",
+  "plugin_id": "infracost",
+  "readme": "ERROR: No README data found!",
+  "repository": "https://github.com/veecode-platform/tree/HEAD/platform-backstage-plugins",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2025-06-30T09:09:02.743Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-06-30T09:09:02.743Z",
+      "version": "0.1.0"
+    }
+  ]
+}

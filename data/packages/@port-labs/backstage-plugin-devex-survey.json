@@ -1,0 +1,41 @@
+{
+  "author": "",
+  "created": "2025-01-06T15:26:59.229Z",
+  "deprecated": "",
+  "description": "The only way to improve your platform is to understand the pains of your developers.",
+  "homepage": "https://backstage-plugin.getport.io/",
+  "keywords": [
+    "backstage",
+    "github",
+    "jira",
+    "port",
+    "port-labs",
+    "pull-request"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "danielsinaimain",
+    "dormeiri-port",
+    "gilmor-port",
+    "guy-s-port",
+    "hadorco",
+    "irar-port",
+    "noyah",
+    "teitelbaum"
+  ],
+  "name": "@port-labs/backstage-plugin-devex-survey",
+  "plugin_id": "devex-survey",
+  "readme": "# DevEx Survey Plugin for Backstage\n\nThe only way to improve your platform is to understand the pains of your developers.\n\nThe DevEx Survey Plugin enables organizations to collect and analyze feedback about developer workflows, challenges, and productivity blockers. This plugin helps engineering leaders make data-driven decisions to improve developer experience and productivity.\n\n![DevEx Survey Plugin](/docs/site/static/img/devex-survey/completing.gif)\n\n## Features\n\n### Comprehensive Developer Experience Analysis\n\n- Identify bottlenecks in development workflows\n- Track productivity blockers\n- Measure effectiveness of platform improvements\n- Gather actionable feedback from your engineering teams\n\n### Real-time Analytics Dashboard\n\n- Visual response distribution\n- Trend analysis over time\n- Challenge area identification\n- Time-based comparisons\n\n### Flexible Survey Administration\n\n- Customizable survey questions\n- Target audience configuration\n- Automated response aggregation\n- Scheduled survey campaigns\n\n### Data-Driven Decision Making\n\n- Prioritize platform improvements\n- Track improvement effectiveness\n- Measure developer satisfaction\n- Identify training opportunities\n\n## Documentation\n\nFor detailed installation and configuration instructions, please refer to [Port's official plugin documentation](https://docs.backstage-plugin.getport.io/examples/devex-survey).\n\n## Screenshots\n\n### Survey Form\n\n![DevEx Survey Plugin](/docs/site/static/img/devex-survey/completing.gif)\n\n### Results View\n\n![Results View](/docs/site/static/img/devex-survey/results.png)\n",
+  "repository": "https://github.com/port-labs/backstage-plugin/tree/HEAD/backstage-plugins/plugins/devex-survey-plugin",
+  "role": "frontend-plugin",
+  "scope": "@port-labs",
+  "updated": "2025-01-06T15:26:59.653Z",
+  "version": "0.1.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-01-06T15:26:59.653Z",
+      "version": "0.1.1"
+    }
+  ]
+}

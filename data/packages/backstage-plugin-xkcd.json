@@ -1,0 +1,66 @@
+{
+  "author": "",
+  "created": "2023-05-04T10:43:42.138Z",
+  "deprecated": "",
+  "description": "Welcome to the xkcd plugin!",
+  "homepage": "https://github.com/Vity01/backstage-xkcd/",
+  "keywords": [
+    "backstage",
+    "xkcd"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vity01"
+  ],
+  "name": "backstage-plugin-xkcd",
+  "plugin_id": "xkcd",
+  "readme": "# Backstage xkcd plugin\n\nWelcome to the xkcd plugin!\n\n\nThe Backstage `xkcd` plugin provides a simple way to display XKCD comics in your Backstage application, with an optional navigation bar to browse through past comics.\n\n![Comic](./docs/images/xkcd-pointers.png)\n\n<!-- TOC -->\n* [Backstage xkcd plugin](#backstage-xkcd-plugin)\n  * [Installation](#installation)\n  * [Integration](#integration)\n  * [Configuration](#configuration)\n  * [Contributing](#contributing)\n    * [Development](#development)\n  * [Future plans](#future-plans)\n  * [License](#license)\n<!-- TOC -->\n\n## Installation\nTo install the plugin, you'll need to add it to your Backstage app's dependencies using either Yarn or NPM.\n\n**Yarn**\n```shell\nyarn --cwd packages/app add backstage-plugin-xkcd\n```\n\n## Integration\nOnce you've installed the plugin, you'll need to integrate it into your Backstage app. To do so, you'll need to:\n\nAdd the XkcdComicCard component to a page in your app:\n\n```typescript jsx\nimport { XkcdComicCard } from 'backstage-plugin-xkcd';\n//....\nconst HomePage = () => (\n    // ...\n      <Grid item md={3} xs={6} style={{height: \"500px\"}}>\n          <XkcdComicCard />\n      </Grid>\n    // ... \n);\n```\nAlternatively, this plugin also supports [customizable homepages](https://github.com/backstage/backstage/tree/master/plugins/home#customizable-home-page).\nYou simply add `<HomePageXkcdComic />` to the allowed plugins in section:\n```tsx\nimport { HomePageXkcdComic } from 'backstage-plugin-xkcd';\n//....\n\nexport const HomePage = () => {\n  return (\n    <CustomHomepageGrid>\n      // Insert the allowed widgets inside the grid       \n      // ...\n        <HomePageXkcdComic />\n    </CustomHomepageGrid>\n  );\n};\n```\nThis feature requires `@backstage/plugin-home-react@^0.1.34` available.\n\n\nYou can also enable `/xkcd` route in `packages/app/src/App.tsx`\n```typescript jsx\nimport { XkcdPage } from 'backstage-plugin-xkcd';\n//....\nconst routes = (\n    <FlatRoutes>\n        // ...\n        <Route path=\"/xkcd\" element={<XkcdPage />} />\n        // ...\n    </FlatRoutes>\n```\n\nSet up a proxy for the XKCD API by adding the following configuration to your `app-config.yaml` file:\n```yaml\nproxy:\n  '/xkcd-proxy':\n    target: https://xkcd.com/\n```\n\n> **Note:** The plugin will access the API via `/api/proxy/xkcd-proxy/` endpoint. Backstage automatically prepends `/api/proxy/` to the configured proxy routes.\n\nAnd that's it! The xkcd plugin should now be integrated into your Backstage app, and you should see the xkcd card when you navigate to the page where it's included.\n\n## Configuration\nBy default, the plugin will display the most recent _xkcd_ comic. However, you can configure it to display a specific comic by passing in a `comicNumber` property to the `XkcdComicCard` component:\n```typescript jsx\n<XkcdComicCard comicNumber={1234} />\n```\nThis will display the XKCD comic with the number 1234.\n\nYou can also configure the plugin to show or hide the navigation bar by passing in a `showNav` property:\n\n```typescript jsx\n<XkcdComicCard showNav={false} />\n```\nThis will hide the navigation bar.\n\nYou can hide the _Explain link_:\n\n```typescript jsx\n<XkcdComicCard showExplain={false} />\n```\nThis will hide the _Explain link_.\n\nYou can customize the card title:\n\n```typescript jsx\n<XkcdComicCard title=\"My Custom Title\" />\n```\nThis will set a custom title for the card. By default, the title is the comic's safe_title.\n\n## Contributing\nDon't hesitate to contribute to the plugin. This is my first TypeScript/React/Backstage product so please be gentle to me... \n\n### Development\nThe plugin is added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/xkcd](http://localhost:3000/xkcd).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n\n\n## Future plans\n- More tests\n- Support to show only specific xkcd images - by categories (programming...) \n\n## License\nThe Backstage XKCD plugin is licensed under the Apache 2.0 License.\n\n",
+  "repository": "https://github.com/Vity01/backstage-xkcd",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2026-02-05T17:31:39.987Z",
+  "version": "1.1.7",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2026-02-05T17:31:39.987Z",
+      "version": "1.1.7"
+    },
+    {
+      "date": "2024-04-22T06:57:59.175Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2024-04-19T11:21:47.873Z",
+      "version": "1.0.10"
+    },
+    {
+      "date": "2024-01-02T16:55:18.204Z",
+      "version": "1.0.9"
+    },
+    {
+      "date": "2023-10-06T12:20:32.039Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2023-05-17T07:38:31.057Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2023-05-10T08:03:32.099Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2023-05-05T13:18:36.561Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2023-05-04T12:28:59.106Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2023-05-04T10:43:42.489Z",
+      "version": "1.0.3"
+    }
+  ]
+}

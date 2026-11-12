@@ -1,0 +1,49 @@
+{
+  "author": "",
+  "created": "2026-09-23T07:26:51.112Z",
+  "deprecated": "",
+  "description": "Frontend plugin for Augment - AI assistant with RAG, tool calling, and safety guardrails",
+  "homepage": "",
+  "keywords": [
+    "agentic",
+    "ai",
+    "backstage",
+    "backstage-plugin",
+    "chat",
+    "mcp",
+    "rag",
+    "responses-api"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-augment",
+  "plugin_id": "augment",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/augment/plugins/augment",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-26T16:09:57.672Z",
+  "version": "0.3.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-10-26T16:09:57.672Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-10-13T18:15:43.742Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-09-23T07:26:51.420Z",
+      "version": "0.2.0"
+    }
+  ]
+}

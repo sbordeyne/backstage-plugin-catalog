@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-10-29T15:05:46.578Z",
+  "deprecated": "",
+  "description": "The model-provider-google-vertex-ai backend module for the ai-assistant plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sweetoburrito"
+  ],
+  "name": "@sweetoburrito/backstage-plugin-ai-assistant-backend-module-model-provider-google-vertex-ai",
+  "plugin_id": "ai-assistant",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@sweetoburrito",
+  "updated": "2026-01-08T13:52:31.778Z",
+  "version": "0.2.4",
+  "version_count": 36,
+  "versions": [
+    {
+      "date": "2026-02-05T09:44:30.877Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-02-05T09:40:11.659Z",
+      "version": "0.0.0-snapshot-20260205093948"
+    },
+    {
+      "date": "2026-02-05T08:49:16.818Z",
+      "version": "0.0.0-snapshot-20260205084853"
+    },
+    {
+      "date": "2026-01-30T14:18:51.381Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2026-01-30T13:58:40.256Z",
+      "version": "0.0.0-snapshot-20260130135825"
+    },
+    {
+      "date": "2026-01-08T13:52:31.778Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2026-01-08T13:36:45.417Z",
+      "version": "0.0.0-snapshot-20260108133622"
+    },
+    {
+      "date": "2026-01-08T12:46:17.653Z",
+      "version": "0.0.0-snapshot-20260108124555"
+    },
+    {
+      "date": "2025-12-10T13:53:08.432Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2025-12-10T13:49:14.999Z",
+      "version": "0.0.0-snapshot-20251210134851"
+    },
+    {
+      "date": "2025-12-10T12:10:54.139Z",
+      "version": "0.0.0-snapshot-20251210121031"
+    },
+    {
+      "date": "2025-11-26T14:05:00.904Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2025-11-26T14:02:03.427Z",
+      "version": "0.0.0-snapshot-20251126140141"
+    },
+    {
+      "date": "2025-11-26T13:35:17.597Z",
+      "version": "0.0.0-snapshot-20251126133455"
+    },
+    {
+      "date": "2025-11-20T11:24:32.336Z",
+      "version": "0.2.1"
+    }
+  ]
+}

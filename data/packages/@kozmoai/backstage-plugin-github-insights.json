@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:13.066Z",
+  "deprecated": "",
+  "description": "![a preview of the GitHub insights plugin](./docs/code-insights-plugin.png)",
+  "homepage": "https://glint.io/backstage/plugins/github-insights/",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-github-insights",
+  "plugin_id": "",
+  "readme": "# GitHub Insights Plugin for Backstage\n\n![a preview of the GitHub insights plugin](./docs/code-insights-plugin.png)\n\n## Features\n\n- Add GitHub Insights plugin tab.\n- Show widgets about repository contributors, languages, readme, environments and release at overview page.\n\n## Plugin Setup\n\n1. Install the plugin:\n\n```bash\ncd packages/app\nyarn add @kozmoai/backstage-plugin-github-insights\n```\n\n2. Add plugin API to your Backstage instance:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityGithubInsightsContent } from '@kozmoai/backstage-plugin-github-insights';\n\n...\n\nconst serviceEntityPage = (\n  <EntityLayoutWrapper>\n    ...\n    <EntityLayout.Route\n      path=\"/code-insights\"\n      title=\"Code Insights\">\n      <EntityGithubInsightsContent />\n    </EntityLayout.Route>\n    ...\n  </EntityLayoutWrapper>\n);\n```\n\n3. Run backstage app with `yarn start` and navigate to services tabs.\n\n## Widgets setup\n\n1. You must install plugin by following the steps above to add widgets to your Overview. You might add only selected widgets or all of them.\n\n2. Add widgets to your Overview tab:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityGithubInsightsContent,\n  EntityGithubInsightsLanguagesCard,\n  EntityGithubInsightsReadmeCard,\n  EntityGithubInsightsReleasesCard,\n  isGithubInsightsAvailable,\n} from '@kozmoai/backstage-plugin-github-insights';\n\n...\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n   <EntitySwitch>\n      <EntitySwitch.Case if={isGithubInsightsAvailable}>\n        <Grid item md={6}>\n          <EntityGithubInsightsLanguagesCard />\n          <EntityGithubInsightsReleasesCard />\n        </Grid>\n        <Grid item md={6}>\n          <EntityGithubInsightsReadmeCard maxHeight={350} />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n  </Grid>\n);\n\n```\n\n## Readme path\n\nBy default the plugin will use the annotation `github.com/project-slug` and get the root `README.md` from the repository. You can use a specific path by using the annotation `'github.com/project-readme-path': 'packages/sub-module/README.md'`. It can be useful if you have a component inside a monorepos.\n\n### Widgets\n\n#### Compliance Card\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityGithubInsightsComplianceCard } from '@kozmoai/backstage-plugin-github-insights';\n```\n\n![a preview of the compliance widget](docs/compliance-report-widget.png)\n\n#### Contributors Card\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityGithubInsightsContributorsCard } from '@kozmoai/backstage-plugin-github-insights';\n```\n\n![a preview of the contributors widget](docs/contributors-widget.png)\n\n#### Languages Card\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityGithubInsightsLanguagesCard } from '@kozmoai/backstage-plugin-github-insights';\n```\n\n![a preview of the languages widget](docs/languages-widget.png)\n\n#### ReadMeCard\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityGithubInsightsReadmeCard } from '@kozmoai/backstage-plugin-github-insights';\n```\n\n![a preview of the compliance widget](docs/readme-widget.png)\n\nPlease note that the [workflow status badge](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge) feature in GitHub will not work with the Readme plugin.\n\n#### ReleasesCard\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityGithubInsightsReleasesCard } from '@kozmoai/backstage-plugin-github-insights';\n```\n\n![a preview of the releases widget](docs/releases-widget.png)\n\n#### EnvironmentsCard\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { EntityGithubInsightsEnvironmentsCard } from '@kozmoai/backstage-plugin-github-insights';\n```\n\n![a preview of the releases widget](docs/environments-widget.png)\n\n## Links\n\n- [Backstage](https://backstage.io)\n- Get hosted, managed Backstage for your company: https://glint.io\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-github-insights",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:14.741Z",
+  "version": "2.3.28",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:14.741Z",
+      "version": "2.3.28"
+    },
+    {
+      "date": "2024-03-25T22:14:13.475Z",
+      "version": "2.3.27"
+    }
+  ]
+}

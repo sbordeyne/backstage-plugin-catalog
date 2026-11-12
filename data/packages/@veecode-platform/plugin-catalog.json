@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2023-06-14T17:33:53.480Z",
+  "deprecated": "",
+  "description": "The Backstage plugin for browsing the Backstage catalog - veeCode version",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/plugin-catalog",
+  "plugin_id": "",
+  "readme": "# Backstage Catalog Frontend\n\nThis is the React frontend for the default Backstage [software\ncatalog](http://backstage.io/docs/features/software-catalog/).\nThis package supplies interfaces related to listing catalog entities or showing\nmore information about them on entity pages.\n\n## Installation\n\nThis `@backstage/plugin-catalog` package comes installed by default in any\nBackstage application created with `npx @backstage/create-app`, so installation\nis not usually required.\n\nTo check if you already have the package, look under\n`packages/app/package.json`, in the `dependencies` block, for\n`@backstage/plugin-catalog`. The instructions below walk through restoring the\nplugin, if you previously removed it.\n\n### Install the package\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @backstage/plugin-catalog\n```\n\n### Add the plugin to your `packages/app`\n\nAdd the two pages that the catalog plugin provides to your app. You can choose\nany name for these routes, but we recommend the following:\n\n```diff\n// packages/app/src/App.tsx\nimport {\n  CatalogIndexPage,\n  CatalogEntityPage,\n} from '@backstage/plugin-catalog';\nimport { entityPage } from './components/catalog/EntityPage';\n\n<FlatRoutes>\n+  <Route path=\"/catalog\" element={<CatalogIndexPage />} />\n+  <Route path=\"/catalog/:namespace/:kind/:name\" element={<CatalogEntityPage />}>\n+  {/*\n+    This is the root of the custom entity pages for your app, refer to the example app\n+    in the main repo or the output of @backstage/create-app for an example\n+  */}\n+    {entityPage}\n+  </Route>\n  ...\n</FlatRoutes>\n```\n\nThe catalog plugin also has one external route that needs to be bound for it to\nfunction: the `createComponent` route which should link to the page where the\nuser can create components. In a typical setup the create component route will\nbe linked to the scaffolder plugin's template index page:\n\n```diff\n// packages/app/src/App.tsx\n+import { catalogPlugin } from '@backstage/plugin-catalog';\n+import { scaffolderPlugin } from '@backstage/plugin-scaffolder';\n\nconst app = createApp({\n  // ...\n  bindRoutes({ bind }) {\n+    bind(catalogPlugin.externalRoutes, {\n+      createComponent: scaffolderPlugin.routes.root,\n+    });\n  },\n});\n```\n\nYou may also want to add a link to the catalog index page to your application\nsidebar:\n\n```diff\n// packages/app/src/components/Root/Root.tsx\n+import HomeIcon from '@material-ui/icons/Home';\n\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n+      <SidebarItem icon={HomeIcon} to=\"catalog\" text=\"Home\" />\n      ...\n    </Sidebar>\n```\n\n## Development\n\nThis frontend plugin can be started in a standalone mode from directly in this\npackage with `yarn start`. However, it will have limited functionality and that\nprocess is most convenient when developing the catalog frontend plugin itself.\n\nTo evaluate the catalog and have a greater amount of functionality available,\nrun the entire Backstage example application from the root folder:\n\n```bash\nyarn dev\n```\n\nThis will launch both frontend and backend in the same window, populated with\nsome example entities.\n\n## Links\n\n- [catalog-backend](https://github.com/backstage/backstage/tree/master/plugins/catalog-backend)\n  provides the backend API for this frontend.\n",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2024-04-02T18:17:06.181Z",
+  "version": "1.17.4",
+  "version_count": 41,
+  "versions": [
+    {
+      "date": "2024-04-02T18:17:06.181Z",
+      "version": "1.17.4"
+    },
+    {
+      "date": "2024-03-07T20:23:32.830Z",
+      "version": "1.17.3"
+    },
+    {
+      "date": "2024-03-04T11:01:25.380Z",
+      "version": "1.17.2"
+    },
+    {
+      "date": "2023-12-29T14:57:26.621Z",
+      "version": "1.15.11"
+    },
+    {
+      "date": "2023-12-28T19:46:11.074Z",
+      "version": "1.15.10"
+    },
+    {
+      "date": "2023-12-28T19:17:06.213Z",
+      "version": "1.15.9"
+    },
+    {
+      "date": "2023-12-28T18:16:07.453Z",
+      "version": "1.15.8"
+    },
+    {
+      "date": "2023-12-28T17:22:20.732Z",
+      "version": "1.15.7"
+    },
+    {
+      "date": "2023-12-08T12:24:10.663Z",
+      "version": "1.15.6"
+    },
+    {
+      "date": "2023-12-05T20:42:22.157Z",
+      "version": "1.15.5"
+    },
+    {
+      "date": "2023-12-01T14:18:13.957Z",
+      "version": "1.15.4"
+    },
+    {
+      "date": "2023-12-01T13:45:22.876Z",
+      "version": "1.15.3"
+    },
+    {
+      "date": "2023-11-29T19:19:42.534Z",
+      "version": "1.11.25"
+    },
+    {
+      "date": "2023-11-23T18:20:35.247Z",
+      "version": "1.11.24"
+    },
+    {
+      "date": "2023-11-17T15:01:44.169Z",
+      "version": "1.11.23"
+    }
+  ]
+}

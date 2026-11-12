@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2024-03-20T14:54:00.307Z",
+  "deprecated": "",
+  "description": "Welcome to the Statuspage.io plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "glundh"
+  ],
+  "name": "@axis-backstage-staging/plugin-statuspage",
+  "plugin_id": "",
+  "readme": "# Statuspage.io plugin\n\nWelcome to the Statuspage.io plugin!\n\n## Introduction\n\nThe **Statuspage** plugin allows you to embedd https://statuspage.io components, component groups and dashboards in Backstage.\n\nThere is a React-card, `<StatuspageEntityCard />`, that is suitable for the Entity component/service overview page:\n\n![entity-card](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/statuspage/media/entity-card.png)\n\nAnd also one card, `<StatuspagePage name=\"myinstance\"/>`, for easy integration of a complete Statuspage. This component is _not_ dependent\non the `useEntity()`-hook, making it easy to integrate on the Home-page (or some other portal).\n\n![full-status](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/statuspage/media/full-status.png)\n\n## Note\n\nYou will **need** to also perform the installation instructions in [Statuspage Backend](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/statuspage-backend) in order for this plugin to work.\n\n## Getting Started\n\n1. First, install the plugin into your app:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @axis-backstage/plugin-statuspage\n```\n\n1. Setup the API-factory.\n\n```ts\n// packages/app/src/apis.ts:\n\ncreateApiFactory({\n    api: statuspageApiRef,\n    deps: {\n      discoveryApi: discoveryApiRef,\n      fetchApi: fetchApiRef,\n    },\n    factory: ({ discoveryApi, fetchApi }) =>\n      new StatuspageClient({ discoveryApi, fetchApi }),\n  }),\n\n```\n\n1. Setup configuration\n\n```yaml\nstatuspage:\n  - name: mystatuspageinstance\n    pageid: abc123foo456\n    token: ${STATUSPAGE_TOKEN}\n    link: https://<your statuspage>.statuspage.io # Optional\n```\n\nIf you have access to the Statuspage.io dashboard, your page ID is usually visible in the URL when you're logged in and managing your page. Look for a segment in the URL that appears after `/manage/pages/`. The format usually looks something like `https://manage.statuspage.io/pages/YOUR_PAGE_ID`.\n\n1. Then, modify your entity page in `EntityPage.tsx` to include the `StatuspageEntityComponent` component and the `isStatuspageAvailable` function. Both are exported from the plugin. The example below show how you can add the plugin to the `defaultEntityPage`:\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport { StatuspageEntityComponent, isStatuspageAvailable } from '@axis-backstage/plugin-statuspage';\n\nconst defaultEntityPage = (\n      <EntitySwitch>\n        <EntitySwitch.Case if={isStatuspageAvailable}>\n          <Grid item xs={12}>\n            <StatuspageEntityCard />\n          </Grid>\n        </EntitySwitch.Case>\n      </EntitySwitch>\n  ...\n);\n```\n\n### Integration with the Catalog\n\nTo enable the StatuspageEntityCard for your entity, the entity yaml must have the following annotation:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  # ...\n  annotations:\n    statuspage.io/components: instance:component_id,component_id,component_id # Jira component name separated with a comma\n```\n\nThe `instance` here is the `statuspage.instance.nam` config value.\n\nThe `component_id` could be the id of either a component or a component group. This can be found in your statuspage.io management interface:\n\n![component_id](https://github.com/AxisCommunications/backstage-plugins/blob/main/plugins/statuspage/media/component_id.png)\n\n### Setup a complete StatuspagePage with all components\n\n```tsx\n// In packages/app/src/App.tsx:\n\n<Route path=\"/statuspage\" element={<StatuspagePage name=\"myid\" />} />\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@axis-backstage-staging",
+  "updated": "2024-03-21T16:53:44.757Z",
+  "version": "0.3.6",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-03-21T16:53:44.757Z",
+      "version": "0.3.6"
+    },
+    {
+      "date": "2024-03-21T16:47:55.173Z",
+      "version": "0.3.5"
+    },
+    {
+      "date": "2024-03-21T16:28:26.013Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2024-03-21T16:00:56.443Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2024-03-20T14:54:00.639Z",
+      "version": "0.3.7"
+    }
+  ]
+}

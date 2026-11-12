@@ -1,0 +1,57 @@
+{
+  "author": "",
+  "created": "2024-11-09T01:23:07.729Z",
+  "deprecated": "",
+  "description": "This is the backend service for the `@liatrio/backstage-plugin-autogov-releases-card` plugin. It provides the necessary APIs and data handling for the frontend plugin.",
+  "homepage": "https://github.com/liatrio/backstage-plugin-autogov#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "acramsay",
+    "amber-beasley-liatrio",
+    "casey.wilson",
+    "damien.storm",
+    "dbhagen",
+    "jgaither",
+    "jphayes-liatrio",
+    "misterc500",
+    "robertkelly",
+    "ssmathistad",
+    "wolftousen"
+  ],
+  "name": "@liatrio/backstage-plugin-autogov-releases-backend",
+  "plugin_id": "autogov-releases",
+  "readme": "# @liatrio/backstage-plugin-autogov-releases-backend\n\nThis is the backend service for the `@liatrio/backstage-plugin-autogov-releases-card` plugin. It provides the necessary APIs and data handling for the frontend plugin.\n\nSee the [root plugin documentation](https://github.com/liatrio/backstage-plugin-autogov) for additional information.\n\n## Installation\n\nTo install the backend plugin, use the following command from a Backstage environment:\n\n```bash\nyarn add @liatrio/backstage-plugin-autogov-releases-backend\n```\n\n## Integration\n\nTo integrate the backend plugin with the frontend plugin, follow the instructions provided in the `@liatrio/backstage-plugin-autogov-releases-card` documentation.\n\n## Usage\n\nAfter installation, you need to configure the plugin in your Backstage application. Refer to the Backstage documentation for details on how to add backend plugins.\n\n## Contributing\n\nWe welcome contributions to improve this plugin. Please follow our [contributing guidelines](CONTRIBUTING.md).\n\n## License\n\nThis project is licensed under the terms of the APACHE-2.0 license. See the [LICENSE](LICENSE) file for details.\n\n## Support\n\nIf you have any questions or need support, please open an issue in our [GitHub repository](https://github.com/liatrio/backstage-plugin-autogov/issues).\n",
+  "repository": "https://github.com/liatrio/backstage-plugin-autogov/tree/HEAD/packages/backstage-plugin-autogov-releases-backend",
+  "role": "backend-plugin",
+  "scope": "@liatrio",
+  "updated": "2025-02-11T21:35:24.219Z",
+  "version": "1.6.4",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2025-02-11T21:35:24.219Z",
+      "version": "1.6.4"
+    },
+    {
+      "date": "2025-02-11T03:53:08.098Z",
+      "version": "1.6.3"
+    },
+    {
+      "date": "2024-11-09T22:53:08.190Z",
+      "version": "1.6.2"
+    },
+    {
+      "date": "2024-11-09T02:39:08.420Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2024-11-09T02:23:05.794Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-11-09T01:23:08.031Z",
+      "version": "1.5.0"
+    }
+  ]
+}

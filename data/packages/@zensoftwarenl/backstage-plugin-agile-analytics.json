@@ -1,0 +1,60 @@
+{
+  "author": "Agile Analytics",
+  "created": "2023-03-21T10:15:34.921Z",
+  "deprecated": "",
+  "description": "Welcome to the Backstage Agile Analytics\r This plugin adds Agile Analytics' Reporting to your Backstage environment.",
+  "homepage": "https://github.com/zensoftwarenl/backstage-plugin-agile-analytics#readme",
+  "keywords": [
+    "agile-analytics",
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bianca03227",
+    "thefranznl",
+    "zoiabaletska"
+  ],
+  "name": "@zensoftwarenl/backstage-plugin-agile-analytics",
+  "plugin_id": "agile-analytics",
+  "readme": "# [Agile Analytics](https://www.prod.agileanalytics.cloud)\r\n\r\nWelcome to the Backstage Agile Analytics\r\nThis plugin adds Agile Analytics' Reporting to your Backstage environment.\r\n\r\n## Install\r\n\r\n```\r\n# From your Backstage root directory\r\nyarn add --cwd packages/app @zensoftwarenl/backstage-plugin-agile-analytics\r\n```\r\n\r\n## Configure\r\n\r\n### Configure Agile Analytics organisation\r\n\r\nAdd below configuration in the `app-config.yaml`\r\n\r\n```\r\nagileAnalytics:\r\n  apiKey: ${AGILE_ANALYTICS_API_KEY}\r\n  orgHash: ${AGILE_ANALYTICS_ORG_HASH}\r\n```\r\n\r\nAPI Key can be created [here](https://www.prod.agileanalytics.cloud/settings/api-key).\r\nOrgHash can be found [here](https://www.prod.agileanalytics.cloud/settings/organisation).\r\n\r\n### Setup Agile Analytics Tab\r\n\r\nIn `App.tsx`\r\n\r\n```\r\nimport { AgileAnalyticsPage } from '@zensoftwarenl/backstage-plugin-agile-analytics';\r\n\r\n...\r\n\r\nconst routes = (\r\n  <FlatRoutes>\r\n    // other routes\r\n    <Route\r\n      path=\"/agile-analytics\"\r\n      element={<AgileAnalyticsPage />}\r\n    />\r\n    // other routes\r\n  </FlatRoutes>\r\n);\r\n\r\n...\r\nconst App = () => (\r\n  <AppProvider>\r\n    // ...\r\n    <AppRouter>\r\n      <Root>{routes}</Root>\r\n    </AppRouter>\r\n  </AppProvider>\r\n);\r\n```\r\n\r\n_In order to add Agile Analytics to the Backstage sidebar_, in `components/` `Root.tsx`:\r\n\r\n```\r\n<SidebarItem icon={MapIcon} to=\"agile-analytics\" text=\"Agile Analytics\" />\r\n```\r\n",
+  "repository": "https://github.com/zensoftwarenl/backstage-plugin-agile-analytics/tree/HEAD/.",
+  "role": "frontend-plugin",
+  "scope": "@zensoftwarenl",
+  "updated": "2025-12-02T15:45:12.814Z",
+  "version": "0.2.1",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2025-12-02T15:45:12.814Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-10-28T11:29:54.921Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-10-27T16:11:14.935Z",
+      "version": "0.2.0-alpha.0"
+    },
+    {
+      "date": "2025-08-08T13:55:50.764Z",
+      "version": "0.1.18"
+    },
+    {
+      "date": "2025-08-08T13:28:59.772Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2025-07-08T10:11:27.174Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2025-07-07T12:47:13.430Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2024-11-19T08:50:53.152Z",
+      "version": "0.1.14"
+    }
+  ]
+}

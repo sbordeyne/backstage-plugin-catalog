@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2026-01-14T16:50:55.122Z",
+  "deprecated": "",
+  "description": "LangGraph agent module package for the GenAI AWS plugins for Backstage",
+  "homepage": "https://github.com/joaopdss/backstage-plugins-for-aws#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "joaopdss"
+  ],
+  "name": "@joaopdss/genai-plugin-langgraph-agent-for-backstage",
+  "plugin_id": "aws-genai",
+  "readme": "# Generative AI plugin for Backstage - LangGraph Agent Type\n\nThis package implements an agent for the Generative AI plugin for Backstage based on [LangGraph.js](https://github.com/langchain-ai/langgraphjs).\n\nFeatures:\n\n1. [ReAct pattern](https://react-lm.github.io/) to use available tools to answer prompts\n1. Choose between Amazon Bedrock or OpenAI as the model provider\n1. Optionally use the Backstage sqlite/Postgres database as a checkpoint store\n1. Integrate with [LangFuse](https://github.com/langfuse/langfuse) for observability\n\n## Configuration\n\nThis agent can be configured at two different levels, global and per-agent\n\n### Global\n\nGlobal configuration values apply to all agents, all of this is optional:\n\n```yaml\ngenai:\n  langgraph:\n    memory: # (Optional) Memory store to use\n    recursionLimit: # (Optional) Limit the number of graph supersteps (default 25)\n    langfuse: # (Optional) Configuration for LangFuse observability\n      baseUrl: http://localhost:3001 # (Required) LangFuse URL\n      publicKey: pk-aaa # (Required) Public key\n      secretKey: sk-bbb # (Required) Secret key\n```\n\nThe available options for `memory` are:\n\n- `in-memory`: (Default) Store the agent state in memory\n- `backstage`: Uses the Backstage database to store agent state, either sqlite or PostgresQL depending on the configuration\n\n### Per-agent\n\nPer-agent configuration only applies to the agent for which it corresponds. The available parameters are:\n\n```yaml\ngenai:\n  agents:\n    general:\n      description: [...]\n      prompt: [...]\n      langgraph:\n        messagesMaxTokens: 100000 # (Required) Prune message history to maximum of this number of tokens\n        temperature: 0 # (Optional) Model temperature\n        maxTokens: 4000 # (Optional) Maximum output tokens\n        topP: 0.9 # (Optional) Model topP\n        # Only include the subsequent section for your model provider\n        # Bedrock only\n        bedrock:\n          modelId: 'anthropic.claude-3-5-sonnet-20241022-v2:0' # (Required) Bedrock model ID\n          region: us-west-2 # (Required) Bedrock AWS region\n        # OpenAI only\n        openai:\n          apiKey: ${OPENAI_API_KEY} # (Required) OpenAI model name\n          modelName: 'gpt-3.5-turbo-instruct' # (Optional) OpenAI model name\n          baseUrl: ${OPENAI_API_BASE_URL} # (Optional) URL for OpenAI API endpoint\n```\n",
+  "repository": "https://github.com/joaopdss/backstage-plugins-for-aws/tree/HEAD/plugins/genai/agent-langgraph",
+  "role": "backend-plugin-module",
+  "scope": "@joaopdss",
+  "updated": "2026-01-14T17:20:14.729Z",
+  "version": "0.6.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-01-14T17:20:14.729Z",
+      "version": "0.6.3"
+    },
+    {
+      "date": "2026-01-14T17:14:37.665Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2026-01-14T17:07:22.490Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2026-01-14T16:50:55.343Z",
+      "version": "0.6.0"
+    }
+  ]
+}

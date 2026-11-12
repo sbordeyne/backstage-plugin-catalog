@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2025-03-02T14:26:20.582Z",
+  "deprecated": "",
+  "description": "GitLab repository template creation for Backstage",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "gitlab",
+    "scaffolder",
+    "template"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "armyknife"
+  ],
+  "name": "@armyknife/backstage-gitlab-template",
+  "plugin_id": "",
+  "readme": "# Backstage GitLab Template\n\nThis package provides GitLab repository template creation for Backstage.\n\n## Installation\n\n```bash\n# npm\nnpm install @armyknife/backstage-gitlab-template\n\n# yarn\nyarn add @armyknife/backstage-gitlab-template\n```\n\n## Usage\n\nIn your `packages/backend/src/plugins/scaffolder.ts` file:\n\n```typescript\nimport { createRouter } from '@backstage/plugin-scaffolder-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\nimport { createGitLabRepoAction } from '@armyknife/backstage-gitlab-template';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const catalogClient = new CatalogClient({\n    discoveryApi: env.discovery,\n  });\n\n  const actions = [\n    createGitLabRepoAction({\n      integrations: ScmIntegrations.fromConfig(env.config),\n      config: env.config,\n      catalogClient,\n      reader: env.reader,\n    }),\n    // ... other actions\n  ];\n\n  return await createRouter({\n    actions,\n    logger: env.logger,\n    config: env.config,\n    database: env.database,\n    reader: env.reader,\n    catalogClient,\n    identity: env.identity,\n  });\n}\n```\n\n## Template Configuration\n\nCreate a template with GitLab repository creation:\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: gitlab-repo-template\n  title: GitLab Repository\n  description: Create a new GitLab repository\nspec:\n  owner: user:guest\n  type: service\n\n  parameters:\n    - title: Repository Information\n      required:\n        - name\n        - owner\n        - description\n      properties:\n        name:\n          title: Repository Name\n          type: string\n          description: Name of the repository\n        owner:\n          title: Repository Owner\n          type: string\n          description: Owner of the repository (group or user)\n        description:\n          title: Description\n          type: string\n          description: Description of the repository\n        visibility:\n          title: Repository Visibility\n          type: string\n          enum: ['public', 'private', 'internal']\n          default: private\n          description: Visibility of the repository\n        enableSecurityFeatures:\n          title: Enable Security Features\n          type: boolean\n          default: true\n          description: Enable security features like branch protection, CODEOWNERS, etc.\n\n  steps:\n    - id: createGitLabRepo\n      name: Create GitLab Repository\n      action: armyknife:gitlab:create-repo\n      input:\n        name: ${{ parameters.name }}\n        owner: ${{ parameters.owner }}\n        description: ${{ parameters.description }}\n        visibility: ${{ parameters.visibility }}\n        enableSecurityFeatures: ${{ parameters.enableSecurityFeatures }}\n\n    - id: registerCatalog\n      name: Register in Catalog\n      action: catalog:register\n      input:\n        repoContentsUrl: ${{ steps.createGitLabRepo.output.repoContentsUrl }}\n        catalogInfoPath: '/catalog-info.yaml'\n```\n\n## Environment Variables\n\nYou'll need to set the following environment variables:\n\n```bash\nGITLAB_TOKEN=your-gitlab-personal-access-token\n```\n\n## License\n\nApache-2.0\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@armyknife",
+  "updated": "2025-03-02T14:26:20.941Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-03-02T14:26:20.941Z",
+      "version": "0.1.0"
+    }
+  ]
+}

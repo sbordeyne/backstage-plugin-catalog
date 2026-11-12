@@ -1,0 +1,93 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-11-25T12:09:10.775Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "orchestrator",
+    "plugin",
+    "workflows"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-orchestrator-backend",
+  "plugin_id": "orchestrator",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/orchestrator/plugins/orchestrator-backend",
+  "role": "backend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-10T13:05:12.945Z",
+  "version": "8.14.2",
+  "version_count": 69,
+  "versions": [
+    {
+      "date": "2026-11-10T13:05:12.945Z",
+      "version": "8.14.2"
+    },
+    {
+      "date": "2026-11-04T05:07:26.589Z",
+      "version": "8.14.1"
+    },
+    {
+      "date": "2026-10-26T16:04:52.422Z",
+      "version": "8.14.0"
+    },
+    {
+      "date": "2026-10-14T10:50:17.932Z",
+      "version": "8.13.3"
+    },
+    {
+      "date": "2026-09-22T17:07:05.977Z",
+      "version": "8.13.2"
+    },
+    {
+      "date": "2026-09-08T14:44:55.130Z",
+      "version": "8.13.1"
+    },
+    {
+      "date": "2026-08-31T14:01:36.088Z",
+      "version": "8.13.0"
+    },
+    {
+      "date": "2026-08-13T10:28:48.399Z",
+      "version": "8.12.1"
+    },
+    {
+      "date": "2026-08-11T22:56:19.481Z",
+      "version": "8.12.0"
+    },
+    {
+      "date": "2026-07-27T06:11:06.577Z",
+      "version": "8.11.0"
+    },
+    {
+      "date": "2026-07-17T12:54:24.128Z",
+      "version": "8.10.3"
+    },
+    {
+      "date": "2026-07-06T15:40:45.213Z",
+      "version": "8.10.2"
+    },
+    {
+      "date": "2026-06-23T08:30:28.299Z",
+      "version": "8.10.1"
+    },
+    {
+      "date": "2026-06-22T08:50:13.075Z",
+      "version": "8.6.8"
+    },
+    {
+      "date": "2026-06-18T05:27:07.134Z",
+      "version": "8.10.0"
+    }
+  ]
+}

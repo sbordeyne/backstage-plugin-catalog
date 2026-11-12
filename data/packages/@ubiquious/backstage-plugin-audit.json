@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2024-06-11T19:15:33.411Z",
+  "deprecated": "",
+  "description": "Welcome to the audit plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "imoverlord",
+    "tchoupinax"
+  ],
+  "name": "@ubiquious/backstage-plugin-audit",
+  "plugin_id": "",
+  "readme": "# audit\n\nWelcome to the audit plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/audit](http://localhost:3000/audit).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@ubiquious",
+  "updated": "2024-06-12T18:06:23.783Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-06-12T18:06:23.783Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-06-11T20:07:33.904Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-06-11T19:15:33.690Z",
+      "version": "0.1.0"
+    }
+  ]
+}

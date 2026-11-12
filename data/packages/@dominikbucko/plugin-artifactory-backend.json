@@ -1,0 +1,45 @@
+{
+  "author": "Original author - StageCentral",
+  "created": "2024-03-06T16:23:19.277Z",
+  "deprecated": "",
+  "description": "Welcome to the Artifactory Backend plugin for Backstage!",
+  "homepage": "",
+  "keywords": [
+    "artifactory",
+    "backstage",
+    "jfrog",
+    "plugin",
+    "stagecentral"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dominikbucko"
+  ],
+  "name": "@dominikbucko/plugin-artifactory-backend",
+  "plugin_id": "",
+  "readme": "# Jfrog Artifactory Plugin for Backstage by StageCentral\n\nWelcome to the Artifactory Backend plugin for Backstage!\n\nThe purpose of this plugin is to bring software artifacts forward - where developers can see them.\nYou can now easily connect your software components and services to their binary artifacts and browse the relevant artifacts directly from your Bacsktage IDP.\n\nThis plugin uses [jfrog-client-js](https://github.com/jfrog/jfrog-client-js) to connect to Jfrog, so it can potentially be extended to also expose data from XRay and the rest of the Jfrog Platform.\n\n## Important - the Frontend Plugin\n\nThis plugin was originally created to provide Jfrog API connection for the [Artifactory plugin for Backstage](https://www.npmjs.com/package/@stagecentral/plugin-artifactory) \nBut it exposes APIs that can be used by any other Backstage plugin.\n\n## Installation\n\nYarn:\n`yarn add @stagecentral/plugin-artifactory-backend`\n\nNpm:\n`npm -i @stagecentral/plugin-artifactory-backend`\n\n## Configuration\n\nIn your `app-config.yaml` (or wherever you inject Backstage config from):\n```yaml\nartifactory:\n    # Note: this is the URL to Jfrog platform. The plugin adds `/artifactory` to this path.\n    url: https://myorg.jfrog.io\n    # The plugin currently uses simple user/passwd auth.\n    # API key support will be added later\n    user: ${ARTIFACTORY_USER}\n    password: ${ARTIFACTORY_PASSWORD}\n```\n\n## Integration\n\n### Add to backend:\nCreate `packages/backend/src/plugins/artifactory.ts`:\n\n```javascript\nimport { createRouter } from '@stagecentral/plugin-artifactory-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\nimport { CatalogClient } from '@backstage/catalog-client';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const catalogApi = new CatalogClient({ discoveryApi: env.discovery });\n  return await createRouter({\n    logger: env.logger,\n    config: env.config,\n    catalogApi,\n  }\n  );\n}\n```\n\nIn `packages/backend/src/index.ts`:\n\n```javascript\nimport artifactory from './plugins/artifactory'\n...\n\n/* next to other createEnv calls */\nconst artifactoryEnv = useHotMemoize(module, () => createEnv('artifactory'));\n\n/* next to other apiRouter.use calls */\napiRouter.use('/artifactory', await artifactory(artifactoryEnv));\n\n```\n",
+  "repository": "https://github.com/DominikBucko/backstage-artifactory-plugin",
+  "role": "backend-plugin",
+  "scope": "@dominikbucko",
+  "updated": "2024-03-06T18:46:07.932Z",
+  "version": "0.1.7",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-03-06T18:46:07.932Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2024-03-06T18:19:58.560Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2024-03-06T17:38:35.269Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-03-06T16:23:19.532Z",
+      "version": "0.1.4"
+    }
+  ]
+}

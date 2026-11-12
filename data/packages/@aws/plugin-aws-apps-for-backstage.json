@@ -1,0 +1,64 @@
+{
+  "author": "Amazon Web Services",
+  "created": "2023-05-09T14:03:54.930Z",
+  "deprecated": "",
+  "description": "Harmonix on AWS Frontend plugin",
+  "homepage": "https://github.com/awslabs/harmonix#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "awsjim",
+    "z-sourcecode"
+  ],
+  "name": "@aws/plugin-aws-apps-for-backstage",
+  "plugin_id": "harmonix-frontend",
+  "readme": "<!-- \nCopyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: Apache-2.0 \n-->\n# Harmonix on AWS Frontend\n\nThis is the frontend UI of the Harmonix on AWS plugin.  An AWS Catalog Page and several entity cards are contributed to the UI from this plugin.\n\n- [Installation](#installation)\n- [Configuration](#configuration)\n  - [EntityPage customization for AWS apps](#entitypage-customization-for-aws-apps)\n  - [AWS Software Catalog Page](#aws-software-catalog-page)\n- [Links](#links)\n\n## Installation\n\nInstall the Harmonix on AWS frontend plugin into your Backstage application:\n\n```sh\n# From your Backstage root directory\nyarn add --cwd packages/app @aws/plugin-aws-apps-for-backstage@0.4.0\n```\n\n## Configuration\n\nEach of the UI components contributed in the Harmonix on AWS frontend plugin can be configured independently and added to your Backstage platform as desired.  Details for adding each type of UI component are found in the sections below.\n\n### EntityPage customization for AWS apps\n\nTo build an AWS app-specific entity presentation, we will rely on identification of a component as being of type \"aws-app\" (as specified under the `spec.type` configuration in the entity's `catalog-info.yaml` file).\n\nAdd the code shown below to `EntityPage.tsx`\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\n\n[imports ...]\n\n// Add an import for the UI components from the frontend plugin\nimport {\n  AwsEnvironmentPage,\n  AwsEnvironmentProviderPage,\n  AwsComponentPage,\n} from '@aws/plugin-aws-apps-for-backstage';\n\nimport { isGitlabAvailable, EntityGitlabContent } from '@immobiliarelabs/backstage-plugin-gitlab';\n\n[...]\n\n// Add these statements\nconst isCicdApplicable = (entity: Entity) => {\n  return isGitlabAvailable(entity) || isGithubActionsAvailable(entity);\n\nconst awsEnvironmentProviderEntityPage = (\n      <AwsEnvironmentProviderPage />\n);\n\nconst awsEnvironmentEntityPage = (\n      <AwsEnvironmentPage />\n);\n\nconst resourceEntityPage = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isResourceType('aws-resource')}>\n       <AwsComponentPage componentType='aws-resource'/>\n    </EntitySwitch.Case>\n    <EntitySwitch.Case>{defaultEntityPage}</EntitySwitch.Case>\n  </EntitySwitch>\n);\n\n// Add GitLab support\nconst cicdContent = (\n  ...\n  <EntitySwitch>\n    ...\n  // Add this to the switch statement in the cicdContent variable\n    <EntitySwitch.Case if={isGitlabAvailable}>\n      <EntityGitlabContent />\n    </EntitySwitch.Case>\n    ...\n  </EntitySwitch>\n);\n\n// Add a CI/CD tab to the defaultEntityPage variable\nconst defaultEntityPage = (\n  <EntityLayout>\n    ...\n    // Add this route\n    <EntityLayout.Route path=\"/ci-cd\" title=\"CI/CD\" if={isCicdApplicable}>\n      {cicdContent}\n    </EntityLayout.Route>\n    ...\n  </EntityLayout>\n);\n\n// Add a new case element to the component page to show aws-app components\nconst componentPage = (\n  <EntitySwitch>\n    ...\n    // Add this case inside the EntitySwitch element\n    <EntitySwitch.Case if={isComponentType('aws-app')}>\n      <AwsComponentPage componentType='aws-app'/>\n    </EntitySwitch.Case>\n    ...\n  </EntitySwitch>\n);\n\n// Add support for aws resource, environment and environment provider specific entity pages\n// to the entityPage variable\nconst resourceEntityPage = (\n  <EntitySwitch>\n    ...\n    <EntitySwitch.Case if={isKind('resource')} children={resourceEntityPage} />\n    <EntitySwitch.Case if={isKind('awsenvironment')} children={awsEnvironmentEntityPage} />\n    <EntitySwitch.Case if={isKind('awsenvironmentprovider')} children={awsEnvironmentProviderEntityPage} />\n    ...\n  </EntitySwitch>\n);\n\n```\nWhen running the Backstage app, you are now setup for customized views of AWS applications in the platform.\n\n###  AWS Software Catalog Page\n\nThe AWS Software Catalog page provides a customized view into the Backstage catalog with a focus on applications deployed to AWS through Backstage.\n![AWS Software Catalog Page](images/ui_aws_software_catalog.png 'AWS Software Catalog Page')\n\nTo create the AWS Software Catalog Page in your Backstage app, add the **AppCatalogPage** JSX Element to the Backstage `App.tsx` file.  \nIt should be configured as a new `<Route ...>` in the file.\n\n```diff\n// packages/app/src/App.tsx\n\n[imports...]\n+ import { AppCatalogPage } from '@aws/plugin-aws-apps-for-backstage';\n\n[...]\n\nconst routes = (\n  <FlatRoutes>\n    [other Route configurations...]\n+   <Route path=\"/aws-apps-search-page\" element={<CatalogIndexPage />}>\n+     <AppCatalogPage kind=\"all\" />\n+   </Route>\n+   <Route path=\"/aws-apps-search-page/environments\" element={<CatalogIndexPage />}>\n+     <AppCatalogPage kind=\"awsenvironment\" />\n+   </Route>\n+   <Route path=\"/aws-apps-search-page/providers\" element={<CatalogIndexPage />}>\n+     <AppCatalogPage kind=\"awsenvironmentprovider\" />\n+   </Route>\n+   <Route path=\"/aws-apps-search-page/apps\" element={<CatalogIndexPage />}>\n+     <AppCatalogPage kind=\"component\" />\n+   </Route>\n+   <Route path=\"/aws-apps-search-page/resources\" element={<CatalogIndexPage />}>\n+     <AppCatalogPage kind=\"resource\" />\n+   </Route>\n  </FlatRoutes>\n);\n\n```\n\nNext, add the AWS Software Catalog to the sidebar navigation in the `Root.tsx` file.  \nDetermine your preferred placement in the sidebar using the example below as guidance.  Exact contents and children of the <SidebarPage> may differ in your installation.\n\n```diff\n// packages/app/src/components/Root/Root.tsx\n\n[imports...]\n+ import CloudIcon from '@material-ui/icons/Cloud';\n\n[...]\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n      <SidebarLogo />\n      <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n        {/* Global nav, not org-specific */}\n        <SidebarItem icon={HomeIcon} to=\"/\" text=\"Home\" />\n+       <SidebarDivider />\n+       <SidebarGroup label=\"AWS\" icon={<MenuIcon />}>\n+         <SidebarItem icon={CloudIcon} text=\"AWS\">\n+           <SidebarSubmenu title=\"AWS Catalog\">\n+             <SidebarSubmenuItem\n+               title=\"Environments\"\n+               to=\"aws-apps-search-page/environments?filters[kind]=awsenvironment\"\n+               icon={useApp().getSystemIcon('kind:domain')}\n+             />\n+             <SidebarSubmenuItem\n+               title=\"Providers\"\n+               to=\"aws-apps-search-page/providers?filters[kind]=awsenvironmentprovider\"\n+               icon={useApp().getSystemIcon('kind:system')}\n+             />\n+             <SidebarSubmenuItem\n+               title=\"Apps\"\n+               to=\"aws-apps-search-page/apps?filters[kind]=component\"\n+               icon={useApp().getSystemIcon('kind:component')}\n+             />\n+             <SidebarSubmenuItem\n+               title=\"Resources\"\n+               to=\"aws-apps-search-page/resources?filters[kind]=resource\"\n+               icon={useApp().getSystemIcon('kind:resource')}\n+             />\n+           </SidebarSubmenu>\n+         </SidebarItem>\n+       </SidebarGroup>\n        <SidebarItem icon={LibraryBooks} to=\"docs\" text=\"Docs\" />\n        <SidebarItem icon={CreateComponentIcon} to=\"create\" text=\"Create...\" />\n        {/* End global nav */}\n      </SidebarGroup>\n      <SidebarGroup label=\"Settings\" icon={<UserSettingsSignInAvatar />} to=\"/settings\">\n        <SidebarSettings />\n      </SidebarGroup>\n    </Sidebar>\n    {children}\n  </SidebarPage>\n);\n\n```\n\n## Links\n\n- [AWS Apps plugin overview](../../../README.md)\n- [Backend part of aws-apps](../aws-apps-backend/README.md)\n",
+  "repository": "https://github.com/awslabs/harmonix/tree/HEAD/backstage-plugins/plugins/harmonix-frontend",
+  "role": "frontend-plugin",
+  "scope": "@aws",
+  "updated": "2025-04-18T20:12:33.139Z",
+  "version": "0.4.1",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2025-04-18T20:12:33.139Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-04-18T19:44:24.414Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-08-21T01:27:57.747Z",
+      "version": "0.3.5"
+    },
+    {
+      "date": "2024-08-16T19:05:25.629Z",
+      "version": "0.3.4"
+    },
+    {
+      "date": "2024-02-26T21:24:17.247Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2024-01-25T01:03:13.077Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-01-23T21:13:54.788Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-09-27T22:18:52.681Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-05-10T19:24:35.653Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-05-09T14:03:55.250Z",
+      "version": "0.1.0"
+    }
+  ]
+}

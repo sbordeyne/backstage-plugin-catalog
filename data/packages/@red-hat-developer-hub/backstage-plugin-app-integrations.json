@@ -1,0 +1,68 @@
+{
+  "author": "",
+  "created": "2026-04-17T13:07:57.231Z",
+  "deprecated": "",
+  "description": "RHDH default SCM integrations and scmAuth wiring for the new frontend system",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-app-integrations",
+  "plugin_id": "app-integrations",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/app-defaults/plugins/app-integrations",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-26T14:09:34.001Z",
+  "version": "1.2.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2026-10-26T14:09:34.001Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-09-18T11:48:52.739Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-09-17T15:22:56.557Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-09-14T12:52:31.894Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-09-01T13:20:23.335Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-08-07T18:36:42.623Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-07-14T17:02:36.902Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-05-05T13:55:01.208Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2026-04-20T11:32:00.665Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2026-04-17T13:07:57.496Z",
+      "version": "0.0.0"
+    }
+  ]
+}

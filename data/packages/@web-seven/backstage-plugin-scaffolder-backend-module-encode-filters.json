@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-10-07T12:11:37.807Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "evgheni"
+  ],
+  "name": "@web-seven/backstage-plugin-scaffolder-backend-module-encode-filters",
+  "plugin_id": "scaffolder-backend-module-encode-filters",
+  "readme": "ERROR: No README data found!",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@web-seven",
+  "updated": "2026-11-10T13:04:08.583Z",
+  "version": "0.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-11-10T13:04:08.583Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2024-10-07T12:11:38.093Z",
+      "version": "0.0.2"
+    }
+  ]
+}

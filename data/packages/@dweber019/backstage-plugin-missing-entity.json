@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2024-08-29T20:39:34.640Z",
+  "deprecated": "",
+  "description": "Welcome to the missing entity plugin!",
+  "homepage": "https://github.com/dweber019/backstage-plugins#readme",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "dweber019"
+  ],
+  "name": "@dweber019/backstage-plugin-missing-entity",
+  "plugin_id": "missing-entity",
+  "readme": "# Missing entity\n\nWelcome to the missing entity plugin!\n\nThis plugin will show a alert if related entities from relations are missing.\n\n![warning](https://raw.githubusercontent.com/dweber019/backstage-plugins/main/plugins/missing-entity/docs/warning.png)\n\nThis will be done on demand, when visiting an entity page to have the most up-to-date information.\nAdditionally, the data will be generated in the background for alle entities in the catalog.\n\nYou can even check the catalog over a page\n\n![page](https://raw.githubusercontent.com/dweber019/backstage-plugins/main/plugins/missing-entity/docs/page.png)\n\n## Setup\n\n### Backend\n\nYou need to setup the [backend plugin](../missing-entity-backend/README.md) before you move forward with any of the following steps if you haven't already.\n\n### Frontend\n\nTo setup the alert frontend you'll need to do the following steps:\n\n1. First we need to add the `@dweber019/backstage-plugin-missing-entity` package to your frontend app:\n\n   ```sh\n   # From your Backstage root directory\n   yarn --cwd packages/app add @dweber019/backstage-plugin-missing-entity\n   ```\n\n2. Second we need to add the `MissingEntityWarning` to the entity page in your app:\n\n   ```tsx\n   // In packages/app/src/components/catalog/EntityPage.tsx\n   import {\n     MissingEntityWarning,\n     hasEntityMissingWarnings,\n   } from '@dweber019/backstage-plugin-missing-entity';\n\n   const entityWarningContent = (\n      <>\n        // ...\n        <EntitySwitch>\n          <EntitySwitch.Case if={hasEntityMissingWarnings}>\n            <Grid item xs={12}>\n              <MissingEntityWarning />\n            </Grid>\n          </EntitySwitch.Case>\n        </EntitySwitch>\n        // ...\n      </>\n   );\n   ```\n\n3. Remove the built-in entity waring alert named `EntityRelationWarning` from `EntityPage.tsx`.\n\n4. Add the page route\n\n   ```tsx\n   // In packages/app/src/App.tsx\n   import { MissingEntityPage } from '@dweber019/backstage-plugin-missing-entity';\n\n   const routes = (\n     <FlatRoutes>\n       // ...\n       <Route path=\"/missing-entity\" element={<MissingEntityPage />} />\n     </FlatRoutes>\n   );\n   ```\n    \n5. Add a navigation menu\n\n   ```tsx\n   // In packages/app/src/components/Root/Root.tsx\n   import LinkOffIcon from '@material-ui/icons/LinkOff';\n\n     <SidebarScrollWrapper>\n       <SidebarItem icon={LinkOffIcon} to=\"missing-entity\" text=\"Missing entity\" />\n     </SidebarScrollWrapper>\n   ```\n\n## Notifications\n\nYou can install the notification system of Backstage by using this [tutorial](https://backstage.io/docs/notifications/).\nIf an entity has an error, the owner, group members or user is used as recipients.\n\n# Icon\nThanks for <a href=\"https://www.flaticon.com/free-icons/broken-link\" title=\"broken link icons\">Broken link icons created by Freepik - Flaticon</a>\n",
+  "repository": "https://github.com/dweber019/backstage-plugins/tree/HEAD/plugins/missing-entity",
+  "role": "frontend-plugin",
+  "scope": "@dweber019",
+  "updated": "2025-12-19T07:45:21.279Z",
+  "version": "0.1.2",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2025-12-19T07:45:21.279Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-08-15T06:55:13.932Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-06-27T07:33:07.290Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-03-17T20:39:50.493Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2025-01-20T10:42:51.281Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2024-12-28T22:35:32.020Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2024-10-21T10:44:55.774Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2024-09-25T06:28:30.905Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2024-09-02T07:21:23.599Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-08-31T09:22:10.740Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-08-30T19:57:20.073Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-08-29T20:39:34.928Z",
+      "version": "0.0.1"
+    }
+  ]
+}

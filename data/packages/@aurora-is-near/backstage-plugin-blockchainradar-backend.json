@@ -1,0 +1,81 @@
+{
+  "author": "",
+  "created": "2023-07-04T16:49:53.977Z",
+  "deprecated": "",
+  "description": "See [the project's README](../../README.md).",
+  "homepage": "https://github.com/aurora-is-near/backstage-plugin-blockchainradar#readme",
+  "keywords": [],
+  "license": "CC0-1.0",
+  "maintainers": [],
+  "name": "@aurora-is-near/backstage-plugin-blockchainradar-backend",
+  "plugin_id": "",
+  "readme": "# Blockchain plugin for Backstage\n\nSee [the project's README](../../README.md).\n",
+  "repository": "https://github.com/aurora-is-near/backstage-plugin-blockchainradar",
+  "role": "backend-plugin-module",
+  "scope": "@aurora-is-near",
+  "updated": "2025-08-01T05:05:40.874Z",
+  "version": "1.0.39",
+  "version_count": 45,
+  "versions": [
+    {
+      "date": "2025-08-01T05:05:40.874Z",
+      "version": "1.0.39"
+    },
+    {
+      "date": "2025-04-21T19:08:38.379Z",
+      "version": "1.0.38"
+    },
+    {
+      "date": "2025-04-08T22:20:12.002Z",
+      "version": "1.0.37"
+    },
+    {
+      "date": "2025-03-14T12:39:49.878Z",
+      "version": "1.0.36"
+    },
+    {
+      "date": "2025-02-06T16:13:01.566Z",
+      "version": "1.0.35"
+    },
+    {
+      "date": "2025-02-04T17:29:39.497Z",
+      "version": "1.0.34"
+    },
+    {
+      "date": "2025-01-29T21:10:32.887Z",
+      "version": "1.0.33"
+    },
+    {
+      "date": "2024-12-16T18:01:48.451Z",
+      "version": "1.0.32"
+    },
+    {
+      "date": "2024-12-12T03:07:43.944Z",
+      "version": "1.0.31"
+    },
+    {
+      "date": "2024-12-02T23:45:08.767Z",
+      "version": "1.0.30"
+    },
+    {
+      "date": "2024-10-10T13:49:39.162Z",
+      "version": "1.0.29"
+    },
+    {
+      "date": "2024-10-04T13:06:59.803Z",
+      "version": "1.0.28"
+    },
+    {
+      "date": "2024-10-04T12:23:14.324Z",
+      "version": "1.0.27"
+    },
+    {
+      "date": "2024-06-07T04:25:34.530Z",
+      "version": "1.0.26"
+    },
+    {
+      "date": "2024-05-31T23:42:27.398Z",
+      "version": "1.0.25"
+    }
+  ]
+}

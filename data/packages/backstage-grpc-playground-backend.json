@@ -1,0 +1,86 @@
+{
+  "author": "Zalopay-OSS",
+  "created": "2022-06-06T07:25:53.927Z",
+  "deprecated": "",
+  "description": "A backend plugin for Backstage supporting gRPC playground",
+  "homepage": "https://github.com/zalopay-oss/backstage-grpc-playground-backend",
+  "keywords": [
+    "backstage",
+    "backstage plugin",
+    "bloomrpc",
+    "grpc",
+    "grpc playground",
+    "zalopay"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "fr0stf0x"
+  ],
+  "name": "backstage-grpc-playground-backend",
+  "plugin_id": "",
+  "readme": "# backstage-grpc-playground-backend\n\n![GitHub](https://img.shields.io/github/license/zalopay-oss/backstage-grpc-playground-backend) ![Project Level](https://img.shields.io/badge/level-beta-yellowgreen) ![GitHub issues](https://img.shields.io/github/issues/zalopay-oss/backstage-grpc-playground-backend) ![GitHub contributors](https://img.shields.io/github/contributors-anon/zalopay-oss/backstage-grpc-playground-backend?color=blue) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/zalopay-oss/backstage-grpc-playground-backend)\n\n<!-- TOC -->\n- [**Overview**](#overview)\n- [**Install**](#install)\n- [**Usage**](#usage)\n- [**Acknowledgements**](#acknowledgements)\n\n## Overview\n\nThis repo contains backend code of the [backstage-grpc-playground](https://github.com/zalopay-oss/backstage-grpc-playground.git)\n\n## Install\n\nInstall backstage-grpc-playground-backend for `packages/backend`\n\nE.g: In your backstage project root\n\n```zsh\n  yarn --cwd packages/backend add backstage-grpc-playground-backend\n```\n\n## Usage\n\n#### Register the plugin in backend\n\nCreate a new file `packages/backend/src/plugins/grpc-playground.ts`\n\n```typescript\n// packages/backend/src/plugins/grpc-playground.ts\nimport { ScmIntegrations } from '@backstage/integration';\nimport { createRouter } from 'backstage-grpc-playground-backend';\n\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const { config, reader } = env;\n\n  const integrations = ScmIntegrations.fromConfig(config);\n\n  return await createRouter({\n    logger: env.logger,\n    reader,\n    integrations,\n    database: env.database,\n  });\n}\n```\n\n#### Register `/grpc-playground` path in backstage backend\n\n```typescript\n// packages/backend/src/index.ts\nimport grpcPlayground from './plugins/grpc-playground';\n\nasync function main() {\n  // other env\n  const grpcPlaygroundEnv = useHotMemoize(module, () => createEnv('grpc-playground'));\n  \n  // init router\n  // ...\n\n  // register before notFoundHandler  \n  apiRouter.use('/grpc-playground', await grpcPlayground(grpcPlaygroundEnv));\n\n  // not found handler\n  apiRouter.use(notFoundHandler());\n}\n```\n\n## Examples\n\nSee [examples](https://github.com/zalopay-oss/backstage-grpc-playground#examples)\n\n## Acknowledgements\n\n- Thanks to [Backstage Team](https://github.com/backstage/backstage) for creating an incredable framework\n- Thanks to the authors of the awesome [BloomRPC Application](https://github.com/bloomrpc/bloomrpc)\n- Feel free to [submit new issues](https://github.com/zalopay-oss/backstage-grpc-playground-backend/issues/new)\n",
+  "repository": "https://github.com/zalopay-oss/backstage-grpc-playground-backend",
+  "role": "backend-plugin",
+  "scope": "",
+  "updated": "2023-07-31T03:50:16.345Z",
+  "version": "0.3.2",
+  "version_count": 14,
+  "versions": [
+    {
+      "date": "2023-07-31T03:50:16.345Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2023-06-29T04:44:50.459Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2022-08-29T08:27:59.326Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2022-08-29T07:33:34.391Z",
+      "version": "0.3.0-next.0"
+    },
+    {
+      "date": "2022-08-04T11:13:31.595Z",
+      "version": "0.2.0-next.0"
+    },
+    {
+      "date": "2022-07-26T11:06:54.967Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2022-07-25T09:54:56.234Z",
+      "version": "0.1.3-b"
+    },
+    {
+      "date": "2022-07-15T11:18:56.215Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2022-07-06T04:36:09.257Z",
+      "version": "0.1.3-next.1"
+    },
+    {
+      "date": "2022-07-01T06:44:34.930Z",
+      "version": "0.1.3-next.0"
+    },
+    {
+      "date": "2022-06-17T03:22:34.970Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2022-06-15T11:32:35.672Z",
+      "version": "0.1.2-next.1"
+    },
+    {
+      "date": "2022-06-15T09:13:37.253Z",
+      "version": "0.1.2-next.0"
+    },
+    {
+      "date": "2022-06-06T07:25:54.245Z",
+      "version": "0.1.0"
+    }
+  ]
+}

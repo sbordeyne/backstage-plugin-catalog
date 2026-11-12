@@ -1,0 +1,63 @@
+{
+  "author": "",
+  "created": "2023-08-10T10:16:24.489Z",
+  "deprecated": "",
+  "description": "The Backstage `jfrog-artifactory-libs` frontend plugin provides a simple way to display generated artifact (library) details like - group, artifact, repository, what is the latest version, and it simply allows to copy library definition for the package ma",
+  "homepage": "https://github.com/Vity01/backstage-jfrog-artifactory-libs/",
+  "keywords": [
+    "artifactory",
+    "backstage",
+    "jfrog"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vity01"
+  ],
+  "name": "backstage-plugin-jfrog-artifactory-libs",
+  "plugin_id": "",
+  "readme": "# Backstage JFrog artifactory libraries plugin\n\nThe Backstage `jfrog-artifactory-libs` frontend plugin provides a simple way to display generated artifact (library)\ndetails like - group, artifact, repository, what is the latest version, and it simply allows to copy library definition\nfor the package managers.   \nNowadays, the plugin supports these package managers types in JFrog: Maven, Gradle, Sbt, Pypi, Docker.\n\n\n![Demo](./doc/artifact.gif)\n\n<!-- TOC -->\n\n- [Backstage jfrog-artifactory-libs plugin](#backstage-xkcd-plugin)\n  - [Installation](#installation)\n  - [Integration](#integration)\n  - [Configuration](#configuration)\n    - [Support for scaffolding](#support-for-scaffolding) \n  - [How it works](#how-it-works)\n  - [Changes](#changes)\n  - [Contributing](#contributing)\n    - [Development](#development)\n  - [Future plans](#future-plans)\n  - [License](#license)\n  <!-- TOC -->\n\n## Installation\n\nTo install the plugin, you'll need to add it to your Backstage app's dependencies using either Yarn or NPM.\n\n**Yarn**\n\n```shell\nyarn add --cwd packages/app backstage-plugin-jfrog-artifactory-libs\n```\n\n## Integration\n\nOnce you've installed the plugin, you'll need to integrate it into your Backstage app. To do so, you'll need to following code into your BS instance:\n\n### JFrogLibArtifactCard\nAdd the JFrogLibArtifactCard component to the `EntityPage.tsx` in your app:\n\n```typescript jsx\nimport {JFrogLibArtifactCard, isJfrogArtifactAvailable} from 'backstage-plugin-jfrog-artifactory-libs';\n//....\nconst overviewContent = (\n// ...\n    <EntitySwitch>\n        //...\n        <EntitySwitch.Case if={isJfrogArtifactAvailable}>\n            <Grid item md={4}>\n                <JFrogLibArtifactCard/>\n            </Grid>\n        </EntitySwitch.Case>\n        //...\n    </EntitySwitch>\n    // ...\n);\n```\n### JFrogLibVerPage\nIf you want to browse libraries you can enable this component in your `App.tsx` file. It shows all component entities containing `jfrog.com/artifactory-artifact` attribute.\n\n![Demo](./doc/libs.gif)\n\n```typescript jsx\nconst routes = (\n  <FlatRoutes>\n    //....\n    <Route path=\"/libver\" element={<JFrogLibVerPage topComponents={<DefineNewLibraryButton />} />}>\n    </Route>\n    //....\n  </FlatRoutes>\n);\n```\n\n\n### Explore page - JFrogLibVerPageContent\nThis is a subcomponent of `JFrogLibVerPage` component. It's possible to integrate it for instance into your Explore page.\n```typescript jsx\nimport { JFrogLibVerPageContent } from 'backstage-plugin-jfrog-artifactory-libs';\n//....\n\n        <ExploreLayout\n                title={`Explore the ${organizationName} ecosystem`}\n                subtitle=\"Discover solutions available in your ecosystem\"\n        >\n              // ...\n          <ExploreLayout.Route path=\"libver\" title=\"Libraries\">\n            <JFrogLibVerPageContent />\n            />\n          </ExploreLayout.Route>\n          //  ...\n        </ExploreLayout>\n\n    // ...\n);\n```\n\n### App-config.yaml\nSet up a proxy for the JFrog API by adding the following configuration to your `app-config.yaml` file:\n\n```yaml\n  '/artifactory-proxy/':\n    target: 'https://your-jfrog-artifactory-instance.com'\n    headers:\n      # if you use Jfrog instance for anonymous user token is not required, but it is also required for Docker package type\n      Authorization: Bearer ${ARTIFACTORY_TOKEN}\n      X-Result-Detail: 'properties'\n      Accept: '*'\n```\n\nYou have to also reference your artifactory URL (used for UI browse links) and your proxy configuration.\n\n```yaml\njfrog:\n  artifactory:\n    url: 'https://your-jfrog-artifactory-instance.com'\n    proxyPath: '/artifactory-proxy/' # optional, /artifactory-proxy/ is default value \n```\n\n### Catalog-info.yaml\n\nArtifact details are correlated to Backstage entities using an annotation added in the entity's catalog-info.yaml file.\n\n```yaml\n  metadata:\n    annotations:\n      # -- required values --\n      jfrog.com/artifactory-artifact: 'artifact-name'\n      jfrog.com/artifactory-repo: 'maven-local'\n\n      jfrog.com/artifactory-group: 'com.mycompany' # optional string - can be blank for pypi, necessary for Maven repos\n\n      # -- optional values --\n      jfrog.com/artifactory-scope: 'compile' # optional string, one of these [compile, test,provided,runtime,classpath,optional]\n      jfrog.com/artifactory-packaging: 'aar' #optional string, eg. `aar` \n\n```\n\nAnd that's it! The plugin should now be integrated into your Backstage app, and you should see the Artifact card when\nyou navigate to the entity page where it's included.\n\nFor a docker image you define repository and artifact name. Both formats are supported:\n```yaml\n  metadata:\n    annotations:\n      # -- required values --\n      jfrog.com/artifactory-artifact: 'docker.mydomain.com/mygroup/my/artifact-name' # or simply 'mygroup/my/artifact-name' \n      jfrog.com/artifactory-repo: 'docker-local'\n```\n\n![Demo](./doc/dockerfile.gif)\n\n## Configuration\n\n`JFrogLibArtifactCard` has following default properties:\n\n```typescript typescript jsx\nLibArtifactCard.defaultProps = {\n    title: 'Artifact', // title of the card\n    browseRepositoryLinkTitle: 'Browse Repository', // Card deep link title\n    showGradle: true, // whether to show Gradle package manager tab\n    showMaven: true, // whether to  show Maven package manager tab\n    showSbt: true, // whether to  show Sbt package manager tab\n    showPip: true, // whether to  show Pip package manager tab\n    showDockerfile: true, // whether to  show Dockerfile tab\n    // it hides Maven and Gradle tabs if the current repository package type is `PyPi`\n    autohideTabs: true,\n    showBrowseRepositoryLink: true // whether to show Browse to URL deep link under bottom of the Card\n    // which link to open\n    browseLink: browseLinkDefault,\n};\n\n```\n### Support for scaffolding\nIn [this document](./doc/SCAFFOLDING.md) you can find detailed information how to integrate this plugin into scaffolding templates.\nIt also adds a new extension UI component called `ArtifactRepositoryPicker` for interactive repository selection. \n\n## How it works\n\nPlugin uses JFrog APIs to find latest version. It's necessary to specify `ARTIFACTORY_TOKEN` in the `app-config.yaml`\nfile if you don't allow to access API for anonymous user.\n\n## Changes \nVersion 1.0.9 \n - JFrogLibVerPageContent and JFrogLibVerPage components added\n - (!) renamed LibArtifactCard into JFrogLibArtifactCard\n\n## Contributing\n\nDon't hesitate to contribute to the plugin. This is my first TypeScript/React/Backstage product so please be gentle to\nme...\n\n### Development\n\nCopy plugin content into your `plugins` directory, and add a dependency into app/package.json as described above.\n\n## Future plans\n\n- More tests\n- More package managers support\n- Multiple artifacts defined in one entity\n- Multiple artifactories instances?\n\n## License\n\nThis plugin is licensed under the Apache 2.0 License.\n\n",
+  "repository": "https://github.com/Vity01/backstage-jfrog-artifactory-libs",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2024-09-02T12:22:25.802Z",
+  "version": "1.0.11",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2024-09-02T12:22:25.802Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2023-12-05T09:08:08.375Z",
+      "version": "1.0.10"
+    },
+    {
+      "date": "2023-08-29T09:33:06.336Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2023-08-22T13:30:57.656Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2023-08-14T14:00:10.492Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2023-08-14T13:28:59.086Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2023-08-14T08:05:15.098Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2023-08-10T10:24:23.099Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2023-08-10T10:16:24.797Z",
+      "version": "1.0.2"
+    }
+  ]
+}

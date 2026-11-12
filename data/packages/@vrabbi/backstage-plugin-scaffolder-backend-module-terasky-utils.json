@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-12-24T13:53:38.408Z",
+  "deprecated": "",
+  "description": "The terasky-utils module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@vrabbi/backstage-plugin-scaffolder-backend-module-terasky-utils",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@vrabbi",
+  "updated": "2024-12-24T13:53:38.673Z",
+  "version": "1.0.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-12-24T13:53:38.673Z",
+      "version": "1.0.1"
+    }
+  ]
+}

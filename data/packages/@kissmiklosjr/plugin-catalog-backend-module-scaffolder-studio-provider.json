@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2026-02-18T12:37:28.142Z",
+  "deprecated": "",
+  "description": "The scaffolder-studio-provider backend module for the catalog plugin.",
+  "homepage": "https://github.com/kissmikijr/scaffolder-studio/tree/main/plugins/catalog-backend-module-scaffolder-studio-provider",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "kissmiklosjr"
+  ],
+  "name": "@kissmiklosjr/plugin-catalog-backend-module-scaffolder-studio-provider",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/kissmikijr/scaffolder-studio/tree/HEAD/plugins/catalog-backend-module-scaffolder-studio-provider",
+  "role": "backend-plugin-module",
+  "scope": "@kissmiklosjr",
+  "updated": "2026-07-04T13:50:39.166Z",
+  "version": "1.2.1",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-07-04T13:50:39.166Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-06-24T14:08:27.831Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-03-23T11:11:25.601Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-03-08T15:53:33.062Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-03-08T14:04:09.983Z",
+      "version": "1.0.1-alpha.0"
+    },
+    {
+      "date": "2026-02-24T22:39:17.079Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-02-24T09:01:23.497Z",
+      "version": "1.0.0-beta.4"
+    },
+    {
+      "date": "2026-02-23T22:24:32.796Z",
+      "version": "1.0.0-beta.3"
+    },
+    {
+      "date": "2026-02-23T08:18:27.139Z",
+      "version": "1.0.0-beta.2"
+    },
+    {
+      "date": "2026-02-21T14:45:31.271Z",
+      "version": "1.0.0-beta.1"
+    },
+    {
+      "date": "2026-02-18T21:51:16.772Z",
+      "version": "1.0.0-beta.0"
+    },
+    {
+      "date": "2026-02-18T12:37:28.415Z",
+      "version": "0.0.16"
+    }
+  ]
+}

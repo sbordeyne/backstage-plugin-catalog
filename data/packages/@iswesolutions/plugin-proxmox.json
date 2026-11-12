@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-10-06T23:30:42.441Z",
+  "deprecated": "",
+  "description": "Read-only **Proxmox VE monitoring** inside Backstage, inspired by [Pulse](https://github.com/rcourtman/pulse). It surfaces the cluster's nodes, guests (VMs and LXC), storage pools and a \"needs attention\" health view — the same one-shared-model idea as Pul",
+  "homepage": "https://github.com/ISWE-Solutions/backstage-plugins/tree/main/plugins/proxmox#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "csiwale"
+  ],
+  "name": "@iswesolutions/plugin-proxmox",
+  "plugin_id": "proxmox",
+  "readme": "# @iswesolutions/plugin-proxmox\n\nRead-only **Proxmox VE monitoring** inside Backstage, inspired by\n[Pulse](https://github.com/rcourtman/pulse). It surfaces the cluster's nodes,\nguests (VMs and LXC), storage pools and a \"needs attention\" health view — the\nsame one-shared-model idea as Pulse, adapted to Backstage.\n\n## Packages\n\n| Package                                 | Role            | What it does                                                          |\n| --------------------------------------- | --------------- | --------------------------------------------------------------------- |\n| `@iswesolutions/plugin-proxmox`         | frontend-plugin | The `/proxmox` page: Overview, Guests, Storage, Attention             |\n| `@iswesolutions/plugin-proxmox-backend` | backend-plugin  | Gateway to the PVE API (`/cluster/resources`), caching, health checks |\n| `@iswesolutions/plugin-proxmox-common`  | common-library  | Shared types, permissions, and the attention checks                   |\n\n## How it works\n\n```\n/proxmox (signed-in users)  ──►  proxmox backend /api/proxmox/resources\n                                 holds the PVE API token, caches ~15s\n                                 └─►  Proxmox VE  GET /api2/json/cluster/resources\n                                                   GET /api2/json/cluster/status\n```\n\nThe frontend never talks to Proxmox directly; the backend holds the token and\naggregates `/cluster/resources` (one call covering nodes, guests and storage)\ninto a typed model. Results are cached briefly so the page's auto-refresh does\nnot hammer the PVE API.\n\nThe **Attention** tab runs health checks in the spirit of Pulse \"Patrol\":\noffline nodes, stopped (non-template) guests, near-full or inactive storage, and\nnode/guest memory pressure.\n\n## Installation\n\n```sh\nyarn --cwd packages/app add @iswesolutions/plugin-proxmox\nyarn --cwd packages/backend add @iswesolutions/plugin-proxmox-backend\n```\n\n```tsx\n// packages/app/src/App.tsx\nimport { ProxmoxPage } from '@iswesolutions/plugin-proxmox';\n\n<Route path=\"/proxmox\" element={<ProxmoxPage />} />;\n```\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@iswesolutions/plugin-proxmox-backend'));\n```\n\n## Multiple clusters\n\nThe plugin monitors **one or more clusters**, chosen with the cluster selector in\nthe page header. Clusters come from two places:\n\n- **app-config** (read-only baseline) — the `proxmox.url/token` default cluster\n  and any `proxmox.clusters[]`. Tokens stay in config, server-side.\n- **the Settings tab** — clusters added at runtime, persisted in the backend\n  database. Adding/editing/removing requires the `proxmox.cluster.manage`\n  permission; **tokens are stored server-side and never returned to the browser**.\n\n## Configuration\n\n```yaml\nproxmox:\n  # default cluster\n  url: https://pve.example.com:8006 # any cluster member\n  token: ${PROXMOX_TOKEN} # user@realm!tokenid=secret (read-only)\n  name: Primary # optional display name\n  verifyTls: false # PVE ships a self-signed cert\n  cacheSeconds: 15\n  uiUrls: # optional deep links from the dashboard\n    pve10: https://pve.example.com:8006\n  # additional clusters (optional)\n  clusters:\n    - name: DR\n      url: https://pve-dr.example.com:8006\n      token: ${PROXMOX_DR_TOKEN}\n      verifyTls: false\n  attention: # optional threshold overrides\n    storageFull: 0.9\n    nodeMemoryHigh: 0.9\n    guestMemoryHigh: 0.95\n```\n\n### Creating the read-only token (PVEAuditor)\n\nOn a Proxmox node, create a role-limited API token so the plugin can only read:\n\n```\npveum user token add monitoring@pve backstage --privsep 0\npveum acl modify / --roles PVEAuditor --tokens 'monitoring@pve!backstage'\n```\n\nSet the resulting `user@realm!tokenid=secret` as `PROXMOX_TOKEN` in the\nBackstage backend's environment. Without it the page shows a \"not configured\"\nerror and the backend logs a warning.\n\n## Permissions\n\nReading the cluster state is open to every signed-in user.\n`proxmox.cluster.manage` gates adding/editing/removing clusters on the Settings\ntab; grant it in your permission policy. A `proxmox.guest.power` permission is defined for future\nguest start/stop actions; no control actions are implemented yet (like Pulse,\ncontrol is off by default).\n",
+  "repository": "https://github.com/ISWE-Solutions/backstage-plugins/tree/HEAD/plugins/proxmox",
+  "role": "frontend-plugin",
+  "scope": "@iswesolutions",
+  "updated": "2026-10-15T11:32:50.268Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-10-15T11:32:50.268Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-10-07T18:30:08.043Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-10-06T23:30:42.441Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

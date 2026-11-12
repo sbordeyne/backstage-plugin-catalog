@@ -1,0 +1,90 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-03-31T13:41:41.214Z",
+  "deprecated": "",
+  "description": "Welcome to the backend package for the Orchestrator plugin!",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "orchestrator",
+    "plugin",
+    "support:tech-preview",
+    "workflows"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "batzionrotman123"
+  ],
+  "name": "@batzionrotman123/backstage-plugin-orchestrator-backend-dynamic",
+  "plugin_id": "",
+  "readme": "# Orchestrator Backend Plugin for Backstage\n\nWelcome to the backend package for the Orchestrator plugin!\n\nFor more information about the Orchestrator plugin, see the [Orchestrator Plugin documentation](https://github.com/janus-idp/backstage-plugins/tree/main/plugins/orchestrator) on GitHub.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/orchestrator-backend",
+  "role": "backend-plugin",
+  "scope": "@batzionrotman123",
+  "updated": "2024-07-17T12:23:44.470Z",
+  "version": "1.16.0",
+  "version_count": 15,
+  "versions": [
+    {
+      "date": "2024-07-17T12:23:44.470Z",
+      "version": "1.16.0"
+    },
+    {
+      "date": "2024-07-17T08:53:10.010Z",
+      "version": "1.15.0"
+    },
+    {
+      "date": "2024-04-17T18:42:02.325Z",
+      "version": "1.6.7"
+    },
+    {
+      "date": "2024-04-02T07:13:57.846Z",
+      "version": "1.0.0-redhat-00013"
+    },
+    {
+      "date": "2024-04-01T18:34:04.528Z",
+      "version": "1.0.0-redhat-00012"
+    },
+    {
+      "date": "2024-04-01T18:32:35.121Z",
+      "version": "1.0.0-redhat-00011"
+    },
+    {
+      "date": "2024-04-01T15:27:22.214Z",
+      "version": "1.0.0-redhat-00010"
+    },
+    {
+      "date": "2024-04-01T09:14:56.980Z",
+      "version": "1.0.0-redhat-00009"
+    },
+    {
+      "date": "2024-04-01T07:59:50.405Z",
+      "version": "1.0.0-redhat-00008"
+    },
+    {
+      "date": "2024-04-01T07:58:03.764Z",
+      "version": "1.0.0-redhat-00007"
+    },
+    {
+      "date": "2024-04-01T07:55:08.781Z",
+      "version": "1.0.0-redhat-00006"
+    },
+    {
+      "date": "2024-04-01T07:20:58.400Z",
+      "version": "1.0.0-redhat-00005"
+    },
+    {
+      "date": "2024-04-01T07:19:26.557Z",
+      "version": "1.0.0-redhat-00004"
+    },
+    {
+      "date": "2024-03-31T13:52:48.096Z",
+      "version": "1.0.0-redhat-0002"
+    },
+    {
+      "date": "2024-03-31T13:41:41.723Z",
+      "version": "1.0.0-redhat-0001"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "author": "",
+  "created": "2025-12-10T12:11:01.769Z",
+  "deprecated": "",
+  "description": "The ai-assistant backend module for the qeta plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sweetoburrito"
+  ],
+  "name": "@sweetoburrito/backstage-plugin-qeta-backend-module-ai-assistant",
+  "plugin_id": "qeta",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@sweetoburrito",
+  "updated": "2026-01-08T13:52:39.355Z",
+  "version": "0.2.2",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2026-02-05T09:44:40.030Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2026-02-05T09:40:22.268Z",
+      "version": "0.0.0-snapshot-20260205093948"
+    },
+    {
+      "date": "2026-02-05T08:49:27.080Z",
+      "version": "0.0.0-snapshot-20260205084853"
+    },
+    {
+      "date": "2026-01-08T13:52:39.355Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-01-08T13:36:52.615Z",
+      "version": "0.0.0-snapshot-20260108133622"
+    },
+    {
+      "date": "2026-01-08T12:46:25.037Z",
+      "version": "0.0.0-snapshot-20260108124555"
+    },
+    {
+      "date": "2025-12-10T14:49:53.467Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-12-10T14:42:28.617Z",
+      "version": "0.0.0-snapshot-20251210144219"
+    },
+    {
+      "date": "2025-12-10T13:53:16.805Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-12-10T13:49:24.468Z",
+      "version": "0.0.0-snapshot-20251210134851"
+    },
+    {
+      "date": "2025-12-10T12:11:02.039Z",
+      "version": "0.0.0-snapshot-20251210121031"
+    }
+  ]
+}

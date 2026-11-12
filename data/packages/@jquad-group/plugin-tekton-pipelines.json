@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2022-07-19T21:23:39.348Z",
+  "deprecated": "",
+  "description": "This is the Tekton Pipelines frontend plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jquad-group"
+  ],
+  "name": "@jquad-group/plugin-tekton-pipelines",
+  "plugin_id": "",
+  "readme": "# Tekton Pipelines Frontend\n\nThis is the Tekton Pipelines frontend plugin. \n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\n Access the frontend plugin by running `yarn start` in the root directory of the plugin, and then navigate to [/tekton-pipelines](http://localhost:3000/tekton-pipelines).\n\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@jquad-group",
+  "updated": "2023-05-07T14:51:25.719Z",
+  "version": "0.3.3",
+  "version_count": 23,
+  "versions": [
+    {
+      "date": "2023-05-07T14:51:25.719Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2023-04-21T14:55:08.670Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2023-01-25T00:16:48.932Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2023-01-24T23:49:13.418Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2022-12-17T09:02:53.982Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2022-12-07T20:32:49.161Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2022-11-20T16:53:52.957Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2022-11-14T15:07:16.059Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2022-11-10T17:16:12.369Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2022-11-09T16:20:54.654Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2022-11-08T17:01:27.345Z",
+      "version": "2.0.0-debug.1"
+    },
+    {
+      "date": "2022-10-05T17:43:11.329Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2022-10-04T22:39:37.622Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2022-09-23T14:07:48.364Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2022-09-20T18:11:31.240Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T13:39:36.098Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-nomad",
+  "plugin_id": "nomad",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/nomad/plugins/nomad",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:58:22.002Z",
+  "version": "1.2.0",
+  "version_count": 31,
+  "versions": [
+    {
+      "date": "2026-11-03T14:58:22.002Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-10-07T06:45:17.235Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-09-23T16:00:34.951Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-09-23T11:13:25.250Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-08-27T14:23:22.502Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-07-22T00:20:13.952Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-06-24T13:06:20.327Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-05-27T12:12:59.968Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-04-24T17:11:31.638Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-04-03T16:21:25.963Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-02-27T12:58:35.149Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-01-28T22:26:40.913Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-12-24T16:35:03.872Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-11-26T13:16:48.456Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-10-17T17:37:35.203Z",
+      "version": "0.12.0"
+    }
+  ]
+}

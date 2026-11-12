@@ -1,0 +1,90 @@
+{
+  "author": "",
+  "created": "2024-05-04T21:06:35.637Z",
+  "deprecated": "",
+  "description": "This is the frontend for OpenFeedback.",
+  "homepage": "https://github.com/Parsifal-M/backstage-open-feedback#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "feedback",
+    "frontend",
+    "open-source",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "parsifal-m"
+  ],
+  "name": "@parsifal-m/backstage-plugin-open-feedback",
+  "plugin_id": "open-feedback",
+  "readme": "# OpenFeedback Frontend\n\nThis is the frontend for OpenFeedback.\n\n## Adding the OpenFeedback Frontend to your Backstage Application\n\nFirstly you will want to add the `OpenFeedbackPage` component to your `packages/app/src/App.tsx` file under the `routes`. This will add the feedback page to your Backstage application.\n\nIn the `OpenFeedbackPage` you will be able to see all the feedback that has been collected from users, and you will also have the option to delete feedback if needed.\n\n```typescript\nconst routes = (\n  <FlatRoutes>\n    // Other routes\n    <Route path=\"/open-feedback\" element={<OpenFeedbackPage />} />\n  </FlatRoutes>\n);\n```\n\n## Using the OpenFeedbackModal Component\n\nTo use the `OpenFeedbackModal` component, you will need to add it to your `packages/app/src/components/Root/Root.tsx` file. This will add the feedback modal to your Backstage application, personally I like to add it under the search button, or above/with the user settings button.\n\nClicking on it will open a dialog box for users to send feedback.\n\n```typescript\nimport { OpenFeedbackModal } from '@parsifal-m/backstage-plugin-open-feedback';\n\n// Inside your Root component\n<Sidebar>\n  {/* Other SidebarItems */}\n  <OpenFeedbackModal />\n  {/* Other SidebarItems */}\n</Sidebar>;\n```\n\n## Using the OpenFeedbackForm Component\n\nI would recommend using the `OpenFeedbackForm` on the [Backstage HomePage](https://backstage.io/docs/getting-started/homepage/#homepage) to collect feedback from users. This component can be added to any page, but it is more specifically designed for the Backstage HomePage.\n",
+  "repository": "https://github.com/Parsifal-M/backstage-open-feedback",
+  "role": "frontend-plugin",
+  "scope": "@parsifal-m",
+  "updated": "2026-07-10T12:14:34.452Z",
+  "version": "1.0.1",
+  "version_count": 15,
+  "versions": [
+    {
+      "date": "2026-07-10T12:14:34.452Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-07-06T10:51:36.010Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-04-08T11:47:09.925Z",
+      "version": "0.9.4"
+    },
+    {
+      "date": "2025-12-29T11:39:36.179Z",
+      "version": "0.9.3"
+    },
+    {
+      "date": "2025-04-05T16:04:40.046Z",
+      "version": "0.9.2"
+    },
+    {
+      "date": "2024-11-25T13:38:26.755Z",
+      "version": "0.8.2"
+    },
+    {
+      "date": "2024-11-25T09:11:37.715Z",
+      "version": "0.8.1"
+    },
+    {
+      "date": "2024-08-13T08:09:35.059Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2024-08-02T11:29:31.382Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2024-08-01T17:05:05.540Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2024-07-26T19:20:50.820Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-05-22T11:47:21.119Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2024-05-07T17:19:23.752Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-05-04T21:18:14.868Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-05-04T21:06:35.914Z",
+      "version": "0.1.0"
+    }
+  ]
+}

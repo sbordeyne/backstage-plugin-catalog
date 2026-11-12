@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-03-02T14:19:06.131Z",
+  "deprecated": "",
+  "description": "GitHub authentication for Backstage",
+  "homepage": "",
+  "keywords": [
+    "authentication",
+    "backstage",
+    "github"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "armyknife"
+  ],
+  "name": "@armyknife/backstage-github-auth",
+  "plugin_id": "",
+  "readme": "# Backstage GitHub Authentication\n\nThis package provides GitHub authentication for Backstage.\n\n## Installation\n\n```bash\n# npm\nnpm install @armyknife/backstage-github-auth\n\n# yarn\nyarn add @armyknife/backstage-github-auth\n```\n\n## Usage\n\nCreate a file called `app-config.github.yaml` in your Backstage root directory:\n\n```yaml\nauth:\n  environment: development\n  providers:\n    github:\n      development:\n        clientId: ${GITHUB_CLIENT_ID}\n        clientSecret: ${GITHUB_CLIENT_SECRET}\n        # For GitHub Enterprise\n        enterpriseInstanceUrl: ${GITHUB_ENTERPRISE_URL} # Optional: for GitHub Enterprise\n        # For standard GitHub, you can omit this\n\n# Catalog configuration for GitHub\ncatalog:\n  providers:\n    github:\n      myGithubInstance:\n        organization: ${GITHUB_ORGANIZATION} # Your GitHub organization\n        catalogPath: /catalog-info.yaml # Path to catalog file\n        filters:\n          branch: main # Optional: default branch to use\n        # For GitHub Enterprise\n        host: ${GITHUB_ENTERPRISE_HOST} # Optional: for GitHub Enterprise\n        # token is required for private repositories\n        token: ${GITHUB_TOKEN}\n```\n\nThen, in your `packages/app/src/App.tsx` file:\n\n```typescript\nimport { githubAuthApiRef, GitHubAuth } from '@armyknife/backstage-github-auth';\n\n// Inside your createApp configuration:\napis: [\n  // ... other API factories\n  createApiFactory({\n    api: githubAuthApiRef,\n    deps: {\n      discoveryApi: discoveryApiRef,\n      oauthRequestApi: oauthRequestApiRef,\n      configApi: configApiRef,\n    },\n    factory: ({ discoveryApi, oauthRequestApi, configApi }) =>\n      GitHubAuth.create({\n        discoveryApi,\n        oauthRequestApi,\n        configApi,\n      }),\n  }),\n]\n```\n\n## Environment Variables\n\nYou'll need to set the following environment variables:\n\n```bash\nGITHUB_CLIENT_ID=your-github-client-id\nGITHUB_CLIENT_SECRET=your-github-client-secret\nGITHUB_ORGANIZATION=your-github-organization\nGITHUB_TOKEN=your-github-personal-access-token\n\n# For GitHub Enterprise\nGITHUB_ENTERPRISE_URL=https://github.yourdomain.com\nGITHUB_ENTERPRISE_HOST=github.yourdomain.com\n```\n\n## License\n\nApache-2.0\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@armyknife",
+  "updated": "2025-03-02T14:19:06.853Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-03-02T14:19:06.853Z",
+      "version": "0.1.0"
+    }
+  ]
+}

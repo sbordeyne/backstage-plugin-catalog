@@ -1,0 +1,59 @@
+{
+  "author": "",
+  "created": "2023-09-29T22:22:17.386Z",
+  "deprecated": "",
+  "description": "Backstage Sonarqube Backend Plugin Wrapper for VMware Tanzu Developer Portal",
+  "homepage": "",
+  "keywords": [],
+  "license": "VMware General Terms",
+  "maintainers": [
+    "abraundmeier",
+    "afbonney",
+    "aliu-vmware",
+    "andyadnguyen",
+    "austinal",
+    "bsnchan",
+    "fouadhamdi",
+    "gweresch",
+    "jamieklassen",
+    "krisapplegate",
+    "mchinigo",
+    "mstergianis",
+    "sameer-broadcom"
+  ],
+  "name": "@vmware-tanzu/tdp-plugin-backstage-sonarqube-backend",
+  "plugin_id": "",
+  "readme": "# Backstage Sonarqube Backend Plugin Wrapper for VMware Tanzu Developer Portal\n\nThe code in this plugin wrapper wraps the default backend for Backstage's Sonarqube plugin.\n\nBy downloading or using this package, you agree to be bound by the terms of the [VMware General Terms](https://www.vmware.com/vmware-general-terms.html).\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@vmware-tanzu",
+  "updated": "2024-03-22T19:22:59.575Z",
+  "version": "4.0.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2024-03-22T19:22:59.575Z",
+      "version": "4.0.0"
+    },
+    {
+      "date": "2024-03-15T19:50:31.758Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-03-07T17:52:33.136Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-02-27T17:59:12.806Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2024-01-11T21:06:42.726Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2023-09-29T22:22:17.754Z",
+      "version": "0.0.3"
+    }
+  ]
+}

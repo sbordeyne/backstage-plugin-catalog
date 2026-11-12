@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2026-07-17T16:14:34.108Z",
+  "deprecated": "",
+  "description": "Backstage backend module that captures agentic tool-call trace spans and forwards them to the backstage-insights plugin.",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-mcp-actions-backend-module-insights",
+  "plugin_id": "mcp-actions",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2026-10-23T12:25:29.712Z",
+  "version": "0.2.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-10-23T12:25:29.712Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2026-09-17T14:08:01.131Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-08-20T15:29:22.343Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-07-17T16:14:34.461Z",
+      "version": "0.2.0"
+    }
+  ]
+}

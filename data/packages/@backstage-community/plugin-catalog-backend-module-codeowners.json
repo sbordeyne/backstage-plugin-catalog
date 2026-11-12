@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-09-15T13:05:50.047Z",
+  "deprecated": "",
+  "description": "The codeowners backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-catalog-backend-module-codeowners",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/catalog/plugins/catalog-backend-module-codeowners",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:28:06.302Z",
+  "version": "0.8.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-11-03T14:28:06.302Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-09-24T17:31:41.062Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-09-15T13:05:50.652Z",
+      "version": "0.6.1"
+    }
+  ]
+}

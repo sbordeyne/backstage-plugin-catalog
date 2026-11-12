@@ -1,0 +1,56 @@
+{
+  "author": "",
+  "created": "2025-03-13T23:00:54.484Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "christoph-jerolimov",
+    "jerolimov"
+  ],
+  "name": "@proberaum/backstage-plugin-dashboards-backend",
+  "plugin_id": "dashboards",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@proberaum",
+  "updated": "2025-11-18T17:45:16.353Z",
+  "version": "0.6.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2025-11-18T17:45:16.353Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-10-17T23:00:53.702Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-10-17T22:22:26.508Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-10-17T16:07:38.128Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-10-16T20:51:03.967Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-10-14T05:27:27.678Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-03-13T23:17:03.446Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2025-03-13T23:00:54.773Z",
+      "version": "0.0.0"
+    }
+  ]
+}

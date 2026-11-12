@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2024-04-27T20:11:16.705Z",
+  "deprecated": "",
+  "description": "The Postman Backend Plugin integrates with Postman's API to provide seamless access to API metadata, versions, monitors, collections, tags, users, and workspaces.",
+  "homepage": "https://github.com/postman-solutions-eng/backstage-postman-plugin#readme",
+  "keywords": [
+    "backstage",
+    "postman",
+    "postman-solutions"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "alexisphanor-postman",
+    "aphanor",
+    "jonico",
+    "kdevakumaran",
+    "tilak-patel-postman"
+  ],
+  "name": "@postman-solutions/postman-backstage-backend-plugin",
+  "plugin_id": "",
+  "readme": "# Postman Backend Plugin\n\nThe Postman Backend Plugin integrates with Postman's API to provide seamless access to API metadata, versions, monitors, collections, tags, users, and workspaces.\n\n## Features\n\nThis plugin exposes various endpoints, including:\n- API Information:\n  - GET `/apis/:id`\n  - GET `/apis/:id/versions`\n  - GET `/apis/:id/versions/:versionId`\n- Monitor Management:\n  - GET `/monitors`\n  - GET `/monitors/:id`\n- Collection Handling:\n  - GET `/collections/:id`\n  - GET `/tags/:tag/entities`\n  - GET `/collections/:id/tags`\n  - PUT `/collections/:id/tags`\n- User and Workspace Details:\n  - GET `/users`\n  - GET `/workspaces`\n  - GET `/workspace/:workspaceId`\n\n## Production Installation\n\nFor production use, please refer to the guidelines in [Postman Plugin Installation Steps](https://github.com/postman-solutions-eng/backstage-postman-plugin).\n\n## Local Installation & Contribution\n\nAfter cloning the `postman` and `postman-backend` plugins, rename the package names in their respective `package.json` with `@internal/PLUGIN_NAME` and install the backend plugin. Run the following command from your project root:\n\n```bash\nyarn --cwd packages/backend add @internal/backstage-plugin-postman-backend\n```\n\nThen register the plugin in your backend (typically in `packages/backend/src/index.ts`):\n\n```typescript\nconst backend = createBackend();\n// ...existing code...\nbackend.add(import('@internal/backstage-plugin-postman-backend'));\n```\n\n### Entity Provider Integration (Optional)\n\nEntity Providers in Backstage enable automatic integration of external data into the catalog. The Postman EntityProvider allows you to:\n- Automatically fetch and synchronize collections or APIs tagged for inclusion.\n- Benefit from built-in caching, which minimizes API requests.\n\nTo set up the Postman EntityProvider:\n\n1. Ensure that your `app-config.yaml` includes the following configuration:\n```yaml\npostman:\n  baseUrl: https://api.postman.com # For EU data center, use: https://api.eu.postman.com\n  apiKey: ${POSTMAN_API_KEY}\n  entityProvider:\n    synchEntitiesWithTag: backstage-plugin\n    synchInterval: 2\n  cache:\n    ttl: 60000\n```\n\n2. In your backend module (usually `packages/backend/src/index.ts`), register the provider:\n```typescript\n// ...existing imports...\nimport { createBackendModule } from '@backstage/backend-plugin-api';\nimport { catalogProcessingExtensionPoint } from '@backstage/plugin-catalog-node/alpha';\nimport { PostmanEntityProvider, NodeCacheService } from '@internal/backstage-plugin-postman-backend';\n\nexport const catalogModulePostmanProvider = createBackendModule({\n  pluginId: 'catalog',\n  moduleId: 'postman-provider',\n  register(env) {\n    env.registerInit({\n      deps: {\n        catalog: catalogProcessingExtensionPoint,\n        reader: env.coreServices.urlReader,\n        scheduler: env.coreServices.scheduler,\n        config: env.coreServices.rootConfig,\n        logger: env.coreServices.logger,\n      },\n      async init({ catalog, scheduler, config, logger }) {\n        const cache = new NodeCacheService({\n          defaultTtl: config.has('postman.cache.ttl')\n            ? config.getNumber('postman.cache.ttl')\n            : 600,\n        });\n        const provider = PostmanEntityProvider.fromConfig(config, { logger, cache });\n        catalog.addEntityProvider(provider);\n        const synchInterval = config.has('postman.entityProvider.synchInterval')\n          ? config.getNumber('postman.entityProvider.synchInterval')\n          : null;\n        if (synchInterval) {\n          await scheduler.scheduleTask({\n            id: 'run_postman_entity_provider_refresh',\n            fn: async () => await provider.run(),\n            frequency: { minutes: synchInterval },\n            timeout: { minutes: 10 },\n          });\n          logger.info('Postman EntityProvider registered with the catalog');\n        } else {\n          logger.info('Postman EntityProvider registered, but auto refresh is disabled');\n        }\n      },\n    });\n  },\n});\n```\n\n3. Finally, integrate the module into your backend initialization:\n```typescript\n// ...existing code...\nimport { catalogModulePostmanProvider } from '@internal/backstage-plugin-postman-backend';\n// ...existing code...\nbackend.add(catalogModulePostmanProvider);\nbackend.start();\n```\n\n### Caching\n\nThe plugin employs caching to reduce redundant HTTP requests and boost performance. The two main caching strategies are:\n\n1. HTTP Request Caching:\n   - Responses from the Postman API are cached based on a configurable TTL.\n2. Entity Data Caching:\n   - The PostmanEntityProvider caches entities between synchronization cycles to decrease processing overhead.\n\nYou can adjust the cache settings in your `app-config.yaml`:\n```yaml\npostman:\n  cache:\n    ttl: 60000  # Cache TTL in seconds. Default 600 seconds\n```\n\n## Development\n\nTo run the plugin backend in standalone mode, execute:\n\n```bash\nyarn start\n```\n\nFor full-stack development (including the frontend), run:\n\n```bash\nyarn dev\n```\n\n## Testing\n\nTo execute tests for the plugin, run:\n\n```bash\nyarn test\n```\n\nNote:\n- Ensure that you have enabled the mock service by uncommenting the necessary sections in your test files (e.g., in plugin.test.ts and router.test.ts).\n- This allows the tests to use the mocked authentication and other services.\n  \nEnsure your test configuration aligns with your backend setup.\n",
+  "repository": "https://github.com/postman-solutions-eng/backstage-postman-plugin",
+  "role": "backend-plugin",
+  "scope": "@postman-solutions",
+  "updated": "2025-02-09T19:30:31.238Z",
+  "version": "1.1.4",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2025-02-09T19:30:31.238Z",
+      "version": "1.1.4"
+    },
+    {
+      "date": "2025-02-09T19:16:43.109Z",
+      "version": "1.1.3"
+    },
+    {
+      "date": "2025-02-09T18:43:59.686Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2025-02-09T18:22:25.276Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2025-02-09T17:39:04.289Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-04-28T15:47:18.194Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2024-04-28T00:38:43.109Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2024-04-27T23:37:00.070Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-04-27T20:25:47.763Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-04-27T20:11:16.955Z",
+      "version": "1.0.1"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2023-04-03T10:30:08.292Z",
+  "deprecated": "",
+  "description": "The Tekton plugin enables you to visualize the `PipelineRun` resources available on the Kubernetes cluster.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:production"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-tekton",
+  "plugin_id": "",
+  "readme": "# Tekton plugin for Backstage\n\nThe Tekton plugin enables you to visualize the `PipelineRun` resources available on the Kubernetes cluster.\n\n## For administrators\n\n### Setting up the Tekton plugin\n\n#### Prerequisites\n\n- The Kubernetes plugins including `@backstage/plugin-kubernetes` and `@backstage/plugin-kubernetes-backend` are installed and configured by following the [installation](https://backstage.io/docs/features/kubernetes/installation) and [configuration](https://backstage.io/docs/features/kubernetes/configuration) guides.\n\n- The following `customResources` component is added in the [`app-config.yaml`](https://backstage.io/docs/features/kubernetes/configuration#configuring-kubernetes-clusters) file:\n  ```yaml\n   kubernetes:\n     ...\n     customResources:\n       - group: 'tekton.dev'\n         apiVersion: 'v1'\n         plural: 'pipelineruns'\n       - group: 'tekton.dev'\n         apiVersion: 'v1'\n         plural: 'taskruns'\n  ```\n- The Kubernetes plugin is configured and connects to the cluster using a `ServiceAccount`.\n- The [`ClusterRole`](https://backstage.io/docs/features/kubernetes/configuration#role-based-access-control) must be granted for custom resources (PipelineRuns and TaskRuns) to `ServiceAccount` accessing the cluster.\n- To view the pod logs, you have granted permissions for `pods/log`.\n- If you have the Backstage Kubernetes Plugin configured, then the `ClusterRole` is already granted.\n\n  You can use the following code to grant the `ClusterRole` for custom resources and pod logs:\n\n  ```yaml\n    ...\n    apiVersion: rbac.authorization.k8s.io/v1\n    kind: ClusterRole\n    metadata:\n      name: backstage-read-only\n    rules:\n      - apiGroups:\n          - \"\"\n        resources:\n          - pods/log\n        verbs:\n          - get\n          - list\n          - watch\n      ...\n      - apiGroups:\n          - tekton.dev\n        resources:\n          - pipelineruns\n          - taskruns\n        verbs:\n          - get\n          - list\n\n  ```\n\n  > Tip: You can use the [prepared manifest for a read-only `ClusterRole`](https://raw.githubusercontent.com/janus-idp/backstage-plugins/main/plugins/tekton/manifests/clusterrole.yaml), which provides access for both Kubernetes plugin and Tekton plugin.\n\n- The following annotation is added to the entity's `catalog-info.yaml` file to identify whether an entity contains the Kubernetes resources:\n\n  ```yaml\n  annotations:\n    ...\n\n    backstage.io/kubernetes-id: <BACKSTAGE_ENTITY_NAME>\n  ```\n\n  You can also add the `backstage.io/kubernetes-namespace` annotation to identify the Kubernetes resources using the defined namespace.\n\n  ```yaml\n  annotations:\n    ...\n\n    backstage.io/kubernetes-namespace: <RESOURCE_NS>\n  ```\n\n- The following annotation is added to the `catalog-info.yaml` file of the entity to enable the Tekton related features in Backstage. The value of the annotation identifies the name of the Backstage entity:\n\n  ```yaml\n  annotations:\n    ...\n\n    janus-idp.io/tekton : <BACKSTAGE_ENTITY_NAME>\n  ```\n\n- A custom label selector can be added, which Backstage uses to find the Kubernetes resources. The label selector takes precedence over the ID annotations.\n\n  ```yaml\n  annotations:\n    ...\n\n    backstage.io/kubernetes-label-selector: 'app=my-app,component=front-end'\n  ```\n\n- The following label is added to the resources so that the Kubernetes plugin gets the Kubernetes resources from the requested entity:\n\n  ```yaml\n  labels:\n    ...\n\n    backstage.io/kubernetes-id: <BACKSTAGE_ENTITY_NAME>`\n  ```\n\n  ***\n\n  **NOTE**\n\n  When using the label selector, the mentioned labels must be present on the resource.\n\n  ***\n\n#### Procedure\n\n1. Install the Tekton plugin using the following command:\n\n   ```console\n   yarn workspace app add @janus-idp/backstage-plugin-tekton\n   ```\n\n1. To enable the PipelineRun list in the **CI/CD** tab on the entity view page, add the following snippet in the `packages/app/src/components/catalog/EntityPage.tsx`.\n\n   ```tsx title=\"packages/app/src/components/catalog/EntityPage.tsx\"\n   /* highlight-add-next-line */\n   import {\n     isTektonCIAvailable,\n     TektonCI,\n   } from '@janus-idp/backstage-plugin-tekton';\n\n   const cicdContent = (\n     <EntitySwitch>\n       {/* ... */}\n       {/* highlight-add-start */}\n       <EntitySwitch.Case if={isTektonCIAvailable}>\n         <TektonCI />\n       </EntitySwitch.Case>\n       {/* highlight-add-end */}\n     </EntitySwitch>\n   );\n   ```\n\n## For users\n\n### Using the Tekton plugin in Backstage\n\nTekton is a front-end plugin that enables you to view the `PipelineRun` resources.\n\n#### Prerequisites\n\n- Your Backstage application is installed and running.\n- You have installed the Tekton plugin. For the installation process, see [Installation](#setting-up-the-tekton-plugin).\n\n#### Procedure\n\n1. Open your Backstage application and select a component from the **Catalog** page.\n\n1. Go to the **CI/CD** tab.\n\n   The **CI/CD** tab displays the list of PipelineRun resources associated with a Kubernetes cluster. The list contains pipeline run details, such as **NAME**, **STATUS**, **TASK STATUS**, **STARTED**, and **DURATION**.\n\n   ![ci-cd-tab-tekton](./images/tekton-plugin-user4.png)\n\n1. Click on expand row button besides PipelineRun name in the list to view the PipelineRun visualization. The pipeline run resource include tasks to complete. When you hover the mouse pointer on a task card, you can view the steps to complete that particular task.\n\n   ![pipelinerun-view](./images/tekton-plugin-user5.png)\n\n## Enabling UI elements\n\n### Vulnerabilites Column\n\n`Vulnerabilities` column provides a visual representation of identified vulnerabilities in the OCI image produced by the pipelinerun. The Author of the pipeline scanner task would provide the CVE summary data using the below format that the UI can interpret.\n\nThe result of the scanner task should be emitted back to the pipelinerun and it should contain a result that ends with `SCAN_OUTPUT` string.\n\n## Format:\n\nResult name: `<any_prefix>_SCAN_OUTPUT`\neg: `SCAN_OUTPUT`, `MY_ACS_SCAN_OUTPUT`\n\nResult value: `'{\"vulnerabilities\":{\"critical\": 0,\"high\": 9,\"medium\": 2,\"low\": 13,\"unknown\": 0},\n             \"unpatched_vulnerabilities\": {\"critical\": 0,\"high\": 1,\"medium\": 0,\"low\":1}}'`\n\n---\n\nExample PipelineRun:\n\n```\n   ...\n   status:\n     results:\n       -  name: 'MY_SCAN_OUTPUT'\n          value:\n            '{\"vulnerabilities\":{\"critical\": 0,\"high\": 9,\"medium\": 2,\"low\": 13,\"unknown\": 0},\n             \"unpatched_vulnerabilities\": {\"critical\": 0,\"high\": 1,\"medium\": 0,\"low\":1}}'\n```\n\n![tekton-vulnerabilites](./images/tekton-plugin-vulnerabilities.png)\n\n---\n\n## Action buttons\n\n### SBOM\n\nLink to SBOM action will be enabled if there is a SBOM task in the pipelinerun and it should contain required annotations and emit the below result\n\n## Format:\n\nannotations:\n\n```\n    task.output.location: results\n    task.results.format: application/text\n    task.results.type: external-link  # Optional: This will redirect to external page\n    task.results.key: LINK_TO_SBOM\n\n```\n\nresults.name: `LINK_T0_SBOM`\n\nresults.value: `<sbom-viewer-url>`\n\n---\n\nExample:\n\n## Task: [Optional]\n\n```\napiVersion: tekton.dev/v1\nkind: Task\nmetadata:\n name: export-sbom-task\n annotations:\n    task.output.location: results\n    task.results.format: application/text\n    task.results.type: external-link  # Optional: This will redirect to external page\n    task.results.key: LINK_TO_SBOM\nspec: …\n      steps:\n        -  image: registry.access.redhat.com/ubi8/ubi-minimal\n           name: export-sbom\n           script:  |\n             #!/bin/sh\n             ## sbom image generation script goes here\n             echo 'quay.io/repo/image:build-8e536-1692702836' | tee $(results.LINK_TO_SBOM.path)\n```\n\n_Note: Absence of the below annotation will open SBOM taskrun logs modal._\n\n```\ntask.results.type: external-link  # This will redirect to external page\n```\n\n### Output:\n\nOutput action will be enabled when the pipelinerun emits some results and/or contains taskruns with supported annotations and emits report data in pod logs.\n\nThis action opens a modal where it will render the reports for Enterprise contract and Advanced cluster security. The report data should be exposed via pod logs and the taskruns should contain the following annotations.\n\nExamples:\n\nlist of supported report tasks with correct annotations are listed below:\n\n## Enterprise contract Task [Optional]:\n\n```\napiVersion: tekton.dev/v1\nkind: Task\nmetadata:\n name: enterprise-contract-task\n annotations:\n    task.results.format: application/json\n    task.results.type: ec\n    task.output.location: logs\n    task.results.container: step-report-json\nspec: …\n      steps:\n        - name: report-json\n          image: quay.io/enterprise-contract/ec-cli:snapshot@sha256:33be4031a3316a46db3559a4d8566bc22f9d4d491d262d699614f32f35b45b67\n          command: [cat]\n          args:\n            - \"$(params.HOMEDIR)/report-json.json\"\n\n```\n\n![tekton-ec-report](./images/tekton-plugin-ec-output.png)\n\n---\n\n## ACS Image scan Task [Optional]:\n\n```\napiVersion: tekton.dev/v1\nkind: Task\nmetadata:\n name: acs-image-scan\n annotations:\n    task.results.format: application/json\n    task.results.type: roxctl-image-scan\n    task.results.key: SCAN_OUTPUT\n    task.output.location: logs\n    task.results.container: step-report\nspec: …\n      steps:\n        - name: report\n          image: 'quay.io/lrangine/crda-maven:11.0'\n          script: |\n              #!/bin/sh\n              cat $(workspaces.reports.path)/image-scan\n\n```\n\n## ACS Image check Task [Optional]:\n\n```\napiVersion: tekton.dev/v1\nkind: Task\nmetadata:\n name: acs-image-check\n annotations:\n    task.results.format: application/json\n    task.results.type: roxctl-image-check\n    task.results.key: SCAN_OUTPUT\n    task.output.location: logs\n    task.results.container: step-report\nspec: …\n      steps:\n        - name: report\n          image: 'quay.io/lrangine/crda-maven:11.0'\n          script: |\n              #!/bin/sh\n              cat $(workspaces.reports.path)/image-check\n\n```\n\n## ACS Deployment check Task [Optional]:\n\n```\napiVersion: tekton.dev/v1\nkind: Task\nmetadata:\n name: acs-deployment-check\n annotations:\n    task.results.format: application/json\n    task.results.type: roxctl-deployment-check\n    task.results.key: SCAN_OUTPUT\n    task.output.location: logs\n    task.results.container: step-report\nspec: …\n      steps:\n        - name: report\n          image: 'quay.io/lrangine/crda-maven:11.0'\n          script: |\n              #!/bin/sh\n              cat $(workspaces.reports.path)/deployment-check\n\n```\n\n![tekton-acs-report](./images/tekton-plugin-acs-output.png)\n\n---\n\n## Pipelinerun results\n\nThe results emitted in the pipelinerun resource will be available in the Others section in the output modal.\n\n![tekton-pipelinerun-report](./images/tekton-plugin-pipelinerun-output.png)\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/tekton",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-14T21:33:40.520Z",
+  "version": "3.7.10",
+  "version_count": 126,
+  "versions": [
+    {
+      "date": "2024-11-14T21:33:40.520Z",
+      "version": "3.7.10"
+    },
+    {
+      "date": "2024-11-04T12:24:47.835Z",
+      "version": "3.15.1"
+    },
+    {
+      "date": "2024-10-31T22:18:40.344Z",
+      "version": "3.12.9"
+    },
+    {
+      "date": "2024-10-30T20:19:04.422Z",
+      "version": "3.15.0"
+    },
+    {
+      "date": "2024-10-29T18:59:37.692Z",
+      "version": "3.14.2"
+    },
+    {
+      "date": "2024-10-22T21:37:11.680Z",
+      "version": "3.14.0"
+    },
+    {
+      "date": "2024-10-10T07:35:25.770Z",
+      "version": "3.13.7"
+    },
+    {
+      "date": "2024-10-09T20:48:48.238Z",
+      "version": "3.13.6"
+    },
+    {
+      "date": "2024-10-08T18:40:00.451Z",
+      "version": "3.13.5"
+    },
+    {
+      "date": "2024-10-08T06:34:35.897Z",
+      "version": "3.13.4"
+    },
+    {
+      "date": "2024-10-04T05:09:26.831Z",
+      "version": "3.13.3"
+    },
+    {
+      "date": "2024-10-01T18:38:34.704Z",
+      "version": "3.13.2"
+    },
+    {
+      "date": "2024-09-25T13:00:02.963Z",
+      "version": "3.13.1"
+    },
+    {
+      "date": "2024-09-20T03:56:50.365Z",
+      "version": "3.13.0"
+    },
+    {
+      "date": "2024-09-19T17:01:07.180Z",
+      "version": "3.12.8"
+    }
+  ]
+}

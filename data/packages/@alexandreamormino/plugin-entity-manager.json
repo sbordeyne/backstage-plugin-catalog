@@ -1,0 +1,50 @@
+{
+  "author": "Alexandre Amormino",
+  "created": "2026-04-25T16:34:24.336Z",
+  "deprecated": "",
+  "description": "Frontend plugin for managing Backstage catalog entities through a Monaco YAML editor",
+  "homepage": "https://github.com/alexandreamormino/backstage-entity-manager#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "catalog",
+    "entity-manager",
+    "frontend",
+    "yaml-editor"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "alexandreamormino"
+  ],
+  "name": "@alexandreamormino/plugin-entity-manager",
+  "plugin_id": "entity-manager",
+  "readme": "# Entity Manager Frontend Plugin\n\nFrontend plugin for creating and editing Backstage catalog entities through a YAML editor.\n\n## Installation\n\n```bash\ncd packages/app\nyarn add @alexandreamormino/plugin-entity-manager\n```\n\n#### Replace the Catalog Import Page\n\nEntity Manager can replace Backstage's default catalog import page while preserving the existing `/catalog-import` route and permission behavior.\n\nReplace the default route:\n\n```tsx\n<Route\n  path=\"/catalog-import\"\n  element={\n    <RequirePermission permission={catalogEntityCreatePermission}>\n      <CatalogImportPage />\n    </RequirePermission>\n  }\n/>\n```\n\nWith:\n\n```tsx\n<Route\n  path=\"/catalog-import\"\n  element={\n    <RequirePermission permission={catalogEntityCreatePermission}>\n      <EntityManagerCreatePage />\n    </RequirePermission>\n  }\n/>\n```\n\nAfter this change, users who access `/catalog-import` will see the Entity Manager creation page instead of the default Backstage catalog import page.\n\n> Remove the `CatalogImportPage` import from `App.tsx` when it is no longer used anywhere else in the application.\n\n#### Configure Catalog External Routes\n\nLocate the catalog external routes binding in `packages/app/src/App.tsx`:\n\n```tsx\nbind(catalogPlugin.externalRoutes, {\n  createComponent: scaffolderPlugin.routes.root,\n  viewTechDoc: techdocsPlugin.routes.docRoot,\n  createFromTemplate: scaffolderPlugin.routes.selectedTemplate,\n});\n```\n\nReplace it with:\n\n```tsx\nbind(catalogPlugin.externalRoutes, {\n  createComponent: entityManagerPlugin.routes.root,\n  viewTechDoc: techdocsPlugin.routes.docRoot,\n  createFromTemplate: scaffolderPlugin.routes.selectedTemplate,\n});\n```\n\nThis redirects catalog actions that create entities from templates to the Entity Manager plugin.\n\n#### Register the Entity Manager API\n\nIn `packages/app/src/apis.ts`, import the Entity Manager API factory:\n\n```tsx\nimport { entityManagerApiFactory } from '@alexandreamormino/plugin-entity-manager';\n```\n\nAdd `entityManagerApiFactory` to the `apis` array:\n\n```tsx\nexport const apis: AnyApiFactory[] = [\n  entityManagerApiFactory,\n  createApiFactory({\n    api: scmIntegrationsApiRef,\n    deps: { configApi: configApiRef },\n    factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),\n  }),\n  ScmAuth.createDefaultApiFactory(),\n];\n```\n\nThis registers the Entity Manager API factory in the Backstage frontend application.\n\n#### Replace Catalog Entity Components\n\nIn `packages/app/src/components/catalog/EntityPage.tsx`, replace the default Backstage components with the Entity Manager equivalents.\n\nAdd the imports:\n\n```tsx\nimport {\n  EntityManagerAboutCard,\n  EntityManagerLayout,\n} from '@alexandreamormino/plugin-entity-manager';\n```\n\nReplace:\n\n```tsx\n<EntityAboutCard />\n```\n\nWith:\n\n```tsx\n<EntityManagerAboutCard />\n```\n\nReplace:\n\n```tsx\n<EntityLayout>\n  {/* Entity page content */}\n</EntityLayout>\n```\n\nWith:\n\n```tsx\n<EntityManagerLayout>\n  {/* Entity page content */}\n</EntityManagerLayout>\n```\n\n`EntityManagerAboutCard` is a drop-in replacement for `EntityAboutCard`.\n\n- Adds Edit and Delete actions for entities managed by Entity Manager\n- Renders the default Backstage entity card for all other entities\n\n`EntityManagerLayout` is a drop-in replacement for `EntityLayout`.\n\n- Hides the **Unregister entity** option for entities managed by Entity Manager\n- Preserves the default layout behavior for all other entities\n\n## Custom button integration\n\nIf you want to build your own card or toolbar, you can use the buttons directly. They are re-exported from `entity-manager-react` so a separate install is not required.\n\n```typescript\nimport {\n  EditEntityButton,\n  DeleteEntityButton,\n  isEntityManagerManaged,\n} from '@alexandreamormino/plugin-entity-manager';\nimport { usePermission } from '@backstage/plugin-permission-react';\nimport {\n  entityManagerUpdatePermission,\n  entityManagerDeletePermission,\n} from '@alexandreamormino/plugin-entity-manager-common';\n\nconst { allowed: canEdit } = usePermission({ permission: entityManagerUpdatePermission });\nconst { allowed: canDelete } = usePermission({ permission: entityManagerDeletePermission });\n\n<EditEntityButton\n  entityKind={entity.kind}\n  entityName={entity.metadata.name}\n  onLoadEntity={async () => {\n    const { entity: loaded } = await api.getEntity(entity.kind, entity.metadata.name);\n    return loaded;\n  }}\n  onSave={async (updated) => {\n    await api.updateEntity(entity.kind, entity.metadata.name, updated);\n  }}\n  disabled={!canEdit}\n  asIconButton\n/>\n\n<DeleteEntityButton\n  entityKind={entity.kind}\n  entityName={entity.metadata.name}\n  onDelete={async () => {\n    await api.deleteEntity(entity.kind, entity.metadata.name);\n  }}\n  disabled={!canDelete}\n  asIconButton\n/>\n```\n\n`isEntityManagerManaged(entity)` returns `true` when the entity's `backstage.io/managed-by-location` annotation starts with `entity-manager-provider:`.\n\n## Development\n\n```bash\nyarn workspace @alexandreamormino/plugin-entity-manager start\nyarn workspace @alexandreamormino/plugin-entity-manager test\nyarn workspace @alexandreamormino/plugin-entity-manager lint\n```\n",
+  "repository": "https://github.com/alexandreamormino/backstage-entity-manager/tree/HEAD/plugins/entity-manager-frontend",
+  "role": "frontend-plugin",
+  "scope": "@alexandreamormino",
+  "updated": "2026-06-28T18:28:07.206Z",
+  "version": "1.0.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-06-28T18:28:07.206Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2026-06-28T16:33:24.018Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-06-28T02:29:47.575Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-04-25T16:56:32.078Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-04-25T16:34:24.551Z",
+      "version": "1.0.0"
+    }
+  ]
+}

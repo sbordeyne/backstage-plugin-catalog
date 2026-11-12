@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T07:22:32.131Z",
+  "deprecated": "",
+  "description": "The jira backend module for the soundcheck-backend-module plugin.",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-soundcheck-backend-module-jira",
+  "plugin_id": "soundcheck",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@spotify",
+  "updated": "2026-10-23T12:28:29.531Z",
+  "version": "0.7.2",
+  "version_count": 39,
+  "versions": [
+    {
+      "date": "2026-10-23T12:28:29.531Z",
+      "version": "0.7.2"
+    },
+    {
+      "date": "2026-09-17T14:13:40.400Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2026-08-20T15:31:55.352Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-07-17T16:17:03.038Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2026-06-19T07:53:14.355Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-05-26T11:52:19.357Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-04-17T09:04:21.975Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2026-03-19T22:28:59.166Z",
+      "version": "0.4.6"
+    },
+    {
+      "date": "2026-02-19T17:00:57.461Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2026-01-22T15:50:41.763Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2025-12-19T12:54:24.201Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2025-11-21T18:06:24.361Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2025-10-17T16:14:40.913Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-09-18T14:05:02.875Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-08-22T11:49:21.213Z",
+      "version": "0.3.12"
+    }
+  ]
+}

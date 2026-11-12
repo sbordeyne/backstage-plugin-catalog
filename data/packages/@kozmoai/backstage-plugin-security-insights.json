@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:15.833Z",
+  "deprecated": "",
+  "description": "![a list of security alerts](./docs/glint-backstage-security-plugin.jpg)",
+  "homepage": "https://glint.io/backstage/plugins/security-insights/",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-security-insights",
+  "plugin_id": "",
+  "readme": "# GitHub Security Insights Plugin for Backstage\n\n![a list of security alerts](./docs/glint-backstage-security-plugin.jpg)\n\n![a list of dependabot alerts](./docs/glint-backstage-dependabot-alerts.png)\n\n## Features\n\n- List detected vulnerabilities for your repository, with filtering and search.\n- Show statistics widget about detected vulnerabilities for your repository.\n\n## Plugin Setup\n\n1. If you have standalone app (you didn't clone this repo), then in the [packages/app](https://github.com/backstage/backstage/blob/master/packages/app/) directory of your backstage instance, add the plugin as a package.json dependency:\n\n```bash\nyarn add @kozmoai/backstage-plugin-security-insights\n```\n\n2. Import the plugin to the [entityPage.tsx](https://github.com/backstage/backstage/blob/master/packages/app/src/components/catalog/EntityPage.tsx) source file:\n\n```tsx\nimport {\n  EntitySecurityInsightsContent,\n  isSecurityInsightsAvailable,\n} from '@kozmoai/backstage-plugin-security-insights';\n\nconst serviceEntityPage = (\n  <EntityPageLayout>\n    ...\n    <EntityLayout.Route\n      path=\"/security-insights\"\n      title=\"Security Insights\"\n      // Uncomment the line below if you'd like to only show the tab on entities with the correct annotations already set\n      // if={isSecurityInsightsAvailable}\n    >\n      <EntitySecurityInsightsContent />\n    </EntityLayout.Route>\n    ...\n  </EntityPageLayout>\n);\n```\n\n3. If you want to show dependabot alerts on your Backstage instance, make sure to import following code to the [entityPage.tsx](https://github.com/backstage/backstage/blob/master/packages/app/src/components/catalog/EntityPage.tsx) source file:\n\n```tsx\nimport {\n  EntityGithubDependabotContent,\n  isSecurityInsightsAvailable,\n} from '@kozmoai/backstage-plugin-security-insights';\n\nconst serviceEntityPage = (\n  <EntityPageLayout>\n    ...\n    <EntityLayout.Route\n      path=\"/dependabot\"\n      title=\"Dependabot\"\n      // Uncomment the line below if you'd like to only show the tab on entities with the correct annotations already set\n      // if={isSecurityInsightsAvailable}\n    >\n      <EntityGithubDependabotContent />\n    </EntityLayout.Route>\n    ...\n  </EntityPageLayout>\n);\n```\n\n4. Run backstage app with `yarn start` and navigate to services tabs.\n\n## Widget setup\n\n![security insights widget](./docs/backstage-plugin-security-widget-1.png)\n\n![dependabot alerts widget](./docs/glint-backstage-dependabot-widget.png)\n\n1. You must install plugin by following the steps above to add widgets to your Overview.\n\n2. Add security insights widget to your Overview tab:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  SecurityInsightsWidget,\n  isSecurityInsightsAvailable,\n} from '@kozmoai/backstage-plugin-security-insights';\n\n...\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isSecurityInsightsAvailable}>\n        <Grid item md={6}>\n          <SecurityInsightsWidget/>\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n    ...\n  </Grid>\n);\n\n```\n\n3. Add dependabot alerts widget to your Overview tab:\n\n```ts\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  DependabotAlertsWidget,\n  isSecurityInsightsAvailable,\n} from '@kozmoai/backstage-plugin-security-insights';\n\n...\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isSecurityInsightsAvailable}>\n        <Grid item md={6}>\n          <DependabotAlertsWidget />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n    ...\n  </Grid>\n);\n\n```\n\n4. Per default, all severity level alerts will be included and shown on the widget. However, severity level for dependabot alerts shown in Dependabot alerts widget is configurable via app-config. For example, if you want to show only high and medium severity alerts, you can do it in the following way.\n\n```yaml\n// app-config.yaml\ndependabotAlertsConfiguration:\n  severity: [ high, medium]\n```\n\n## Links\n\n- [Backstage](https://backstage.io)\n- Get hosted, managed Backstage for your company: https://glint.io\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-security-insights",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:16.030Z",
+  "version": "2.3.16",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:16.030Z",
+      "version": "2.3.16"
+    },
+    {
+      "date": "2024-03-25T22:14:16.173Z",
+      "version": "2.3.15"
+    }
+  ]
+}

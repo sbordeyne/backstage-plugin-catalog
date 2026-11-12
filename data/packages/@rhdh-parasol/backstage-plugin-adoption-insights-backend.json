@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2026-09-03T16:21:47.837Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "durandom"
+  ],
+  "name": "@rhdh-parasol/backstage-plugin-adoption-insights-backend",
+  "plugin_id": "adoption-insights",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/adoption-insights/plugins/adoption-insights-backend",
+  "role": "backend-plugin",
+  "scope": "@rhdh-parasol",
+  "updated": "2026-09-03T16:21:48.221Z",
+  "version": "0.9.2",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-09-03T16:21:48.221Z",
+      "version": "0.9.2"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2026-05-11T20:36:31.987Z",
+  "deprecated": "",
+  "description": "The Backstage backend plugin for LiteLLM governance",
+  "homepage": "https://github.com/acarmisc/backstage-plugin-litellm-govai#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "acarmisc"
+  ],
+  "name": "@acarmisc/backstage-plugin-litellm-backend",
+  "plugin_id": "litellm",
+  "readme": "# @acarmisc/backstage-plugin-litellm-backend\n\nBackend for the **Backstage LiteLLM Governance Plugin** (New Backend System).\nIt is the only component that talks to your [LiteLLM](https://github.com/BerriAI/litellm)\nproxy: it holds the master key, resolves the caller's Backstage identity, and\nenforces budgets, key limits, team membership, model access and permissions\nbefore calling LiteLLM.\n\nPair it with the frontend, [`@acarmisc/backstage-plugin-litellm`](https://www.npmjs.com/package/@acarmisc/backstage-plugin-litellm).\n\n![How the backend handles a key request](https://raw.githubusercontent.com/acarmisc/backstage-plugin-litellm-govai/main/docs/images/architecture.png)\n\nFull documentation — adoption guide, configuration reference, permissions,\nsecurity model and architecture — starts at the\n[project README](https://github.com/acarmisc/backstage-plugin-litellm-govai#readme).\n\n## Installation\n\n```bash\nyarn --cwd packages/backend add @acarmisc/backstage-plugin-litellm-backend\n```\n\nIn `packages/backend/src/index.ts`:\n\n```ts\nbackend.add(import('@acarmisc/backstage-plugin-litellm-backend'));\n```\n\n## Minimal configuration\n\n```yaml\nlitellm:\n  baseUrl: http://litellm-proxy:4000        # internal URL of the LiteLLM proxy\n  publicBaseUrl: https://llm.example.com    # optional: shown to users in snippets\n  masterKey: ${LITELLM_MASTER_KEY}\n  userIdDomain: example.com                 # optional: user:default/jane → jane@example.com\n  provisioning:\n    enabled: true                           # optional: create LiteLLM users on first visit\n```\n\nThe configuration schema ships with the package (`config.d.ts`); see the\n[configuration reference](https://github.com/acarmisc/backstage-plugin-litellm-govai/blob/main/docs/configuration.md)\nfor every key (key ceilings, team management, budget hiding, CLI bridge,\nOpenCode connect).\n\n## What it exposes\n\nRoutes are mounted under `/api/litellm`. A machine-readable OpenAPI 3.1\ndescription is served at `/api/litellm/openapi.json`; the\n[endpoint table](https://github.com/acarmisc/backstage-plugin-litellm-govai/blob/main/docs/api.md)\nsummarises them.\n\nThe plugin registers the `litellm.*` permissions with the permission\nframework (see [Permissions](https://github.com/acarmisc/backstage-plugin-litellm-govai/blob/main/docs/permissions.md)).\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/acarmisc/backstage-plugin-litellm-govai",
+  "role": "backend-plugin",
+  "scope": "@acarmisc",
+  "updated": "2026-11-11T11:10:33.957Z",
+  "version": "0.30.0",
+  "version_count": 65,
+  "versions": [
+    {
+      "date": "2026-11-11T11:10:33.957Z",
+      "version": "0.30.0"
+    },
+    {
+      "date": "2026-11-05T20:24:18.019Z",
+      "version": "0.29.0"
+    },
+    {
+      "date": "2026-10-29T19:34:58.650Z",
+      "version": "0.28.0"
+    },
+    {
+      "date": "2026-10-25T13:02:07.697Z",
+      "version": "0.27.0"
+    },
+    {
+      "date": "2026-10-19T07:15:39.918Z",
+      "version": "0.26.1"
+    },
+    {
+      "date": "2026-10-18T16:40:29.408Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-10-16T17:41:05.686Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-10-13T10:21:50.833Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-10-13T08:59:46.659Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-10-12T19:33:34.130Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-10-12T06:05:12.807Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-10-10T21:46:16.947Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-10-04T19:15:27.205Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-10-02T10:42:20.484Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-09-30T14:11:05.569Z",
+      "version": "0.17.5"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-08-01T06:17:11.958Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "skitamura7446"
+  ],
+  "name": "@skitamura7446/backstage-plugin-circleci-dynamic",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@skitamura7446",
+  "updated": "2024-08-01T06:17:12.290Z",
+  "version": "0.0.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-08-01T06:17:12.290Z",
+      "version": "0.0.1"
+    }
+  ]
+}

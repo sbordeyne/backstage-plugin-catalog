@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:00:09.760Z",
+  "deprecated": "",
+  "description": "A Backstage backend plugin that helps you keep track of your code coverage",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-code-coverage-backend",
+  "plugin_id": "code-coverage",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/code-coverage/plugins/code-coverage-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-09-23T11:12:21.323Z",
+  "version": "0.17.0",
+  "version_count": 26,
+  "versions": [
+    {
+      "date": "2026-09-23T11:12:21.323Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-06-19T14:57:36.267Z",
+      "version": "0.16.1"
+    },
+    {
+      "date": "2026-04-17T18:40:33.913Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-03-04T18:50:17.753Z",
+      "version": "0.15.1"
+    },
+    {
+      "date": "2026-01-28T22:59:42.818Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-12-26T22:09:36.863Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-12-24T10:38:08.362Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-11-18T14:52:15.772Z",
+      "version": "0.12.1"
+    },
+    {
+      "date": "2025-10-17T20:43:57.827Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-10-10T12:12:10.918Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-08-30T20:58:05.021Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-08-14T14:12:40.409Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-07-04T12:26:22.860Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-03-22T21:47:49.297Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-02-18T13:47:10.905Z",
+      "version": "0.6.1"
+    }
+  ]
+}

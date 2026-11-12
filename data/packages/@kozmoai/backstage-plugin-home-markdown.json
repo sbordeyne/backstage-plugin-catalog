@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2024-03-25T22:14:18.727Z",
+  "deprecated": "",
+  "description": "A React component that renders a markdown file from GitHub as a Homepage component. You'll need to log in to GitHub to be able to fetch the markdown. You can configure the plugin to point to a remote markdown file in GitHub and it will fetch that markdown",
+  "homepage": "https://github.com/kozmoai/glint-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "mohamedbench"
+  ],
+  "name": "@kozmoai/backstage-plugin-home-markdown",
+  "plugin_id": "",
+  "readme": "# Markdown Home page plugin\n\nA React component that renders a markdown file from GitHub as a Homepage component. You'll need to log in to GitHub to be able to fetch the markdown.\nYou can configure the plugin to point to a remote markdown file in GitHub and it will fetch that markdown file and render it inside a card component.\nIt fetches on every render, but it caches based on the etag that gets returned by the GitHub api.\n\nFor the resources (links & images) currently you should use publicly available absolute urls. For example:\nMake sure you use `raw` in the url instad of `blob` if you copy and paste from the browser.\n\n```diff\n- ![](./docs/home-page-markdown.png)\n+ ![](https://github.com/kozmoai/glint-backstage-plugins/raw/SC-7064-add-markdown-home-plugin/plugins/home/backstage-plugin-home-markdown/docs/home-page-markdown.png)\n```\n\nNB: Images hosted in private repositories in GitHub will not render as the [`react-markdown`](https://github.com/remarkjs/react-markdown) library used under the hood does not support authenticated requests.\n\n## Preview\n\n![](./docs/home-page-markdown.png)\n\n## Setup\n\nIf you didn't set up the HomePage plugin you can see the official documentation about it [here](https://github.com/backstage/backstage/tree/master/plugins/home). You'll need to have it setup to be able to include this plugin.\nAdd the following componenet to your HomePage.tsx file. The `HomePageMarkdown` props are the following type.\n\n```bash\nyarn add @kozmoai/backstage-plugin-home-markdown\n```\n\n```ts\nexport type MarkdownContentProps = {\n  owner: string;\n  repo: string;\n  path: string;\n  branch?: string;\n};\n```\n\n```tsx\n// packages/app/src/components/home/HomePage.tsx\nimport { HomePageMarkdown } from '@kozmoai/backstage-plugin-home-markdown';\n\nexport const HomePage = () => {\n    return (\n...\n    <Grid item xs={12} md={6}>\n        <HomePageMarkdown\n            title=\"Neeews!\"\n            owner=\"kozmoai\"\n            repo=\"glint-backstage-plugins\"\n            path=\".backstage/README.md\"\n        />\n    </Grid>\n...\n);\n};\n```\n\nPlease note that the [workflow status badge](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge) feature in GitHub will not work with the markdown plugin.\n",
+  "repository": "https://github.com/kozmoai/glint-backstage-plugins/tree/HEAD/plugins/scaffolder-actions/backstage-plugin-home-markdown",
+  "role": "frontend-plugin",
+  "scope": "@kozmoai",
+  "updated": "2024-04-05T19:18:17.092Z",
+  "version": "2.5.23",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-04-05T19:18:17.092Z",
+      "version": "2.5.23"
+    },
+    {
+      "date": "2024-03-25T22:14:19.000Z",
+      "version": "2.5.22"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2026-06-30T00:41:21.726Z",
+  "deprecated": "",
+  "description": "Llama Stack entity provider for the Backstage catalog — emits AI models and agents as catalog entities",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-llamastack-entity-provider",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/boost/plugins/llamastack-entity-provider",
+  "role": "backend-plugin-module",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-06-30T00:41:22.027Z",
+  "version": "0.1.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-06-30T00:41:22.027Z",
+      "version": "0.1.1"
+    }
+  ]
+}

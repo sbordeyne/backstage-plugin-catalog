@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2023-01-24T07:35:13.260Z",
+  "deprecated": "",
+  "description": "Welcome to the torque plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "davidbquali",
+    "dmytro.d-quali",
+    "qualiit"
+  ],
+  "name": "@qtorque/backstage-torque-plugin",
+  "plugin_id": "",
+  "readme": "# @qtorque/backstage-torque-plugin\n\nWelcome to the torque plugin!\n\nIt is a plugin for the Backstage application that shows infrasture details created in Torque\n\n## Requirements\n\nThis plugin requires `@qtorque/backstage-plugin-torque-backend` because it connects to the backend to make requests to the Torque API.\n\n## Installation\n\nFirst, install the plugin to your backstage app:\n\n```bash\nyarn workspace app add @qtorque/backstage-torque-plugin\n```\n\nThen in your Entity Page (`./packages/app/src/components/catalog/EntityPage.tsx`) add the `TorqueCardComponent`. You can also use the `isTorqueAvailable` function to make sure Torque is avavailable in your component:\n\n```diff\n+import { isTorqueAvailable, TorqueCardComponent } from '@qtorque/backstage-torque-plugin';\n...\nconst overviewContent = (\n  <Grid item md={6}>\n    <EntityAboutCard variant=\"gridItem\" />\n  </Grid>\n+   <EntitySwitch>\n+     <EntitySwitch.Case if={isTorqueAvailable}>\n+       <Grid item md={6}>\n+         <TorqueCardComponent />\n+       </Grid>\n+     </EntitySwitch.Case>\n+   </EntitySwitch>\n```\n\nAdd annotations to types that have Torque apps display:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: \"torque demo\" # Change\n  description: Standard Lambda Service\n  annotations:\n    \"torque.io/space\": \"Sample\" # Change\nspec:\n  type: service\n  owner: david.stark@quali.com\n  lifecycle: experimental\n```\n\nIn your `./app-config.yaml`, provide configuration to `torque` section:\n\n```yaml\ntorque:\n  token: ${TORQUE_TOKEN} # without Bearer\n  serverUrl: ${TORQUE_URL} # default is https://portal.qtorque.io\n```\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@qtorque",
+  "updated": "2023-01-25T15:14:54.208Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2023-01-25T15:14:54.208Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-01-24T11:48:24.007Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-01-24T07:35:13.479Z",
+      "version": "0.1.0"
+    }
+  ]
+}

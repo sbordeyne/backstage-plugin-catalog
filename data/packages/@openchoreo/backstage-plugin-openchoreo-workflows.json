@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2026-09-01T08:39:26.692Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for OpenChoreo generic workflow runs.",
+  "homepage": "https://github.com/openchoreo/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cncf-projects",
+    "kaviththiranga"
+  ],
+  "name": "@openchoreo/backstage-plugin-openchoreo-workflows",
+  "plugin_id": "openchoreo-workflows",
+  "readme": "",
+  "repository": "https://github.com/openchoreo/backstage-plugins/tree/HEAD/plugins/openchoreo-workflows",
+  "role": "frontend-plugin",
+  "scope": "@openchoreo",
+  "updated": "2026-10-29T06:20:01.343Z",
+  "version": "1.3.3",
+  "version_count": 22,
+  "versions": [
+    {
+      "date": "2026-11-07T11:46:55.088Z",
+      "version": "1.4.0-m.2"
+    },
+    {
+      "date": "2026-10-29T11:44:27.479Z",
+      "version": "1.4.0-m.1"
+    },
+    {
+      "date": "2026-10-29T06:20:01.343Z",
+      "version": "1.3.3"
+    },
+    {
+      "date": "2026-10-22T14:11:27.479Z",
+      "version": "1.3.2"
+    },
+    {
+      "date": "2026-10-01T23:18:29.330Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2026-09-19T16:51:45.039Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-09-18T19:47:57.462Z",
+      "version": "1.3.0-rc.2"
+    },
+    {
+      "date": "2026-09-18T03:39:45.254Z",
+      "version": "1.3.0-rc.1"
+    },
+    {
+      "date": "2026-09-09T06:56:52.615Z",
+      "version": "1.2.5"
+    },
+    {
+      "date": "2026-09-01T08:46:13.673Z",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2026-09-01T08:44:26.212Z",
+      "version": "1.2.4"
+    },
+    {
+      "date": "2026-09-01T08:42:41.905Z",
+      "version": "1.2.0-rc.1"
+    },
+    {
+      "date": "2026-09-01T08:42:33.988Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-09-01T08:42:31.927Z",
+      "version": "1.1.6"
+    },
+    {
+      "date": "2026-09-01T08:42:27.499Z",
+      "version": "1.2.3"
+    }
+  ]
+}

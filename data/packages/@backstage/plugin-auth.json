@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2025-09-09T17:13:30.636Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-auth",
+  "plugin_id": "auth",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/auth",
+  "role": "frontend-plugin",
+  "scope": "@backstage",
+  "updated": "2026-10-20T16:47:29.898Z",
+  "version": "0.1.13",
+  "version_count": 329,
+  "versions": [
+    {
+      "date": "2026-11-11T02:53:25.325Z",
+      "version": "0.1.14-next.2"
+    },
+    {
+      "date": "2026-11-07T02:49:34.534Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T02:53:21.215Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T02:48:08.198Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-11-03T18:54:17.361Z",
+      "version": "0.1.14-next.1"
+    },
+    {
+      "date": "2026-10-31T02:43:39.289Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:44:01.997Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T02:50:43.019Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T02:49:37.406Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:25:29.625Z",
+      "version": "0.1.14-next.0"
+    },
+    {
+      "date": "2026-10-27T02:54:01.012Z",
+      "version": "0.0.0-nightly-20261027023041"
+    },
+    {
+      "date": "2026-10-20T16:47:29.898Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2026-10-13T16:15:43.922Z",
+      "version": "0.1.13-next.1"
+    },
+    {
+      "date": "2026-09-28T03:07:51.282Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:00:51.793Z",
+      "version": "0.0.0-nightly-20260927023342"
+    }
+  ]
+}

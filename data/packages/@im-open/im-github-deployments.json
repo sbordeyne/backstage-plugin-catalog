@@ -1,0 +1,89 @@
+{
+  "author": "",
+  "created": "2024-01-24T22:51:24.216Z",
+  "deprecated": "",
+  "description": "A plugin to show GitHub deployments in Spotify Backstage Catalog",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "deployments",
+    "github"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "hpractv",
+    "stevematney"
+  ],
+  "name": "@im-open/im-github-deployments",
+  "plugin_id": "",
+  "readme": "# IM GitHub Deployments Dashboard for Backstage\n\n## What is the IM GitHub Deployments Dashboard\n\nThe IM GitHub Deployments Dashboard plugin works in conjunction with the [im-open/create-github-deployment] GitHub workflow action to create and track GitHub [deployments] and [deployment statuses].\n\n## Getting started\n\n### Update `catalog-info.yaml`\n\n#### 1. `github.com/project-slug` - REQUIRED\n\nThe `catalog-info.yaml` file will need to be updated so that the `metadata.annotations` section contains a value for `github.com/project-slug`. The project slug is the GitHub owner and repository name separated by a forward slash, i.e., `im-open/im-github-deployments`.\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: im-github-deployemnts\n  ...\n  annotations:\n    github.com/project-slug: im-open/im-github-deployments\n```\n\n#### 2. `deployment-environments` - OPTIONAL, but recommended\n\nAdding the `metadata.deployment-environments` list allows the dashboard to be pre-populated with the expected deployment environments, and order their appearance in the dashboard.  Otherwise, the deployment environments will be assumed to be:\n\n- Dev\n- QA\n- Stage\n- UAT\n- Prod\n- Demo\n- Any other environments after this are ordered alphabetically\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: im-github-deployemnts\n  ...\n  deployment-environments:\n    - Dev\n    - QA\n    - Stage\n    - Prod\n  annotations:\n    github.com/project-slug: im-open/im-github-deployments\n```\n\n### Backstage Installation:\n\n#### 1. Add npm package\n\n```bash\ncd packages/app\nyarn add @im-open/im-github-deployments\n```\n\n#### 2. Add to backstage catalog\n\nIn catalog `EntityPage.tsx` the reference to `@im-open/im-github-deployments` needs to be added and the plugin control needs to be added.\n\n```bash\n.\n├── ...\n├── packages\n│   └── app\n│       ├── ...\n│       ├── src\n│       │   └── components\n│       │       └── catalog\n│       │           ├── ...\n│       │           └── EntityPage.tsx\n│       ├── ...\n│       └──\n└── ...\n```\n\n```typescript\n// imports\nimport { IMGitHubDeploymentsDashboard } from '@im-open/im-github-deployments';\n\n...\n\nconst deploymentContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    <Grid item xs={12} md={12} lg={12}>\n      <IMGitHubDeploymentsDashboard />\n    </Grid>\n  </Grid>\n};\n\n...\n\nconst defaultEntityPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      {overviewContent}\n    </EntityLayout.Route>\n\n    <EntityLayout.Route path=\"/deployments\" title=\"Deployments\">\n     {deploymentContent}\n    </EntityLayout.Route>\n\n    <EntityLayout.Route path=\"/ci-cd\" title=\"CI/CD\">\n      {cicdContent}\n    </EntityLayout.Route>\n    ...\n  </EntityLayout>\n);\n\n...\n```\n\nThe example adds the `import` statement and adds the `IMGitHubDeploymentDashboard` to the `defaultEntityPage`, but the display of the deployment tab can be based on whatever your catalog considers a deployable entity that is tied to a GitHub workflow.\n\n#### 3. Authentication\n\nThe `im-github-deployments` plugin relies on GitHub authentication.  The user must have a GitHub login and access to the repository identified in the entity's `project-slug` annotation.\n\n![GitHub Authentication](images/github_auth.png)\n\n### Creating deployments via GitHub Workflows and Actions\n\n#### Update deployment workflow to use the [im-open/create-github-deployment] action\n\nAfter the deployment job, an `update-the-deployment-board` job can report back the results of the deployment.\n\n```yaml\nname: Project Deployment\non:\n  workflow_dispatch:\n    inputs:\n      tag:\n        description: The tag to deploy\n        type: string\n        required: true\n      environment:\n        description: The environment the branch, tag or SHA was deployed to\n        required: true\n        type: choice\n        options:\n          - Dev\n          - QA\n          - Stage\n          - Prod\n      instance:\n        description: The instance to deploy to\n        required: true\n        type: choice\n        options:\n          - Primary-slot1\n          - Primary-slot2\n          - Secondary-slot1\n          - Secondary-slot2\n\npermissions:\n  # needed to create github deployments entries\n  deployments: write\n\njobs:\n  deploy-the-project:\n    outputs:\n      deployment_conclusion: ${{ steps.deployment.output.conclusion }}\n  ...\n\n  update-the-deployment-board:\n    needs: [deploy-the-project]\n    steps:\n    - name: Create GitHub Deployment\n        id: create-deployment\n        uses: im-open/create-github-deployment@v1\n        with:\n          workflow-actor: ${{ github.actor }}\n          token: ${{ secrets.GITHUB_TOKEN }}\n          environment: ${{ input.environment }}\n          release-ref: ${{ input.tag }}\n          deployment-status: ${{ deploy-the-project.outputs.deployment_conclusion }}\n          entity: im-github-deployments\n          instance: ${{ input.instance }}\n\n  ...\n```\n\n<!-- links -->\n\n[im-open/create-github-deployment]: https://github.com/im-open/create-github-deployment \"im-open/create-github-deployment\"\n[deployments]: https://docs.github.com/en/rest/deployments/deployments?apiVersion=2022-11-28 \"Deployments: Use the REST API to create and delete deployments and deployment environments.\"\n[deployment statuses]: https://docs.github.com/en/rest/deployments/statuses?apiVersion=2022-11-28 \"Deployment statuses: Use the REST API to manage deployment statuses.\"\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@im-open",
+  "updated": "2024-09-24T16:51:22.339Z",
+  "version": "1.0.12",
+  "version_count": 31,
+  "versions": [
+    {
+      "date": "2024-09-24T16:51:22.339Z",
+      "version": "1.0.12"
+    },
+    {
+      "date": "2024-09-24T14:56:45.326Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2024-08-19T14:33:15.196Z",
+      "version": "1.0.10"
+    },
+    {
+      "date": "2024-07-26T14:41:46.843Z",
+      "version": "1.0.9"
+    },
+    {
+      "date": "2024-06-25T21:11:18.666Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2024-06-24T20:12:15.597Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2024-06-24T16:50:39.963Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2024-06-19T17:38:08.035Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2024-04-25T21:26:52.641Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2024-04-25T15:34:23.624Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-04-19T20:03:58.727Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-04-18T20:40:07.011Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-04-15T20:45:53.085Z",
+      "version": "0.99.16"
+    },
+    {
+      "date": "2024-04-15T20:40:08.145Z",
+      "version": "0.99.15"
+    },
+    {
+      "date": "2024-04-11T22:21:24.508Z",
+      "version": "0.99.14"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "author": "",
+  "created": "2023-09-06T11:47:15.991Z",
+  "deprecated": "",
+  "description": "Welcome to the ep-devp-git-webhook-plugin backend plugin! _This plugin was created through the Backstage CLI_",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dishantlangayan",
+    "solacecommunity",
+    "tamimi65"
+  ],
+  "name": "@solace-labs/plugin-ep-devp-git-webhook-plugin-backend",
+  "plugin_id": "",
+  "readme": "# Ep-devp-git-webhook-plugin\n\nWelcome to the ep-devp-git-webhook-plugin backend plugin! _This plugin was created through the Backstage CLI_\n\nEndpoint for the plugin : http://localhost:7007/ep-devp-git-webhook-plugin/\n\nStart the backend server. Then you can go to API :  http://localhost:7007/ep-devp-git-webhook-plugin/health\n\n## Getting started\n\n### Setup Webhook :\n\nYou can setup webhook from **repository settings > Webhooks > Add Webhook**\n\n    Payload URL = server url,can use ngrok = <ngrok_url.io>/api/ep-devp-git-webhook-plugin/webhook\n    Content type= application/json \n    Secret= Can add any string \n    Events = Select Push event , as we need to detect push on the branch\n\n### Setup env variables : \n\n    SECRET=\"Your Webhook Secret\"\n    REPO_OWNER = 'Username of Owner';\n    REPO_NAME = 'Repository Name';\n    BRANCH_NAME_TO_MONITOR='Branch name for detecting changes E.g. main , develop etc.'\n    SPECIFIC_FOLDER=folder which we need to monitor,blank for complete repo\n\n### Start your ngrok server before adding webhook , and add new server URL from ngrok to webhook\n### Start your backend\n\nOnce you make a **push** in your branch , and if any modification , addition or deletion is done in the SPECIFIC_FOLDER , git pull origin will be executed.\n\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@solace-labs",
+  "updated": "2023-09-20T10:57:18.113Z",
+  "version": "1.0.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2023-09-20T10:57:18.113Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2023-09-19T12:07:37.772Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2023-09-18T12:02:15.724Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-09-06T11:47:16.333Z",
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2026-08-03T21:05:34.106Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-checkmarx-backend",
+  "plugin_id": "checkmarx",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/checkmarx/plugins/checkmarx-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-08-03T21:05:34.436Z",
+  "version": "0.0.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-08-03T21:05:34.436Z",
+      "version": "0.0.1"
+    }
+  ]
+}

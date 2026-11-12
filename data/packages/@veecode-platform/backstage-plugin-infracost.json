@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2024-07-01T13:03:22.147Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "infracost"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-infracost",
+  "plugin_id": "infracost",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2025-06-27T14:49:40.947Z",
+  "version": "0.4.0",
+  "version_count": 15,
+  "versions": [
+    {
+      "date": "2025-06-27T14:49:40.947Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-06-26T18:08:04.666Z",
+      "version": "0.3.3"
+    },
+    {
+      "date": "2024-10-16T13:42:57.597Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2024-09-20T14:44:51.346Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2024-09-18T13:05:49.336Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-08-28T17:41:54.004Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-07-25T13:40:59.587Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2024-07-24T23:56:12.011Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2024-07-10T17:08:34.672Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2024-07-08T20:31:32.242Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2024-07-02T19:47:07.391Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-07-02T12:55:55.390Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-07-02T12:26:59.087Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2024-07-01T15:03:11.439Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-07-01T13:03:22.510Z",
+      "version": "0.1.1"
+    }
+  ]
+}

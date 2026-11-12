@@ -1,0 +1,40 @@
+{
+  "author": "",
+  "created": "2025-02-18T15:20:17.607Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "chandih",
+    "muralish"
+  ],
+  "name": "@platformnex/backstage-plugin-gitlab-backend",
+  "plugin_id": "gitlab",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@platformnex",
+  "updated": "2025-03-20T18:27:04.449Z",
+  "version": "0.0.6-alpha.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-03-20T18:27:04.449Z",
+      "version": "0.0.6-alpha.0"
+    },
+    {
+      "date": "2025-02-20T13:59:13.592Z",
+      "version": "0.0.5-alpha.0"
+    },
+    {
+      "date": "2025-02-20T13:02:30.557Z",
+      "version": "0.0.4-alpha.0"
+    },
+    {
+      "date": "2025-02-18T15:20:17.944Z",
+      "version": "0.0.3-alpha.0"
+    }
+  ]
+}

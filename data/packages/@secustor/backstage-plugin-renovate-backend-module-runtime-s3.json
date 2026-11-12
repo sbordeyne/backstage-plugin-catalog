@@ -1,0 +1,58 @@
+{
+  "author": "",
+  "created": "2025-06-12T21:08:54.699Z",
+  "deprecated": "",
+  "description": "The runtime-s3 backend module for the renovate plugin.",
+  "homepage": "https://github.com/secustor/backstage-plugins",
+  "keywords": [
+    "backstage",
+    "renovate"
+  ],
+  "license": "LGPL-3.0-or-later",
+  "maintainers": [
+    "secustor"
+  ],
+  "name": "@secustor/backstage-plugin-renovate-backend-module-runtime-s3",
+  "plugin_id": "renovate",
+  "readme": "",
+  "repository": "https://github.com/secustor/backstage-plugins/tree/HEAD/plugins/renovate-backend-module-runtime-s3",
+  "role": "backend-plugin-module",
+  "scope": "@secustor",
+  "updated": "2026-10-16T12:26:27.285Z",
+  "version": "0.4.0",
+  "version_count": 8,
+  "versions": [
+    {
+      "date": "2026-10-16T12:26:27.285Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-07-28T15:33:19.877Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-12-23T23:57:00.863Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2025-12-22T22:44:58.661Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-11-26T20:22:00.027Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-08-20T13:48:14.025Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-06-17T22:08:25.588Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-06-12T21:08:55.032Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2023-06-13T13:28:00.870Z",
+  "deprecated": "",
+  "description": "Welcome to the ozone plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "binkkatal",
+    "softozone"
+  ],
+  "name": "@ozonecloud/plugin-ozone",
+  "plugin_id": "",
+  "readme": "# ozone\n\nWelcome to the ozone plugin!\n\n## Setup\n\n1. Generate the service account token\n\n    Create a role for your service account with the following permissions\n    - `Applications.List`\n    - `Applications.Get`\n    - `Pipelines.List`\n    - `Pipelines.Get`\n    - `Pipelines.Execute`\n    - `Releases.List`\n    - `Releases.Get`\n    - `Releases.Execute`\n    - `PipelineRun.List`\n    - `PipelineRun.Get`\n    - `ReleaseRun.List`\n    - `ReleaseRun.Get`\n    - `Registries.List`\n    - `Registries.Get`\n    - `Repositories.List`\n    - `Repositories.Get`\n\n    ![Screenshot 2023-06-12 at 12 32 33 PM](https://2820868129-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAObcOkMb6sCSnSdcUOTm%2Fuploads%2FJ1QLUaVS7MF41Qq2rr1N%2FScreenshot%202023-06-12%20at%2012.32.33%20PM.png?alt=media&token=07a6b66c-1534-47d6-a862-2d5930445b9d)\n   \n    Create a Service Account token\n    From the ozone website, click on the `Account Management` on the sidebar and navigate to the `Service Account token` tab,\n    Click on the `Create Service Account` button and choose the above created role, this will create a token.\n    ![Screenshot 2023-06-12 at 12 34 17 PM](https://2820868129-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAObcOkMb6sCSnSdcUOTm%2Fuploads%2FQDOerdbKs2DKRSmgCmaw%2FScreenshot%202023-06-12%20at%2012.34.17%20PM.png?alt=media&token=cd4aa351-2d4e-402d-bcb5-e89d97cb20db)\n\n    Use the token generated in your backstage configuration\n    ![Screenshot 2023-06-12 at 12 36 00 PM](https://2820868129-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAObcOkMb6sCSnSdcUOTm%2Fuploads%2FPLkrF0yCMgivmpUDWNv8%2FScreenshot%202023-06-12%20at%2012.34.52%20PM.png?alt=media&token=67d9aa55-6e3b-4151-9296-e7ddbaa51cd1)\n\n\n\n2. Add the dependency for ozone plugin\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @ozonecloud/plugin-ozone\n```\n\n3. Add proxy config\n\nuse the following proxy format to expose your api token\n\n```yaml\nproxy:\n  ### Example for how to add a proxy endpoint for the frontend.\n  ### A typical reason to do this is to handle HTTPS and CORS for internal services.\n  # '/test':\n  #   target: 'https://example.com'\n  #   changeOrigin: true\n  '/ozone':\n    target: 'https://cd.ozone.one/api/service-account'\n    headers:\n      'authorization': '<your auth-token>'\n    allowedHeaders:\n      - x-workspace-id\n```\n\n## Usage\n\n### PipelineRun List plugin\nAdd the `EntityOzonePipelineRunContent` extension to the entity page in your app:\n\n```tsx\n// In packages/app/src/components/catalog/EntityPage.tsx\nimport {EntityOzonePipelineRunContent,isPipelinesAvailable} from '@ozonecloud/plugin-ozone';\n\n// For example in the CI/CD section\nconst cicdContent = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isPipelinesAvailable}>\n      <EntityOzonePipelineRunContent />\n    </EntitySwitch.Case>\n```\nAdd the annotation `ozone.com/microservice-slug` in your catalog\n```yaml\n---\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  namespace: default\n  annotations:\n    ozone.com/microservice-slug: hell-world-app\n  name: hello-world-app\n  description: 'A hello world application maintained on backstage'\nspec:\n  type: service\n  lifecycle: production\n  owner: user:guest\n````\n\n#### Screenshots\n ![Screenshot 2023-06-08 at 3 23 39 PM](https://2820868129-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAObcOkMb6sCSnSdcUOTm%2Fuploads%2FBLOFdP74nJTnwFffZNOE%2F244346245-0b0ec612-e16c-4580-a854-ed2e43c952ab.png?alt=media&token=87a1624c-c832-458f-bb57-0718a6c97be5)\n  \n![Screenshot 2023-06-08 at 3 24 40 PM](https://2820868129-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAObcOkMb6sCSnSdcUOTm%2Fuploads%2F2b3LQ1np0VtrLTmljoxu%2F244346630-75027c18-1335-43a1-951c-0bf383ebeedb.png?alt=media&token=c5fbeb82-c0df-4dda-b3ee-3112e9654503)\n\n### Ozone Resource Plugin\n\nOzone plugin outside the catalog\n- This will be dependent on the workspace selection\n- This component will have Tabs of `Microservice`, `Repository`, `Registry`, `pipelines`\n- On click of tabs will route to the lists accordingly\n\n### Screenshots \n\n![Screenshot from 2023-04-19 17-06-07](https://user-images.githubusercontent.com/122984557/233064075-8cd11436-9ceb-48aa-b5d7-db80fae66133.png)\n\n![Screenshot from 2023-04-19 17-06-11](https://user-images.githubusercontent.com/122984557/233064295-f0863ab7-27c5-40b7-96d4-3ee30d0d0942.png)\n\n![Screenshot from 2023-04-19 17-06-14](https://user-images.githubusercontent.com/122984557/233064456-c43a5f95-5b21-4a19-9046-958ef6e2588e.png)\n\n## Features\n- Lists all the Builds,microservices,registry,repository for particular workspace \n- Dive into one build to see the tasks and steps\n- logs\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@ozonecloud",
+  "updated": "2023-07-06T13:37:22.741Z",
+  "version": "1.0.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-07-06T13:37:22.741Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2023-06-13T13:28:01.180Z",
+      "version": "1.0.1"
+    }
+  ]
+}

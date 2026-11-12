@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-09-04T10:45:30.671Z",
+  "deprecated": "",
+  "description": "This plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sweetoburrito"
+  ],
+  "name": "@sweetoburrito/backstage-plugin-ai-assistant-backend",
+  "plugin_id": "ai-assistant",
+  "readme": "# ai-assistant\n\nThis plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.\n\n## Installation\n\nThis plugin is installed via the `@internal/plugin-ai-assistant-backend` package. To install it to your backend package, run the following command:\n\n```bash\n# From your root directory\nyarn --cwd packages/backend add @internal/plugin-ai-assistant-backend\n```\n\nThen add the plugin to your backend in `packages/backend/src/index.ts`:\n\n```ts\nconst backend = createBackend();\n// ...\nbackend.add(import('@internal/plugin-ai-assistant-backend'));\n```\n\n## Development\n\nThis plugin backend can be started in a standalone mode from directly in this\npackage with `yarn start`. It is a limited setup that is most convenient when\ndeveloping the plugin backend itself.\n\nIf you want to run the entire project, including the frontend, run `yarn start` from the root directory.\n\n## Tool Configuration\n\nYou can control tool behavior for all users through backend config:\n\n- `aiAssistant.tools.core`: tools that are always enabled and not user-toggleable.\n- `aiAssistant.tools.defaultEnabled`: tools enabled by default for users who do not yet have saved `user-tools` settings.\n\nBoth settings accept entries with `provider` and `name`:\n\n```yaml\naiAssistant:\n  tools:\n    core:\n      - provider: core\n        name: search-knowledge-base\n    defaultEnabled:\n      - provider: core\n        name: search-knowledge-base\n      - provider: mcp server:foo\n        name: foo_someTool\n```\n\nFor MCP tools, use provider format `mcp server:<server-name>`.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@sweetoburrito",
+  "updated": "2026-05-07T11:49:17.462Z",
+  "version": "0.19.0",
+  "version_count": 72,
+  "versions": [
+    {
+      "date": "2026-05-07T11:49:17.462Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-05-07T11:44:00.844Z",
+      "version": "0.0.0-snapshot-20260507114349"
+    },
+    {
+      "date": "2026-05-07T10:08:32.123Z",
+      "version": "0.0.0-snapshot-20260507100821"
+    },
+    {
+      "date": "2026-03-05T06:57:58.173Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-02-20T12:51:08.462Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-02-20T12:40:24.185Z",
+      "version": "0.0.0-snapshot-20260220124013"
+    },
+    {
+      "date": "2026-02-20T11:57:51.412Z",
+      "version": "0.0.0-snapshot-20260220115740"
+    },
+    {
+      "date": "2026-02-20T11:01:40.024Z",
+      "version": "0.0.0-snapshot-20260220110129"
+    },
+    {
+      "date": "2026-02-19T13:00:08.296Z",
+      "version": "0.16.2"
+    },
+    {
+      "date": "2026-02-19T09:41:38.286Z",
+      "version": "0.16.1"
+    },
+    {
+      "date": "2026-02-19T09:36:25.228Z",
+      "version": "0.0.0-snapshot-20260219093616"
+    },
+    {
+      "date": "2026-02-05T09:44:30.939Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-02-05T09:40:11.852Z",
+      "version": "0.0.0-snapshot-20260205093948"
+    },
+    {
+      "date": "2026-02-05T08:49:17.507Z",
+      "version": "0.0.0-snapshot-20260205084853"
+    },
+    {
+      "date": "2026-01-12T08:55:37.474Z",
+      "version": "0.15.4"
+    }
+  ]
+}

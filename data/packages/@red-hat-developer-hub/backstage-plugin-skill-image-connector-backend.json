@@ -1,0 +1,68 @@
+{
+  "author": "",
+  "created": "2026-09-30T16:33:48.547Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-skill-image-connector-backend",
+  "plugin_id": "skill-image-connector",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/ai-integrations/plugins/skill-image-connector-backend",
+  "role": "backend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-26T14:15:46.280Z",
+  "version": "0.10.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2026-10-26T14:15:46.280Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-10-22T14:14:43.984Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-10-20T20:31:03.980Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-10-19T20:13:02.538Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-10-15T19:56:54.935Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-10-14T13:50:39.825Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-10-13T02:10:03.331Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-10-12T21:44:18.587Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-10-12T17:19:22.902Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-09-30T16:33:48.862Z",
+      "version": "0.2.0"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "author": "",
+  "created": "2026-05-20T07:07:37.798Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin that surfaces DORA metrics per catalog entity, scoped to the specific service — backed by GitLab merge requests.",
+  "homepage": "https://github.com/syafiqizzaud/backstage-gitlab-plugin-dora-metrics#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "devops",
+    "dora",
+    "dora-metrics",
+    "gitlab"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "syafiqizzaud"
+  ],
+  "name": "@syafiqizzaud/backstage-gitlab-plugin-dora-metrics",
+  "plugin_id": "",
+  "readme": "# @syafiqizzaud/backstage-gitlab-plugin-dora-metrics\n\nA Backstage frontend plugin that surfaces **DORA metrics per catalog entity**, scoped to the specific service you're viewing — backed by **GitLab merge requests**, no extra backend or data pipeline required.\n\nFor each catalog entity annotated with a GitLab project, this plugin adds a **DORA Metrics** tab that computes all four key metrics directly from GitLab MRs:\n\n- **Deployment Frequency** — how often MRs are merged to the target branch\n- **Lead Time for Changes** — average time from MR open to merge\n- **Change Failure Rate** — percentage of deployments that were hotfixes (production only)\n- **MTTR** — mean time to recover, measured as average hotfix MR duration (production only)\n\nRatings are classified as **Elite / High / Medium / Low** per DORA research benchmarks.\n\n---\n\n## Requirements\n\n- Backstage v1.35+ (new frontend system)\n- GitLab accessible from the Backstage backend\n- Catalog entities annotated with `gitlab.com/project-id` and `gitlab.com/instance`\n\n---\n\n## Installation\n\n```bash\nyarn workspace app add @syafiqizzaud/backstage-gitlab-plugin-dora-metrics\n```\n\nRegister the plugin in `packages/app/src/App.tsx`:\n\n```ts\nimport doraMetricsPlugin from '@syafiqizzaud/backstage-gitlab-plugin-dora-metrics';\n\nconst app = createApp({\n  features: [\n    // ...existing features\n    doraMetricsPlugin,\n  ],\n});\n```\n\n---\n\n## GitLab API access — two modes\n\nThe plugin needs to call the GitLab REST API. Choose the mode that matches your Backstage setup.\n\n### Mode 1 — Immobiliare Labs backend plugin (default, no extra config)\n\nIf you already have [`@immobiliarelabs/backstage-plugin-gitlab-backend`](https://www.npmjs.com/package/@immobiliarelabs/backstage-plugin-gitlab-backend) installed, **no additional configuration is needed**. The plugin automatically uses its `/api/gitlab/rest/{instance}/` proxy endpoint.\n\nThe `gitlab.com/project-id` and `gitlab.com/instance` annotations are also auto-filled by its `GitlabFillerProcessor`, so entities are ready out of the box.\n\n### Mode 2 — Plain proxy (no Immobiliare Labs plugin required)\n\nIf you are **not** using the Immobiliare Labs plugin, configure a standard Backstage proxy and set `gitlabProxyPath`:\n\n**`app-config.yaml`:**\n```yaml\nproxy:\n  endpoints:\n    '/gitlab/api':\n      target: https://gitlab.your-company.com/api/v4\n      headers:\n        PRIVATE-TOKEN: ${GITLAB_TOKEN}\n\napp:\n  doraMetrics:\n    gitlabProxyPath: /gitlab/api   # path after /api/proxy\n```\n\nYou will also need to add `gitlab.com/project-id` and `gitlab.com/instance` annotations to your catalog entities manually or via a custom processor.\n\n---\n\n## Configuration\n\nAdd to `app-config.yaml` under `app.doraMetrics`:\n\n```yaml\napp:\n  doraMetrics:\n    # Lookback window in days (default: 30)\n    collection:\n      initialDays: 30\n\n    # For plain proxy mode only — omit if using Immobiliare Labs backend\n    # gitlabProxyPath: /gitlab/api\n\n    # Environments / branches to track.\n    # Exactly ONE environment may set isProduction: true.\n    environments:\n      - name: Production\n        branch: main\n        isProduction: true\n        label: hotfix        # MR label used to identify hotfixes (CFR / MTTR)\n      - name: Staging\n        branch: staging\n        isProduction: false\n      - name: Development\n        branch: development\n        isProduction: false\n\n    # Optional: override DORA benchmark thresholds\n    targets:\n      deploymentFrequency: 1    # deploys/day  (Elite ≥ 1)\n      leadTime: 24              # hours        (Elite ≤ 24 h)\n      changeFailureRate: 5      # %            (Elite ≤ 5 %)\n      mttr: 1                   # hours        (Elite ≤ 1 h)\n```\n\n---\n\n## Branch and label patterns\n\nBoth `branch` and `label` fields accept three formats:\n\n| Format | Example | Behaviour |\n|---|---|---|\n| Single name | `main` / `hotfix` | Exact match |\n| Comma-separated | `main,master` | Matches any name in the list |\n| JavaScript regex | `^release/.*` | Regex test against each value |\n\nA string is treated as a regex if it contains any of: `| ^ $ [ ] ( ) { } ? + * \\`\n\nFor `branch`: when a regex matches multiple branches, MRs are fetched from all of them and deduplicated by MR number.\n\nFor `label`: an MR is classified as a hotfix if **any** of its GitLab labels match the pattern.\n\n---\n\n## Per-entity annotation overrides\n\nOverride environments and targets for a specific service in its `catalog-info.yaml`:\n\n```yaml\nmetadata:\n  annotations:\n    gitlab.com/project-slug: my-group/my-repo\n\n    # Override environments for this repo only (JSON)\n    dora-metrics/environments: |\n      [\n        { \"name\": \"Production\", \"branch\": \"main\", \"isProduction\": true, \"label\": \"hotfix\" },\n        { \"name\": \"Staging\", \"branch\": \"staging\", \"isProduction\": false }\n      ]\n\n    # Override targets for this repo only (JSON, partial overrides supported)\n    dora-metrics/targets: |\n      { \"deploymentFrequency\": 2, \"leadTime\": 48 }\n```\n\nPartial `dora-metrics/targets` overrides are merged with the global targets — only the keys you specify are replaced.\n\n---\n\n## How it works\n\nThe plugin reads the `gitlab.com/project-id` and `gitlab.com/instance` annotations from the catalog entity and calls the GitLab MRs API, paginating through all results within the configured time window.\n\nIt calculates:\n\n- **Deployment Frequency**: merged MRs per day to the target branch\n- **Lead Time**: average time (hours) from MR creation to merge\n- **CFR**: percentage of MRs labelled as hotfixes (production environments only)\n- **MTTR**: average duration (hours) of hotfix MRs (production environments only)\n\nChange Failure Rate and MTTR are only computed for environments with `isProduction: true`.\n\n---\n\n## Environment constraints\n\n- Any number of environments may be defined.\n- Exactly **one** environment may have `isProduction: true`.\n- CFR, MTTR, and hotfix count are only shown for the production environment.\n\n---\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/syafiqizzaud/backstage-gitlab-plugin-dora-metrics",
+  "role": "frontend-plugin",
+  "scope": "@syafiqizzaud",
+  "updated": "2026-05-20T08:34:55.341Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-05-20T08:34:55.341Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-05-20T07:07:38.087Z",
+      "version": "0.1.0"
+    }
+  ]
+}

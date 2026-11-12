@@ -1,0 +1,36 @@
+{
+  "author": "CodeVerse-GP",
+  "created": "2025-04-17T21:22:05.330Z",
+  "deprecated": "",
+  "description": "The sendgrid module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin",
+    "scaffolder",
+    "sendgrid"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "grvpandey11"
+  ],
+  "name": "@codeverse-gp/scaffolder-backend-module-sendgrid",
+  "plugin_id": "scaffolder",
+  "readme": "# scaffolder-backend-module-sendgrid\n\nWelcome to the `sendgrid:email:send` action for the `scaffolder-backend`.\n\n### Getting started\n\nYou need to configure the action in your backend.\n\n## Installation\n\n1. Install the plugin\n```bash\n# From your Backstage root directory\nyarn --cwd packages/backend add @codeverse-gp/scaffolder-backend-module-sendgrid\n```\n\n2. Ensure sendgrid module is added to your backend.\n\n```typescript\n// In packages/backend/src/index.ts\nconst backend = createBackend();\n// ...\nbackend.add(import('@backstage/plugin-scaffolder-backend'));\nbackend.add(import('@codeverse-gp/scaffolder-backend-module-sendgrid'));\n```\n\n---\n\n## Using the Action in Templates\n\n### **Option 1: Pass All Inputs via Template YAML**\n\nAdd values to your `app-config.yaml`.\n\n```yaml\nsendgrid:\n  apiKey: API_KEY\n```\nIn this approach, you pass all the required inputs (`to`, `from`, `subject`, `body`) directly in the template YAML file. This does not rely on any default values in the `app-config.yaml`.\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: sendgrid-email-test\n  title: Test SendGrid Email Action\n  description: Template to test the custom SendGrid email scaffolder action\nspec:\n  owner: abc\n  type: service\n\n  parameters:\n    - title: Basic Info\n      required:\n        - name\n        - to\n        - from\n        - subject\n        - body\n      properties:\n        name:\n          title: Your Name\n          type: string\n          description: This will be included in the email.\n        to:\n          title: Email To\n          type: string\n          description: Recipient email address\n        from:\n          title: Email From\n          type: string\n          description: Sender email address (must be a verified sender in SendGrid)\n        subject:\n          title: Subject\n          type: string\n          default: \"🎉 Hello from Backstage!\"\n        body:\n          title: Email Body\n          type: string\n          default: \"<p>This is a test email sent from Backstage using SendGrid.</p>\"\n\n  steps:\n    - id: send-email\n      name: Send Email\n      action: sendgrid:email:send\n      input:\n        to: ${{ parameters.to }}\n        from: ${{ parameters.from }}\n        subject: ${{ parameters.subject }}\n        body: |\n          <h2>Hello ${{ parameters.name }}!</h2>\n          ${{ parameters.body }}\n\n  output:\n    text:\n      - title: ✅ Email Action Triggered\n        content: |\n          An email was sent to **${{ parameters.to }}** with the subject: _${{ parameters.subject }}_.\n```\n\n---\n\n### **Option 2: Use Defaults from `app-config.yaml`**\n\nAdd values to your `app-config.yaml`.\n\n```yaml\nsendgrid:\n  apiKey: API_KEY\n  defaults:\n    from: noreply@example.com\n    subject: Default Subject\n    body: \"<p>This is the default email body.</p>\"\n```\n\nIn this approach, you configure the default values (`from`, `subject`, `body`) in the `app-config.yaml` file and only pass the `to` parameter in the template YAML file.\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: sendgrid-email-test\n  title: Test SendGrid Email Action\n  description: Template to test the custom SendGrid email scaffolder action\nspec:\n  owner: abc\n  type: service\n\n  parameters:\n    - title: Basic Info\n      required:\n        - name\n        - to\n      properties:\n        name:\n          title: Your Name\n          type: string\n          description: This will be included in the email.\n        to:\n          title: Email To\n          type: string\n          description: Recipient email address\n\n  steps:\n    - id: send-email\n      name: Send Email\n      action: sendgrid:email:send\n      input:\n        to: ${{ parameters.to }}\n\n  output:\n    text:\n      - title: ✅ Email Action Triggered\n        content: |\n          An email was sent to **${{ parameters.to }}** with the default subject and body.\n```\n\n---\n\n### Summary\n\n- **Option 1**: Use when you want to pass all inputs (`to`, `from`, `subject`, `body`) dynamically in the template YAML file.\n- **Option 2**: Use when you want to rely on default values (`from`, `subject`, `body`) configured in `app-config.yaml` and only pass the `to` parameter in the template YAML file.\n\nYou can also visit the `/create/actions` route in your Backstage application to find out more about the parameters this action accepts and configure it as needed.\n\n\n",
+  "repository": "https://github.com/CodeVerse-GP/scaffolder-backend-module-sendgrid/tree/HEAD/.",
+  "role": "backend-plugin-module",
+  "scope": "@codeverse-gp",
+  "updated": "2025-04-18T11:32:55.988Z",
+  "version": "1.0.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-04-18T11:32:55.988Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2025-04-17T21:22:05.622Z",
+      "version": "1.0.0"
+    }
+  ]
+}

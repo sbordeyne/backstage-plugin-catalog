@@ -1,0 +1,79 @@
+{
+  "author": "",
+  "created": "2026-04-10T05:29:42.717Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT OR Apache-2.0",
+  "maintainers": [
+    "yumike"
+  ],
+  "name": "@rwdocs/backstage-plugin-search-backend-module-rw",
+  "plugin_id": "search",
+  "readme": "",
+  "repository": "https://github.com/rwdocs/backstage-plugins/tree/HEAD/plugins/search-backend-module-rw",
+  "role": "backend-plugin-module",
+  "scope": "@rwdocs",
+  "updated": "2026-11-07T06:22:05.005Z",
+  "version": "0.2.0",
+  "version_count": 14,
+  "versions": [
+    {
+      "date": "2026-11-07T06:22:05.005Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-09-08T05:45:55.154Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2026-08-07T06:12:45.608Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2026-07-30T11:31:25.632Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2026-07-16T07:02:27.696Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2026-07-14T04:16:44.192Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2026-07-13T03:50:06.111Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2026-07-10T11:57:41.063Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2026-06-30T10:24:58.337Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2026-06-29T10:37:13.924Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2026-06-28T09:55:47.461Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2026-06-27T10:03:21.568Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2026-04-10T05:34:37.629Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2026-04-10T05:29:43.360Z",
+      "version": "0.1.4"
+    }
+  ]
+}

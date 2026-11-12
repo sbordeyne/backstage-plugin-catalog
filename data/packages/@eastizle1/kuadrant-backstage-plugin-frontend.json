@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2026-03-19T16:36:40.966Z",
+  "deprecated": "",
+  "description": "Backstage plugin for Kuadrant - enables developer portals for API access management using Kuadrant Gateway API primitives.",
+  "homepage": "https://github.com/Kuadrant/kuadrant-backstage-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "eastizle"
+  ],
+  "name": "@eastizle1/kuadrant-backstage-plugin-frontend",
+  "plugin_id": "kuadrant",
+  "readme": "# Kuadrant Plugin for Backstage/RHDH\n\nBackstage plugin for Kuadrant - enables developer portals for API access management using Kuadrant Gateway API primitives.\n\n**For installation instructions**, see [docs/installation.md](../../docs/installation.md).\n\n## Features\n\n- **API Access Management**: Request API keys for Kuadrant-protected APIs\n- **Access Tiers**: Support for multiple access tiers with different rate limits via PlanPolicy\n- **User Identity**: Integrates with Backstage identity API for user-specific API keys\n- **Policy Visibility**: View AuthPolicies, RateLimitPolicies, and PlanPolicies\n- **API Key Management**: View, create, and delete API keys\n- **Approval Workflow**: API owners can approve/reject API access requests\n- **APIProduct Integration**: Sync APIProduct custom resources from Kubernetes\n\n## Components\n\n### Pages\n\n- **`KuadrantPage`** - Main page showing API products list and approval queue\n\n### Entity Content\n\n- **`EntityKuadrantApiKeysContent`** - API keys management tab for API entities\n- **`EntityKuadrantApiProductInfoContent`** - APIProduct details and plan information tab\n- **`EntityKuadrantApiAccessCard`** - Quick API key request card for API entity overview\n\n### Other\n\n- **`ApprovalQueueCard`** - Displays pending API key requests for API owners\n- **`CreateAPIProductDialog`** - Dialog for creating new API products\n\n## Usage\n\n### For API Consumers\n\n1. Navigate to an API entity in the catalog\n2. Click the \"API Keys\" tab\n3. Click \"Request API Access\"\n4. Select a tier (bronze, silver, gold) and provide use case\n5. Wait for approval from the API owner\n6. Once approved, your API key will appear in the API Keys tab\n\n### For API Owners\n\n1. Navigate to the Kuadrant page\n2. View all API products synced from Kubernetes\n3. Create new API products by selecting an HTTPRoute and configuring:\n   - Display name and description\n   - Approval mode (manual or automatic)\n   - Publish status (draft or published)\n4. Approve or reject pending API key requests in the approval queue\n\n## Related Documentation\n\n- [Installation Guide](../../docs/installation.md)\n- [RBAC Permissions](../../docs/rbac-permissions.md)\n- [API Reference](../../docs/api-reference.md)\n- [Backend Plugin](../kuadrant-backend/README.md)\n",
+  "repository": "https://github.com/Kuadrant/kuadrant-backstage-plugin/tree/HEAD/plugins/kuadrant",
+  "role": "frontend-plugin",
+  "scope": "@eastizle1",
+  "updated": "2026-03-23T16:22:35.239Z",
+  "version": "0.2.4",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-03-23T16:22:35.239Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2026-03-23T10:56:21.704Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2026-03-20T11:41:39.756Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-03-19T16:36:41.505Z",
+      "version": "0.2.1"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "author": "",
+  "created": "2023-06-20T13:58:49.777Z",
+  "deprecated": "",
+  "description": "This is an extension module to the plugin-catalog-backend plugin, providing extensions targeted at GCP.",
+  "homepage": "https://github.com/backtostage/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "angeliski"
+  ],
+  "name": "@backtostage/plugin-catalog-backend-module-gcp",
+  "plugin_id": "catalog",
+  "readme": "# Catalog Backend Module for GCP\n\nThis is an extension module to the plugin-catalog-backend plugin, providing extensions targeted at GCP.\n\n## Getting started\n\nYou will have to add the provider in the catalog initialization code of your\nbackend. They are not installed by default, therefore you have to add a\ndependency on `@backtostage/plugin-catalog-backend-module-gcp` to your backend\npackage.\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @backtostage/plugin-catalog-backend-module-gcp\n```\n\n### Cloud SQL - GoogleSQLDatabaseEntityProvider\n\nTo your new backend file, add:\n\n```ts title=\"packages/backend/src/index.ts\"\nimport { catalogModuleGoogleSQLDatabaseEntityProvider } from '@backtostage/plugin-catalog-backend-module-gcp';\n\n\nbackend.add(\n  catalogModuleGoogleSQLDatabaseEntityProvider,\n);\n```\n\n### Memorystore Redis - GoogleRedisDatabaseEntityProvider\n\nTo your new backend file, add:\n\n```ts title=\"packages/backend/src/index.ts\"\nimport { catalogModuleGoogleRedisDatabaseEntityProvider } from '@backtostage/plugin-catalog-backend-module-gcp';\n\n\nbackend.add(\n  catalogModuleGoogleRedisDatabaseEntityProvider,\n);\n```\n\n### Project - GoogleOrganizationProjectEntityProvider\n\nTo your new backend file, add:\n\n```ts title=\"packages/backend/src/index.ts\"\nimport { catalogModuleGoogleOrganizationProjectEntityProvider } from '@backtostage/plugin-catalog-backend-module-gcp';\n\n\nbackend.add(\n  catalogModuleGoogleOrganizationProjectEntityProvider,\n);\n```\n\n## Configuration\n\nTo use this provider, you'll need a [Google Service Account](https://cloud.google.com/iam/docs/service-account-overview).\nOnce generated, store the path to this file in the `GOOGLE_APPLICATION_CREDENTIALS` environment variable.\n\n\nYou can find more details about this in the [official docs](https://cloud.google.com/nodejs/docs/reference/google-auth-library/latest#impersonated-credentials-client)\n\nThen you can add a `gcpResources` config to the catalog providers configuration:\n\n> **Note**: The configuration key `catalog.providers.gcpResources` is recommended to avoid conflicts with the official Backstage GCP module. \n> For backward compatibility, `catalog.providers.gcp` is still supported but deprecated.\n\n```yaml\ncatalog:\n  providers:\n    gcpResources:\n      # the project id need to be the GCP Project where your Resources are present\n      - project: my-gcp-project-id\n        ownerLabel: team # string\n        componentLabel: app # string\n        systemLabel: system # string\n        cloudsql:\n          resourceType: SQL  # string\n          suffix: sql  # string\n          disabled: true # boolean\n        redis:\n          resourceType: Redis  # string\n          location: us-central1 # string\n          suffix: memorystoreredis  # string\n          disabled: true # boolean\n        schedule: # same options as in TaskScheduleDefinition\n          # supports cron, ISO duration, \"human duration\" as used in code\n          frequency: { minutes: 30 }\n          # supports ISO duration, \"human duration\" as used in code\n          timeout: { minutes: 3 }\n      # you can configure a organization too. If the project is provided, this config will be skipped\n      - organization:\n          query: \"parent:organizations/XPTO\"\n          resourceType: Project\n        schedule: # same options as in TaskScheduleDefinition\n          # supports cron, ISO duration, \"human duration\" as used in code\n          frequency: { minutes: 30 }\n          # supports ISO duration, \"human duration\" as used in code\n          timeout: { minutes: 3 }\n```\n\nThis provider supports multiple projects using different configurations.\n\n- **`project`** _(required when not using organization import)_:\n  Project ID of the project for which to list Cloud SQL instances.\n  You can omit that field if you want the provider to load all projects in your organization to load other resources.\n- **`organization`** _(optional)_:\n    - **`query`** _(optional)_:\n      - Default: `` Query param to [Google API](https://cloud.google.com/resource-manager/reference/rest/v3/projects/search#query-parameters)\n      - You can narrow the search based in your needs. When not provided a empty value is used. Please follow the API format to configure this param\n\n    - **`resourceType`** _(optional)_:\n      - Default: `GCP Project`.\n      - The provider will set the [`type`](https://backstage.io/docs/features/software-catalog/descriptor-format#spectype-required-4) based in this information.\n\n    - **`disabled`** _(optional)_:\n      - Default: `false`.\n      - The entity provider will skip this configuration when disabled.\n\n- **`ownerLabel`** _(optional)_:\n  - Default: `owner`.\n  - The provider will look for user defined labels to find the [Resource Owner](https://backstage.io/docs/features/software-catalog/descriptor-format#specowner-required-2).\n  - You can provide the label name where the owner name is present, if the label isn't present the owner will be set `unknown`.\n- **`componentLabel`** _(optional)_:\n  - Default: `component`.\n  - The provider will look for user defined labels to find the Resource [dependencyOf](https://backstage.io/docs/features/software-catalog/well-known-relations#dependson-and-dependencyof).\n  - You can provide the label name where the component name is present, if the label isn't present `dependencyOf` will be skipped.\n- **`systemLabel`** _(optional)_:\n  - Default: `system`.\n  - The provider will look for user defined labels to find the Resource system.\n  - You can provide the label name where the system name is present, if the label isn't present the system field will be skipped.\n- **`cloudsql`** _(optional)_:\n    - **`resourceType`** _(optional)_:\n      - Default: `CloudSQL`.\n      - The provider will set the [`type`](https://backstage.io/docs/features/software-catalog/descriptor-format#spectype-required-4) based in this information.\n    - **`suffix`** _(optional)_:\n      - Default: `cloudsql`.\n      - The provider will set the suffix to create a unique name for this resource.\n    - **`disabled`** _(optional)_:\n      - Default: `false`.\n      - The entity provider will skip this configuration when disabled.\n    - **`namespaceByProject`** _(optional)_:\n      - Default: `false`.\n      - The entity provider will use the project in namespace field. The namespace `default` is used when nothing is defined in this config.\n\n- **`redis`** _(optional)_:\n    - **`resourceType`** _(optional)_:\n      - Default: `Memorystore Redis`.\n      - The provider will set the [`type`](https://backstage.io/docs/features/software-catalog/descriptor-format#spectype-required-4) based in this information.\n    - **`suffix`** _(optional)_:\n      - Default: `redis`.\n      - The provider will set the suffix to create a unique name for this resource.\n    - **`location`** _(optional)_:\n      - Default: `` Wildcard value to [Google API](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1beta1/projects.locations.instances/list)\n      - You can narrow the location to list. When not provided instances from all locations will be listed\n    - **`disabled`** _(optional)_:\n      - Default: `false`.\n      - The entity provider will skip this configuration when disabled.\n    - **`namespaceByProject`** _(optional)_:\n      - Default: `false`.\n      - The entity provider will use the project in namespace field. The namespace `default` is used when nothing is defined in this config.\n\n\n- **`schedule`** _(required)_:\n    - **`frequency`**:\n      How often you want the task to run. The system does its best to avoid overlapping invocations.\n    - **`timeout`**:\n      The maximum amount of time that a single task invocation can take.\n    - **`initialDelay`** _(optional)_:\n      The amount of time that should pass before the first invocation happens.\n    - **`scope`** _(optional)_:\n      `'global'` or `'local'`. Sets the scope of concurrency control.\n",
+  "repository": "https://github.com/backtostage/backstage-plugins/tree/HEAD/plugins/catalog-backend-module-gcp",
+  "role": "backend-plugin-module",
+  "scope": "@backtostage",
+  "updated": "2025-08-11T02:40:11.735Z",
+  "version": "0.3.1",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2025-08-11T02:40:11.735Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2025-04-22T13:24:12.801Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2024-11-08T23:20:25.709Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2024-10-28T12:18:22.180Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2024-10-15T23:12:35.648Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2024-09-24T20:43:47.896Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2024-09-24T12:14:43.413Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2024-08-01T13:36:43.380Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-10-13T03:40:31.519Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-06-20T13:58:50.025Z",
+      "version": "0.1.0"
+    }
+  ]
+}

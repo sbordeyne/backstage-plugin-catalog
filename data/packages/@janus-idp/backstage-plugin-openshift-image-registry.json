@@ -1,0 +1,93 @@
+{
+  "author": "The Backstage Community",
+  "created": "2023-05-10T08:00:17.344Z",
+  "deprecated": "",
+  "description": "The OpenShift Image Registry plugin displays all ImageStreams in an Openshift cluster.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-openshift-image-registry",
+  "plugin_id": "openshift-image-registry",
+  "readme": "# OpenShift Image Registry plugin for Backstage\n\nThe OpenShift Image Registry plugin displays all ImageStreams in an Openshift cluster.\n\n## For administrators\n\n### Prerequisites\n\nThe OpenShift Image Registry plugin requires read access to **_all_** `ImageStreams` and `ImageStreamTags` on a cluster. (Currently only a single cluster is supported.)\n\nYou can create a `ServiceAccount`, `ClusterRole` and `ClusterRoleBinding` with this commands.\n\nPlease notice that the ServiceAccount will be created in your current namespace while the `ClusterRole` and `ClusterRoleBinding` giving access to all namespaces are cluster-wide resources.\n\nAdditional information on these commands could be found in the [OpenShift Container Platform authentication and authorization documentation](https://docs.openshift.com/container-platform/latest/authentication/index.html).\n\n```console\noc create serviceaccount janus-idp-openshift-image-registry-reader\n\noc create clusterrole janus-idp-openshift-image-registry-reader --verb=get,watch,list --resource=imagestreams --resource=imagestreamtags\n\noc adm policy add-cluster-role-to-user janus-idp-openshift-image-registry-reader -z janus-idp-openshift-image-registry-reader\n```\n\nAnd finally you can use this command to create a token that is valid for one week:\n\n```console\noc create token --duration=168h janus-idp-openshift-image-registry-reader\n```\n\n### Installation\n\nRun the following command to install the OpenShift Image Registry plugin:\n\n```console\nyarn workspace app add @janus-idp/backstage-plugin-openshift-image-registry\n```\n\n### Configuration\n\n1. Set the proxy to desired OpenShift cluster in the `app-config.yaml` file as follows:\n\n   ```yaml title=\"app-config.yaml\"\n   proxy:\n     endpoints:\n       '/openshift-image-registry/api':\n       target: <URL where k8s control plane for OpenShift cluster is running>\n       headers:\n         X-Requested-With: 'XMLHttpRequest'\n         Authorization: Bearer <TOKEN>\n       changeOrigin: true\n       # Change to \"false\" in case of using self hosted OpenShift cluster with a self-signed certificate\n       secure: true\n   ```\n\n2. Enable an additional sidebar-item on the app sidebar in the `packages/app/src/components/Root/Root.tsx` file:\n\n   ```tsx title=\"packages/app/src/components/Root/Root.tsx\"\n   /* highlight-add-next-line */\n   import ExtensionIcon from '@material-ui/icons/Extension';\n\n   export const Root = ({ children }: PropsWithChildren<{}>) => (\n     <SidebarPage>\n       <Sidebar>\n         <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n           {/* ... */}\n           {/* highlight-add-start */}\n           <SidebarItem\n             icon={ExtensionIcon}\n             to=\"openshift-image-registry\"\n             text=\"Image Registry\"\n           />\n           {/* highlight-add-end */}\n         </SidebarGroup>\n         {/* ... */}\n       </Sidebar>\n       {children}\n     </SidebarPage>\n   );\n   ```\n\n3. Add the Openshift Image Registry page in `packages/app/src/App.tsx` file:\n\n   ```tsx title=\"packages/app/src/App.tsx\"\n   /* highlight-add-next-line */\n   import { OpenshiftImageRegistryPage } from '@janus-idp/backstage-plugin-openshift-image-registry';\n\n   const routes = (\n     <FlatRoutes>\n       {/* ... */}\n       {/* highlight-add-start */}\n       <Route\n         path=\"/openshift-image-registry\"\n         element={<OpenshiftImageRegistryPage />}\n       />\n       {/* highlight-add-end */}\n     </FlatRoutes>\n   );\n   ```\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/openshift-image-registry",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-10-22T21:36:58.556Z",
+  "version": "1.10.0",
+  "version_count": 93,
+  "versions": [
+    {
+      "date": "2024-10-31T22:18:37.402Z",
+      "version": "1.8.9"
+    },
+    {
+      "date": "2024-10-22T21:36:58.556Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2024-10-09T17:29:50.814Z",
+      "version": "1.9.5"
+    },
+    {
+      "date": "2024-10-08T18:32:58.411Z",
+      "version": "1.9.4"
+    },
+    {
+      "date": "2024-10-08T06:30:59.540Z",
+      "version": "1.9.3"
+    },
+    {
+      "date": "2024-10-01T18:31:43.021Z",
+      "version": "1.9.2"
+    },
+    {
+      "date": "2024-09-25T12:53:00.746Z",
+      "version": "1.9.1"
+    },
+    {
+      "date": "2024-09-20T03:46:38.948Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2024-09-19T16:54:36.641Z",
+      "version": "1.8.8"
+    },
+    {
+      "date": "2024-09-11T06:34:57.640Z",
+      "version": "1.8.7"
+    },
+    {
+      "date": "2024-09-10T09:16:21.263Z",
+      "version": "1.8.6"
+    },
+    {
+      "date": "2024-09-03T12:45:43.410Z",
+      "version": "1.8.5"
+    },
+    {
+      "date": "2024-08-16T18:57:06.071Z",
+      "version": "1.8.4"
+    },
+    {
+      "date": "2024-08-15T16:17:55.926Z",
+      "version": "1.8.3"
+    },
+    {
+      "date": "2024-08-02T18:17:10.892Z",
+      "version": "1.8.2"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "author": "",
+  "created": "2025-08-18T22:55:06.352Z",
+  "deprecated": "",
+  "description": "The scheduler-notifications backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "christoph-jerolimov",
+    "jerolimov"
+  ],
+  "name": "@proberaum/backstage-plugin-catalog-backend-module-scheduler-notifications",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/proberaum/backstage-plugins/tree/HEAD/workspaces/scheduler-notifications/plugins/catalog-backend-module-scheduler-notifications",
+  "role": "backend-plugin-module",
+  "scope": "@proberaum",
+  "updated": "2025-11-18T17:44:30.000Z",
+  "version": "0.4.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2025-11-18T17:44:30.000Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-10-19T19:10:53.598Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2025-10-17T22:53:26.963Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-10-17T22:21:43.336Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-10-17T16:07:44.994Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-08-18T22:55:06.659Z",
+      "version": "0.0.1"
+    }
+  ]
+}

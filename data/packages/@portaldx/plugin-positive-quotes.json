@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2022-08-18T20:18:01.550Z",
+  "deprecated": "",
+  "description": "Display a random positive quote message from \"O Pensador\".",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "accezar"
+  ],
+  "name": "@portaldx/plugin-positive-quotes",
+  "plugin_id": "",
+  "readme": "# @portaldx/plugin-positive-quotes\n\nDisplay a random positive quote message from \"O Pensador\".\n\n_This plugin was created through the Backstage CLI_\n\n## Requirements\n\n- [Backstage](https://backstage.io/) Project;\n- Node.js v16.14.x\n\n## Install\n\n```\nyarn add @portaldx/plugin-positive-quotes\n```\n\nor\n\n```\nnpm i @portaldx/plugin-positive-quotes\n```\n\n## Use\n\n### app-config.yaml\n\n```yaml\n[...]\n\nproxy:\n  '/positive-quotes':\n    target: 'https://quotes-br.herokuapp.com/api/'\n    changeOrigin: true\n    allowedMethods: [GET, POST]\n    pathRewrite:\n      '^/api/proxy/positive-quotes/': '/'\n\n[...]\n```\n\n### routes.tsx\n\n`packages/app/src/routes.tsx`\n\n```tsx\nimport { PositiveQuotesPage } from '@portaldx/plugin-positive-quotes';\n// ...\n\nconst routes = (\n  <FlatRoutes>\n    // ...\n    <Route path=\"/positive-quotes\" element={<PositiveQuotesPage />} />\n  </FlatRoutes>\n);\n```\n\n### Import the component where you want to use it:\n\n`src/components/common/WelcomeHeader/WelcomeHeader.tsx`\n\n```tsx\nimport { PositiveQuoteText } from '@portaldx/plugin-positive-quotes';\n\n// ...\n\nconst routes = (\n  <>\n    // ...\n    <PositiveQuoteText />\n  </>\n);\n```\n\n_Developed with ❤️ by the [MadeiraMadeira](https://github.com/madeiramadeirabr) DX Team_\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@portaldx",
+  "updated": "2023-02-14T13:09:11.503Z",
+  "version": "2.0.2",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2023-02-14T13:09:11.503Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2023-01-19T16:08:48.185Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2023-01-16T17:36:01.894Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2022-08-22T14:43:29.854Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2022-08-22T13:44:54.131Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2022-08-18T20:18:01.993Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2023-08-22T22:20:15.800Z",
+  "deprecated": "",
+  "description": "The Nexus Repository Manager plugin displays the information about your build artifacts that are available in the Nexus Repository Manager in your Backstage application.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-nexus-repository-manager",
+  "plugin_id": "",
+  "readme": "# Nexus Repository Manager plugin for Backstage\n\nThe Nexus Repository Manager plugin displays the information about your build artifacts that are available in the Nexus Repository Manager in your Backstage application.\n\n## For administrators\n\n### Installation and configuration\n\n1. Install the Nexus Repository Manager plugin using the following command:\n\n   ```console\n   yarn workspace app add @janus-idp/backstage-plugin-nexus-repository-manager\n   ```\n\n1. Set the proxy to the desired Nexus Repository Manager server in the `app-config.yaml` file as follows:\n\n   ```yaml title=\"app-config.yaml\"\n   proxy:\n     endpoints:\n       '/nexus-repository-manager':\n         target: 'https://<NEXUS_REPOSITORY_MANAGER_URL>'\n         headers:\n           X-Requested-With: 'XMLHttpRequest'\n           # Uncomment the following line to access a private Nexus Repository Manager using a token\n           # Authorization: 'Bearer <YOUR TOKEN>'\n         changeOrigin: true\n         # Change to \"false\" in case of using self hosted Nexus Repository Manager instance with a self-signed certificate\n         secure: true\n   ```\n\n1. Optional: Change the base URL of Nexus Repository Manager proxy as follows:\n\n   ```yaml title=\"app-config.yaml\"\n   nexusRepositoryManager:\n     # default path is `/nexus-repository-manager`\n     proxyPath: /custom-path\n   ```\n\n1. Optional: Enable experimental annotations:\n\n   ```yaml title=\"app-config.yaml\"\n   nexusRepositoryManager:\n     experimentalAnnotations: true\n   ```\n\n   Replace the `isNexusRepositoryManagerAvailable` import with `isNexusRepositoryManagerExperimentalAvailable` when adding the `<NexusRepositoryManagerPage />` component.\n\n   **NOTE**: The annotations mentioned in this step are not thoroughly tested.\n\n1. Enable an additional tab on the service entity page in `packages/app/src/components/catalog/EntityPage.tsx`:\n\n   ```tsx title=\"packages/app/src/components/catalog/EntityPage.tsx\"\n   /* highlight-add-next-line */\n   import {\n     isNexusRepositoryManagerAvailable,\n     NexusRepositoryManagerPage,\n   } from '@janus-idp/backstage-plugin-nexus-repository-manager';\n\n   const serviceEntityPage = (\n     <EntityLayout>\n       {/* ... */}\n       {/* highlight-add-next-line */}\n       <EntityLayout.Route\n         if={isNexusRepositoryManagerAvailable}\n         path=\"/build-artifacts\"\n         title=\"Build Artifacts\"\n       >\n         <NexusRepositoryManagerPage />\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n   ```\n\n   You may also wish to add the route to other component types, such as `library`s.\n\n1. Annotate your entity with any of the following annotations:\n\n   ```yaml title=\"catalog-info.yaml\"\n   metadata:\n     annotations:\n       # insert the chosen annotations here\n       # example\n       nexus-repository-manager/docker.image-name: `<ORGANIZATION>/<REPOSITORY>`,\n   ```\n\n   For more information about annotations, see the [annotation file](./ANNOTATIONS.md).\n\n## For users\n\n### Using the Nexus Repository Manager plugin in Backstage\n\nThe Nexus Repository Manager is a front-end plugin that enables you to view the information about build artifacts.\n\n#### Prerequisites\n\n- Your Backstage application is installed and running.\n- You have installed the Nexus Repository Manager plugin. For the installation process, see [Installation and configuration](#installation-and-configuration).\n\n#### Procedure\n\n1. Open your Backstage application and select a component from the **Catalog** page.\n2. Go to the **BUILD ARTIFACTS** tab.\n\n   The **BUILD ARTIFACTS** tab contains a list of build artifacts and related information, such as **VERSION**, **REPOSITORY**, **REPOSITORY TYPE**, **MANIFEST**, **MODIFIED**, and **SIZE**.\n\n   ![nexus-repository-manager-tab](./images/nexus-repository-manager.png)\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/nexus-repository-manager",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-14T21:33:37.092Z",
+  "version": "1.6.13",
+  "version_count": 88,
+  "versions": [
+    {
+      "date": "2024-11-14T21:33:37.092Z",
+      "version": "1.6.13"
+    },
+    {
+      "date": "2024-11-14T05:00:33.526Z",
+      "version": "1.6.12"
+    },
+    {
+      "date": "2024-10-31T22:18:36.474Z",
+      "version": "1.9.10"
+    },
+    {
+      "date": "2024-10-01T18:29:10.133Z",
+      "version": "1.10.2"
+    },
+    {
+      "date": "2024-09-25T12:50:35.694Z",
+      "version": "1.10.1"
+    },
+    {
+      "date": "2024-09-20T03:43:41.681Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2024-09-19T16:52:11.395Z",
+      "version": "1.9.9"
+    },
+    {
+      "date": "2024-09-11T06:34:04.583Z",
+      "version": "1.9.8"
+    },
+    {
+      "date": "2024-09-10T09:15:30.396Z",
+      "version": "1.9.7"
+    },
+    {
+      "date": "2024-09-03T12:44:51.759Z",
+      "version": "1.9.6"
+    },
+    {
+      "date": "2024-08-20T07:41:17.925Z",
+      "version": "1.9.5"
+    },
+    {
+      "date": "2024-08-16T18:54:39.754Z",
+      "version": "1.9.4"
+    },
+    {
+      "date": "2024-08-15T16:16:00.748Z",
+      "version": "1.9.3"
+    },
+    {
+      "date": "2024-08-02T18:16:17.791Z",
+      "version": "1.9.2"
+    },
+    {
+      "date": "2024-08-02T16:11:46.679Z",
+      "version": "1.9.1"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-03-12T14:26:58.289Z",
+  "deprecated": "",
+  "description": "The mta module for @backstage/plugin-scaffolder-backend",
+  "homepage": "https://github.com/backstage/community-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ibolton336"
+  ],
+  "name": "@ianbolton/backstage-plugin-scaffolder-backend-module-mta",
+  "plugin_id": "scaffolder",
+  "readme": "# @internal/backstage-plugin-scaffolder-backend-module-mta\n\nThe mta module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend).\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/mta/plugins/scaffolder-backend-module-mta",
+  "role": "backend-plugin-module",
+  "scope": "@ianbolton",
+  "updated": "2025-03-14T20:31:45.775Z",
+  "version": "0.2.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-03-14T20:31:45.775Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2025-03-12T14:26:58.551Z",
+      "version": "0.2.1"
+    }
+  ]
+}

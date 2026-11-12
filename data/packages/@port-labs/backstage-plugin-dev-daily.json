@@ -1,0 +1,45 @@
+{
+  "author": "",
+  "created": "2024-12-24T09:50:28.770Z",
+  "deprecated": "",
+  "description": "The Dev Daily Plugin provides developers with a consolidated dashboard of their daily development activities, including pull requests, tasks, and reviews. This plugin helps developers efficiently plan and manage their day by bringing together key informat",
+  "homepage": "https://backstage-plugin.getport.io/",
+  "keywords": [
+    "backstage",
+    "github",
+    "jira",
+    "port",
+    "port-labs",
+    "pull-request"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "danielsinaimain",
+    "dormeiri-port",
+    "gilmor-port",
+    "guy-s-port",
+    "hadorco",
+    "irar-port",
+    "noyah",
+    "teitelbaum"
+  ],
+  "name": "@port-labs/backstage-plugin-dev-daily",
+  "plugin_id": "dev-daily",
+  "readme": "# Dev Daily Plugin for Backstage\n\nThe Dev Daily Plugin provides developers with a consolidated dashboard of their daily development activities, including pull requests, tasks, and reviews. This plugin helps developers efficiently plan and manage their day by bringing together key information in one place.\n\n![Dev Daily Plugin Dashboard](./docs/plan-my-day.png)\n\n## Features\n\n### My Open PRs\n\nTrack all your open pull requests in one place, with the ability to:\n\n- View PR titles and links\n- See assigned reviewers\n- Send reviewer reminders (coming soon)\n\n![My Open PRs Dashboard](./docs/my-open-prs.png)\n\n### PRs Waiting for Review\n\nKeep track of pull requests that need your review:\n\n- See PR titles and creators\n- Quick-access links to PR pages\n- One-click approve action (coming soon)\n\n### My Open Tasks\n\nMonitor your active tasks:\n\n- View task titles and current status\n- Visual status indicators\n- Filter by status (Open/In Progress)\n\n### Recent Completed Tasks\n\nTrack your completed work:\n\n- See recently finished tasks\n- Completion status indicators\n- Quick access to task details\n\n## Installation & Configuration\n\nFor detailed installation and configuration instructions, please refer to [Port's official plugin documentation](https://docs.backstage-plugin.getport.io/).\n",
+  "repository": "https://github.com/port-labs/backstage-plugin/tree/HEAD/backstage-plugins/plugins/dev-daily-plugin",
+  "role": "frontend-plugin",
+  "scope": "@port-labs",
+  "updated": "2024-12-24T11:00:31.642Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-12-24T11:00:31.642Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-12-24T09:50:29.007Z",
+      "version": "0.1.0"
+    }
+  ]
+}

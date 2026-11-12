@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-11-19T18:45:39.348Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-mend",
+  "plugin_id": "mend",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/mend/plugins/mend",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-06-25T06:30:12.679Z",
+  "version": "2.1.0",
+  "version_count": 19,
+  "versions": [
+    {
+      "date": "2026-06-25T06:30:12.679Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2026-04-30T10:37:52.791Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-03-13T07:17:58.937Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-03-09T12:51:37.951Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-02-10T13:45:30.518Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-01-12T07:19:30.039Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-10-29T05:43:06.724Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-10-16T18:07:50.361Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-09-19T07:47:23.900Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-09-08T09:15:17.333Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-09-05T10:17:58.154Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-08-27T05:43:57.856Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-07-04T12:24:58.937Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-03-22T21:55:19.219Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-02-16T01:53:24.831Z",
+      "version": "0.2.1"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-01-29T19:01:18.128Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/Kuadrant/kuadrant-backstage-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pstefans"
+  ],
+  "name": "@pstefans/backstage-plugin-kuadrant-backend-module-rbac-dynamic",
+  "plugin_id": "permission",
+  "readme": "ERROR: No README data found!",
+  "repository": "https://github.com/Kuadrant/kuadrant-backstage-plugin/tree/HEAD/plugins/kuadrant-backend-module-rbac",
+  "role": "backend-plugin-module",
+  "scope": "@pstefans",
+  "updated": "2026-01-30T13:24:40.681Z",
+  "version": "0.0.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-01-30T13:24:40.681Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2026-01-29T19:01:18.456Z",
+      "version": "0.2.1"
+    }
+  ]
+}

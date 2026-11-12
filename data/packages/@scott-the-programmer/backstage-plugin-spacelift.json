@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2023-04-02T06:34:42.910Z",
+  "deprecated": "",
+  "description": "[![Maintainability](https://api.codeclimate.com/v1/badges/65206b49b30dfc4e2312/maintainability)](https://codeclimate.com/github/scott-the-programmer/backstage-plugin-spacelift/maintainability)",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "spacelift",
+    "terraform"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "scott-the-programmer"
+  ],
+  "name": "@scott-the-programmer/backstage-plugin-spacelift",
+  "plugin_id": "",
+  "readme": "# Spacelift Backstage Plugins\n\n[![Maintainability](https://api.codeclimate.com/v1/badges/65206b49b30dfc4e2312/maintainability)](https://codeclimate.com/github/scott-the-programmer/backstage-plugin-spacelift/maintainability)\n\nbackstage-plugin-spacelift: [![npm version](https://badge.fury.io/js/%40scott-the-programmer%2Fbackstage-plugin-spacelift.svg)](https://www.npmjs.com/package/@scott-the-programmer/backstage-plugin-spacelift)\n\nbackstage-plugin-spacelift-backend: [![npm version](https://badge.fury.io/js/%40scott-the-programmer%2Fbackstage-plugin-spacelift-backend.svg)](https://www.npmjs.com/package/@scott-the-programmer/backstage-plugin-spacelift-backend)\n\nAn unofficial Backstage plugin for [Spacelift](https://spacelift.io) to view statuses of runs and stacks through [Backstage](https://backstage.io)\n\nThis repository contains two Backstage plugins for integrating with the Spacelift platform:\n\n- `spacelift`: a plugin that displays a table of all Spacelift stacks and runs\n- `spacelift-backend`: a plugin that provides a simple wrapper for the Spacelift API.\n\n*Disclaimer: I do not work for Spacelift.io. I am simply interested in the tool and want to make a part of it accessible via backstage*\n\n![Stacks](https://raw.githubusercontent.com/scott-the-programmer/backstage-plugin-spacelift/main/docs/stacks.png)\n\n![Runs](https://raw.githubusercontent.com/scott-the-programmer/backstage-plugin-spacelift/main/docs/runs.png)\n\n## Installation\n\nTo use these plugins, you'll first need to install them in your Backstage app.\n\n```console\nyarn add @scott-the-programmer/backstage-plugin-spacelift @scott-the-programmer/backstage-plugin-spacelift-backend\n```\n\n### Backend\n\nCreate the following file under `packages/backend/src/plugins/spacelift.ts`\n\n```typescript\nimport { createRouter } from '@scott-the-programmer/backstage-plugin-spacelift-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin({\n  logger,\n  config,\n}: PluginEnvironment): Promise<Router> {\n  return await createRouter({ logger: logger, config: config });\n}\n```\n\nAdd the following snippets to `packages/backend/src/index.ts`\n\n```typescript\nimport spacelift from './plugins/spacelift';\n...\nconst spaceliftEnv = useHotMemoize(module, () => createEnv('spacelift'));\n...\n  apiRouter.use('/spacelift', await spacelift(spaceliftEnv));\n```\n\n### Frontend\n\nAdd the following snippets to packages/app/src/App.tsx\n\n```tsx\nimport { SpaceliftPage } from '@scott-the-programmer/backstage-plugin-spacelift';\n...\n<Route path=\"/spacelift\" element={<SpaceliftPage />} />\n```\n\nAdd the following snippets to Root.tsx to add spacelift to the home sidebar\n\n```tsx\n<SidebarItem icon={LibraryBooks} to=\"spacelift\" text=\"Spacelift\" />\n```\n\n### Config\n\nAdd the following config to your app-config.yaml\n\n```\nspacelift:\n  org: your-spacelift-org\n  id: your-spacelift-id\n  secret: your-spacelift-secret\n```\n\n## Contributing\n\nFeel free to contribute to this project in any shape or form, whether it's raising issues, feature requests, or even creating PRs yourself. \n\nAny help is appreciated!\n\n### Install Dependencies\n\nInstall the frontend dependencies:\n\n```console\nmake install-frontend\n```\nInstall the backend dependencies:\n\n```console\nmake install-backend\n```\n\n### Development\n\nRun the frontend development server:\n\n```console\nmake run-frontend\n```\n\nRun the backend development server:\n\n```console\nmake run-backend\n```\n\nRun the frontend tests:\n\n```console\nmake test-frontend\n```\n\nRun the backend tests:\n\n```console\nmake test-backend\n```\n",
+  "repository": "https://github.com/scott-the-programmer/backstage-plugin-spacelift",
+  "role": "frontend-plugin",
+  "scope": "@scott-the-programmer",
+  "updated": "2024-09-06T08:47:37.331Z",
+  "version": "0.2.5",
+  "version_count": 24,
+  "versions": [
+    {
+      "date": "2024-09-06T08:47:37.331Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2023-10-22T00:19:09.391Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2023-10-08T09:02:00.574Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2023-09-17T08:07:47.484Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2023-06-28T02:45:26.504Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-06-23T06:04:27.531Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-06-10T11:25:25.159Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2023-04-07T08:43:06.361Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-04-07T04:09:13.238Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-04-07T04:03:59.004Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-04-03T02:16:48.505Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2023-04-02T21:38:42.640Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2023-04-02T19:55:53.073Z",
+      "version": "0.0.13"
+    },
+    {
+      "date": "2023-04-02T17:57:03.559Z",
+      "version": "0.0.12"
+    },
+    {
+      "date": "2023-04-02T11:04:37.589Z",
+      "version": "0.0.11"
+    }
+  ]
+}

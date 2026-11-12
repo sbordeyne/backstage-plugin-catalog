@@ -1,0 +1,76 @@
+{
+  "author": "",
+  "created": "2025-08-12T21:18:54.100Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "christoph-jerolimov",
+    "jerolimov"
+  ],
+  "name": "@proberaum/backstage-plugin-github-notifications-backend",
+  "plugin_id": "github-notifications",
+  "readme": "",
+  "repository": "https://github.com/proberaum/backstage-plugins/tree/HEAD/workspaces/github-notifications/plugins/github-notifications-backend",
+  "role": "backend-plugin",
+  "scope": "@proberaum",
+  "updated": "2026-03-14T22:37:57.549Z",
+  "version": "0.12.0",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2026-03-14T22:37:57.549Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-11-18T17:44:22.468Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-10-19T19:11:25.470Z",
+      "version": "0.10.1"
+    },
+    {
+      "date": "2025-10-17T22:55:07.757Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-10-17T22:21:30.410Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-10-02T23:40:23.602Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-10-02T23:10:53.095Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-10-01T00:05:18.055Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-08-18T21:34:37.210Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-08-18T21:10:10.349Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-08-18T16:44:20.842Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-08-13T08:37:51.777Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-08-12T21:18:54.400Z",
+      "version": "0.1.0"
+    }
+  ]
+}

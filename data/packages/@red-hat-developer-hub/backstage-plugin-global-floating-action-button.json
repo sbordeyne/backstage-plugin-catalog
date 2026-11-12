@@ -1,0 +1,91 @@
+{
+  "author": "Red Hat",
+  "created": "2025-01-03T20:42:57.346Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-global-floating-action-button",
+  "plugin_id": "global-floating-action-button",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/global-floating-action-button/plugins/global-floating-action-button",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-05-18T15:16:13.862Z",
+  "version": "1.9.3",
+  "version_count": 34,
+  "versions": [
+    {
+      "date": "2026-05-18T15:16:13.862Z",
+      "version": "1.9.3"
+    },
+    {
+      "date": "2026-05-13T04:54:54.188Z",
+      "version": "1.9.2"
+    },
+    {
+      "date": "2026-05-05T13:55:08.163Z",
+      "version": "1.9.1"
+    },
+    {
+      "date": "2026-04-15T12:13:22.555Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2026-03-04T12:25:41.245Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2026-03-04T10:35:17.084Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2026-01-28T09:21:06.845Z",
+      "version": "1.7.3"
+    },
+    {
+      "date": "2026-01-15T09:52:04.895Z",
+      "version": "1.7.2"
+    },
+    {
+      "date": "2026-01-13T01:38:56.369Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2025-12-09T09:48:43.496Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2025-11-13T10:46:17.081Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2025-11-12T09:55:53.449Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2025-10-07T09:20:02.828Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2025-09-24T14:28:34.332Z",
+      "version": "1.4.1"
+    },
+    {
+      "date": "2025-09-11T09:59:13.175Z",
+      "version": "1.4.0"
+    }
+  ]
+}

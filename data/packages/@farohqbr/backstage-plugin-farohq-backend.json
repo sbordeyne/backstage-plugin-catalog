@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-11-08T16:46:16.344Z",
+  "deprecated": "",
+  "description": "Backend do plugin do FaroHQ: guarda o token e devolve só os dados liberados. Veja a instalação no [README do repositório](https://github.com/faro-hq/farohq-backstage#readme).",
+  "homepage": "https://github.com/faro-hq/farohq-backstage#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "joseaugustopaivajr"
+  ],
+  "name": "@farohqbr/backstage-plugin-farohq-backend",
+  "plugin_id": "farohq",
+  "readme": "# @farohqbr/backstage-plugin-farohq-backend\r\n\r\nBackend do plugin do FaroHQ: guarda o token e devolve só os dados liberados. Veja a instalação no [README do repositório](https://github.com/faro-hq/farohq-backstage#readme).\r\n",
+  "repository": "https://github.com/faro-hq/farohq-backstage/tree/HEAD/plugins/farohq-backend",
+  "role": "backend-plugin",
+  "scope": "@farohqbr",
+  "updated": "2026-11-08T16:51:25.105Z",
+  "version": "0.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-11-08T16:51:25.105Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-11-08T16:46:16.344Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-08-19T20:29:53.211Z",
+  "deprecated": "",
+  "description": "Registers the `entity-scaffolder-entity` permission resource type on the catalog plugin, so that a permission policy can be scoped to the `entity-scaffolder.edit` permission of [`@thecodingsheikh/backstage-plugin-entity-scaffolder`](../entity-scaffolder/R",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "thecodingsheikh"
+  ],
+  "name": "@thecodingsheikh/backstage-plugin-catalog-backend-module-entity-scaffolder",
+  "plugin_id": "catalog",
+  "readme": "# Entity Scaffolder catalog backend module\n\nRegisters the `entity-scaffolder-entity` permission resource type on the catalog plugin, so that a permission policy can be scoped to the `entity-scaffolder.edit` permission of [`@thecodingsheikh/backstage-plugin-entity-scaffolder`](../entity-scaffolder/README.md).\n\n## Why this module exists\n\n`entity-scaffolder.edit` is declared by a frontend plugin. A frontend plugin serves no `/.well-known/backstage/permissions/metadata` endpoint, so as far as the permission system is concerned the permission does not exist on any backend — and a stored conditional policy has nothing to bind to.\n\nPolicy providers that persist conditional policies (notably the Red Hat Developer Hub RBAC plugin) make this worse: they do not let you name a permission at all. A policy declares a `(pluginId, resourceType, action)` triple, the provider resolves that to the **first** permission in the plugin's metadata matching `(resourceType, action)`, and stores the resolved _name_. At authorize time the stored name must match the incoming permission exactly.\n\nThat is why the permission has its own resource type rather than the catalog's `catalog-entity`: under `catalog-entity` + `update` the first match is always `catalog.entity.refresh`, so the condition would bind to the wrong permission and `entity-scaffolder.edit` would silently fall through to whatever the non-conditional rules say.\n\nThis module closes both gaps by registering, on the `catalog` plugin:\n\n- the `entity-scaffolder-entity` resource type — unique per `(resourceType, action)`, so the lookup is unambiguous;\n- the `entity-scaffolder.edit` permission, which makes it appear in the catalog's permission metadata;\n- the permission rules usable in a policy's `conditions` block;\n- a `getResources` implementation that loads the catalog entities those conditions are evaluated against.\n\nOwning the type from the `catalog` plugin (rather than a new `entity-scaffolder` backend) keeps `pluginId: catalog` in policies and means nothing new has to be added to RHDH's `permission.rbac.pluginsWithPermission`.\n\n## Installation\n\n```bash\nyarn --cwd packages/backend add @thecodingsheikh/backstage-plugin-catalog-backend-module-entity-scaffolder\n```\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(\n  import(\n    '@thecodingsheikh/backstage-plugin-catalog-backend-module-entity-scaffolder'\n  ),\n);\n```\n\n## Rules\n\nAll rules are registered against `entity-scaffolder-entity`. The catalog's own rule implementations are re-used verbatim — only the resource type discriminator changes — so their behaviour is identical to the `catalog-entity` versions.\n\n| Rule                                         | Params                 | Source                              |\n| -------------------------------------------- | ---------------------- | ----------------------------------- |\n| `HAS_ANNOTATION`                             | `annotation`, `value?` | `@backstage/plugin-catalog-backend` |\n| `HAS_LABEL`                                  | `label`, `value?`      | `@backstage/plugin-catalog-backend` |\n| `HAS_METADATA`                               | `key`, `value?`        | `@backstage/plugin-catalog-backend` |\n| `HAS_SPEC`                                   | `key`, `value?`        | `@backstage/plugin-catalog-backend` |\n| `IS_ENTITY_KIND`                             | `kinds`                | `@backstage/plugin-catalog-backend` |\n| `IS_ENTITY_OWNER`                            | `claims`               | `@backstage/plugin-catalog-backend` |\n| `IS_ENTITY_MULTI_OWNER_WITH_ROLE`            | `claims`, `roles`      | multi-owner processor               |\n| `IS_ENTITY_MULTI_OWNER_WITH_ANNOTATION_ROLE` | `claims`, `annotation` | multi-owner processor               |\n\n## Example policy\n\nSee the [RBAC section of the entity-scaffolder README](../entity-scaffolder/README.md#rbac-for-edit) for complete RHDH and upstream examples. The short version:\n\n```yaml\nconditional-policies.yaml: |\n  ---\n  result: CONDITIONAL\n  roleEntityRef: role:default/all_users\n  pluginId: catalog\n  resourceType: entity-scaffolder-entity\n  permissionMapping:\n    - update\n  conditions:\n    rule: IS_ENTITY_OWNER\n    resourceType: entity-scaffolder-entity\n    params:\n      claims: [\"$ownerRefs\"]\n```\n\nNote that `permissionMapping` takes an **action** (`create`/`read`/`update`/`delete`/`use`), never a permission name — RHDH rejects the whole file otherwise.\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@thecodingsheikh",
+  "updated": "2026-10-26T07:15:35.335Z",
+  "version": "0.3.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-10-26T07:15:35.335Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-10-26T06:50:47.991Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-19T20:29:53.588Z",
+      "version": "0.1.0"
+    }
+  ]
+}

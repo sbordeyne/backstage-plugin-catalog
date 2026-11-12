@@ -1,0 +1,46 @@
+{
+  "author": "",
+  "created": "2022-12-21T12:37:25.360Z",
+  "deprecated": "",
+  "description": "Welcome to the hoop plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "luanlorenzo",
+    "matheusfranciscohoop",
+    "p3rotto",
+    "rogerio.hoop"
+  ],
+  "name": "@hoophq/backstage-plugin",
+  "plugin_id": "",
+  "readme": "# hoop\n\nWelcome to the hoop plugin!\n\n## Getting Started\n\nTo get started, you will need install the plugin into your app:\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @hoophq/backstage-plugin\n```\n\nModify your app routes in `App.tsx` to include the `HoopPage` component exported from the plugin, for example:\n\n```tsx\n// In packages/app/src/App.tsx\nimport { HoopPage } from '@hoop/backstage-hoop';\n\nconst routes = (\n  <FlatRoutes>\n    {/* ...other routes */}\n    <Route path=\"/hoop\" element={<HoopPage />} />\n```\n\nThen configure the `hoop` URL and the `hoop` token in your [`app-config.yaml`](https://github.com/backstage/backstage/blob/master/app-config.yaml).\n\n```yaml\nhoop:\n  baseUrl: http://your-service-url\n  token: yourTokenHere\n```\n\nAdd a link to the sidebar:\n\n```ts\n// packages/app/src/components/Root/Root.tsx\nimport ExtensionIcon from '@material-ui/icons/ExtensionIcon';\n\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n      // ...\n      <SidebarItem icon={ExtensionIcon} to='hoop' text='Hoop' />\n      // ...\n    </Sidebar>\n  </SidebarPage>\n);\n```\n\nYou can now navigate to the Hoop page from your app's sidebar!\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@hoophq",
+  "updated": "2022-12-21T15:17:08.989Z",
+  "version": "0.1.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2022-12-21T15:17:08.989Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2022-12-21T15:11:49.827Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2022-12-21T15:09:00.075Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2022-12-21T14:54:52.936Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2022-12-21T12:37:25.718Z",
+      "version": "0.1.0"
+    }
+  ]
+}

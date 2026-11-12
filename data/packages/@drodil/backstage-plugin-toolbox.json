@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2023-01-09T12:50:09.482Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/drodil/backstage-plugin-toolbox",
+  "keywords": [
+    "backstage",
+    "backstage.io",
+    "frontend",
+    "plugin"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "drodil"
+  ],
+  "name": "@drodil/backstage-plugin-toolbox",
+  "plugin_id": "toolbox",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@drodil",
+  "updated": "2026-09-01T06:44:45.645Z",
+  "version": "2.1.1",
+  "version_count": 78,
+  "versions": [
+    {
+      "date": "2026-09-01T06:44:45.645Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2026-08-19T12:12:20.245Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2026-08-04T07:16:05.723Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-07-29T07:35:32.869Z",
+      "version": "1.36.11"
+    },
+    {
+      "date": "2026-05-27T14:31:02.548Z",
+      "version": "1.36.10"
+    },
+    {
+      "date": "2026-04-15T11:20:43.055Z",
+      "version": "1.36.8"
+    },
+    {
+      "date": "2026-04-15T06:53:47.333Z",
+      "version": "1.36.7"
+    },
+    {
+      "date": "2026-02-18T11:20:41.611Z",
+      "version": "1.36.6"
+    },
+    {
+      "date": "2025-12-18T13:14:45.877Z",
+      "version": "1.36.5"
+    },
+    {
+      "date": "2025-12-08T12:01:20.692Z",
+      "version": "1.36.4"
+    },
+    {
+      "date": "2025-10-24T06:32:06.641Z",
+      "version": "1.35.1"
+    },
+    {
+      "date": "2025-10-21T07:04:12.485Z",
+      "version": "1.35.0"
+    },
+    {
+      "date": "2025-10-15T10:49:29.995Z",
+      "version": "1.34.0"
+    },
+    {
+      "date": "2025-10-15T08:24:24.938Z",
+      "version": "1.33.4"
+    },
+    {
+      "date": "2025-10-15T07:18:35.307Z",
+      "version": "1.33.3"
+    }
+  ]
+}

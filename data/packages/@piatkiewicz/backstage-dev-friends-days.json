@@ -1,0 +1,47 @@
+{
+  "author": "Piotr Piątkiewicz",
+  "created": "2024-02-28T15:47:31.303Z",
+  "deprecated": "",
+  "description": "Backstage plugin displaying info about special days related to dev's coworkers",
+  "homepage": "https://github.com/piatkiewicz/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "piatkiewicz"
+  ],
+  "name": "@piatkiewicz/backstage-dev-friends-days",
+  "plugin_id": "",
+  "readme": "# dev-friends-days\n\nWelcome to the dev-friends-days plugin for Backstage!\n\n## Getting started\n\nThis plugin offers `<DevFriendsDayCard />` which shows info if there is the Programmer, Tester or SysAdmin day today so you will know when to celebrate that special day with your team!\n\nOn the last Friday of July:\n\n![image](https://github.com/piatkiewicz/backstage-plugins/assets/8793897/6b519c32-a845-4c43-940f-e2ec93a9325e)\n\nRegular day without any Devs' friends event:\n\n![image](https://github.com/piatkiewicz/backstage-plugins/assets/8793897/66acff85-2a7e-4a4a-b5d9-5ab41d4d4f47)\n\n## Installation\n\n1. Add plugin to your frontend app\n```sh\n# From your Backstage root directory\nyarn --cwd packages/app add @piatkiewicz/backstage-dev-friends-days\n```\n\n2. Add import and place the `DevFriendsDayCard` component where you want it to display\n```ts\n//...\nimport { DevFriendsDayCard } from '@piatkiewicz/backstage-dev-friends-days';\n//...\n  <Grid item xs={12}>\n    <DevFriendsDayCard />\n  </Grid>\n//...\n```\n",
+  "repository": "https://github.com/piatkiewicz/backstage-plugins",
+  "role": "frontend-plugin",
+  "scope": "@piatkiewicz",
+  "updated": "2024-02-28T16:20:54.311Z",
+  "version": "0.1.19",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2024-02-28T16:20:54.311Z",
+      "version": "0.1.19"
+    },
+    {
+      "date": "2024-02-28T16:20:07.182Z",
+      "version": "0.1.18"
+    },
+    {
+      "date": "2024-02-28T16:18:42.509Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2024-02-28T15:59:05.307Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2024-02-28T15:50:39.613Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2024-02-28T15:47:31.588Z",
+      "version": "0.1.14"
+    }
+  ]
+}

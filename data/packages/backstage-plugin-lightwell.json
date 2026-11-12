@@ -1,0 +1,77 @@
+{
+  "author": "Maxime Gaillard",
+  "created": "2026-11-04T11:24:23.629Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for Red Hat Lightwell open source vulnerability remediation",
+  "homepage": "https://lightwell.startx.fr",
+  "keywords": [
+    "backstage",
+    "cve",
+    "janus-idp",
+    "lightwell",
+    "plugin",
+    "redhat",
+    "remediation",
+    "rhdh",
+    "security"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "maximegaillard"
+  ],
+  "name": "backstage-plugin-lightwell",
+  "plugin_id": "",
+  "readme": "# Backstage Plugin for Red Hat Lightwell\n\n[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)\n[![npm version](https://img.shields.io/npm/v/backstage-plugin-lightwell.svg?color=blue&label=npm%20frontend)](https://www.npmjs.com/package/backstage-plugin-lightwell)\n[![npm version](https://img.shields.io/npm/v/backstage-plugin-lightwell-backend.svg?color=blue&label=npm%20backend)](https://www.npmjs.com/package/backstage-plugin-lightwell-backend)\n[![Ecosystem](https://img.shields.io/badge/Ecosystem-Red_Hat_Developer_Hub_(RHDH)-red.svg)](https://developers.redhat.com/products/developer-hub/overview)\n[![Status](https://img.shields.io/badge/Status-Under_Active_Development-orange.svg)]()\n\n> Official Backstage & Red Hat Developer Hub (RHDH) dynamic plugin for enterprise open-source dependency remediation powered by **Red Hat Lightwell**.\n\nInitiated, architected, and maintained by **Maxime Gaillard** (<maxime.gaillard@devoteam.com>) — [STARTX | Part of Devoteam](https://startx.fr).\n\n---\n\n> 🚧 **Notice: Upcoming Code Delivery**  \n> This plugin is currently under active engineering by STARTX | Part of Devoteam.  \n> The core implementation, UI components, and Lightwell Network API integrations will be delivered and released shortly in the upcoming `v0.1.0` milestone.\n\n---\n\n## 🎯 Overview\n\nEnterprise application security tools (SCA, SAST) detect open-source vulnerabilities at rapid scale, but engineering teams are frequently unable to remediate them. The standard recommendation—bumping to a major new version—introduces breaking API changes, extensive regression testing, and lengthy PSSI recertification delays. This operational bottleneck is defined by Red Hat and IBM as the **\"Vulnerability Remediation Gap\"**.\n\n**Red Hat Lightwell** provides an authoritative third path: version-specific, cryptographically signed backported patches for enterprise dependencies (Java, Python) with zero breaking changes and full SBOM provenance.\n\nThis plugin bridges **Spotify Backstage / Red Hat Developer Hub** and the **Red Hat Lightwell Network**, giving developers in-context security intelligence and one-click backported remediation directly within their internal developer portal.\n\n---\n\n## 🏛️ Architecture\n\n```text\n       [ Developer on Backstage / RHDH ]\n                       │\n       ┌───────────────┴───────────────┐\n       ▼                               ▼\n[ Frontend Plugin UI ]       [ Software Catalog ]\n  • Supply Chain Badge         (Service / Repo Entity)\n  • \"Lightwell Security\" Tab           │\n  • CVEs + One-Click Remediation       │\n       │                               │\n       └───────────────┬───────────────┘\n                       │\n                       ▼\n        [ Backend Plugin (Node.js/TS) ]\n                       │\n       ┌───────────────┴───────────────┐\n       ▼                               ▼\n[ Dependency Extraction ]     [ Lightwell API Client ]\n • Git Manifests (pom, req)    • REST Lightwell Network API\n • CI SBOMs (CycloneDX)        • Vulnerability ↔ Fix Matching\n                                       │\n                                       ▼\n                       [ Secured Lightwell Repository ]\n                       (Signed Red Hat Java / PyPI Packages)\n```\n\n---\n\n## 📦 Packages in this Repository\n\n| Package | npm | Description |\n| :--- | :--- | :--- |\n| **`backstage-plugin-lightwell`** | [![npm](https://img.shields.io/npm/v/backstage-plugin-lightwell.svg)](https://www.npmjs.com/package/backstage-plugin-lightwell) | Frontend UI plugin (Entity tab, cards, and remediation workflows) |\n| **`backstage-plugin-lightwell-backend`** | [![npm](https://img.shields.io/npm/v/backstage-plugin-lightwell-backend.svg)](https://www.npmjs.com/package/backstage-plugin-lightwell-backend) | Backend plugin (Git manifests, SBOM ingestion, and Lightwell API client) |\n\n---\n\n## 🚀 Red Hat Developer Hub (Dynamic Plugin)\n\nThis plugin conforms to the **RHDH Dynamic Plugin specification**, enabling zero-compilation runtime installation on Red Hat OpenShift:\n\n```yaml\n# dynamic-plugins.yaml\nplugins:\n  - package: 'backstage-plugin-lightwell'\n    disabled: false\n  - package: 'backstage-plugin-lightwell-backend'\n    disabled: false\n    pluginConfig:\n      lightwell:\n        # Base URL and token provisioned through official Red Hat Partner Connect enablement kit\n        baseUrl: ${LIGHTWELL_API_BASE_URL}\n        token: ${LIGHTWELL_API_TOKEN}\n```\n\n---\n\n## 👤 Author & Lead Architect\n\n- **Maxime Gaillard** — Managing Director & Lead Cloud Architect\n- **Organization:** STARTX | Part of Devoteam\n- **Email:** <maxime.gaillard@devoteam.com>\n- **Enterprise Portal:** <https://devoteam.com>\n- **Official Gateway:** <https://lightwell.startx.fr>\n\n---\n\n## 📜 License\n\nLicensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for details.  \nCopyright © 2026 Maxime Gaillard — STARTX | Part of Devoteam\n",
+  "repository": "https://github.com/maximegaillard-devoteam/backstage-plugin-lightwell",
+  "role": "",
+  "scope": "",
+  "updated": "2026-11-04T13:50:29.591Z",
+  "version": "0.0.10",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2026-11-04T13:50:29.591Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2026-11-04T13:36:07.685Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2026-11-04T13:28:04.950Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2026-11-04T13:19:35.550Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2026-11-04T12:31:49.172Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2026-11-04T11:31:39.512Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2026-11-04T11:31:02.639Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2026-11-04T11:29:17.046Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2026-11-04T11:26:52.259Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2026-11-04T11:26:00.842Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2026-11-04T11:24:23.629Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

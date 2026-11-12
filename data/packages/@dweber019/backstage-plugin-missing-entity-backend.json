@@ -1,0 +1,75 @@
+{
+  "author": "",
+  "created": "2024-08-29T20:39:34.615Z",
+  "deprecated": "",
+  "description": "Welcome to the missing entity backend plugin!",
+  "homepage": "https://github.com/dweber019/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dweber019"
+  ],
+  "name": "@dweber019/backstage-plugin-missing-entity-backend",
+  "plugin_id": "missing-entity",
+  "readme": "# Missing entity Backend\n\nWelcome to the missing entity backend plugin!\n\n## Setup\n\n### Up and Running\n\nHere's how to get the backend up and running:\n\n1. First we need to add the `@dweber019/backstage-plugin-missing-entity-backend` package to your backend:\n\n   ```sh\n   # From the Backstage root directory\n   yarn --cwd packages/backend add @dweber019/backstage-plugin-missing-entity-backend\n   ```\n   \n2. In your `packages/backend/src/index.ts` make the following changes:\n\n    ```diff\n      import { createBackend } from '@backstage/backend-defaults';\n    \n      const backend = createBackend();\n    \n      // ... other feature additions\n    \n    + backend.add(import('@dweber019/backstage-plugin-missing-entity-backend'));\n    \n      backend.start();\n    ```\n\nThe plugin options can be set through the `app-config.yaml`:\n\n```yaml\nmissingEntity:\n  schedule:\n    frequency:\n      minutes: 60\n    timeout:\n      minutes: 2\n    initialDelay:\n      seconds: 15\n  age:\n    days: 3\n  batchSize: 2 # Default 500\n  kindAndType: [ { kind: 'Component' }, { kind: 'Resource', type: 'db' }] # See config.d.ts for default\n  excludeKindAndType: [] # See config.d.ts for default\n```\n\n## Plugin Option\n\n### Batch Size\n\nThe missing entity backend is setup to process entities by acting as a queue where it will pull down all the applicable\nentities from the catalog and add them to it's database (saving just the `entityRef`). Then it will grab the `n` oldest\nentities that have not been processed to process them.\n\nBy default, 500 entities are pull and processed in 60 minutes (see config above). This means for every entity there is\naround 7 seconds to get the relations and check them.\n\n### Refresh\n\nThe default setup will only check missing entities once when processed.\nIf you want this process to also refresh the data you can do so by adding the `age`.\n\nIt's recommended that if you choose to use this configuration to set it to 3 days to update stale data.\n\n## Limitations\n\n### Relation limit\n\nCurrently, we only process the first 1000 relation per entity.\n",
+  "repository": "https://github.com/dweber019/backstage-plugins/tree/HEAD/plugins/missing-entity-backend",
+  "role": "backend-plugin",
+  "scope": "@dweber019",
+  "updated": "2025-12-19T07:45:21.228Z",
+  "version": "0.1.2",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2025-12-19T07:45:21.228Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-08-15T06:55:13.813Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-06-27T07:33:08.278Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-03-17T20:39:52.118Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2025-01-20T10:42:51.377Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2024-12-28T22:35:32.241Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2024-10-21T10:44:55.218Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2024-09-25T06:28:31.203Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2024-09-03T16:25:46.842Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2024-09-02T14:50:21.340Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-08-31T09:22:10.710Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-08-30T19:57:20.121Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-08-29T20:39:34.931Z",
+      "version": "0.0.1"
+    }
+  ]
+}

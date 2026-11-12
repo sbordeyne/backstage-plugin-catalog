@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2026-01-29T18:40:15.090Z",
+  "deprecated": "",
+  "description": "This plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.",
+  "homepage": "https://github.com/Kuadrant/kuadrant-backstage-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pstefans"
+  ],
+  "name": "@pstefans/backstage-plugin-kuadrant-backend",
+  "plugin_id": "kuadrant",
+  "readme": "# kuadrant\n\nThis plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.\n\n## Installation\n\nThis plugin is installed via the `@internal/plugin-kuadrant-backend` package. To install it to your backend package, run the following command:\n\n```bash\n# From your root directory\nyarn --cwd packages/backend add @internal/plugin-kuadrant-backend\n```\n\nThen add the plugin to your backend in `packages/backend/src/index.ts`:\n\n```ts\nconst backend = createBackend();\n// ...\nbackend.add(import('@internal/plugin-kuadrant-backend'));\n```\n\n## Development\n\nThis plugin backend can be started in a standalone mode from directly in this\npackage with `yarn start`. It is a limited setup that is most convenient when\ndeveloping the plugin backend itself.\n\nIf you want to run the entire project, including the frontend, run `yarn start` from the root directory.\n",
+  "repository": "https://github.com/Kuadrant/kuadrant-backstage-plugin/tree/HEAD/plugins/kuadrant-backend",
+  "role": "backend-plugin",
+  "scope": "@pstefans",
+  "updated": "2026-01-30T13:21:47.220Z",
+  "version": "0.0.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-01-30T13:21:47.220Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2026-01-29T18:40:15.343Z",
+      "version": "0.2.1"
+    }
+  ]
+}

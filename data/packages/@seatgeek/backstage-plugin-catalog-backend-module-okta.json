@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2024-01-31T17:11:08.142Z",
+  "deprecated": "",
+  "description": "This plugin offers the ability to ingest users and groups from the [Okta API](https://developer.okta.com/docs/reference/core-okta-api/) into the Backstage catalog.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "seatgeek"
+  ],
+  "name": "@seatgeek/backstage-plugin-catalog-backend-module-okta",
+  "plugin_id": "catalog-backend-module-okta",
+  "readme": "# @seatgeek/backstage-plugin-catalog-backend-module-okta\n\nThis plugin offers the ability to ingest users and groups from the [Okta API](https://developer.okta.com/docs/reference/core-okta-api/) into the Backstage catalog.\n\n[![npm latest version](https://img.shields.io/npm/v/@seatgeek/backstage-plugin-catalog-backend-module-okta/latest.svg)](https://www.npmjs.com/package/@seatgeek/backstage-plugin-catalog-backend-module-okta)\n\n## Installation\n\nInstall the @seatgeek/backstage-plugin-catalog-backend-module-okta package in your backend package:\n\n```shell\n# From your Backstage root directory\nyarn add --cwd packages/backend @seatgeek/backstage-plugin-catalog-backend-module-okta\n```\n\nThen add the following config to your `app-config.yml`:\n\n```yml\ncatalog:\n  providers:\n    okta:\n      myOrganizationOkta:\n        apiToken: ${OKTA_TOKEN}\n        url: https://my-organization.okta.com\n```\n\nThen import `OktaOrgDiscoveryEntityProvider` into your Backstage application's `packages/backend/src/plugins/catalog.ts` and add it to the `CatalogBuilder`.\n\n```tsx\nimport { OktaOrgDiscoveryEntityProvider } from '@seatgeek/backstage-plugin-catalog-backend-module-okta';\n\n// ...\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const builder = await CatalogBuilder.create(env);\n  builder.addEntityProvider(\n    ...OktaOrgDiscoveryEntityProvider.fromConfig(env.config, {\n      logger: env.logger,\n      schedule: env.scheduler.createScheduledTaskRunner({\n        frequency: { days: 1 },\n        timeout: { minutes: 5 },\n      }),\n      // query params passed to the okta api groups request\n      listGroupsRequest: {\n        filter: 'type Eq \"TEAM\"',\n      },\n      // transforms the okta api user object into a UserEntity\n      userTransformer: oktaUser => ({\n        apiVersion: 'backstage.io/v1alpha1',\n        kind: 'User',\n        metadata: {\n          name: oktaUser.profile!.email!.split('@')[0],\n        },\n        spec: {\n          profile: {\n            displayName: oktaUser.profile!.displayName!,\n          },\n          memberOf: [],\n        },\n      }),\n      // transforms the group api user object into a GroupEntity\n      groupTransformer: oktaGroup => ({\n        apiVersion: 'backstage.io/v1alpha1',\n        kind: 'Group',\n        metadata: {\n          name: oktaGroup.profile!.name!.toLowerCase(),\n          description: oktaGroup.profile?.description || '',\n        },\n        spec: {\n          type: 'team',\n          children: [],\n          profile: {\n            displayName: oktaGroup.profile!.name!,\n          },\n        },\n      }),\n    }),\n  );\n  // ...\n}\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@seatgeek",
+  "updated": "2024-08-24T22:54:05.939Z",
+  "version": "1.0.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2024-08-24T22:54:05.939Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-04-09T19:19:39.970Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-01-31T18:39:44.066Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-01-31T17:11:08.379Z",
+      "version": "1.0.0"
+    }
+  ]
+}

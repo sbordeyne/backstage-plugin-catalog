@@ -1,0 +1,56 @@
+{
+  "author": "",
+  "created": "2024-12-11T05:04:39.150Z",
+  "deprecated": "",
+  "description": "Backstage.io Synergy plugin backend",
+  "homepage": "https://github.com/jiteshy/backstage-plugin-synergy",
+  "keywords": [
+    "backend",
+    "backstage",
+    "backstage.io",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jiteshy"
+  ],
+  "name": "@jiteshy/backstage-plugin-synergy-backend",
+  "plugin_id": "synergy",
+  "readme": "",
+  "repository": "https://github.com/jiteshy/backstage-plugin-synergy",
+  "role": "backend-plugin",
+  "scope": "@jiteshy",
+  "updated": "2025-06-01T00:44:56.557Z",
+  "version": "1.5.2",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2025-06-01T00:44:56.557Z",
+      "version": "1.5.2"
+    },
+    {
+      "date": "2025-05-18T20:49:43.142Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2024-12-22T04:33:11.957Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-12-22T01:59:51.576Z",
+      "version": "1.4.1"
+    },
+    {
+      "date": "2024-12-20T06:07:33.943Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2024-12-11T05:04:39.423Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2024-12-03T04:27:48.419Z",
+      "version": "1.2.2"
+    }
+  ]
+}

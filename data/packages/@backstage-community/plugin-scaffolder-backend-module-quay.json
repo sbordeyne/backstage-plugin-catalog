@@ -1,0 +1,83 @@
+{
+  "author": "Red Hat",
+  "created": "2024-11-15T18:11:13.143Z",
+  "deprecated": "",
+  "description": "The quay-actions module for @backstage-community/plugin-scaffolder-backend-module-quay",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-scaffolder-backend-module-quay",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/quay/plugins/quay-actions",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-09-15T00:02:29.070Z",
+  "version": "2.22.1",
+  "version_count": 29,
+  "versions": [
+    {
+      "date": "2026-09-15T00:02:29.070Z",
+      "version": "2.22.1"
+    },
+    {
+      "date": "2026-09-04T13:21:56.678Z",
+      "version": "2.22.0"
+    },
+    {
+      "date": "2026-08-28T08:46:46.226Z",
+      "version": "2.21.1"
+    },
+    {
+      "date": "2026-06-25T18:38:33.122Z",
+      "version": "2.21.0"
+    },
+    {
+      "date": "2026-06-11T09:02:11.150Z",
+      "version": "2.20.0"
+    },
+    {
+      "date": "2026-05-21T09:59:38.733Z",
+      "version": "2.19.0"
+    },
+    {
+      "date": "2026-03-25T14:43:44.957Z",
+      "version": "2.18.0"
+    },
+    {
+      "date": "2026-03-15T20:47:47.003Z",
+      "version": "2.17.1"
+    },
+    {
+      "date": "2026-03-07T06:29:12.794Z",
+      "version": "2.17.0"
+    },
+    {
+      "date": "2026-01-31T06:14:25.574Z",
+      "version": "2.16.0"
+    },
+    {
+      "date": "2026-01-09T23:05:21.254Z",
+      "version": "2.15.0"
+    },
+    {
+      "date": "2025-12-15T09:30:02.447Z",
+      "version": "2.14.0"
+    },
+    {
+      "date": "2025-10-29T11:32:25.697Z",
+      "version": "2.13.0"
+    },
+    {
+      "date": "2025-10-09T21:11:44.263Z",
+      "version": "2.12.0"
+    },
+    {
+      "date": "2025-09-02T19:11:57.529Z",
+      "version": "2.11.0"
+    }
+  ]
+}

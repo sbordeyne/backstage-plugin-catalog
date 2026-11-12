@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2026-07-23T13:11:38.533Z",
+  "deprecated": "",
+  "description": "Web library for the qeta plugin",
+  "homepage": "https://github.com/drodil/backstage-plugin-qeta",
+  "keywords": [
+    "backstage",
+    "backstage.io",
+    "frontend",
+    "plugin"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "serhatboyraz"
+  ],
+  "name": "@serhatboyraz/backstage-plugin-qeta-react",
+  "plugin_id": "qeta",
+  "readme": "# @drodil/plugin-qeta-react\r\n\r\nWelcome to the web library package for the qeta plugin!\r\n\r\n_This plugin was created through the Backstage CLI_\r\n",
+  "repository": "https://github.com/drodil/backstage-plugin-qeta",
+  "role": "web-library",
+  "scope": "@serhatboyraz",
+  "updated": "2026-07-23T17:03:07.616Z",
+  "version": "3.59.13",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-07-23T17:03:07.616Z",
+      "version": "3.59.13"
+    },
+    {
+      "date": "2026-07-23T14:36:05.265Z",
+      "version": "3.59.12"
+    },
+    {
+      "date": "2026-07-23T14:12:17.106Z",
+      "version": "3.59.11"
+    },
+    {
+      "date": "2026-07-23T13:11:38.843Z",
+      "version": "3.59.10"
+    }
+  ]
+}

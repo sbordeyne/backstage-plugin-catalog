@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2025-08-26T15:27:46.542Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates with Socket Security to display security findings and vulnerability analysis for repositories.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "joshbrand"
+  ],
+  "name": "@joshbrand/backstage-plugin-socket",
+  "plugin_id": "socket",
+  "readme": "# Socket Security Plugin for Backstage\n\nA Backstage plugin that integrates with Socket Security to display security findings and vulnerability analysis for repositories.\n\n## Features\n\n- **Security Dashboard**: View security findings and vulnerabilities for your repositories\n- **Entity Integration**: Add the Socket Security card to any entity page\n- **Severity Classification**: Issues are categorized by severity (Critical, High, Medium, Low)\n- **Detailed Analysis**: View detailed information about each security finding\n- **Fix Availability**: See which issues have fixes available\n\n## Installation\n\n1. Install the plugin in your Backstage app:\n\n```bash\n# From your Backstage app root directory\nyarn --cwd packages/app add @joshbrand/backstage-plugin-socket\n```\n\n2. **(Optional)** Add the standalone Socket Security page to your app routes in `packages/app/src/App.tsx`:\n\n```typescript\nimport { SocketPage } from '@joshbrand/backstage-plugin-socket';\n\nconst routes = (\n  <FlatRoutes>\n    {/* other routes */}\n    <Route path=\"/socket\" element={<SocketPage />} />\n  </FlatRoutes>\n);\n```\n\n3. Add the Socket Security card to entity pages. Choose one or both options:\n\n### Option A: Add to Overview Tab\n\nIn `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```typescript\nimport { EntitySocketSecurityCard } from '@joshbrand/backstage-plugin-socket';\n\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    {/* existing content */}\n    <Grid item md={12} xs={12}>\n      <EntitySocketSecurityCard />\n    </Grid>\n  </Grid>\n);\n```\n\n### Option B: Add a Dedicated Security Tab\n\nIn `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```typescript\nimport { EntitySocketSecurityCard } from '@joshbrand/backstage-plugin-socket';\n\n// Add this route to your service entity page layout\nconst serviceEntityPage = (\n  <EntityLayout>\n    {/* existing routes like Overview, CI/CD, etc. */}\n    \n    <EntityLayout.Route path=\"/security\" title=\"Security\">\n      <Grid container spacing={3} alignItems=\"stretch\">\n        <Grid item xs={12}>\n          <EntitySocketSecurityCard />\n        </Grid>\n      </Grid>\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\n### Option C: Use Standalone Component\n\nFor custom implementations outside of entity context:\n\n```typescript\nimport { StandaloneSocketSecurityCard } from '@joshbrand/backstage-plugin-socket';\n\n// Use anywhere with explicit repository parameter\n<StandaloneSocketSecurityCard repository=\"github.com/owner/repo-name\" />\n```\n\n## Configuration\n\n### Socket API Token and Proxy Setup\n\nThe Socket API requires authentication and CORS configuration. You need to set up both the API token and a proxy configuration.\n\n#### 1. Configure the Socket API Token\n\nAdd your Socket API token to your environment variables:\n\n```bash\nexport SOCKET_API_TOKEN=your-socket-api-token-here\n```\n\nOr add it to your `.env` file:\n\n```\nSOCKET_API_TOKEN=your-socket-api-token-here\n```\n\n#### 2. Configure the Backstage Proxy\n\nAdd the following proxy configuration to your `app-config.yaml`:\n\n```yaml\nproxy:\n  endpoints:\n    '/socket-api':\n      target: 'https://api.socket.dev'\n      headers:\n        Authorization: 'Bearer ${SOCKET_API_TOKEN}'\n      allowedMethods: ['GET']\n      changeOrigin: true\n\n# Optional Socket plugin configuration\nsocket:\n  # Cache time in minutes (default: 30)\n  cacheTime: 30\n  # Stale time in minutes (default: 5) \n  staleTime: 5\n  # Severity levels to include (default: ['critical', 'high', 'medium'])\n  # Available: 'critical', 'high', 'medium', 'low'\n  severityFilter:\n    - critical\n    - high\n    - medium\n    # - low  # Uncomment to include low severity alerts\n  # Whether to show alerts that have been ignored by org policy (default: false)\n  # Set to true to match Socket dashboard behavior and see all alerts\n  showIgnoredAlerts: false\n```\n\nThis proxy configuration:\n- Routes `/socket-api` requests to `https://api.socket.dev`\n- Automatically adds your API token to the Authorization header\n- Handles CORS issues by proxying requests through the Backstage backend\n- Uses `changeOrigin: true` to modify the origin header for proper API routing\n\n### Configuration Options\n\n#### Severity Filtering\nBy default, the plugin excludes `low` severity alerts to focus on more critical issues. You can customize which severity levels to show by modifying the `severityFilter` array.\n\n#### Ignored Alerts\nThe plugin uses Socket's full scan API, which includes alerts that have been ignored by your organization's security policy. By default, these ignored alerts are filtered out to show only actionable items. Set `showIgnoredAlerts: true` to see all alerts (matching the Socket dashboard behavior).\n\n**Note**: The Socket dashboard may show more alerts than the plugin by default because it includes ignored alerts. Enable `showIgnoredAlerts` if you want to match the dashboard exactly.\n\n### Entity Annotation\n\nTo enable Socket security scanning for a component, add the `socket.dev/repo-slug` annotation to your entity's catalog-info.yaml:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-service\n  annotations:\n    socket.dev/repo-slug: 'github.com/owner/repo-name'\nspec:\n  type: service\n  lifecycle: production\n```\n\nThe `socket.dev/repo-slug` annotation should contain the repository identifier that Socket Security can analyze.\n\n## Usage\n\n### Standalone Page\n\nNavigate to `/socket` to view the Socket Security dashboard for the current entity.\n\n### Entity Card\n\nWhen viewing an entity with a `socket.dev/repo-slug` annotation, the Socket Security card will display:\n\n- **Summary Statistics**: Total findings broken down by severity\n- **Detailed Table**: All security findings with filtering and search\n- **Finding Details**: Click on any row to see detailed information\n- **Fix Information**: See which findings have available fixes\n\n### Standalone Card\n\nThe `StandaloneSocketSecurityCard` component can be used outside of entity context:\n\n- Takes an explicit `repository` prop instead of reading from entity annotations\n- Useful for custom dashboards or non-entity pages\n- Provides identical functionality to the entity card\n- Does not require entity context or `socket.dev/repo-slug` annotations\n\n### Security Findings\n\nEach finding includes:\n\n- **Severity Level**: Critical, High, Medium, or Low\n- **Package Information**: Affected package and version\n- **Issue Description**: Details about the security issue\n- **Fix Availability**: Whether a fix is available\n- **Type**: Classification of the security issue\n\n## Development\n\n### Running the Plugin\n\n```bash\nyarn start\n```\n\n### Running Tests\n\n```bash\nyarn test\n```\n\n### Building\n\n```bash\nyarn build\n```\n\n## Socket SDK Integration\n\nThis plugin uses the official Socket SDK (@socketsecurity/sdk) to fetch security data. The SDK provides:\n\n- Repository analysis and vulnerability detection\n- Dependency security scanning\n- Real-time security insights\n- Integration with Socket's threat intelligence\n\nFor more information about Socket Security, visit [socket.dev](https://socket.dev).\n\n## License\n\nApache-2.0\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@joshbrand",
+  "updated": "2025-08-29T16:47:48.639Z",
+  "version": "0.4.1",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2025-08-29T16:47:48.639Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-08-28T17:40:48.172Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-08-28T17:24:23.575Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-08-27T18:39:16.867Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-08-26T15:27:46.837Z",
+      "version": "0.1.0"
+    }
+  ]
+}

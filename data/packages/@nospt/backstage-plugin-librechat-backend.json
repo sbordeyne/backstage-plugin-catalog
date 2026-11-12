@@ -1,0 +1,54 @@
+{
+  "author": "",
+  "created": "2026-06-25T09:13:57.178Z",
+  "deprecated": "",
+  "description": "Backend plugin for Backstage that proxies requests to LibreChat Agents API",
+  "homepage": "https://github.com/nosportugal/backstage-plugin-librechat#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "calexandre",
+    "jfhs",
+    "kkthx",
+    "luiscga"
+  ],
+  "name": "@nospt/backstage-plugin-librechat-backend",
+  "plugin_id": "librechat",
+  "readme": "# @nospt/backstage-plugin-librechat-backend\n\n> Backend plugin that proxies chat requests from Backstage to a [LibreChat](https://www.librechat.ai/) instance, keeping API keys server-side.\n\nThis is the **backend** half of the LibreChat plugin. It exposes an HTTP route that the frontend plugin calls, forwards requests to the LibreChat Agents API, and streams the response back. Your default API key and agent ID stay on the server and are never exposed to the browser.\n\nIt must be paired with the frontend plugin, [`@nospt/backstage-plugin-librechat`](../librechat/README.md), which renders the chat bubble UI **and holds the full configuration reference**.\n\nBy default, backend routes require Backstage authentication. If you explicitly need public access (for example, local demos), set `librechat.allowUnauthenticated: true`.\n\n## Installation\n\nInstall the package in your Backstage backend package:\n\n```bash\nyarn --cwd packages/backend add @nospt/backstage-plugin-librechat-backend\n```\n\n## Setup\n\nAdd the plugin to your backend:\n\n```typescript\n// packages/backend/src/index.ts\nimport {createBackend} from \"@backstage/backend-defaults\";\n\nconst backend = createBackend();\n\n// ...other plugins\nbackend.add(import(\"@nospt/backstage-plugin-librechat-backend\"));\n\nbackend.start();\n```\n\n> [!NOTE]\n> Configuration, endpoints, and architecture are documented in the [frontend plugin README](../librechat/README.md).\n",
+  "repository": "https://github.com/nosportugal/backstage-plugin-librechat/tree/HEAD/plugins/librechat-backend",
+  "role": "backend-plugin",
+  "scope": "@nospt",
+  "updated": "2026-11-04T15:11:53.545Z",
+  "version": "0.5.1",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-11-04T15:11:53.545Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-09-28T15:56:23.682Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-07-08T14:04:49.707Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-06-26T10:06:44.509Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-06-25T21:11:23.893Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-06-25T10:02:56.689Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-06-25T09:13:57.443Z",
+      "version": "0.1.0"
+    }
+  ]
+}

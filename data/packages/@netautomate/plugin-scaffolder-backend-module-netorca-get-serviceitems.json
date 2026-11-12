@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-07-09T12:27:27.643Z",
+  "deprecated": "",
+  "description": "The netorca-get-serviceitems module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jawjawjaw"
+  ],
+  "name": "@netautomate/plugin-scaffolder-backend-module-netorca-get-serviceitems",
+  "plugin_id": "scaffolder",
+  "readme": "# @netautomate/plugin-scaffolder-backend-module-netorca-get-serviceitems\n\nThe netorca-get-serviceitems module for [@backstage/plugin-scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend).\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@netautomate",
+  "updated": "2025-07-09T12:27:27.883Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-07-09T12:27:27.883Z",
+      "version": "0.1.0"
+    }
+  ]
+}

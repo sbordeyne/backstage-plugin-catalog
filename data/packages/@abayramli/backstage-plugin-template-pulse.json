@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2026-10-23T08:56:34.783Z",
+  "deprecated": "",
+  "description": "Track Backstage template usage, success rates, and run times, and search past runs.",
+  "homepage": "https://github.com/alibayramli/template-pulse#readme",
+  "keywords": [
+    "analytics",
+    "backstage",
+    "backstage-plugin",
+    "scaffolder",
+    "template-pulse"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "abayramli"
+  ],
+  "name": "@abayramli/backstage-plugin-template-pulse",
+  "plugin_id": "template-pulse",
+  "readme": "# Template Pulse frontend\n\nSee template usage, success rates, run times, and past runs at `/template-pulse`. Uses Backstage's new frontend system and the Template Pulse backend.\n\n[Installation](https://github.com/alibayramli/template-pulse#add-to-backstage) · [Live demo](https://alibayramli.github.io/template-pulse-demo/)\n",
+  "repository": "https://github.com/alibayramli/template-pulse/tree/HEAD/plugins/template-pulse",
+  "role": "frontend-plugin",
+  "scope": "@abayramli",
+  "updated": "2026-10-23T08:58:43.362Z",
+  "version": "0.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-10-23T08:58:43.362Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-23T08:56:34.783Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

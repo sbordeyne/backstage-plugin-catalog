@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-07-09T12:27:13.315Z",
+  "deprecated": "",
+  "description": "The netorca-provider backend module for the catalog plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jawjawjaw"
+  ],
+  "name": "@netautomate/plugin-catalog-backend-module-netorca-provider",
+  "plugin_id": "catalog-backend-module-netorca-provider",
+  "readme": "# @netautomate/plugin-catalog-backend-module-netorca-provider\n\nThe netorca-provider backend module for the catalog plugin.\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@netautomate",
+  "updated": "2025-07-09T12:27:13.609Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-07-09T12:27:13.609Z",
+      "version": "0.1.0"
+    }
+  ]
+}

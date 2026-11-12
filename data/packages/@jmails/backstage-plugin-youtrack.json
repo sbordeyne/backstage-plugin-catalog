@@ -1,0 +1,48 @@
+{
+  "author": "",
+  "created": "2026-08-26T21:17:57.571Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin that shows YouTrack issues for catalog entities",
+  "homepage": "https://github.com/jmail/backstage-plugin-youtrack#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "issues",
+    "youtrack"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jmail2205"
+  ],
+  "name": "@jmails/backstage-plugin-youtrack",
+  "plugin_id": "youtrack",
+  "readme": "# @jmails/backstage-plugin-youtrack\n\nA [Backstage](https://backstage.io) frontend plugin that shows [YouTrack](https://www.jetbrains.com/youtrack/) issues on catalog entity pages — the YouTrack counterpart of the Jira entity plugins.\n\n- **`EntityYouTrackCard`** — compact Overview card with the most recently updated unresolved issues and an *Open in YouTrack* deep link.\n- **`EntityYouTrackContent`** — full entity tab with a searchable table (ID / summary / state / assignee / updated), an *Unresolved only* switch and incremental loading (*Load more*).\n- **Frontend-only.** YouTrack is called exclusively through the built-in Backstage proxy — your permanent token lives server-side and never reaches the browser.\n- **Generic.** Annotation keys, custom field names and the proxy path are configurable; no organization-specific assumptions.\n\nScreenshots: see the [repository README](https://github.com/jmail/backstage-plugin-youtrack#screenshots).\n\n## Installation\n\n```sh\nyarn --cwd packages/app add @jmails/backstage-plugin-youtrack\n```\n\n### 1. Configure the proxy\n\nIn `app-config.yaml`:\n\n```yaml\nproxy:\n  endpoints:\n    '/youtrack':\n      target: https://your-instance.youtrack.cloud/api\n      credentials: require # default since Backstage 1.28\n      allowedMethods: ['GET']\n      headers:\n        Authorization: Bearer ${YOUTRACK_TOKEN}\n        Accept: application/json\n```\n\nSet the `YOUTRACK_TOKEN` environment variable to a YouTrack permanent token (`perm:...`) that can read the relevant issues.\n\n### 2. Configure the plugin\n\n```yaml\nyoutrack:\n  # REQUIRED: base URL of the YouTrack *web UI*, used to build links\n  baseUrl: https://your-instance.youtrack.cloud\n  # optional, defaults shown:\n  proxyPath: /youtrack\n  customFields:\n    state: [State, Stan]\n    assignee: [Assignee, Wykonawca]\n```\n\n`customFields` exists because the *State*/*Assignee* custom field names are defined per YouTrack project and are often localized. Each entry is a list of candidate names — the first field present on an issue wins.\n\n### 3. Annotate your entities\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-service\n  annotations:\n    # issues are selected by this YouTrack tag...\n    youtrack.com/tag: svc:my-service\n    # ...or by a raw YouTrack search query (wins when both are present)\n    # youtrack.com/query: 'project: DEMO #{My subsystem}'\n```\n\nTag values may freely contain `:` or `.` — the plugin wraps them in braces (`tag: {svc:my-service}`) as required by the YouTrack query syntax.\n\n### 4. Wire it into the app\n\n**New frontend system** (`createApp` from `@backstage/frontend-defaults` — the default for apps scaffolded since Backstage 1.53):\n\n```tsx\n// packages/app/src/App.tsx\nimport youtrackPlugin from '@jmails/backstage-plugin-youtrack/alpha';\n\nexport default createApp({\n  features: [\n    catalogPlugin,\n    // ...\n    youtrackPlugin,\n  ],\n});\n```\n\nThat's all: the plugin contributes an entity card (`entity-card:youtrack/issues`) and an entity tab (`entity-content:youtrack/issues`, path `/youtrack`), both filtered to entities that carry a YouTrack annotation. If your app uses feature discovery (`app.packages: all` in app-config) the explicit import is not even needed. Tweak them like any other extension, e.g. in `app-config.yaml`:\n\n```yaml\napp:\n  extensions:\n    - entity-content:youtrack/issues:\n        config:\n          title: Issues\n```\n\n**Classic frontend system** (`createApp` from `@backstage/app-defaults`, `EntityPage.tsx`):\n\nIn `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```diff\n+import {\n+  EntityYouTrackCard,\n+  EntityYouTrackContent,\n+  isYouTrackAvailable,\n+} from '@jmails/backstage-plugin-youtrack';\n\n const overviewContent = (\n   <Grid container spacing={3} alignItems=\"stretch\">\n     {entityWarningContent}\n     <Grid item md={6}>\n       <EntityAboutCard variant=\"gridItem\" />\n     </Grid>\n+    <Grid item md={6}>\n+      <EntityYouTrackCard />\n+    </Grid>\n     ...\n   </Grid>\n );\n\n const serviceEntityPage = (\n   <EntityLayout>\n     <EntityLayout.Route path=\"/\" title=\"Overview\">\n       {overviewContent}\n     </EntityLayout.Route>\n+    <EntityLayout.Route\n+      path=\"/youtrack\"\n+      title=\"YouTrack\"\n+      if={isYouTrackAvailable}\n+    >\n+      <EntityYouTrackContent />\n+    </EntityLayout.Route>\n     ...\n   </EntityLayout>\n );\n```\n\nEntities without a YouTrack annotation don't get the tab (`if={isYouTrackAvailable}`); the card shows a *missing annotation* empty state.\n\n## Exports\n\n| Export | Description |\n| --- | --- |\n| `@jmails/backstage-plugin-youtrack/alpha` (default export) | Plugin for the new frontend system: api + entity card + entity content extensions |\n| `EntityYouTrackCard` | Overview card (props: `title`, `maxItems`, `variant`) |\n| `EntityYouTrackContent` | Entity tab (props: `pageSize`) |\n| `isYouTrackAvailable` | Predicate for `EntityLayout.Route if` / `EntitySwitch.Case` |\n| `getYouTrackSelector` | Resolves the tag/query selector from an entity |\n| `youtrackApiRef`, `YouTrackApi`, `YouTrackClient` | Frontend API (replaceable via `ApiFactory`) |\n| `buildYouTrackQuery`, `getCustomFieldValue` | Pure helpers (query building, custom field parsing) |\n| `YOUTRACK_TAG_ANNOTATION`, `YOUTRACK_QUERY_ANNOTATION` | Annotation keys |\n\n## Troubleshooting\n\n**401 — two different flavors.** The error panel distinguishes them:\n\n- *\"The Backstage proxy rejected the request before it reached YouTrack\"* — the Backstage backend rejected the call (endpoint has `credentials: require` and the request carried no Backstage user credentials). The plugin always calls through `fetchApi`, so this usually means the user is not signed in, e.g. a guest-access setup. Either sign in or relax the endpoint to `credentials: dangerously-allow-unauthenticated`.\n- *\"YouTrack rejected the token\"* — the request reached YouTrack but `YOUTRACK_TOKEN` is missing, expired or lacks permissions. Verify the token with `curl -H \"Authorization: Bearer perm:...\" https://your-instance.youtrack.cloud/api/issues?query=me:%20me`.\n\n**404** — the proxy endpoint path in `app-config.yaml` doesn't match `youtrack.proxyPath` (default `/youtrack`).\n\n**400 Invalid query** — the `youtrack.com/query` annotation contains invalid YouTrack search syntax (e.g. unbalanced braces). Tag annotations are wrapped in braces automatically; raw queries are passed through as-is. The plugin encodes the whole query with `encodeURIComponent`, so spaces, `#` and `{}` survive the proxy unchanged.\n\n**Empty list although YouTrack shows issues** — check that the tag value in the annotation matches the YouTrack tag exactly, and that the token's user can see those issues.\n\n## Compatibility\n\nDependencies track Backstage **1.54** (`@backstage/plugin-catalog-react ^3.2.1`, `@backstage/frontend-plugin-api ^0.18.0`, `@material-ui` v4). Verified end-to-end against a scaffolded app on:\n\n- **Backstage 1.54, new frontend system** (`/alpha` entry point) — card, tab, filter;\n- **Backstage 1.50, new frontend system** — the host keeps its own `plugin-catalog-react` 2.x / `frontend-plugin-api` 0.16 while the plugin brings 3.x / 0.18 alongside; Backstage shares the relevant contexts across copies (version bridge / opaque extension types), so the card and tab still work. Run `yarn dedupe` after installing and expect a slightly larger bundle;\n- **Backstage 1.53, classic frontend system** (`EntityPage.tsx`).\n\nOlder hosts are not tested. The plugin only uses long-stable APIs (`createPlugin`/`createRoutableExtension`, `EntityCardBlueprint`/`EntityContentBlueprint`, `ApiBlueprint`).\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/jmail/backstage-plugin-youtrack",
+  "role": "frontend-plugin",
+  "scope": "@jmails",
+  "updated": "2026-08-26T23:28:27.065Z",
+  "version": "0.2.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-08-26T23:28:27.065Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-26T22:24:15.660Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2026-08-26T22:21:57.219Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-08-26T21:29:43.164Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-08-26T21:17:57.987Z",
+      "version": "0.1.0"
+    }
+  ]
+}

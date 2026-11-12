@@ -1,0 +1,52 @@
+{
+  "author": "",
+  "created": "2025-10-15T14:52:05.977Z",
+  "deprecated": "",
+  "description": "A module for the search backend that exports Stack Internal modules",
+  "homepage": "https://github.com/StackExchange/backstage-stackoverflow#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "abovedave",
+    "dancormier",
+    "estoesmoises",
+    "giamir",
+    "itstoragesvc",
+    "stacks-bot"
+  ],
+  "name": "@stackoverflow/backstage-stack-overflow-teams-collator",
+  "plugin_id": "search",
+  "readme": "\n# Stack Internal Search Backend Module\n\nThis module for the search plugin is an enhanced version of the original [Stack Overflow Internal collator](https://github.com/backstage/backstage/tree/master/plugins/search-backend-module-stack-overflow-collator). It provides additional information while coded to work specifically with Stack Internal API Version 3.\n\n## Getting started\n\nBefore we begin, make sure:\n\n- You have created your own standalone Backstage app using @backstage/create-app and not using a fork of the backstage repository. If you haven't setup Backstage already, start [here](https://backstage.io/docs/getting-started/).\n\nTo use any of the functionality this plugin provides, you need to start by configuring your App with the following config:\n\n```yaml\nstackoverflow:\n  baseUrl: https://api.stackoverflowteams.com # alternative: your Stack Internal Enterprise site\n  teamName: $STACK_OVERFLOW_TEAM_NAME # optional if you are on Enterprise\n  apiAccessToken: $STACK_OVERFLOW_API_ACCESS_TOKEN\n```\n\n### Stack Internal\n\nIf you have a private Stack Overflow Internal instance and/or a private Stack Overflow Internal Team you will need to supply a Personal Access Token. You can read more about how to set this up by going to [Stack Overflow Internal's Help Page](https://stackoverflowteams.help/en/articles/7913768-stack-overflow-for-teams-api-v3).\n\n## Areas of Responsibility\n\nThis Stack Overflow Internal backend plugin is primarily responsible for the following:\n\n- Provides a `StackOverflowQuestionsCollatorFactory`, which can be used in the search backend to index Stack Overflow Internal questions to your Backstage Search.\n\n### Index Stack Overflow Internal Questions to search\n\nBefore you are able to start index Stack Overflow Internal questions to search, you need to go through the [search getting started guide](https://backstage.io/docs/features/search/getting-started).\n\nWhen you have your `packages/backend/src/plugins/search.ts` file ready to make modifications, add the following code snippet to add the `StackOverflowQuestionsCollatorFactory`. Note that you can optionally modify the `requestParams`, otherwise it will defaults to `{ order: 'desc', sort: 'activity' }`.\n\n```ts\nindexBuilder.addCollator({\n  schedule,\n  factory: StackOverflowQuestionsCollatorFactory.fromConfig(env.config, {\n    logger: env.logger,\n    requestParams: {\n      tagged: ['backstage'],\n      pagesize: 100,\n    },\n  }),\n});\n```\n\n## New Backend System\n\nThis package exports a module that extends the search backend to also indexing the questions exposed by the [`Stack Internal API version 3`](https://stackoverflowteams.help/en/articles/7913768-stack-overflow-for-teams-api-v3).\n\n### Installation\n\nAdd the module package as a dependency:\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/backend add @stackoverflow/backstage-stack-overflow-teams-collator\n```\n\nAdd the collator to your backend instance, along with the search plugin itself:\n\n```tsx\n// packages/backend/src/index.ts\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\nbackend.add(import('@backstage/plugin-search-backend'));\nbackend.add(\n  import('@stackoverflow/backstage-stack-overflow-teams-collator'),\n);\nbackend.start();\n```\n\nYou may also want to add configuration parameters to your app-config, for example for controlling the scheduled indexing interval. These parameters should be placed under the `stackoverflow` key. See [the config definition file](https://github.com/estoesmoises/backstage-stackoverflow/blob/main/plugins/search-backend-module-stack-overflow-teams-collator/config.d.ts) for more details.",
+  "repository": "https://github.com/StackExchange/backstage-stackoverflow",
+  "role": "backend-plugin-module",
+  "scope": "@stackoverflow",
+  "updated": "2026-08-11T20:27:29.466Z",
+  "version": "1.6.4",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-08-11T20:27:29.466Z",
+      "version": "1.6.4"
+    },
+    {
+      "date": "2026-01-19T16:42:13.736Z",
+      "version": "1.6.3"
+    },
+    {
+      "date": "2026-01-12T01:51:43.340Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2026-01-09T18:51:10.514Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2026-01-08T14:09:40.720Z",
+      "version": "1.4.1"
+    },
+    {
+      "date": "2025-10-15T14:52:06.243Z",
+      "version": "1.4.0"
+    }
+  ]
+}

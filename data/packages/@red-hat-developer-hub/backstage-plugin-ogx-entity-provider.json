@@ -1,0 +1,80 @@
+{
+  "author": "",
+  "created": "2026-08-04T18:49:06.304Z",
+  "deprecated": "",
+  "description": "OGX entity provider for the Backstage catalog — emits AI models and agents as catalog entities",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-ogx-entity-provider",
+  "plugin_id": "catalog",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/boost/plugins/ogx-entity-provider",
+  "role": "backend-plugin-module",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-11-11T18:15:30.939Z",
+  "version": "1.2.1",
+  "version_count": 13,
+  "versions": [
+    {
+      "date": "2026-11-11T18:15:30.939Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-11-09T17:26:37.527Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-10-26T14:37:43.274Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-09-29T13:12:44.909Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-09-22T23:13:12.834Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-09-22T10:08:38.847Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-09-16T13:24:06.403Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-09-10T20:57:05.999Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-09-08T21:28:55.460Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2026-09-08T17:51:07.442Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-09-03T13:53:45.238Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-08-18T00:46:42.759Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-08-04T18:49:06.568Z",
+      "version": "0.2.0"
+    }
+  ]
+}

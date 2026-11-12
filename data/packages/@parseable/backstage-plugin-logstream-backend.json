@@ -1,0 +1,38 @@
+{
+  "author": "Parseable",
+  "created": "2025-09-16T06:16:04.101Z",
+  "deprecated": "",
+  "description": "Backend plugin for integrating with Parseable log streams",
+  "homepage": "https://parseable.com",
+  "keywords": [
+    "backend",
+    "backstage",
+    "logs",
+    "monitoring",
+    "parseable",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "parseablehq"
+  ],
+  "name": "@parseable/backstage-plugin-logstream-backend",
+  "plugin_id": "parseable-logstream",
+  "readme": "# Parseable Logstream Backend Plugin\n\nBackend plugin for integrating Backstage with Parseable log streams using the new backend system.\n\n## Features\n\n- Query logs from Parseable datasets\n- List available datasets\n- Export logs as CSV\n- Health check endpoint\n- Built with the new Backstage backend system\n\n## Installation\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/backend add @parseable/backstage-plugin-logstream-backend\n```\n\n## Setup\n\nAdd the plugin to your backend in `packages/backend/src/index.ts`:\n\n```typescript\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n\n// Add the Parseable logstream backend plugin\nbackend.add(import('@parseable/backstage-plugin-logstream-backend'));\n\nbackend.start();\n```\n\n## API Endpoints\n\n### Health Check\n- `GET /api/parseable-logstream/health` - Health check endpoint\n\n### Datasets\n- `POST /api/parseable-logstream/datasets` - Get available datasets\n  - Body: `{ \"baseUrl\": \"https://demo.parseable.com\" }`\n  - Headers: `Authorization: Bearer <backstage-token>`\n\n### Query Logs\n- `POST /api/parseable-logstream/query` - Query logs from a dataset\n  - Body: `{ \"baseUrl\": \"https://demo.parseable.com\", \"dataset\": \"string\", \"query\": \"string\", \"limit\": 100 }`\n  - Headers: `Authorization: Bearer <backstage-token>`\n\n### Export Logs\n- `POST /api/parseable-logstream/export/:dataset` - Export logs as CSV\n  - Body: `{ \"baseUrl\": \"https://demo.parseable.com\", \"query\": \"optional-query\" }`\n  - Headers: `Authorization: Bearer <backstage-token>`\n\n## Configuration\n\nThe backend plugin automatically handles Parseable credentials:\n- **For demo.parseable.com**: Uses built-in `admin:admin` credentials\n- **For production**: Configure `parseable.basicAuthCredential` in your `app-config.yaml`\n\n```yaml\n# app-config.yaml\nparseable:\n  basicAuthCredential: ${PARSEABLE_B64_CRED}  # Base64 encoded username:password\n```\n\n## Development\n\nTo run the plugin locally:\n\n```bash\nyarn start\n```\n\nThis will start a development backend with just the Parseable plugin loaded.\n\n## Configuration\n\nThe plugin uses the standard Backstage configuration system. No additional configuration is required as authentication and Parseable instance URLs are provided via API headers.\n",
+  "repository": "https://github.com/parseablehq/backstage-plugin",
+  "role": "backend-plugin",
+  "scope": "@parseable",
+  "updated": "2025-09-16T06:22:06.011Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-09-16T06:22:06.011Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-09-16T06:16:04.395Z",
+      "version": "0.1.0"
+    }
+  ]
+}

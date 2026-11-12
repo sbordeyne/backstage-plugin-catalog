@@ -1,0 +1,51 @@
+{
+  "author": "Amazon Web Services",
+  "created": "2024-02-21T09:48:47.372Z",
+  "deprecated": "",
+  "description": "AWS Proton Backend Plugin for Backstage",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "slallemand"
+  ],
+  "name": "@slallemand/aws-proton-plugin-backend",
+  "plugin_id": "",
+  "readme": "ERROR: No README data found!",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@slallemand",
+  "updated": "2024-02-27T16:44:45.953Z",
+  "version": "0.2.2-i",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2024-02-27T16:44:45.953Z",
+      "version": "0.2.2-i"
+    },
+    {
+      "date": "2024-02-21T15:09:14.008Z",
+      "version": "0.2.2-h"
+    },
+    {
+      "date": "2024-02-21T14:56:37.544Z",
+      "version": "0.2.2-g"
+    },
+    {
+      "date": "2024-02-21T11:56:32.318Z",
+      "version": "0.2.2-f"
+    },
+    {
+      "date": "2024-02-21T10:45:43.779Z",
+      "version": "0.2.2-e"
+    },
+    {
+      "date": "2024-02-21T10:35:52.380Z",
+      "version": "0.2.2-d"
+    },
+    {
+      "date": "2024-02-21T09:48:47.719Z",
+      "version": "0.2.2-c"
+    }
+  ]
+}

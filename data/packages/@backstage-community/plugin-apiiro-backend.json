@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2026-01-27T14:29:58.468Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-apiiro-backend",
+  "plugin_id": "apiiro",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/apiiro/plugins/apiiro-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-06-25T06:21:09.315Z",
+  "version": "1.1.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-06-25T06:21:09.315Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-05-25T05:53:40.183Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-03-31T11:23:36.169Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-01-27T14:29:58.685Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "author": "Red Hat",
+  "created": "2024-10-11T18:26:04.573Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-topology",
+  "plugin_id": "topology",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/topology/plugins/topology",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-07T08:03:41.870Z",
+  "version": "3.0.7",
+  "version_count": 62,
+  "versions": [
+    {
+      "date": "2026-10-07T08:03:41.870Z",
+      "version": "3.0.7"
+    },
+    {
+      "date": "2026-09-29T10:07:38.218Z",
+      "version": "3.0.6"
+    },
+    {
+      "date": "2026-09-23T12:05:41.450Z",
+      "version": "3.0.5"
+    },
+    {
+      "date": "2026-09-23T05:18:45.421Z",
+      "version": "3.0.4"
+    },
+    {
+      "date": "2026-09-22T00:52:43.216Z",
+      "version": "3.0.3"
+    },
+    {
+      "date": "2026-09-21T12:25:38.737Z",
+      "version": "3.0.2"
+    },
+    {
+      "date": "2026-09-17T06:37:27.397Z",
+      "version": "2.12.4"
+    },
+    {
+      "date": "2026-09-15T00:15:10.071Z",
+      "version": "3.0.1"
+    },
+    {
+      "date": "2026-09-04T13:10:52.607Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2026-08-31T18:15:10.388Z",
+      "version": "2.16.3"
+    },
+    {
+      "date": "2026-08-31T14:00:26.553Z",
+      "version": "2.16.2"
+    },
+    {
+      "date": "2026-07-30T22:27:04.372Z",
+      "version": "2.16.0"
+    },
+    {
+      "date": "2026-07-01T13:13:05.049Z",
+      "version": "2.15.0"
+    },
+    {
+      "date": "2026-05-26T16:22:00.963Z",
+      "version": "2.14.0"
+    },
+    {
+      "date": "2026-05-16T22:49:40.635Z",
+      "version": "2.13.0"
+    }
+  ]
+}

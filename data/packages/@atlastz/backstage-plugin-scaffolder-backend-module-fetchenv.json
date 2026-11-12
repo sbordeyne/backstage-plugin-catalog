@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-01-27T03:17:33.061Z",
+  "deprecated": "",
+  "description": "The fetchenv module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "atlastz"
+  ],
+  "name": "@atlastz/backstage-plugin-scaffolder-backend-module-fetchenv",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@atlastz",
+  "updated": "2025-01-27T03:17:33.368Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-01-27T03:17:33.368Z",
+      "version": "0.1.0"
+    }
+  ]
+}

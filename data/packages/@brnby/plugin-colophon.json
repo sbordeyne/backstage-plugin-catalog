@@ -1,0 +1,58 @@
+{
+  "author": "",
+  "created": "2026-08-22T14:15:46.153Z",
+  "deprecated": "",
+  "description": "Colophon frontend plugin — entity docs tab and cross-repository docs home.",
+  "homepage": "https://yorch.github.io/colophon/",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "colophon",
+    "docs-as-code",
+    "documentation",
+    "markdown"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "yorch"
+  ],
+  "name": "@brnby/plugin-colophon",
+  "plugin_id": "colophon",
+  "readme": "",
+  "repository": "https://github.com/yorch/colophon/tree/HEAD/plugins/colophon",
+  "role": "frontend-plugin",
+  "scope": "@brnby",
+  "updated": "2026-11-04T19:43:35.885Z",
+  "version": "0.6.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-11-04T19:43:35.885Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-08-24T19:29:18.862Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-08-24T11:56:30.895Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-08-23T16:24:02.724Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-08-23T15:01:22.166Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-22T17:47:23.490Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-08-22T14:24:03.870Z",
+      "version": "0.1.0"
+    }
+  ]
+}

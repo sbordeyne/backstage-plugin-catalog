@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-01-27T03:26:10.499Z",
+  "deprecated": "",
+  "description": "The fetch-axios module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "atlastz"
+  ],
+  "name": "@atlastz/backstage-plugin-scaffolder-backend-module-fetch-axios",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@atlastz",
+  "updated": "2025-01-29T03:24:34.532Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-01-29T03:24:34.532Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-01-29T03:01:24.680Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-01-27T03:26:10.753Z",
+      "version": "0.1.0"
+    }
+  ]
+}

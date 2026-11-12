@@ -1,0 +1,29 @@
+{
+  "author": "CROZ",
+  "created": "2024-03-01T13:31:56.001Z",
+  "deprecated": "",
+  "description": "Welcome to the apic-public backend plugin!",
+  "homepage": "https://croz.net/",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "djajcevic",
+    "ivankrnic",
+    "jtomic"
+  ],
+  "name": "@croz/plugin-ibm-apic-backend",
+  "plugin_id": "",
+  "readme": "# apic-public\n\nWelcome to the apic-public backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/apic-public](http://localhost:3000/apic-public).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n\n## Standalone run\n\nFor standalone run, the standalone router is exposed (located at `src\\service\\standaloneRouter.ts`) with a method\nfor synchronization that you can access by navigating to `/apic-public-standalone/syncApic`. \n\nExposed method triggers sync with IBM API Connect to fetch all entities related to the defined provider.\nThe configuration for the provider is provided as environment variables located inside .env file.\n\n\n## Installation instructions\n\nInstall the plugin into backstage:\n\n```\ncd packages/backend\nyarn add @croz/plugin-ibm-apic-backend\nyarn install\n```\n\nAdd proxy config to the app-config.yaml file:\n\n```\ncatalog:\n  providers:\n    ibmApic:\n      default:\n        baseUrl: ${IBM_APIC_API_URL}\n        # provider/your-realm\n        realm: ${IBM_APIC_REALM}\n        clientId: ${IBM_APIC_CLIENT_ID}\n        clientSecret: ${IBM_APIC_CLIENT_SECRET}\n        username: ${IBM_APIC_SERVICE_ACCOUNT_USERNAME}\n        password: ${IBM_APIC_SERVICE_ACCOUNT_PASSWORD}\n```\n\nRegister plugin inside the catalog. The catalog is located at `packages/backend/src/plugins/catalog.ts`\n\n```\n...\nimport {APICEntityProcessor, APICEntityProvider} from \"@croz/plugin-ibm-apic-backend\";\n...\n\n\n...\n    const builder = CatalogBuilder.create(env);\n    builder.addProcessor(new ScaffolderEntitiesProcessor());\n    \n    const cacheService = env.cache.getClient();\n\n    const apicEntityProviders = APICEntityProvider.fromConfig(env.config, {\n        id: 'default',\n        logger: env.logger,\n        cache: cacheService,\n        database: env.database,\n        schedule: env.scheduler.createScheduledTaskRunner({\n             frequency: {minutes: 30},\n             timeout: {minutes: 1},\n             initialDelay: {seconds: 15}\n        }),\n    });\n    builder.addEntityProvider(\n        apicEntityProviders,\n    );\n    \n    const entityProcessor = new APICEntityProcessor(env.config, env.logger, cacheService)\n    builder.addProcessor(entityProcessor)\n...\n```\n\nCatalog is refreshed every 30 minutes.\n\n\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@croz",
+  "updated": "2024-03-01T13:31:56.337Z",
+  "version": "1.0.2",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-03-01T13:31:56.337Z",
+      "version": "1.0.2"
+    }
+  ]
+}

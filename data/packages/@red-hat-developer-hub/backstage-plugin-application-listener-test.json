@@ -1,0 +1,68 @@
+{
+  "author": "",
+  "created": "2025-01-27T08:56:56.119Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-application-listener-test",
+  "plugin_id": "application-listener-test",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/global-floating-action-button/plugins/application-listener-test",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-04-15T12:13:14.752Z",
+  "version": "0.8.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2026-04-15T12:13:14.752Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-03-04T10:35:08.765Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-12-09T09:48:33.989Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-11-12T09:55:45.465Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-09-24T14:28:25.897Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2025-06-06T14:46:40.530Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-04-01T18:44:02.642Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-03-23T23:25:44.286Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-01-31T14:53:21.975Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-01-27T08:56:56.404Z",
+      "version": "0.0.1"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2024-04-05T15:26:50.257Z",
+  "deprecated": "",
+  "description": "Welcome to the `AzureStorage` plugin!",
+  "homepage": "https://github.com/deepan10/backstage-plugins",
+  "keywords": [
+    "azure",
+    "azure storage",
+    "backstage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "quadmanswe"
+  ],
+  "name": "@quadmanswe/backstage-plugin-azure-storage",
+  "plugin_id": "",
+  "readme": "# Azure Storage\n\nWelcome to the `AzureStorage` plugin!\n\n## Intruduction\n\nThis plugin helps to explore (navigate and download) the blobs in Azure storage account.\n\n![1](docs/1.png)\n\n![2](docs/2.png)\n\n![3](docs/3.png)\n\n![4](docs/4.png)\n\n![5](docs/5.png)\n\n## Getting started\n\n### AzureStorage Installation\n\nThis plugin needs to be added to an existing backstage instance.\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app backstage-plugin-azure-storage\n```\n\n### Configure Route\n\nAdd the following lines in `packages/app/src/App.tsx` to create new route\n\n```typescript\nimport { AzureStoragePage } from 'backstage-plugin-azure-storage';\n\nconst routes = (\n  <FlatRoutes>\n    {/* ...other routes */}\n    <Route path=\"/azure-storage\" element={<AzureStoragePage />} />\n    {/* ...other routes */}\n  </FlatRoutes>\n);\n```\n\n### Configure SideBar\n\nAdd the following line in `packages/app/src/components/Root/Root.tsx` to create a new element in the Sidebar\n\n```typescript\nimport FolderIcon from '@material-ui/icons/Folder';\n\n<SidebarPage>\n  {/* ...other contents */}\n  <SidebarItem\n    icon={FolderIcon}\n    to=\"azure-storage\"\n    text=\"Azure Storage Explorer\"\n  />\n  {/* ...other contents */}\n</SidebarPage>;\n```\n\n### AzureStorage Backend Installation\n\nThis plugin needs to be added to an existing backstage instance.\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend backstage-plugin-azure-storage-backend\n```\n\nCreate a file called `azure-storage.ts` inside `packages/backend/src/plugins/` and add the following\n\n#### azure-storage.ts\n\n```typescript\nimport { createRouter } from 'backstage-plugin-azure-storage-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    logger: env.logger,\n    config: env.config,\n  });\n}\n```\n\nAnd import the plugin to `packages/backend/src/index.ts`.\n\n```diff\ndiff --git a/packages/backend/src/index.ts b/packages/backend/src/index.ts\nindex c4736a5..5822302 100644\n--- a/packages/backend/src/index.ts\n+++ b/packages/backend/src/index.ts\n@@ -28,6 +28,7 @@ import scaffolder from './plugins/scaffolder';\n import proxy from './plugins/proxy';\n import techdocs from './plugins/techdocs';\n import search from './plugins/search';\n+import azurestorage from './plugins/azure-storage';\n import { PluginEnvironment } from './types';\n import { ServerPermissionClient } from '@backstage/plugin-permission-node';\n import { DefaultIdentityClient } from '@backstage/plugin-auth-node';\n@@ -85,6 +86,7 @@ async function main() {\n   const techdocsEnv = useHotMemoize(module, () => createEnv('techdocs'));\n   const searchEnv = useHotMemoize(module, () => createEnv('search'));\n   const appEnv = useHotMemoize(module, () => createEnv('app'));\n+  const azureStorageEnv = useHotMemoize(module, () => createEnv('azurestorage'));\n\n   const apiRouter = Router();\n   apiRouter.use('/catalog', await catalog(catalogEnv));\n@@ -93,6 +95,7 @@ async function main() {\n   apiRouter.use('/techdocs', await techdocs(techdocsEnv));\n   apiRouter.use('/proxy', await proxy(proxyEnv));\n   apiRouter.use('/search', await search(searchEnv));\n+  apiRouter.use('/azurestorage', await azurestorage(azureStorageEnv));\n\n   // Add backends ABOVE this line; this 404 handler is the catch-all fallback\n   apiRouter.use(notFoundHandler());\n\n```\n\n## Configuration\n\nSetup Azure Storage accounts in `app-config.yaml`\n\n```yaml\nazureStorage:\n  blobContainers:\n    - accountName: 'storageAccount'\n      authType: accessToken\n      auth:\n        accessToken: 'STORAGE ACCOUNT ACCESS TOKEN'\n    - accountName: 'anotherStorageAccount'\n      authType: clientToken\n      auth:\n        tenantId: 'AZURE TENANT ID'\n        clientId: 'AZURE CLIENT ID'\n        clientSecret: 'AZURE CLIENT SECRET'\n```\n\n## Authenticating Storage Account\n\nThis Plugin provides 2 types of authentication on your storage account.\n\n### accessToken\n\nWhen you create a storage account, Azure generates two 512-bit storage account access keys for that account. You can use this access keys to authenticate the Azure storage account [\"More Info...\"](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal)\n\n### clientToken\n\nThis method uses the RBAC authentication but only to Azure App Client. [\"More info...\"](https://learn.microsoft.com/en-us/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)\n",
+  "repository": "https://github.com/deepan10/backstage-plugins",
+  "role": "frontend-plugin",
+  "scope": "@quadmanswe",
+  "updated": "2024-04-05T17:09:11.699Z",
+  "version": "0.0.5",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-04-05T17:09:11.699Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2024-04-05T16:40:41.221Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2024-04-05T16:15:03.891Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2024-04-05T15:58:01.151Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2024-04-05T15:26:50.469Z",
+      "version": "0.0.1"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "author": "Rui Valim",
+  "created": "2025-12-30T16:47:31.568Z",
+  "deprecated": "",
+  "description": "A Backstage plugin to manage and cleanup catalog locations",
+  "homepage": "https://github.com/Ruivalim/catalog-cleanup#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "catalog",
+    "cleanup",
+    "frontend",
+    "locations"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ruivalim"
+  ],
+  "name": "@ruivalim/catalog-cleanup",
+  "plugin_id": "catalog-cleanup",
+  "readme": "# Catalog Cleanup for Backstage\n\n[![npm version](https://img.shields.io/npm/v/@ruivalim/catalog-cleanup)](https://www.npmjs.com/package/@ruivalim/catalog-cleanup)\n[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)\n\nA Backstage frontend plugin to list and delete the locations registered in the software catalog.\n\n![Catalog Cleanup page](docs/catalog-cleanup.png)\n\n## The problem\n\nYou register a component and Backstage answers that the location already exists. You search the catalog UI and find nothing.\n\nThe location is still registered in the catalog API even though no entity from it shows up in the UI. Until now the fix was to do it by hand:\n\n```bash\ncurl -s https://backstage.example.com/api/catalog/locations | jq\n# ...find the id in a wall of JSON...\ncurl -X DELETE https://backstage.example.com/api/catalog/locations/507d46dd-ac5e-4152-8a4c-37eb8dfe3fcf\n```\n\nThis plugin gives you a page with every registered location, search, and a delete button with confirmation.\n\n## Installation\n\n```bash\nyarn --cwd packages/app add @ruivalim/catalog-cleanup\n```\n\n### New frontend system\n\nIf your app uses `createApp` from `@backstage/frontend-defaults` (what `@backstage/create-app` generates today) and has `app.packages: all` in `app-config.yaml`, installing the package is enough. The page is discovered automatically at `/catalog-cleanup` and gets an entry in the sidebar.\n\nWithout package discovery, add the plugin to your features:\n\n```tsx\nimport catalogCleanupPlugin from '@ruivalim/catalog-cleanup/alpha';\n\nexport default createApp({\n  features: [catalogCleanupPlugin /* , ...other features */],\n});\n```\n\nThe path can be changed in `app-config.yaml`:\n\n```yaml\napp:\n  extensions:\n    - page:catalog-cleanup:\n        config:\n          path: /admin/catalog-cleanup\n```\n\n### Legacy frontend system\n\nAdd the route in `packages/app/src/App.tsx`:\n\n```tsx\nimport { CatalogCleanupPage } from '@ruivalim/catalog-cleanup';\n\n// inside <FlatRoutes>\n<Route path=\"/catalog-cleanup\" element={<CatalogCleanupPage />} />\n```\n\nAnd optionally a sidebar item in `packages/app/src/components/Root/Root.tsx`:\n\n```tsx\nimport DeleteSweepIcon from '@material-ui/icons/DeleteSweep';\n\n<SidebarItem icon={DeleteSweepIcon} to=\"catalog-cleanup\" text=\"Catalog Cleanup\" />\n```\n\n## Permissions\n\nThe page talks to the catalog through the standard `CatalogApi`, so the catalog backend enforces its own permissions:\n\n- `catalog.location.read` to list locations;\n- `catalog.location.delete` to delete them. Without it the delete buttons are disabled.\n\nDeleting a location orphans the entities that came only from it. With the default `catalog.orphanStrategy: delete` the catalog then removes them; with `keep` they stay, marked as orphans.\n\n> The `catalogCleanupViewPermission` and `catalogCleanupDeletePermission` exports are deprecated. They were never checked by anything. Use the catalog permissions above in your policy instead.\n\n## Requirements\n\n- Tested on Backstage 1.55\n- React 17 or 18\n\n## Development\n\n```bash\nyarn install\nyarn tsc\nyarn lint\nyarn test\nyarn build\n```\n\n## License\n\nApache-2.0\n\n## Author\n\n[Rui Valim](https://github.com/Ruivalim)\n",
+  "repository": "https://github.com/Ruivalim/catalog-cleanup/tree/HEAD/.",
+  "role": "frontend-plugin",
+  "scope": "@ruivalim",
+  "updated": "2026-09-24T01:33:25.234Z",
+  "version": "0.2.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-09-24T01:33:25.234Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-12-30T20:01:12.603Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2025-12-30T17:58:15.023Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2025-12-30T17:26:02.442Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-12-30T16:54:04.011Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-12-30T16:47:31.783Z",
+      "version": "0.1.0"
+    }
+  ]
+}

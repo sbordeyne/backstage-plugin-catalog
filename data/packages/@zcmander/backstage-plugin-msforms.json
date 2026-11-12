@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2023-04-11T15:15:27.711Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "zcmander"
+  ],
+  "name": "@zcmander/backstage-plugin-msforms",
+  "plugin_id": "msforms",
+  "readme": "",
+  "repository": "https://github.com/zcmander/backstage-plugin-msforms",
+  "role": "frontend-plugin",
+  "scope": "@zcmander",
+  "updated": "2026-03-11T05:56:51.455Z",
+  "version": "2.0.1",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-03-11T05:56:51.455Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2026-03-09T08:24:06.766Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-02-23T09:18:58.367Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-02-19T08:17:07.454Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-02-02T14:21:11.349Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2023-04-11T15:15:27.960Z",
+      "version": "1.0.0"
+    }
+  ]
+}

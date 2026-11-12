@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-05-28T10:48:47.114Z",
+  "deprecated": "",
+  "description": "Welcome to the bitbucket-pullrequest backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "nithursika"
+  ],
+  "name": "backstage-plugin-bitbucket-pullrequest-backend",
+  "plugin_id": "",
+  "readme": "# bitbucket-pullrequest\r\n\r\nWelcome to the bitbucket-pullrequest backend plugin!\r\n\r\n_This plugin was created through the Backstage CLI_\r\n\r\n## Getting started\r\n\r\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\r\nstart` in the root directory, and then navigating to [/bitbucket-pullrequest](http://localhost:3000/bitbucket-pullrequest).\r\n\r\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\r\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\r\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\r\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "",
+  "updated": "2024-05-28T10:48:47.374Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-05-28T10:48:47.374Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "author": "",
+  "created": "2026-10-20T09:37:49.524Z",
+  "deprecated": "",
+  "description": "Backstage scaffolder field to pick a Kubernetes or k0s version",
+  "homepage": "https://github.com/cloudpunks/backstage-plugins/tree/master/plugins/scaffolder-kubernetes-versions",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "k0s",
+    "kubernetes",
+    "scaffolder"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cloudpunkz",
+    "tboerger"
+  ],
+  "name": "@cloudpunks/backstage-plugin-scaffolder-kubernetes-versions",
+  "plugin_id": "scaffolder",
+  "readme": "# @cloudpunks/backstage-plugin-scaffolder-kubernetes-versions\n\nFrontend module for the new frontend system that adds the\n`KubernetesVersionPicker` field to the scaffolder. It shows a dropdown of the\nminors served by\n[`@cloudpunks/backstage-plugin-kubernetes-versions-backend`](../kubernetes-versions-backend),\nthe value of the field is the newest patch release of the selected minor.\n\n## Installation\n\nInstall the backend plugin first, then add the module to the app:\n\n```console\nyarn --cwd packages/app add @cloudpunks/backstage-plugin-scaffolder-kubernetes-versions\n```\n\nWith `app.packages: all` the module is detected automatically, otherwise\nregister it:\n\n```tsx\nimport kubernetesVersionsModule from '@cloudpunks/backstage-plugin-scaffolder-kubernetes-versions';\n\nexport default createApp({ features: [kubernetesVersionsModule] });\n```\n\n## Usage\n\n```yaml\nparameters:\n  - properties:\n      kubernetesVersion:\n        title: Kubernetes Version\n        type: string\n        ui:field: KubernetesVersionPicker\n        ui:options:\n          # kubernetes (default) or k0s\n          distribution: kubernetes\n```\n",
+  "repository": "https://github.com/cloudpunks/backstage-plugins/tree/HEAD/plugins/scaffolder-kubernetes-versions",
+  "role": "frontend-plugin-module",
+  "scope": "@cloudpunks",
+  "updated": "2026-10-20T11:54:19.318Z",
+  "version": "0.1.1",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-10-20T11:54:19.318Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-10-20T09:46:47.351Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-20T09:39:06.479Z",
+      "version": "0.0.0"
+    },
+    {
+      "date": "2026-10-20T09:37:49.524Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

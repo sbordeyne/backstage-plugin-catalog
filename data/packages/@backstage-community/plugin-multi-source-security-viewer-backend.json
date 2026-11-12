@@ -1,0 +1,67 @@
+{
+  "author": "",
+  "created": "2026-01-30T21:52:37.977Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-multi-source-security-viewer-backend",
+  "plugin_id": "multi-source-security-viewer",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/multi-source-security-viewer/plugins/multi-source-security-viewer-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-09-07T13:07:00.413Z",
+  "version": "0.7.0",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2026-09-07T13:07:00.413Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-05-29T20:42:15.867Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-05-12T17:22:03.824Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-04-24T20:33:40.435Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-03-27T15:43:15.102Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-03-15T20:49:09.544Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-03-10T22:06:12.813Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-02-24T15:35:14.845Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2026-02-18T17:35:01.557Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-02-11T16:12:15.999Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-01-30T21:52:38.221Z",
+      "version": "0.2.0"
+    }
+  ]
+}

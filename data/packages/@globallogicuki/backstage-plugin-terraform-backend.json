@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2024-02-16T13:06:09.339Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin proxying the Terraform Cloud/Enterprise API for the terraform frontend plugin",
+  "homepage": "https://github.com/globallogicuki/globallogic-backstage-plugins/tree/main/plugins/terraform-backend",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "billymichael",
+    "himeshladva"
+  ],
+  "name": "@globallogicuki/backstage-plugin-terraform-backend",
+  "plugin_id": "terraform",
+  "readme": "# Terraform Backend Plugin for Backstage\n\nThis plugin is the backend api used by the terraform frontend plugin.\n\n## Install\n\n```shell\nyarn add @globallogicuki/backstage-plugin-terraform-backend\n```\n\n## Setup\n\nTo use the terraform backend, you will need to configure the following in your `app-config.yaml` file:\n\n```yaml\nintegrations:\n  terraform:\n    token: tokenGoesHere\n    baseUrl: https://tfe.enterprise.com # Optional, for self-hosted TFE. Defaults to https://app.terraform.io\n    pageSize: 20 # Optional, override default TF API page size\n```\n\n`baseUrl` is the web origin of your Terraform instance (it is also used by the frontend plugin to build links to the Terraform UI). The backend derives the API root by appending `/api/v2`. For backwards compatibility, a `baseUrl` that already ends in `/api/v2` is used as-is by the backend.\n\n### New Backstage backend system\n\nYou must be using v0.3.0 or greater of the backend and frontend plugin if you are using the new Backstage backend system. [See here](https://backstage.io/docs/backend-system/) for more info.\n\nAdd the following to `packages/backend/src/index.ts`:\n\n```typescript\nbackend.add(import('@globallogicuki/backstage-plugin-terraform-backend'));\n```\n\n### Legacy Backstage backend system\n\nCreate a new file named `packages/backend/src/plugins/terraform.ts`, and add the following to it:\n\n```typescript\nimport { createRouter } from '@globallogicuki/backstage-plugin-terraform-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    logger: env.logger,\n    config: env.config,\n  });\n}\n```\n\nAnd finally, wire this into the overall backend router. Edit `packages/backend/src/index.ts`:\n\n```typescript\nimport terraform from './plugins/terraform';\n// ...\nasync function main() {\n  // ...\n  const terraformEnv = useHotMemoize(module, () => createEnv('terraform'));\n  apiRouter.use('/terraform', await terraform(terraformEnv));\n```\n\n### Status Check\n\nAfter you start the backend (e.g. using yarn start-backend from the repo root), you should be able to fetch data from it.\n\n```shell\ncurl localhost:7007/api/terraform/health\n```\n\nThis should return `{\"status\":\"ok\"}`.\n\n## Updating OpenAPI Spec\n\nOpenAPI spec can be found in `src/schema/openapi.yaml`\n\nOnce this file has been modified you should run the following to generate an update for `src/schema/openapi.generated.yaml`\n\n```shell\nyarn generate-openapi-schema\n```\n",
+  "repository": "https://github.com/globallogicuki/globallogic-backstage-plugins/tree/HEAD/plugins/terraform-backend",
+  "role": "backend-plugin",
+  "scope": "@globallogicuki",
+  "updated": "2026-08-25T14:09:28.243Z",
+  "version": "0.12.0",
+  "version_count": 28,
+  "versions": [
+    {
+      "date": "2026-08-25T14:09:28.243Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-08-25T08:11:24.697Z",
+      "version": "0.10.6"
+    },
+    {
+      "date": "2026-06-23T07:38:54.117Z",
+      "version": "0.10.5"
+    },
+    {
+      "date": "2025-12-10T15:46:36.078Z",
+      "version": "0.10.4"
+    },
+    {
+      "date": "2025-12-05T09:22:29.669Z",
+      "version": "0.10.3"
+    },
+    {
+      "date": "2025-12-02T22:20:30.791Z",
+      "version": "0.10.2"
+    },
+    {
+      "date": "2025-12-02T17:22:54.271Z",
+      "version": "0.10.1"
+    },
+    {
+      "date": "2025-09-29T13:18:01.782Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-09-02T12:48:16.647Z",
+      "version": "0.9.2"
+    },
+    {
+      "date": "2025-09-02T09:49:37.787Z",
+      "version": "0.9.1"
+    },
+    {
+      "date": "2025-07-29T14:42:05.355Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-06-22T15:32:19.608Z",
+      "version": "0.8.1"
+    },
+    {
+      "date": "2025-06-05T07:27:48.099Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-05-05T18:24:10.892Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-04-18T19:01:18.465Z",
+      "version": "0.6.3"
+    }
+  ]
+}

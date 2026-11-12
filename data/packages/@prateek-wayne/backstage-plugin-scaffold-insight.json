@@ -1,0 +1,31 @@
+{
+  "author": "Prateek Verma",
+  "created": "2024-12-05T16:16:13.232Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/Prateek-Wayne/backstage-plugins",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "prateek-wayne"
+  ],
+  "name": "@prateek-wayne/backstage-plugin-scaffold-insight",
+  "plugin_id": "scaffold-insight",
+  "readme": "",
+  "repository": "https://github.com/Prateek-Wayne/backstage-plugins",
+  "role": "frontend-plugin",
+  "scope": "@prateek-wayne",
+  "updated": "2024-12-06T08:11:29.221Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-12-06T08:11:29.221Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-12-05T16:16:13.568Z",
+      "version": "0.1.0"
+    }
+  ]
+}

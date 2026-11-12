@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2023-08-04T00:31:02.394Z",
+  "deprecated": "",
+  "description": "Welcome to the Apigee frontend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andythehood"
+  ],
+  "name": "@andythehood/plugin-apigee",
+  "plugin_id": "",
+  "readme": "# Apigee Plugin\n\nWelcome to the Apigee frontend plugin!\n\nThis plugin provides a set of component pages for viewing information about Apigee entities in the Backstage catalog.\n\n![Apigee Organization View](./apigee-org.png \"Apigee Organization View\")\n\nThe following Apigee object types are displayed along with the relationships between them:\n\n- API Proxies identified as `kind:Component, spec.type:apiproxy`\n- API Products identified as `kind:Component, spec.type:apiproduct`\n- Developer Applications identified as `kind:Component, spec.type:devapp`\n- Developers identified as `kind:Component, spec.type:developer`\n- Environments identified as `kind:Resource, spec.type:environment`\n- API Deployments identified as `kind:Component, spec.type:deployment`\n\n<br/>\n\n![Apigee Proxy View](./apigee-proxy.png \"Apigee Proxy View\")\n\n_To import Apigee entities into the Backstage catalog from your ApigeeX Organization, please see the [Apigee Entity Provider Module\n(`@andythehood/catalog-backend-module-apigee`)](https://github.com/andyhood/catalog-backend-module-apigee)_\n\n## Dependencies\n\nThis module depends on the following Backstage backend module:\n\n- the [Apigee Entity Provider Module](https://github.com/andyhood/catalog-backend-module-apigee) is recommended for importing entities from your Apigee Organization. Alternatively, you can use this [CLI](#) to export entities from Apigee into a set of YAML files that can be imported using the standard Catalog Import process.\n\n## Setup\n\n1. Install the plugin into your Backstage frontend app package:\n\n   ```bash\n   # From your Backstage root directory\n   yarn add --cwd packages/app @andythehood/plugin-apigee\n   ```\n\n2. Add a route where the Apigee page will live, typically `/apigee`.\n\n   ```tsx\n   // In packages/app/src/App.tsx\n   import {\n     ApigeePage\n   } from '@andythehood/plugin-apigee';';\n\n   // ...\n     <Route path=\"/apigee\" element={<ApigeePage />} />\n   // ...\n   ```\n\n3. Optionally, add a Sidebar Menu Item, e.g.\n\n   ```tsx\n   // In packages/app/src/components/Root/Root.tsx\n   import {ApigeeIcon} from \"@andythehood/plugin-apigee\";\n\n   // ...\n   <SidebarItem icon={ApigeeIcon} to=\"apigee\" text=\"Apigee\" />;\n   // ...\n   ```\n\n4. Modify the default `Entitypage.tsx` component to load the Apigee-specific Content pages based on the entity types listed above, e.g. apiproducts, apiproxy, developer, devapp, environment, etc.\n\n   a. Import the Apigee Entity content pages\n\n   ```tsx\n   // In packages/app/src/components/catalog/EntityPage.tsx\n   import {\n     ApigeeEntityAppContent,\n     ApigeeEntityDeveloperContent,\n     ApigeeEntityProductContent,\n     ApigeeEntityProxyContent,\n     ApigeeEntityDeploymentContent,\n     ApigeeEntityEnvironmentContent,\n   } from \"@andythehood/plugin-apigee\";\n   ```\n\n   b. In the same file, update the imports from `@backstage/plugin-catalog` to add the `isResourceType` function\n\n   ```tsx\n   // In packages/app/src/components/catalog/EntityPage.tsx\n   import {\n     ...,\n     isResourceType,\n   } from '@backstage/plugin-catalog';\n   ```\n\n   c. In the same file, update the existing `componentPage` function\n\n   ```diff\n   ...\n   const componentPage = (\n     <EntitySwitch>\n       <EntitySwitch.Case if={isComponentType('service')}>\n         {serviceEntityPage}\n       </EntitySwitch.Case>\n       <EntitySwitch.Case if={isComponentType('website')}>\n         {websiteEntityPage}\n       </EntitySwitch.Case>\n\n   +   <EntitySwitch.Case if={isComponentType('apiproxy')}>\n   +     {apigeeEntityProxyPage}\n   +    </EntitySwitch.Case>\n   +    <EntitySwitch.Case if={isComponentType('apiproduct')}>\n   +      {apigeeEntityProductPage}\n   +    </EntitySwitch.Case>\n   +    <EntitySwitch.Case if={isComponentType('developer')}>\n   +      {apigeeEntityDeveloperPage}\n   +    </EntitySwitch.Case>\n   +    <EntitySwitch.Case if={isComponentType('devapp')}>\n   +     {apigeeEntityAppPage}\n   +    </EntitySwitch.Case>\n   +    <EntitySwitch.Case if={isComponentType('deployment')}>\n   +      {apigeeEntityDeploymentPage}\n   +    </EntitySwitch.Case>\n\n       <EntitySwitch.Case>{defaultEntityPage}</EntitySwitch.Case>\n     </EntitySwitch>\n   );\n   ...\n   ```\n\n   d. In the same file, update the existing `entityPage` function:\n\n   ```diff\n   ...\n   export const entityPage = (\n     <EntitySwitch>\n       <EntitySwitch.Case if={isKind('component')} children={componentPage} />\n       <EntitySwitch.Case if={isKind('api')} children={apiPage} />\n       <EntitySwitch.Case if={isKind('group')} children={groupPage} />\n       <EntitySwitch.Case if={isKind('user')} children={userPage} />\n       <EntitySwitch.Case if={isKind('system')} children={systemPage} />\n       <EntitySwitch.Case if={isKind('domain')} children={domainPage} />\n\n   +    <EntitySwitch.Case\n   +      if={isKind('resource') && isResourceType('environment')}\n   +      children={apigeeEntityEnvironmentPage}\n   +    />\n\n       <EntitySwitch.Case>{defaultEntityPage}</EntitySwitch.Case>\n     </EntitySwitch>\n   );\n   ```\n\n   e. In the same `EntityPage.tsx` file, add the following functions:\n\n   ```tsx\n   const apigeeEntityEnvironmentPage = (\n     <EntityLayout>\n       <EntityLayout.Route path=\"/\" title=\"Overview\">\n         <ApigeeEntityEnvironmentContent />\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n\n   const apigeeEntityProxyPage = (\n     <EntityLayout>\n       <EntityLayout.Route path=\"/\" title=\"Overview\">\n         <ApigeeEntityProxyContent />\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n\n   const apigeeEntityProductPage = (\n     <EntityLayout>\n       <EntityLayout.Route path=\"/\" title=\"Overview\">\n         <ApigeeEntityProductContent />\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n\n   const apigeeEntityDeveloperPage = (\n     <EntityLayout>\n       <EntityLayout.Route path=\"/\" title=\"Overview\">\n         <ApigeeEntityDeveloperContent />\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n\n   const apigeeEntityAppPage = (\n     <EntityLayout>\n       <EntityLayout.Route path=\"/\" title=\"Overview\">\n         <ApigeeEntityAppContent />\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n\n   const apigeeEntityDeploymentPage = (\n     <EntityLayout>\n       <EntityLayout.Route path=\"/\" title=\"Overview\">\n         <ApigeeEntityDeploymentContent />\n       </EntityLayout.Route>\n     </EntityLayout>\n   );\n   ```\n\n## Configuration\n\nConfigure the list of available Apigee Organizations shown on the Apigee page by adding this config as a top level section in your `app-config.yaml`:\n\n```yaml\napigee:\n  organizations:\n    - <YOUR_APIGEE_ORGNAME_1>\n    - <YOUR_APIGEE_ORGNAME_2>\n    - ...\n```\n\n## Authentication\n\nThis plugin requires that the Backstage User to authenticate with Google Sign-In and for that user to have `Apigee Read-Only Admin` permissions on the Apigee Organizations listed in the `app-config.yaml`.\n\n## TODO\n\n- Set intial tags filter in Apigee catalog\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@andythehood",
+  "updated": "2023-09-03T07:00:33.064Z",
+  "version": "0.0.5",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2023-09-03T07:00:33.064Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2023-08-04T13:08:27.672Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2023-08-04T12:35:20.081Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2023-08-04T11:40:50.017Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2023-08-04T00:31:02.671Z",
+      "version": "0.0.1"
+    }
+  ]
+}

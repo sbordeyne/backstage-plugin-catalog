@@ -1,0 +1,29 @@
+{
+  "author": "",
+  "created": "2025-06-20T18:38:16.609Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "npalm",
+    "rjaegers",
+    "scottguymer"
+  ],
+  "name": "@philips-labs/plugin-traffic-light",
+  "plugin_id": "traffic-light",
+  "readme": "",
+  "repository": "https://github.com/philips-labs/argus-panoptes/tree/HEAD/workspaces/semaphore/plugins/traffic-light",
+  "role": "frontend-plugin",
+  "scope": "@philips-labs",
+  "updated": "2025-06-20T18:38:17.035Z",
+  "version": "0.2.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-06-20T18:38:17.035Z",
+      "version": "0.2.1"
+    }
+  ]
+}

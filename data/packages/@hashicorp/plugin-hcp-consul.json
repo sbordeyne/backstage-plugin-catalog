@@ -1,0 +1,64 @@
+{
+  "author": "Tauhid Anjum, Abhishek Sahu - Hashicorp",
+  "created": "2023-11-24T06:06:11.420Z",
+  "deprecated": "",
+  "description": "This is a frontend plugin for viewing Hashicorp Cloud Platform(HCP) consul overview and service instances of a services. This plugin has a corresponding backend plugin required to call the HCP consul's API: @hashicorp/plugin-hcp-consul-backend.",
+  "homepage": "https://github.com/hashicorp-forge/backstage-plugin-hcp-consul#readme",
+  "keywords": [
+    "backstage",
+    "consul",
+    "hcp",
+    "plugin-hcp-consul"
+  ],
+  "license": "MPL-2.0",
+  "maintainers": [
+    "andys-hashi",
+    "anubhavmishra-hashicorp",
+    "britt.lindgren",
+    "consul-ui-services",
+    "costa.willets.ibm",
+    "cstitt-hashi",
+    "danielglongo",
+    "dhaulagiri",
+    "didoo",
+    "dougdesilva",
+    "enmod",
+    "fivetanley-ibm",
+    "gregone",
+    "hashibot-hds",
+    "hashibot-web",
+    "jpogran",
+    "kaxcode",
+    "lackeyjb1",
+    "leahmariebush",
+    "meirish",
+    "melsumner",
+    "mikegolus",
+    "mocohen",
+    "rubennic",
+    "rwwagner90",
+    "ryan.yu.ibm",
+    "thrashr888",
+    "tstormk",
+    "voxmachina"
+  ],
+  "name": "@hashicorp/plugin-hcp-consul",
+  "plugin_id": "",
+  "readme": "# hcp-consul\n\nThis is a frontend plugin for viewing Hashicorp Cloud Platform(HCP) consul overview and service instances of a services.\nThis plugin has a corresponding backend plugin required to call the HCP consul's API: @hashicorp/plugin-hcp-consul-backend.\n\n## Introduction\n\n### [HCP Consul Central](https://developer.hashicorp.com/hcp/docs/consul/concepts/consul-central)\n\n> HCP Consul Central is a management plane service hosted by HashiCorp that enables you to monitor and manage multiple Consul server clusters regardless of where the clusters are hosted.\n\n### Features\n\nThis plugin provides two items:\n\n- a plugin page to view overview of the project\n- a service instance component table\n\n## Getting started\n\n### Requirements\n\nYou will need to have the backend HCP consul plugin, `@hashicorp/plugin-hcp-consul-backend`, installed and running. See its README for set up instructions.\n\nYou will need clusters added in HCP Consul central. Learn more about [HCP Consul Central](https://developer.hashicorp.com/hcp/docs/consul/concepts/consul-central).\n\nYou need to generate a service principal key. You can follow [this tutorial](https://developer.hashicorp.com/hcp/docs/hcp/admin/iam/service-principals#generate-a-service-principal-key) to generate the clientID and client Secret.\n\n### Installation\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/app @hashicorp/plugin-hcp-consul\n```\n\n### Configuration\n\nAdd configuration to your [`app-config.yaml`](https://github.com/backstage/backstage/blob/master/app-config.yaml). For example:\n\n```yaml\nconsul:\n  clientID: abcdefabcdefabcdefabcdefabcdef\n  clientSecret: xyxy111xyxy111xyxy111xyxy111xyxy111xyxy111xyxy111\n  organizationID: ff14c2a2-a937-4240-bf11-9d23ca01761d\n  projectID: f3945084-71ac-495c-84b3-371100d27279\n```\n\n### HCP overview page\n\nThe snippet below adds the plugin page to the `/hcp-consul` path . The page shows overall overview of the clusters.\n\n```typescript\n// In packages/app/src/App.tsx\n\nimport { HcpConsulPluginPage } from '@hashicorp/plugin-hcp-consul';\n\nconst routes = (\n  <FlatRoutes>\n    ...\n    <Route path=\"/hcp-consul\" element={<HcpConsulPluginPage />} />\n);\n```\n\n<div>\n<img src=\"./img/hcp-consul-overview.png\" width=\"1000em\">\n</div>\n<div>\n<img src=\"./img/hcp-consul-clusters.png\" width=\"1000em\">\n</div>\n<div>\n<img src=\"./img/hcp-consul-services.png\" width=\"1000em\">\n</div>\n\n#### Requirements\n\n- `clientID`, `clientSecret` and `organizationID` should be provided in the config file\n- Default `projectID` can be provided in the config file. To override it, the projectID can be added as part of props of the component. `<HcpConsulPluginPage projectID=\"f3945084-71ac-495c-84b3-371100d27279\"/>`\n\n### Service Instance Table Component\n\nThe snippet below adds a `/hcp-consul-instances` tab to the EntityPage that displays all service instances of the service\n\n```typescript\n// In packages/app/src/components/catalog/EntityPage.tsx\n\nimport { EntityServiceInstancesTable, isHcpConsulServiceAvailable } from '@hashicorp/plugin-hcp-consul';\n\nconst serviceEntityPage = (\n    ...\n    <EntityLayout.Route\n        if={isHcpConsulServiceAvailable}\n        path=\"/hcp-consul-instaces\"\n        title=\"Instances\"\n    >\n      <EntityServiceInstancesTable />\n    </EntityLayout.Route>\n)\n```\n\n<div>\n<img src=\"./img/hcp-consul-service-instance-component.png\" width=\"1000em\">\n</div>\n\n#### Requirements\n\nThe component should have the necessary annotations:\n\n- `consul.io/cluster_resource_name` annotation's value is the cluster resource name in HCP. It is required.\n- `consul.io/name` annotation's value is the service name. It is required\n- `consul.io/namespace` is the Namespace of the service. If omitted, it defaults to `default`\n- `consul.io/partition` is the Partition of the service. If omitted, it defaults to `default`\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  annotations:\n    consul.io/cluster_resource_name: consul/project/f3945084-71ac-495c-84b3-371100d27279/cluster/consul-cluster\n    consul.io/name: frontend\n    consul.io/namespace: default\n    consul.io/partition: default\n```\n",
+  "repository": "https://github.com/hashicorp-forge/backstage-plugin-hcp-consul",
+  "role": "frontend-plugin",
+  "scope": "@hashicorp",
+  "updated": "2023-11-28T06:30:14.534Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2023-11-28T06:30:14.534Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-11-24T06:06:11.639Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "author": "@ehrnst",
+  "created": "2024-08-04T11:06:08.981Z",
+  "deprecated": "",
+  "description": "A backstage backend plugin that queries Azure Resource graph. Needs the frontend plugin to work properly",
+  "homepage": "https://github.com/davormilutinovic/backstage-azure-resources-backend",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "davormilutinovic"
+  ],
+  "name": "@davormilutinovic/plugin-azure-resources-backend",
+  "plugin_id": "",
+  "readme": "# Azure resources backend plugin\n\nThe backend API plugin used by the frontend plugin. This plugin wraps a few Azure Resource Graph queries to pull information about your Azure resource resources in relation to a backstage entity.\n\n`` I have updated original repo and it is working now with backstage new backend ``\n\n## Getting started\n\nAdd following to your backstage instance\n\n```\n# From the Backstage root directory\ncd packages/backend\nyarn add @vippsno/plugin-azure-resources-backend\n```\n\n```TypeScript\n/// ./packages/backend/src/plugins/azure-resources-backend.ts\nimport { createRouter } from '@vippsno/plugin-azure-resources-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    logger: env.logger,\n    config: env.config,\n  });\n}\n```\n\n```TypeScript\n/// ./packages/backend/src/index.ts\n\nimport azureResourcesBackend from './plugins/azure-resources-backend';\nconst azureResourcesBackendEnv = useHotMemoize(module, () => createEnv('azure-resources-backend'));\napiRouter.use('/azure-resources', await azureResourcesBackend(azureResourcesBackendEnv));\n```\n\n## Authentication with Azure\n\nIn order for this plugin to work, you'll need an identity with `read` access at the scope you pull information from.  \nDepending on where your backstage instance is running, there are a few ways to authenticate. The plugin uses `@azure/identity` which supports `managed identities` and `application registration`\n\n### Using managed identity\n\nIn case your backstage instance runs on an Azure resource type that supports system assigned managed identity (MSI), the only thing you need to do is assign the `service principal` with read permission on the `resource group`, `subscription(s)` or `management group`, depending on your environment.\n\n### Using app registration\n\nCreate a [new Application Registration](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app?WT.mc_id=AZ-MVP-5003437), and assign the SPN appropriate permissions. Then add the following to your `app-config.yaml` and/or `app-config.local.yaml`. If using MSI you do not add this configuration.\n\n```yaml\nazureResources:\n  clientId: ab77a497-102e-4c4d-9853-3aca7e733245 # the app registrations clientId\n  clientSecret: ~AcbyiAM2YUMQwUSqhzg # a secret created for the app registration\n  tenantId: f02ae3d3-be5c-4b9d-9d6e-8192055d4083 # your Azure tenant id\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@davormilutinovic",
+  "updated": "2024-08-05T17:10:10.163Z",
+  "version": "1.0.12",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2024-08-05T17:10:10.163Z",
+      "version": "1.0.12"
+    },
+    {
+      "date": "2024-08-05T17:02:59.948Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2024-08-05T12:43:59.395Z",
+      "version": "1.0.10"
+    },
+    {
+      "date": "2024-08-04T11:29:24.490Z",
+      "version": "1.0.9"
+    },
+    {
+      "date": "2024-08-04T11:19:10.649Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2024-08-04T11:06:09.288Z",
+      "version": "1.0.7"
+    }
+  ]
+}

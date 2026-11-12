@@ -1,0 +1,84 @@
+{
+  "author": "Gluo NV",
+  "created": "2025-06-10T12:19:21.173Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for Hetzner Cloud integration.",
+  "homepage": "https://github.com/gluobe/hetzner-backstage-plugin",
+  "keywords": [],
+  "license": "AGPL-3.0",
+  "maintainers": [
+    "boosterl",
+    "gluobe"
+  ],
+  "name": "@gluo-nv/backstage-plugin-hetzner",
+  "plugin_id": "hetzner",
+  "readme": "# Backstage Hetzner Plugin\n\nA plugin for Backstage that integrates with Hetzner Cloud. This plugin allows you to:\n\n- View an overview of your Hetzner Cloud infrastructure directly in Backstage\n- Inspect details of Hetzner resources (servers, volumes, IPs, etc.) via the Index Page\n- Navigate and filter Hetzner resources as part of your Backstage catalog experience\n\n## Table of Contents\n\n- [Backstage Hetzner Plugin](#backstage-hetzner-plugin)\n  - [Table of Contents](#table-of-contents)\n  - [Features](#features)\n  - [Installation](#installation)\n    - [Frontend Plugin](#frontend-plugin)\n    - [Backend Plugin](#backend-plugin)\n    - [Catalog Backend Module Plugin](#catalog-backend-module-plugin)\n    - [Configuration](#configuration)\n    - [Frontend Configuration](#frontend-configuration)\n  - [Development](#development)\n    - [Getting Started](#getting-started)\n    - [Running Tests](#running-tests)\n    - [Building](#building)\n    - [Custom test environment](#custom-test-environment)\n  - [Contributing](#contributing)\n  - [License](#license)\n    - [Attribution](#attribution)\n\n## Features\n\nThe Hetzner Cloud to Backstage plugin needs to give a comprehensive insight into the Hetzner cloud platform.\nThere are two views that provide information:\n\n- **Index Page**: Gives an overview of the Hetzner Cloud Platform in general.\n\n  ![Index Page](images/hetzner-index-page.png)\n\n- **Resource Card**: Gives details about which resources are used and what runs where. This view is available in a tab in each component that uses Hetzner's resources.\n\n  ![Resource Card](images/hetzner-resource-card.png)\n\n## Installation\n\n### Frontend Plugin\n\n```bash\n# From the Backstage root directory\nyarn --cwd packages/app add @gluo-nv/backstage-plugin-hetzner\n```\n\n### Backend Plugin\n\nThis frontend plugin requires the corresponding backend plugin to be installed. Please follow the instructions in the [backend plugin directory](../hetzner-backend/README.md).\n\n### Catalog Backend Module Plugin\n\nThis frontend plugin requires the corresponding catalog backend module plugin to be installed. Please follow the instructions in the [catalog backend module plugin directory](../catalog-backend-module-hetzner/README.md).\n\n### Configuration\n\n### Frontend Configuration\n\nAdd the following to the `app-config.yaml` to configure the frontend plugin:\n\n```yaml\napp:\n  hetzner:\n    project:\n      title: <Hetzner project title>\n      owner: <Hetzner project owner>\n      lifecycle: <Hetzner project lifecycle>\n```\n\n1. Add the plugin to the Backstage application by modifying the `packages/app/src/App.tsx`:\n\n```tsx\nimport { HetznerPage } from '@gluo-nv/backstage-plugin-hetzner';\n```\n\nAdd the `Hetzner Cloud` page to the sidebar\n\n```tsx\nconst routes = (\n  <FlatRoutes>\n    {/* ...other routes*/}\n    <Route path=\"/hetzner\" element={<HetznerPage />} />\n  </FlatRoutes>\n);\n```\n\n2.  ``packages/app/src/components/Root/Root.tsx`\n\nAdd the icon import:\n\n```tsx\nimport Cloud from '@material-ui/icons/Cloud';\n```\n\n3. Then add this line just before the `</SidebarGroup>` line:\n\n```tsx\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n      {/*...*/}\n      <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n        {/* Global nav, not org-specific */}\n        {/*...other sidebar items*/}\n        <SidebarItem icon={Cloud} to=\"hetzner\" text=\"Hetzner Cloud\" />\n        {/* End global nav */}\n        <SidebarDivider />\n        {/*...*/}\n      </SidebarGroup>\n      {/*...*/}\n    </Sidebar>\n    {children}\n  </SidebarPage>\n);\n```\n\n4. Add the Hetzner Resources Card to the entity overview page\n\nAdd a new file `utils.tsx` in `packages/app/src/components/catalog`:\n\n```tsx\nimport { Entity } from '@backstage/catalog-model';\n\nexport const isHetznerResource = (entity: Entity): boolean => {\n  const hetznerData = entity.metadata.annotations?.['hetzner.com/data'];\n  try {\n    return hetznerData !== undefined && JSON.parse(hetznerData) !== null;\n  } catch (e) {\n    return false;\n  }\n};\n```\n\nAdd the Resources Card in `packages/app/src/components/catalog/EntityPage.tsx`\n\n```tsx\nimport { EntityHetznerContent } from '@gluo-nv/backstage-plugin-hetzner';\nimport { isHetznerResource } from './utils';\n\n// Add to the overview content:\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    {entityWarningContent}\n    <Grid item md={6}>\n      <EntityAboutCard variant=\"gridItem\" />\n    </Grid>\n    <Grid item md={6} xs={12}>\n      <EntityCatalogGraphCard variant=\"gridItem\" height={400} />\n    </Grid>\n\n    {/* Hetzner Cloud Plugin */}\n    <EntitySwitch>\n      <EntitySwitch.Case\n        if={entity => isKind('resource')(entity) && isHetznerResource(entity)}\n      >\n        <Grid item md={6}>\n          <EntityHetznerContent />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n    {/* Hetzner Cloud Plugin */}\n\n    {/*...*/}\n  </Grid>\n);\n```\n\n## Development\n\n### Getting Started\n\n1. Clone the repository\n2. Install dependencies:\n\n```bash\nyarn install\n```\n\n3. Run the plugin in isolation\n\n```bash\nyarn start\n```\n\n### Running Tests\n\nRun all tests:\n\n```bash\nyarn test\n```\n\nRun tests with coverage:\n\n```bash\nyarn test:coverage\n```\n\n### Building\n\n```bash\nyarn build\n```\n\n### Custom test environment\n\nTo set up a custom development environment for the Hetzner Cloud plugin, follow these steps:\n\n1. Create or update the `dev/index.tsx` file with the following content:\n\n```tsx\nimport { createDevApp } from '@backstage/dev-utils';\nimport { hetznerPlugin, HetznerPage, ResourcesCardPage } from '../src/plugin';\n\n// dev\nimport { EntityProvider } from '@backstage/plugin-catalog-react';\nimport { ResourcesCard } from '../src/components/Resource/ResourcesCard';\n\n// dev\nconst mockEntity = {\n  apiVersion: 'backstage.io/v1alpha1',\n  kind: 'Component',\n  metadata: {\n    name: 'mock-entity',\n    annotations: {\n      'hetzner.com/data': JSON.stringify({\n        id: 12345,\n        name: 'vm-gluo-rke2-runner-1',\n        status: 'running',\n        created: '2024-11-25T10:04:10+00:00',\n        public_net: {\n          ipv4: {\n            ip: '192.168.0.1',\n            dns_ptr: 'example.com',\n          },\n        },\n        datacenter: {\n          name: 'nbg1-dc3',\n          description: 'Nuremberg 1 virtual DC 3',\n          location: {\n            city: 'Nuremberg',\n            country: 'DE',\n          },\n        },\n        server_type: {\n          name: 'cx32',\n          description: 'CX32',\n          cores: 4,\n          memory: 8,\n          disk: 80,\n        },\n        image: {\n          name: 'debian-12',\n          description: 'Debian 12',\n          os_flavor: 'debian',\n          os_version: '12',\n        },\n        outgoing_traffic: 12345,\n        ingoing_traffic: 67890,\n        included_traffic: 100000,\n        resource_type: 'virtual_machine',\n      }),\n    },\n  },\n};\n\ncreateDevApp()\n  .registerPlugin(hetznerPlugin)\n  .addPage({\n    element: <HetznerPage />,\n    title: 'Root Page',\n    path: '/hetzner-cloud',\n  })\n\n  // dev\n  .addPage({\n    title: 'Resources Card',\n    element: (\n      <EntityProvider entity={mockEntity}>\n        <ResourcesCard />\n      </EntityProvider>\n    ),\n    path: '/resources-card',\n  })\n  .render();\n```\n\nThis file is the entry point for running the plugin in a standalone development environment. It allows you to test the plugin without integrating it into a full Backstage app.\n\n2. Ensure the `src/routes.ts` file contains the following:\n\n```ts\nimport { createRouteRef } from '@backstage/core-plugin-api';\n\nexport const rootRouteRef = createRouteRef({\n  id: 'hetzner-cloud',\n});\n\n// dev\nexport const resourcesCardRouteRef = createRouteRef({\n  id: 'resources-card',\n});\n```\n\nThis file defines the route references for the plugin. Route references are used to link components to specific paths in Backstage.\n\n3. Ensure the `src/plugin.ts` file contains the following:\n\n```ts\nimport {\n  createPlugin,\n  createRoutableExtension,\n} from '@backstage/core-plugin-api';\n\nimport { resourcesCardRouteRef, rootRouteRef } from './routes';\n\nexport const hetznerPlugin = createPlugin({\n  id: 'hetzner-cloud',\n  routes: {\n    root: rootRouteRef,\n    resourcesCard: resourcesCardRouteRef, //dev\n  },\n});\n\n// prod\n// export const EntityHetznerContent = hetznerPlugin.provide(\n//   createComponentExtension({\n//     component: {\n//       lazy: () => import ('./components/entity/ResourcesCard').then(m => m.ResourcesCard),\n//     }\n//   })\n// );\n\nexport const HetznerPage = hetznerPlugin.provide(\n  createRoutableExtension({\n    name: 'HetznerPage',\n    component: () =>\n      import('./components/IndexComponent').then(m => m.IndexComponent),\n    mountPoint: rootRouteRef,\n  }),\n);\n\n// dev\nexport const ResourcesCardPage = hetznerPlugin.provide(\n  createRoutableExtension({\n    name: 'ResourcesCardPage',\n    component: () =>\n      import('./components/Resource/ResourcesCard').then(m => m.ResourcesCard),\n    mountPoint: resourcesCardRouteRef,\n  }),\n);\n```\n\nThis file defines the main plugin and its extensions. It connects the plugin's routes to their corresponding components.\n\n4. Ensure the `src/index.ts` file contains the following:\n\n```ts\nexport {\n  hetznerPlugin,\n  HetznerPage,\n  ResourcesCardPage, //dev\n} from './plugin';\n```\n\nThis file exports the plugin and its extensions so they can be imported and used in other parts of the application.\n\n## Contributing\n\nWe welcome contributions to improve this plugin! If you’d like to contribute, please follow these steps:\n\n1. Fork the repository.\n2. Create a new branch for your feature or bug fix.\n3. Submit a pull request with a clear description of your changes.\n\nFor major changes, please open an issue first to discuss your ideas.\n\n## License\n\nThis plugin is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).\n\n### Attribution\n\nThis plugin was created by [Gluo NV](https://gluo.be).  \nAny use or distribution must include proper attribution to the original author.\n",
+  "repository": "https://github.com/gluobe/hetzner-backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@gluo-nv",
+  "updated": "2026-10-09T12:54:58.899Z",
+  "version": "0.1.21",
+  "version_count": 19,
+  "versions": [
+    {
+      "date": "2026-10-09T12:54:58.899Z",
+      "version": "0.1.21"
+    },
+    {
+      "date": "2026-08-27T13:35:55.905Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2026-07-01T12:24:27.913Z",
+      "version": "0.1.19"
+    },
+    {
+      "date": "2026-06-17T14:05:08.640Z",
+      "version": "0.1.18"
+    },
+    {
+      "date": "2026-06-03T08:20:37.311Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2026-05-20T08:59:41.508Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2026-05-06T07:20:20.043Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2026-04-22T11:53:01.863Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2026-01-28T12:45:40.343Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2026-01-28T12:07:40.086Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2026-01-28T11:56:56.633Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2026-01-14T14:06:07.233Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2025-12-08T16:19:03.051Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2025-10-23T09:31:26.180Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2025-10-16T08:35:11.335Z",
+      "version": "0.1.7"
+    }
+  ]
+}

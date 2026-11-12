@@ -1,0 +1,91 @@
+{
+  "author": "",
+  "created": "2020-10-12T12:39:52.025Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://roadie.io/backstage/plugins/github-insights/",
+  "keywords": [
+    "backstage",
+    "github",
+    "insights",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "brianfletcher",
+    "roadie-bot",
+    "roadiehq-david",
+    "xantier"
+  ],
+  "name": "@roadiehq/backstage-plugin-github-insights",
+  "plugin_id": "backstage-plugin-github-insights",
+  "readme": "",
+  "repository": "https://github.com/RoadieHQ/roadie-backstage-plugins/tree/HEAD/plugins/frontend/backstage-plugin-github-insights",
+  "role": "frontend-plugin",
+  "scope": "@roadiehq",
+  "updated": "2026-10-02T15:58:57.579Z",
+  "version": "3.6.1",
+  "version_count": 137,
+  "versions": [
+    {
+      "date": "2026-10-02T15:58:57.579Z",
+      "version": "3.6.1"
+    },
+    {
+      "date": "2026-09-29T13:26:42.890Z",
+      "version": "3.6.0"
+    },
+    {
+      "date": "2026-04-01T07:11:02.198Z",
+      "version": "3.5.0"
+    },
+    {
+      "date": "2026-01-12T16:03:10.423Z",
+      "version": "3.4.1"
+    },
+    {
+      "date": "2025-11-06T08:21:07.662Z",
+      "version": "3.4.0"
+    },
+    {
+      "date": "2025-10-31T09:32:49.679Z",
+      "version": "3.3.0"
+    },
+    {
+      "date": "2025-07-23T10:20:27.851Z",
+      "version": "3.2.0"
+    },
+    {
+      "date": "2025-03-07T13:54:11.523Z",
+      "version": "3.1.4"
+    },
+    {
+      "date": "2025-01-22T08:15:17.655Z",
+      "version": "3.1.3"
+    },
+    {
+      "date": "2025-01-21T13:55:57.561Z",
+      "version": "3.1.2"
+    },
+    {
+      "date": "2025-01-21T10:11:25.579Z",
+      "version": "3.1.1"
+    },
+    {
+      "date": "2025-01-21T09:09:38.056Z",
+      "version": "3.1.0"
+    },
+    {
+      "date": "2025-01-16T10:16:57.394Z",
+      "version": "3.0.1"
+    },
+    {
+      "date": "2025-01-13T10:32:17.719Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2024-10-23T10:12:39.810Z",
+      "version": "2.5.1"
+    }
+  ]
+}

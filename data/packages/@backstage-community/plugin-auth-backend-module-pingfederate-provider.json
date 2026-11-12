@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2026-06-23T15:33:57.193Z",
+  "deprecated": "",
+  "description": "The PingFederate provider backend module for the auth plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-auth-backend-module-pingfederate-provider",
+  "plugin_id": "auth",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/pingidentity/plugins/auth-backend-module-pingfederate-provider",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-09-02T21:44:34.770Z",
+  "version": "0.4.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-09-02T21:44:34.770Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-07-29T12:31:23.949Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-06-24T19:51:56.782Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-06-23T15:33:57.550Z",
+      "version": "0.1.0"
+    }
+  ]
+}

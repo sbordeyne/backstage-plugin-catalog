@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2021-09-08T13:23:57.637Z",
+  "deprecated": "",
+  "description": "The Grafana plugin is a frontend plugin that lists Grafana alerts and dashboards. It includes two components that can be integrated into Backstage:",
+  "homepage": "https://github.com/K-Phoen/backstage-plugin-grafana",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "kphoen"
+  ],
+  "name": "@k-phoen/backstage-plugin-grafana",
+  "plugin_id": "",
+  "readme": "# Grafana plugin for Backstage\n\nThe Grafana plugin is a frontend plugin that lists Grafana alerts and dashboards. It includes two components that can be integrated into Backstage:\n\n* The `EntityGrafanaDashboardsCard` component which can display dashboards for a specific entity\n* The `EntityGrafanaAlertsCard` component which can display recent alerts for a specific entity\n* The `EntityOverviewDashboardViewer` component which can embed an \"overview\" dashboard for a specific entity\n* The `DashboardViewer` component which can embed any dashboard\n\n## Setup\n\nFind [installation instructions](./docs/index.md#installation) in our documentation.\n\n## How does it look?\n\nEntity alerts card:\n\n![Alerts card](./docs/alerts_card.png)\n\nEntity dashboards card:\n\n![Dashboards card](./docs/dashboards_card.png)\n\n## License\n\nThis library is under the [Apache 2.0](LICENSE) license.\n",
+  "repository": "https://github.com/K-Phoen/backstage-plugin-grafana",
+  "role": "frontend-plugin",
+  "scope": "@k-phoen",
+  "updated": "2023-03-24T19:12:27.796Z",
+  "version": "0.1.22",
+  "version_count": 25,
+  "versions": [
+    {
+      "date": "2023-03-24T19:12:27.796Z",
+      "version": "0.1.22"
+    },
+    {
+      "date": "2023-03-13T23:53:06.312Z",
+      "version": "0.1.21"
+    },
+    {
+      "date": "2023-03-02T11:34:44.214Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2023-03-02T10:59:44.055Z",
+      "version": "0.1.19"
+    },
+    {
+      "date": "2023-01-16T15:02:55.763Z",
+      "version": "0.1.18"
+    },
+    {
+      "date": "2022-11-15T23:20:59.888Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2022-10-15T14:16:04.741Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2022-10-15T13:41:25.631Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2022-09-25T00:29:00.728Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2022-08-30T23:38:51.749Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2022-05-20T23:38:52.256Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2022-04-30T14:05:10.473Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2022-04-07T23:52:01.007Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2022-03-05T22:08:27.837Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2022-03-01T15:10:13.469Z",
+      "version": "0.1.8"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "author": "tduniec",
+  "created": "2024-07-26T13:56:54.473Z",
+  "deprecated": "",
+  "description": "The time-saver-processor backend module for the catalog plugin.",
+  "homepage": "https://github.com/tduniec/backstage-timesaver-plugin#readme",
+  "keywords": [
+    "backstage",
+    "catalog-processor",
+    "timesaver"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "tduniec"
+  ],
+  "name": "@tduniec/backstage-plugin-catalog-backend-module-time-saver-processor",
+  "plugin_id": "catalog",
+  "readme": "# Time Saver - catalog processor\n\nThe Time Saver plugin provides an implementation of charts and statistics\nrelated to your time savings that are coming from usage of your templates. This\ncatalog module translates granular Time Saver metadata stored on your template\ndefinitions into the more coarse `backstage.io/time-saved` metadata annotation,\nwhich may be leveraged by the Analytics API.\n\n## Installation\n\n1. Install the plugin package in your Backstage backend:\n\n   ```sh\n   # From your Backstage root directory\n   yarn add --cwd packages/backend @tduniec/backstage-plugin-catalog-backend-module-time-saver-processor\n   ```\n\n2. Wire up the processor in your backend.\n\n   Add the `TimeSaverProcessor` to the catalog plugin in\n   `packages/backend/src/catalog.ts`.\n\n   ```diff\n   + import {\n   +   TimeSaverProcessor,\n   + } from '@tduniec/backstage-plugin-catalog-backend-module-time-saver-processor';\n   import { Router } from 'express';\n   import { PluginEnvironment } from '../types';\n\n   export default async function createPlugin(\n     env: PluginEnvironment,\n   ): Promise<Router> {\n     const builder = CatalogBuilder.create(env);\n   + builder.addProcessor(new TimeSaverProcessor(logger));\n     // ...\n     return router;\n   }\n   ```\n\n   **New Backend System**\n\n   If you are using the New Backend System, you can instead do so by updating\n   your `packages/backend/src/index.ts` in the following way:\n\n   ```diff\n   import { createBackend } from '@backstage/backend-defaults';\n\n   const backend = createBackend();\n   backend.add(import('@backstage/plugin-app-backend/alpha'));\n   + backend.add(import('@tduniec/backstage-plugin-catalog-backend-module-time-saver-processor'));\n   // ...\n   backend.start();\n   ```\n",
+  "repository": "https://github.com/tduniec/backstage-timesaver-plugin",
+  "role": "backend-plugin-module",
+  "scope": "@tduniec",
+  "updated": "2026-04-24T13:12:06.224Z",
+  "version": "1.2.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-04-24T13:12:06.224Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-03-30T21:00:46.193Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2024-07-26T14:36:54.701Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-07-26T14:11:57.351Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2024-07-26T13:56:54.753Z",
+      "version": "0.1.0"
+    }
+  ]
+}

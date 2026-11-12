@@ -1,0 +1,89 @@
+{
+  "author": "",
+  "created": "2025-09-09T03:28:49.255Z",
+  "deprecated": "",
+  "description": "This is the **Testkube UI (frontend) plugin** for [Backstage](https://backstage.io).",
+  "homepage": "https://github.com/kubeshop/testkube-backstage-plugin/blob/main/plugins/testkube/README.md",
+  "keywords": [
+    "backstage",
+    "testkube"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "caiomede-tk",
+    "catalinh",
+    "olensmar",
+    "oscar-tk"
+  ],
+  "name": "@testkube/backstage-plugin",
+  "plugin_id": "testkube",
+  "readme": "# Welcome to the Testkube plugin for Backstage!\n\nThis is the **Testkube UI (frontend) plugin** for [Backstage](https://backstage.io).\n\nIt allows you to centralize information about automated tests managed by Testkube directly inside Backstage, both at a global level and at the entity level.\n\nIt provides the following main features:\n\n- **Testkube Dashboard:** a page containing an overview of the latest automated test executions. It includes a panel with three metrics: Success/Failure Range, Failed Executions, and Total Executions. Below the metrics, the executions are listed with their identifier, execution time, execution date, status, and test workflow name.\n\n- **Testkube Entity Page:** a page containing a view of the automated test workflows related to an entity based on its annotations. It includes a panel with the same three metrics, all respecting the filter by entity. Under the metrics, the automated test workflows are listed with their name and information about the last execution: identifier, duration, scheduling date, and current status. The table also allows you to:\n\n  - View the test workflow definition in YAML format.\n  - View the logs of the last execution.\n  - View the history of the last executions (including logs for each execution).\n  - Run the test workflow.\n\n_This plugin was originally created through the Backstage CLI._\n\n## Getting started\n\nThis is a **frontend** Backstage plugin and must be used together with the **Testkube backend plugin** (`@testkube/backstage-plugin-backend`), which exposes the `testkube` backend service used by this UI.\n\nFor backend setup details, see `plugins/testkube-backend/README.md`.\n\n### Installing the plugins in my Backstage project\n\nInstall the UI plugin in your Backstage app:\n\n```bash\nyarn workspace packages/app add @testkube/backstage-plugin\n```\n\nInstall the backend plugin in your Backstage backend:\n\n```bash\nyarn workspace packages/backend add @testkube/backstage-plugin-backend\n```\n\n### Configuring the backend to connect to my Testkube Agent\n\nRegister the backend plugin in `packages/backend/src/index.ts` using the new backend system:\n\n```ts\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n\n// other plugins...\nbackend.add(import('@testkube/backstage-plugin-backend'));\n\nbackend.start();\n```\n\nThen configure the connection to Testkube in your `app-config.yaml` file using the `testkube` section:\n\n```yaml\ntestkube:\n  # Base URL of the Testkube API (for example, using port forwarding)\n  apiUrl: 'http://localhost:8088'\n\n  # enterprise settings (optional)\n  # enterprise: true\n  # uiUrl: https://app.testkube.io\n  # organizations:\n  #   - id: <your-organization-id>\n  #     apiKey: <your-api-key-with-only-read-access!!>\n```\n\nYou can find a working example of this configuration in this repository’s root `app-config.yaml`.\n\n### Adding Testkube plugin pages\n\n#### Using the new frontend system (alpha)\n\nIf your Backstage app uses the [new frontend system](https://backstage.io/docs/frontend-system/), you can install the plugin by importing it from the `/alpha` subpath and adding it to your app features in `packages/app/src/App.tsx`:\n\n```tsx\nimport { createApp } from '@backstage/frontend-defaults';\nimport catalogPlugin from '@backstage/plugin-catalog/alpha';\nimport testkubePlugin from '@testkube/backstage-plugin/alpha';\nimport { navModule } from './modules/nav';\n\nexport default createApp({\n  features: [catalogPlugin, navModule, testkubePlugin],\n});\n```\n\nThis automatically registers the **Testkube Dashboard** page at `/testkube` and the **Testkube Entity Page** content on catalog entities with the `testkube.io/labels` annotation. No additional route or entity page configuration is needed.\n\n#### Using the legacy frontend system\n\n##### Testkube Dashboard\n\nTo enable **Testkube Dashboard** into your Backstage project edit the file `packages/app/src/App.tsx` to include the following lines:\n\n```javascript\n(...)\nimport { TestkubeDashboardPage } from '@testkube/backstage-plugin';\n\n(...)\n\nconst routes = (\n  <FlatRoutes>\n    (...)\n    <Route path=\"/testkube\" element={<TestkubeDashboardPage />} />\n  </FlatRoutes>\n(...)\n```\n\nNow it will be available at context path `/testkube` of your Backstage app. To also include this page in the side menu, change the file `packages/app/src/components/Root/Root.tsx` to include the following lines:\n\n```javascript\n(...)\nimport BarChartIcon from '@material-ui/icons/BarChart';\n\n(...)\n\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n      (...)\n      <SidebarGroup label=\"Menu\" icon={<MenuIcon />}>\n        (...)\n        <SidebarItem icon={BarChartIcon} to=\"testkube\" text=\"Testkube\" />\n        (...)\n      </SidebarGroup>\n      (...)\n    </SidebarGroup>\n    </Sidebar>\n    {children}\n  </SidebarPage>\n);\n```\n\nNow **Testkube Dashboard** will appear in the side menu of your Backstage app.\n\n> **Tip**\n>\n> This plugin also has feature flags enabled. You can use them by enclosing the `SidebarItem` with `<FeatureFlagged with=\"testkube\"></FeatureFlagged>`.\n\n#### Testkube Entity Page\n\nTo enable **Testkube Entity Page** into your Backstage project edit the file `packages/app/src/components/catalog/EntityPage.tsx` to include the following lines:\n\n```javascript\n(...)\nimport { TestkubeEntityPage, isTestkubeAvailable } from '@testkube/backstage-plugin';\n\nconst testkubeSummaryPage = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    <Grid item xs={12}>\n      <TestkubeEntityPage />\n    </Grid>\n  </Grid>\n);\n\n(...)\n\nconst websiteEntityPage = (\n  <EntityLayout>\n    (...)\n    <EntityLayout.Route path=\"/tests-summary\" title=\"Tests Summary\" if={isTestkubeAvailable}>\n      {testkubeSummaryPage}\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n(...)\n```\n\nNow if any entity has the annotation `testkube.io/labels` the tab **Tests Summary** will appear in the entity page. It will only show the test workflows that have the labels declared in the annotation, i.e. this entity:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: testkube-website\n  annotations:\n    testkube.io/labels: app=testkube-website\n  labels:\n    app: testkube\nspec:\n  type: website\n  lifecycle: experimental\n  owner: guests\n  system: testkube\n```\n\nwill show only test workflows which have the label `app=testkube-website`.\n\n## Development guide\n\nBefore starting to develop, please read our [Contributing Manifest](../../CONTRIBUTING.md) and our [Code of Conduct](../../CODE_OF_CONDUCT.md).\n\nWe encourage everyone to contribute changes and improvements by raising a PR from your forked repositories.\n\n### Prepare local environment\n\n- You must have installed:\n  - Node.js 20 or later.\n  - Kubernetes CLI.\n  - Helm CLI.\n- Connect to a Kubernetes cluster (you can use [Kind](https://kind.sigs.k8s.io/) to have a local one).\n- Have Testkube OSS running; see the instructions to [install](https://docs.testkube.io/articles/install/standalone-agent).\n- Port forward the Testkube API using the following command:\n\n  ```bash\n  kubectl port-forward svc/testkube-api-server -n testkube 8088:8088\n  ```\n\n- Pre-load example data using the following command from the repository root:\n\n  ```bash\n  ./example/testkube/load-data.sh\n  ```\n\n### Run Backstage (example app)\n\nFrom the repository root:\n\n```bash\nyarn install\nyarn dev\n```\n\n### Run the plugin in isolation\n\nYou can also serve the plugin in isolation by running the following in the plugin directory:\n\n```bash\nyarn start\n```\n\nThis method of serving the plugin provides quicker iteration speed and a faster startup with hot reloads. It is only meant for local development, and the setup for it can be found inside the [`/dev`](./dev) directory.\n",
+  "repository": "https://github.com/kubeshop/testkube-backstage-plugin/tree/HEAD/plugins/testkube",
+  "role": "frontend-plugin",
+  "scope": "@testkube",
+  "updated": "2026-06-18T15:58:34.749Z",
+  "version": "0.4.5",
+  "version_count": 19,
+  "versions": [
+    {
+      "date": "2026-06-18T15:58:34.749Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2026-05-15T13:53:07.497Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2026-04-15T20:20:05.616Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2026-04-15T20:01:56.680Z",
+      "version": "0.4.3-rc.1"
+    },
+    {
+      "date": "2026-04-10T19:43:03.135Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2026-04-10T16:56:49.251Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-04-10T16:32:23.142Z",
+      "version": "0.4.1-rc.1"
+    },
+    {
+      "date": "2026-03-26T15:26:27.702Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-03-13T14:43:04.625Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-03-11T15:49:34.515Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-03-11T15:45:53.804Z",
+      "version": "0.2.1-rc.1"
+    },
+    {
+      "date": "2026-03-11T15:03:16.217Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-03-11T14:55:39.387Z",
+      "version": "0.2.0-rc.11"
+    },
+    {
+      "date": "2026-03-11T14:34:27.719Z",
+      "version": "0.2.0-rc.9"
+    },
+    {
+      "date": "2026-03-10T20:17:30.190Z",
+      "version": "0.2.0-rc.8"
+    }
+  ]
+}

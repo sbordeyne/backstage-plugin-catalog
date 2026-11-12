@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2023-10-19T15:25:25.222Z",
+  "deprecated": "",
+  "description": "The servicenow custom actions",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backend-plugin-module",
+    "backstage",
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-scaffolder-backend-module-servicenow",
+  "plugin_id": "scaffolder",
+  "readme": "# ServiceNow actions for Backstage\n\nThis plugin provides [Backstage](https://backstage.io/) template [actions](https://backstage.io/docs/features/software-templates/builtin-actions) for [ServiceNow](https://developer.servicenow.com/dev.do#!/reference/api/vancouver/rest).\n\nThe following actions are currently supported in this plugin:\n\n- [Table API](https://developer.servicenow.com/dev.do#!/reference/api/vancouver/rest/c_TableAPI)\n\n## Prerequisites\n\n- A [Backstage](https://backstage.io/docs/getting-started/) project\n\n## Installation\n\nRun the following command to install the action package in your Backstage project:\n\n```console\nyarn workspace backend add @janus-idp/backstage-scaffolder-backend-module-servicenow\n```\n\n### Installing the action on the new backend\n\nAdd the following to your `packages/backend/src/index.ts` file:\n\n```ts title=\"packages/backend/src/index.ts\"\nconst backend = createBackend();\n\n// Add the following line\nbackend.add(\n  import('@janus-idp/backstage-scaffolder-backend-module-servicenow'),\n);\n\nbackend.start();\n```\n\n## Configuration\n\nUpdate the `app-config.yaml` file to include the following config:\n\n```yaml title=\"app-config.yaml\"\nservicenow:\n  # The base url of the ServiceNow instance.\n  baseUrl: ${SERVICENOW_BASE_URL}\n  # The username to use for authentication.\n  username: ${SERVICENOW_USERNAME}\n  # The password to use for authentication.\n  password: ${SERVICENOW_PASSWORD}\n```\n\n## Usage\n\n### Action : `servicenow:now:table:createRecord`\n\n#### Request Type: `POST`\n\n#### Input\n\n| Parameter Name                |              Type              | Required | Description                                                                                |\n| ----------------------------- | :----------------------------: | :------: | ------------------------------------------------------------------------------------------ |\n| `tableName`                   |            `string`            |   Yes    | Name of the table in which to save the record                                              |\n| `requestBody`                 | `Record<PropertyKey, unknown>` |    No    | Field name and the associated value for each parameter to define in the specified record   |\n| `sysparmDisplayValue`         | `enum(\"true\", \"false\", \"all\")` |    No    | Return field display values (true), actual values (false), or both (all) (default: false)  |\n| `sysparmExcludeReferenceLink` |           `boolean`            |    No    | True to exclude Table API links for reference fields (default: false)                      |\n| `sysparmFields`               |           `string[]`           |    No    | An array of fields to return in the response                                               |\n| `sysparmInputDisplayValue`    |           `boolean`            |    No    | Set field values using their display value (true) or actual value (false) (default: false) |\n| `sysparmSuppressAutoSysField` |           `boolean`            |    No    | True to suppress auto generation of system fields (default: false)                         |\n| `sysparmView`                 |            `string`            |    No    | Render the response according to the specified UI view (overridden by sysparm_fields)      |\n\n#### Output\n\n| Name     |              Type              | Description                      |\n| -------- | :----------------------------: | -------------------------------- |\n| `result` | `Record<PropertyKey, unknown>` | The response body of the request |\n\n### Action : `servicenow:now:table:deleteRecord`\n\n#### Request Type: `DELETE`\n\n#### Input\n\n| Parameter Name         |   Type    | Required | Description                                                       |\n| ---------------------- | :-------: | :------: | ----------------------------------------------------------------- |\n| `tableName`            | `string`  |   Yes    | Name of the table in which to delete the record                   |\n| `sysId`                | `string`  |   Yes    | Unique identifier of the record to delete                         |\n| `sysparmQueryNoDomain` | `boolean` |    No    | True to access data across domains if authorized (default: false) |\n\n### Action : `servicenow:now:table:modifyRecord`\n\n#### Request Type: `PUT`\n\n#### Input\n\n| Parameter Name                |              Type              | Required | Description                                                                                |\n| ----------------------------- | :----------------------------: | :------: | ------------------------------------------------------------------------------------------ |\n| `tableName`                   |            `string`            |   Yes    | Name of the table in which to modify the record                                            |\n| `sysId`                       |            `string`            |   Yes    | Unique identifier of the record to modify                                                  |\n| `requestBody`                 | `Record<PropertyKey, unknown>` |    No    | Field name and the associated value for each parameter to define in the specified record   |\n| `sysparmDisplayValue`         | `enum(\"true\", \"false\", \"all\")` |    No    | Return field display values (true), actual values (false), or both (all) (default: false)  |\n| `sysparmExcludeReferenceLink` |           `boolean`            |    No    | True to exclude Table API links for reference fields (default: false)                      |\n| `sysparmFields`               |           `string[]`           |    No    | An array of fields to return in the response                                               |\n| `sysparmInputDisplayValue`    |           `boolean`            |    No    | Set field values using their display value (true) or actual value (false) (default: false) |\n| `sysparmSuppressAutoSysField` |           `boolean`            |    No    | True to suppress auto generation of system fields (default: false)                         |\n| `sysparmView`                 |            `string`            |    No    | Render the response according to the specified UI view (overridden by sysparm_fields)      |\n| `sysparmQueryNoDomain`        |           `boolean`            |    No    | True to access data across domains if authorized (default: false)                          |\n\n#### Output\n\n| Name     |              Type              | Description                      |\n| -------- | :----------------------------: | -------------------------------- |\n| `result` | `Record<PropertyKey, unknown>` | The response body of the request |\n\n### Action : `servicenow:now:table:retrieveRecord`\n\n#### Request Type: `GET`\n\n#### Input\n\n| Parameter Name                |              Type              | Required | Description                                                                               |\n| ----------------------------- | :----------------------------: | :------: | ----------------------------------------------------------------------------------------- |\n| `tableName`                   |            `string`            |   Yes    | Name of the table from which to retrieve the record                                       |\n| `sysId`                       |            `string`            |   Yes    | Unique identifier of the record to retrieve                                               |\n| `sysparmDisplayValue`         | `enum(\"true\", \"false\", \"all\")` |    No    | Return field display values (true), actual values (false), or both (all) (default: false) |\n| `sysparmExcludeReferenceLink` |           `boolean`            |    No    | True to exclude Table API links for reference fields (default: false)                     |\n| `sysparmFields`               |           `string[]`           |    No    | An array of fields to return in the response                                              |\n| `sysparmView`                 |            `string`            |    No    | Render the response according to the specified UI view (overridden by sysparm_fields)     |\n| `sysparmQueryNoDomain`        |           `boolean`            |    No    | True to access data across domains if authorized (default: false)                         |\n\n#### Output\n\n| Name     |              Type              | Description                      |\n| -------- | :----------------------------: | -------------------------------- |\n| `result` | `Record<PropertyKey, unknown>` | The response body of the request |\n\n### Action : `servicenow:now:table:retrieveRecords`\n\n#### Request Type: `GET`\n\n#### Input\n\n| Parameter Name                    |              Type              | Required | Description                                                                               |\n| --------------------------------- | :----------------------------: | :------: | ----------------------------------------------------------------------------------------- |\n| `tableName`                       |            `string`            |   Yes    | Name of the table from which to retrieve the records                                      |\n| `sysparmQuery`                    |            `string`            |    No    | An encoded query string used to filter the results                                        |\n| `sysparmDisplayValue`             | `enum(\"true\", \"false\", \"all\")` |    No    | Return field display values (true), actual values (false), or both (all) (default: false) |\n| `sysparmExcludeReferenceLink`     |           `boolean`            |    No    | True to exclude Table API links for reference fields (default: false)                     |\n| `sysparmSuppressPaginationHeader` |           `boolean`            |    No    | True to suppress pagination header (default: false)                                       |\n| `sysparmFields`                   |           `string[]`           |    No    | An array of fields to return in the response                                              |\n| `sysparmLimit`                    |             `int`              |    No    | The maximum number of results returned per page (default: 10,000)                         |\n| `sysparmView`                     |            `string`            |    No    | Render the response according to the specified UI view (overridden by sysparm_fields)     |\n| `sysparmQueryCategory`            |            `string`            |    No    | Name of the query category (read replica category) to use for queries                     |\n| `sysparmQueryNoDomain`            |           `boolean`            |    No    | True to access data across domains if authorized (default: false)                         |\n| `sysparmNoCount`                  |           `boolean`            |    No    | Do not execute a select count(\\*) on table (default: false)                               |\n\n#### Output\n\n| Name     |              Type              | Description                      |\n| -------- | :----------------------------: | -------------------------------- |\n| `result` | `Record<PropertyKey, unknown>` | The response body of the request |\n\n### Action : `servicenow:now:table:updateRecord`\n\n#### Request Type: `PATCH`\n\n#### Input\n\n| Parameter Name                |              Type              | Required | Description                                                                                |\n| ----------------------------- | :----------------------------: | :------: | ------------------------------------------------------------------------------------------ |\n| `tableName`                   |            `string`            |   Yes    | Name of the table in which to update the record                                            |\n| `sysId`                       |            `string`            |   Yes    | Unique identifier of the record to update                                                  |\n| `requestBody`                 | `Record<PropertyKey, unknown>` |    No    | Field name and the associated value for each parameter to define in the specified record   |\n| `sysparmDisplayValue`         | `enum(\"true\", \"false\", \"all\")` |    No    | Return field display values (true), actual values (false), or both (all) (default: false)  |\n| `sysparmExcludeReferenceLink` |           `boolean`            |    No    | True to exclude Table API links for reference fields (default: false)                      |\n| `sysparmFields`               |           `string[]`           |    No    | An array of fields to return in the response                                               |\n| `sysparmInputDisplayValue`    |           `boolean`            |    No    | Set field values using their display value (true) or actual value (false) (default: false) |\n| `sysparmSuppressAutoSysField` |           `boolean`            |    No    | True to suppress auto generation of system fields (default: false)                         |\n| `sysparmView`                 |            `string`            |    No    | Render the response according to the specified UI view (overridden by sysparm_fields)      |\n| `sysparmQueryNoDomain`        |           `boolean`            |    No    | True to access data across domains if authorized (default: false)                          |\n\n#### Output\n\n| Name     |              Type              | Description                      |\n| -------- | :----------------------------: | -------------------------------- |\n| `result` | `Record<PropertyKey, unknown>` | The response body of the request |\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/servicenow-actions",
+  "role": "backend-plugin-module",
+  "scope": "@janus-idp",
+  "updated": "2024-11-04T12:24:47.150Z",
+  "version": "2.2.1",
+  "version_count": 61,
+  "versions": [
+    {
+      "date": "2024-11-04T12:24:47.150Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2024-10-30T20:19:04.078Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2024-10-29T18:59:37.387Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2024-10-22T21:37:08.681Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2024-10-11T15:51:46.771Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2024-10-09T20:47:09.627Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2024-10-08T18:38:16.315Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2024-10-02T21:01:52.165Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2024-10-01T18:36:45.508Z",
+      "version": "1.8.2"
+    },
+    {
+      "date": "2024-09-25T12:57:47.523Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2024-09-20T03:54:35.319Z",
+      "version": "1.8.0"
+    },
+    {
+      "date": "2024-09-19T16:59:23.246Z",
+      "version": "1.7.3"
+    },
+    {
+      "date": "2024-08-19T17:46:13.642Z",
+      "version": "1.7.2"
+    },
+    {
+      "date": "2024-08-16T19:01:54.776Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2024-07-26T01:40:41.226Z",
+      "version": "1.7.0"
+    }
+  ]
+}

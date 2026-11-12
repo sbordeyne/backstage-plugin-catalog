@@ -1,0 +1,90 @@
+{
+  "author": "",
+  "created": "2026-07-22T19:44:19.505Z",
+  "deprecated": "",
+  "description": "Authenticated and authorized Backstage backend for the Anyshift infrastructure graph",
+  "homepage": "https://github.com/anyshift-io/backstage-plugins#readme",
+  "keywords": [
+    "anyshift",
+    "backstage",
+    "graph",
+    "infrastructure"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pcholl22",
+    "safwentrabelsi",
+    "sjourdan"
+  ],
+  "name": "@anyshift/backstage-plugin-anyshift-backend",
+  "plugin_id": "anyshift",
+  "readme": "# `@anyshift/backstage-plugin-anyshift-backend`\n\nBackend-system plugin that keeps Anyshift credentials server-side, uses `@anyshift/graph-sdk` for\nGraph API transport, and enforces `anyshift.view` and `anyshift.query` on HTTP routes.\n\n```ts\nbackend.add(import('@anyshift/backstage-plugin-anyshift-backend'));\n```\n\nThe query endpoint is disabled by default and is not mounted until `anyshift.query.enabled` is\ntrue. See the [integration guide](../../README.md) for configuration and permission policy details.\n",
+  "repository": "https://github.com/anyshift-io/backstage-plugins/tree/HEAD/plugins/anyshift-backend",
+  "role": "backend-plugin",
+  "scope": "@anyshift",
+  "updated": "2026-09-23T08:07:02.467Z",
+  "version": "0.1.0-beta.24",
+  "version_count": 23,
+  "versions": [
+    {
+      "date": "2026-09-23T08:07:02.467Z",
+      "version": "0.1.0-beta.24"
+    },
+    {
+      "date": "2026-09-22T16:41:50.304Z",
+      "version": "0.1.0-beta.23"
+    },
+    {
+      "date": "2026-09-22T15:28:33.925Z",
+      "version": "0.1.0-beta.22"
+    },
+    {
+      "date": "2026-09-22T13:37:20.645Z",
+      "version": "0.1.0-beta.21"
+    },
+    {
+      "date": "2026-08-31T15:38:48.893Z",
+      "version": "0.1.0-beta.20"
+    },
+    {
+      "date": "2026-08-31T15:04:52.856Z",
+      "version": "0.1.0-beta.19"
+    },
+    {
+      "date": "2026-08-20T08:04:12.301Z",
+      "version": "0.1.0-beta.18"
+    },
+    {
+      "date": "2026-08-14T12:30:41.633Z",
+      "version": "0.1.0-beta.17"
+    },
+    {
+      "date": "2026-08-12T09:56:08.774Z",
+      "version": "0.1.0-beta.16"
+    },
+    {
+      "date": "2026-08-12T05:00:37.353Z",
+      "version": "0.1.0-beta.15"
+    },
+    {
+      "date": "2026-08-07T13:43:41.710Z",
+      "version": "0.1.0-beta.14"
+    },
+    {
+      "date": "2026-08-07T11:55:11.611Z",
+      "version": "0.1.0-beta.13"
+    },
+    {
+      "date": "2026-08-07T05:38:41.915Z",
+      "version": "0.1.0-beta.12"
+    },
+    {
+      "date": "2026-08-05T10:54:14.208Z",
+      "version": "0.1.0-beta.11"
+    },
+    {
+      "date": "2026-08-05T09:07:42.481Z",
+      "version": "0.1.0-beta.10"
+    }
+  ]
+}

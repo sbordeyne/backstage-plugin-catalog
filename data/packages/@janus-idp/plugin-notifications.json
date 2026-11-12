@@ -1,0 +1,95 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-01-17T16:11:39.240Z",
+  "deprecated": "",
+  "description": "Frontend part of the notifications providing the Notifications API, Notifications page, left-side menu item and other REACT components.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/plugin-notifications",
+  "plugin_id": "notifications",
+  "readme": "# Notifications\n\nThis Backstage front-end plugin provides:\n\n- the `Notifications` page listing notifications from the logged-in user's perspective\n- the NotificationsApi for accessing the notifications backend from front-end plugins\n- an active item to the main left side menu to both notify the user about new messages and provide navigation to the Notifications page\n- an alert about new system notifications\n\n## Getting started\n\n### Prerequisities\n\nHave `@janus-idp/plugin-notifications-backend` installed and running.\n\n## Installing as a dynamic plugin\n\nThe sections below are relevant for static plugins. If the plugin is expected to be installed as a dynamic one:\n\n- follow https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/dynamic-plugins.md#installing-a-dynamic-plugin-package-in-the-showcase\n- add content of `app-config.janus-idp.yaml` into `app-config.local.yaml`.\n- customize configuration configure as needed\n\n### Configuration\n\nThere is polling used to check for new notifications. It can be tuned via `pollingIntervalMs` config property (see `app-config.janus-idp.yaml`). When set to 0, the polling is turned off.\n\n## Installing as a static plugin\n\n### Add NPM dependency\n\n```\ncd packages/app\nyarn add @janus-idp/plugin-notifications\n```\n\n### Add left-side menu item\n\nIn the `packages/app/src/components/Root/Root.tsx`:\n\n```\nimport { NotificationsActiveIcon } from '@janus-idp/plugin-notifications';\n\n...\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n    ...\n      {/* New code: */}\n      <SidebarDivider />\n      <SidebarItem icon={NotificationsActiveIcon} to=\"notifications\" text=\"Notifications\" />\n\n      {/* Existing code for reference: */}\n      <SidebarSpace />\n      <SidebarSpace />\n      <SidebarDivider />\n      <SidebarDivider />\n      <SidebarGroup\n        <SidebarGroup label=\"Settings\"\n```\n\n### Add to router\n\nIn the `packages/app/src/App.tsx`:\n\n```\nimport { NotificationsPage } from '@janus-idp/plugin-notifications';\n...\n\nexport const AppBase = () => {\n    ...\n      {/* New code: */}\n      <Route path=\"/notifications\" element={<NotificationsPage />} />\n```\n\n## How to use the NotificationApi\n\nOnce installed as either static or dynamic plugin, a 3rd party frontend plugin can access the notifications via its frontend API:\n\n```\nimport { notificationsApiRef, Notification } from '@janus-idp/plugin-notifications';\n\n...\n\nconst notificationsApi = useApi(notificationsApiRef);\nconst notifications: Notification[] = await notificationsApi.getNotifications(params);\n\n```\n\nSee `src/api/notificationsApi.ts` for more details.\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/notifications",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-07-24T14:39:19.980Z",
+  "version": "1.5.0",
+  "version_count": 43,
+  "versions": [
+    {
+      "date": "2024-07-24T14:39:19.980Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-06-19T15:11:19.517Z",
+      "version": "1.4.1"
+    },
+    {
+      "date": "2024-06-13T21:38:35.223Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2024-06-13T10:31:28.139Z",
+      "version": "1.3.9"
+    },
+    {
+      "date": "2024-06-07T07:33:31.732Z",
+      "version": "1.3.8"
+    },
+    {
+      "date": "2024-06-05T16:17:08.473Z",
+      "version": "1.3.7"
+    },
+    {
+      "date": "2024-06-04T19:45:37.213Z",
+      "version": "1.3.6"
+    },
+    {
+      "date": "2024-06-03T13:45:30.446Z",
+      "version": "1.3.5"
+    },
+    {
+      "date": "2024-05-31T18:23:29.038Z",
+      "version": "1.3.4"
+    },
+    {
+      "date": "2024-05-29T20:06:59.083Z",
+      "version": "1.3.3"
+    },
+    {
+      "date": "2024-05-29T17:17:01.668Z",
+      "version": "1.3.2"
+    },
+    {
+      "date": "2024-05-16T14:54:16.691Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2024-05-14T14:31:49.135Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2024-05-09T21:59:03.211Z",
+      "version": "1.2.6"
+    },
+    {
+      "date": "2024-05-02T17:59:35.827Z",
+      "version": "1.2.5"
+    }
+  ]
+}

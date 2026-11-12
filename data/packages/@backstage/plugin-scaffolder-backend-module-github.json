@@ -1,0 +1,85 @@
+{
+  "author": "",
+  "created": "2023-12-12T17:41:22.124Z",
+  "deprecated": "",
+  "description": "The github module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "freben",
+    "marcuseide",
+    "patriko"
+  ],
+  "name": "@backstage/plugin-scaffolder-backend-module-github",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/scaffolder-backend-module-github",
+  "role": "backend-plugin-module",
+  "scope": "@backstage",
+  "updated": "2026-10-20T17:05:18.728Z",
+  "version": "0.10.1",
+  "version_count": 978,
+  "versions": [
+    {
+      "date": "2026-11-11T03:11:21.494Z",
+      "version": "0.10.2-next.1"
+    },
+    {
+      "date": "2026-11-07T03:04:24.614Z",
+      "version": "0.0.0-nightly-20261107022000"
+    },
+    {
+      "date": "2026-11-06T03:09:24.098Z",
+      "version": "0.0.0-nightly-20261106022102"
+    },
+    {
+      "date": "2026-11-04T03:02:23.518Z",
+      "version": "0.0.0-nightly-20261104021945"
+    },
+    {
+      "date": "2026-10-31T02:55:47.951Z",
+      "version": "0.0.0-nightly-20261031021925"
+    },
+    {
+      "date": "2026-10-30T02:53:40.728Z",
+      "version": "0.0.0-nightly-20261030022259"
+    },
+    {
+      "date": "2026-10-29T03:07:42.824Z",
+      "version": "0.0.0-nightly-20261029022347"
+    },
+    {
+      "date": "2026-10-28T03:06:06.170Z",
+      "version": "0.0.0-nightly-20261028022344"
+    },
+    {
+      "date": "2026-10-27T17:39:23.777Z",
+      "version": "0.10.2-next.0"
+    },
+    {
+      "date": "2026-10-27T03:03:47.845Z",
+      "version": "0.0.0-nightly-20261027023041"
+    },
+    {
+      "date": "2026-10-20T17:05:18.728Z",
+      "version": "0.10.1"
+    },
+    {
+      "date": "2026-09-29T12:38:09.974Z",
+      "version": "0.10.1-next.1"
+    },
+    {
+      "date": "2026-09-28T03:26:47.180Z",
+      "version": "0.0.0-nightly-20260928023907"
+    },
+    {
+      "date": "2026-09-27T03:17:29.276Z",
+      "version": "0.0.0-nightly-20260927023342"
+    },
+    {
+      "date": "2026-09-26T03:12:24.301Z",
+      "version": "0.0.0-nightly-20260926022852"
+    }
+  ]
+}

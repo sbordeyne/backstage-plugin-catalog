@@ -1,0 +1,37 @@
+{
+  "author": "Shawn Cheng",
+  "created": "2026-06-07T08:19:34.327Z",
+  "deprecated": "",
+  "description": "Backstage scaffolder action that merges Markdown fragments into named slot markers in a target file.",
+  "homepage": "https://github.com/joint-song/plugin-scaffolder-backend-module-markdown-merge#readme",
+  "keywords": [
+    "backstage",
+    "markdown",
+    "scaffolder",
+    "scaffolder-action",
+    "scaffolder-backend-module"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "shawncheng888"
+  ],
+  "name": "@shawncheng888/plugin-scaffolder-backend-module-markdown-merge",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/joint-song/plugin-scaffolder-backend-module-markdown-merge",
+  "role": "backend-plugin-module",
+  "scope": "@shawncheng888",
+  "updated": "2026-06-07T08:32:54.599Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-06-07T08:32:54.599Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-06-07T08:19:34.687Z",
+      "version": "0.1.0"
+    }
+  ]
+}

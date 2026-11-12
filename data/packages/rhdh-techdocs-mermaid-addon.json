@@ -1,0 +1,89 @@
+{
+  "author": "",
+  "created": "2025-09-18T09:26:18.977Z",
+  "deprecated": "",
+  "description": "Dynamic plugin wrapper for RHDH that enables Mermaid diagrams in TechDocs",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "dynamic-plugin",
+    "mermaid",
+    "rhdh",
+    "techdocs"
+  ],
+  "license": "",
+  "maintainers": [
+    "juanmabm"
+  ],
+  "name": "rhdh-techdocs-mermaid-addon",
+  "plugin_id": "",
+  "readme": "# rhdh-techdocs-mermaid-addon\n\nDynamic plugin wrapper para Red Hat Developer Hub que habilita el soporte de diagramas Mermaid en TechDocs.\n\n## 🎯 **Propósito**\n\nEste plugin resuelve el problema de que RHDH no incluye el addon de Mermaid por defecto. Permite usar diagramas Mermaid en TechDocs en entornos de OpenShift donde no se pueden instalar paquetes npm directamente.\n\n## 📦 **¿Qué hace este plugin?**\n\n1. **Wrappe el addon oficial**: Incluye `backstage-plugin-techdocs-addon-mermaid` como dependencia\n2. **Compatible con dynamic plugins**: Se instala como dynamic plugin en RHDH\n3. **Configuración automática**: Se integra automáticamente con TechDocs existente\n\n## 🚀 **Instalación en RHDH**\n\n### Opción 1: Via Helm Chart\n\n```yaml\nglobal:\n  dynamic:\n    includes:\n      - dynamic-plugins.default.yaml\n    plugins:\n      - package: 'rhdh-techdocs-mermaid-addon@^2.0.2'\n        integrity: 'sha512-R0XRmPTkfH0rrp3QSEEgwj8CvDMKlVGukluFeQrVEngCidmP6Jl/xo+VtA3kB6hQ2/71hHmBJUB6nKd0pxa3PQ=='\n        disabled: false\n```\n\n### Opción 2: Via ConfigMap (Operator)\n\n```yaml\nkind: ConfigMap\napiVersion: v1\nmetadata:\n  name: dynamic-plugins-rhdh\ndata:\n  dynamic-plugins.yaml: |\n    includes:\n      - dynamic-plugins.default.yaml\n    plugins:\n      - package: 'rhdh-techdocs-mermaid-addon@^2.0.2'\n        integrity: 'sha512-R0XRmPTkfH0rrp3QSEEgwj8CvDMKlVGukluFeQrVEngCidmP6Jl/xo+VtA3kB6hQ2/71hHmBJUB6nKd0pxa3PQ=='\n        disabled: false\n```\n\n## 📝 **Uso**\n\nUna vez instalado, los diagramas Mermaid funcionarán automáticamente en TechDocs:\n\n````markdown\n```mermaid\ngraph TD\n    A[Start] --> B{Decision}\n    B -->|Yes| C[Action 1]\n    B -->|No| D[Action 2]\n    C --> E[End]\n    D --> E\n```\n````\n\n## ✅ **Verificación**\n\n1. Ve a **Administration > Plugins** en RHDH\n2. Busca `rhdh-techdocs-mermaid-addon`\n3. Verifica que aparezca como \"Loaded\"\n\n## 🔧 **Desarrollo**\n\n```bash\nnpm install\nnpm run build\nnpm publish --access public\n```\n\n## 📚 **Compatibilidad**\n\n- ✅ Red Hat Developer Hub 1.x\n- ✅ OpenShift 4.x\n- ✅ Backstage 1.11+\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2025-09-22T11:54:32.250Z",
+  "version": "3.0.0",
+  "version_count": 18,
+  "versions": [
+    {
+      "date": "2025-09-22T11:54:32.250Z",
+      "version": "3.0.0"
+    },
+    {
+      "date": "2025-09-22T11:15:00.994Z",
+      "version": "2.0.4"
+    },
+    {
+      "date": "2025-09-22T11:04:12.139Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2025-09-22T10:49:29.896Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2025-09-22T10:33:52.239Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2025-09-22T10:24:22.890Z",
+      "version": "1.0.12"
+    },
+    {
+      "date": "2025-09-22T08:42:13.633Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2025-09-22T08:39:48.847Z",
+      "version": "1.0.10"
+    },
+    {
+      "date": "2025-09-22T08:31:38.696Z",
+      "version": "1.0.9"
+    },
+    {
+      "date": "2025-09-22T08:14:57.024Z",
+      "version": "1.0.8"
+    },
+    {
+      "date": "2025-09-22T08:12:22.652Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2025-09-22T08:03:34.362Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2025-09-18T13:39:02.478Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2025-09-18T13:37:21.394Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2025-09-18T12:11:29.111Z",
+      "version": "1.0.3"
+    }
+  ]
+}

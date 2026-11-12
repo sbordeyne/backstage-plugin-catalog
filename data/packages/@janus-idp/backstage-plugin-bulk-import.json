@@ -1,0 +1,95 @@
+{
+  "author": "Red Hat",
+  "created": "2024-03-11T14:41:49.879Z",
+  "deprecated": "",
+  "description": "This plugin allows bulk import of multiple catalog entities into the catalog.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "backstage",
+    "lifecycle:active",
+    "plugin",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-bulk-import",
+  "plugin_id": "bulk-import",
+  "readme": "# Bulk import frontend plugin for Backstage\n\nThis plugin allows bulk import of multiple catalog entities into the catalog.\n\n## For administrators\n\n### Installation\n\n#### Installing as a dynamic plugin?\n\nThe sections below are relevant for static plugins. If the plugin is expected to be installed as a dynamic one:\n\n- Follow https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/dynamic-plugins.md#installing-a-dynamic-plugin-package-in-the-showcase\n- Add content of `app-config.janus-idp.yaml` into `app-config.local.yaml`.\n\n#### Prerequisites\n\n- Follow the Bulk import backend plugin [README](https://github.com/janus-idp/backstage-plugins/blob/main/plugins/bulk-import-backend/README.md) to integrate bulk import in your Backstage instance.\n\n- Follow the [GitHub Locations](https://backstage.io/docs/integrations/github/locations) to integrate GitHub integrations in your Backstage instance. For now, the plugin only supports loading catalog entities from github.com or GitHub Enterprise.\n\n---\n\n**NOTE**\n\n- When RBAC permission framework is enabled, for non-admin users to access bulk import UI, the role associated with your user should have the following permission policies associated with it. Add the following in your permission policies configuration file:\n\n```CSV\np, role:default/team_a, bulk.import, use, allow\np, role:default/team_a, catalog-entity.read, read, allow\np, role:default/team_a, catalog-entity.create, create, allow\ng, user:default/<login-id/user-name>, role:default/team_a\n```\n\n#### Procedure\n\n1. Install the Bulk import UI plugin using the following command:\n\n   ```console\n   yarn workspace app add @janus-idp/backstage-plugin-bulk-import\n   ```\n\n2. Add Route in `packages/app/src/App.tsx`:\n\n   ```tsx title=\"packages/app/src/App.tsx\"\n   /* highlight-add-next-line */\n   import { BulkImportPage } from '@janus-idp/backstage-plugin-bulk-import';\n   ...\n   /* highlight-add-start */\n   <Route\n        path=\"/bulk-import\"\n        element={<Navigate to=\"repositories\" />}\n    />\n    <Route\n        path=\"/bulk-import/repositories\"\n        element={<BulkImportPage />}\n    />\n    /* highlight-add-end */\n   ...\n   ```\n\n3. Add **Bulk import** Sidebar Item in `packages/app/src/components/Root/Root.tsx`:\n\n   ```tsx title=\"packages/app/src/components/Root/Root.tsx\"\n   /* highlight-add-next-line */\n   import { BulkImportSidebarItem } from '@janus-idp/backstage-plugin-bulk-import';\n\n   export const Root = ({ children }: PropsWithChildren<{}>) => (\n    <SidebarPage>\n      <Sidebar>\n      ...\n      /* highlight-add-next-line */\n      <BulkImportSidebarItem />\n      ...\n    </SidebarPage>\n   );\n   ```\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/bulk-import",
+  "role": "frontend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-11-04T12:24:08.931Z",
+  "version": "1.7.1",
+  "version_count": 42,
+  "versions": [
+    {
+      "date": "2024-11-04T12:24:08.931Z",
+      "version": "1.7.1"
+    },
+    {
+      "date": "2024-10-31T22:18:38.084Z",
+      "version": "1.4.11"
+    },
+    {
+      "date": "2024-10-30T20:18:24.797Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2024-10-29T18:59:29.267Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2024-10-22T21:36:46.801Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2024-10-09T17:21:24.575Z",
+      "version": "1.5.7"
+    },
+    {
+      "date": "2024-10-08T18:24:22.725Z",
+      "version": "1.5.6"
+    },
+    {
+      "date": "2024-10-08T06:25:11.522Z",
+      "version": "1.5.5"
+    },
+    {
+      "date": "2024-10-03T10:48:28.159Z",
+      "version": "1.5.4"
+    },
+    {
+      "date": "2024-10-01T18:22:25.550Z",
+      "version": "1.5.3"
+    },
+    {
+      "date": "2024-09-27T07:35:49.444Z",
+      "version": "1.5.2"
+    },
+    {
+      "date": "2024-09-25T12:44:09.225Z",
+      "version": "1.5.1"
+    },
+    {
+      "date": "2024-09-20T03:35:15.299Z",
+      "version": "1.5.0"
+    },
+    {
+      "date": "2024-09-19T16:45:45.539Z",
+      "version": "1.4.10"
+    },
+    {
+      "date": "2024-09-16T09:08:36.989Z",
+      "version": "1.4.9"
+    }
+  ]
+}

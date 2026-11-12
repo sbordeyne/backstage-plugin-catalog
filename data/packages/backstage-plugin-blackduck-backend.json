@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2023-10-30T22:45:03.517Z",
+  "deprecated": "",
+  "description": "Welcome to the backstage-plugin-blackduck-backend backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "deepan10"
+  ],
+  "name": "backstage-plugin-blackduck-backend",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-blackduck-backend\n\nWelcome to the backstage-plugin-blackduck-backend backend plugin!\n\n## Getting started\n\n## Installation\n\nThis plugin needs to be added to an existing backstage instance.\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend backstage-plugin-blackduck-backend\n```\n\n### New Backend System\n\nThis backend plugin has support for the [new backend system](https://backstage.io/docs/backend-system/), here's how you can set that up:\n\nIn your `packages/backend/src/index.ts` make the following changes:\n\n```typescript\n  import { createBackend } from '@backstage/backend-defaults';\n\n  const backend = createBackend();\n\n  // ... other feature additions\n\n+ backend.add(import('backstage-plugin-blackduck-backend'));\n\n  // ...\n\n  backend.start();\n```\n\n### Legacy Backend System\n\nCreate a file called blackduck.ts inside `packages/backend/src/plugins/` and add the following:\n\n### blackduck.ts\n\n```typescript\nimport { createRouter } from 'backstage-plugin-blackduck-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {  \n  return await createRouter({\n    logger: env.logger,\n    config: env.config,\n  });\n}\n```\n\nAnd import the plugin to `packages/backend/src/index.ts`.\n### src/index.ts\n```diff\ndiff --git a/packages/backend/src/index.ts b/packages/backend/src/index.ts\nindex c4736a5..5822302 100644\n--- a/packages/backend/src/index.ts\n+++ b/packages/backend/src/index.ts\n@@ -28,6 +28,7 @@ import scaffolder from './plugins/scaffolder';\n import proxy from './plugins/proxy';\n import techdocs from './plugins/techdocs';\n import search from './plugins/search';\n+import blackduck from './plugins/blackduck';\n import { PluginEnvironment } from './types';\n import { ServerPermissionClient } from '@backstage/plugin-permission-node';\n import { DefaultIdentityClient } from '@backstage/plugin-auth-node';\n@@ -85,6 +86,7 @@ async function main() {\n   const techdocsEnv = useHotMemoize(module, () => createEnv('techdocs'));\n   const searchEnv = useHotMemoize(module, () => createEnv('search'));\n   const appEnv = useHotMemoize(module, () => createEnv('app'));\n+  const blackduckEnv = useHotMemoize(module, () => createEnv('blackduck'));\n\n   const apiRouter = Router();\n   apiRouter.use('/catalog', await catalog(catalogEnv));\n@@ -93,6 +95,7 @@ async function main() {\n   apiRouter.use('/techdocs', await techdocs(techdocsEnv));\n   apiRouter.use('/proxy', await proxy(proxyEnv));\n   apiRouter.use('/search', await search(searchEnv));\n+  apiRouter.use('/blackduck', await blackduck(blackduckEnv));\n\n   // Add backends ABOVE this line; this 404 handler is the catch-all fallback\n   apiRouter.use(notFoundHandler());\n\n```\n\n## Continue with Frontend Plugin\nFollow the Docs from [README.md](https://github.com/deepan10/backstage-plugins/blob/main/plugins/blackduck/README.md)\n\n## Configuration\n\nAdd the following into your `app-config.yaml`\n### Config\n```yaml\nblackduck:\n  host: https://blackduck.yourcompany.com/api\n  token: YOUR_API_TOKEN\n```\n\nAdd the following into your catalog\n### Catalog\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: backstage\n  annotations:\n    blackduck/project: YOUR_PROJECT_NAME/YOUR_PROJECT_VERSION\n```",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "",
+  "updated": "2024-03-27T21:53:34.295Z",
+  "version": "0.1.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2024-03-27T21:53:34.295Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2024-03-15T14:34:20.566Z",
+      "version": "0.1.0-next"
+    },
+    {
+      "date": "2023-10-30T22:45:03.933Z",
+      "version": "1.2.0"
+    }
+  ]
+}

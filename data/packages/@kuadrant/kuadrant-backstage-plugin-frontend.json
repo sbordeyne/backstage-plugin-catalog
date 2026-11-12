@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2025-11-04T18:07:43.655Z",
+  "deprecated": "",
+  "description": "Backstage plugin for Kuadrant - enables developer portals for API access management using Kuadrant Gateway API primitives.",
+  "homepage": "https://github.com/Kuadrant/kuadrant-backstage-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "afil",
+    "jasonmadigan",
+    "pstefans",
+    "rlawton"
+  ],
+  "name": "@kuadrant/kuadrant-backstage-plugin-frontend",
+  "plugin_id": "kuadrant",
+  "readme": "# Kuadrant Plugin for Backstage/RHDH\n\nBackstage plugin for Kuadrant - enables developer portals for API access management using Kuadrant Gateway API primitives.\n\n**For installation instructions**, see [docs/installation.md](../../docs/installation.md).\n\n## Features\n\n- **API Access Management**: Request API keys for Kuadrant-protected APIs\n- **Access Tiers**: Support for multiple access tiers with different rate limits via PlanPolicy\n- **User Identity**: Integrates with Backstage identity API for user-specific API keys\n- **Policy Visibility**: View AuthPolicies, RateLimitPolicies, and PlanPolicies\n- **API Key Management**: View, create, and delete API keys\n- **Approval Workflow**: API owners can approve/reject API access requests\n- **APIProduct Integration**: Sync APIProduct custom resources from Kubernetes\n\n## Components\n\n### Pages\n\n- **`KuadrantPage`** - Main page showing API products list and approval queue\n\n### Entity Content\n\n- **`EntityKuadrantApiKeysContent`** - API keys management tab for API entities\n- **`EntityKuadrantApiProductInfoContent`** - APIProduct details and plan information tab\n- **`EntityKuadrantApiAccessCard`** - Quick API key request card for API entity overview\n\n### Other\n\n- **`ApprovalQueueCard`** - Displays pending API key requests for API owners\n- **`CreateAPIProductDialog`** - Dialog for creating new API products\n\n## Usage\n\n### For API Consumers\n\n1. Navigate to an API entity in the catalog\n2. Click the \"API Keys\" tab\n3. Click \"Request API Access\"\n4. Select a tier (bronze, silver, gold) and provide use case\n5. Wait for approval from the API owner\n6. Once approved, your API key will appear in the API Keys tab\n\n### For API Owners\n\n1. Navigate to the Kuadrant page\n2. View all API products synced from Kubernetes\n3. Create new API products by selecting an HTTPRoute and configuring:\n   - Display name and description\n   - Approval mode (manual or automatic)\n   - Publish status (draft or published)\n4. Approve or reject pending API key requests in the approval queue\n\n## Related Documentation\n\n- [Installation Guide](../../docs/installation.md)\n- [RBAC Permissions](../../docs/rbac-permissions.md)\n- [API Reference](../../docs/api-reference.md)\n- [Backend Plugin](../kuadrant-backend/README.md)\n",
+  "repository": "https://github.com/Kuadrant/kuadrant-backstage-plugin/tree/HEAD/plugins/kuadrant",
+  "role": "frontend-plugin",
+  "scope": "@kuadrant",
+  "updated": "2026-09-24T14:58:19.333Z",
+  "version": "0.5.0",
+  "version_count": 79,
+  "versions": [
+    {
+      "date": "2026-09-24T14:58:19.333Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-07-21T13:20:39.037Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-07-07T13:14:17.709Z",
+      "version": "0.4.0-dev3-0da0695"
+    },
+    {
+      "date": "2026-07-06T16:43:59.035Z",
+      "version": "0.4.0-dev2-3c8348b"
+    },
+    {
+      "date": "2026-07-02T10:27:12.082Z",
+      "version": "0.4.0-dev1"
+    },
+    {
+      "date": "2026-06-17T13:39:41.300Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-06-17T11:03:16.995Z",
+      "version": "0.0.2-dev-18c7ab0"
+    },
+    {
+      "date": "2026-06-12T09:50:01.406Z",
+      "version": "0.3.0-aaa46b4"
+    },
+    {
+      "date": "2026-03-25T16:51:50.305Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-03-16T17:20:38.185Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-03-16T16:26:46.107Z",
+      "version": "0.2.0-2517b82"
+    },
+    {
+      "date": "2026-02-23T15:04:58.530Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-02-13T17:43:27.051Z",
+      "version": "0.0.2-dev-8f9aa1e"
+    },
+    {
+      "date": "2026-02-12T17:14:28.971Z",
+      "version": "0.0.2-dev-8189c1c"
+    },
+    {
+      "date": "2026-02-12T15:54:59.351Z",
+      "version": "0.0.2-dev-9be93a3"
+    }
+  ]
+}

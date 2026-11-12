@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2023-07-21T08:00:15.674Z",
+  "deprecated": "",
+  "description": "This is the Tekton Pipelines frontend plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jquad-group"
+  ],
+  "name": "backstage-plugin-tekton-pipelines-plugin",
+  "plugin_id": "",
+  "readme": "# tekton-pipelines-plugin\n\nThis is the Tekton Pipelines frontend plugin.\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nAccess the frontend plugin by running `yarn start` in the root directory of the plugin, and then navigate to /tekton-pipelines.\n\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads. It is only meant for local development, and the setup for it can be found inside the /dev directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2023-07-21T08:00:15.980Z",
+  "version": "1.0.0-beta.1",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-07-21T08:00:15.980Z",
+      "version": "1.0.0-beta.1"
+    }
+  ]
+}

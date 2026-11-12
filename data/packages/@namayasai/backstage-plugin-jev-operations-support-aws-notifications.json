@@ -1,0 +1,38 @@
+{
+  "author": "",
+  "created": "2026-09-19T13:14:51.753Z",
+  "deprecated": "",
+  "description": "Optional CloudWatch alarm notification module for Jev Operations Support",
+  "homepage": "https://github.com/namayasai/backstage-jev-operations-support#readme",
+  "keywords": [
+    "aws",
+    "backstage",
+    "backstage-plugin",
+    "cloudwatch",
+    "jev",
+    "notifications"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "namayasai"
+  ],
+  "name": "@namayasai/backstage-plugin-jev-operations-support-aws-notifications",
+  "plugin_id": "jev-operations-support",
+  "readme": "# Jev AWS notifications module\n\nThis optional backend module subscribes to an Events topic populated by the\nBackstage AWS SQS events module. It validates an SNS envelope and CloudWatch\nalarm payload, saves one standard Backstage notification to the configured\ngroup or user entities under the fixed `jev-aws-alerts` topic, and then records\na Jev incident result when a Jev API key is configured and the per-process\nevaluation bound has capacity.\n\nBecause `@backstage/plugin-notifications-backend` does not persist\n`payload.metadata`, the alarm context and the Jev result are kept in one\nplugin-owned table (`jev_aws_alert_details`) in the Backstage database the host\nalready provides to the `jev-operations-support` plugin, created by the packaged\nmigration in `migrations/`. The module also adds the user-authenticated route\n`GET /api/jev-operations-support/aws-alerts`, which returns the signed-in user's\nown alert notifications with those details restored. Detail rows are kept for 30\ndays; an alert without them stays visible.\n\nIt requires the parent\n`@namayasai/backstage-plugin-jev-operations-support-backend` plugin at the same\n0.4.0 version, whose `/client` export it imports. Alert delivery is best effort:\nthe standard SQS publisher and Events service cannot guarantee redelivery if\nNotifications storage fails. See\n[the AWS notifications guide](../../docs/aws-notifications.md).\n\nApache-2.0. Experimental v0.4.0.\n",
+  "repository": "https://github.com/namayasai/backstage-jev-operations-support",
+  "role": "backend-plugin-module",
+  "scope": "@namayasai",
+  "updated": "2026-09-20T13:35:50.898Z",
+  "version": "0.4.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-09-20T13:35:50.898Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-09-19T13:14:52.065Z",
+      "version": "0.3.0"
+    }
+  ]
+}

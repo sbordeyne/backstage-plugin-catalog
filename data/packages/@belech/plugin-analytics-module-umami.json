@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2023-03-23T15:58:47.899Z",
+  "deprecated": "",
+  "description": "This plugin provides an opinionated implementation of the Backstage Analytics API for [umami](https://umami.is/).",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "belech"
+  ],
+  "name": "@belech/plugin-analytics-module-umami",
+  "plugin_id": "",
+  "readme": "# Backstage Analytics Module: Umami Analytics\n\nThis plugin provides an opinionated implementation of the Backstage Analytics API for [umami](https://umami.is/).\n\n## Installation\n\n1. Install the plugin package in your Backstage app:\n\n```sh\n# From your Backstage root directory\n\nyarn add --cwd packages/app @belech/plugin-analytics-module-umami\n```\n\n2. Wire up the API implementation to your App:\n\n```tsx\n// packages/app/src/apis.ts\nimport {\n  analyticsApiRef,\n  configApiRef,\n  identityApiRef,\n} from '@backstage/core-plugin-api';\nimport { UmamiAnalytics } from '@belech/plugin-analytics-module-umami';\n\nexport const apis: AnyApiFactory[] = [\n  // Instantiate and register the GA Analytics API Implementation.\n  createApiFactory({\n    api: analyticsApiRef,\n    deps: { configApi: configApiRef },\n    factory: ({ configApi }) =>\n      UmamiAnalytics.fromConfig(configApi),\n    }),\n];\n```\n\n3. Configure the plugin in your `app-config.yaml`:\n\n```yaml\napp:\n  analytics:\n    umami:\n      enabled: true\n      url: http://localhost:4000\n      authToken: GENERATED_UMAMI_AUTH_TOKEN\n      websiteId: SOME_WEBSITE_ID\n```\n\nThe websiteId can be retrieved in the umami Dashboard.\n\nFor generating the API token, see the [umami documentation](https://umami.is/docs/api).\n\n\n## Caveats\n\nThe event tracking is very rudemantary, as the original purpose of this plugin was just to get a feeling how users navigate through Backstage, as well as umami does not have much options for more advanced tracking.\n\n## Local development\n\nFor testing / local development an umami instance needs to be started like described in the [umami documentation](https://umami.is/docs/install). \n\nA very easy setup would be through docker-compose:\n\n```yaml\nversion: '3'\nservices:\n  umami:\n    image: ghcr.io/umami-software/umami:postgresql-latest\n    ports:\n      - \"4000:3000\"\n    environment:\n      DATABASE_URL: postgresql://umami:umami@db:5432/umami\n      DATABASE_TYPE: postgresql\n      HASH_SALT: replace-me-with-a-random-string\n    depends_on:\n      - db\n    restart: always\n  db:\n    image: postgres:12-alpine\n    environment:\n      POSTGRES_DB: umami\n      POSTGRES_USER: umami\n      POSTGRES_PASSWORD: umami\n    volumes:\n      - ./sql/schema.postgresql.sql:/docker-entrypoint-initdb.d/schema.postgresql.sql:ro\n      - umami-db-data:/var/lib/postgresql/data\n    restart: always\nvolumes:\n  umami-db-data:\n```\n",
+  "repository": "",
+  "role": "frontend-plugin-module",
+  "scope": "@belech",
+  "updated": "2023-03-24T11:32:53.259Z",
+  "version": "0.1.4",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2023-03-24T11:32:53.259Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2023-03-24T02:11:08.258Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-03-24T01:33:06.299Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-03-24T01:20:43.751Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-03-23T15:58:48.493Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2025-08-18T21:26:39.025Z",
+  "deprecated": "",
+  "description": "todo: make it",
+  "homepage": "https://github.com/remunda/backstage-plugins#readme",
+  "keywords": [],
+  "license": "",
+  "maintainers": [
+    "remunda"
+  ],
+  "name": "@remunda/backstage-plugin-datacontract-backend",
+  "plugin_id": "backstage-plugin-datacontract-backend",
+  "readme": "todo: make it\n",
+  "repository": "https://github.com/remunda/backstage-plugins",
+  "role": "backend-plugin",
+  "scope": "@remunda",
+  "updated": "2025-08-18T21:26:39.361Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-08-18T21:26:39.361Z",
+      "version": "0.1.0"
+    }
+  ]
+}

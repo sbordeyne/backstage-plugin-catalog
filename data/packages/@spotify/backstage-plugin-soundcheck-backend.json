@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2023-01-05T15:33:39.395Z",
+  "deprecated": "",
+  "description": "Ensure quality, reliability and alignment of software development with codified checks and guidance.",
+  "homepage": "https://backstage.spotify.com",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "maintainers": [
+    "spotify-eng"
+  ],
+  "name": "@spotify/backstage-plugin-soundcheck-backend",
+  "plugin_id": "soundcheck",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@spotify",
+  "updated": "2026-10-23T12:27:35.817Z",
+  "version": "0.33.3",
+  "version_count": 94,
+  "versions": [
+    {
+      "date": "2026-10-23T12:27:35.817Z",
+      "version": "0.33.3"
+    },
+    {
+      "date": "2026-10-13T22:04:49.570Z",
+      "version": "0.33.2"
+    },
+    {
+      "date": "2026-10-07T18:05:08.756Z",
+      "version": "0.33.1"
+    },
+    {
+      "date": "2026-09-29T16:31:52.712Z",
+      "version": "0.33.0"
+    },
+    {
+      "date": "2026-09-17T14:12:48.753Z",
+      "version": "0.32.0"
+    },
+    {
+      "date": "2026-08-25T15:12:15.449Z",
+      "version": "0.31.1"
+    },
+    {
+      "date": "2026-08-20T15:31:02.151Z",
+      "version": "0.31.0"
+    },
+    {
+      "date": "2026-08-18T17:30:00.779Z",
+      "version": "0.30.1"
+    },
+    {
+      "date": "2026-08-13T18:01:40.117Z",
+      "version": "0.30.0"
+    },
+    {
+      "date": "2026-07-17T16:16:11.379Z",
+      "version": "0.29.0"
+    },
+    {
+      "date": "2026-06-19T07:25:52.999Z",
+      "version": "0.28.0"
+    },
+    {
+      "date": "2026-05-26T11:51:37.801Z",
+      "version": "0.27.0"
+    },
+    {
+      "date": "2026-04-20T17:45:50.089Z",
+      "version": "0.26.1"
+    },
+    {
+      "date": "2026-04-17T09:03:36.481Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-04-03T20:28:01.540Z",
+      "version": "0.25.2"
+    }
+  ]
+}

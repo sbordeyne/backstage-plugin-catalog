@@ -1,0 +1,56 @@
+{
+  "author": "Rui Valim",
+  "created": "2025-12-07T17:53:42.410Z",
+  "deprecated": "",
+  "description": "A custom Backstage scaffolder action to apply any Kubernetes resource.",
+  "homepage": "https://github.com/Ruivalim/kubernetes-apply#readme",
+  "keywords": [
+    "apply",
+    "backstage",
+    "backstage-custom-action",
+    "backstage-plugin",
+    "backstage-scaffolder",
+    "backstage-template",
+    "kubectl",
+    "kubernetes"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ruivalim"
+  ],
+  "name": "@ruivalim/kubernetes-apply",
+  "plugin_id": "scaffolder",
+  "readme": "# Kubernetes Apply for Backstage\n\nA custom Backstage scaffolder action that enables server-side apply of Kubernetes manifests.\n\n## What\n\nThis action allows you to apply any Kubernetes resource directly from Backstage templates. It uses the Kubernetes server-side apply mechanism to create or update resources in your cluster.\n\n## Why\n\nUse this action when you need to provision Kubernetes resources as part of your Backstage software templates. Common use cases include:\n\n- Creating ArgoCD Applications for GitOps deployments\n- Provisioning namespaces and resource quotas\n- Setting up RBAC resources\n- Deploying any custom Kubernetes resource as part of template scaffolding\n\n## Installation\n\nAdd the package to your Backstage backend:\n\n```bash\nyarn --cwd packages/backend add @ruivalim/kubernetes-apply\n```\n\nThen register the module in `packages/backend/src/index.ts`:\n\n```typescript\nbackend.add(import('@ruivalim/kubernetes-apply'));\n```\n\nThat's it, `kubernetes:apply` shows up in the list of installed actions (`/create/actions`).\n\n### Registering the action yourself\n\nIf you already have your own scaffolder module, add the action there instead:\n\n```typescript\nimport { createBackendModule } from '@backstage/backend-plugin-api';\nimport { scaffolderActionsExtensionPoint } from '@backstage/plugin-scaffolder-node';\nimport { kubernetesApply } from '@ruivalim/kubernetes-apply';\n\nexport default createBackendModule({\n  pluginId: 'scaffolder',\n  moduleId: 'custom-actions',\n  register(env) {\n    env.registerInit({\n      deps: {\n        scaffolder: scaffolderActionsExtensionPoint,\n      },\n      async init({ scaffolder }) {\n        scaffolder.addActions(kubernetesApply());\n      },\n    });\n  },\n});\n```\n\n## Which cluster it talks to\n\nThe action uses the standard kubeconfig lookup of `@kubernetes/client-node`, the same one `kubectl` uses:\n\n1. the file in the `KUBECONFIG` environment variable, if set;\n2. otherwise `~/.kube/config` of the user running the backend, **with its current context**;\n3. otherwise the in-cluster ServiceAccount, when the backend runs inside Kubernetes.\n\nWhen you run Backstage locally, double check the current context before running a template, since it is the cluster that will receive the manifest.\n\n## Usage\n\n### Basic Example\n\nApply a manifest with inline YAML content:\n\n```yaml\nsteps:\n  - id: apply-namespace\n    name: Create Namespace\n    action: kubernetes:apply\n    input:\n      namespaced: false\n      manifest: |\n        apiVersion: v1\n        kind: Namespace\n        metadata:\n          name: ${{ parameters.namespace }}\n```\n\n### Several Resources at Once\n\nA manifest can hold several documents separated by `---`. They are validated first and then applied in order:\n\n```yaml\nsteps:\n  - id: apply-app\n    name: Create Namespace and Quota\n    action: kubernetes:apply\n    input:\n      namespaced: false\n      manifest: |\n        apiVersion: v1\n        kind: Namespace\n        metadata:\n          name: ${{ parameters.namespace }}\n        ---\n        apiVersion: v1\n        kind: ResourceQuota\n        metadata:\n          name: default\n          namespace: ${{ parameters.namespace }}\n        spec:\n          hard:\n            pods: \"20\"\n```\n\n### Apply from File\n\nApply a manifest from a file in the workspace (for example one written by `fetch:template`):\n\n```yaml\nsteps:\n  - id: apply-deployment\n    name: Apply Deployment\n    action: kubernetes:apply\n    input:\n      namespaced: true\n      manifestFile: ./kubernetes/deployment.yaml\n```\n\n### ArgoCD Application Example\n\n```yaml\nsteps:\n  - id: create-argocd-app\n    name: Create ArgoCD Application\n    action: kubernetes:apply\n    input:\n      namespaced: true\n      manifest: |\n        apiVersion: argoproj.io/v1alpha1\n        kind: Application\n        metadata:\n          name: ${{ parameters.name }}\n          namespace: argocd\n        spec:\n          project: default\n          source:\n            repoURL: ${{ parameters.repoUrl }}\n            path: manifests\n            targetRevision: main\n          destination:\n            server: https://kubernetes.default.svc\n            namespace: ${{ parameters.namespace }}\n          syncPolicy:\n            automated:\n              selfHeal: true\n              prune: true\n```\n\n## Parameters\n\n### manifest (optional)\n\nThe YAML content of the Kubernetes manifest to apply. Use this for inline manifest definitions.\n\n### manifestFile (optional)\n\nPath to a file containing the Kubernetes manifest to apply, relative to the template workspace. Paths that point outside the workspace are rejected.\n\nNote: Provide either `manifest` or `manifestFile`, not both.\n\n### namespaced (required)\n\nBoolean indicating whether the resource is namespaced or cluster-scoped.\n\n- Set to `true` for namespaced resources (Deployment, Service, ConfigMap, etc.)\n- Set to `false` for cluster-scoped resources (Namespace, ClusterRole, CustomResourceDefinition, etc.)\n\nWith `true`, every document must have `metadata.namespace`.\n\n## Dry Run\n\nThe action supports the template editor's dry run. In a dry run the manifest is read and validated, and the log lists what would be applied, but nothing is sent to the cluster.\n\n> Up to 0.1.x the dry run applied the manifest for real. Upgrade if you use the template editor.\n\n## Requirements\n\n- Backstage with the new backend system (tested on Backstage 1.55)\n- Node.js 22 or 24\n\nThe ServiceAccount running your Backstage application must have sufficient RBAC permissions to create the resources you want to apply. Ensure your cluster configuration grants the necessary permissions.\n\n## Supported Resources\n\nThis action supports all Kubernetes resources including:\n\n- Core resources (v1): ConfigMap, Secret, Service, Namespace, etc.\n- Apps resources (apps/v1): Deployment, StatefulSet, DaemonSet, etc.\n- Custom resources: ArgoCD Applications, Crossplane Claims, etc.\n\nThe action automatically handles both core API resources (apiVersion: v1) and grouped API resources (apiVersion: apps/v1).\n\nResources are applied with server-side apply, using `backstage` as the field manager and forcing conflicts, so Backstage takes ownership of the fields it sets.\n",
+  "repository": "https://github.com/Ruivalim/kubernetes-apply/tree/HEAD/.",
+  "role": "backend-plugin-module",
+  "scope": "@ruivalim",
+  "updated": "2026-09-24T01:34:56.746Z",
+  "version": "0.2.0",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-09-24T01:34:56.746Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-12-07T20:16:20.866Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-12-07T19:39:07.290Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-12-07T18:25:41.991Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-12-07T18:01:49.160Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-12-07T17:53:42.637Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "author": "Amazon Web Services",
+  "created": "2022-06-20T16:52:43.458Z",
+  "deprecated": "",
+  "description": "AWS Proton Plugin for Backstage",
+  "homepage": "https://github.com/awslabs/aws-proton-plugins-for-backstage#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aws-proton-releaser",
+    "cliguori"
+  ],
+  "name": "@aws/aws-proton-plugin-for-backstage",
+  "plugin_id": "",
+  "readme": "# AWS Proton frontend UI plugin for Backstage\n\nThis frontend UI plugin for Backstage provides an entity card to display the status of an [AWS Proton](https://aws.amazon.com/proton/) service.\n\n![AWS Proton Service entity card](../../docs/images/proton-entity-card.png 'AWS Proton Service entity card')\n\n## Installation\n\nSee the [AWS Proton plugins for Backstage installation guide](../../docs/install.md).\n\n## Usage\n\nFor information about using this plugin, see the following documents:\n\n- [AWS Proton plugins for Backstage reference](../../docs/reference.md)\n- [Tutorial: using the AWS Proton plugins for Backstage](../../docs/tutorial.md)\n\n## Development\n\nFor information about developing this plugin locally, see [Developing the AWS Proton plugins for Backstage](../../docs/developing.md).\n",
+  "repository": "https://github.com/awslabs/aws-proton-plugins-for-backstage/tree/HEAD/plugins/aws-proton",
+  "role": "frontend-plugin",
+  "scope": "@aws",
+  "updated": "2023-04-19T15:12:57.013Z",
+  "version": "0.2.2",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2023-04-19T15:12:57.013Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2023-01-19T20:04:23.383Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2022-12-20T21:18:49.113Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2022-12-05T16:37:47.109Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2022-11-14T23:51:52.504Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2022-11-11T04:21:42.632Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2022-11-09T05:21:35.043Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2022-07-19T21:38:55.425Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2022-06-21T17:02:28.603Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2022-06-21T16:53:53.132Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2022-06-20T16:52:43.680Z",
+      "version": "0.1.0"
+    }
+  ]
+}

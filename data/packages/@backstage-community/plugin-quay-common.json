@@ -1,0 +1,86 @@
+{
+  "author": "Red Hat",
+  "created": "2024-11-14T16:08:07.211Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-quay-common",
+  "plugin_id": "quay",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/quay/plugins/quay-common",
+  "role": "common-library",
+  "scope": "@backstage-community",
+  "updated": "2026-09-15T00:01:06.672Z",
+  "version": "1.23.1",
+  "version_count": 31,
+  "versions": [
+    {
+      "date": "2026-09-15T00:01:06.672Z",
+      "version": "1.23.1"
+    },
+    {
+      "date": "2026-09-04T13:21:50.597Z",
+      "version": "1.23.0"
+    },
+    {
+      "date": "2026-08-28T08:46:40.843Z",
+      "version": "1.22.1"
+    },
+    {
+      "date": "2026-06-25T18:38:27.192Z",
+      "version": "1.22.0"
+    },
+    {
+      "date": "2026-06-11T09:02:04.583Z",
+      "version": "1.21.0"
+    },
+    {
+      "date": "2026-05-21T09:59:47.841Z",
+      "version": "1.20.0"
+    },
+    {
+      "date": "2026-03-25T14:43:53.702Z",
+      "version": "1.19.0"
+    },
+    {
+      "date": "2026-03-15T20:47:55.983Z",
+      "version": "1.18.1"
+    },
+    {
+      "date": "2026-03-07T06:29:21.819Z",
+      "version": "1.18.0"
+    },
+    {
+      "date": "2026-02-12T11:12:08.627Z",
+      "version": "1.17.1"
+    },
+    {
+      "date": "2026-01-31T06:14:34.540Z",
+      "version": "1.17.0"
+    },
+    {
+      "date": "2026-01-09T23:05:30.051Z",
+      "version": "1.16.0"
+    },
+    {
+      "date": "2025-12-15T09:30:12.599Z",
+      "version": "1.15.0"
+    },
+    {
+      "date": "2025-12-12T23:44:49.728Z",
+      "version": "1.14.0"
+    },
+    {
+      "date": "2025-10-29T11:32:35.498Z",
+      "version": "1.13.0"
+    }
+  ]
+}

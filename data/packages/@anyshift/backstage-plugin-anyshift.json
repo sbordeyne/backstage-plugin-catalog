@@ -1,0 +1,90 @@
+{
+  "author": "",
+  "created": "2026-07-22T19:44:13.393Z",
+  "deprecated": "",
+  "description": "Read-only Anyshift infrastructure context for Backstage",
+  "homepage": "https://github.com/anyshift-io/backstage-plugins#readme",
+  "keywords": [
+    "anyshift",
+    "backstage",
+    "catalog",
+    "infrastructure"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pcholl22",
+    "safwentrabelsi",
+    "sjourdan"
+  ],
+  "name": "@anyshift/backstage-plugin-anyshift",
+  "plugin_id": "anyshift",
+  "readme": "# `@anyshift/backstage-plugin-anyshift`\n\nNew-frontend-system plugin for the Anyshift infrastructure graph. Installing the package in an app\ncreated with `@backstage/frontend-defaults` and configured with `app.packages: all` discovers its\ndashboard, Cloud inventory page, navigation items, API factory, and entity content automatically.\n\nThe Cloud page lists provider-managed infrastructure Resources with searchable type, account,\nregion, and ownership metadata. Cloud Resource entities also receive a generic read-only page for\ntheir ARN, provider console link, and catalog relationships, independently of whether the resource\nsupports an Anyshift service brief.\n\nThe package has no legacy frontend entry point. Add the corresponding\n`@anyshift/backstage-plugin-anyshift-backend` package to the Backstage backend and configure one\nAnyshift project. See the [integration guide](../../README.md) for the complete setup.\n",
+  "repository": "https://github.com/anyshift-io/backstage-plugins/tree/HEAD/plugins/anyshift",
+  "role": "frontend-plugin",
+  "scope": "@anyshift",
+  "updated": "2026-09-23T08:09:30.999Z",
+  "version": "0.1.0-beta.26",
+  "version_count": 25,
+  "versions": [
+    {
+      "date": "2026-09-23T08:09:30.999Z",
+      "version": "0.1.0-beta.26"
+    },
+    {
+      "date": "2026-09-22T16:42:46.815Z",
+      "version": "0.1.0-beta.25"
+    },
+    {
+      "date": "2026-09-22T15:25:31.179Z",
+      "version": "0.1.0-beta.24"
+    },
+    {
+      "date": "2026-09-22T13:36:57.049Z",
+      "version": "0.1.0-beta.23"
+    },
+    {
+      "date": "2026-08-31T15:38:45.194Z",
+      "version": "0.1.0-beta.22"
+    },
+    {
+      "date": "2026-08-31T15:04:45.568Z",
+      "version": "0.1.0-beta.21"
+    },
+    {
+      "date": "2026-08-20T10:35:13.180Z",
+      "version": "0.1.0-beta.20"
+    },
+    {
+      "date": "2026-08-20T09:17:56.197Z",
+      "version": "0.1.0-beta.19"
+    },
+    {
+      "date": "2026-08-20T08:04:06.696Z",
+      "version": "0.1.0-beta.18"
+    },
+    {
+      "date": "2026-08-14T12:30:36.185Z",
+      "version": "0.1.0-beta.17"
+    },
+    {
+      "date": "2026-08-12T09:56:02.898Z",
+      "version": "0.1.0-beta.16"
+    },
+    {
+      "date": "2026-08-12T05:00:32.173Z",
+      "version": "0.1.0-beta.15"
+    },
+    {
+      "date": "2026-08-07T22:35:58.839Z",
+      "version": "0.1.0-beta.14"
+    },
+    {
+      "date": "2026-08-07T13:43:36.996Z",
+      "version": "0.1.0-beta.13"
+    },
+    {
+      "date": "2026-08-07T11:55:06.293Z",
+      "version": "0.1.0-beta.12"
+    }
+  ]
+}

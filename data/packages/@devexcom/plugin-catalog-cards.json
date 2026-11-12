@@ -1,0 +1,42 @@
+{
+  "author": "",
+  "created": "2025-09-06T15:05:55.202Z",
+  "deprecated": "",
+  "description": "A professional Backstage plugin that provides a rich card view for the catalog with real-time search, infinite scroll, and modern UX design",
+  "homepage": "https://github.com/devexcom/backstage-plugins#readme",
+  "keywords": [
+    "backstage",
+    "cards",
+    "catalog",
+    "frontend",
+    "plugin",
+    "ui"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "devexcom"
+  ],
+  "name": "@devexcom/plugin-catalog-cards",
+  "plugin_id": "catalog-cards",
+  "readme": "# Catalog Cards Plugin\n\nA Backstage plugin that provides a rich card view for the software catalog with infinite scroll and entity kind filtering.\n\n![alt text](assets/cardsv2.png)\n\n## Features\n\n- Card-based view for catalog entities with rich metadata display\n- Infinite scroll loading for better performance with large catalogs\n- Entity kind filtering tabs (All, API, Component, System, etc.)\n- Real-time search across entity names, descriptions, tags, and owners\n- Configurable entity exclusion via app-config\n- Professional design aligned with Backstage demo aesthetics\n- Avatar-based entity representation with lifecycle badges\n- Responsive design that works across devices\n- Integration with existing Backstage entity filtering\n\n## Installation\n\nAdd the plugin to your Backstage app:\n\n```bash\nyarn add @devexcom/plugin-catalog-cards\n```\n\n## Configuration\n\nConfigure which entity kinds to exclude from the cards view in your `app-config.yaml`:\n\n```yaml\ncatalog:\n  cards:\n    excludeKinds:\n      - Location\n      - Template\n      - User\n```\n\nThis will hide the specified entity kinds from both the filtering tabs and the entity list.\n\n## Quick Start\n\n### Add to Backstage Navigation\n\n1. **Add to App Routes** - In `packages/app/src/App.tsx`:\n\n```tsx\nimport { Route } from 'react-router-dom';\nimport { CatalogCardsPage } from '@devexcom/plugin-catalog-cards';\n\nconst routes = (\n  <FlatRoutes>\n    {/* ... other routes */}\n    <Route path=\"/catalog-cards\" element={<CatalogCardsPage />} />\n  </FlatRoutes>\n);\n```\n\n2. **Add Navigation Item** - In `packages/app/src/components/Root/Root.tsx`:\n\n```tsx\nimport { CatalogIcon } from '@backstage/core-components';\n\n<SidebarGroup label=\"Menu\">\n  <SidebarItem icon={CatalogIcon} to=\"catalog-cards\" text=\"Catalog Cards\" />\n  {/* ... other navigation items */}\n</SidebarGroup>;\n```\n\n### Custom Implementation\n\nReplace your existing catalog page or add as a new route:\n\n```tsx\nimport React from 'react';\nimport { Page, Header, Content } from '@backstage/core-components';\nimport { EntityListProvider } from '@backstage/plugin-catalog-react';\nimport { CatalogCardsContent } from '@devexcom/plugin-catalog-cards';\n\nexport const CatalogPage = () => (\n  <Page themeId=\"tool\">\n    <Header title=\"Software Catalog\" />\n    <Content>\n      <EntityListProvider>\n        <CatalogCardsContent\n          pageSize={20}\n          density=\"comfortable\"\n          enableVirtualization={false}\n        />\n      </EntityListProvider>\n    </Content>\n  </Page>\n);\n```\n\n### Component Props\n\nThe `CatalogCardsContent` component accepts these optional props:\n\n- `pageSize` (number): Items loaded per batch, default 50\n- `density` ('comfortable' | 'compact'): Card size, default 'comfortable'\n- `expandDescriptionsDefault` (boolean): Whether to expand descriptions by default\n- `enableVirtualization` (boolean): Enable virtualization for very large lists\n\n### Search Functionality\n\nThe plugin includes a real-time search bar that filters entities across:\n\n- Entity names and display names\n- Descriptions\n- Tags and labels\n- Spec types (API, Component, etc.)\n- Owner information\n\nThe search is case-insensitive and updates results instantly as you type.\n\n## Customization\n\n### Individual Components\n\nYou can also use the individual components for custom layouts:\n\n```tsx\nimport { EntityCard, CatalogCardGrid } from '@devexcom/plugin-catalog-cards';\n\n// Individual entity card\n<EntityCard entity={entity} density=\"compact\" />\n\n// Cards grid without filtering\n<CatalogCardGrid\n  entities={entities}\n  loading={false}\n  density=\"comfortable\"\n/>\n```\n\n### Styling\n\nThe plugin uses Material-UI theming and will inherit your Backstage theme automatically.\n\n## Troubleshooting\n\n**No entities appear**: Ensure `EntityListProvider` wraps the component and your catalog backend is running.\n\n**React hook errors**: Make sure the plugin is installed as a direct dependency and you're not importing from src files.\n\n**Configuration not working**: Verify your `app-config.yaml` syntax and restart your Backstage instance after changes.\n",
+  "repository": "https://github.com/devexcom/backstage-plugins/tree/HEAD/workspaces/catalog-cards",
+  "role": "frontend-plugin",
+  "scope": "@devexcom",
+  "updated": "2025-09-18T19:14:38.641Z",
+  "version": "0.1.3",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-09-18T19:14:38.641Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-09-07T15:47:03.660Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-09-06T15:05:55.468Z",
+      "version": "0.1.1"
+    }
+  ]
+}

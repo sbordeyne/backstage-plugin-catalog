@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2026-03-10T06:30:51.987Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT OR Apache-2.0",
+  "maintainers": [
+    "yumike"
+  ],
+  "name": "@rwdocs/backstage-plugin-rw",
+  "plugin_id": "rw",
+  "readme": "",
+  "repository": "https://github.com/rwdocs/backstage-plugins/tree/HEAD/plugins/rw",
+  "role": "frontend-plugin",
+  "scope": "@rwdocs",
+  "updated": "2026-11-07T06:22:04.314Z",
+  "version": "0.2.0",
+  "version_count": 19,
+  "versions": [
+    {
+      "date": "2026-11-07T06:22:04.314Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-09-08T05:45:31.070Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2026-08-07T06:12:15.496Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2026-07-30T11:31:01.508Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2026-07-16T07:02:03.025Z",
+      "version": "0.1.14"
+    },
+    {
+      "date": "2026-07-14T04:16:21.628Z",
+      "version": "0.1.13"
+    },
+    {
+      "date": "2026-07-13T03:49:43.536Z",
+      "version": "0.1.12"
+    },
+    {
+      "date": "2026-07-10T11:57:11.440Z",
+      "version": "0.1.11"
+    },
+    {
+      "date": "2026-06-30T10:24:34.584Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2026-06-29T10:36:51.127Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2026-06-29T10:21:28.439Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2026-06-28T09:55:30.257Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2026-06-27T10:03:03.963Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2026-04-10T05:34:26.685Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2026-04-02T14:10:15.151Z",
+      "version": "0.1.4"
+    }
+  ]
+}

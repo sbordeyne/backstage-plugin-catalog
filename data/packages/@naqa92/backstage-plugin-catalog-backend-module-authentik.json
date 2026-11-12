@@ -1,0 +1,46 @@
+{
+  "author": "naqa92",
+  "created": "2026-05-15T10:25:38.920Z",
+  "deprecated": "",
+  "description": "Backstage catalog backend module that ingests users and groups from Authentik as Backstage User and Group entities.",
+  "homepage": "https://github.com/naqa92/authentik-backstage-plugin#readme",
+  "keywords": [
+    "authentik",
+    "backstage",
+    "backstage-plugin",
+    "catalog",
+    "identity",
+    "sso"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "naqa92"
+  ],
+  "name": "@naqa92/backstage-plugin-catalog-backend-module-authentik",
+  "plugin_id": "catalog",
+  "readme": "# Backstage Plugin — Authentik\n\n[![npm version](https://img.shields.io/npm/v/@naqa92/backstage-plugin-catalog-backend-module-authentik.svg)](https://www.npmjs.com/package/@naqa92/backstage-plugin-catalog-backend-module-authentik)\n[![CI](https://github.com/naqa92/authentik-backstage-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/naqa92/authentik-backstage-plugin/actions/workflows/ci.yml)\n[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/naqa92/authentik-backstage-plugin/badge)](https://scorecard.dev/viewer/?uri=github.com/naqa92/authentik-backstage-plugin)\n[![Docs](https://img.shields.io/badge/docs-mkdocs-blue)](https://naqa92.github.io/authentik-backstage-plugin/)\n[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)\n\nA Backstage catalog backend module that ingests users and groups from\n[Authentik](https://goauthentik.io/) and maps them to Backstage `User` and\n`Group` entities.\n\n## Quick install\n\n```bash\nyarn --cwd packages/backend add @naqa92/backstage-plugin-catalog-backend-module-authentik\n```\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@naqa92/backstage-plugin-catalog-backend-module-authentik'));\n```\n\n```yaml\n# app-config.yaml\ncatalog:\n  providers:\n    authentik:\n      baseUrl: https://authentik.example.com\n      token: ${AUTHENTIK_TOKEN}\n      excludeGroups: []\n```\n\n## Full documentation\n\nConfiguration reference, schedule customization, produced entities, token\npermissions, troubleshooting:\n\n**[https://naqa92.github.io/authentik-backstage-plugin/](https://naqa92.github.io/authentik-backstage-plugin/)**\n\n## Compatibility\n\n| Plugin version | Backstage version | Node    |\n| -------------- | ----------------- | ------- |\n| `0.1.x`        | `>=1.30`          | `>=24`  |\n\n## Contributing\n\nPRs welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Security issues:\n[SECURITY.md](SECURITY.md).\n\n## License\n\n[Apache-2.0](LICENSE) — © 2026 naqa92.\n",
+  "repository": "https://github.com/naqa92/authentik-backstage-plugin",
+  "role": "backend-plugin-module",
+  "scope": "@naqa92",
+  "updated": "2026-05-16T19:08:44.235Z",
+  "version": "0.1.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-05-16T19:08:44.235Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2026-05-16T17:56:48.983Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-05-15T10:48:37.544Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-05-15T10:25:39.169Z",
+      "version": "0.1.0"
+    }
+  ]
+}

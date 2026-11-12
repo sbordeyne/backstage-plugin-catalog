@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2024-08-17T18:48:19.591Z",
+  "deprecated": "",
+  "description": "Rootly Catalog processor Backstage",
+  "homepage": "https://github.com/rootlyhq/backstage-plugin-entity-processor",
+  "keywords": [
+    "backstage",
+    "plugin",
+    "rootly"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "alex-rootly",
+    "quentin-rootly"
+  ],
+  "name": "@rootly/backstage-plugin-entity-processor",
+  "plugin_id": "catalog",
+  "readme": "# Rootly plugin for Backstage\n\n[![npm version](https://badge.fury.io/js/@rootly%2Fbackstage-plugin-entity-processor.svg)](https://badge.fury.io/js/@rootly%2Fbackstage-plugin-entity-processor)\n[![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)\n\nThe Rootly plugin is a frontend plugin that displays Rootly services, incidents in Backstage. The plugin includes three components that can be integrated into Backstage:\n\n- The `RootlyPage` routable extension component which produces a standalone page with the following capabilities:\n\n  - View and search a list of entities\n  - View and search a list of services\n  - View and search a list of functionalities\n  - View and search a list of teams\n  - View and search a list of incidents\n  - View and search a list of catalog entities (with catalog selector)\n\n- The `RootlyOverviewCard` component which produces a summary of your entity with incidents over last 30 days and ongoing incidents. Also supports catalog entities with name, description, and properties display.\n\n- The `RootlyIncidentsPage` component which produces a dedicated page within your entity with details about ongoing and past incidents.\n\nYou can link and import entities in rootly services, functionalities, teams, and catalog entities through Backstage Web UI or through annotations.\n\n## Installation\n\n### Creating an Rootly API key\n\nBecause of the features provided by the plugin, an API key with full access to your Rootly domain is required.\n\n- Read access on services is needed to list services, write access to link entities to services.\n- Read access on functionalities is needed to list functionalities, write access to link entities to functionalities.\n- Read access on incidents needed to list incidents.\n\n1. Go to `Profile` -> `Manage API Keys`.\n\n2. Click on `Generate New API Key` button.\n\n3. Copy the key.\n\n   ![Creating Api Key](./docs/rootly-creating-api-key.png)\n\n### Backstage Setup\n\nAdd the plugin to your frontend app:\n\n```bash\nyarn --cwd packages/app add @rootly/backstage-plugin\n```\n\nAdd the plugin to your backend app:\n\n```bash\nyarn --cwd packages/backend add @rootly/backstage-plugin-entity-processor\n```\n\nConfigure the plugin in `app-config.yaml`. The proxy endpoint described below will allow the frontend\nto authenticate with Rootly without exposing your API key to users.\n\n```yaml\n# app-config.yaml\n\n# Rootly single-organization configuration example\nrootly:\n  rootly-main:\n    proxyPath: /rootly/api\n\n# Rootly multi-organizations example\nrootly:\n  rootly-main:\n    isDefault: true\n    proxyPath: /rootly/api\n  rootly-sandbox:\n    proxyPath: /rootly-sandbox/api\n\n...\n\nproxy:\n  endpoints:\n    '/rootly/api':\n      target: 'https://api.rootly.com'\n      headers:\n        Authorization: Bearer ${ROOTLY_MAIN_TOKEN}\n    '/rootly-sandbox/api':\n      target: 'https://api.rootly.com'\n      headers:\n        Authorization: Bearer ${ROOTLY_SANDBOX_TOKEN}\n```\n\n### Annotations\n\nAvailable annotations are the following:\n\n```yaml\nrootly.com/organization-id: rootly # Optional if you use Rootly multi organizations.\nrootly.com/service-id: 7a328a08-6701-445e-a1ad-ca2fb913ed1e # Use service-id or service-slug. Not both.\nrootly.com/service-name: ElastiSearch Staging\nrootly.com/service-slug: elasticsearch-staging # Use service-id or service-slug. Not both.\nrootly.com/service-auto-import: enabled # This will auto import the entity as a rootly service if we don't find any.\nrootly.com/functionality-id: 7a328a08-694f4e1b-abbc-4cf7-bba0-a403df30ed88 # Use functionality-id or functionality-slug. Not both.\nrootly.com/functionality-name: Login\nrootly.com/functionality-slug: login # Use functionality-id or functionality-slug. Not both.\nrootly.com/functionality-auto-import: enabled # This will auto import the entity as a rootly functionality if we don't find any.\nrootly.com/team-id: 39e77dcc-e056-4849-9dda-a362b2413e5c # Use team-id or team-slug. Not both.\nrootly.com/team-slug: infrastucture # Use team-id or team-slug. Not both.\nrootly.com/team-name: Infrastucture # Use team-id or team-slug. Not both.\nrootly.com/team-slug: infrastucture # Use team-id or team-slug. Not both.\nrootly.com/team-auto-import: enabled # This will auto import the entity as a rootly team if we don't find any.\nrootly.com/catalog-entity-id: 7a328a08-6701-445e-a1ad-ca2fb913ed1e # Use catalog-entity-id or catalog-entity-slug. Not both.\nrootly.com/catalog-entity-name: Enterprise\nrootly.com/catalog-entity-slug: enterprise # Use catalog-entity-id or catalog-entity-slug. Not both.\nrootly.com/catalog-entity-auto-import: enabled # This will auto import the entity as a rootly catalog entity if we don't find any.\nrootly.com/catalog-id: 7a328a08-6701-445e-a1ad-ca2fb913ed1e # Required for auto-import. The catalog to create the entity in.\nrootly.com/catalog-slug: customer-tier # Alternative to catalog-id. The catalog slug to find or create.\nrootly.com/catalog-description: Customer pricing tiers # Optional. Description for the catalog when auto-creating.\n```\n\n#### Attribute pass-through annotations\n\nYou can set any Rootly API attribute on services, functionalities, teams, and catalog entities using the `attr` prefix:\n\n```yaml\nrootly.com/service-attr-<api_attribute>: \"value\"\nrootly.com/functionality-attr-<api_attribute>: \"value\"\nrootly.com/team-attr-<api_attribute>: \"value\"\nrootly.com/catalog-entity-attr-<api_attribute>: \"value\"\n```\n\nValue coercion rules:\n- `\"true\"` / `\"false\"` → boolean\n- Values starting with `[` or `{` → parsed as JSON (arrays, objects)\n- Everything else → plain string\n\nExample:\n\n```yaml\nannotations:\n  rootly.com/service-slug: my-service\n  rootly.com/service-auto-import: enabled\n  rootly.com/service-attr-color: \"#FF5733\"\n  rootly.com/service-attr-notify_emails: '[\"oncall@company.com\",\"team@company.com\"]'\n  rootly.com/service-attr-slack_channels: '[{\"id\":\"C01ABC123\",\"name\":\"oncall-channel\"}]'\n  rootly.com/service-attr-show_uptime: \"true\"\n  rootly.com/service-attr-github_repository_name: \"myorg/my-service\"\n```\n\nHardcoded fields (`name`, `description`, `backstage_id`, `pagerduty_id`, `owner_group_ids`) always take precedence and cannot be overridden via pass-through annotations.\n\n#### Custom catalog property annotations\n\nYou can populate custom catalog properties (metadata fields) on services and catalog entities:\n\n```yaml\nrootly.com/service-property-<slug_or_id>: \"value\"\nrootly.com/catalog-entity-property-<slug_or_id>: \"value\"\n```\n\nThe key after the prefix is the catalog property slug or UUID. The value is passed as-is to the Rootly API.\n\nExample:\n\n```yaml\nannotations:\n  rootly.com/service-slug: my-service\n  rootly.com/service-property-impact-level: \"critical\"\n  rootly.com/service-property-slack-channel: '{\"id\":\"C01FE4P7458\",\"name\":\"service-channel\"}'\n```\n\n#### Example\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: elasticsearch-staging\n  description: |\n    elasticsearch-staging\n  annotations:\n    github.com/project-slug: backstage/backstage\n    backstage.io/techdocs-ref: dir:.\n    lighthouse.com/website-url: https://rootly.com\n    rootly.com/service-slug: elasticsearch-staging\n    pagerduty.com/service-id: <sample-service-service-id>\nspec:\n  type: grpc\n  owner: guests\n  lifecycle: experimental\n```\n\n#### Catalog Entity Example\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: enterprise-tier\n  description: Enterprise customer tier\n  annotations:\n    rootly.com/catalog-entity-slug: enterprise-tier\n    rootly.com/catalog-entity-auto-import: enabled\n    rootly.com/catalog-slug: customer-tier\n    rootly.com/catalog-description: Customer pricing tiers\nspec:\n  type: service\n  owner: guests\n  lifecycle: production\n```\n\n### Global\n\n#### `RootlyPage` component\n\n![Rootly page](./docs/rootly-global-page.png)\n\nExpose the Rootly global page:\n\n```jsx\n// packages/app/src/App.tsx\nimport { RootlyPage } from '@rootly/backstage-plugin';\n\n// ...\nconst AppRoutes = () => (\n  <FlatRoutes>\n    // ...\n    <Route path=\"/rootly\" element={<RootlyPage />} />\n    //{' '}\n    <Route\n      path=\"/rootly-sandbox\"\n      element={<RootlyPage organizationId=\"rootly-sandbox\" />}\n    />\n    // ...\n  </FlatRoutes>\n);\n```\n\nAdd a link to the sidebar:\n\n```jsx\n// packages/app/src/components/Root/Root.tsx\nimport ExtensionIcon from '@material-ui/icons/ExtensionIcon';\n\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n  <SidebarPage>\n    <Sidebar>\n      // ...\n      <SidebarItem icon={ExtensionIcon} to=\"rootly\" text=\"Rootly\" />\n      // <SidebarItem icon={ExtensionIcon} to=\"rootly-sandbox\" text=\"Rootly Sandbox\" />\n      // ...\n    </Sidebar>\n  </SidebarPage>\n);\n```\n\n### Entity\n\n#### `RootlyOverviewCard` component\n\n![Rootly overview page](./docs/rootly-entity-overview.png)\n\n```jsx\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  RootlyOverviewCard,\n  isRootlyAvailable,\n} from '@rootly/backstage-plugin';\n\n// For a service\nconst overviewContent = (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    // ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isRootlyAvailable}>\n        <Grid item sm={6}>\n          <RootlyOverviewCard />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n    // ...\n  </Grid>\n);\n```\n\n#### `RootlyIncidentsPage` component\n\n![Rootly incidents page](./docs/rootly-incidents-page.png)\n\n```jsx\n// packages/app/src/components/catalog/EntityPage.tsx\nimport { RootlyIncidentsPage } from '@rootly/backstage-plugin';\n\n// ...\nconst websiteEntityPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      {overviewContent}\n    </EntityLayout.Route>\n\n    // ...\n\n    <EntityLayout.Route path=\"/docs\" title=\"Docs\">\n      <EntityTechdocsContent />\n    </EntityLayout.Route>\n\n    <EntityLayout.Route path=\"/rootly\" title=\"Rootly\">\n      <EntitySwitch.Case if={isRootlyAvailable}>\n        <Grid item sm={6}>\n          <RootlyIncidentsPage />\n        </Grid>\n        // Rootly Multi Organization\n        // <Grid item sm={6}>\n        //   <RootlyIncidentsPage organizationId=\"rootly-sandbox\" />\n        // </Grid>\n      </EntitySwitch.Case>\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n\n// ...\nconst serviceEntityPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      {overviewContent}\n    </EntityLayout.Route>\n\n    // ...\n\n    <EntityLayout.Route path=\"/docs\" title=\"Docs\">\n      <EntityTechdocsContent />\n    </EntityLayout.Route>\n\n    <EntityLayout.Route path=\"/rootly\" title=\"Rootly\">\n      <RootlyIncidentsPage />\n      // Rootly Multi Organization\n      // <Grid item sm={6}>\n      //   <RootlyIncidentsPage organizationId=\"rootly-sandbox\" />\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n\n//...\nconst systemPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <>\n        {overviewContent}\n        <Grid container spacing={3} alignItems=\"stretch\">\n          {entityWarningContent}\n          <Grid item md={6}>\n            <EntityAboutCard variant=\"gridItem\" />\n          </Grid>\n          <Grid item md={6} xs={12}>\n            <EntityCatalogGraphCard variant=\"gridItem\" height={400} />\n          </Grid>\n          <Grid item md={6}>\n            <EntityHasComponentsCard variant=\"gridItem\" />\n          </Grid>\n          <Grid item md={6}>\n            <EntityHasApisCard variant=\"gridItem\" />\n          </Grid>\n          <Grid item md={6}>\n            <EntityHasResourcesCard variant=\"gridItem\" />\n          </Grid>\n        </Grid>\n      </>\n    </EntityLayout.Route>\n    \n    // ...\n\n    <EntityLayout.Route path=\"/rootly\" title=\"Rootly\">\n      // Make sure to add rootly.com/organization-id annotation to all the components part of this system\n      <RootlyIncidentsPage />\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n\n## Configuring the Entity Processor ( required )\n\nThe entity processor is a catalog backend module for the [new backend system](https://backstage.io/docs/backend-system/). It requires Backstage 1.48 or later (`@backstage/plugin-catalog-node` 2.x) and is tested against Backstage 1.55. Register it in `packages/backend/src/index.ts`:\n\n```ts\n// packages/backend/src/index.ts\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n\n...\n\nbackend.add(import('@rootly/backstage-plugin-entity-processor'));\n\nbackend.start();\n```\n\n## License\n\nThis library is under the [MIT](LICENSE) license.\n",
+  "repository": "https://github.com/rootlyhq/backstage-plugin-entity-processor",
+  "role": "backend-plugin-module",
+  "scope": "@rootly",
+  "updated": "2026-10-11T08:44:36.068Z",
+  "version": "1.4.0",
+  "version_count": 17,
+  "versions": [
+    {
+      "date": "2026-10-11T08:44:36.068Z",
+      "version": "1.4.0"
+    },
+    {
+      "date": "2026-07-30T05:02:52.629Z",
+      "version": "1.3.2"
+    },
+    {
+      "date": "2026-05-22T21:06:24.484Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2026-05-01T05:04:16.556Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-04-11T04:18:01.830Z",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2025-10-08T04:21:31.345Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2025-10-08T03:18:27.095Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2025-06-18T03:53:00.244Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-06-11T22:39:14.231Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2025-04-21T20:27:26.227Z",
+      "version": "1.0.0-beta.9"
+    },
+    {
+      "date": "2024-10-30T18:41:31.763Z",
+      "version": "1.0.0-beta.8"
+    },
+    {
+      "date": "2024-10-26T00:36:08.482Z",
+      "version": "1.0.0-beta.7"
+    },
+    {
+      "date": "2024-10-25T23:58:21.371Z",
+      "version": "1.0.0-beta.6"
+    },
+    {
+      "date": "2024-09-10T05:06:37.534Z",
+      "version": "1.0.0-beta.5"
+    },
+    {
+      "date": "2024-08-29T03:34:09.402Z",
+      "version": "1.0.0-beta.3"
+    }
+  ]
+}

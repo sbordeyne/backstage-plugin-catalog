@@ -1,0 +1,68 @@
+{
+  "author": "",
+  "created": "2025-07-09T17:24:59.486Z",
+  "deprecated": "",
+  "description": "Welcome to the signadot plugin!",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin",
+    "preview-environment",
+    "signadot"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "engineering-signadot"
+  ],
+  "name": "@signadot-lib/backstage-plugin",
+  "plugin_id": "signadot",
+  "readme": "# signadot\n\nWelcome to the signadot plugin!\n\n## Installation\n\n```bash\nyarn add --cwd packages/app @signadot-dev/backstage-plugin\n```\n\n## Getting started\n\n### Configuration\n\nAdd the following to your `app-config.yaml`:\n\n```yaml\nsignadot:\n  org: 'your-organization-name'\n  apiKey: 'your-api-key'\n```\n\nAnd also add the following proxy in `app-config.yaml`:\n```yaml\nproxy:\n  endpoints:\n    '/signadot':\n      target: https://api.signadot.com\n      credentials: require\n      changeOrigin: true\n      apiKey: ${SIGNADOT_API_KEY}\n      allowedHeaders:\n        - 'signadot-api-key'\n```\n\n## Components\n\n### SandboxesCard\n\nThe recommended way to use this plugin is to add the `SandboxesCard` component to your existing pages. Here are some examples of how you can use it in your homepage:\n\n#### Default View (All Sandboxes)\n```tsx\nimport { SandboxesCard } from '@signadot/backstage-plugin';\n\nexport const HomePage = () => (\n  <Grid container spacing={3}>\n    <Grid item xs={12}>\n      <SandboxesCard />\n    </Grid>\n  </Grid>\n);\n```\n![All Sandboxes](https://github.com/signadot/backstage-plugin/blob/main/docs/img/sandboxes-card.png)\n\n#### Filtered by Cluster\n```tsx\nimport { SandboxesCard } from '@signadot/backstage-plugin';\n\nexport const HomePage = () => (\n  <Grid container spacing={3}>\n    <Grid item xs={12}>\n      <SandboxesCard clusterName=\"dev\" />\n    </Grid>\n  </Grid>\n);\n```\n![Dev Cluster Sandboxes](https://github.com/signadot/backstage-plugin/blob/main/docs/img/sandboxes-card-dev.png)\n\n#### Custom Columns\n```tsx\nimport { SandboxesCard } from '@signadot/backstage-plugin';\n\nexport const HomePage = () => (\n  <Grid container spacing={3}>\n    <Grid item xs={12}>\n      <SandboxesCard columns={[\"name\", \"clusterName\"]} />\n    </Grid>\n  </Grid>\n);\n```\n![Filtered Cluster Sandboxes](https://github.com/signadot/backstage-plugin/blob/main/docs/img/sandboxes-card-filter-columns.png)\n\n### OverviewCard\n\nThe overview component is inteded to show summaries, overviews and more information related to your usage and so on.\n\n##### Default view\n```tsx\nimport { OverviewCard } from '@signadot/backstage-plugin';\n\nexport const HomePage = () => (\n  <Grid container spacing={3}>\n    <Grid item xs={12}>\n      <OverviewCard />\n    </Grid>\n  </Grid>\n);\n```\n![Dev Cluster Sandboxes](https://github.com/signadot/backstage-plugin/blob/main/docs/img/overview-all-tabs.png)\n\n##### Clusters Tab Only\n```tsx\nimport { OverviewCard } from '@signadot/backstage-plugin';\n\nexport const HomePage = () => (\n  <Grid container spacing={3}>\n    <Grid item xs={12}>\n      <OverviewCard defaultTab=\"clusters\" />\n    </Grid>\n  </Grid>\n);\n```\n![Clusters Tab](https://github.com/signadot/backstage-plugin/blob/main/docs/img/overview-clusters-tab.png)\n\n##### Selected Tabs\n```tsx\nimport { OverviewCard } from '@signadot/backstage-plugin';\n\nexport const HomePage = () => (\n  <Grid container spacing={3}>\n    <Grid item xs={12}>\n      <OverviewCard tabs={[\"sandboxes\", \"clusters\"]} />\n    </Grid>\n  </Grid>\n);\n```\n![Two Tabs](https://github.com/signadot/backstage-plugin/blob/main/docs/img/overview-two-tabs.png)\n\n## Component Props\n\n### SandboxesCard Props\n\n| Prop | Type | Default | Description |\n|------|------|---------|-------------|\n| `columns` | `Array<\"name\" \\| \"createdAt\" \\| \"updatedAt\" \\| \"routingKey\" \\| \"clusterName\" \\| \"labels\">` | `undefined` | Customize which columns to display |\n| `clusterName` | `string` | `undefined` | Filter sandboxes by cluster name |\n\n### OverviewCard Props\n\n| Prop | Type | Default | Description |\n|------|------|---------|-------------|\n| `title` | `string` | `\"Signadot Overview\"` | Custom title for the card |\n| `sandboxes` | `{ maxRecentSandboxes?: number }` | `{ maxRecentSandboxes: 5 }` | Configuration for the sandboxes tab |\n| `tabs` | `Array<\"notifications\" \\| \"sandboxes\" \\| \"clusters\">` | `[\"notifications\", \"sandboxes\", \"clusters\"]` | Specify which tabs to show |\n\n## Local Development\n\nYou can serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/signadot/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@signadot-lib",
+  "updated": "2025-07-15T14:54:42.064Z",
+  "version": "0.1.10-xrc.7",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2025-07-15T14:54:42.064Z",
+      "version": "0.1.10-xrc.7"
+    },
+    {
+      "date": "2025-07-11T20:01:16.499Z",
+      "version": "0.1.10-xrc.6"
+    },
+    {
+      "date": "2025-07-11T15:56:07.785Z",
+      "version": "0.1.10-xrc.5"
+    },
+    {
+      "date": "2025-07-11T15:53:39.081Z",
+      "version": "0.1.10-xrc.4"
+    },
+    {
+      "date": "2025-07-11T15:39:23.022Z",
+      "version": "0.1.10-xrc.3"
+    },
+    {
+      "date": "2025-07-11T14:18:28.211Z",
+      "version": "0.1.10-xrc.2"
+    },
+    {
+      "date": "2025-07-11T14:15:18.344Z",
+      "version": "0.1.10-xrc.1"
+    },
+    {
+      "date": "2025-07-11T14:13:25.094Z",
+      "version": "0.1.9-xrc.1"
+    },
+    {
+      "date": "2025-07-11T13:58:14.809Z",
+      "version": "0.1.4-xrc.1"
+    },
+    {
+      "date": "2025-07-09T22:19:44.031Z",
+      "version": "0.1.9"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "author": "",
+  "created": "2025-02-04T06:57:13.017Z",
+  "deprecated": "",
+  "description": "The catalog-policy backend module for the permission plugin.",
+  "homepage": "https://github.com/Infosys/openfga-plugin-backstage",
+  "keywords": [
+    "backstage",
+    "openfga",
+    "permissions",
+    "rbac"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aditya_kr",
+    "ambrishr"
+  ],
+  "name": "@infosys_ltd/backstage-plugin-permission-backend-module-catalog-policy",
+  "plugin_id": "permission",
+  "readme": "# @infosys_ltd/backstage-plugin-permission-backend-module-catalog-policy\n\nThe catalog-policy backend module for the permission plugin.\n\n\n",
+  "repository": "https://github.com/Infosys/openfga-plugin-backstage",
+  "role": "backend-plugin-module",
+  "scope": "@infosys_ltd",
+  "updated": "2025-02-05T10:37:12.249Z",
+  "version": "1.1.2",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-02-05T10:37:12.249Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2025-02-05T09:57:50.424Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2025-02-05T09:41:35.943Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-02-04T06:57:13.318Z",
+      "version": "1.0.0"
+    }
+  ]
+}

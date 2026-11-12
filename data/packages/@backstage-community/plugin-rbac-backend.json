@@ -1,0 +1,86 @@
+{
+  "author": "Red Hat",
+  "created": "2024-11-05T17:07:43.190Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-rbac-backend",
+  "plugin_id": "rbac",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/rbac/plugins/rbac-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T23:29:04.650Z",
+  "version": "8.1.8",
+  "version_count": 74,
+  "versions": [
+    {
+      "date": "2026-11-03T23:29:04.650Z",
+      "version": "8.1.8"
+    },
+    {
+      "date": "2026-11-03T21:59:34.583Z",
+      "version": "8.1.7"
+    },
+    {
+      "date": "2026-10-07T08:10:02.385Z",
+      "version": "8.1.6"
+    },
+    {
+      "date": "2026-10-02T11:45:38.986Z",
+      "version": "8.1.5"
+    },
+    {
+      "date": "2026-09-23T16:34:09.281Z",
+      "version": "8.1.4"
+    },
+    {
+      "date": "2026-09-21T14:55:09.076Z",
+      "version": "8.1.3"
+    },
+    {
+      "date": "2026-09-18T18:50:07.938Z",
+      "version": "8.1.2"
+    },
+    {
+      "date": "2026-09-16T05:46:24.712Z",
+      "version": "8.1.1"
+    },
+    {
+      "date": "2026-09-10T12:19:20.861Z",
+      "version": "8.1.0"
+    },
+    {
+      "date": "2026-09-10T11:11:57.259Z",
+      "version": "8.0.1"
+    },
+    {
+      "date": "2026-08-31T20:57:52.528Z",
+      "version": "8.0.0"
+    },
+    {
+      "date": "2026-08-14T13:10:04.314Z",
+      "version": "7.17.0"
+    },
+    {
+      "date": "2026-08-07T12:23:05.006Z",
+      "version": "7.16.2"
+    },
+    {
+      "date": "2026-07-21T19:38:53.580Z",
+      "version": "7.16.1"
+    },
+    {
+      "date": "2026-07-06T15:44:27.859Z",
+      "version": "7.16.0"
+    }
+  ]
+}

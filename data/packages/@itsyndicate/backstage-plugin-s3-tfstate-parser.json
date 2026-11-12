@@ -1,0 +1,75 @@
+{
+  "author": "ITsyndicate",
+  "created": "2024-11-05T09:01:49.476Z",
+  "deprecated": "",
+  "description": "## Description The S3 TFState Parser plugin displays categorized resources managed by Terraform. It retrieves resources from Terraform state files stored in AWS S3 and provides search and filtering functionalities for easy access to resource information.",
+  "homepage": "https://itsyndicate.org",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "maksym_yemleninov",
+    "volodymyr.voitovych"
+  ],
+  "name": "@itsyndicate/backstage-plugin-s3-tfstate-parser",
+  "plugin_id": "s3-tfstate-parser",
+  "readme": "# S3 TFState Parser\n\n## Description\nThe S3 TFState Parser plugin displays categorized resources managed by Terraform. It retrieves resources from Terraform state files stored in AWS S3 and provides search and filtering functionalities for easy access to resource information.\n\n## Functionality\n- Fetches Terraform-managed resources from AWS S3.\n- Displays resources categorized by type in a table.\n- Allows search by resource name, type, or ID.\n- Provides direct links to the AWS Console for individual resources.\n\n## Installation\nFrom your Backstage directory:\n\n```bash\nyarn --cwd packages/app add @internal/backstage-plugin-s3-tfstate-parser\n```\nExample: Add to entity overview\n\n\nIn `packages/app/src/components/catalog/EntityPage.tsx`, update the layout to include the S3 TFState Parser card:\n\n```typescript\nimport { Resources } from '@internal/backstage-plugin-s3-tfstate-parser';\n// ...\nconst entityPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      <Grid container spacing={3}>\n        ...\n        <Grid item xs={12} md={6}>\n          <Resources />\n        </Grid>\n      </Grid>\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n```\n",
+  "repository": "https://github.com/itsyndicate/itsyndicate-devops-platform-plugins/tree/HEAD/workspaces/S3-tfstate-parser/s3-tfstate-parser",
+  "role": "frontend-plugin",
+  "scope": "@itsyndicate",
+  "updated": "2024-11-15T11:19:09.751Z",
+  "version": "0.1.70",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2024-11-15T11:19:09.751Z",
+      "version": "0.1.70"
+    },
+    {
+      "date": "2024-11-15T11:06:46.400Z",
+      "version": "0.1.65"
+    },
+    {
+      "date": "2024-11-12T14:30:34.695Z",
+      "version": "0.1.60"
+    },
+    {
+      "date": "2024-11-12T12:30:43.751Z",
+      "version": "0.1.50"
+    },
+    {
+      "date": "2024-11-12T11:54:27.179Z",
+      "version": "0.1.45"
+    },
+    {
+      "date": "2024-11-12T11:49:45.290Z",
+      "version": "0.1.40"
+    },
+    {
+      "date": "2024-11-12T10:46:23.354Z",
+      "version": "0.1.35"
+    },
+    {
+      "date": "2024-11-12T10:19:20.413Z",
+      "version": "0.1.30"
+    },
+    {
+      "date": "2024-11-05T10:26:13.683Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2024-11-05T10:14:52.664Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2024-11-05T09:13:58.212Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2024-11-05T09:01:49.701Z",
+      "version": "0.1.10"
+    }
+  ]
+}

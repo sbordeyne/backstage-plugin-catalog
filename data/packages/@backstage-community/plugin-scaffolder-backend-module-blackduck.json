@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2025-02-23T17:21:17.841Z",
+  "deprecated": "",
+  "description": "The blackduck module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-scaffolder-backend-module-blackduck",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/blackduck/plugins/scaffolder-backend-module-blackduck",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-03-07T13:39:50.932Z",
+  "version": "0.10.0",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-03-07T13:39:50.932Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-02-03T08:15:19.844Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-01-10T08:16:40.103Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-12-08T19:04:26.761Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-11-08T18:43:14.864Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-10-06T15:27:32.104Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-08-14T14:03:38.044Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-07-06T07:04:52.095Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-06-23T10:58:30.127Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2025-05-05T13:58:48.979Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-03-22T22:09:08.889Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-02-23T17:21:18.099Z",
+      "version": "0.0.1"
+    }
+  ]
+}

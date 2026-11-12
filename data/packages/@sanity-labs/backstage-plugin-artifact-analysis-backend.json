@@ -1,0 +1,92 @@
+{
+  "author": "",
+  "created": "2026-05-26T09:05:08.491Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/sanity-labs/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bjoerge",
+    "colepeters-sanity",
+    "hermanw",
+    "joshbrand",
+    "jw-sanity",
+    "jwoods-sanity",
+    "kmelve",
+    "laurenashpolesanity",
+    "mariuslundgard",
+    "mttdnt-sanity",
+    "nicholasklem",
+    "rexxars",
+    "robinpyon",
+    "rostimelk",
+    "samhem",
+    "sanitykev",
+    "sergeisarviro",
+    "shapirodaniel",
+    "simen.svale",
+    "snorreeb",
+    "stipsan",
+    "tbeseda"
+  ],
+  "name": "@sanity-labs/backstage-plugin-artifact-analysis-backend",
+  "plugin_id": "artifact-analysis",
+  "readme": "ERROR: No README data found!",
+  "repository": "https://github.com/sanity-labs/backstage-plugins/tree/HEAD/plugins/artifact-analysis-backend",
+  "role": "backend-plugin",
+  "scope": "@sanity-labs",
+  "updated": "2026-11-10T15:09:55.399Z",
+  "version": "2.4.0",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-11-10T15:09:55.399Z",
+      "version": "2.4.0"
+    },
+    {
+      "date": "2026-11-09T16:30:58.905Z",
+      "version": "2.3.0"
+    },
+    {
+      "date": "2026-09-18T12:16:05.914Z",
+      "version": "2.2.1"
+    },
+    {
+      "date": "2026-09-07T13:45:22.166Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2026-08-04T10:17:48.392Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2026-08-04T09:17:01.942Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2026-07-08T15:20:39.828Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2026-07-08T14:07:48.333Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-05-27T10:23:16.439Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2026-05-27T09:25:09.979Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-05-27T08:04:48.000Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-05-26T09:05:08.763Z",
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "author": "Premise",
+  "created": "2023-03-10T18:44:53.373Z",
+  "deprecated": "",
+  "description": "Dynamic Data Form Extension (Frontend and Backend Plugins)",
+  "homepage": "https://premise.com/",
+  "keywords": [
+    "backstage",
+    "plugin",
+    "premisedata"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "nthings",
+    "premise_hazim",
+    "premisedata",
+    "tangent"
+  ],
+  "name": "@premise/plugin-dynamic-pick-extension",
+  "plugin_id": "",
+  "readme": "# dynamic-pick-extension\n\nWelcome to the dynamic-pick-extension plugin! This plugin is a [Custom Field Extension](https://backstage.io/docs/features/software-templates/writing-custom-field-extensions) that allow you to create `<Select>` components that fetches data dynamically from an endpoint. This can be used together with the `form-data-backend` plugin to write custom logic to fill the field.\n\n## Installation\n\n```\ncd packages/app/\nyarn add @premise/plugin-dynamic-pick-extension\n```\n\n## Configuration\nAdd the import to your `packages/app/src/App.tsx` on the frontend package of your backstage instance:\n\n```js\nimport { DynamicPickFieldExtension } from '@premise/plugin-dynamic-pick-extension';\nimport { ScaffolderFieldExtensions } from '@backstage/plugin-scaffolder-react';\n```\n\nThen add the imported field extension as a child of `ScaffolderFieldExtensions` inside `Route`\n\n```js\n<Route path=\"/create\" element={<ScaffolderPage />}>\n  <ScaffolderFieldExtensions>\n    <DynamicPickFieldExtension />\n  </ScaffolderFieldExtensions>\n</Route>\n```\n\nYou should now see the custom filed `DynamicPickExtension` clicking \"Custom field explored\" here `http://localhost:3000/create/edit`.\n\n## Usage\nTo use the extension on a [Backstage Template Action](https://backstage.io/docs/features/software-templates/writing-templates) just add the `ui-field` and `ui-options` fields to the parameter\n\n### Basic usage:\n```yaml\nparameters:\n    - category:\n        title: Category\n        type: string\n        ui:field: DynamicPickExtension\n        ui:options:\n            # IMPORTANT: The endpoint needs to return a JSON array of strings.\n            external_data: https://dummyjson.com/products/categories\n```\n\n### Using the `form-data-backend` plugin:\n\n```yaml\nparameters:\n    - team:\n        title: Github Team to add as admin of the repository\n        type: string\n        ui:field: DynamicPickExtension\n        ui:options:\n            # This is a provider added on the form-data-backend plugin\n            form_data: github/teams\n```\n\n### Options\n`no_options_text``: string\n    - Text to show when no options are available\n    - Default: \"No options\"\n\n```yaml\nparameters:\n    - team:\n        title: Github Team to add as admin of the repository\n        type: string\n        ui:field: DynamicPickExtension\n        ui:options:\n            # This is a provider added on the form-data-backend plugin\n            form_data: github/teams\n            no_options_text: \"No teams available\"\n```",
+  "repository": "https://github.com/premisedata/dynamic-data-form-extension",
+  "role": "frontend-plugin",
+  "scope": "@premise",
+  "updated": "2023-12-04T19:57:51.829Z",
+  "version": "0.2.2",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2023-12-04T19:57:51.829Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2023-10-03T17:50:34.259Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-08-31T14:49:11.994Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-03-30T21:43:37.022Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2023-03-10T18:44:53.621Z",
+      "version": "0.0.1"
+    }
+  ]
+}

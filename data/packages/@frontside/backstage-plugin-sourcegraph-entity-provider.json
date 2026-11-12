@@ -1,0 +1,28 @@
+{
+  "author": "",
+  "created": "2022-10-19T20:07:40.679Z",
+  "deprecated": "",
+  "description": "Welcome to the sourcegraph-entity-provider-backend backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "frontsidejack",
+    "jbolda"
+  ],
+  "name": "@frontside/backstage-plugin-sourcegraph-entity-provider",
+  "plugin_id": "",
+  "readme": "# sourcegraph-entity-provider-backend\n\nWelcome to the sourcegraph-entity-provider-backend backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/sourcegraph-entity-provider-backend](http://localhost:3000/sourcegraph-entity-provider-backend).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@frontside",
+  "updated": "2022-10-19T20:07:40.962Z",
+  "version": "0.1.1-mk-sourcegraph-plugin.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2022-10-19T20:07:40.962Z",
+      "version": "0.1.1-mk-sourcegraph-plugin.0"
+    }
+  ]
+}

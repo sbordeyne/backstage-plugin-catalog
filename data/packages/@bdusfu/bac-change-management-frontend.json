@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2026-05-22T09:38:17.729Z",
+  "deprecated": "",
+  "description": "A Backstage frontend plugin providing a full-featured **IT Change Management (DCM)** interface. It enables developers to create, edit, filter, and approve IT change requests and their associated deployment/DBA activities through a digitized workflow.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bdusfu"
+  ],
+  "name": "@bdusfu/bac-change-management-frontend",
+  "plugin_id": "change-management",
+  "readme": "# bac-change-management-frontend\n\nA Backstage frontend plugin providing a full-featured **IT Change Management (DCM)** interface. It enables developers to create, edit, filter, and approve IT change requests and their associated deployment/DBA activities through a digitized workflow.\n\n## What it does\n\n- **Create/edit changes** with all required fields (category, STF, cause, risk, dates, implementation plan, fallback plan, test documentation)\n- **Create/edit activities** under a change (DCP deployments or DBA activities) with JFrog Artifactory SHA-1 artifact validation\n- **Filter and search** changes by ID, owner, status, STF, cause, category, and dates\n- **Approve changes** with audit logging (user email, Entra ID token, timestamp, device type)\n- **Update change status** through the lifecycle: ÅBENT → BKLAR → KLAR → LUKKET (with validation rules)\n\n## UI structure\n\nThe plugin has two tabs:\n\n### Tab 1: Changes (`/change-management/changes`)\n\n| Component | Purpose |\n|---|---|\n| Filter panel | Search by Change ID, Owner (catalog users), Status, STF (catalog systems), Cause, Category, B/P Date |\n| Change table | Data grid with expandable rows showing activities; row actions for edit, duplicate, create activity, update status |\n| Create/Edit dialogs | Slide-in forms for full change CRUD |\n| Activity dialogs | Create/edit deployment or DBA activities |\n\n### Tab 2: Approvals (`/change-management/approve`)\n\n| Component | Purpose |\n|---|---|\n| Pending approvals table | All changes awaiting approval with expandable activity details |\n| Approve dialog | Full change review with authorised approver verification |\n\n## Route\n\n| Path | Plugin ID |\n|---|---|\n| `/change-management` | `change-management` |\n\n## Backend API\n\nCommunicates with `@bdusfu/bac-change-management-backend` (resolved via Backstage discovery). Authentication is via an MSAL token passed in the `x-authorization` header.\n\n## Catalog integration\n\n- Fetches all `kind: System` entities for STF autocomplete\n- Fetches all `kind: User` entities for Owner autocomplete (with profile picture, display name, email)\n\n## Domain constants\n\n| Concept | Values |\n|---|---|\n| Category | Normal (2), Emergency (2N) |\n| Cause of Change | New feature (1), Maintenance (2), Error correction (3) |\n| Risk Level | Critical, High, Medium, Low |\n| Activity Type | DCP, DBA |\n| Deployment Type | BCA, BPM, EARKIV, JAVAZOS BATCH, JAVAZOS CICS, MEP, NBP, WCM, WCM2 |\n| Change Status | ÅBENT, BKLAR, KLAR, LUKKET, ANN, LUKFEJL |\n\n## Authentication\n\n| Provider | Purpose |\n|---|---|\n| Microsoft Auth (`microsoftAuthApiRef`) | MSAL token for Rumorboy API / Entra ID for approval audit |\n| Backstage Identity (`identityApiRef`) | Current user ID, email, UBI identifier |\n\n## Local development\n\n```bash\ncd plugins/bac-change-management-frontend\nyarn start\n```\n\nThe standalone dev setup is in the [/dev](./dev) directory. Navigate to [/change-management](http://localhost:3000/change-management).\n\n## Dependencies\n\n| Package | Purpose |\n|---|---|\n| `material-react-table` v3 | Data grid tables |\n| `@mui/x-date-pickers` / `dayjs` | Date picker fields |\n| `material-ui-nested-menu-item` | Nested status update menu |\n| `@backstage/core-plugin-api` | Identity, discovery, fetch APIs |\n| `@backstage/plugin-catalog-react` | Catalog entity queries |\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@bdusfu",
+  "updated": "2026-05-22T09:38:18.041Z",
+  "version": "0.3.9",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-05-22T09:38:18.041Z",
+      "version": "0.3.9"
+    }
+  ]
+}

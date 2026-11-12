@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:07:54.658Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that helps you manage projects in GCP",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "google cloud"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-gcp-projects",
+  "plugin_id": "gcp-projects",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/gcp-projects/plugins/gcp-projects",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-10-31T16:35:04.719Z",
+  "version": "0.22.0",
+  "version_count": 27,
+  "versions": [
+    {
+      "date": "2026-10-31T16:35:04.719Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-09-24T17:14:31.026Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-04-24T18:12:52.504Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-04-03T00:27:06.682Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-02-27T17:48:21.167Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-01-28T22:22:43.413Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-01-07T02:55:08.434Z",
+      "version": "0.16.1"
+    },
+    {
+      "date": "2025-12-24T22:03:48.324Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-12-24T16:26:15.132Z",
+      "version": "0.15.1"
+    },
+    {
+      "date": "2025-11-26T13:27:03.713Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-10-17T17:41:27.987Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-10-07T13:48:50.787Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-08-30T13:45:41.714Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-07-24T12:18:01.010Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-07-04T09:13:36.293Z",
+      "version": "0.10.0"
+    }
+  ]
+}

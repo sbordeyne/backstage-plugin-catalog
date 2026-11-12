@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2025-07-11T22:32:42.359Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "control-plane",
+    "tenant",
+    "tenant-explorer"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-tenant-explorer",
+  "plugin_id": "tenant-explorer",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2025-07-11T23:04:00.470Z",
+  "version": "0.1.2",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-07-11T23:04:00.470Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-07-11T22:32:42.682Z",
+      "version": "0.1.0"
+    }
+  ]
+}

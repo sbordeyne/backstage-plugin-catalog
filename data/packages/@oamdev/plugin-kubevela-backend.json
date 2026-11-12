@@ -1,0 +1,30 @@
+{
+  "author": "",
+  "created": "2023-02-05T17:49:36.234Z",
+  "deprecated": "",
+  "description": "Welcome to the kubevela-backend backend plugin!",
+  "homepage": "https://kubevela.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "charlie0129",
+    "fogdong",
+    "oam-kubevela",
+    "zengqingguo"
+  ],
+  "name": "@oamdev/plugin-kubevela-backend",
+  "plugin_id": "",
+  "readme": "# kubevela-backend\n\nWelcome to the kubevela-backend backend plugin!\n\nThis plugin provides an `Entity Provider` called `VelaProvider` to read KubeVela Applications.\n\nYou will need to configure the providers in your backstage backend:\n\n```typescript\n// packages/backend/src/plugins/catalog.ts\nimport { VelaProvider } from '@internal/plugin-kubevela-backend'; // This name will be changed once npm reg is published\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  const builder = await CatalogBuilder.create(env);\n\n  // -- Start --\n  const vela = new VelaProvider('production', env.reader, env.config);\n  builder.addEntityProvider(vela);\n  const frequency: number = env.config.getOptionalNumber('vela.frequency') || 60;\n  const timeout: number = env.config.getOptionalNumber('vela.timeout') || 600;\n  // -- End --\n\n  builder.addProcessor(new ScaffolderEntitiesProcessor());\n  const { processingEngine, router } = await builder.build();\n  await processingEngine.start();\n\n  // -- Start --\n  await env.scheduler.scheduleTask({\n    id: 'run_vela_refresh',\n    fn: async () => { await vela.run(); },\n    frequency: { seconds: frequency },\n    timeout: { seconds: timeout },\n  });\n  // -- End --\n\n  return router;\n}\n```\n\nYou also need to run [backstage-plugin-kubevela](https://github.com/kubevela-contrib/backstage-plugin-kubevela) first before running the backstage app, to actually read KubeVela Applications.\n\n\nConfigure `vela.host` and `backend.reading.allow` in your backstage config, pointing to the kubevela plugin endpoint.\n\n```yaml\nvela:\n  host: \"http://47.254.33.41:32505\"\n  # frequency is the refresh rate for the Vela API, default to 60 seconds, the unit is seconds\n  frequency: 30\n  # timeout is the timeout limit for the Vela API, default to 600 seconds, the unit is seconds\n  timeout: 60\n\nbackend:\n  reading:\n    allow:\n      - host: 47.254.33.41:32505\n```\n",
+  "repository": "https://github.com/wonderflow/vela-backstage-demo/tree/HEAD/plugins/kubevela-backend",
+  "role": "backend-plugin",
+  "scope": "@oamdev",
+  "updated": "2023-02-05T17:49:36.540Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-02-05T17:49:36.540Z",
+      "version": "0.1.0"
+    }
+  ]
+}

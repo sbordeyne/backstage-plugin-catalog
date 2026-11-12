@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2024-01-16T14:04:53.288Z",
+  "deprecated": "",
+  "description": "Backstage Changelog Plugin is configurable and customizable plugin for viewing a changelog. You can write your own parser or use default one, which follows [Keep the changelog](https://keepachangelog.com/) notation.",
+  "homepage": "https://github.com/brataaaan/backstage-changelog-plugin#readme",
+  "keywords": [
+    "backend",
+    "backstage",
+    "changelog",
+    "javascript",
+    "plugin",
+    "rsc-labs",
+    "typescript"
+  ],
+  "license": "MPL-2.0",
+  "maintainers": [
+    "brataaaan"
+  ],
+  "name": "@brataaaan/backstage-changelog-plugin-backend",
+  "plugin_id": "",
+  "readme": "# @rsc-labs/changelog-plugin\n\nBackstage Changelog Plugin is configurable and customizable plugin for viewing a changelog.\nYou can write your own parser or use default one, which follows [Keep the changelog](https://keepachangelog.com/) notation.\n\n### What is Changelog, why and who needs it?\nDescription from [Keep the changelog](https://keepachangelog.com/).\n\nA changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a project.\nIt is being created to make it easier for users and contributors to see precisely what notable changes have been made between each release (or version) of the project.\nPeople need changelog. Whether consumers or developers, the end users of software are human beings who care about what's in the software. When the software changes, people want to know why and how.\n\n# Getting started\n\nIf you haven't already, check out the [Backstage docs](https://backstage.io/docs/getting-started/) and create a Backstage application with\n```\nnpx @backstage/create-app\n```\n\nThen, you will need to install and configure the changelog plugins for the frontend and the backend.\nFrontend plugin installation can be found here: [Frontend plugin](https://github.com/RSC-Labs/backstage-changelog-plugin/tree/main/plugins/backstage-changelog-plugin)\n\n## Backend plugin\n\nInstall:\n```bash\ncd packages/backend\nyarn add @rsc-labs/backstage-changelog-plugin-backend\n```\n\nCreate a file `packages/backend/src/plugins/changelog.ts`:\n```typescript\nimport {\n    createRouter,\n  } from '@rsc-labs/backstage-changelog-plugin-backend'\n  import { Router } from 'express';\n  import { PluginEnvironment } from '../types';\n  \n  export default async function createPlugin(\n    env: PluginEnvironment,\n  ): Promise<Router> {\n    return await createRouter({\n      discovery: env.discovery,\n      tokenManager: env.tokenManager,\n      logger: env.logger,\n      reader: env.reader\n    });\n  }\n```\n\nAdd the plugin to `packages/backend/src/index.ts`:\n```typescript\n// import:\nimport changelog from './plugins/changelog';\n...\n\nasync function main() {\n  ...\n  // add env\n  const changelogEnv = useHotMemoize(module, () => createEnv('changelog'));\n  ...\n  // add to router\n  apiRouter.use('/changelog', await changelog(changelogEnv));\n  ...\n}\n```\n\nBackend plugin supports 3 fields, which can be used for reading a Changelog.\nChangelog itself is related to entity, so configuration is done by Annotations.\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: example-website\n  annotations:\n    backstage.io/source-location: \"file:/home/backstage/backstage-changelog/examples/\"\n    changelog-file-ref: \"url:https://github.com/RSC-Labs/backstage-changelog-plugin/tree/main/CHANGELOG.md\"\n    changelog-name: \"CHANGELOG_CUSTOM_NAME.md\"\n\n```\nPlugin uses following logic:\n1) If \"changelog-file-ref\" is provided it takes precedence over other options, so it is used for reading a Changelog\n2) If not provided, then plugin check is \"changelog-name\" is provided. If yes, then it uses \"backstage.io/source-location\" as a location path together with \"changelog-name\"\n3) If no above options are provided, plugin uses \"backstage.io/source-location\" for reading a file named \"CHANGELOG.md\".\n\nBoth \"file\" and \"url\" options are supported.\n\n## TODO\n\n[ ] Unit tests\n\n## Contribution\n\nContributions are welcome and they are greatly appreciated!\n\n## License\n\nLicensed under the Mozilla Public License, Version 2.0: https://www.mozilla.org/en-US/MPL/2.0/\n\n---\n\n© 2023 RSC https://rsoftcon.com/",
+  "repository": "https://github.com/brataaaan/backstage-changelog-plugin",
+  "role": "backend-plugin",
+  "scope": "@brataaaan",
+  "updated": "2024-01-16T14:04:53.617Z",
+  "version": "0.3.2",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-01-16T14:04:53.617Z",
+      "version": "0.3.2"
+    }
+  ]
+}

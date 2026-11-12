@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:12:01.780Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-apache-airflow",
+  "plugin_id": "apache-airflow",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/apache-airflow/plugins/apache-airflow",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T14:18:25.511Z",
+  "version": "0.25.0",
+  "version_count": 30,
+  "versions": [
+    {
+      "date": "2026-11-03T14:18:25.511Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-09-24T17:08:54.031Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-08-27T11:45:41.522Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-07-21T22:57:37.128Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-06-24T13:05:37.973Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-06-24T12:27:56.031Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-04-24T18:05:59.175Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-04-03T00:29:51.765Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-02-27T17:47:06.546Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-01-28T22:33:29.528Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-12-24T22:09:05.161Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-11-26T13:24:21.858Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-10-17T17:42:05.892Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2025-10-08T09:04:14.173Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2025-08-30T20:22:07.999Z",
+      "version": "0.11.0"
+    }
+  ]
+}

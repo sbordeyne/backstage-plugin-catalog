@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2026-04-22T17:33:46.314Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-fairwinds-insights",
+  "plugin_id": "fairwinds-insights",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/fairwinds-insights/plugins/fairwinds-insights",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-08-03T13:39:45.075Z",
+  "version": "0.5.1",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2026-08-03T13:39:45.075Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-07-22T17:04:08.170Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-06-26T19:54:50.906Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-06-22T19:28:32.241Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-04-28T14:48:11.143Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-04-22T17:33:46.619Z",
+      "version": "0.1.0"
+    }
+  ]
+}

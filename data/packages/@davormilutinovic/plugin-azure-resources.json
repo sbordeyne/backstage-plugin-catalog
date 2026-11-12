@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2024-08-03T15:01:06.429Z",
+  "deprecated": "",
+  "description": "A backstage plugin for showing Azure resoources",
+  "homepage": "https://github.com/davormilutinovic/backstage-azure-resource-frontend",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "davormilutinovic"
+  ],
+  "name": "@davormilutinovic/plugin-azure-resources",
+  "plugin_id": "",
+  "readme": "# Azure resources front-end\n\nThis plugin shows information about Azure resources related to your backstage entity\n\n`` I have updated original repo and it is working now with backstage new backend version ``\ncheck [here](https://github.com/davormilutinovic/backstage-azure-resources-backend)\n\n\n![backstage azure entity view](./img/entity-view.png)\n\n## Getting started\n\n[First install the backend plugin](https://github.com/ehrnst/backstage-azure-resources-backend). After that follow the below instructions.\n\n\n```\n# From your Backstage root directory\nyarn add --cwd packages/app @vippsno/plugin-azure-resources\n```\n\nAdd the following to `packages\\app\\src\\components\\catalog\\EntityPage.tsx` The below enables all entity cards. Security, Cost advisor, and resource group.\n\n```TypeScript\nimport { AzureResourceEntityOverviewCard, AZURE_ANNOTATION_TAG_SELECTOR, EntityAzureSecurityOverviewCard,EntityAzureCostAdviceOverviewCard, isAzureResourceEnabled } from '@vippsno/plugin-azure-resources';\n```\n\n```TypeScript\nconst azureResourceContent = (\n  <EntitySwitch>\n    <EntitySwitch.Case if={isAzureResourceEnabled}>\n    <Grid container spacing={3} alignItems=\"stretch\">\n      <Grid item md={6}>\n        <AzureResourceEntityOverviewCard />\n      </Grid>\n      <Grid item md={6}>\n        <EntityAzureSecurityOverviewCard />\n      </Grid>\n      <Grid item md={6}>\n        <EntityAzureCostAdviceOverviewCard />\n      </Grid>\n    </Grid>\n    </EntitySwitch.Case>\n    <EntitySwitch.Case>\n      <>\n        <MissingAnnotationEmptyState annotation={AZURE_ANNOTATION_TAG_SELECTOR} />\n      </>\n    </EntitySwitch.Case>\n  </EntitySwitch>\n);\n\n```\n\n```TypeScript\n    <EntityLayout.Route path=\"/azure\" title=\"Azure\">\n      {azureResourceContent}\n    </EntityLayout.Route>\n```\n\n### Annotation\n\nThis plugin use a custom annotation from your entity. To use the plugin add the following annotation:\n\n```YAML\nannotations:\n    azure.com/tag-selector: key/value\n```\n\nWhen doing Azure Resource Graph queries the plugin will use the tag key and its value to pull information.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@davormilutinovic",
+  "updated": "2024-08-05T18:04:08.884Z",
+  "version": "1.0.14",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2024-08-05T18:04:08.884Z",
+      "version": "1.0.14"
+    },
+    {
+      "date": "2024-08-05T17:14:39.789Z",
+      "version": "1.0.13"
+    },
+    {
+      "date": "2024-08-05T17:09:22.457Z",
+      "version": "1.0.12"
+    },
+    {
+      "date": "2024-08-05T17:04:58.669Z",
+      "version": "1.0.11"
+    },
+    {
+      "date": "2024-08-05T12:17:56.566Z",
+      "version": "1.0.10"
+    },
+    {
+      "date": "2024-08-03T15:07:32.344Z",
+      "version": "1.0.9"
+    },
+    {
+      "date": "2024-08-03T15:01:06.669Z",
+      "version": "1.0.8"
+    }
+  ]
+}

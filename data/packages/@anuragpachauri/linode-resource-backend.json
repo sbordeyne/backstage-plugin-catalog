@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-02-03T13:50:13.555Z",
+  "deprecated": "",
+  "description": "Welcome to the linode-resource backend plugin!",
+  "homepage": "https://github.com/anuragpachauri/backstageMain/tree/main#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "anuragpachauri"
+  ],
+  "name": "@anuragpachauri/linode-resource-backend",
+  "plugin_id": "linode-resource-backend",
+  "readme": "# Linode Resource Backend Plugin\n\nWelcome to the **Linode Resource backend Plugin**!\n\n_This plugin was created through the Backstage CLI._\n\n---\n\n## Features\n\n- it sends a Api request to Linode Server to fetch the resource Details\n\n---\n\n## Limitations\n\n- Supports only linode resources **linode Resource Graph API**.\n\n---\n\n## Setup\n\n### Installation and Configuration\n\nTo set up the linode Resource backend Plugin in your Backstage instance, follow these steps:\n\n#### 1. Install the Plugin\n\nRun the following command in the backend directory of your Backstage project:\n\n```bash\nyarn --cwd packages/app add @anuragpachauri/linode-resource-backend\n```\n\n### Configuration\n\n#### 1. add these line in packages/backend/src/index.ts\n\n```bash\nbackend.add(import('@anuragpachauri/linode-resource-backend'))\n```\n#### 2. add configuration in app-config.yaml\n\n```bash\n\nlinode:\n  baseUrl: https://api.linode.com/v4\n  apiKey: ${LINODE_API_KEY}\n  \n```\n\nAfter registration, add the linode resource plugin to Configure Front-end\nhttps://github.com/anuragpachauri/backstageMain/tree/main/plugins/linode-resource\n\nFuture Enhancements\nSupport for additional linode services beyond those accessible via the Resource Graph API.\n\nEnhanced filtering and sorting capabilities.\nFeedback\n\nFeel free to suggest changes or report issues by creating a GitHub issue.\n",
+  "repository": "https://github.com/anuragpachauri/backstageMain.git#main",
+  "role": "backend-plugin",
+  "scope": "@anuragpachauri",
+  "updated": "2025-04-09T11:38:37.971Z",
+  "version": "1.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-04-09T11:38:37.971Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2025-04-09T10:50:41.680Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2025-02-03T13:50:13.884Z",
+      "version": "1.1.0"
+    }
+  ]
+}

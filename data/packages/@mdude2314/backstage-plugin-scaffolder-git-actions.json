@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2022-05-13T12:45:49.275Z",
+  "deprecated": "",
+  "description": "This is a `git` actions plugin for the `scaffolder-backend` in Backstage.",
+  "homepage": "",
+  "keywords": [],
+  "license": "ISC",
+  "maintainers": [
+    "mdude2314"
+  ],
+  "name": "@mdude2314/backstage-plugin-scaffolder-git-actions",
+  "plugin_id": "",
+  "readme": "# backstage-plugin-scaffolder-git-actions package\n\nThis is a `git` actions plugin for the `scaffolder-backend` in Backstage.\n\nThis contains a collection of actions for using with git:\n\n- git\n- git:clone\n\n## Prerequisites\n- Git must be installed in the environment your Backstage instance is running in\n\n## Getting started\n\nIn the root directory of your Backstage project:\n\n```\nyarn add --cwd packages/backend @mdude2314/backstage-plugin-scaffolder-git-actions\n```\n\nAdd the actions you'd like to the scaffolder:\n\n```typescript\n// packages/backend/src/plugins/scaffolder.ts\n\nimport { gitCloneAction, gitAction } from \"@mdude2314/backstage-plugin-scaffolder-git-actions\";\nimport { ScmIntegrations } from '@backstage/integration';\nimport { createBuiltinActions, createRouter } from '@backstage/plugin-scaffolder-backend';\n\n...\n\nconst integrations = ScmIntegrations.fromConfig(env.config);\nconst builtInActions = createBuiltinActions({\n  catalogClient,\n  integrations,\n  config: env.config,\n  reader: env.reader\n});\n\nconst actions = [\n  gitAction(),\n  gitCloneAction(),\n  ...builtInActions\n];\n\nreturn await createRouter({\n  logger: env.logger,\n  config: env.config,\n  database: env.database,\n  reader: env.reader,\n  catalogClient,\n  actions\n});\n```\n\n## Example of using the generic git action\n```yaml\n---\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: clone-demo\n  title: My custom git clone action\n  description: scaffolder action to clone to the workspace directory\nspec:\n  owner: mdude2314\n  type: service\n\n  parameters:\n    - title: Generic git\n      properties:\n        repoUrl:\n          title: Command\n          type: string\n          description: Git command to run\n        workingDirectory:\n          title: Working Directory\n          type: string\n          description: The working directory within the scaffolder workspace to run the command\n        args:\n          title: Args\n          type: array\n          description: Arguments to pass to the clone command\n\n  steps:\n    - id: git\n      name: git\n      action: git\n      input:\n        command: ${{ parameters.command }} # ex: 'commit' - will make the scaffolder run the `git commit` command\n        workingDirectory: ${{ parameters.workingDirectory }} # ex: './my-working-directory' - will execute the command in the specified directory relative to the scaffolder workspace\n        args: ${{ parameters.args }} # ex: ['-m', 'My commit message'] - will add '-m My commit message' to the arguments passed to the git command\n```\n\n## Example of using the clone action\n\n```yaml\n---\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: clone-demo\n  title: My custom git clone action\n  description: scaffolder action to clone to the workspace directory\nspec:\n  owner: mdude2314\n  type: service\n\n  parameters:\n    - title: Clone\n      properties:\n        repoUrl:\n          title: Path\n          type: string\n          description: URL to clone\n        args:\n          title: Args\n          type: array\n          description: Arguments to pass to the clone command\n\n  steps:\n    - id: clone\n      name: Clone\n      action: git:clone\n      input:\n        repoUrl: ${{ parameters.repoUrl }}\n        args: ${{ parameters.args }}\n```\n",
+  "repository": "https://github.com/arhill05/backstage-plugin-scaffolder-git-actions",
+  "role": "backend-plugin",
+  "scope": "@mdude2314",
+  "updated": "2023-11-27T12:40:56.500Z",
+  "version": "1.1.1",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2023-11-27T12:40:56.500Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2022-05-13T15:05:48.747Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2022-05-13T14:57:47.740Z",
+      "version": "1.1.0-preview.2"
+    },
+    {
+      "date": "2022-05-13T14:37:24.516Z",
+      "version": "1.1.0-preview.1"
+    },
+    {
+      "date": "2022-05-13T14:14:28.763Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2022-05-13T12:45:49.478Z",
+      "version": "1.0.0"
+    }
+  ]
+}

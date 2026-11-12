@@ -1,0 +1,67 @@
+{
+  "author": "",
+  "created": "2023-11-01T13:35:38.178Z",
+  "deprecated": "",
+  "description": "Welcome to the harbor-plugin-wrapper plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@vrabbi/harbor-plugin-wrapper",
+  "plugin_id": "",
+  "readme": "# harbor-plugin-wrapper\n\nWelcome to the harbor-plugin-wrapper plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/harbor-plugin-wrapper](http://localhost:3000/harbor-plugin-wrapper).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@vrabbi",
+  "updated": "2023-11-06T21:27:55.957Z",
+  "version": "0.6.1",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2023-11-06T21:27:55.957Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2023-11-05T08:57:34.184Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2023-11-02T13:32:22.437Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2023-11-02T09:37:11.216Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-11-01T19:25:35.436Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2023-11-01T18:43:20.599Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-11-01T17:38:07.589Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-11-01T16:02:47.799Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-11-01T14:50:58.338Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-11-01T14:50:10.590Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-11-01T13:35:38.559Z",
+      "version": "0.1.0"
+    }
+  ]
+}

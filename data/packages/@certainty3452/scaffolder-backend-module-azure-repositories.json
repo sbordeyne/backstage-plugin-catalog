@@ -1,0 +1,49 @@
+{
+  "author": "Parfümerie Douglas GmbH",
+  "created": "2023-12-04T16:10:07.636Z",
+  "deprecated": "",
+  "description": "A collection of Backstage scaffolder backend modules for Azure repositories.",
+  "homepage": "https://github.com/Parfuemerie-Douglas/scaffolder-backend-module-azure-repositories#readme",
+  "keywords": [
+    "azure-devops",
+    "azure-repositories",
+    "backstage",
+    "backstage-plugin",
+    "backstage-template"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "certainty3452"
+  ],
+  "name": "@certainty3452/scaffolder-backend-module-azure-repositories",
+  "plugin_id": "scaffolder",
+  "readme": "# scaffolder-backend-module-azure-repositories\n\nWelcome to the Microsoft Azure repository actions for the `scaffolder-backend`.\n\nThis plugin contains a collection of actions:\n\n- `azure:repo:clone`\n- `azure:repo:push`\n- `azure:repo:pr`\n\n## Getting started\n\nCreate your Backstage application using the Backstage CLI as described here:\n[https://backstage.io/docs/getting-started/create-an-app](https://backstage.io/docs/getting-started/create-an-app).\n\n> Note: If you are using this plugin in a Backstage monorepo that contains the\n> code for `@backstage/plugin-scaffolder-backend`, you need to modify your\n> internal build processes to transpile files from the `node_modules` folder as\n> well.\n\nYou need to configure the actions in your backend:\n\n## From your Backstage root directory\n\n```sh\n# From your Backstage root directory\nyarn add --cwd packages/backend @parfuemerie-douglas/scaffolder-backend-module-azure-repositories\n```\n\nConfigure the actions (you can check the\n[docs](https://backstage.io/docs/features/software-templates/writing-custom-actions/#register-action-with-new-backend-system)\nto see all options):\n\n```typescript\n// packages/backend/src/index.ts\nconst backend = createBackend();\n\n// ...\n\nbackend.add(import('@parfuemerie-douglas/scaffolder-backend-module-azure-repositories'))\n```\n\nThe Azure repository actions use an [Azure PAT (personal access\ntoken)](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)\nfor authorization. The PAT requires `Read` permission for `Code` for the\n`azure:repo:clone` action. For the `azure:repo:push` action the PAT requires\n`Read & write` permission for `Code`. Simply add the PAT to your\n`app-config.yaml`:\n\n```yaml\n# app-config.yaml\n\nintegrations:\n  azure:\n    - host: dev.azure.com\n      credentials:\n        - personalAccessToken: ${AZURE_TOKEN}\n```\n\nRead more on integrations in Backstage in the [Integrations\ndocumentation](https://backstage.io/docs/integrations/).\n\n## Using the template\n\nAfter loading and configuring the Azure repository template actions, you can use\nthe actions in your template:\n\n```yaml\n# template.yaml\n\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: azure-repo-demo\n  title: Azure Repository Test\n  description: Clone and push to an Azure repository example.\nspec:\n  owner: parfuemerie-douglas\n  type: service\n\n  parameters:\n    - title: Fill in some steps\n      required:\n        - name\n        - owner\n      properties:\n        name:\n          title: Project name\n          type: string\n          description: Choose a unique project name.\n          ui:field: EntityNamePicker\n          ui:autofocus: true\n        owner:\n          title: Owner\n          type: string\n          description: Select an owner for the Backstage component.\n          ui:field: OwnerPicker\n          ui:options:\n            allowedKinds:\n              - Group\n\n  steps:\n    - id: cloneAzureRepo\n      name: Clone Azure Repo\n      action: azure:repo:clone\n      input:\n        remoteUrl: \"https://<MY_AZURE_ORGANIZATION>@dev.azure.com/<MY_AZURE_ORGANIZATION>/<MY_AZURE_PROJECT>/_git/<MY_AZURE_REPOSITORY>\"\n        branch: \"main\"\n        targetPath: ./sub-directory\n\n    - id: fetch\n      name: Template Skeleton\n      action: fetch:template\n      input:\n        url: ./skeleton\n        targetPath: ./sub-directory\n        values:\n          name: ${{ parameters.name }}\n          owner: ${{ parameters.owner }}\n\n    - id: pushAzureRepo\n      name: Push to Remote Azure Repo\n      action: azure:repo:push\n      input:\n        branch: <MY_AZURE_REPOSITORY_BRANCH>\n        sourcePath: ./sub-directory\n        gitCommitMessage: Add ${{ parameters.name }} project files\n\n    - id: pullRequestAzureRepo\n      name: Create a Pull Request to Azure Repo\n      action: azure:repo:pr\n      input:\n        sourceBranch: <MY_AZURE_REPOSITORY_BRANCH>\n        targetBranch: \"main\"\n        repoId: <MY_AZURE_REPOSITORY>\n        title: ${{ parameters.name }}\n        project: <MY_AZURE_PROJECT>\n        supportsIterations: false\n\n    - id: register\n      name: Register\n      action: catalog:register\n      input:\n        repoContentsUrl: \"dev.azure.com?owner=<MY_AZURE_PROJECT>&repo=<MY_AZURE_REPOSITORY>&organization=<MY_AZURE_ORGANIZATION>&version=<MY_AZURE_REPOSITORY_BRANCH>\"\n        catalogInfoPath: \"/catalog-info.yaml\"\n\n  output:\n    links:\n      - title: Repository\n        url: \"dev.azure.com?owner=<MY_AZURE_PROJECT>&repo=<MY_AZURE_REPOSITORY>&organization=<MY_AZURE_ORGANIZATION>\"\n      - title: Open in catalog\n        icon: catalog\n        entityRef: ${{ steps.register.output.entityRef }}\n```\n\nReplace `<MY_AZURE_ORGANIZATION>` with the name of your Azure DevOps\norganization, `<MY_AZURE_PROJECT>` with the name of your Azure DevOps project,\n`<MY_AZURE_REPOSITORY_BRANCH` with the name of the desired Azure DevOps repository branch,\nand `<MY_AZURE_REPOSITORY>` with the name of your Azure DevOps repository.\n\nNOTE: You will not be able to register the Pull Request since the file will not exist from the main branch!\n\nYou can find a list of all registred actions including their parameters at the\n`/create/actions` route in your Backstage application.\n",
+  "repository": "https://github.com/Parfuemerie-Douglas/scaffolder-backend-module-azure-repositories",
+  "role": "backend-plugin-module",
+  "scope": "@certainty3452",
+  "updated": "2024-08-12T10:56:03.441Z",
+  "version": "0.3.2",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2024-08-12T10:56:03.441Z",
+      "version": "0.3.2"
+    },
+    {
+      "date": "2024-08-12T10:02:44.901Z",
+      "version": "0.2.10"
+    },
+    {
+      "date": "2024-08-06T14:16:56.387Z",
+      "version": "0.2.20"
+    },
+    {
+      "date": "2024-08-06T12:47:41.915Z",
+      "version": "0.2.19"
+    },
+    {
+      "date": "2024-03-01T00:33:45.425Z",
+      "version": "0.2.17"
+    }
+  ]
+}

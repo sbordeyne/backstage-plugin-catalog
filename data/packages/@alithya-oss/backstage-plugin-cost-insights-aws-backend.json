@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-02-05T04:22:35.187Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fjudith"
+  ],
+  "name": "@alithya-oss/backstage-plugin-cost-insights-aws-backend",
+  "plugin_id": "cost-insights-aws",
+  "readme": "",
+  "repository": "https://github.com/awslabs/backstage-plugins-for-aws/tree/HEAD/plugins/ecs/backend",
+  "role": "backend-plugin",
+  "scope": "@alithya-oss",
+  "updated": "2025-05-21T04:17:05.735Z",
+  "version": "0.1.10",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-05-21T04:17:05.735Z",
+      "version": "0.1.10"
+    },
+    {
+      "date": "2025-05-10T03:59:49.119Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2025-02-05T04:22:35.502Z",
+      "version": "0.1.8"
+    }
+  ]
+}

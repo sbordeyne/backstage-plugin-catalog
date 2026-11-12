@@ -1,0 +1,90 @@
+{
+  "author": "",
+  "created": "2023-09-12T08:53:21.320Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/ap-communications/platt-backstage-plugin/tree/main/plugins/search-backend-module-cognitive-search",
+  "keywords": [
+    "azure",
+    "backend",
+    "backstage",
+    "cognitive search",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "apc-kamezaki",
+    "takizawa"
+  ],
+  "name": "@platt/plugin-search-backend-module-cognitive-search",
+  "plugin_id": "search",
+  "readme": "",
+  "repository": "https://github.com/ap-communications/platt-backstage-plugin/tree/HEAD/plugins/search-backend-module-cognitive-search",
+  "role": "backend-plugin",
+  "scope": "@platt",
+  "updated": "2026-09-17T07:26:30.268Z",
+  "version": "1.11.7",
+  "version_count": 31,
+  "versions": [
+    {
+      "date": "2026-09-17T07:26:30.268Z",
+      "version": "1.11.7"
+    },
+    {
+      "date": "2026-03-02T09:34:13.671Z",
+      "version": "1.11.6"
+    },
+    {
+      "date": "2026-01-28T06:46:59.714Z",
+      "version": "1.11.5"
+    },
+    {
+      "date": "2025-10-21T04:27:42.946Z",
+      "version": "1.11.4"
+    },
+    {
+      "date": "2025-09-01T00:56:02.483Z",
+      "version": "1.11.3"
+    },
+    {
+      "date": "2025-06-03T01:59:27.096Z",
+      "version": "1.11.2"
+    },
+    {
+      "date": "2024-09-24T08:00:24.355Z",
+      "version": "1.11.1"
+    },
+    {
+      "date": "2024-08-22T05:45:57.860Z",
+      "version": "1.11.0"
+    },
+    {
+      "date": "2024-07-22T02:01:26.712Z",
+      "version": "1.10.4"
+    },
+    {
+      "date": "2024-06-26T05:08:55.957Z",
+      "version": "1.10.3"
+    },
+    {
+      "date": "2024-06-13T00:28:01.991Z",
+      "version": "1.10.2"
+    },
+    {
+      "date": "2024-05-17T03:05:55.873Z",
+      "version": "1.10.1"
+    },
+    {
+      "date": "2024-04-22T04:22:39.137Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2024-04-11T07:16:53.153Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2024-04-01T01:18:18.101Z",
+      "version": "1.8.0"
+    }
+  ]
+}

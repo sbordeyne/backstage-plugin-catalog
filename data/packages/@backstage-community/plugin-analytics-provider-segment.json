@@ -1,0 +1,83 @@
+{
+  "author": "Red Hat",
+  "created": "2024-11-15T18:10:22.044Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-analytics-provider-segment",
+  "plugin_id": "analytics-provider-segment",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/analytics/plugins/analytics-provider-segment",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-06T09:02:48.783Z",
+  "version": "2.1.0",
+  "version_count": 40,
+  "versions": [
+    {
+      "date": "2026-11-06T09:02:48.783Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2026-09-23T11:18:22.913Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-09-04T13:13:42.739Z",
+      "version": "1.31.1"
+    },
+    {
+      "date": "2026-08-28T20:07:19.041Z",
+      "version": "1.31.0"
+    },
+    {
+      "date": "2026-07-21T17:22:57.776Z",
+      "version": "1.30.0"
+    },
+    {
+      "date": "2026-06-20T06:37:16.108Z",
+      "version": "1.29.0"
+    },
+    {
+      "date": "2026-05-05T18:14:29.085Z",
+      "version": "1.28.1"
+    },
+    {
+      "date": "2026-04-26T05:43:27.736Z",
+      "version": "1.28.0"
+    },
+    {
+      "date": "2026-04-22T07:15:28.719Z",
+      "version": "1.27.0"
+    },
+    {
+      "date": "2026-04-02T10:54:08.039Z",
+      "version": "1.26.0"
+    },
+    {
+      "date": "2026-03-15T20:49:56.491Z",
+      "version": "1.25.2"
+    },
+    {
+      "date": "2026-03-10T21:12:03.116Z",
+      "version": "1.25.1"
+    },
+    {
+      "date": "2026-03-10T19:03:59.789Z",
+      "version": "1.25.0"
+    },
+    {
+      "date": "2026-01-31T06:15:20.458Z",
+      "version": "1.24.0"
+    },
+    {
+      "date": "2026-01-08T23:00:57.664Z",
+      "version": "1.23.0"
+    }
+  ]
+}

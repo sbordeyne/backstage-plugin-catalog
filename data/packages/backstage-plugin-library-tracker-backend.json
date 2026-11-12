@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2026-06-08T05:17:23.138Z",
+  "deprecated": "",
+  "description": "Backend for the library-tracker Backstage plugin: scans component repos for dependencies",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "backstage-backend-plugin",
+    "backstage-plugin",
+    "dependencies",
+    "dependency-management",
+    "developer-portal",
+    "software-catalog"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "mrjanga"
+  ],
+  "name": "backstage-plugin-library-tracker-backend",
+  "plugin_id": "library-tracker",
+  "readme": "# backstage-plugin-library-tracker-backend\n\n> Backend plugin for [Library Tracker](https://github.com/mani1993/backstage-plugin-library-tracker) — scans every catalogued component's repository for third-party dependencies via VCS APIs, with no cloning required.\n\n![Backstage](https://img.shields.io/badge/Backstage-new%20backend%20system-6E4BF4)\n![License](https://img.shields.io/badge/license-MIT-green)\n![Version](https://img.shields.io/npm/v/backstage-plugin-library-tracker-backend)\n\n## Install\n\n```bash\nyarn --cwd packages/backend add backstage-plugin-library-tracker-backend\n```\n\n**`packages/backend/src/index.ts`:**\n\n```ts\nbackend.add(import('backstage-plugin-library-tracker-backend'));\n```\n\n## What it does\n\n- Resolves each `Component`'s source repository from `backstage.io/source-location`\n- Scans via `UrlReaderService` (GitHub, GitLab, Bitbucket, Azure DevOps) — no cloning\n- Incremental sync using ETags — skips repositories with no new commits\n- Detects declared dependencies, version drift, license, and unused imports\n- Exposes a REST API at `/api/library-tracker`\n\n## Supported ecosystems\n\n| Ecosystem | Manifests | Unused detection |\n|-----------|-----------|-----------------|\n| npm / Node | `package.json` | ✅ high confidence |\n| Python | `requirements*.txt`, `pyproject.toml`, `Pipfile` | ✅ high confidence |\n| Maven / Java | `pom.xml` | ⚠️ used-only |\n| NuGet / C# | `*.csproj`, `packages.config` | ⚠️ used-only |\n\n## Configuration\n\n```yaml\nlibraryTracker:\n  schedule:\n    frequency: { hours: 6 }\n    timeout: { minutes: 30 }\n  scan:\n    concurrency: 5\n    excludePaths: [node_modules, target, dist, .venv, vendor]\n  registry:\n    enableVersionCheck: true\n    cacheTtl: { hours: 24 }\n```\n\n## Full documentation\n\nSee the [main repository README](https://github.com/mani1993/backstage-plugin-library-tracker) for full setup, configuration, screenshots, and API reference.\n\n## License\n\nMIT\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "",
+  "updated": "2026-06-08T10:19:30.733Z",
+  "version": "0.2.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-06-08T10:19:30.733Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-06-08T08:01:30.923Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-06-08T05:17:23.470Z",
+      "version": "0.1.0"
+    }
+  ]
+}

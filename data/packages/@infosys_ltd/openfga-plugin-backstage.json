@@ -1,0 +1,65 @@
+{
+  "author": "Infosys",
+  "created": "2024-11-27T10:15:17.885Z",
+  "deprecated": "",
+  "description": "This plugin wraps around the Backstage Permission Framework and uses the OPENFGA client to evaluate policies.",
+  "homepage": "https://github.com/Infosys/openfga-plugin-backstage",
+  "keywords": [
+    "backstage",
+    "openfga",
+    "permissions",
+    "rbac"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aditya_kr",
+    "ambrishr"
+  ],
+  "name": "@infosys_ltd/openfga-plugin-backstage",
+  "plugin_id": "openfga",
+  "readme": "# openfga\n\nThis plugin wraps around the Backstage Permission Framework and uses the OPENFGA client to evaluate policies. It will send a request to OPENFGA with the permission and identity information, OPENFGA will then evaluate the policy and return a decision, which is then passed back to the Permission Framework.\n\n## Installation\n\n````bash\nyarn --cwd packages/app add @infosys_ltd/openfga-plugin-backstage\nyarn --cwd packages/backend add @infosys_ltd/backstage-plugin-permission-backend-module-openfga-policy\n```\n\nMake the following changes to the :\n```diff\n// packages/app/src/App.tsx\n+import { OpenfgaPage } from '@infosys_ltd/openfga-plugin-backstage';\n\n\n<FlatRoutes>\n  <Route path=\"/catalog\" element={<CatalogIndexPage />} />\n  <Route path=\"/catalog/:namespace/:kind/:name\" element={<CatalogEntityPage />}>\n    {entityPage}\n  </Route>\n+  <Route path=\"/openfga\" element={<OpenfgaPage/>} />\n  ...\n</FlatRoutes>\n```\n\nMake the following changes to the `packages/backend/src/index.ts` file in your Backstage project.\n\n```diff\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\nbackend.add(import('@backstage/plugin-app-backend/alpha'));\nbackend.add(import('@backstage/plugin-auth-backend'));\n// ..... other plugins\n\ncomment following line:\n\n// permission plugin\nbackend.add(import('@backstage/plugin-permission-backend/alpha'));\n// backend.add(\n//   import('@backstage/plugin-permission-backend-module-allow-all-policy'),\n// );\n\nbackend.add(import('@infosys_ltd/backstage-plugin-permission-backend-module-openfga-policy'));\n````\n\n## Configuration\n\nThe OPENFGA client requires configuration to connect to the OPENFGA server. You need to provide a baseUrl , storeId, authorizationModelId for the OPENFGA server in your Backstage app-config.yaml file:\n\n![proxyconfig](https://github.com/Infosys/openfga-plugin-backstage/blob/main/plugins/openfga/src/docs/proxyconfig.png)\n\n![openfgaconfig](https://github.com/Infosys/openfga-plugin-backstage/blob/main/plugins/openfga/src/docs/openfgaconfig.png)\n\n## Example Catalog Permission policy using openFGA\n\nLets take a scenario a role based access for backstage catalog delete/ungersitering an entity\n\nRules:\n\n- A user who have OWNER access can read and delete the entity\n- A user who have VIEWER access can only read the entity not delete the entity\n\n## CREATE A MODEL IN OPENFGA PLAYGROUND\n\n![playgroundmodel](https://github.com/Infosys/openfga-plugin-backstage/blob/main/plugins/openfga/src/docs/model.png)\n\n## RUNNING OPENFGA SERVER AND SETUP\n\nTO run a openfga in your local please follow below steps\n\nOpenFGA is available on Dockerhub, so you can quickly start it using the in-memory datastore by running the following commands:\n\n```\ndocker pull openfga/openfga\ndocker run -p 8080:8080 -p 4000:4000 openfga/openfga run\n```\n\n## ACCESSING OPENFGA FEATURES\n\nOPENFGA Model and Features can be accessable with many ways please [visit](https://openfga.dev/docs/getting-started/create-store)\n\nIn this following example OPENFGA API is used\n\nSTEP 1: CREATE A STORE\n\n```\nREQUEST TYPE : POST\n\nURL :  http://localhost:8080/stores\n\nREQUEST BODY:\n\n{\n  \"name\": \"backstage\"\n}\n\nEXAMPLE RESPONSE BODY:\n{\n\"id\": \"01J289TDYQ1WH9RTMQD46K7ANC\",\n\"name\": \"backstage\",\n\"created_at\": \"2024-07-08T04:32:20.951446991Z\",\n\"updated_at\": \"2024-07-08T04:32:20.951446991Z\"\n}\n\n```\n\nSTEP 2 : GET A STORE\n\n```\nREQUEST TYPE : GET\n\nURL : http://localhost:8080/stores\n\nEXAMPLE RESPONSE BODY:\n\n{\n\"stores\":[\n{\n\"id\": \"01J289TDYQ1WH9RTMQD46K7ANC\",\n\"name\": \"backstage\",\n\"created_at\": \"2024-07-08T04:32:20.951446991Z\",\n\"updated_at\": \"2024-07-08T04:32:20.951446991Z\",\n\"deleted_at\": null\n}\n],\n\"continuation_token\": \"\"\n}\n```\n\nSTEP 3 : ADDING AUTHORIZATION MODEL FOR CATALOG DELETE\n\n```\nREQUEST TYPE : POST\n\nURL: http://localhost:8080/stores/{store_id}/authorization-models\n\nREQUEST BODY:\n\n{\n  \"schema_version\": \"1.1\",\n  \"type_definitions\": [\n    {\n      \"type\": \"user\",\n      \"relations\": {},\n      \"metadata\": null\n    },\n    {\n      \"type\": \"catalog_entity\",\n      \"relations\": {\n        \"owner\": {\n          \"this\": {}\n        },\n        \"viewer\": {\n          \"this\": {}\n        },\n        \"catalog_entity_read\": {\n          \"union\": {\n            \"child\": [\n              {\n                \"computedUserset\": {\n                  \"relation\": \"viewer\"\n                }\n              },\n              {\n                \"computedUserset\": {\n                  \"relation\": \"owner\"\n                }\n              }\n            ]\n          }\n        },\n        \"catalog_entity_delete\": {\n          \"computedUserset\": {\n            \"relation\": \"owner\"\n          }\n        }\n      },\n      \"metadata\": {\n        \"relations\": {\n          \"owner\": {\n            \"directly_related_user_types\": [\n              {\n                \"type\": \"user\"\n              }\n            ]\n          },\n          \"viewer\": {\n            \"directly_related_user_types\": [\n              {\n                \"type\": \"user\"\n              }\n            ]\n          },\n          \"catalog_entity_read\": {\n            \"directly_related_user_types\": []\n          },\n          \"catalog_entity_delete\": {\n            \"directly_related_user_types\": []\n          }\n        }\n      }\n    }\n  ]\n}\n\nEXAMPLE RESPONSE BODY:\n\n{\n\"authorization_model_id\": \"01J289WKKTE286M800HJBGYX5K\"\n}\n\n```\n\n## USING OPENFGA FRONT END PLUGIN\n\nHOME SCREEN:\n\n![homepage](https://github.com/Infosys/openfga-plugin-backstage/blob/main/plugins/openfga/src/docs/homepage.png)\n\nBEFORE APPLYING POLICY:\n\nA guest user not able to unregister a entity\n\n![unregisterentity](https://github.com/Infosys/openfga-plugin-backstage/blob/main/plugins/openfga/src/docs/unregisterentity.png)\n\nADD POLICY:\n\n![addpolicy](https://github.com/Infosys/openfga-plugin-backstage/blob/main/plugins/openfga/src/docs/addpolicy.png)\n\nAPPLY POLICY:\n\n![applypolicy](https://github.com/Infosys/openfga-plugin-backstage/blob/main/plugins/openfga/src/docs/applypolicy.png)\n\nAFTER APPLYING POLICY:\n\nA guest user able to unregister a entity\n\n![afterpolicyentity](https://github.com/Infosys/openfga-plugin-backstage/blob/main/plugins/openfga/src/docs/afterpolicyentity.png)\n\nREVOKE POLICY:\n\n![revokepolicy](https://github.com/Infosys/openfga-plugin-backstage/blob/main/plugins/openfga/src/docs/revokepolicy.png)\n",
+  "repository": "https://github.com/Infosys/openfga-plugin-backstage",
+  "role": "frontend-plugin",
+  "scope": "@infosys_ltd",
+  "updated": "2025-02-11T05:37:02.654Z",
+  "version": "1.2.2",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2025-02-11T05:37:02.654Z",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2025-02-05T10:56:58.026Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2025-02-05T09:11:56.980Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2025-01-31T09:28:12.890Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2025-01-31T07:44:01.233Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2025-01-31T07:39:33.327Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2024-12-04T10:18:21.754Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-11-27T10:28:23.702Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-11-27T10:15:18.166Z",
+      "version": "1.0.0"
+    }
+  ]
+}

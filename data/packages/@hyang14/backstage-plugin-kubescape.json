@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2024-09-26T08:05:19.103Z",
+  "deprecated": "",
+  "description": "Welcome to the kubescape plugin!",
+  "homepage": "https://github.com/kubescape/backstage-plugin#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "hyang14"
+  ],
+  "name": "@hyang14/backstage-plugin-kubescape",
+  "plugin_id": "kubescape",
+  "readme": "# kubescape\n\nWelcome to the kubescape plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/kubescape](http://localhost:3000/kubescape).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/kubescape/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@hyang14",
+  "updated": "2024-09-26T08:05:19.384Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2024-09-26T08:05:19.384Z",
+      "version": "0.1.0"
+    }
+  ]
+}

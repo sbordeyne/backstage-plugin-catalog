@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-02-18T06:16:03.839Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "chandih"
+  ],
+  "name": "@chandimal/backstage-plugin-first-backend",
+  "plugin_id": "first",
+  "readme": "",
+  "repository": "https://github.com/ChandiH/npm-packaging-poc",
+  "role": "backend-plugin",
+  "scope": "@chandimal",
+  "updated": "2025-02-18T09:01:17.524Z",
+  "version": "0.1.7",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-02-18T09:01:17.524Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2025-02-18T07:13:49.952Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2025-02-18T06:16:04.075Z",
+      "version": "0.1.4"
+    }
+  ]
+}

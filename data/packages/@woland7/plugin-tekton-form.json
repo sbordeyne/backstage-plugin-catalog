@@ -1,0 +1,47 @@
+{
+  "author": "",
+  "created": "2023-04-04T11:42:07.246Z",
+  "deprecated": "",
+  "description": "Welcome to the tekton-form plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "woland7"
+  ],
+  "name": "@woland7/plugin-tekton-form",
+  "plugin_id": "",
+  "readme": "# tekton-form\n\nWelcome to the tekton-form plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/tekton-form](http://localhost:3000/tekton-form).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@woland7",
+  "updated": "2023-04-04T14:44:24.156Z",
+  "version": "0.2.3",
+  "version_count": 6,
+  "versions": [
+    {
+      "date": "2023-04-04T14:44:24.156Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2023-04-04T14:32:59.804Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2023-04-04T14:29:23.269Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-04-04T12:51:21.020Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-04-04T12:29:19.899Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-04-04T11:42:07.484Z",
+      "version": "0.1.1"
+    }
+  ]
+}

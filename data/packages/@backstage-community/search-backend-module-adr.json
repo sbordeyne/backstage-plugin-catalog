@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-07-11T12:44:49.901Z",
+  "deprecated": "",
+  "description": "The adr backend module for the search plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/search-backend-module-adr",
+  "plugin_id": "search",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/adr/plugins/search-backend-module-adr",
+  "role": "backend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-10-28T17:29:18.085Z",
+  "version": "0.24.0",
+  "version_count": 35,
+  "versions": [
+    {
+      "date": "2026-10-28T17:29:18.085Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-09-23T17:16:18.307Z",
+      "version": "0.23.1"
+    },
+    {
+      "date": "2026-09-22T14:53:07.832Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-08-26T12:10:34.130Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-07-20T18:32:39.585Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-06-23T16:26:49.732Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-06-01T16:47:59.727Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-04-28T13:10:31.642Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-03-24T20:43:19.573Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-03-04T13:24:41.035Z",
+      "version": "0.16.1"
+    },
+    {
+      "date": "2026-02-24T14:38:33.127Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-01-28T13:41:06.310Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2025-12-23T14:48:36.850Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-12-07T14:53:11.321Z",
+      "version": "0.13.1"
+    },
+    {
+      "date": "2025-11-27T18:22:48.083Z",
+      "version": "0.13.0"
+    }
+  ]
+}

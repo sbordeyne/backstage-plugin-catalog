@@ -1,0 +1,53 @@
+{
+  "author": "ArchHypo",
+  "created": "2026-02-19T02:02:45.004Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin for architectural hypotheses, uncertainty/impact tracking, and technical planning.",
+  "homepage": "https://github.com/ArchHypo/hypo-stage#readme",
+  "keywords": [
+    "archhypo",
+    "architectural-decision-records",
+    "architecture",
+    "backstage",
+    "backstage-plugin",
+    "catalog",
+    "hypothesis",
+    "technical-planning",
+    "uncertainty"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "zeevolution"
+  ],
+  "name": "@archhypo/plugin-hypo-stage",
+  "plugin_id": "hypo-stage",
+  "readme": "# HypoStage (Frontend Plugin)\n\nArchitectural hypothesis management for [Backstage](https://backstage.io). Create, track, and validate architectural assumptions with uncertainty assessment, quality attributes, and technical planning.\n\n**Package:** `@archhypo/plugin-hypo-stage`\n\n> **Important:** This package requires the backend plugin `@archhypo/plugin-hypo-stage-backend` to be installed and configured in the same Backstage app.\n\n---\n\n## Features\n\n- **Hypothesis management** — Create, edit, view, and delete architectural hypotheses\n- **Uncertainty & impact** — Likert-scale assessment with evolution tracking; values are set on creation and can only be changed through technical planning actions\n- **Quality attributes** — Associate hypotheses with performance, security, maintainability, etc.\n- **Technical planning** — Link experiments, spikes, and tasks to hypotheses; optionally reassess uncertainty and impact when creating or editing a plan\n- **Labeled Assessment** — Hypothesis detail view shows clearly labeled chips for Status, Uncertainty, Impact, and Focus\n- **Evolution chart** — Distinct visual markers distinguish manual changes from technical-planning-linked changes, with informative tooltips\n- **Catalog integration** — Optional Hypotheses tab on entity pages; filter by entity and team\n\n---\n\n## Compatibility\n\n- **Backstage:** v1.16.0+\n- **Node.js:** 20+\n- **React:** 16.13, 17, or 18\n\n---\n\n## Installation\n\n### 1. Install packages\n\nFrom your Backstage app root:\n\n```bash\nyarn --cwd packages/app add @archhypo/plugin-hypo-stage\nyarn --cwd packages/backend add @archhypo/plugin-hypo-stage-backend\n```\n\n### 2. Configure routes\n\nIn `packages/app/src/App.tsx`:\n\n```tsx\nimport {\n  HypoStagePage,\n  CreateHypothesisPage,\n  HypothesisPage,\n  EditHypothesisPage,\n} from '@archhypo/plugin-hypo-stage';\n\n// Inside <FlatRoutes>:\n<Route path=\"/hypo-stage\" element={<HypoStagePage />} />\n<Route path=\"/hypo-stage/create-hypothesis\" element={<CreateHypothesisPage />} />\n<Route path=\"/hypo-stage/hypothesis/:hypothesisId\" element={<HypothesisPage />} />\n<Route path=\"/hypo-stage/hypothesis/:hypothesisId/edit\" element={<EditHypothesisPage />} />\n```\n\n### 3. Add sidebar entry\n\nIn `packages/app/src/components/Root/Root.tsx` (or equivalent):\n\n```tsx\nimport LaptopMacIcon from '@material-ui/icons/LaptopMac';\n\n<SidebarItem icon={LaptopMacIcon} to=\"hypo-stage\" text=\"Hypo Stage\" />\n```\n\n### 4. Register the frontend API\n\nIn `packages/app/src/apis.ts`:\n\n```tsx\nimport { discoveryApiRef, fetchApiRef } from '@backstage/core-plugin-api';\nimport { HypoStageApiClient, HypoStageApiRef } from '@archhypo/plugin-hypo-stage';\n\ncreateApiFactory({\n  api: HypoStageApiRef,\n  deps: { discoveryApi: discoveryApiRef, fetchApi: fetchApiRef },\n  factory: ({ discoveryApi, fetchApi }) =>\n    new HypoStageApiClient({ discoveryApi, fetchApi }),\n}),\n```\n\n### 5. Register the backend plugin\n\nIn `packages/backend/src/index.ts`:\n\n```ts\nimport { createBackend } from '@backstage/backend-defaults';\n\nconst backend = createBackend();\n// ... other plugins ...\nbackend.add(import('@archhypo/plugin-hypo-stage-backend'));\nbackend.start();\n```\n\n### 6. Database configuration\n\nThe backend needs a database. Ensure `app-config.yaml` has a database configured. For a dedicated plugin database (recommended), add:\n\n```yaml\nbackend:\n  database:\n    client: pg\n    connection:\n      host: ${POSTGRES_HOST}\n      port: ${POSTGRES_PORT}\n      user: ${POSTGRES_USER}\n      password: ${POSTGRES_PASSWORD}\n      database: backstage\n    plugin:\n      hypo-stage:\n        connection:\n          database: backstage_plugin_hypo_stage\n```\n\nFor SQLite: `client: better-sqlite3`, `connection: ':memory:'` or a file path. Migrations run automatically on backend startup.\n\n---\n\n## Optional: Catalog entity tab\n\nTo show a \"Hypotheses\" tab on catalog entity pages:\n\n1. Import `EntityHypothesesTab` and add it to your `EntityPage` (e.g. in `packages/app/src/components/catalog/EntityPage.tsx`):\n\n```tsx\nimport { EntityHypothesesTab } from '@archhypo/plugin-hypo-stage';\n\n// In the entity page layout:\n<EntityLayout.Route path=\"/hypotheses\" title=\"Hypotheses\">\n  <EntityHypothesesTab />\n</EntityLayout.Route>\n```\n\n2. Control visibility with the `hypo-stage` feature flag (optional). If the Feature Flags API is not registered, the tab is visible by default.\n\n---\n\n## Exports and API\n\n| Export | Description |\n|--------|-------------|\n| `HypoStagePage` | Main list and dashboard |\n| `CreateHypothesisPage` | Create hypothesis form |\n| `HypothesisPage` | Hypothesis detail and technical planning |\n| `EditHypothesisPage` | Edit hypothesis form |\n| `HypoStageApiRef`, `HypoStageApiClient` | API to call the backend |\n| `EntityHypothesesTab` | Catalog entity tab component |\n| `HypothesisForm`, `HypothesisList` | Reusable form and list components |\n\n---\n\n## Documentation\n\nFull documentation, run standalone, and Docker: [github.com/ArchHypo/hypo-stage](https://github.com/ArchHypo/hypo-stage)\n",
+  "repository": "https://github.com/ArchHypo/hypo-stage/tree/HEAD/hypo-stage",
+  "role": "frontend-plugin",
+  "scope": "@archhypo",
+  "updated": "2026-10-22T06:46:15.577Z",
+  "version": "1.0.1",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2026-10-22T06:46:15.577Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-04-12T22:32:37.517Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-02-19T02:26:38.360Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-02-19T02:16:47.349Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-02-19T02:02:45.243Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "author": "Julio Fernandez",
+  "created": "2025-01-20T18:30:48.558Z",
+  "deprecated": "",
+  "description": "Scaffolder extensions fo Backstage",
+  "homepage": "https://github.com/jfvilas/scaffolder-plexus#readme",
+  "keywords": [
+    "backstage",
+    "http",
+    "plugin",
+    "scafolder"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "jfvilas"
+  ],
+  "name": "@jfvilas/scaffolder-plexus",
+  "plugin_id": "scaffolder-plexus",
+  "readme": "ERROR: No README data found!",
+  "repository": "https://github.com/jfvilas/scaffolder-plexus",
+  "role": "backend-plugin-module",
+  "scope": "@jfvilas",
+  "updated": "2025-02-06T17:50:06.360Z",
+  "version": "0.1.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2025-02-06T17:50:06.360Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-02-06T17:36:44.681Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-01-20T18:30:48.885Z",
+      "version": "0.1.0"
+    }
+  ]
+}

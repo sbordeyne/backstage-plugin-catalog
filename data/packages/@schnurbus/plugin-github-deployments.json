@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-01-30T15:25:19.476Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that integrates towards GitHub Deployments",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "pschnurbus"
+  ],
+  "name": "@schnurbus/plugin-github-deployments",
+  "plugin_id": "github-deployments",
+  "readme": "# GitHub Deployments Plugin\n\nThe GitHub Deployments Plugin displays recent deployments from GitHub.\n\n![github-deployments-card](./docs/github-deployments-card.png)\n\n## Prerequisites\n\n- [GitHub Authentication Provider](https://backstage.io/docs/auth/github/provider)\n\n## Getting Started\n\n1. Install the GitHub Deployments Plugin.\n\n```bash\n# From your Backstage root directory\nyarn --cwd packages/app add @backstage-community/plugin-github-deployments\n```\n\n2. Add the `EntityGithubDeploymentsCard` to the EntityPage:\n\n```typescript\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport { EntityGithubDeploymentsCard } from '@backstage-community/plugin-github-deployments';\n\nconst OverviewContent = () => (\n  <Grid container spacing={3} alignItems=\"stretch\">\n    // ...\n    <Grid item xs={12} sm={6} md={4}>\n      <EntityGithubDeploymentsCard />\n    </Grid>\n    // ...\n  </Grid>\n);\n```\n\nYou can filter for environemt names via a environment parameter.\n\n```typescript\n// packages/app/src/components/catalog/EntityPage.tsx\n// ...\n<Grid item xs={12} sm={6} md={4}>\n  <EntityGithubDeploymentsCard environments={['env-a', 'env-b']} />\n</Grid>\n// ...\n```\n\n3. Add the `github.com/project-slug` annotation to your `catalog-info.yaml` file:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: backstage\n  description: |\n    Backstage is an open-source developer portal that puts the developer experience first.\n  annotations:\n    github.com/project-slug: YOUR_PROJECT_SLUG\nspec:\n  type: library\n  owner: CNCF\n  lifecycle: experimental\n```\n\n### Self-hosted / Enterprise GitHub\n\nThe plugin will try to use `backstage.io/source-location` or `backstage.io/managed-by-location`\nannotations to figure out the location of the source code.\n\n1. Add the `host` and `apiBaseUrl` to your `app-config.yaml`\n\n```yaml\n# app-config.yaml\n\nintegrations:\n  github:\n    - host: 'your-github-host.com'\n      apiBaseUrl: 'https://api.your-github-host.com'\n```\n\n## Integrating with the new Frontend System\n\nFollow this section if you are using Backstage's [new frontend system](https://backstage.io/docs/frontend-system/).\n\n1. Import `githubDeploymentsPlugin` in your `App.tsx` and add it to your app's `features` array:\n\n```typescript\nimport githubDeploymentsPlugin from '@backstage-community/plugin-github-deployments/alpha';\n// ...\nexport const app = createApp({\n  features: [\n    // ...\n    githubDeploymentsPlugin,\n    // ...\n  ],\n});\n```\n\n2. Next, enable your desired extensions in `app-config.yaml`\n\n```yaml\napp:\n  extensions:\n    - entity-card:github-deployments/overview\n```\n\n3. Whichever extensions you've enabled should now appear in your entity page.\n",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/github-deployments/plugins/github-deployments",
+  "role": "frontend-plugin",
+  "scope": "@schnurbus",
+  "updated": "2025-01-31T12:07:56.301Z",
+  "version": "0.2.2-beta",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-01-31T12:07:56.301Z",
+      "version": "0.2.2-beta"
+    },
+    {
+      "date": "2025-01-30T15:25:19.826Z",
+      "version": "0.2.2-alpha"
+    }
+  ]
+}

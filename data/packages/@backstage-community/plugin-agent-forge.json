@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2025-06-18T13:36:53.521Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-agent-forge",
+  "plugin_id": "agent-forge",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/agent-forge/plugins/agent-forge",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2025-12-24T23:03:01.738Z",
+  "version": "0.4.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2025-12-24T23:03:01.738Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-09-05T19:02:45.610Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-08-14T14:02:10.679Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-06-18T13:44:27.321Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-06-18T13:36:53.860Z",
+      "version": "0.0.0"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2026-04-28T19:37:52.537Z",
+  "deprecated": "",
+  "description": "This plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "emmtabor-org"
+  ],
+  "name": "@kaizen-cib/plugin-kaizen-core-backend",
+  "plugin_id": "kaizen-core",
+  "readme": "# kaizen-core\r\n\r\nThis plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.\r\n\r\n## Installation\r\n\r\nThis plugin is installed via the `@internal/plugin-kaizen-core-backend` package. To install it to your backend package, run the following command:\r\n\r\n```bash\r\n# From your root directory\r\nyarn --cwd packages/backend add @internal/plugin-kaizen-core-backend\r\n```\r\n\r\nThen add the plugin to your backend in `packages/backend/src/index.ts`:\r\n\r\n```ts\r\nconst backend = createBackend();\r\n// ...\r\nbackend.add(import('@internal/plugin-kaizen-core-backend'));\r\n```\r\n\r\n## Development\r\n\r\nThis plugin backend can be started in a standalone mode from directly in this\r\npackage with `yarn start`. It is a limited setup that is most convenient when\r\ndeveloping the plugin backend itself.\r\n\r\nIf you want to run the entire project, including the frontend, run `yarn start` from the root directory.\r\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@kaizen-cib",
+  "updated": "2026-05-04T21:11:59.980Z",
+  "version": "0.2.15",
+  "version_count": 15,
+  "versions": [
+    {
+      "date": "2026-05-04T21:11:59.980Z",
+      "version": "0.2.15"
+    },
+    {
+      "date": "2026-05-04T20:07:51.011Z",
+      "version": "0.2.13"
+    },
+    {
+      "date": "2026-05-04T19:59:15.347Z",
+      "version": "0.2.12"
+    },
+    {
+      "date": "2026-04-30T13:28:00.306Z",
+      "version": "0.2.11"
+    },
+    {
+      "date": "2026-04-29T23:40:34.393Z",
+      "version": "0.2.10"
+    },
+    {
+      "date": "2026-04-29T23:06:36.580Z",
+      "version": "0.2.9"
+    },
+    {
+      "date": "2026-04-29T22:59:14.647Z",
+      "version": "0.2.8"
+    },
+    {
+      "date": "2026-04-29T22:53:38.934Z",
+      "version": "0.2.7"
+    },
+    {
+      "date": "2026-04-29T22:40:45.980Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2026-04-29T22:30:11.661Z",
+      "version": "0.2.5"
+    },
+    {
+      "date": "2026-04-29T22:04:08.478Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2026-04-29T21:43:05.700Z",
+      "version": "0.2.3"
+    },
+    {
+      "date": "2026-04-29T16:01:48.637Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-04-29T13:27:36.919Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-04-28T19:37:52.783Z",
+      "version": "0.2.0"
+    }
+  ]
+}

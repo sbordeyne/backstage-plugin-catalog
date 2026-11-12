@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-10-02T06:28:06.340Z",
+  "deprecated": "",
+  "description": "The ingestor-azure-devops backend module for the ai-assistant plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sweetoburrito"
+  ],
+  "name": "@sweetoburrito/backstage-plugin-ai-assistant-backend-module-ingestor-azure-devops",
+  "plugin_id": "ai-assistant",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@sweetoburrito",
+  "updated": "2026-01-12T10:26:52.813Z",
+  "version": "0.8.1",
+  "version_count": 49,
+  "versions": [
+    {
+      "date": "2026-03-05T06:57:57.864Z",
+      "version": "0.8.4"
+    },
+    {
+      "date": "2026-02-05T09:44:31.072Z",
+      "version": "0.8.3"
+    },
+    {
+      "date": "2026-02-05T09:40:12.404Z",
+      "version": "0.0.0-snapshot-20260205093948"
+    },
+    {
+      "date": "2026-02-05T08:49:17.138Z",
+      "version": "0.0.0-snapshot-20260205084853"
+    },
+    {
+      "date": "2026-01-30T14:18:51.736Z",
+      "version": "0.8.2"
+    },
+    {
+      "date": "2026-01-30T13:58:40.040Z",
+      "version": "0.0.0-snapshot-20260130135825"
+    },
+    {
+      "date": "2026-01-12T10:26:52.813Z",
+      "version": "0.8.1"
+    },
+    {
+      "date": "2026-01-12T10:24:02.529Z",
+      "version": "0.0.0-snapshot-20260112102353"
+    },
+    {
+      "date": "2026-01-09T10:11:27.129Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-01-09T10:07:44.239Z",
+      "version": "0.0.0-snapshot-20260109100733"
+    },
+    {
+      "date": "2026-01-08T13:52:32.084Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-01-08T13:36:44.990Z",
+      "version": "0.0.0-snapshot-20260108133622"
+    },
+    {
+      "date": "2026-01-08T12:46:17.768Z",
+      "version": "0.0.0-snapshot-20260108124555"
+    },
+    {
+      "date": "2025-12-10T13:53:08.255Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2025-12-10T13:49:14.841Z",
+      "version": "0.0.0-snapshot-20251210134851"
+    }
+  ]
+}

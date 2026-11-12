@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2022-08-18T19:47:10.952Z",
+  "deprecated": "",
+  "description": "> Check the documentation in pt-BR by clicking [here](./docs/README_pt-BR.md).",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "accezar"
+  ],
+  "name": "@portaldx/plugin-mm-components",
+  "plugin_id": "",
+  "readme": "# mm-components\n> Check the documentation in pt-BR by clicking [here](./docs/README_pt-BR.md).\n\nPlugin that allows you to customize the layout of the default pages, as well as the customized ones in Spotify's [Backstage](https://backstage.io/).\n\n\n_This plugin was created through the Backstage CLI_\n\n## Requirements\n\n- [Backstage](https://backstage.io/) Project;\n- Node.js v16.14.x\n\n## What can you do?\n\nRestructure the entire layout of the pages, so that those that have SideBar are not harmed.\n\n## Install\n\n```\nyarn add @portaldx/plugin-mm-components\n```\n\nor\n\n```\nnpm i @portaldx/plugin-mm-components\n```\n\n## Use\n\nIn your pages custom:\n\n```diff\n+ import { WorkspaceLayout } from '@portaldx/plugin-mm-components'\n\n[...]\n\n+ return (\n+     <WorkspaceLayout\n+      title=\"Example Title\"\n+      subtitle=\"Example Subtitle.\"\n+      themeId=\"home\"\n+      hasSidebar={boolean}\n+    >\n\n      [...]\n\n+    </WorkspaceLayout>\n+  );\n```\n_Developed with ❤️ by the [MadeiraMadeira](https://github.com/madeiramadeirabr) DX Team_\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@portaldx",
+  "updated": "2022-08-22T15:15:25.885Z",
+  "version": "0.2.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2022-08-22T15:15:25.885Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2022-08-18T20:21:31.356Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2022-08-18T20:06:26.948Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2022-08-18T19:47:11.233Z",
+      "version": "0.1.0"
+    }
+  ]
+}

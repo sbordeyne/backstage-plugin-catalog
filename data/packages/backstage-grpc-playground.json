@@ -1,0 +1,78 @@
+{
+  "author": "Zalopay-OSS",
+  "created": "2022-06-06T07:24:44.790Z",
+  "deprecated": "",
+  "description": "A frontend plugin for Backstage supporting gRPC playground",
+  "homepage": "https://github.com/zalopay-oss/backstage-grpc-playground",
+  "keywords": [
+    "backstage",
+    "backstage plugin",
+    "bloomrpc",
+    "grpc",
+    "grpc playground",
+    "zalopay"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "fr0stf0x"
+  ],
+  "name": "backstage-grpc-playground",
+  "plugin_id": "",
+  "readme": "# backstage-grpc-playground\n\n![GitHub](https://img.shields.io/github/license/zalopay-oss/backstage-grpc-playground) ![Project Level](https://img.shields.io/badge/level-beta-yellowgreen) ![GitHub issues](https://img.shields.io/github/issues/zalopay-oss/backstage-grpc-playground) ![GitHub contributors](https://img.shields.io/github/contributors-anon/zalopay-oss/backstage-grpc-playground?color=blue)\n\n<!-- TOC -->\n- [**Overview**](#overview)\n- [**Changelog**](#changelog)\n- [**Requirements**](#requirements)\n- [**Methods supported**](#methods-supported)\n- [**Not supported**](#not-supported-yet)\n- [**Install**](#install)\n- [**Usage**](#usage)\n- [**Compare to BloomRPC**](#compare-to-bloomrpc)\n- [**Yaml file definition**](#yaml-file-definition)\n- [**Examples**](#examples)\n- [**Acknowledgements**](#acknowledgements)\n\n## Overview\n\n**backstage-grpc-playground** is a [backstage](https://backstage.io) plugin ported from [BloomRPC](https://github.com/bloomrpc/bloomrpc) which is an Electron application. We modified some of the original code to make this compatible with Backstage entity. See [Compare to BloomRPC](#compare-to-bloomrpc)\n\nThis repo contains React frontend plugin. For the backend plugin, please checkout [backstage-grpc-playground-backend](https://github.com/zalopay-oss/backstage-grpc-playground-backend.git)\n\n## Changelog\n\nView [Full changelog](CHANGELOG.md)\n\n## Requirements\n\n- Backstage ^1.5.0\n- Node.JS 14 | 16\n\n## Methods supported\n\n- Unary\n- Client streaming\n- Server streaming\n\n## Not supported (yet)\n\nWe are currently not supporting\n\n- Load proto from reflection. [See issue](https://github.com/zalopay-oss/backstage-grpc-playground/issues/2)\n\n## Install\n\nInstall backstage-grpc-playground for `packages/app`\n\nE.g: In your backstage project root\n\n```zsh\nyarn --cwd packages/app add backstage-grpc-playground\n```\n\n## Usage\n\n#### Customize ApiDoc to use **backstage-grpc-playground** for `grpc` type\n\n```typescript\n// packages/app/src/apis.ts\nimport { GrpcPlaygroundComponent } from 'backstage-grpc-playground';\n\n// your code\n// ...\n\nexport const apis: AnyApiFactory[] = [\n  // other apis \n  // ...\n  \n  createApiFactory({\n    api: apiDocsConfigRef,\n    deps: {},\n    factory: () => {\n      // load the default widgets\n      const definitionWidgets = defaultDefinitionWidgets();\n\n      return {\n        getApiDefinitionWidget: (apiEntity: ApiEntity) => {\n          // custom rendering for grpc\n          if (apiEntity.spec.type === 'grpc') {\n            return {\n              type: 'grpc',\n              title: 'gRPC Playground',\n              component: GrpcPlaygroundComponent\n            }\n          }\n          \n          // fallback to the defaults\n          return definitionWidgets.find(d => d.type === apiEntity.spec.type);\n        },\n      };\n    },\n  }),\n]\n```\n\n#### A path `/grpc-playground` in backstage application\n\n```tsx\n// packages/app/src/App.tsx\nimport { GrpcPlaygroundPage } from 'backstage-grpc-playground'\n\n// your code\n// ...\n\nconst routes = (\n  <FlatRoutes>\n    // other routes \n    // ...\n    <Route path=\"/grpc-playground\" element={<GrpcPlaygroundPage />} />\n  </FlatRoutes>\n);\n```\n\nExample importing API definition from Github [examples/yaml-definition/unary.yaml](https://github.com/zalopay-oss/backstage-grpc-playground/blob/main/examples/yaml-definition/unary.yaml)\n\n![import API](examples/images/import_1.gif)\n\n## Compare to BloomRPC\n\n- Load proto files from [defined entity spec](#yaml-file-definition) (learn more at [examples](#examples)), creating clients and send gRPC requests at [backstage backend](https://github.com/zalopay-oss/backstage-grpc-playground-backend.git)\n- Proto files are contained in backend (default /packages/backend/proto)\n- Able to view document generated as markdown with protoc-gen-doc integrated in backend plugin. See [example](#examples)\n- Removed \"Import from server reflection\" [See issue](https://github.com/zalopay-oss/backstage-grpc-playground/issues/2)\n- Removed \"Add import paths\" button\n- Removed \"gRPC-web\" switch\n- Missing imports warning, allow user to upload folder\n  - User upload a file \"employee.proto\" that imports \"common.proto\"\n  ![missing import 1](examples/images/missing_import_1.gif)\n\n  - User upload a file \"account.proto\" that imports some google-apis proto files. In this case user should import google folder\n  ![missing import 2](examples/images/missing_import_2.gif)\n- Support generating document file in https://github.com/zalopay-oss/backstage-grpc-playground-backend/pull/1\n- Support proto library https://github.com/zalopay-oss/backstage-grpc-playground/issues/9, see [guide](examples/yaml-definition/libraries.yaml)\n\n## Yaml file definition\n\nSee [yaml-definition](examples/yaml-definition/README.md)\n\n## Examples\n\n#### View document\n\nSee [example](https://github.com/zalopay-oss/backstage-grpc-playground/pull/4)\n\n#### Unary\n\n![call 1](examples/images/call_unary.gif)\n\nSee [example](examples/unary/README.md)\n\n#### Stream\n\n![call 1](examples/images/call_stream.gif)\n\nSee [example](examples/stream/README.md)\n\n## Acknowledgements\n\n- Thanks to [Backstage Team](https://github.com/backstage/backstage) for creating an incredible framework\n- Thanks to the authors of the awesome [BloomRPC Application](https://github.com/bloomrpc/bloomrpc)\n- Feel free to [submit new issues](https://github.com/zalopay-oss/backstage-grpc-playground/issues/new)\n",
+  "repository": "https://github.com/zalopay-oss/backstage-grpc-playground",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2022-08-29T08:15:05.214Z",
+  "version": "0.3.0",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2022-08-29T08:15:05.214Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2022-08-29T07:33:21.240Z",
+      "version": "0.3.0-next.0"
+    },
+    {
+      "date": "2022-08-04T11:06:23.926Z",
+      "version": "0.2.0-next.0"
+    },
+    {
+      "date": "2022-07-26T10:59:00.834Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2022-07-26T10:54:52.869Z",
+      "version": "0.1.4-next.1"
+    },
+    {
+      "date": "2022-07-18T10:18:20.923Z",
+      "version": "0.1.3-b"
+    },
+    {
+      "date": "2022-07-15T11:18:48.129Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2022-06-17T03:11:55.797Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2022-06-15T09:57:08.942Z",
+      "version": "0.1.2-next.1"
+    },
+    {
+      "date": "2022-06-15T09:13:25.771Z",
+      "version": "0.1.2-next.0"
+    },
+    {
+      "date": "2022-06-06T08:43:42.582Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2022-06-06T07:24:45.051Z",
+      "version": "0.1.0"
+    }
+  ]
+}

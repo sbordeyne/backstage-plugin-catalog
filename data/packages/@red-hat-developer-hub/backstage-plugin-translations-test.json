@@ -1,0 +1,72 @@
+{
+  "author": "",
+  "created": "2025-09-22T20:07:28.899Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-translations-test",
+  "plugin_id": "translations-test",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/translations/plugins/translations-test",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-26T14:10:00.642Z",
+  "version": "0.6.0",
+  "version_count": 11,
+  "versions": [
+    {
+      "date": "2026-10-26T14:10:00.642Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-09-23T05:28:09.514Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-09-08T12:02:09.096Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-07-21T15:57:35.709Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-04-23T14:54:03.967Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-03-04T12:26:26.054Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2026-01-13T01:41:59.614Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2026-01-09T16:53:28.146Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-11-17T09:01:42.224Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-10-02T11:34:19.871Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-09-22T20:07:29.218Z",
+      "version": "0.0.1"
+    }
+  ]
+}

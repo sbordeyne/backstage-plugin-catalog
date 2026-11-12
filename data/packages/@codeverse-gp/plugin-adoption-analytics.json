@@ -1,0 +1,42 @@
+{
+  "author": "CodeVerse-GP",
+  "created": "2026-08-01T12:43:54.914Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin that captures portal usage analytics and renders an adoption dashboard.",
+  "homepage": "https://github.com/CodeVerse-GP/adoption-analytics/tree/main/plugins/adoption-analytics#readme",
+  "keywords": [
+    "adoption",
+    "analytics",
+    "backstage",
+    "backstage-plugin",
+    "dashboard",
+    "metrics"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "grvpandey11"
+  ],
+  "name": "@codeverse-gp/plugin-adoption-analytics",
+  "plugin_id": "adoption-analytics",
+  "readme": "",
+  "repository": "https://github.com/CodeVerse-GP/adoption-analytics/tree/HEAD/plugins/adoption-analytics",
+  "role": "frontend-plugin",
+  "scope": "@codeverse-gp",
+  "updated": "2026-11-03T02:45:44.020Z",
+  "version": "1.1.1",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-11-03T02:45:44.020Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2026-08-09T16:43:19.861Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-08-01T12:43:55.252Z",
+      "version": "1.0.0"
+    }
+  ]
+}

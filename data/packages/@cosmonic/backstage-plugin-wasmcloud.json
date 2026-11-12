@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2024-10-07T23:32:41.885Z",
+  "deprecated": "",
+  "description": "This is the Backstage plugin for wasmCloud.",
+  "homepage": "https://github.com/cosmonic-labs/wasmcloud-backstage/tree/main/plugins/wasmcloud",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "lachieh",
+    "protochron"
+  ],
+  "name": "@cosmonic/backstage-plugin-wasmcloud",
+  "plugin_id": "wasmcloud",
+  "readme": "# @cosmonic/backstage-plugin-wasmcloud\n\nThis is the Backstage plugin for wasmCloud.\n\nSee [the main repository for more information on installation](https://github.com/cosmonic-labs/wasmcloud-backstage/)\n",
+  "repository": "https://github.com/cosmonic-labs/wasmcloud-backstage",
+  "role": "frontend-plugin",
+  "scope": "@cosmonic",
+  "updated": "2024-10-08T02:12:34.948Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2024-10-08T02:12:34.948Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-10-07T23:32:42.121Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2026-09-01T08:43:05.368Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/openchoreo/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cncf-projects",
+    "kaviththiranga"
+  ],
+  "name": "@openchoreo/backstage-plugin-openchoreo-workflows-backend",
+  "plugin_id": "openchoreo-workflows-backend",
+  "readme": "",
+  "repository": "https://github.com/openchoreo/backstage-plugins/tree/HEAD/plugins/openchoreo-workflows-backend",
+  "role": "backend-plugin",
+  "scope": "@openchoreo",
+  "updated": "2026-10-29T06:16:41.284Z",
+  "version": "1.3.3",
+  "version_count": 22,
+  "versions": [
+    {
+      "date": "2026-11-07T11:46:38.525Z",
+      "version": "1.4.0-m.2"
+    },
+    {
+      "date": "2026-10-29T11:44:03.423Z",
+      "version": "1.4.0-m.1"
+    },
+    {
+      "date": "2026-10-29T06:16:41.284Z",
+      "version": "1.3.3"
+    },
+    {
+      "date": "2026-10-22T14:10:50.612Z",
+      "version": "1.3.2"
+    },
+    {
+      "date": "2026-10-01T23:13:25.291Z",
+      "version": "1.3.1"
+    },
+    {
+      "date": "2026-09-19T16:50:58.603Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-09-18T19:47:29.283Z",
+      "version": "1.3.0-rc.2"
+    },
+    {
+      "date": "2026-09-18T03:40:06.955Z",
+      "version": "1.3.0-rc.1"
+    },
+    {
+      "date": "2026-09-09T06:56:06.024Z",
+      "version": "1.2.5"
+    },
+    {
+      "date": "2026-09-01T08:43:59.080Z",
+      "version": "1.2.4"
+    },
+    {
+      "date": "2026-09-01T08:43:55.112Z",
+      "version": "1.2.3"
+    },
+    {
+      "date": "2026-09-01T08:43:50.958Z",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2026-09-01T08:43:46.139Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-09-01T08:43:42.524Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-09-01T08:43:38.280Z",
+      "version": "1.2.0-rc.2"
+    }
+  ]
+}

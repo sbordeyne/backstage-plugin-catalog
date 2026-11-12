@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2023-06-16T08:58:36.529Z",
+  "deprecated": "",
+  "description": "Welcome to the apicurio backend plugin!",
+  "homepage": "https://github.com/janus-idp/backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "aljesusg"
+  ],
+  "name": "@aljesusg/backstage-plugin-apicurio-backend",
+  "plugin_id": "",
+  "readme": "# apicurio\n\nWelcome to the apicurio backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/apicurio](http://localhost:3000/apicurio).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n\n## Install apicurio backend plugin\n\n```bash\n# From your Backstage root directory\nyarn add --cwd packages/backend @backstage/backstage-plugin-apicurio-backend\n```\n\nCreate a file called `apicurio.ts` inside `packages/backend/src/plugins/` and\nadd the following:\n\n```ts title=\"packages/backend/src/plugins/apicurio.ts\"\nimport { createRouter } from '@janus-idp/backstage-plugin-apicurio-backend';\nimport { Router } from 'express';\nimport { PluginEnvironment } from '../types';\n\nexport default async function createPlugin(\n  env: PluginEnvironment,\n): Promise<Router> {\n  return await createRouter({\n    logger: env.logger,\n    config: env.config,\n  });\n}\n```\n\nAnd import the plugin to `packages/backend/src/index.ts`. There are three lines\nof code you'll need to add, and they should be added near similar code in your\nexisting Backstage backend.\n\n```typescript title=\"packages/backend/src/index.ts\"\n// ..\n/* highlight-add-next-line */\nimport apicurio from './plugins/apicurio';\n\nasync function main() {\n  // ...\n  /* highlight-add-next-line */\n  const apicurioEnv = useHotMemoize(module, () => createEnv('apicurio'));\n  // ...\n  /* highlight-add-next-line */\n  apiRouter.use('/apicurio', await apicurio(apicurioEnv));\n```\n\nThat's it! The Apicurio backend have now been added to your Backstage app.\n\n# Setup configuration\n\nAdd in app-config under catalog\n\n```yaml\ncatalog:\n  providers:\n    apicurio:\n      url: http://localhost:8080\n```\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins",
+  "role": "backend-plugin",
+  "scope": "@aljesusg",
+  "updated": "2023-06-16T08:58:36.754Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2023-06-16T08:58:36.754Z",
+      "version": "0.1.0"
+    }
+  ]
+}

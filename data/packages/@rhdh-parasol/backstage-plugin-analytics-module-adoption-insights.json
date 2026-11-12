@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "created": "2026-09-03T16:21:55.802Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "durandom"
+  ],
+  "name": "@rhdh-parasol/backstage-plugin-analytics-module-adoption-insights",
+  "plugin_id": "app",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/adoption-insights/plugins/analytics-module-adoption-insights",
+  "role": "frontend-plugin-module",
+  "scope": "@rhdh-parasol",
+  "updated": "2026-09-03T16:21:56.193Z",
+  "version": "0.9.2",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-09-03T16:21:56.193Z",
+      "version": "0.9.2"
+    }
+  ]
+}

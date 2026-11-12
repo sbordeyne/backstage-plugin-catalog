@@ -1,0 +1,58 @@
+{
+  "author": "",
+  "created": "2026-03-09T16:50:52.584Z",
+  "deprecated": "",
+  "description": "Frontend Extensions Explorer Plugin for Backstage - visualize and inspect New Frontend System extensions",
+  "homepage": "https://terasky.com",
+  "keywords": [
+    "backstage",
+    "explorer",
+    "extensions",
+    "frontend",
+    "new-frontend-system",
+    "plugins"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-frontend-extensions-explorer",
+  "plugin_id": "frontend-extensions-explorer",
+  "readme": "# Frontend Extensions Explorer\n\nWelcome to the Frontend Extensions Explorer plugin!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-frontend-extensions-explorer/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-frontend-extensions-explorer)\n\nThe `frontend-extensions-explorer` plugin for Backstage provides a live introspection page for the New Frontend System (NFS). It reads the runtime app extension tree via the built-in `appTreeApiRef` and displays all registered extensions grouped by plugin, showing each extension's type, enabled/disabled status, attachment point, active configuration, and output data refs — all without any backend or network calls.\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/frontend-extensions-explorer/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.\n",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/frontend-extensions-explorer",
+  "role": "frontend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:52:04.298Z",
+  "version": "0.9.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-10-21T13:52:04.298Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-06-30T17:18:23.362Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-06-09T19:03:07.157Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-05-04T07:10:01.970Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2026-04-16T08:18:36.757Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-03-22T16:59:10.020Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-03-09T16:50:52.813Z",
+      "version": "0.1.0"
+    }
+  ]
+}

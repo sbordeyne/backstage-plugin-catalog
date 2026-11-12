@@ -1,0 +1,42 @@
+{
+  "author": "",
+  "created": "2025-07-22T09:48:56.849Z",
+  "deprecated": "",
+  "description": "The yaml-merge-actions backend module for the scaffolder plugin.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "diftech.3rdparty",
+    "dmitry.maklygin",
+    "ganiev",
+    "roman.shirokov"
+  ],
+  "name": "@platacard/backstage-plugin-scaffolder-backend-module-yaml-merge-actions",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@platacard",
+  "updated": "2025-08-12T15:50:37.197Z",
+  "version": "0.6.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-08-12T15:50:37.197Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-07-31T08:48:33.983Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-07-31T08:03:47.437Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-07-22T09:48:57.130Z",
+      "version": "0.3.0"
+    }
+  ]
+}

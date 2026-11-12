@@ -1,0 +1,33 @@
+{
+  "author": "",
+  "created": "2026-07-10T16:09:07.639Z",
+  "deprecated": "",
+  "description": "Backstage scaffolder backend module providing the intropy:int:create action, which scaffolds integrations using the intropy CLI",
+  "homepage": "https://github.com/integrio-intropy/scaffolder-backend-module-intropy",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "intropy",
+    "scaffolder",
+    "scaffolder-action"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "robot-intropy"
+  ],
+  "name": "@intropy/backstage-plugin-scaffolder-backend-module-intropy",
+  "plugin_id": "scaffolder",
+  "readme": "ERROR: No README data found!",
+  "repository": "https://github.com/integrio-intropy/scaffolder-backend-module-intropy/tree/HEAD/plugins/scaffolder-backend-module-intropy",
+  "role": "backend-plugin-module",
+  "scope": "@intropy",
+  "updated": "2026-07-10T16:09:07.994Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-07-10T16:09:07.994Z",
+      "version": "0.1.0"
+    }
+  ]
+}

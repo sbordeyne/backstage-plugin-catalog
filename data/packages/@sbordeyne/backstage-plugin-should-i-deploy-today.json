@@ -1,0 +1,38 @@
+{
+  "author": "",
+  "created": "2026-08-17T19:59:20.142Z",
+  "deprecated": "",
+  "description": "Backstage home page widget answering whether today is a good day to deploy, from the weekday, the time of day and the public holidays of your locale.",
+  "homepage": "https://sbordeyne.github.io/backstage-plugins/dev/plugins/should-i-deploy-today/",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "deployment",
+    "frontend-plugin",
+    "home",
+    "homepage"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "dogeek0"
+  ],
+  "name": "@sbordeyne/backstage-plugin-should-i-deploy-today",
+  "plugin_id": "should-i-deploy-today",
+  "readme": "# should-i-deploy-today\n\nA home page widget that answers one question: should you deploy right now?\n\nThe answer comes from the browser's own locale — no backend, no configuration, no API call. The\nwidget reads the weekday, the time of day and the public holidays of the visitor's country, picks\nthe first rule that matches, and renders a random message from that rule's set on a green, amber or\nred surface.\n\nFull documentation lives at\n[sbordeyne.github.io/backstage-plugins/plugins/should-i-deploy-today](https://sbordeyne.github.io/backstage-plugins/plugins/should-i-deploy-today/).\n\n## Installation\n\n```bash\nyarn --cwd packages/app add @sbordeyne/backstage-plugin-should-i-deploy-today\n```\n\nThe plugin is built for the [new frontend system](https://backstage.io/docs/frontend-system/architecture/index)\nand exports itself as the package default, so installing it is adding it to the app's features:\n\n```ts\n// packages/app/src/App.tsx\nimport shouldIDeployTodayPlugin from '@sbordeyne/backstage-plugin-should-i-deploy-today';\n\nexport const app = createApp({\n  features: [shouldIDeployTodayPlugin],\n});\n```\n\nIt contributes a single `HomePageWidgetBlueprint` extension, so the widget then shows up in the home\npage widget picker as **Should I deploy today?** — nothing else has to be mounted by hand.\n\n## The rules\n\nThe first match wins, top to bottom:\n\n| Rule                 | When                                      | Status  |\n| -------------------- | ----------------------------------------- | ------- |\n| `friday_the_13th`    | Friday the 13th                           | KO      |\n| `weekend`            | Saturday or Sunday                        | KO      |\n| `holiday`            | Public holiday in the visitor's country   | KO      |\n| `holiday_eve`        | Public holiday tomorrow                   | KO      |\n| `friday`             | Any Friday                                | KO      |\n| `evening_or_night`   | Before 09:00 or from 18:00                | KO      |\n| `thursday_afternoon` | Thursday from 16:00                       | WARNING |\n| `afternoon`          | Any other day from 16:00                  | WARNING |\n| `none`               | Anything left — a regular working morning | OK      |\n\nHolidays come from [`date-holidays`](https://www.npmjs.com/package/date-holidays), restricted to\n`public` ones, for the country in `Intl.DateTimeFormat().resolvedOptions().locale` (falling back to\n`US`). Christmas, New Year's Day, Easter Monday and All Saints' Day have their own message sets;\nevery other holiday uses the generic ones.\n\n## Development\n\n```bash\nyarn start   # serves the widget in isolation, see ./dev\nyarn test\n```\n\nMessages live in [`src/data/reasons.json`](./src/data/reasons.json), keyed by rule. Holiday-specific\nkeys are the holiday's English name, lowercased with non-alphanumerics stripped and spaces turned\ninto underscores — `Christmas Day` becomes `christmas_day`. A key that matches no holiday silently\nfalls back to `default`, so check the slug when adding one.\n",
+  "repository": "https://github.com/sbordeyne/backstage-plugins/tree/HEAD/plugins/should-i-deploy-today",
+  "role": "frontend-plugin",
+  "scope": "@sbordeyne",
+  "updated": "2026-08-24T07:20:08.176Z",
+  "version": "0.2.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-08-24T07:20:08.176Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-08-17T19:59:20.455Z",
+      "version": "0.1.0"
+    }
+  ]
+}

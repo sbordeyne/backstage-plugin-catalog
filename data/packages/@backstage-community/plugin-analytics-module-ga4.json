@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:08:28.670Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://backstage.io",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-analytics-module-ga4",
+  "plugin_id": "app",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/analytics/plugins/analytics-module-ga4",
+  "role": "frontend-plugin-module",
+  "scope": "@backstage-community",
+  "updated": "2026-11-06T09:02:48.618Z",
+  "version": "0.23.0",
+  "version_count": 33,
+  "versions": [
+    {
+      "date": "2026-11-06T09:02:48.618Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-09-23T11:16:03.424Z",
+      "version": "0.22.1"
+    },
+    {
+      "date": "2026-08-28T20:06:58.282Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-07-21T17:22:38.480Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-06-20T06:36:59.144Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-05-05T18:14:12.506Z",
+      "version": "0.19.1"
+    },
+    {
+      "date": "2026-04-26T05:43:11.765Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-04-22T07:15:13.563Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2026-04-02T10:53:51.841Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2026-03-15T20:49:45.478Z",
+      "version": "0.16.2"
+    },
+    {
+      "date": "2026-03-10T21:11:47.440Z",
+      "version": "0.16.1"
+    },
+    {
+      "date": "2026-03-10T19:03:44.243Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2026-01-31T06:15:04.902Z",
+      "version": "0.15.0"
+    },
+    {
+      "date": "2026-01-08T23:00:39.591Z",
+      "version": "0.14.0"
+    },
+    {
+      "date": "2025-12-15T14:07:22.704Z",
+      "version": "0.13.0"
+    }
+  ]
+}

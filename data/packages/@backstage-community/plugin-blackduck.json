@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-08-21T21:03:58.301Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-blackduck",
+  "plugin_id": "blackduck",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/blackduck/plugins/blackduck",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-03-07T13:39:31.042Z",
+  "version": "0.13.0",
+  "version_count": 21,
+  "versions": [
+    {
+      "date": "2026-03-07T13:39:31.042Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2026-02-03T08:15:00.582Z",
+      "version": "0.12.0"
+    },
+    {
+      "date": "2026-01-10T08:16:18.490Z",
+      "version": "0.11.0"
+    },
+    {
+      "date": "2025-12-08T19:04:04.191Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2025-11-08T18:42:51.936Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2025-10-06T15:27:10.207Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2025-08-14T14:03:15.679Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-07-06T07:04:28.325Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2025-06-23T10:58:11.337Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2025-05-05T13:58:30.433Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2025-03-22T22:08:50.289Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2025-02-23T17:21:00.834Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2025-02-02T16:53:29.288Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2025-01-31T21:06:07.586Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2024-12-23T16:39:22.955Z",
+      "version": "0.1.0"
+    }
+  ]
+}

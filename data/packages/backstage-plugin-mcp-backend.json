@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2026-04-16T19:07:35.670Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin that exposes the service catalog, TechDocs, and scaffolder as MCP tools for AI coding agents.",
+  "homepage": "https://github.com/watsongm/backstageMCP#readme",
+  "keywords": [
+    "agents",
+    "ai",
+    "backstage",
+    "backstage-plugin",
+    "catalog",
+    "mcp",
+    "model-context-protocol",
+    "scaffolder",
+    "techdocs"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "watsongm"
+  ],
+  "name": "backstage-plugin-mcp-backend",
+  "plugin_id": "",
+  "readme": "ERROR: No README data found!",
+  "repository": "https://github.com/watsongm/backstageMCP",
+  "role": "backend-plugin",
+  "scope": "",
+  "updated": "2026-04-16T19:07:35.929Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2026-04-16T19:07:35.929Z",
+      "version": "0.1.0"
+    }
+  ]
+}

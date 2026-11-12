@@ -1,0 +1,83 @@
+{
+  "author": "The Backstage Community",
+  "created": "2024-11-06T14:22:57.999Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-kiali-backend",
+  "plugin_id": "kiali",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/kiali/plugins/kiali-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-11T11:34:25.283Z",
+  "version": "1.30.0",
+  "version_count": 25,
+  "versions": [
+    {
+      "date": "2026-11-11T11:34:25.283Z",
+      "version": "1.30.0"
+    },
+    {
+      "date": "2026-07-31T10:50:08.969Z",
+      "version": "1.29.3"
+    },
+    {
+      "date": "2026-07-14T17:09:32.680Z",
+      "version": "1.29.2"
+    },
+    {
+      "date": "2026-05-15T14:11:23.926Z",
+      "version": "1.29.1"
+    },
+    {
+      "date": "2026-04-10T08:56:14.213Z",
+      "version": "1.29.0"
+    },
+    {
+      "date": "2026-04-06T13:23:30.178Z",
+      "version": "1.28.1"
+    },
+    {
+      "date": "2026-01-08T14:07:05.636Z",
+      "version": "1.28.0"
+    },
+    {
+      "date": "2026-01-02T08:10:17.159Z",
+      "version": "1.27.2"
+    },
+    {
+      "date": "2025-11-24T15:54:20.985Z",
+      "version": "1.27.1"
+    },
+    {
+      "date": "2025-10-21T21:17:05.396Z",
+      "version": "1.27.0"
+    },
+    {
+      "date": "2025-10-15T11:13:01.176Z",
+      "version": "1.26.0"
+    },
+    {
+      "date": "2025-10-02T12:31:55.591Z",
+      "version": "1.25.0"
+    },
+    {
+      "date": "2025-08-27T07:45:31.423Z",
+      "version": "1.24.0"
+    },
+    {
+      "date": "2025-08-07T17:37:15.892Z",
+      "version": "1.23.0"
+    },
+    {
+      "date": "2025-07-24T12:50:59.944Z",
+      "version": "1.22.2"
+    }
+  ]
+}

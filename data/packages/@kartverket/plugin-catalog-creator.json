@@ -1,0 +1,63 @@
+{
+  "author": "",
+  "created": "2025-09-19T10:21:22.671Z",
+  "deprecated": "",
+  "description": "Welcome to the catalog-creator plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "backstage-kartverket"
+  ],
+  "name": "@kartverket/plugin-catalog-creator",
+  "plugin_id": "catalog-creator",
+  "readme": "# catalog-creator\n\nWelcome to the catalog-creator plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/catalog-creator](http://localhost:3000/catalog-creator).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@kartverket",
+  "updated": "2025-10-21T11:30:06.428Z",
+  "version": "1.1.4",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2025-10-21T11:30:06.428Z",
+      "version": "1.1.4"
+    },
+    {
+      "date": "2025-10-14T15:56:26.219Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2025-10-14T11:55:34.450Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2025-10-06T10:33:02.836Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2025-09-22T13:32:17.913Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2025-09-22T12:55:07.284Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2025-09-22T11:43:49.723Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-09-22T08:09:57.160Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-09-19T12:40:08.009Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-09-19T10:21:22.964Z",
+      "version": "0.1.0"
+    }
+  ]
+}

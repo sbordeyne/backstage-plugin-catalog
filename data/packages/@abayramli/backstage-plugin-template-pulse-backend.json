@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2026-10-23T08:56:30.886Z",
+  "deprecated": "",
+  "description": "Analytics and searchable history for Scaffolder runs, with access controlled by Backstage permissions.",
+  "homepage": "https://github.com/alibayramli/template-pulse#readme",
+  "keywords": [
+    "analytics",
+    "backstage",
+    "backstage-plugin",
+    "scaffolder",
+    "template-pulse"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "abayramli"
+  ],
+  "name": "@abayramli/backstage-plugin-template-pulse-backend",
+  "plugin_id": "template-pulse",
+  "readme": "# Template Pulse backend\n\nAnalytics for Scaffolder runs, controlled by Backstage permissions.\n\n```ts\nbackend.add(import('@abayramli/backstage-plugin-template-pulse-backend'));\n```\n\nFollow the [installation guide](https://github.com/alibayramli/template-pulse#add-to-backstage) to enable permissions and choose who can view their own runs or runs across the organization. By default, the backend reads recent Scaffolder runs. Add the optional database module to read all runs still stored in Scaffolder's database.\n",
+  "repository": "https://github.com/alibayramli/template-pulse/tree/HEAD/plugins/template-pulse-backend",
+  "role": "backend-plugin",
+  "scope": "@abayramli",
+  "updated": "2026-10-23T08:57:27.604Z",
+  "version": "0.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-10-23T08:57:27.604Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-10-23T08:56:30.886Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

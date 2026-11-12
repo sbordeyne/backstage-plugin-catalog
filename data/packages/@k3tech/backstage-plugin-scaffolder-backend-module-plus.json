@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2024-02-29T03:13:04.853Z",
+  "deprecated": "",
+  "description": "The plus module for @backstage/plugin-scaffolder-node",
+  "homepage": "https://github.com/kode3tech/k3t-backstage-plugin-scaffolder-backend-module-plus/wiki",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "alansferreira",
+    "kode3tech"
+  ],
+  "name": "@k3tech/backstage-plugin-scaffolder-backend-module-plus",
+  "plugin_id": "scaffolder",
+  "readme": "# Plugin for scaffolder backend `plus`\n\nThe `plus` module for [scaffolder-backend](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend).\n\nThis package make you able to execute `multiples` parameters with an single call and `extra` features.\n\n> You can see all available examples [here](./exemples.md).\n\n## Get Started\n\njust \n```bash\nyarn add @k3tech/backstage-plugin-scaffolder-backend-module-plus\n```\nand import module on backend\n\n`packages/backend/src/index.ts`\n```ts\n...\nbackend.add(import('@k3tech/backstage-plugin-scaffolder-backend-module-plus'));\n\n```\n\nyou can check if all actions and examples in is ready on http://localhost:3000/create/actions\n\n\n\n_This plugin was created through the Backstage CLI_\n",
+  "repository": "http://github.com/kode3tech/k3t-backstage-plugin-scaffolder-backend-module-plus",
+  "role": "backend-plugin-module",
+  "scope": "@k3tech",
+  "updated": "2026-03-05T17:07:12.731Z",
+  "version": "1.8.21",
+  "version_count": 45,
+  "versions": [
+    {
+      "date": "2026-03-05T17:07:12.731Z",
+      "version": "1.8.21"
+    },
+    {
+      "date": "2026-02-17T19:35:56.649Z",
+      "version": "1.8.15"
+    },
+    {
+      "date": "2026-02-17T18:57:30.036Z",
+      "version": "1.8.14"
+    },
+    {
+      "date": "2026-02-17T18:43:24.284Z",
+      "version": "1.8.13"
+    },
+    {
+      "date": "2026-01-25T03:43:09.009Z",
+      "version": "1.8.10"
+    },
+    {
+      "date": "2025-11-19T01:45:37.911Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2025-10-01T00:32:04.386Z",
+      "version": "1.6.1"
+    },
+    {
+      "date": "2025-10-01T00:27:14.657Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2025-09-30T18:50:25.704Z",
+      "version": "1.5.38"
+    },
+    {
+      "date": "2025-09-24T17:28:37.228Z",
+      "version": "1.5.37"
+    },
+    {
+      "date": "2025-09-24T03:36:18.179Z",
+      "version": "1.5.35"
+    },
+    {
+      "date": "2025-09-24T03:10:53.263Z",
+      "version": "1.5.34"
+    },
+    {
+      "date": "2025-09-24T03:06:21.994Z",
+      "version": "1.5.33"
+    },
+    {
+      "date": "2025-09-24T02:56:43.066Z",
+      "version": "1.5.32"
+    },
+    {
+      "date": "2025-09-24T02:33:24.314Z",
+      "version": "1.5.31"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "author": "",
+  "created": "2023-11-01T16:00:37.016Z",
+  "deprecated": "",
+  "description": "Welcome to the harbor plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@vrabbi/backstage-plugin-harbor",
+  "plugin_id": "",
+  "readme": "# harbor\n\nWelcome to the harbor plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/harbor](http://localhost:3000/harbor).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "https://github.com/BESTSELLER/backstage-plugin-harbor",
+  "role": "frontend-plugin",
+  "scope": "@vrabbi",
+  "updated": "2023-11-05T08:54:57.023Z",
+  "version": "0.6.0",
+  "version_count": 5,
+  "versions": [
+    {
+      "date": "2023-11-05T08:54:57.023Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2023-11-02T13:31:26.575Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2023-11-02T09:36:06.393Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2023-11-01T17:36:48.314Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2023-11-01T16:00:37.396Z",
+      "version": "0.3.2"
+    }
+  ]
+}

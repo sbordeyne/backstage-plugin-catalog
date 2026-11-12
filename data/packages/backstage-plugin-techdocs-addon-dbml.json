@@ -1,0 +1,44 @@
+{
+  "author": "",
+  "created": "2026-09-20T22:37:30.828Z",
+  "deprecated": "",
+  "description": "Backstage TechDocs addon rendering interactive DBML diagrams",
+  "homepage": "https://github.com/panda-coop/backstage-plugin-techdocs-addon-dbml#readme",
+  "keywords": [
+    "backstage",
+    "dbml",
+    "techdocs",
+    "techdocs-addon"
+  ],
+  "license": "GPL-3.0-or-later",
+  "maintainers": [
+    "cooperative-panda"
+  ],
+  "name": "backstage-plugin-techdocs-addon-dbml",
+  "plugin_id": "techdocs",
+  "readme": "# DBML for TechDocs\n\n[![npm](https://img.shields.io/npm/v/backstage-plugin-techdocs-addon-dbml)](https://www.npmjs.com/package/backstage-plugin-techdocs-addon-dbml)\n[![license](https://img.shields.io/github/license/panda-coop/backstage-plugin-techdocs-addon-dbml)](https://github.com/panda-coop/backstage-plugin-techdocs-addon-dbml/blob/main/LICENSE)\n[![docs](https://img.shields.io/github/actions/workflow/status/panda-coop/backstage-plugin-techdocs-addon-dbml/docs.yml?label=docs)](https://panda-coop.github.io/backstage-plugin-techdocs-addon-dbml/)\n\nBackstage TechDocs addon that replaces `dbml` code fences in TechDocs\npages with interactive entity-relationship diagrams. Parsing is done with\n[`@dbml/core`](https://www.dbml.org/), rendering with React Flow:\ndraggable tables, crow's foot relationship edges, collapsible tables and\ntable groups, note tooltips and enum chips, a syntax-highlighted code\nview, and a near-fullscreen expand dialog — all themed from the active\nBackstage theme.\n\n**Full documentation:**\n<https://panda-coop.github.io/backstage-plugin-techdocs-addon-dbml/>\n\n## Install\n\n```bash\nyarn --cwd packages/app add backstage-plugin-techdocs-addon-dbml\n```\n\n## Quick start (new frontend system)\n\n```tsx\nimport techdocsAddonDbml from 'backstage-plugin-techdocs-addon-dbml/alpha';\n\nexport default createApp({\n  features: [techdocsAddonDbml],\n});\n```\n\nAs of `@backstage/plugin-techdocs` 1.18.1 the new frontend system\nregisters TechDocs addons but never renders them; until that is fixed\nupstream an entity-tab override is required — see\n[Usage](https://panda-coop.github.io/backstage-plugin-techdocs-addon-dbml/usage/)\nfor the full workaround and the classic frontend system wiring. Authoring\nrules (which code blocks are claimed and how) are covered in\n[Authoring](https://panda-coop.github.io/backstage-plugin-techdocs-addon-dbml/authoring/).\n\n## License\n\nGPL-3.0-or-later. Copyright (C) 2026 PANDA Coop.\n",
+  "repository": "https://github.com/panda-coop/backstage-plugin-techdocs-addon-dbml/tree/HEAD/plugins/techdocs-addon-dbml",
+  "role": "frontend-plugin-module",
+  "scope": "",
+  "updated": "2026-09-22T17:53:17.858Z",
+  "version": "0.2.0",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-09-22T17:53:17.858Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-09-21T03:07:01.762Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-09-20T23:11:49.770Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2026-09-20T22:37:31.094Z",
+      "version": "0.0.0"
+    }
+  ]
+}

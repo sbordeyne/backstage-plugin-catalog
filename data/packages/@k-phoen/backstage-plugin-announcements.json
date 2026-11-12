@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2022-11-03T20:20:20.771Z",
+  "deprecated": "",
+  "description": "The Announcements plugin is a frontend, backend, and common plugin that manages and displays announcements within Backstage.",
+  "homepage": "https://github.com/K-Phoen/backstage-plugin-announcements",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "kphoen"
+  ],
+  "name": "@k-phoen/backstage-plugin-announcements",
+  "plugin_id": "",
+  "readme": "# Announcements plugin for Backstage\n\nThe Announcements plugin is a frontend, backend, and common plugin that manages and displays announcements within Backstage.\n\nThis plugin provides:\n\n- a component to display the latest announcements, for example on a homepage\n- a component to display the latest announcements, for example on a homepage\n- pages to list, view, create, edit and delete announcements\n- integration with the [`@backstage/plugin-search`](https://github.com/backstage/backstage/tree/master/plugins/search) plugin\n- integration with the [`@backstage/plugin-permission-backend`](https://github.com/backstage/backstage/tree/master/plugins/permission-backend) plugin\n\n## Setup\n\nSee [the project's README](../../README.md).\n",
+  "repository": "https://github.com/K-Phoen/backstage-plugin-announcements",
+  "role": "frontend-plugin",
+  "scope": "@k-phoen",
+  "updated": "2023-12-28T00:45:33.150Z",
+  "version": "0.2.0",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2023-12-28T00:45:33.150Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-06-26T22:30:22.100Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2023-03-11T20:34:36.001Z",
+      "version": "0.0.14"
+    },
+    {
+      "date": "2023-03-11T16:09:37.121Z",
+      "version": "0.0.13"
+    },
+    {
+      "date": "2023-02-19T23:04:34.405Z",
+      "version": "0.0.12"
+    },
+    {
+      "date": "2023-01-16T14:09:28.688Z",
+      "version": "0.0.11"
+    },
+    {
+      "date": "2023-01-16T12:24:26.716Z",
+      "version": "0.0.10"
+    },
+    {
+      "date": "2023-01-16T11:46:27.193Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2023-01-16T11:30:44.310Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2022-11-16T23:56:15.692Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2022-11-15T23:57:58.546Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2022-11-08T16:18:50.512Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2022-11-07T13:26:05.425Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2022-11-06T23:55:06.450Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2022-11-03T20:57:12.037Z",
+      "version": "0.0.2"
+    }
+  ]
+}

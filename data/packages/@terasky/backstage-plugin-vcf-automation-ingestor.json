@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2025-04-21T16:21:21.171Z",
+  "deprecated": "",
+  "description": "Welcome to the Ingestor plugin for VCF Automation!",
+  "homepage": "https://terasky.com",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "vrabbi"
+  ],
+  "name": "@terasky/backstage-plugin-vcf-automation-ingestor",
+  "plugin_id": "backstage-plugin-vcf-automation-ingestor",
+  "readme": "# VCF Automation Ingestor Plugin for Backstage\n\nWelcome to the Ingestor plugin for VCF Automation!\n\n[![npm latest version](https://img.shields.io/npm/v/@terasky/backstage-plugin-vcf-automation-ingestor/latest.svg)](https://www.npmjs.com/package/@terasky/backstage-plugin-vcf-automation-ingestor)\n\nThis plugin ingests VCF Automation deployments into the Backstage catalog. It creates the following entity types:\n\n- **Systems**: Created from VCF Automation deployments\n- **Components**: Created from VCF Automation resources of type `Cloud.vSphere.Machine`\n- **Resources**: Created from all other VCF Automation resource types\n- **Domains**: Created from VCF Automation projects\n\nFor detailed docs go to https://terasky-oss.github.io/backstage-plugins/plugins/vcf-automation/overview\n\n## Contributing\nContributions are welcome! Please open an issue or submit a pull request on GitHub.\n\n## License\nThis project is licensed under the Apache-2.0 License.",
+  "repository": "https://github.com/TeraSky-OSS/backstage-plugins/tree/HEAD/plugins/vcf-automation-ingestor",
+  "role": "backend-plugin",
+  "scope": "@terasky",
+  "updated": "2026-10-21T13:55:10.848Z",
+  "version": "1.19.0",
+  "version_count": 30,
+  "versions": [
+    {
+      "date": "2026-10-21T13:55:10.848Z",
+      "version": "1.19.0"
+    },
+    {
+      "date": "2026-06-30T17:23:30.875Z",
+      "version": "1.16.0"
+    },
+    {
+      "date": "2026-06-09T19:10:41.755Z",
+      "version": "1.15.1"
+    },
+    {
+      "date": "2026-04-16T08:23:05.909Z",
+      "version": "1.14.0"
+    },
+    {
+      "date": "2026-03-22T17:03:39.643Z",
+      "version": "1.12.0"
+    },
+    {
+      "date": "2026-03-09T16:54:22.056Z",
+      "version": "1.11.1"
+    },
+    {
+      "date": "2026-02-17T20:41:53.424Z",
+      "version": "1.11.0"
+    },
+    {
+      "date": "2026-01-29T20:41:48.645Z",
+      "version": "1.10.1"
+    },
+    {
+      "date": "2026-01-28T18:33:23.987Z",
+      "version": "1.10.0"
+    },
+    {
+      "date": "2026-01-26T10:39:12.350Z",
+      "version": "1.9.1"
+    },
+    {
+      "date": "2026-01-21T10:09:47.922Z",
+      "version": "1.9.0"
+    },
+    {
+      "date": "2026-01-01T17:21:14.643Z",
+      "version": "1.8.1"
+    },
+    {
+      "date": "2025-12-22T10:17:13.252Z",
+      "version": "1.7.0"
+    },
+    {
+      "date": "2025-12-02T12:37:08.435Z",
+      "version": "1.6.0"
+    },
+    {
+      "date": "2025-10-16T19:14:19.376Z",
+      "version": "1.5.1"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2026-03-06T19:07:51.646Z",
+  "deprecated": "",
+  "description": "Scaffolder field extensions for [Kong](https://konghq.com/) integration in [Backstage](https://backstage.io/).",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-scaffolder-field-extensions-kong-dynamic",
+  "plugin_id": "scaffolder-field-extensions-kong",
+  "readme": "# @veecode-platform/backstage-plugin-scaffolder-field-extensions-kong\n\nScaffolder field extensions for [Kong](https://konghq.com/) integration in [Backstage](https://backstage.io/).\n\nProvides a **KongInstancePicker** custom field that lets users select a Kong instance from the available instances configured in the backend.\n\n## Features\n\n- Autocomplete dropdown listing all Kong instances from `kong-service-manager-backend`\n- Displays instance ID, description, API base URL, and workspace\n- Returns the selected instance ID as a `string` value\n\n## Installation\n\n```bash\n# yarn\nyarn add @veecode-platform/backstage-plugin-scaffolder-field-extensions-kong\n\n# npm\nnpm install @veecode-platform/backstage-plugin-scaffolder-field-extensions-kong\n```\n\n### Prerequisites\n\nThis plugin requires the [`kong-service-manager-backend`](https://www.npmjs.com/package/@veecode-platform/backstage-plugin-kong-service-manager-backend) plugin to be installed and configured, as it fetches instances from its `/instances` endpoint.\n\n## Usage\n\n### Static Backstage app\n\nRegister the field extension in your `App.tsx`:\n\n```tsx\nimport { KongInstancePickerExtension } from '@veecode-platform/backstage-plugin-scaffolder-field-extensions-kong';\nimport { ScaffolderPage } from '@backstage/plugin-scaffolder';\n\n// Inside your App routes:\n<Route path=\"/create\" element={<ScaffolderPage />}>\n  <KongInstancePickerExtension />\n</Route>\n```\n\n### Dynamic plugin (VeeCode / RHDH )\n\nAdd to your `dynamic-plugins.yaml`:\n\n```yaml\nplugins:\n  - package: ./dynamic-plugins/dist/veecode-platform-backstage-plugin-scaffolder-field-extensions-kong-dynamic\n    disabled: false\n    pluginConfig:\n      dynamicPlugins:\n        frontend:\n          veecode-platform.backstage-plugin-scaffolder-field-extensions-kong:\n            scaffolderFieldExtensions:\n              - importName: KongInstancePickerExtension\n```\n\n## Using in a template\n\nReference `KongInstancePicker` as a `ui:field` in your scaffolder template:\n\n```yaml\napiVersion: scaffolder.backstage.io/v1beta3\nkind: Template\nmetadata:\n  name: example-with-kong\nspec:\n  parameters:\n    - title: Kong Configuration\n      properties:\n        kongInstance:\n          title: Kong Instance\n          type: string\n          description: Select the target Kong instance\n          ui:field: KongInstancePicker\n  steps:\n    - id: log\n      name: Log selected instance\n      action: debug:log\n      input:\n        message: \"Selected Kong instance: ${{ parameters.kongInstance }}\"\n```\n\n## Exports\n\n| Export                       | Description                              |\n| ---------------------------- | ---------------------------------------- |\n| `KongInstancePickerExtension` | Scaffolder field extension component     |\n| `KongInstancePickerSchema`    | JSON Schema for the field's return value |\n\n## License\n\nApache-2.0\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2026-03-20T12:47:54.630Z",
+  "version": "1.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-03-20T12:47:54.630Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-03-06T19:07:52.181Z",
+      "version": "1.0.2"
+    }
+  ]
+}

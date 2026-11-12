@@ -1,0 +1,63 @@
+{
+  "author": "Cassidy Marble",
+  "created": "2026-08-28T23:20:09.989Z",
+  "deprecated": "",
+  "description": "Common functionality for the Grafana Backstage plugins (types, annotations, and API contracts)",
+  "homepage": "https://github.com/marble-sh/backstage-plugins-grafana/tree/main/plugins/grafana-common",
+  "keywords": [
+    "backstage",
+    "grafana",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "marble-sh"
+  ],
+  "name": "@marble-sh/backstage-plugin-grafana-common",
+  "plugin_id": "grafana",
+  "readme": "# @marble-sh/backstage-plugin-grafana-common\n\nCommon functionality shared by the Grafana Backstage plugins. This package is\nisomorphic (usable from both frontend and backend) and has no heavy\ndependencies, so it can be safely imported anywhere.\n\nIt provides:\n\n- **Entity annotations** and helpers for selecting Grafana content per entity.\n- **Data-transfer types** describing the shapes returned by the Grafana backend\n  REST API.\n\n## Entity annotations\n\n| Annotation                     | Helper                   | Meaning                                                                                                             |\n| ------------------------------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------- |\n| `grafana/instance`             | `getGrafanaInstanceName` | The `grafana.instances[].name` the entity belongs to (exact match). Absent = query all configured instances.        |\n| `grafana/host-id` (deprecated) | `getGrafanaInstanceName` | Deprecated fallback for `grafana/instance`, read only when the latter is absent. Removed in a future major release. |\n| `grafana/dashboard-selector`   | `getDashboardSelector`   | Comma-separated, case-insensitive title substrings; **any** match selects the dashboard.                            |\n| `grafana/dashboard-uid`        | `getDashboardUid`        | A single dashboard uid (exact, case-sensitive match). Written by catalog discovery on its dashboard `Resource`s.    |\n| `grafana/tag-selector`         | `getTagSelector`         | Comma-separated dashboard tags; the dashboard must carry **all** of them.                                           |\n| `grafana/alert-label-selector` | `getAlertLabelSelector`  | `key=value,...` alert label matchers; the rule's labels must contain **all** pairs.                                 |\n\nThe dashboard annotations combine with AND — a dashboard must pass every one\nthe entity carries. Empty annotation values are treated as absent. The\ndeprecated `grafana/host-id` alias is read only when `grafana/instance` is\nabsent; an explicit `grafana/instance` always wins. New entities should use\n`grafana/instance`. The full matching semantics are documented in the\n[frontend plugin README](../grafana/README.md#entity-annotations).\n\nThree gating helpers decide whether an entity has Grafana content to show:\n\n- `isDashboardsAvailable(entity)` — any of `grafana/instance` (or the\n  deprecated `grafana/host-id` fallback), `grafana/dashboard-selector`,\n  `grafana/dashboard-uid`, or `grafana/tag-selector` is present.\n- `isAlertsAvailable(entity)` — `grafana/instance` (or the deprecated\n  `grafana/host-id` fallback) or `grafana/alert-label-selector` is present.\n- `isGrafanaAvailable(entity)` — either of the above; used to gate the Grafana\n  entity tabs and cards.\n\n```ts\nimport {\n  isGrafanaAvailable,\n  getGrafanaInstanceName,\n} from '@marble-sh/backstage-plugin-grafana-common';\n\nif (isGrafanaAvailable(entity)) {\n  const instance = getGrafanaInstanceName(entity); // e.g. \"production\"\n}\n```\n\n## Types\n\nThe package exports the response and entity types used by the plugins, including\n`GrafanaInstanceInfo`, `GrafanaDashboard`, `GrafanaAlert`, and the\n`List*Response` bodies returned by the backend.\n\n## Testing\n\n```sh\nyarn workspace @marble-sh/backstage-plugin-grafana-common test\n```\n",
+  "repository": "https://github.com/marble-sh/backstage-plugins-grafana/tree/HEAD/plugins/grafana-common",
+  "role": "common-library",
+  "scope": "@marble-sh",
+  "updated": "2026-10-19T23:03:16.574Z",
+  "version": "1.3.0",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2026-10-19T23:03:16.574Z",
+      "version": "1.3.0"
+    },
+    {
+      "date": "2026-09-24T22:00:43.550Z",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2026-08-31T19:30:01.920Z",
+      "version": "1.2.1"
+    },
+    {
+      "date": "2026-08-31T04:09:03.740Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-08-30T04:43:45.649Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-08-29T03:16:27.441Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2026-08-29T02:53:55.186Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2026-08-29T01:45:46.002Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-08-28T23:20:10.307Z",
+      "version": "0.2.0"
+    }
+  ]
+}

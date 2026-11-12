@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2024-08-07T14:41:11.172Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-report-portal-backend",
+  "plugin_id": "report-portal",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/report-portal/plugins/report-portal-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-07-23T09:53:12.855Z",
+  "version": "1.1.3",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2026-07-23T09:53:12.855Z",
+      "version": "1.1.3"
+    },
+    {
+      "date": "2026-01-12T07:52:37.310Z",
+      "version": "1.1.2"
+    },
+    {
+      "date": "2025-09-23T10:29:28.476Z",
+      "version": "1.1.1"
+    },
+    {
+      "date": "2025-08-08T16:43:18.559Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2025-02-27T08:15:17.046Z",
+      "version": "1.0.7"
+    },
+    {
+      "date": "2025-02-17T17:20:51.471Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2024-10-19T20:35:28.388Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2024-10-09T17:44:10.790Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2024-09-03T22:00:13.821Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2024-08-24T22:04:50.889Z",
+      "version": "1.0.2"
+    },
+    {
+      "date": "2024-08-23T18:37:51.996Z",
+      "version": "1.0.1"
+    },
+    {
+      "date": "2024-08-07T14:41:11.475Z",
+      "version": "1.0.0"
+    }
+  ]
+}

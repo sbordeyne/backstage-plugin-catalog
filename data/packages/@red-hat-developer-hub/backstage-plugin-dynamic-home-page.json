@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2024-11-18T11:00:56.291Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-dynamic-home-page",
+  "plugin_id": "homepage",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/homepage/plugins/dynamic-home-page",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-06-11T08:44:02.545Z",
+  "version": "1.14.0",
+  "version_count": 42,
+  "versions": [
+    {
+      "date": "2026-09-17T03:29:52.308Z",
+      "version": "1.13.5"
+    },
+    {
+      "date": "2026-06-11T08:44:02.545Z",
+      "version": "1.14.0"
+    },
+    {
+      "date": "2026-05-27T19:22:17.872Z",
+      "version": "1.13.4"
+    },
+    {
+      "date": "2026-05-19T03:48:11.711Z",
+      "version": "1.13.2"
+    },
+    {
+      "date": "2026-05-05T13:58:45.278Z",
+      "version": "1.13.1"
+    },
+    {
+      "date": "2026-04-28T10:28:00.706Z",
+      "version": "1.13.0"
+    },
+    {
+      "date": "2026-04-15T12:13:37.644Z",
+      "version": "1.12.0"
+    },
+    {
+      "date": "2026-03-30T06:19:28.407Z",
+      "version": "1.11.0"
+    },
+    {
+      "date": "2026-02-06T09:06:58.416Z",
+      "version": "1.10.6"
+    },
+    {
+      "date": "2026-01-30T06:16:06.860Z",
+      "version": "1.10.5"
+    },
+    {
+      "date": "2026-01-23T19:25:43.430Z",
+      "version": "1.10.4"
+    },
+    {
+      "date": "2026-01-13T01:42:29.132Z",
+      "version": "1.10.3"
+    },
+    {
+      "date": "2025-12-09T23:21:36.684Z",
+      "version": "1.10.2"
+    },
+    {
+      "date": "2025-12-09T13:17:27.907Z",
+      "version": "1.10.1"
+    },
+    {
+      "date": "2025-12-09T12:26:13.925Z",
+      "version": "1.9.4"
+    }
+  ]
+}

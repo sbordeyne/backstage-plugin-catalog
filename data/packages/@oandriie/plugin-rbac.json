@@ -1,0 +1,42 @@
+{
+  "author": "Red Hat",
+  "created": "2024-12-11T14:53:35.768Z",
+  "deprecated": "",
+  "description": "The RBAC UI plugin offers a streamlined user interface for effectively managing permissions in your Backstage instance. It allows you to assign permissions to users and groups, empowering them to view, create, modify and delete Roles, provided they have t",
+  "homepage": "https://github.com/AndrienkoAleksandr/community-plugins#readme",
+  "keywords": [
+    "backstage",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "oandriie"
+  ],
+  "name": "@oandriie/plugin-rbac",
+  "plugin_id": "rbac",
+  "readme": "# RBAC frontend plugin for Backstage\n\nThe RBAC UI plugin offers a streamlined user interface for effectively managing permissions in your Backstage instance. It allows you to assign permissions to users and groups, empowering them to view, create, modify and delete Roles, provided they have the necessary permissions.\n\n## For administrators\n\n### Installation\n\n#### Prerequisites\n\nFollow the RBAC backend plugin [README](../rbac-backend/README.md) to integrate rbac in your Backstage instance.\n\n---\n\n**NOTE**\n\n- For non-admin users, to enable create/edit role button on Administration -> RBAC roles list page, the role associated with your user should have the following permission policies associated with it. Add the following in your permission policies configuration file:\n\n```CSV\np, role:default/team_a, catalog-entity, read, allow\np, role:default/team_a, policy-entity, read, allow\np, role:default/team_a, policy-entity, create, allow\ng, user:default/<login-id/user-name>, role:default/team_a\n```\n\n> Note: Make sure required users/groups are available in catalog as a role cannot be created without users/groups.\n\n> Note: Even after ingesting users/groups in catalog and applying above permissions if the create/edit button is still disabled then please contact your administrator as you might be conditionally restricted from accessing the create/edit button.\n\n- To fetch the permissions from other plugins like `Kubernetes` and `Jenkins` in the Role Form as mentioned in the [RBAC permissions documentation](../rbac-backend/docs/permissions.md), add the following configuration in your `app-config.yaml`:\n\n```yaml title=\"app-config.yaml\"\npermission:\n  enabled: true\n  rbac:\n    pluginsWithPermission:\n      - kubernetes\n      - jenkins\n    admin:\n      users:\n        - name: user:default/<user-name>\n```\n\n---\n\n#### Procedure\n\n1. Install the RBAC UI plugin executing the following command from the Backstage root directory :\n\n   ```console\n   yarn workspace app add @backstage-community/plugin-rbac\n   ```\n\n2. Add Route in `packages/app/src/App.tsx`:\n\n   ```tsx title=\"packages/app/src/App.tsx\"\n   /* highlight-add-next-line */\n   import { RbacPage } from '@backstage-community/plugin-rbac';\n\n   <Route path=\"/rbac\" element={<RbacPage />} />;\n   ```\n\n3. Add **Administration** Sidebar Item in `packages/app/src/components/Root/Root.tsx`:\n\n   ```tsx title=\"packages/app/src/components/Root/Root.tsx\"\n   /* highlight-add-next-line */\n   import { Administration } from '@backstage-community/plugin-rbac';\n\n   export const Root = ({ children }: PropsWithChildren<{}>) => (\n     <SidebarPage>\n       <Sidebar>\n         ...\n         <Administration />\n         ...\n       </Sidebar>\n     </SidebarPage>\n   );\n   ```\n\n4. For users with vanilla backstage instance, would need to integrate [`Auth`](https://backstage.io/docs/auth/) in to the instance:\n\n   - ```yaml title=\"app-config.yaml\"\n     # see https://backstage.io/docs/auth/ to learn about auth providers\n     environment: development\n     providers:\n        # Plugin: GitHub\n        github:\n           development:\n           clientId: ${GITHUB_BUCKET_CLIENT_ID}\n           clientSecret: ${GITHUB_BUCKET_SECRET}\n        # Plugin: BitBucket\n        bitbucket:\n           development:\n           clientId: ${BIT_BUCKET_CLIENT_ID}\n           clientSecret: ${BIT_BUCKET_SECRET}\n        ...\n     ```\n\n   - Integrate the [`SignIn`](https://backstage.io/docs/auth/#sign-in-configuration) component to be able to sign-in to the Backstage instance.\n\n### Configure plugins with permission\n\nIn order for the RBAC UI to display available permissions provided by installed plugins, add the corresponding\nplugin IDs to the `app-config.yaml`.\n\nYou can specify the plugins with permission in your application configuration as follows:\n\n```YAML\npermission:\n  enabled: true\n  rbac:\n    admin:\n      users:\n        - name: user:default/alice\n        - name: group:default/admins\n    pluginsWithPermission:\n      - catalog\n      - scaffolder\n      - permission\n```\n\nFor more information on the available permissions, refer to the [RBAC permissions documentation](../rbac-backend/docs/permissions.md).\n",
+  "repository": "https://github.com/AndrienkoAleksandr/community-plugins/tree/HEAD/workspaces/rbac/plugins/rbac",
+  "role": "frontend-plugin",
+  "scope": "@oandriie",
+  "updated": "2026-02-16T12:11:41.666Z",
+  "version": "1.49.2",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-02-16T12:11:41.666Z",
+      "version": "1.49.2"
+    },
+    {
+      "date": "2026-02-16T12:06:29.617Z",
+      "version": "1.49.1"
+    },
+    {
+      "date": "2026-02-16T09:23:56.123Z",
+      "version": "1.49.0"
+    },
+    {
+      "date": "2024-12-11T14:53:36.122Z",
+      "version": "1.33.3"
+    }
+  ]
+}

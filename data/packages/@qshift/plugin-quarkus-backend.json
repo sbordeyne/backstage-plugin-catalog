@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-01-10T19:33:21.112Z",
+  "deprecated": "",
+  "description": "This plugin proposes 2 actions able to:",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "cmoulliard"
+  ],
+  "name": "@qshift/plugin-quarkus-backend",
+  "plugin_id": "",
+  "readme": "## Quarkus Scaffolder Backend\n\nThis plugin proposes 2 actions able to:\n\n- Clone a Quarkus \"Quickstart\" repository. Action: `quarkus:quickstart:clone`\n- Create a Quarkus using the website `code.quarkus.io` able to generate a zip file of a Quarkus project and extensions selected (using extension list field). Action: `quarkus:app:create`\n\nTo use the scaffolder backend, import the package under the following path:\n```bash\ncd packages/backend\nyarn add \"@qshift/plugin-quarkus-backend\"\nyarn add \"@backstage/integration\"\n```\n\n### quickstart:clone action\n\nTo use the Quarkus action able to clone a quarkus quickstart from this [repository](https://github.com/quarkusio/quarkus-quickstarts), then edit the file `packages/backend/src/plugins/scaffolder.ts` to register the action: `cloneQuarkusQuickstart`.\n\nHere is a snippet example of code changed\n```typescript\nimport { ScmIntegrations } from '@backstage/integration';\nimport {createBuiltinActions, createRouter} from '@backstage/plugin-scaffolder-backend';\nimport { cloneQuarkusQuickstart } from '@internal/plugin-quarkus-backend';\n...\n  const integrations = ScmIntegrations.fromConfig(env.config);\n\n  const builtInActions = createBuiltinActions({\n    integrations,\n    catalogClient,\n    config: env.config,\n    reader: env.reader,\n  });\n\n  const actions = [...builtInActions, cloneQuarkusQuickstart()];\n\n  return await createRouter({\n    actions,\n```\n\nThe following table details the fields that you can use to use this action:\n\n| Input               | Description                                   | Type          | Required |\n|---------------------|-----------------------------------------------|---------------|----------|\n| quickstartName      | The name of the quickstart project to be used | string        | Yes      |\n| groupId             | Maven GroupID                                     | No    |\n| artifactId          | Maven ArtifactID                                  | No    |\n| targetPath          | Target Path to access the code within the workspace | No    |\n| additionalProperties | Quarkus properties                                | No    |\n| database            | Quarkus backend database (PostgreSQL, etc)        | No    |\n| infoEndpoint        | Quarkus API endpoint                              | No    |\n| healthEndpoint      | Kubernetes Health ednpoint                        | No    |\n| metricsEndpoint     | Enpoint exposing the Quarkus metrics              | No    |\n\nExample of action:\n```yaml\n  steps:\n    - id: template\n      name: Generating the Source Code Component\n      action: quarkus:quickstart:clone\n      input:\n        values:\n          groupId: ${{ parameters.groupId }}\n          artifactId: ${{ parameters.artifactId }}\n          version: ${{ parameters.version }}\n          quickstartName: ${{ parameters.quickstartName }}\n          additionalProperties: ${{ parameters.additionalProperties }}\n```\n\n### app:create action\n\nTo use the Quarkus action able to create a quarkus application using `code.quarkus.io`, then edit the file `packages/backend/src/plugins/scaffolder.ts` to register the action: `createQuarkusApp`.\n\nHere is a snippet example of code changed\n```typescript\nimport { ScmIntegrations } from '@backstage/integration';\nimport {createBuiltinActions, createRouter} from '@backstage/plugin-scaffolder-backend';\nimport { createQuarkusApp } from '@internal/plugin-quarkus-backend';\n...\n  const integrations = ScmIntegrations.fromConfig(env.config);\n\n  const builtInActions = createBuiltinActions({\n    integrations,\n    catalogClient,\n    config: env.config,\n    reader: env.reader,\n  });\n\n  const actions = [...builtInActions, createQuarkusApp()];\n\n  return await createRouter({\n    actions,\n```\nThe following table details the fields that you can use to use this action:\n\n| Input                | Description                                                      | Type    | Required |\n|----------------------|------------------------------------------------------------------|---------|----------|\n| quarkusVersion       | Quarkus version                                                  | string  | No       |\n| groupId              | Maven GroupID                                                    | string  | No       |\n| artifactId           | Maven ArtifactID                                                 | string  | No       |\n| version              | Maven Version                                                    | string  | No       |\n| buildTool            | Tool to be used to build: 'MAVEN', 'GRADLE', 'GRADLE_KOTLIN_DSL' | string  | No       |\n| extensions           | List of the Quarkus extensions                                   | array   | No       |\n| javaVersion          | JDK version                                                      | string  | No       |\n| starterCode          | Generate for the project some code to start ?                    | boolean | No       |\n| targetPath           | Target Path to access the code within the workspace              | string  | No       |\n| additionalProperties | Quarkus properties                                               | string  | No       |\n| database             | Quarkus backend database (PostgreSQL, etc)                       | string  | No       |\n| infoEndpoint         | Has a Quarkus API endpoint ?                                     | boolean | No       |\n| healthEndpoint       | Has a Kubernetes Health endpoint ?                               | boolean | No       |\n| metricsEndpoint      | Has a Quarkus metrics endpoint ?                                 | boolean | No       |\n\nExample of action:\n```yaml\n  steps:\n    - id: template\n      name: Generating the Source Code Component\n      action: quarkus:app:create\n      input:\n        values:\n          quarkusVersion: ${{ parameters.quarkusVersion[0] }}\n          groupId: ${{ parameters.groupId }}\n          artifactId: ${{ parameters.artifactId }}\n          version: ${{ parameters.version }}\n          buildTool: ${{ parameters.buildTool }}\n          javaVersion: ${{ parameters.javaVersion }}\n          extensions: ${{ parameters.extensions }}\n          database: ${{ parameters.database }}\n          infoEndpoint: ${{ parameters.infoEndpoint }}\n          healthEndpoint: ${{ parameters.healthEndpoint }}\n          metricsEndpoint: ${{ parameters.metricsEndpoint }}\n          additionalProperties: ${{ parameters.additionalProperties }}\n          starterCode: true\n```",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@qshift",
+  "updated": "2024-03-27T09:31:54.500Z",
+  "version": "0.1.28",
+  "version_count": 26,
+  "versions": [
+    {
+      "date": "2024-03-27T09:31:54.500Z",
+      "version": "0.1.28"
+    },
+    {
+      "date": "2024-03-11T15:47:20.149Z",
+      "version": "0.1.27"
+    },
+    {
+      "date": "2024-03-11T15:30:07.676Z",
+      "version": "0.1.26"
+    },
+    {
+      "date": "2024-03-05T13:15:48.671Z",
+      "version": "0.1.25"
+    },
+    {
+      "date": "2024-03-04T13:06:17.086Z",
+      "version": "0.1.24"
+    },
+    {
+      "date": "2024-02-20T17:16:33.883Z",
+      "version": "0.1.23"
+    },
+    {
+      "date": "2024-02-20T16:45:08.119Z",
+      "version": "0.1.22"
+    },
+    {
+      "date": "2024-02-20T12:52:29.928Z",
+      "version": "0.1.21"
+    },
+    {
+      "date": "2024-02-08T18:51:53.331Z",
+      "version": "0.1.20"
+    },
+    {
+      "date": "2024-02-08T18:02:28.043Z",
+      "version": "0.1.19"
+    },
+    {
+      "date": "2024-02-01T13:55:46.110Z",
+      "version": "0.1.18"
+    },
+    {
+      "date": "2024-01-30T13:39:59.990Z",
+      "version": "0.1.17"
+    },
+    {
+      "date": "2024-01-26T09:00:12.991Z",
+      "version": "0.1.16"
+    },
+    {
+      "date": "2024-01-22T09:31:54.949Z",
+      "version": "0.1.15"
+    },
+    {
+      "date": "2024-01-22T09:27:01.980Z",
+      "version": "0.1.14"
+    }
+  ]
+}

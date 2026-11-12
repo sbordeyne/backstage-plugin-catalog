@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2025-12-15T21:53:48.540Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/coreweave/oriflame-backstage-plugins/tree/main/plugins/score-card",
+  "keywords": [
+    "backstage",
+    "scoring"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [],
+  "name": "@coreweave/backstage-plugin-score-card",
+  "plugin_id": "",
+  "readme": "",
+  "repository": "https://github.com/coreweave/oriflame-backstage-plugins/tree/HEAD/plugins/score-card",
+  "role": "frontend-plugin",
+  "scope": "@coreweave",
+  "updated": "2026-05-22T05:33:32.903Z",
+  "version": "0.9.4",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-05-22T05:33:32.903Z",
+      "version": "0.9.4"
+    },
+    {
+      "date": "2026-05-04T23:35:15.876Z",
+      "version": "0.9.3"
+    },
+    {
+      "date": "2025-12-15T21:53:48.759Z",
+      "version": "0.9.2"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "author": "",
+  "created": "2025-09-24T08:24:17.034Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "bethany.griggs",
+    "kashish_mittal",
+    "nickboldt",
+    "rhdh-bot",
+    "schultzp2020",
+    "tomaskral"
+  ],
+  "name": "@red-hat-developer-hub/backstage-plugin-bcc-test",
+  "plugin_id": "bcc-test",
+  "readme": "",
+  "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/theme/plugins/bcc-test",
+  "role": "frontend-plugin",
+  "scope": "@red-hat-developer-hub",
+  "updated": "2026-10-26T13:55:09.363Z",
+  "version": "0.6.0",
+  "version_count": 10,
+  "versions": [
+    {
+      "date": "2026-10-26T13:55:09.363Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-09-29T09:27:47.420Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2026-07-22T22:16:01.344Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-03-26T09:14:27.716Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-03-13T10:03:17.262Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-01-01T16:04:00.563Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-11-18T11:49:47.799Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2025-09-30T10:51:57.476Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-09-24T09:00:45.727Z",
+      "version": "0.0.1"
+    },
+    {
+      "date": "2025-09-24T08:24:17.336Z",
+      "version": "0.0.0"
+    }
+  ]
+}

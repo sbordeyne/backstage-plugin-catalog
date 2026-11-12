@@ -1,0 +1,86 @@
+{
+  "author": "Andy",
+  "created": "2023-07-11T12:24:43.820Z",
+  "deprecated": "",
+  "description": "Backstage template action",
+  "homepage": "https://github.com/shoukoo/backstage-plugin-scaffolder-cuelang#readme",
+  "keywords": [
+    "backstage",
+    "template"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "shoukoo"
+  ],
+  "name": "@shoukoo/backstage-plugin-scaffolder-cuelang",
+  "plugin_id": "",
+  "readme": "# Backstage template action for Cuelang\nThis is a Cuelang actions plugin for the scaffolder-backend in Backstage.\n\nThis action utilises the Cue flow engine to dynamically generate templates, you can read more detail [here](https://cuetorials.com/go-api/workflows/custom/)\n\n## Prerequisites\nEnsure that Cuelang is properly installed in the Backstage instance\n\n## Installation \nIn the root directory of your Backstage project:\n```bash \nyarn add --cwd packages/backend @shoukoo/backstage-plugin-scaffolder-cuelang\n```\n## Getting started\nAdd the actions to the scaffolder:\n```\n\n// packages/backend/src/plugins/scaffolder.ts\n\nimport { cueFlowAction } from \"@shoukoo/backstage-plugin-scaffolder-cuelang\"\nimport { ScmIntegrations } from '@backstage/integration';\nimport { createBuiltinActions, createRouter } from '@backstage/plugin-scaffolder-backend';\n\n...\n\nconst integrations = ScmIntegrations.fromConfig(env.config);\nconst builtInActions = createBuiltinActions({\n  catalogClient,\n  integrations,\n  config: env.config,\n  reader: env.reader\n});\n\nconst actions = [\n  cueFlowAction({integrations,reader: env.reader,}),\n  ...builtInActions\n];\n\nreturn await createRouter({\n  logger: env.logger,\n  config: env.config,\n  database: env.database,\n  reader: env.reader,\n  catalogClient,\n  actions\n});\n```\n",
+  "repository": "https://github.com/shoukoo/backstage-plugin-scaffolder-cuelang",
+  "role": "backend-plugin",
+  "scope": "@shoukoo",
+  "updated": "2023-07-18T04:07:11.454Z",
+  "version": "0.4.12",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2023-07-18T04:07:11.454Z",
+      "version": "0.4.12"
+    },
+    {
+      "date": "2023-07-18T04:03:08.350Z",
+      "version": "0.4.11"
+    },
+    {
+      "date": "2023-07-18T02:23:34.837Z",
+      "version": "0.4.10"
+    },
+    {
+      "date": "2023-07-13T12:56:34.924Z",
+      "version": "0.4.9"
+    },
+    {
+      "date": "2023-07-13T12:44:44.305Z",
+      "version": "0.4.8"
+    },
+    {
+      "date": "2023-07-13T12:33:57.855Z",
+      "version": "0.4.7"
+    },
+    {
+      "date": "2023-07-12T22:13:10.469Z",
+      "version": "0.4.6"
+    },
+    {
+      "date": "2023-07-12T22:10:49.002Z",
+      "version": "0.4.5"
+    },
+    {
+      "date": "2023-07-12T22:05:39.498Z",
+      "version": "0.4.4"
+    },
+    {
+      "date": "2023-07-12T22:02:14.524Z",
+      "version": "0.4.3"
+    },
+    {
+      "date": "2023-07-12T12:25:23.759Z",
+      "version": "0.4.2"
+    },
+    {
+      "date": "2023-07-11T13:15:20.793Z",
+      "version": "0.4.1"
+    },
+    {
+      "date": "2023-07-11T13:12:42.456Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2023-07-11T12:55:50.539Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2023-07-11T12:51:17.541Z",
+      "version": "0.2.0"
+    }
+  ]
+}

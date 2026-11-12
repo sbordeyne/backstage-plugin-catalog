@@ -1,0 +1,87 @@
+{
+  "author": "",
+  "created": "2024-03-06T19:00:36.493Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "kong"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/plugin-kong-service-manager",
+  "plugin_id": "kong-service-manager",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2025-07-11T22:32:44.037Z",
+  "version": "2.1.3",
+  "version_count": 115,
+  "versions": [
+    {
+      "date": "2025-07-11T22:32:44.037Z",
+      "version": "2.1.3"
+    },
+    {
+      "date": "2025-07-03T20:16:35.808Z",
+      "version": "2.1.2"
+    },
+    {
+      "date": "2025-07-03T20:08:42.720Z",
+      "version": "2.1.1"
+    },
+    {
+      "date": "2025-06-27T14:49:42.005Z",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2025-06-26T18:08:04.660Z",
+      "version": "2.0.7"
+    },
+    {
+      "date": "2025-02-12T19:29:58.485Z",
+      "version": "2.0.6"
+    },
+    {
+      "date": "2025-02-11T13:08:26.639Z",
+      "version": "2.0.5"
+    },
+    {
+      "date": "2025-02-10T23:04:39.429Z",
+      "version": "2.0.4"
+    },
+    {
+      "date": "2025-02-10T22:34:19.658Z",
+      "version": "2.0.3"
+    },
+    {
+      "date": "2025-02-10T20:00:36.624Z",
+      "version": "2.0.2"
+    },
+    {
+      "date": "2025-02-10T19:31:59.846Z",
+      "version": "2.0.1"
+    },
+    {
+      "date": "2025-02-10T19:26:46.138Z",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2025-02-10T19:04:47.617Z",
+      "version": "1.3.4"
+    },
+    {
+      "date": "2024-11-08T19:35:58.001Z",
+      "version": "1.3.2"
+    },
+    {
+      "date": "2024-11-08T18:16:22.904Z",
+      "version": "1.3.1"
+    }
+  ]
+}

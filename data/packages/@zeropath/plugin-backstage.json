@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2025-12-17T23:28:44.976Z",
+  "deprecated": "",
+  "description": "Backstage plugin for ZeroPath security scanning integration",
+  "homepage": "https://github.com/zeropath-security/backstage-plugin#readme",
+  "keywords": [
+    "backstage",
+    "plugin",
+    "sast",
+    "sca",
+    "security",
+    "vulnerability",
+    "zeropath"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "ezeropath"
+  ],
+  "name": "@zeropath/plugin-backstage",
+  "plugin_id": "zeropath",
+  "readme": "# @zeropath/plugin-backstage\n\nA Backstage plugin for integrating [ZeroPath](https://zeropath.com) security scanning into your Backstage instance.\n\n## Features\n\n- **Security Dashboard**: View security vulnerabilities detected by ZeroPath directly in Backstage\n- **Entity Cards**: Display vulnerability summaries on entity pages\n- **Severity Filtering**: Filter issues by severity level (Critical, High, Medium, Low)\n- **Issue Details**: View detailed information about each security issue\n- **Standalone Security Page**: Overview of all repositories and their security status\n\n## Installation\n\n```bash\nyarn --cwd packages/app add @zeropath/plugin-backstage\n```\n\n## Configuration\n\n### Step 1: Configure app-config.yaml\n\nAdd the proxy configuration and ZeroPath settings:\n\n```yaml\nproxy:\n  endpoints:\n    '/zeropath':\n      target: ${ZEROPATH_BASE_URL}\n      headers:\n        X-ZeroPath-API-Token-Id: ${ZEROPATH_TOKEN_ID}\n        X-ZeroPath-API-Token-Secret: ${ZEROPATH_TOKEN_SECRET}\n      changeOrigin: true\n      allowedMethods: ['GET', 'POST']\n\nzeropath:\n  organizationId: ${ZEROPATH_ORGANIZATION_ID}\n```\n\n### Step 2: Add to App.tsx (New Frontend System)\n\n```tsx\n// packages/app/src/App.tsx\nimport zeroPathPlugin from '@zeropath/plugin-backstage/alpha';\n\nconst app = createApp({\n  features: [\n    zeroPathPlugin,\n    // ... other plugins\n  ],\n});\n```\n\nConfigure extensions in `app-config.yaml`:\n\n```yaml\napp:\n  extensions:\n    # Entity cards\n    - entity-card:zeropath/info:\n        config:\n          filter:\n            kind: Component\n    - entity-card:zeropath/summary:\n        config:\n          filter:\n            kind: Component\n\n    # Security tab on entity pages\n    - entity-content:zeropath/security:\n        config:\n          path: /security\n          title: Security\n          filter:\n            kind: Component\n\n    # Standalone security overview page\n    - page:zeropath/page:\n        config:\n          path: /zeropath\n\n    # Sidebar navigation link\n    - nav-item:zeropath/nav: {}\n```\n\n### Alternative: Legacy Frontend System\n\nIf you're using the legacy frontend system:\n\n```tsx\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  EntityZeroPathContent,\n  EntityZeroPathCard,\n  EntityZeroPathSummaryCard,\n  isZeroPathAvailable,\n} from '@zeropath/plugin-backstage';\n\n// Add Security tab to entity pages\nconst serviceEntityPage = (\n  <EntityLayout>\n    <EntityLayout.Route path=\"/\" title=\"Overview\">\n      {/* Overview content */}\n    </EntityLayout.Route>\n\n    <EntityLayout.Route\n      path=\"/security\"\n      title=\"Security\"\n      if={isZeroPathAvailable}\n    >\n      <EntityZeroPathContent />\n    </EntityLayout.Route>\n  </EntityLayout>\n);\n\n// Or add cards to the overview tab\nconst overviewContent = (\n  <Grid container spacing={3}>\n    <Grid item md={6}>\n      <EntityZeroPathCard />\n    </Grid>\n    <Grid item md={12}>\n      <EntityZeroPathSummaryCard />\n    </Grid>\n  </Grid>\n);\n```\n\n## Entity Annotations\n\nLink your Backstage entities to ZeroPath repositories using annotations:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-service\n  annotations:\n    github.com/project-slug: my-org/my-repo\nspec:\n  type: service\n  owner: team-platform\n```\n\n## Exported Components\n\n| Component | Description |\n|-----------|-------------|\n| `EntityZeroPathContent` | Main security content for the Security tab |\n| `EntityZeroPathCard` | Info card showing repository security overview |\n| `EntityZeroPathSummaryCard` | Summary cards with vulnerability counts by severity |\n| `ZeroPathPage` | Standalone page showing all repositories |\n| `isZeroPathAvailable` | Helper function for conditional rendering |\n\n## Environment Variables\n\n| Variable | Description |\n|----------|-------------|\n| `ZEROPATH_BASE_URL` | ZeroPath API base URL (e.g., `https://api.zeropath.com`) |\n| `ZEROPATH_ORGANIZATION_ID` | Your ZeroPath organization ID |\n| `ZEROPATH_TOKEN_ID` | API token ID |\n| `ZEROPATH_TOKEN_SECRET` | API token secret |\n\n## Disabling Extensions\n\nExtensions can be disabled via `app-config.yaml`:\n\n```yaml\napp:\n  extensions:\n    - entity-content:zeropath/security: false\n    - nav-item:zeropath/nav: false\n    - page:zeropath/page: false\n```\n\n## License\n\nApache-2.0\n",
+  "repository": "https://github.com/zeropath-security/backstage-plugin",
+  "role": "frontend-plugin",
+  "scope": "@zeropath",
+  "updated": "2025-12-17T23:28:45.189Z",
+  "version": "0.1.0",
+  "version_count": 1,
+  "versions": [
+    {
+      "date": "2025-12-17T23:28:45.189Z",
+      "version": "0.1.0"
+    }
+  ]
+}

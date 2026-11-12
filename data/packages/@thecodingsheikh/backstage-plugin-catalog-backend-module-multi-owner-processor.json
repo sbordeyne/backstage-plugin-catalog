@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2026-02-15T06:59:59.202Z",
+  "deprecated": "",
+  "description": "A backend module for the Backstage catalog that processes `spec.owners` on entities and emits proper `ownedBy` / `ownerOf` relations for each owner.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "thecodingsheikh"
+  ],
+  "name": "@thecodingsheikh/backstage-plugin-catalog-backend-module-multi-owner-processor",
+  "plugin_id": "catalog",
+  "readme": "# @thecodingsheikh/backstage-plugin-catalog-backend-module-multi-owner-processor\n\nA backend module for the Backstage catalog that processes `spec.owners` on entities and emits proper `ownedBy` / `ownerOf` relations for each owner.\n\n![screenshow](https://github.com/TheCodingSheikh/backstage-plugins/blob/main/plugins/multi-owner/catalog-backend-module-multi-owner-processor/screenshot.png?raw=true)\n\n## Features\n\n- Reads `spec.owners` (an array of strings or `{ name, role }` objects) from any entity\n- Emits bidirectional `ownedBy` / `ownerOf` relations for each owner\n- Writes a normalized `multi-owner.io/owners` annotation (JSON) for the frontend to consume\n- Coexists with the built-in `spec.owner` field — both are merged automatically\n- Defaults unqualified references to `kind: Group`\n- Registers two catalog permission rules that understand `role` on owners — see [Permission rules](#permission-rules)\n\n## Installation\n\n```bash\nyarn --cwd packages/backend @thecodingsheikh/backstage-plugin-catalog-backend-module-multi-owner-processor\n```\n\n### Backend Setup\n\nIn your `packages/backend/src/index.ts`:\n\n```ts\nconst backend = createBackend();\n\n// ... other plugins ...\n\n// Multi-owner processor\nbackend.add(\n  import(\n    '@thecodingsheikh/backstage-plugin-catalog-backend-module-multi-owner-processor'\n  ),\n);\n\nbackend.start();\n```\n\n## Entity Configuration\n\nAdd `spec.owners` to any entity's `catalog-info.yaml`:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: my-service\nspec:\n  type: service\n  lifecycle: production\n  owners:\n    - name: group:default/platform-team\n      role: maintainer\n    - name: group:default/sre-team\n      role: operations\n    - name: user:default/jane\n      role: tech-lead\n    - group:default/qa-team # string shorthand, no role\n```\n\n## How It Works\n\n```mermaid\ngraph LR\n    A[Entity YAML] -->|spec.owners| B[MultiOwnerEntitiesProcessor]\n    B -->|preProcess| C[Writes annotation]\n    B -->|postProcess| D[Emits ownedBy relations]\n    B -->|postProcess| E[Emits ownerOf relations]\n    C --> F[Frontend Card reads annotation]\n    D --> G[Backstage ownership features]\n```\n\n## Permission rules\n\nThe built-in `IS_ENTITY_OWNER` rule tells you _\"is this user in `relations.ownedBy`\"_ — it doesn't look at the `role` field on multi-owner entries. This module adds two role-aware catalog permission rules that plug directly into the Backstage [Permission Framework](https://backstage.io/docs/permissions/overview), so you can write policies like _\"only owners with `role: admin` may edit this entity\"_.\n\nRules are registered automatically when the module is installed. Reference them by name (the strings below) in your `conditional-policies.yaml` (e.g. via the RHDH RBAC plugin).\n\n### `IS_ENTITY_MULTI_OWNER_WITH_ROLE`\n\nAllows entities where the subject appears in `spec.owners` with a role contained in a policy-supplied allowlist.\n\n| Param    | Type       | Meaning                                                                                                   |\n| -------- | ---------- | --------------------------------------------------------------------------------------------------------- |\n| `claims` | `string[]` | Entity refs identifying the subject. Typically `[\"$ownerRefs\"]` for the current user's group + user refs. |\n| `roles`  | `string[]` | Roles on `spec.owners` entries that are allowed to match.                                                 |\n\nOwners declared as plain-string shorthand (no `role`) never match this rule.\n\n```yaml\n# Only owners with role \"admin\" may update this kind of resource\nconditions:\n  rule: IS_ENTITY_MULTI_OWNER_WITH_ROLE\n  resourceType: catalog-entity\n  params:\n    claims: ['$ownerRefs']\n    roles: ['admin']\n```\n\n### `IS_ENTITY_MULTI_OWNER_WITH_ANNOTATION_ROLE`\n\nLike the above, but reads the allowlist of roles from a per-entity annotation whose value is a comma-separated list. Returns `false` when the annotation is absent — compose with `HAS_ANNOTATION` / `not` in your policy if you want a fallback branch.\n\n| Param        | Type       | Meaning                                                    |\n| ------------ | ---------- | ---------------------------------------------------------- |\n| `claims`     | `string[]` | Same as above.                                             |\n| `annotation` | `string`   | Annotation name whose value lists the allowed roles (CSV). |\n\n```yaml\n# Per-entity role check driven by the scaffolder-edit-roles annotation\nconditions:\n  anyOf:\n    # No annotation → fall back to plain owner check\n    - allOf:\n        - not:\n            rule: HAS_ANNOTATION\n            resourceType: catalog-entity\n            params: { annotation: backstage.io/scaffolder-edit-roles }\n        - rule: IS_ENTITY_OWNER\n          resourceType: catalog-entity\n          params: { claims: ['$ownerRefs'] }\n    # Annotation present → only owners whose role matches\n    - rule: IS_ENTITY_MULTI_OWNER_WITH_ANNOTATION_ROLE\n      resourceType: catalog-entity\n      params:\n        claims: ['$ownerRefs']\n        annotation: backstage.io/scaffolder-edit-roles\n```\n\nPair this with any `catalog-entity` resource permission — for example `catalog.entity.read`, `catalog.entity.delete` or `catalog.entity.refresh`.\n\n> Note that `catalog.entity.update` does not exist; the `update` action on `catalog-entity` is `catalog.entity.refresh`.\n\nTo gate `entity-scaffolder.edit` from [`@thecodingsheikh/backstage-plugin-entity-scaffolder`](https://github.com/TheCodingSheikh/backstage-plugins/blob/main/plugins/entity-scaffolder/entity-scaffolder/README.md), use the `entity-scaffolder-entity` resource type instead of `catalog-entity` and install [`@thecodingsheikh/backstage-plugin-catalog-backend-module-entity-scaffolder`](https://github.com/TheCodingSheikh/backstage-plugins/blob/main/plugins/entity-scaffolder/catalog-backend-module-entity-scaffolder/README.md), which re-registers both of these rules against that type. That permission cannot be targeted through `catalog-entity`, because a conditional policy resolves `(resourceType, action)` to the first matching permission — `catalog.entity.refresh` — not to a name you choose.\n\n### Notes on `toQuery`\n\nBoth rules emit a `toQuery` filter that narrows the catalog DB query to entities the user already owns (`relations.ownedBy` index). The role refinement is then applied in-memory. This means list endpoints stay efficient while single-resource authorization remains correct.\n",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@thecodingsheikh",
+  "updated": "2026-10-26T07:15:18.080Z",
+  "version": "1.2.0",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2026-10-26T07:15:18.080Z",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-10-26T06:50:28.086Z",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-04-21T22:38:22.802Z",
+      "version": "1.0.6"
+    },
+    {
+      "date": "2026-04-21T17:38:37.688Z",
+      "version": "1.0.5"
+    },
+    {
+      "date": "2026-04-19T11:38:56.883Z",
+      "version": "1.0.4"
+    },
+    {
+      "date": "2026-02-15T08:09:01.866Z",
+      "version": "1.0.3"
+    },
+    {
+      "date": "2026-02-15T06:59:59.478Z",
+      "version": "1.0.2"
+    }
+  ]
+}

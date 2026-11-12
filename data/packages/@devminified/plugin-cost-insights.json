@@ -1,0 +1,39 @@
+{
+  "author": "",
+  "created": "2025-05-15T11:00:02.627Z",
+  "deprecated": "",
+  "description": "Welcome to the cost insights plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "frontendrock"
+  ],
+  "name": "@devminified/plugin-cost-insights",
+  "plugin_id": "cost-insights",
+  "readme": "# Plugin Cost Insights\n\nWelcome to the cost insights plugin!\n\nCost insights is a plugin to visualize cloud cost.\n\n## Install\n\n```bash\n# Run from backstage root directory\nyarn packages/app add @devminified/plugin-cost-insights\n```\n\n## Configuration\n\nConfigure `app-config.yaml` file:\n\n```yaml\n// Other configuration\nbackend:\n    baseUrl: http://localhost:7007\n// Other configuration\n```\n\n## Usage\n\nImport page from package and add route to access page\n\n```ts\nimport { CostInsightsPage } from \"@devminified/plugin-cost-insights\";\n\n/* remainig code */\n\nconst routes = (\n    <FlatRoutes>\n        /* Other routes */\n        <Route path=\"/\" element={<CostInsightsPage />} />\n    </FlatRoutes>\n)\n\n/* remaining code */\n```\n\n_**Note:** This plugin depends on [`@devminified/plugin-cost-insights-backend`](https://www.npmjs.com/package/@devminified/plugin-cost-insights-backend) - install and use that plugin in backend workspace_\n\n## Add Sidebar Item\n\nTo expose page to users at `/cost-insights` add sidebar item\n\n```ts\n// packages/app/src/components/Root/Root.tsx\nimport MoneyIcon from \"@material-ui/icons/MonetizationOn\";\n\nexport const Root = ({ children }: PropsWithChildren<{}>) => (\n    <SidebarPage>\n        <Sidebar>\n            // Other menu items\n            <SidebarScrollWrapper>\n                <SidebarItem\n                  icon={MoneyIcon}\n                  to=\"cost-insights\"\n                  text=\"Cost Insights\"\n                />\n            </SidebarScrollWrapper>\n            // Other menu items\n        </Sidebar>\n    </SidebarPage>\n)\n```",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@devminified",
+  "updated": "2025-05-15T13:02:00.829Z",
+  "version": "0.1.3",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2025-05-15T13:02:00.829Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2025-05-15T12:48:26.269Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-05-15T11:17:37.510Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-05-15T11:00:02.925Z",
+      "version": "0.1.0"
+    }
+  ]
+}

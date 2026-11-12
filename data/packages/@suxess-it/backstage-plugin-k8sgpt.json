@@ -1,0 +1,41 @@
+{
+  "author": "",
+  "created": "2023-06-04T19:24:24.701Z",
+  "deprecated": "",
+  "description": "Welcome to the k8sgpt plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2G.0",
+  "maintainers": [
+    "jkleinlercher",
+    "larni",
+    "phac"
+  ],
+  "name": "@suxess-it/backstage-plugin-k8sgpt",
+  "plugin_id": "",
+  "readme": "# k8sgpt\n\nWelcome to the k8sgpt plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nK8sGPT installation:\n\nYou need to install [K8sGPT via the operator](https://github.com/k8sgpt-ai/k8sgpt-operator/). You need the operator installation because the operator also triggers k8sgpt analyzes and saves the results in result CRs which get display in this backstage plugin. You will need at least v0.0.17 which has [backstage-support](https://github.com/k8sgpt-ai/k8sgpt-operator/pull/127) included.\n\nInstall plugin:\n```\nyarn add --cwd packages/app @suxess-it/backstage-plugin-k8sgpt\n```\n\nImport plugin and embed in the entities page:\n\n```\n// packages/app/src/components/catalog/EntityPage.tsx\n\nimport { K8sGPTPage } from '@suxess-it/backstage-plugin-k8sgpt';\n\n// ...\n\n// add this section to the place where the serviceEntityPage gets defined\n// const serviceEntityPage = (\n// ...\n    <EntityLayout.Route path=\"/k8sgpt\" title=\"K8sGPT\">\n      <K8sGPTPage />\n    </EntityLayout.Route>\n```\n    \n## Backstage dependencies and configuration\n\nThis plugin depends on the kubernetes-common and kubernetes-backend plugin. If you haven't already installed and configured the kubernetes plugin, please follow the instructions on https://backstage.io/docs/features/kubernetes/ .\n\nPlease be aware the the used ClusterRole as described in https://backstage.io/docs/features/kubernetes/configuration#role-based-access-control also needs this permissions to read the k8sgpt results:\n\n```\n- apiGroups:\n  - core.k8sgpt.ai\n  resources:\n  - results\n  verbs:\n  - get\n  - list\n```\n\n## What you will see\n\nplugin-k8sgpt shows you the k8sgpt Results for the corresponding entity in a table like this:\n\n![image](https://github.com/suxess-it/backstage-plugin-k8sgpt/assets/11465610/24591cc2-1290-4a3b-bf91-4d6e5b1a89cf)\n\n\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@suxess-it",
+  "updated": "2023-10-05T11:53:41.973Z",
+  "version": "0.2.2",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2023-10-05T11:53:41.973Z",
+      "version": "0.2.2"
+    },
+    {
+      "date": "2023-06-05T08:40:23.420Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-06-04T20:10:27.638Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-06-04T19:24:25.022Z",
+      "version": "0.1.0"
+    }
+  ]
+}

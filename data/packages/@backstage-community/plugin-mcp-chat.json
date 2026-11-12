@@ -1,0 +1,88 @@
+{
+  "author": "Avik Kundu",
+  "created": "2025-10-16T08:40:31.231Z",
+  "deprecated": "",
+  "description": "A Backstage plugin that provides a chat interface for interacting with the MCP Servers.",
+  "homepage": "https://github.com/backstage/community-plugins/tree/main/workspaces/mcp-chat/plugins/mcp-chat",
+  "keywords": [
+    "backstage-plugin",
+    "chat-interface",
+    "mcp",
+    "model-context-protocol"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-mcp-chat",
+  "plugin_id": "mcp-chat",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/mcp-chat/plugins/mcp-chat",
+  "role": "frontend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-09-15T00:00:13.324Z",
+  "version": "0.10.1",
+  "version_count": 16,
+  "versions": [
+    {
+      "date": "2026-09-15T00:00:13.324Z",
+      "version": "0.10.1"
+    },
+    {
+      "date": "2026-08-28T20:42:38.676Z",
+      "version": "0.10.0"
+    },
+    {
+      "date": "2026-07-21T22:38:36.198Z",
+      "version": "0.9.0"
+    },
+    {
+      "date": "2026-07-21T19:20:20.987Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-05-08T14:56:56.873Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2026-04-26T05:30:38.964Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2026-03-29T18:42:59.458Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2026-03-18T13:09:51.043Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2026-03-12T11:40:36.180Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-02-07T08:59:14.079Z",
+      "version": "0.3.1"
+    },
+    {
+      "date": "2026-01-30T07:12:53.066Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-01-19T16:00:19.737Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2025-12-19T14:24:17.595Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2025-11-10T08:09:52.717Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-10-16T08:50:04.082Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "author": "",
+  "created": "2024-04-19T09:44:47.291Z",
+  "deprecated": "",
+  "description": "A Backstage backend plugin that integrates towards Vault",
+  "homepage": "https://backstage.io",
+  "keywords": [
+    "backstage",
+    "vault"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "patriko"
+  ],
+  "name": "@backstage-community/plugin-vault-backend",
+  "plugin_id": "vault",
+  "readme": "",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/vault/plugins/vault-backend",
+  "role": "backend-plugin",
+  "scope": "@backstage-community",
+  "updated": "2026-11-03T15:01:11.558Z",
+  "version": "0.28.0",
+  "version_count": 38,
+  "versions": [
+    {
+      "date": "2026-11-03T15:01:11.558Z",
+      "version": "0.28.0"
+    },
+    {
+      "date": "2026-09-23T13:25:36.472Z",
+      "version": "0.27.0"
+    },
+    {
+      "date": "2026-08-27T15:35:40.527Z",
+      "version": "0.26.0"
+    },
+    {
+      "date": "2026-07-22T00:21:00.256Z",
+      "version": "0.25.0"
+    },
+    {
+      "date": "2026-06-24T13:09:55.097Z",
+      "version": "0.24.0"
+    },
+    {
+      "date": "2026-05-31T20:35:09.589Z",
+      "version": "0.23.0"
+    },
+    {
+      "date": "2026-04-27T11:53:09.304Z",
+      "version": "0.22.1"
+    },
+    {
+      "date": "2026-04-24T18:03:13.052Z",
+      "version": "0.22.0"
+    },
+    {
+      "date": "2026-04-03T16:23:50.508Z",
+      "version": "0.21.0"
+    },
+    {
+      "date": "2026-02-27T13:23:34.952Z",
+      "version": "0.20.0"
+    },
+    {
+      "date": "2026-02-15T13:35:48.604Z",
+      "version": "0.19.0"
+    },
+    {
+      "date": "2026-01-28T22:26:03.907Z",
+      "version": "0.18.0"
+    },
+    {
+      "date": "2025-12-24T22:09:08.826Z",
+      "version": "0.17.0"
+    },
+    {
+      "date": "2025-11-27T17:02:07.822Z",
+      "version": "0.16.0"
+    },
+    {
+      "date": "2025-10-17T17:38:42.654Z",
+      "version": "0.15.0"
+    }
+  ]
+}

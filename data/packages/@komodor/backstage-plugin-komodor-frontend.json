@@ -1,0 +1,32 @@
+{
+  "author": "",
+  "created": "2025-05-15T09:09:42.630Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "komodor-komi-bot",
+    "ronah"
+  ],
+  "name": "@komodor/backstage-plugin-komodor-frontend",
+  "plugin_id": "komodor-frontend",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@komodor",
+  "updated": "2025-06-03T16:06:35.833Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-06-03T16:06:35.833Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-05-15T09:09:42.956Z",
+      "version": "0.1.0"
+    }
+  ]
+}

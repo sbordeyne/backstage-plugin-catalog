@@ -1,0 +1,83 @@
+{
+  "author": "",
+  "created": "2024-07-23T11:18:35.848Z",
+  "deprecated": "",
+  "description": "This is a frontend plugin for the Security Metrics Backstage plugin. It gives an overview of security-metrics delivered by scanners on repositories owned by kartverket. The plugin is dependent on a associated backend-plugin for Backstage and a separate ko",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "backstage-kartverket"
+  ],
+  "name": "@kartverket/backstage-plugin-security-metrics-frontend",
+  "plugin_id": "security-metrics-frontend",
+  "readme": "# Security metrics (frontend-plugin)\n\nThis is a frontend plugin for the Security Metrics Backstage plugin. It gives an overview of security-metrics delivered\nby scanners on repositories owned by kartverket. The plugin is dependent on a associated backend-plugin for Backstage\nand a separate kotlin/spring-boot backend. The package should be added in the `packages/app`directory\n\n> **_NOTE:_** Ensure that you have installed and configured the backend plugin as\n> well: [@kartverket/backstage-plugin-security-metrics-backend](https://www.npmjs.com/package/@kartverket)\n\n### kartverket.dev configuration\n\nTo show the tab introduced by the plugin, add the following component to the needed pages in `EntityPage.tsx`.\n\n```typescript\n<EntityLayout.Route path=\"/securityMetrics\" title=\"Sikkerhetsmetrikker\">\n    <SecurityMetricsPage />\n</EntityLayout.Route>\n```\n\n### Links\n\n- [Github repository for both plugins](https://github.com/kartverket/sikkerhetsmetrikker-plugin)\n\n- [Github repository for backend](https://github.com/kartverket/sikkerhetsmetrikker-plugin-backend)\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@kartverket",
+  "updated": "2025-09-19T13:49:31.994Z",
+  "version": "3.18.1",
+  "version_count": 56,
+  "versions": [
+    {
+      "date": "2025-09-19T13:49:31.994Z",
+      "version": "3.18.1"
+    },
+    {
+      "date": "2025-09-17T13:36:08.846Z",
+      "version": "3.18.0"
+    },
+    {
+      "date": "2025-09-09T07:31:53.461Z",
+      "version": "3.17.5"
+    },
+    {
+      "date": "2025-09-08T12:00:57.253Z",
+      "version": "3.17.4"
+    },
+    {
+      "date": "2025-09-05T13:06:22.458Z",
+      "version": "3.17.3"
+    },
+    {
+      "date": "2025-09-05T09:38:13.871Z",
+      "version": "3.17.2"
+    },
+    {
+      "date": "2025-09-04T13:48:20.944Z",
+      "version": "3.17.1"
+    },
+    {
+      "date": "2025-08-19T12:01:43.546Z",
+      "version": "3.16.1"
+    },
+    {
+      "date": "2025-08-19T08:24:45.113Z",
+      "version": "3.16.0"
+    },
+    {
+      "date": "2025-08-14T10:08:21.883Z",
+      "version": "3.15.1"
+    },
+    {
+      "date": "2025-08-07T10:42:33.496Z",
+      "version": "3.15.0"
+    },
+    {
+      "date": "2025-08-04T10:42:50.737Z",
+      "version": "3.14.1"
+    },
+    {
+      "date": "2025-08-01T11:46:18.571Z",
+      "version": "3.14.0"
+    },
+    {
+      "date": "2025-07-30T14:46:51.544Z",
+      "version": "3.13.4"
+    },
+    {
+      "date": "2025-07-30T11:33:07.121Z",
+      "version": "3.13.3"
+    }
+  ]
+}

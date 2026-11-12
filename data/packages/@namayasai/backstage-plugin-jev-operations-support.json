@@ -1,0 +1,41 @@
+{
+  "author": "",
+  "created": "2026-09-19T08:21:30.072Z",
+  "deprecated": "",
+  "description": "Jev decision workbench and entity tab for Backstage",
+  "homepage": "https://github.com/namayasai/backstage-jev-operations-support#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "jev",
+    "operations",
+    "platform-engineering"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "namayasai"
+  ],
+  "name": "@namayasai/backstage-plugin-jev-operations-support",
+  "plugin_id": "jev-operations-support",
+  "readme": "# @namayasai/backstage-plugin-jev-operations-support\n\nPart of [Jev Operations Support for Backstage](https://github.com/namayasai/backstage-jev-operations-support). See the repository [installation guide](https://github.com/namayasai/backstage-jev-operations-support/blob/main/docs/installation.md) for configuration and integration.\n\nBesides the main `.`/`./alpha` exports (the Alerts/Pre-check page and entity tab), two more\nsubpaths put a workflow where it is chosen rather than on a separate page: `./search`\n(`JevRerankedResults`, reranks a Backstage search result list — needs the optional peer\ndependency `@backstage/plugin-search-react`) and `./scaffolder` (`JevTemplateAdvisor`, a\ntemplate-recommendation card with no Scaffolder package dependency). See the installation\nguide's \"Search and Scaffolder integrations\" section.\n\n**Disclosure:** with `JevRerankedResults` installed, choosing \"Rank now\" — or turning on Live,\nwhich is off by default and opt-in per reader, remembered per browser — sends the query, and\nthe indexed title and an excerpt of the body text of the top results, to TypeSafe through your\nBackstage backend. Search indexes commonly include content from private documentation. A host\ncan force this off for a given usage with `live={false}`, or leave it to each reader's own Live\nswitch; the `jev-operations-support.evaluate` permission and the backend's rate limit still apply.\n\nApache-2.0. Experimental v0.4.0.\n",
+  "repository": "https://github.com/namayasai/backstage-jev-operations-support",
+  "role": "frontend-plugin",
+  "scope": "@namayasai",
+  "updated": "2026-09-20T13:32:32.414Z",
+  "version": "0.4.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-09-20T13:32:32.414Z",
+      "version": "0.4.0"
+    },
+    {
+      "date": "2026-09-19T13:13:00.541Z",
+      "version": "0.3.0"
+    },
+    {
+      "date": "2026-09-19T08:21:30.477Z",
+      "version": "0.2.0"
+    }
+  ]
+}

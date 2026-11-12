@@ -1,0 +1,84 @@
+{
+  "author": "",
+  "created": "2022-08-25T14:08:34.353Z",
+  "deprecated": "",
+  "description": "Welcome to the backstage-plugin-incremental-ingestion-github backend plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "frontsidejack",
+    "jbolda"
+  ],
+  "name": "@frontside/backstage-plugin-incremental-ingestion-github",
+  "plugin_id": "incremental-ingestion",
+  "readme": "# backstage-plugin-incremental-ingestion-github\n\nWelcome to the backstage-plugin-incremental-ingestion-github backend plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn\nstart` in the root directory, and then navigating to [/backstage-plugin-incremental-ingestion-github](http://localhost:3000/backstage-plugin-incremental-ingestion-github).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](/dev) directory.\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@frontside",
+  "updated": "2024-08-14T15:36:02.830Z",
+  "version": "0.2.13",
+  "version_count": 28,
+  "versions": [
+    {
+      "date": "2024-08-14T15:36:02.830Z",
+      "version": "0.2.13"
+    },
+    {
+      "date": "2024-07-30T14:05:32.499Z",
+      "version": "0.2.13-dl-update-deps.0"
+    },
+    {
+      "date": "2024-04-22T18:44:53.808Z",
+      "version": "0.2.13-tm-upgrade-backstage-1.25.0"
+    },
+    {
+      "date": "2024-03-20T13:59:49.385Z",
+      "version": "0.2.12"
+    },
+    {
+      "date": "2024-03-20T13:52:09.267Z",
+      "version": "0.2.13-changeset-release-main.0"
+    },
+    {
+      "date": "2024-03-18T06:37:13.924Z",
+      "version": "0.2.12-dl-update-backstage.2"
+    },
+    {
+      "date": "2024-03-13T14:22:47.555Z",
+      "version": "0.2.12-dl-update-backstage.1"
+    },
+    {
+      "date": "2024-03-13T14:12:04.819Z",
+      "version": "0.2.12-dl-update-backstage.0"
+    },
+    {
+      "date": "2023-12-05T15:19:24.973Z",
+      "version": "0.2.11"
+    },
+    {
+      "date": "2023-10-23T14:48:48.315Z",
+      "version": "0.2.10"
+    },
+    {
+      "date": "2023-09-18T20:13:45.944Z",
+      "version": "0.2.9"
+    },
+    {
+      "date": "2023-08-31T22:50:01.115Z",
+      "version": "0.2.8"
+    },
+    {
+      "date": "2023-05-23T19:05:56.225Z",
+      "version": "0.2.7"
+    },
+    {
+      "date": "2023-03-20T15:00:39.728Z",
+      "version": "0.2.6"
+    },
+    {
+      "date": "2023-03-01T15:33:39.562Z",
+      "version": "0.2.5"
+    }
+  ]
+}

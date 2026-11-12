@@ -1,0 +1,31 @@
+{
+  "author": "",
+  "created": "2025-01-27T10:31:47.257Z",
+  "deprecated": "",
+  "description": "The file-editor module for @backstage/plugin-scaffolder-backend",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "atlastz"
+  ],
+  "name": "@atlastz/backstage-plugin-scaffolder-backend-module-file-editor",
+  "plugin_id": "scaffolder",
+  "readme": "",
+  "repository": "",
+  "role": "backend-plugin-module",
+  "scope": "@atlastz",
+  "updated": "2025-01-31T03:23:21.921Z",
+  "version": "0.1.1",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2025-01-31T03:23:21.921Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2025-01-27T10:31:47.560Z",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "author": "The Backstage Community",
+  "created": "2023-12-07T23:40:40.659Z",
+  "deprecated": "",
+  "description": "This is the backend part of the Kiali plugin for Backstage. It is called by and responds to requests from the frontend [`@janus-idp/backstage-plugin-kiali`](https://github.com/janus-idp/backstage-plugins/tree/master/plugins/kiali) plugin.",
+  "homepage": "https://red.ht/rhdh",
+  "keywords": [
+    "lifecycle:active",
+    "support:tech-preview"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "asoro-rh",
+    "fndlovu",
+    "ktsao",
+    "nickboldt",
+    "pataknight",
+    "schultzp2020",
+    "tomaskral",
+    "tumido"
+  ],
+  "name": "@janus-idp/backstage-plugin-kiali-backend-dynamic",
+  "plugin_id": "kiali",
+  "readme": "# Kiali Backend plugin for Backstage\n\nThis is the backend part of the Kiali plugin for Backstage. It is called by and responds to requests from the frontend [`@janus-idp/backstage-plugin-kiali`](https://github.com/janus-idp/backstage-plugins/tree/master/plugins/kiali) plugin.\n\nIt directly interfaces with the Kiali API control plane to obtain information about objects that will then be presented at the front end.\n\n## Setup & Configuration\n\nThis plugin must be explicitly added to a Backstage app, along with it's peer frontend plugin.\n\nThe plugin requires configuration in the Backstage `app-config.yaml` to connect to a Kiali API control plane.\n\nIn addition, configuration of an entity's `catalog-info.yaml` helps identify which specific ServiceMesh object(s) should be presented on a specific entity catalog page.\n\nFollow these [`steps`](https://github.com/janus-idp/backstage-plugins/tree/master/plugins/kiali)\n",
+  "repository": "https://github.com/janus-idp/backstage-plugins/tree/HEAD/plugins/kiali-backend",
+  "role": "backend-plugin",
+  "scope": "@janus-idp",
+  "updated": "2024-10-11T15:50:39.477Z",
+  "version": "1.18.1",
+  "version_count": 57,
+  "versions": [
+    {
+      "date": "2024-10-11T15:50:39.477Z",
+      "version": "1.18.1"
+    },
+    {
+      "date": "2024-10-09T17:25:25.948Z",
+      "version": "1.18.0"
+    },
+    {
+      "date": "2024-10-08T18:28:25.506Z",
+      "version": "1.17.3"
+    },
+    {
+      "date": "2024-10-01T18:26:03.651Z",
+      "version": "1.17.2"
+    },
+    {
+      "date": "2024-09-25T12:47:37.418Z",
+      "version": "1.17.1"
+    },
+    {
+      "date": "2024-09-20T03:40:42.357Z",
+      "version": "1.17.0"
+    },
+    {
+      "date": "2024-09-19T16:49:12.415Z",
+      "version": "1.16.5"
+    },
+    {
+      "date": "2024-09-17T18:39:48.215Z",
+      "version": "1.16.4"
+    },
+    {
+      "date": "2024-09-13T09:32:10.958Z",
+      "version": "1.16.3"
+    },
+    {
+      "date": "2024-08-19T17:42:59.118Z",
+      "version": "1.16.2"
+    },
+    {
+      "date": "2024-08-16T18:51:41.805Z",
+      "version": "1.16.1"
+    },
+    {
+      "date": "2024-07-26T01:27:27.570Z",
+      "version": "1.16.0"
+    },
+    {
+      "date": "2024-07-24T14:35:37.843Z",
+      "version": "1.15.0"
+    },
+    {
+      "date": "2024-07-10T08:23:24.911Z",
+      "version": "1.14.0"
+    },
+    {
+      "date": "2024-07-08T18:14:30.266Z",
+      "version": "1.13.1"
+    }
+  ]
+}

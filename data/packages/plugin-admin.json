@@ -1,0 +1,71 @@
+{
+  "author": "",
+  "created": "2023-06-29T19:24:40.864Z",
+  "deprecated": "",
+  "description": "Welcome to the admin plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "sonymiza"
+  ],
+  "name": "plugin-admin",
+  "plugin_id": "",
+  "readme": "# admin\n\nWelcome to the admin plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/admin](http://localhost:3000/admin).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "",
+  "updated": "2023-06-30T18:48:17.999Z",
+  "version": "0.2.1",
+  "version_count": 12,
+  "versions": [
+    {
+      "date": "2023-06-30T18:48:17.999Z",
+      "version": "0.2.1"
+    },
+    {
+      "date": "2023-06-30T18:35:56.823Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2023-06-30T18:18:49.144Z",
+      "version": "0.1.9"
+    },
+    {
+      "date": "2023-06-30T18:17:49.794Z",
+      "version": "0.1.8"
+    },
+    {
+      "date": "2023-06-30T18:15:28.144Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2023-06-30T18:14:50.853Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2023-06-30T18:13:35.917Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2023-06-30T18:10:44.927Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2023-06-30T18:01:32.978Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2023-06-29T19:40:03.106Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2023-06-29T19:33:17.305Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2023-06-29T19:24:41.085Z",
+      "version": "0.1.0"
+    }
+  ]
+}

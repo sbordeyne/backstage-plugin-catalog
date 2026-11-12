@@ -1,0 +1,59 @@
+{
+  "author": "Francisco Meneses",
+  "created": "2023-02-13T16:22:38.819Z",
+  "deprecated": "",
+  "description": "This is a plugin for synchronizing 3scale content into [Backstage.io](https://backstage.io/) catalog.",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "fmenesesg"
+  ],
+  "name": "@fmenesesg/threescale-backstage-provider",
+  "plugin_id": "",
+  "readme": "# 3scale Backstage provider\n\nThis is a plugin for synchronizing 3scale content into [Backstage.io](https://backstage.io/) catalog.\n\n## Install\n\n1. Install the plugin\n\n   ```sh\n   yarn add --cwd packages/backend @fmenesesg/threescale-backstage-provider\n   ```\n\n## Configure\n\n3scale Backstage provider allows configuration of one or many providers using the `app-config.yaml` configuration file of Backstage. Use a `threeScaleApiEntity` marker to start configuring them.\n\n```yaml\n# app-config.yaml\n\ncatalog:\n  providers:\n    threeScaleApiEntity:\n      dev:\n        baseUrl: https://<TENANT>-admin.3scale.net\n        accessToken: <ACCESS_TOKEN>\n        schedule: # optional; same options as in TaskScheduleDefinition\n          # supports cron, ISO duration, \"human duration\" as used in code\n          frequency: { minutes: 1 }\n          # supports ISO duration, \"human duration\" as used in code\n          timeout: { minutes: 1 }\n```\n\nOnce you've done that, you'll also need to add the segment below to `packages/backend/src/plugins/catalog.ts`:\n\n```ts\n/* packages/backend/src/plugins/catalog.ts */\n\nimport { ThreeScaleApiEntityProvider } from '@fmenesesg/threescale-backstage-provider';\n\n[...]\n  const builder = await CatalogBuilder.create(env);\n\n  /** ... other processors and/or providers ... */\n  builder.addEntityProvider(\n    ThreeScaleApiEntityProvider.fromConfig(env.config, {\n      logger: env.logger,\n      scheduler: env.scheduler\n    }),\n  );\n\n  const { processingEngine, router } = await builder.build();\n[...]\n``` \n\n## Troubleshoot\n\nAfter having started your Backstage app, you should see some lines like those below in logs:\n\n```log\n[1] 2023-02-13T15:26:09.356Z catalog info Discovered ApiEntity API type=plugin target=ThreeScaleApiEntityProvider:dev\n[1] 2023-02-13T15:26:09.423Z catalog info Discovered ApiEntity Red Hat Event (DEV, v1.2.0) type=plugin target=ThreeScaleApiEntityProvider:dev\n[1] 2023-02-13T15:26:09.620Z catalog info Discovered ApiEntity Red Hat Event (TEST, v1.1.0) type=plugin target=ThreeScaleApiEntityProvider:dev\n[1] 2023-02-13T15:26:09.819Z catalog info Discovered ApiEntity Red Hat Event (PROD, v1.1.0) type=plugin target=ThreeScaleApiEntityProvider:dev\n[1] 2023-02-13T15:26:09.819Z catalog info Applying the mutation with 3 entities type=plugin target=ThreeScaleApiEntityProvider:dev\n```\n",
+  "repository": "",
+  "role": "backend-plugin",
+  "scope": "@fmenesesg",
+  "updated": "2023-02-21T16:01:47.269Z",
+  "version": "0.0.9",
+  "version_count": 9,
+  "versions": [
+    {
+      "date": "2023-02-21T16:01:47.269Z",
+      "version": "0.0.9"
+    },
+    {
+      "date": "2023-02-20T19:56:02.795Z",
+      "version": "0.0.8"
+    },
+    {
+      "date": "2023-02-20T19:49:19.154Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2023-02-20T13:25:31.490Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2023-02-20T13:24:21.421Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2023-02-20T13:08:39.026Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2023-02-13T20:56:53.506Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2023-02-13T16:37:59.683Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2023-02-13T16:22:39.151Z",
+      "version": "0.0.1"
+    }
+  ]
+}

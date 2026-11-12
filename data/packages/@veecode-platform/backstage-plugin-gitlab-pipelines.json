@@ -1,0 +1,88 @@
+{
+  "author": "",
+  "created": "2023-09-12T12:23:16.824Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "gitlab",
+    "gitlab pipelines"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-gitlab-pipelines",
+  "plugin_id": "gitlab-pipelines",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2025-06-27T14:49:41.654Z",
+  "version": "0.7.0",
+  "version_count": 160,
+  "versions": [
+    {
+      "date": "2025-06-27T14:49:41.654Z",
+      "version": "0.7.0"
+    },
+    {
+      "date": "2025-06-26T18:08:04.824Z",
+      "version": "0.6.2"
+    },
+    {
+      "date": "2024-10-28T13:00:46.965Z",
+      "version": "0.6.1"
+    },
+    {
+      "date": "2024-09-30T16:40:48.939Z",
+      "version": "0.6.0"
+    },
+    {
+      "date": "2024-09-20T14:44:50.415Z",
+      "version": "0.5.1"
+    },
+    {
+      "date": "2024-08-28T17:41:53.908Z",
+      "version": "0.5.0"
+    },
+    {
+      "date": "2024-07-10T17:08:30.616Z",
+      "version": "0.4.17"
+    },
+    {
+      "date": "2024-07-08T20:31:28.546Z",
+      "version": "0.4.16"
+    },
+    {
+      "date": "2024-07-02T19:47:03.985Z",
+      "version": "0.4.15"
+    },
+    {
+      "date": "2024-07-02T12:55:52.001Z",
+      "version": "0.4.14"
+    },
+    {
+      "date": "2024-07-02T12:26:55.455Z",
+      "version": "0.4.13"
+    },
+    {
+      "date": "2024-07-01T15:03:07.995Z",
+      "version": "0.4.12"
+    },
+    {
+      "date": "2024-07-01T13:03:18.862Z",
+      "version": "0.4.11"
+    },
+    {
+      "date": "2024-06-24T15:00:06.105Z",
+      "version": "0.4.10"
+    },
+    {
+      "date": "2024-06-21T19:50:09.584Z",
+      "version": "0.4.9"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "author": "",
+  "created": "2024-10-09T07:55:59.821Z",
+  "deprecated": "",
+  "description": "Welcome to the opencost plugin!",
+  "homepage": "",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "backstage-kartverket"
+  ],
+  "name": "@kartverket/backstage-plugin-opencost",
+  "plugin_id": "opencost",
+  "readme": "# opencost\n\nWelcome to the opencost plugin!\n\n_This plugin was created through the Backstage CLI_\n\n## Getting started\n\nYour plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/opencost](http://localhost:3000/opencost).\n\nYou can also serve the plugin in isolation by running `yarn start` in the plugin directory.\nThis method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.\nIt is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.\n",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@kartverket",
+  "updated": "2024-11-01T09:58:02.885Z",
+  "version": "0.1.7",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2024-11-01T09:58:02.885Z",
+      "version": "0.1.7"
+    },
+    {
+      "date": "2024-11-01T09:55:50.620Z",
+      "version": "0.1.6"
+    },
+    {
+      "date": "2024-11-01T09:55:05.114Z",
+      "version": "0.1.5"
+    },
+    {
+      "date": "2024-11-01T09:54:52.025Z",
+      "version": "0.1.4"
+    },
+    {
+      "date": "2024-11-01T09:41:25.727Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2024-11-01T09:28:43.275Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2024-10-09T07:56:00.235Z",
+      "version": "0.1.0"
+    }
+  ]
+}

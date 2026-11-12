@@ -1,0 +1,55 @@
+{
+  "author": "",
+  "created": "2025-01-10T10:45:51.864Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+    "backstage",
+    "zora"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "andrevtg",
+    "giovanicorrea"
+  ],
+  "name": "@veecode-platform/backstage-plugin-zora-oss",
+  "plugin_id": "zora-oss",
+  "readme": "",
+  "repository": "",
+  "role": "frontend-plugin",
+  "scope": "@veecode-platform",
+  "updated": "2025-06-27T17:27:44.778Z",
+  "version": "0.0.7",
+  "version_count": 7,
+  "versions": [
+    {
+      "date": "2025-06-27T17:27:44.778Z",
+      "version": "0.0.7"
+    },
+    {
+      "date": "2025-06-27T14:49:43.157Z",
+      "version": "0.0.6"
+    },
+    {
+      "date": "2025-06-26T18:08:06.275Z",
+      "version": "0.0.5"
+    },
+    {
+      "date": "2025-02-19T03:13:59.296Z",
+      "version": "0.0.4"
+    },
+    {
+      "date": "2025-01-10T14:24:36.437Z",
+      "version": "0.0.3"
+    },
+    {
+      "date": "2025-01-10T11:39:40.167Z",
+      "version": "0.0.2"
+    },
+    {
+      "date": "2025-01-10T10:45:52.173Z",
+      "version": "0.0.1"
+    }
+  ]
+}

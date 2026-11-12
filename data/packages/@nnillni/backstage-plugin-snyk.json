@@ -1,0 +1,42 @@
+{
+  "author": "Nahuel Nillni",
+  "created": "2023-11-14T10:18:26.147Z",
+  "deprecated": "",
+  "description": "Snyk Plugin for Spotify Backstage",
+  "homepage": "https://github.com/nnillni/backstage-plugin-snyk#readme",
+  "keywords": [
+    "backstage",
+    "plugin",
+    "security",
+    "snyk",
+    "spotify",
+    "vulnerabilities"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "nnillni"
+  ],
+  "name": "@nnillni/backstage-plugin-snyk",
+  "plugin_id": "",
+  "readme": "# Snyk Backstage Plugin\n\n[![Inactively Maintained](https://img.shields.io/badge/Maintenance%20Level-Inactively%20Maintained-yellowgreen.svg)](https://gist.github.com/cheerfulstoic/d107229326a01ff0f333a1d3476e068d)\n\n**This repository is in maintenance mode, no new features are being developed. Bug & security fixes will continue to be delivered. Open source contributions are welcome for small features & fixes (no breaking changes)**\n\nThe Snyk plugin displays security details from [snyk.io](https://snyk.io/).\n\n![Snyk Tab](docs/assets/backstage-snyk-plugin-tab.png)\n\n## Getting started\n\n> **Requirements: Snyk API enabled (Paid plans only)**\n\n1. Install plugin\n\n```bash\n# packages/app\nyarn add --cwd packages/app backstage-plugin-snyk\n```\n\n2. Add plugin to the app\n\n```typescript\n// packages/app/src/App.tsx\nimport { EntitySnykContent } from 'backstage-plugin-snyk';\n\n....\n\n<FlatRoutes>\n...\n<Route path=\"/snyk\" element={<EntitySnykContent />}/>\n...\n</FlatRoutes>\n\n```\n\n3. Add Snyk card and tab to the entity page\n   The plugin is composed of 2 main parts\n\n- Snyk tile on the entity overview page\n- Security tab in the entity displaying further details\n\na. Import the elements\n\n```typescript\n// packages/app/src/components/catalog/EntityPage.tsx\nimport {\n  SnykOverview,\n  EntitySnykContent,\n  isSnykAvailable,\n} from \"backstage-plugin-snyk\";\n```\n\nb. Add the overview card\\\n\\\n![Overview card](docs/assets/backstage-snyk-plugin-overview-card.png)\n\n```typescript\n// packages/app/src/components/catalog/EntityPage.tsx\nconst entityWarningContent = (\n  <>\n    ...\n    <EntitySwitch>\n      <EntitySwitch.Case if={isSnykAvailable}>\n        <Grid item md={3}>\n          <SnykOverview />\n        </Grid>\n      </EntitySwitch.Case>\n    </EntitySwitch>\n    ...\n  </>\n);\n```\n\nc. Add the tab (feel free to rename title to Security, snyk, vulns, whatever you think is best)\n\n```typescript\nconst ServiceEntityPage = (\n  <EntityLayoutWrapper>\n    ...\n    <EntityLayout.Route path=\"/snyk\" title=\"Security\">\n      <EntitySnykContent />\n    </EntityLayout.Route>\n    ...\n  </EntityLayoutWrapper>\n);\n```\n\n4. Add snyk proxy config to app-config.yaml file at the root directory. If using Snyk self hosted, adjust target to https://YOURHOSTNAME/api. User Agent helps us see how much API traffic comes from backstage setups so we can invest more in the plugin !\n\n```yaml\nproxy:\n  endpoints:\n    ...\n    /snyk:\n      # Host of the API to use on the calls.\n      # If you use EU or AU Snyk account, change this to https://api.eu.snyk.io/ or https://api.au.snyk.io/\n      target: https://api.snyk.io/\n      headers:\n        User-Agent: tech-services/backstage-plugin/1.0\n        Authorization: token ${SNYK_TOKEN}\n    ...\n```\n\nYou can also add the following optional configuration to your app-config.yaml\n\n```yaml\nsnyk:\n  # Host of the Web UI to render links. Defaults to \"app.snyk.io\"\n  # If you use EU or AU Snyk account, change this to app.eu.snyk.io or app.au.snyk.io\n  appHost: app.snyk.io\n  # Version of the API to use on the calls. Defaults to \"2023-11-06~beta\"\n  apiVersion: \"2023-11-06~beta\"\n  # Mocks the API calls, useful for development and for testing the plugin without a Snyk account. Defaults to \"false\"\n  mocked: false\n  # Will show resolved issues in all the graphs. Defaults to \"false\" to show only non-resolved issues\n  showResolvedInGraphs: false\n```\n\n5. Get your Snyk token (a service account with Viewer permission at your group level is preferred) and provide SNYK_TOKEN env var with the value \"<YOURTOKEN>\"\n\n```bash\nexport SNYK_TOKEN=\"123-123-123-123\"\n```\n\n6. Add this following annotation to your entities.\n\n- `snyk.io/org-id` is the ID of the Snyk organization where your project is. You can find the ID in the Organization Settings in the Snyk dashboard.\n\n7. Then add one or more than one of the following annotations to your entities.\n\n- `snyk.io/target-id` specify a single target by name or ID. Target ID will avoid an API call and be therefore faster. Use this [API endpoint](https://apidocs.snyk.io/?version=2023-06-19%7Ebeta#get-/orgs/-org_id-/targets) to get the Target IDs.\n- `snyk.io/targets` specify one or more targets, by name or ID. Target ID will avoid an API call and be therefore faster. Use this [API endpoint](https://apidocs.snyk.io/?version=2023-06-19%7Ebeta#get-/orgs/-org_id-/targets) to get the Target IDs.\n- `snyk.io/project-ids` are the project ID (see slug in url or ID in project settings)\n  If multiple projects (like multiple package.json or pom files, add them with increasing number), add them comma separated\n- `snyk.io/exclude-project-ids` to exclude specific projects you might not want.\n  ....\n\nExample:\n\n```yaml\napiVersion: backstage.io/v1alpha1\nkind: Component\nmetadata:\n  name: goof\n  description: Goof\n  annotations:\n    snyk.io/org-id: 361fd3c0-41d4-4ea4-ba77-09bb17890967\n    snyk.io/targets: Snyk Demo/java-goof,508d2263-ea8a-4e42-bc9d-844de21f4172\n    snyk.io/target-id: aarlaud-snyk/github-stats\n    snyk.io/project-ids: 7439e322-f9c1-4c42-8367-002b33b9d946,db066cb9-b373-46da-b918-b49b541e0d63\n    snyk.io/exclude-project-ids: 4737fc9c-3894-40ba-9dc5-aa8ae658c9f6,38e02916-0cf7-4927-ba98-06afae9fef36\nspec:\n  type: service\n  lifecycle: production\n  owner: guest\n  ....\n```\n\nSome more examples can be found in [here](https://github.com/snyk-tech-services/backstage-plugin-snyk/tree/develop/test/fixtures)\n\n## Migration steps from plugin version 1.x to 2.x\n\n- Update the proxy target to not contain /v1\n\n## Troubleshooting\n\n- Missing or wrong token set in the backend proxy.\\\n\n  ![Missing/wrong token](docs/assets/backstage_card_error_wrong_or_missing_token.png)\n\n- 404s from Snyk API? Add [pathRewrite your app-config.yaml proxy](https://github.com/snyk-tech-services/backstage-plugin-snyk/issues/11) to the following\n\n```yaml\n\"/snyk\":\n  target: https://api.snyk.io/\n  headers:\n    User-Agent: tech-services/backstage-plugin/1.0\n    Authorization:\n      $env: SNYK_TOKEN\n  pathRewrite:\n    \"^/proxy/snyk/\": \"/\"\n```\n\n## Limitations\n\nInfrastructure as Code and Snyk Code projects are not supported currently.\n",
+  "repository": "https://github.com/nnillni/backstage-plugin-snyk",
+  "role": "",
+  "scope": "@nnillni",
+  "updated": "2023-11-14T12:24:11.519Z",
+  "version": "3.0.2",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2023-11-14T12:24:11.519Z",
+      "version": "3.0.2"
+    },
+    {
+      "date": "2023-11-14T10:53:45.576Z",
+      "version": "3.0.1"
+    },
+    {
+      "date": "2023-11-14T10:18:26.722Z",
+      "version": "3.0.0"
+    }
+  ]
+}
