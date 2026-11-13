@@ -20,10 +20,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/ai-integrations/plugins/npx-skill-connector-backend",
   "role": "backend-plugin",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-11-09T17:26:30.881Z",
-  "version": "0.4.0",
-  "version_count": 4,
+  "updated": "2026-11-13T00:31:04.367Z",
+  "version": "0.4.1",
+  "version_count": 5,
   "versions": [
+    {
+      "date": "2026-11-13T00:31:04.367Z",
+      "version": "0.4.1"
+    },
     {
       "date": "2026-11-09T17:26:30.881Z",
       "version": "0.4.0"
