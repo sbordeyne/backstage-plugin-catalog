@@ -20,10 +20,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/ai-integrations/plugins/catalog-backend-module-ai-resource-agent",
   "role": "backend-plugin-module",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-11-04T14:54:04.491Z",
-  "version": "0.6.0",
-  "version_count": 5,
+  "updated": "2026-11-13T20:41:43.013Z",
+  "version": "0.7.0",
+  "version_count": 6,
   "versions": [
+    {
+      "date": "2026-11-13T20:41:43.013Z",
+      "version": "0.7.0"
+    },
     {
       "date": "2026-11-04T14:54:04.491Z",
       "version": "0.6.0"
