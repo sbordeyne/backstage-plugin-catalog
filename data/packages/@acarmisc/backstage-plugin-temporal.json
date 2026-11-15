@@ -1,0 +1,35 @@
+{
+  "author": "",
+  "created": "2026-11-14T19:54:38.874Z",
+  "deprecated": "",
+  "description": "Backstage frontend plugin: Temporal stream pages, entity tab and workflow diagram",
+  "homepage": "https://github.com/acarmisc/backstage-plugin-temporal",
+  "keywords": [],
+  "license": "MIT",
+  "maintainers": [
+    "acarmisc"
+  ],
+  "name": "@acarmisc/backstage-plugin-temporal",
+  "plugin_id": "temporal",
+  "readme": "",
+  "repository": "https://github.com/acarmisc/backstage-plugin-temporal/tree/HEAD/plugins/temporal",
+  "role": "frontend-plugin",
+  "scope": "@acarmisc",
+  "updated": "2026-11-14T20:55:04.360Z",
+  "version": "0.2.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-11-14T20:55:04.360Z",
+      "version": "0.2.0"
+    },
+    {
+      "date": "2026-11-14T19:57:17.084Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-11-14T19:54:38.874Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

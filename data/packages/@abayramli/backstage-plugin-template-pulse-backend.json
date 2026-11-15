@@ -17,14 +17,18 @@
   ],
   "name": "@abayramli/backstage-plugin-template-pulse-backend",
   "plugin_id": "template-pulse",
-  "readme": "# Template Pulse backend\n\nAnalytics for Scaffolder runs, controlled by Backstage permissions.\n\n```ts\nbackend.add(import('@abayramli/backstage-plugin-template-pulse-backend'));\n```\n\nFollow the [installation guide](https://github.com/alibayramli/template-pulse#add-to-backstage) to enable permissions and choose who can view their own runs or runs across the organization. By default, the backend reads recent Scaffolder runs. Add the optional database module to read all runs still stored in Scaffolder's database.\n",
+  "readme": "# Template Pulse backend\n\nAnalytics for Scaffolder runs, controlled by Backstage permissions.\n\nRequires Backstage's new backend system and Node.js 22 or 24.\n\n```sh\nyarn workspace backend add @abayramli/backstage-plugin-template-pulse-backend @abayramli/backstage-plugin-template-pulse-common\n```\n\nRegister it alongside your Scaffolder and permission backends:\n\n```ts\nbackend.add(import('@abayramli/backstage-plugin-template-pulse-backend'));\n```\n\nFollow the [installation guide](https://github.com/alibayramli/template-pulse#add-to-backstage) to enable permissions and choose who can view their own runs or runs across the organization. Team filters require organization access and use the catalog group's current direct members.\n\nBy default, the backend reads the latest 200 Scaffolder runs through its public API (`templatePulse.historySource: service`). Add the optional [database history module](https://github.com/alibayramli/template-pulse/tree/main/plugins/scaffolder-backend-module-template-pulse) and set `templatePulse.historySource: database` to include all runs still stored in Scaffolder's database.\n",
   "repository": "https://github.com/alibayramli/template-pulse/tree/HEAD/plugins/template-pulse-backend",
   "role": "backend-plugin",
   "scope": "@abayramli",
-  "updated": "2026-10-23T08:57:27.604Z",
-  "version": "0.1.0",
-  "version_count": 2,
+  "updated": "2026-11-14T10:48:15.834Z",
+  "version": "0.1.1",
+  "version_count": 3,
   "versions": [
+    {
+      "date": "2026-11-14T10:48:15.834Z",
+      "version": "0.1.1"
+    },
     {
       "date": "2026-10-23T08:57:27.604Z",
       "version": "0.1.0"

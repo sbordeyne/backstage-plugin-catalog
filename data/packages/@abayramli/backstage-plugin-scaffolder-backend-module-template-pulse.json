@@ -17,14 +17,18 @@
   ],
   "name": "@abayramli/backstage-plugin-scaffolder-backend-module-template-pulse",
   "plugin_id": "scaffolder",
-  "readme": "# Template Pulse database history\n\nLet Template Pulse read run history directly from Scaffolder's database.\n\n```sh\nyarn workspace backend add @abayramli/backstage-plugin-scaffolder-backend-module-template-pulse@0.1.0\n```\n\nRegister it alongside your Scaffolder backend:\n\n```ts\nbackend.add(import('@abayramli/backstage-plugin-scaffolder-backend-module-template-pulse'));\n```\n\nSet `templatePulse.historySource: database` and configure permissions using the [installation guide](https://github.com/alibayramli/template-pulse#add-to-backstage).\n\n- Uses Scaffolder's existing database connection to read its standard SQL tables without changing them. Tested with SQLite and PostgreSQL.\n- Checks the database structure after Scaffolder starts and finishes its migrations.\n- Supports the built-in `IS_TASK_OWNER` permission rule. For custom task stores or permission rules, set `templatePulse.historySource: service`.\n- After upgrading Scaffolder, check that its database structure still works with this module.\n\n",
+  "readme": "# Template Pulse database history\n\nLet the Template Pulse backend read all runs still stored in Scaffolder's database. Requires Backstage's new backend system and Node.js 22 or 24.\n\n```sh\nyarn workspace backend add @abayramli/backstage-plugin-scaffolder-backend-module-template-pulse\n```\n\nRegister it alongside your Scaffolder backend:\n\n```ts\nbackend.add(import('@abayramli/backstage-plugin-scaffolder-backend-module-template-pulse'));\n```\n\nSelect database history in `app-config.yaml`:\n\n```yaml\ntemplatePulse:\n  historySource: database\n```\n\nInstall the Template Pulse frontend and backend and configure permissions using the [installation guide](https://github.com/alibayramli/template-pulse#add-to-backstage). This module uses the same personal and organization permissions as the backend.\n\n- Uses Scaffolder's existing database connection to read its standard SQL tables without changing them. Tested with SQLite and PostgreSQL.\n- Checks the database structure after Scaffolder starts and finishes its migrations.\n- Supports the built-in `IS_TASK_OWNER` permission rule. For custom task stores or permission rules, set `templatePulse.historySource: service`.\n- After upgrading Scaffolder, check that its database structure still works with this module.\n\n",
   "repository": "https://github.com/alibayramli/template-pulse/tree/HEAD/plugins/scaffolder-backend-module-template-pulse",
   "role": "backend-plugin-module",
   "scope": "@abayramli",
-  "updated": "2026-10-23T08:58:04.050Z",
-  "version": "0.1.0",
-  "version_count": 2,
+  "updated": "2026-11-14T10:47:31.242Z",
+  "version": "0.1.1",
+  "version_count": 3,
   "versions": [
+    {
+      "date": "2026-11-14T10:47:31.242Z",
+      "version": "0.1.1"
+    },
     {
       "date": "2026-10-23T08:58:04.050Z",
       "version": "0.1.0"

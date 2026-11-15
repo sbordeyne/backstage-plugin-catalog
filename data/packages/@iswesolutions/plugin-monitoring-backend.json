@@ -1,0 +1,36 @@
+{
+  "author": "",
+  "created": "2026-11-14T18:40:37.957Z",
+  "deprecated": "",
+  "description": "Backend for @iswesolutions/plugin-monitoring: shared settings (cost rates, electricity tariff) for its Settings tab, editable with the monitoring.settings.update permission",
+  "homepage": "https://github.com/ISWE-Solutions/backstage-plugins/tree/main/plugins/monitoring-backend#readme",
+  "keywords": [
+    "backstage",
+    "backstage-plugin",
+    "monitoring",
+    "settings"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "csiwale"
+  ],
+  "name": "@iswesolutions/plugin-monitoring-backend",
+  "plugin_id": "monitoring",
+  "readme": "# Monitoring backend plugin\n\nThe backend of [`@iswesolutions/plugin-monitoring`](../monitoring): the\n**shared settings** of its Settings tab (cost rates, electricity tariff, PUE,\nCO₂ factor ...), kept in Backstage's database. A saved setting overrides the\nfrontend's app-config (`monitoring.<key>`); removing it goes back to\napp-config.\n\n| Route                          | Who                          | Does                                                                                                    |\n| ------------------------------ | ---------------------------- | ------------------------------------------------------------------------------------------------------- |\n| `GET /api/monitoring/settings` | every signed-in user         | `{ settings: { key: { value, updatedBy, updatedAt } }, keys, canEdit }`                                 |\n| `PUT /api/monitoring/settings` | `monitoring.settings.update` | `{ changes: { key: value \\| null } }`: saves, or removes with `null`; validated (ranges, currency code) |\n\nSettings: `costs.currency`, `costs.monthlyInfrastructureCost`,\n`costs.split.{cpu,memory,storage,network,backup}` (0 to 1),\n`costs.rates.{cpuCoreMonth,memoryGbMonth,storageGbMonth,networkGb,backupGbMonth,guestMonth}`,\n`costs.electricity.tariffPerKwh`, `costs.electricity.pue` (1 to 3),\n`costs.electricity.co2KgPerKwh`.\n\n## Installation\n\n```sh\nyarn --cwd packages/backend add @iswesolutions/plugin-monitoring-backend\n```\n\n```ts\n// packages/backend/src/index.ts\nbackend.add(import('@iswesolutions/plugin-monitoring-backend'));\n```\n\nThe plugin registers the `monitoring.settings.update` permission. With the\ncommunity RBAC plugin, list it so roles can be given it:\n\n```yaml\npermission:\n  rbac:\n    pluginsWithPermission: [monitoring]\n```\n\nSuper users have it already. The table `monitoring_settings` is created on\nfirst start.\n",
+  "repository": "https://github.com/ISWE-Solutions/backstage-plugins/tree/HEAD/plugins/monitoring-backend",
+  "role": "backend-plugin",
+  "scope": "@iswesolutions",
+  "updated": "2026-11-14T18:41:35.061Z",
+  "version": "0.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-11-14T18:41:35.061Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-11-14T18:40:37.957Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

@@ -17,14 +17,18 @@
   ],
   "name": "@abayramli/backstage-plugin-template-pulse",
   "plugin_id": "template-pulse",
-  "readme": "# Template Pulse frontend\n\nSee template usage, success rates, run times, and past runs at `/template-pulse`. Uses Backstage's new frontend system and the Template Pulse backend.\n\n[Installation](https://github.com/alibayramli/template-pulse#add-to-backstage) · [Live demo](https://alibayramli.github.io/template-pulse-demo/)\n",
+  "readme": "# Template Pulse frontend\n\nSee template usage, success rates, run times, and past runs at `/template-pulse`. Filter by date, template, user, or team, and share filtered views with **Copy link**.\n\nRequires Backstage's new frontend system, React 18, Node.js 22 or 24, and the Template Pulse backend.\n\n```sh\nyarn workspace app add @abayramli/backstage-plugin-template-pulse\n```\n\nAdd the plugin to your app's features and import the Backstage UI stylesheet once:\n\n```tsx\nimport '@backstage/ui/css/styles.css';\nimport { createApp } from '@backstage/frontend-defaults';\nimport templatePulse from '@abayramli/backstage-plugin-template-pulse';\n\ncreateApp({ features: [/* existing features, */ templatePulse] });\n```\n\nFollow the [installation guide](https://github.com/alibayramli/template-pulse#add-to-backstage) to register the backend and configure permissions for personal and organization analytics.\n\n[Live demo](https://alibayramli.github.io/template-pulse-demo/)\n",
   "repository": "https://github.com/alibayramli/template-pulse/tree/HEAD/plugins/template-pulse",
   "role": "frontend-plugin",
   "scope": "@abayramli",
-  "updated": "2026-10-23T08:58:43.362Z",
-  "version": "0.1.0",
-  "version_count": 2,
+  "updated": "2026-11-14T10:48:51.462Z",
+  "version": "0.1.1",
+  "version_count": 3,
   "versions": [
+    {
+      "date": "2026-11-14T10:48:51.462Z",
+      "version": "0.1.1"
+    },
     {
       "date": "2026-10-23T08:58:43.362Z",
       "version": "0.1.0"
