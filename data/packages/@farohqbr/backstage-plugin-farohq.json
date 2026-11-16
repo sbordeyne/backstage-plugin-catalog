@@ -11,14 +11,18 @@
   ],
   "name": "@farohqbr/backstage-plugin-farohq",
   "plugin_id": "farohq",
-  "readme": "# @farohqbr/backstage-plugin-farohq\r\n\r\nCard e aba do FaroHQ na página da entidade do Backstage. Veja a instalação no [README do repositório](https://github.com/faro-hq/farohq-backstage#readme).\r\n",
+  "readme": "# @farohqbr/backstage-plugin-farohq\n\nCard e aba do FaroHQ na página da entidade do Backstage. Veja a instalação no [README do repositório](https://github.com/faro-hq/farohq-backstage#readme).\n",
   "repository": "https://github.com/faro-hq/farohq-backstage/tree/HEAD/plugins/farohq",
   "role": "frontend-plugin",
   "scope": "@farohqbr",
-  "updated": "2026-11-08T17:02:47.605Z",
-  "version": "0.1.0",
-  "version_count": 2,
+  "updated": "2026-11-15T22:23:09.106Z",
+  "version": "0.1.2",
+  "version_count": 3,
   "versions": [
+    {
+      "date": "2026-11-15T22:23:09.106Z",
+      "version": "0.1.2"
+    },
     {
       "date": "2026-11-08T17:02:47.605Z",
       "version": "0.1.0"
