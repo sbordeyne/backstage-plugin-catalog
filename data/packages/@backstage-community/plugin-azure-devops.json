@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/azure-devops/plugins/azure-devops",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:19:16.660Z",
-  "version": "0.36.0",
-  "version_count": 50,
+  "updated": "2026-11-16T23:59:56.080Z",
+  "version": "0.37.0",
+  "version_count": 51,
   "versions": [
+    {
+      "date": "2026-11-16T23:59:56.080Z",
+      "version": "0.37.0"
+    },
     {
       "date": "2026-11-03T14:19:16.660Z",
       "version": "0.36.0"
@@ -74,10 +78,6 @@
     {
       "date": "2026-02-23T12:33:51.092Z",
       "version": "0.27.0"
-    },
-    {
-      "date": "2026-02-08T21:41:38.026Z",
-      "version": "0.26.0"
     }
   ]
 }

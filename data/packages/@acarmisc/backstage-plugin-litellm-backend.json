@@ -15,10 +15,22 @@
   "repository": "https://github.com/acarmisc/backstage-plugin-litellm-govai",
   "role": "backend-plugin",
   "scope": "@acarmisc",
-  "updated": "2026-11-15T20:49:22.544Z",
-  "version": "0.32.0",
-  "version_count": 68,
+  "updated": "2026-11-16T17:35:03.253Z",
+  "version": "0.35.0",
+  "version_count": 71,
   "versions": [
+    {
+      "date": "2026-11-16T17:35:03.253Z",
+      "version": "0.35.0"
+    },
+    {
+      "date": "2026-11-16T09:46:39.359Z",
+      "version": "0.34.0"
+    },
+    {
+      "date": "2026-11-16T08:16:37.276Z",
+      "version": "0.33.0"
+    },
     {
       "date": "2026-11-15T20:49:22.544Z",
       "version": "0.32.0"
@@ -66,18 +78,6 @@
     {
       "date": "2026-10-13T08:59:46.659Z",
       "version": "0.23.0"
-    },
-    {
-      "date": "2026-10-12T19:33:34.130Z",
-      "version": "0.22.0"
-    },
-    {
-      "date": "2026-10-12T06:05:12.807Z",
-      "version": "0.21.0"
-    },
-    {
-      "date": "2026-10-10T21:46:16.947Z",
-      "version": "0.20.0"
     }
   ]
 }

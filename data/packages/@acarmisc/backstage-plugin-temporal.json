@@ -11,14 +11,30 @@
   ],
   "name": "@acarmisc/backstage-plugin-temporal",
   "plugin_id": "temporal",
-  "readme": "# Temporal Frontend Plugin\n\nStreams, run diagrams, and catalog entity views for Backstage.\n\n## Installation\n\n```bash\nyarn add @acarmisc/backstage-plugin-temporal\n```\n\nor\n\n```bash\nnpm install @acarmisc/backstage-plugin-temporal\n```\n\n## Configuration\n\n### Backend Configuration\n\nAdd the plugin to your backend `app-config.yaml`:\n\n```yaml\nplugins:\n  register:\n    - '@acarmisc/backstage-plugin-temporal-backend'\n```\n\nConfigure Temporal clusters in `app-config.yaml`:\n\n```yaml\ntemporal:\n  clusters:\n    - name: default\n      address: localhost:7233\n      namespaces:\n        - default\n      tls:\n        enabled: false\n      apiKey: ${TEMPORAL_API_KEY}\n      streamPrefix: stream/\n      workflowTypes:\n        - StreamWorkflow\n      cache:\n        ttlSeconds: 300\n```\n\n### Frontend Configuration\n\nAdd the plugin to your frontend `app-config.yaml`:\n\n```yaml\nplugins:\n  register:\n    - '@acarmisc/backstage-plugin-temporal'\n```\n\n## RBAC & Permissions\n\nThe plugin provides two fine-grained permissions that can be configured via Backstage's permission system:\n\n### Permissions\n\n| Permission | Description |\n|------------|-------------|\n| `temporal.read` | List clusters, health, streams, and workflow definitions |\n| `temporal.run.read` | Read run details including task output (tails) and parameters |\n\n### Default Behavior\n\nBoth permissions are **required** by default. All backend API routes enforce authentication via `temporal.read`.\n\n### Making Permissions Optional\n\nIf you want to disable permission checks (e.g., for internal/troubleshooting purposes), configure the plugin with:\n\n```yaml\ntemporal:\n  permissions:\n    enabled: false\n```\n\nWhen `permissions.enabled: false`, all routes will bypass RBAC checks.\n\n### Custom Permission Names\n\nOverride the default permission names:\n\n```yaml\ntemporal:\n  permissions:\n    read: my-custom.read\n    runRead: my-custom.run.read\n```\n\n## Entity Integration\n\nThe plugin adds Temporal stream information to Backstage entities via annotations:\n\n```yaml\nmetadata:\n  annotations:\n    temporal.io/cluster: \"my-cluster\"\n    temporal.io/namespace: \"my-namespace\"\n    temporal.io/stream: \"my-stream\"\n    temporal.io/definition-location: \"path/to/workflow.yaml\"\n```\n\n### Entity Tab\n\nThe `TemporalTab` appears on entities that have the `temporal.io/stream` annotation. It displays:\n- Stream name and latest run status\n- Freshness badge (last success time)\n- Link to all runs\n\n### Entity Card\n\nThe `TemporalCard` shows an overview on the entity sidebar:\n- Stream name\n- Latest run status\n- Freshness badge\n- Open link to all runs\n\n## Development\n\n### Local Development\n\n```bash\n# Start the development server\nyarn start\n\n# Or run specific packages\nyarn build\nyarn test\nyarn lint\n```\n\n### Adding New Features\n\n1. Add types/handlers in `plugins/temporal-common/src/`\n2. Add backend routes in `plugins/temporal-backend/src/router.ts`\n3. Add frontend components in `plugins/temporal/src/components/`\n4. Export from `plugins/temporal/src/index.ts`\n5. Update `plugins/temporal/plugin.tsx` with new route extensions",
+  "readme": "",
   "repository": "https://github.com/acarmisc/backstage-plugin-temporal/tree/HEAD/plugins/temporal",
   "role": "frontend-plugin",
   "scope": "@acarmisc",
-  "updated": "2026-11-15T20:05:43.168Z",
-  "version": "0.6.0",
-  "version_count": 6,
+  "updated": "2026-11-16T09:25:13.371Z",
+  "version": "0.8.1",
+  "version_count": 10,
   "versions": [
+    {
+      "date": "2026-11-16T09:25:13.371Z",
+      "version": "0.8.1"
+    },
+    {
+      "date": "2026-11-16T08:24:48.874Z",
+      "version": "0.8.0"
+    },
+    {
+      "date": "2026-11-16T08:12:22.754Z",
+      "version": "0.7.1"
+    },
+    {
+      "date": "2026-11-16T07:55:29.145Z",
+      "version": "0.7.0"
+    },
     {
       "date": "2026-11-15T20:05:43.168Z",
       "version": "0.6.0"

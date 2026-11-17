@@ -24,10 +24,14 @@
   "repository": "https://github.com/rios0rios0/backstage-plugin-code-health/tree/HEAD/plugins/code-health",
   "role": "frontend-plugin",
   "scope": "@rios0rios0",
-  "updated": "2026-10-16T19:22:21.126Z",
-  "version": "6.0.0",
-  "version_count": 15,
+  "updated": "2026-11-16T21:43:06.748Z",
+  "version": "6.1.0",
+  "version_count": 16,
   "versions": [
+    {
+      "date": "2026-11-16T21:43:06.748Z",
+      "version": "6.1.0"
+    },
     {
       "date": "2026-10-16T19:22:21.126Z",
       "version": "6.0.0"
@@ -83,10 +87,6 @@
     {
       "date": "2026-07-29T18:46:45.556Z",
       "version": "1.0.1"
-    },
-    {
-      "date": "2026-07-28T23:30:14.742Z",
-      "version": "1.0.0"
     }
   ]
 }

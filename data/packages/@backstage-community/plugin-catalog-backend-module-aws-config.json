@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/catalog/plugins/catalog-backend-module-aws-config",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:26:31.861Z",
-  "version": "0.4.0",
-  "version_count": 4,
+  "updated": "2026-11-17T00:20:52.491Z",
+  "version": "0.4.1",
+  "version_count": 5,
   "versions": [
+    {
+      "date": "2026-11-17T00:20:52.491Z",
+      "version": "0.4.1"
+    },
     {
       "date": "2026-11-03T14:26:31.861Z",
       "version": "0.4.0"

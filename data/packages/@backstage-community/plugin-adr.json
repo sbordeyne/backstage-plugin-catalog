@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/adr/plugins/adr",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-10-28T17:28:29.223Z",
-  "version": "0.32.0",
-  "version_count": 44,
+  "updated": "2026-11-16T13:14:48.313Z",
+  "version": "0.32.1",
+  "version_count": 45,
   "versions": [
+    {
+      "date": "2026-11-16T13:14:48.313Z",
+      "version": "0.32.1"
+    },
     {
       "date": "2026-10-28T17:28:29.223Z",
       "version": "0.32.0"
@@ -74,10 +78,6 @@
     {
       "date": "2026-02-24T14:38:18.040Z",
       "version": "0.21.0"
-    },
-    {
-      "date": "2026-01-28T13:40:50.953Z",
-      "version": "0.20.0"
     }
   ]
 }

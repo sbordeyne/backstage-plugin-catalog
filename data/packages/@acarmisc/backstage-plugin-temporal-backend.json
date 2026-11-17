@@ -11,14 +11,18 @@
   ],
   "name": "@acarmisc/backstage-plugin-temporal-backend",
   "plugin_id": "",
-  "readme": "# Temporal backend plugin\n\nRead-only Temporal API for Backstage. See the [installation and configuration guide](https://github.com/acarmisc/backstage-plugin-temporal#readme).\n",
+  "readme": "",
   "repository": "https://github.com/acarmisc/backstage-plugin-temporal/tree/HEAD/plugins/temporal-backend",
   "role": "backend-plugin",
   "scope": "@acarmisc",
-  "updated": "2026-11-15T20:05:22.702Z",
-  "version": "0.6.0",
-  "version_count": 6,
+  "updated": "2026-11-16T07:55:45.529Z",
+  "version": "0.7.0",
+  "version_count": 7,
   "versions": [
+    {
+      "date": "2026-11-16T07:55:45.529Z",
+      "version": "0.7.0"
+    },
     {
       "date": "2026-11-15T20:05:22.702Z",
       "version": "0.6.0"

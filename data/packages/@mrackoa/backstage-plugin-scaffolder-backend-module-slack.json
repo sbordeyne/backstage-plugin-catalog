@@ -15,10 +15,14 @@
   "repository": "https://github.com/mrackoa/backstage-plugin-scaffolder-backend-module-slack/tree/HEAD/.",
   "role": "backend-plugin-module",
   "scope": "@mrackoa",
-  "updated": "2026-08-31T13:01:49.066Z",
-  "version": "5.0.1",
-  "version_count": 4,
+  "updated": "2026-11-16T12:56:12.685Z",
+  "version": "6.0.0",
+  "version_count": 5,
   "versions": [
+    {
+      "date": "2026-11-16T12:56:12.685Z",
+      "version": "6.0.0"
+    },
     {
       "date": "2026-08-31T13:01:49.066Z",
       "version": "5.0.1"

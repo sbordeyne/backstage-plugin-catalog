@@ -23,10 +23,14 @@
   "repository": "https://github.com/PagerDuty/backstage-plugins/tree/HEAD/plugins/backstage-plugin",
   "role": "frontend-plugin",
   "scope": "@pagerduty",
-  "updated": "2026-07-03T10:04:09.966Z",
-  "version": "0.21.0",
-  "version_count": 354,
+  "updated": "2026-11-16T12:33:00.034Z",
+  "version": "0.21.1",
+  "version_count": 355,
   "versions": [
+    {
+      "date": "2026-11-16T12:33:00.034Z",
+      "version": "0.21.1"
+    },
     {
       "date": "2026-07-03T10:04:09.966Z",
       "version": "0.21.0"
@@ -82,10 +86,6 @@
     {
       "date": "2025-10-01T14:59:06.910Z",
       "version": "0.15.10-next.1"
-    },
-    {
-      "date": "2025-10-01T14:04:11.319Z",
-      "version": "0.15.10-next.0"
     }
   ]
 }
