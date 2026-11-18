@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/signals-backend",
   "role": "backend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T17:08:12.958Z",
-  "version": "0.3.20",
-  "version_count": 845,
+  "updated": "2026-11-17T21:25:08.512Z",
+  "version": "0.3.21",
+  "version_count": 846,
   "versions": [
+    {
+      "date": "2026-11-17T21:25:08.512Z",
+      "version": "0.3.21"
+    },
     {
       "date": "2026-11-11T03:13:31.279Z",
       "version": "0.3.21-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:26:23.582Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:19:39.003Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

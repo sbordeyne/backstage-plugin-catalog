@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/app-module-user-settings",
   "role": "frontend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:51:03.263Z",
-  "version": "0.1.3",
-  "version_count": 92,
+  "updated": "2026-11-17T21:09:22.622Z",
+  "version": "0.1.4",
+  "version_count": 93,
   "versions": [
+    {
+      "date": "2026-11-17T21:09:22.622Z",
+      "version": "0.1.4"
+    },
     {
       "date": "2026-11-07T02:48:17.899Z",
       "version": "0.0.0-nightly-20261107022000"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-26T02:54:59.379Z",
       "version": "0.0.0-nightly-20260926022852"
-    },
-    {
-      "date": "2026-09-25T02:54:59.474Z",
-      "version": "0.0.0-nightly-20260925022940"
     }
   ]
 }

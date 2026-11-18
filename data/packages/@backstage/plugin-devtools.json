@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/devtools",
   "role": "frontend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:55:53.233Z",
-  "version": "0.1.44",
-  "version_count": 1191,
+  "updated": "2026-11-17T21:17:03.739Z",
+  "version": "0.1.45",
+  "version_count": 1192,
   "versions": [
+    {
+      "date": "2026-11-17T21:17:03.739Z",
+      "version": "0.1.45"
+    },
     {
       "date": "2026-11-11T03:06:17.843Z",
       "version": "0.1.45-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:15:27.166Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:09:43.554Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

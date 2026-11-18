@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/app-visualizer",
   "role": "frontend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:48:22.935Z",
-  "version": "0.2.9",
-  "version_count": 924,
+  "updated": "2026-11-17T21:09:37.237Z",
+  "version": "0.2.10",
+  "version_count": 925,
   "versions": [
+    {
+      "date": "2026-11-17T21:09:37.237Z",
+      "version": "0.2.10"
+    },
     {
       "date": "2026-11-11T02:53:38.445Z",
       "version": "0.2.10-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-29T12:25:47.214Z",
       "version": "0.2.9-next.1"
-    },
-    {
-      "date": "2026-09-28T03:06:54.316Z",
-      "version": "0.0.0-nightly-20260928023907"
     }
   ]
 }

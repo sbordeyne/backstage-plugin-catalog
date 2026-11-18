@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/devtools-backend",
   "role": "backend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:57:44.254Z",
-  "version": "0.5.22",
-  "version_count": 1204,
+  "updated": "2026-11-17T21:16:19.390Z",
+  "version": "0.5.23",
+  "version_count": 1205,
   "versions": [
+    {
+      "date": "2026-11-17T21:16:19.390Z",
+      "version": "0.5.23"
+    },
     {
       "date": "2026-11-11T03:02:34.020Z",
       "version": "0.5.23-next.1"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-26T03:04:49.022Z",
       "version": "0.0.0-nightly-20260926022852"
-    },
-    {
-      "date": "2026-09-25T03:05:19.986Z",
-      "version": "0.0.0-nightly-20260925022940"
     }
   ]
 }

@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog-backend-module-gitea",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:56:24.627Z",
-  "version": "0.1.17",
-  "version_count": 433,
+  "updated": "2026-11-17T21:14:50.502Z",
+  "version": "0.1.18",
+  "version_count": 434,
   "versions": [
+    {
+      "date": "2026-11-17T21:14:50.502Z",
+      "version": "0.1.18"
+    },
     {
       "date": "2026-11-11T02:58:48.194Z",
       "version": "0.1.18-next.1"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:12:38.105Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:05:59.472Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

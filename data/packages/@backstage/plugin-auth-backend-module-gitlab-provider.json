@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/auth-backend-module-gitlab-provider",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:51:11.866Z",
-  "version": "0.4.8",
-  "version_count": 1015,
+  "updated": "2026-11-17T21:10:52.307Z",
+  "version": "0.4.9",
+  "version_count": 1016,
   "versions": [
+    {
+      "date": "2026-11-17T21:10:52.307Z",
+      "version": "0.4.9"
+    },
     {
       "date": "2026-11-11T02:54:57.571Z",
       "version": "0.4.9-next.1"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-26T02:57:16.334Z",
       "version": "0.0.0-nightly-20260926022852"
-    },
-    {
-      "date": "2026-09-25T02:58:58.642Z",
-      "version": "0.0.0-nightly-20260925022940"
     }
   ]
 }

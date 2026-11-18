@@ -20,10 +20,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/techdocs",
   "role": "frontend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T17:08:24.428Z",
-  "version": "1.19.0",
-  "version_count": 2061,
+  "updated": "2026-11-17T21:26:00.215Z",
+  "version": "1.20.0",
+  "version_count": 2062,
   "versions": [
+    {
+      "date": "2026-11-17T21:26:00.215Z",
+      "version": "1.20.0"
+    },
     {
       "date": "2026-11-11T03:16:47.947Z",
       "version": "1.19.1-next.2"
@@ -79,10 +83,6 @@
     {
       "date": "2026-10-06T19:39:53.230Z",
       "version": "1.19.0-next.1"
-    },
-    {
-      "date": "2026-09-28T03:26:52.694Z",
-      "version": "0.0.0-nightly-20260928023907"
     }
   ]
 }

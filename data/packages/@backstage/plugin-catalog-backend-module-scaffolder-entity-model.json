@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog-backend-module-scaffolder-entity-model",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:59:24.967Z",
-  "version": "0.2.25",
-  "version_count": 1044,
+  "updated": "2026-11-17T21:15:17.992Z",
+  "version": "0.2.26",
+  "version_count": 1045,
   "versions": [
+    {
+      "date": "2026-11-17T21:15:17.992Z",
+      "version": "0.2.26"
+    },
     {
       "date": "2026-11-11T03:01:33.250Z",
       "version": "0.2.26-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:17:03.546Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:08:32.233Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog-backend-module-ai-model",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:52:15.960Z",
-  "version": "0.1.5",
-  "version_count": 123,
+  "updated": "2026-11-17T21:12:25.055Z",
+  "version": "0.1.6",
+  "version_count": 124,
   "versions": [
+    {
+      "date": "2026-11-17T21:12:25.055Z",
+      "version": "0.1.6"
+    },
     {
       "date": "2026-11-11T02:58:47.065Z",
       "version": "0.1.6-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:10:31.149Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:04:37.183Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

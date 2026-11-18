@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/mui-to-bui",
   "role": "frontend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:59:40.591Z",
-  "version": "0.2.12",
-  "version_count": 338,
+  "updated": "2026-11-17T21:20:43.529Z",
+  "version": "0.2.13",
+  "version_count": 339,
   "versions": [
+    {
+      "date": "2026-11-17T21:20:43.529Z",
+      "version": "0.2.13"
+    },
     {
       "date": "2026-11-11T03:06:46.290Z",
       "version": "0.2.13-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-29T12:35:52.003Z",
       "version": "0.2.12-next.1"
-    },
-    {
-      "date": "2026-09-28T03:18:50.697Z",
-      "version": "0.0.0-nightly-20260928023907"
     }
   ]
 }

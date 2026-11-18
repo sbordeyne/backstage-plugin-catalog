@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/copilot/plugins/copilot",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-05T10:42:00.302Z",
-  "version": "1.8.0",
-  "version_count": 42,
+  "updated": "2026-11-17T12:50:50.835Z",
+  "version": "1.9.0",
+  "version_count": 43,
   "versions": [
+    {
+      "date": "2026-11-17T12:50:50.835Z",
+      "version": "1.9.0"
+    },
     {
       "date": "2026-11-05T10:42:00.302Z",
       "version": "1.8.0"
@@ -74,10 +78,6 @@
     {
       "date": "2026-01-25T11:49:56.988Z",
       "version": "0.18.0"
-    },
-    {
-      "date": "2026-01-23T09:43:44.165Z",
-      "version": "0.17.1"
     }
   ]
 }

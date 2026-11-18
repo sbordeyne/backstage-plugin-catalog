@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/auth-backend-module-cloudflare-access-provider",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:49:12.092Z",
-  "version": "0.5.1",
-  "version_count": 761,
+  "updated": "2026-11-17T21:10:27.879Z",
+  "version": "0.5.2",
+  "version_count": 762,
   "versions": [
+    {
+      "date": "2026-11-17T21:10:27.879Z",
+      "version": "0.5.2"
+    },
     {
       "date": "2026-11-11T02:55:22.538Z",
       "version": "0.5.2-next.1"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-26T02:58:03.987Z",
       "version": "0.0.0-nightly-20260926022852"
-    },
-    {
-      "date": "2026-09-25T02:58:33.079Z",
-      "version": "0.0.0-nightly-20260925022940"
     }
   ]
 }

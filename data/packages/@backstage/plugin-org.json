@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/org",
   "role": "frontend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T17:02:39.290Z",
-  "version": "0.8.0",
-  "version_count": 1855,
+  "updated": "2026-11-17T21:19:54.538Z",
+  "version": "0.8.1",
+  "version_count": 1856,
   "versions": [
+    {
+      "date": "2026-11-17T21:19:54.538Z",
+      "version": "0.8.1"
+    },
     {
       "date": "2026-11-11T03:07:25.788Z",
       "version": "0.8.1-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-10-06T19:38:59.453Z",
       "version": "0.8.0-next.1"
-    },
-    {
-      "date": "2026-09-28T03:19:48.054Z",
-      "version": "0.0.0-nightly-20260928023907"
     }
   ]
 }

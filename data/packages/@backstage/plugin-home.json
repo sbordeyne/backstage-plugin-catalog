@@ -20,10 +20,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/home",
   "role": "frontend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:59:26.133Z",
-  "version": "0.9.11",
-  "version_count": 1783,
+  "updated": "2026-11-17T21:18:14.122Z",
+  "version": "0.9.12",
+  "version_count": 1784,
   "versions": [
+    {
+      "date": "2026-11-17T21:18:14.122Z",
+      "version": "0.9.12"
+    },
     {
       "date": "2026-11-11T03:05:24.777Z",
       "version": "0.9.12-next.2"
@@ -79,10 +83,6 @@
     {
       "date": "2026-09-28T03:17:56.072Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:11:26.001Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

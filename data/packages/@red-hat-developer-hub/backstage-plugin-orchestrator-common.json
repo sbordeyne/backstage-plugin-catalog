@@ -25,10 +25,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/orchestrator/plugins/orchestrator-common",
   "role": "common-library",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-11-10T13:05:24.575Z",
-  "version": "3.12.2",
-  "version_count": 56,
+  "updated": "2026-11-17T13:13:13.553Z",
+  "version": "3.13.0",
+  "version_count": 57,
   "versions": [
+    {
+      "date": "2026-11-17T13:13:13.553Z",
+      "version": "3.13.0"
+    },
     {
       "date": "2026-11-10T13:05:24.575Z",
       "version": "3.12.2"
@@ -84,10 +88,6 @@
     {
       "date": "2026-05-05T13:41:01.239Z",
       "version": "3.6.4"
-    },
-    {
-      "date": "2026-04-29T12:13:59.152Z",
-      "version": "3.6.3"
     }
   ]
 }

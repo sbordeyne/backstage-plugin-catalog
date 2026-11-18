@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog-backend-module-github-org",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:54:48.877Z",
-  "version": "0.3.27",
-  "version_count": 1047,
+  "updated": "2026-11-17T21:14:38.790Z",
+  "version": "0.3.28",
+  "version_count": 1048,
   "versions": [
+    {
+      "date": "2026-11-17T21:14:38.790Z",
+      "version": "0.3.28"
+    },
     {
       "date": "2026-11-11T03:00:02.581Z",
       "version": "0.3.28-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:12:41.359Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:06:21.948Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

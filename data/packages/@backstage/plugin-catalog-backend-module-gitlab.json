@@ -19,10 +19,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog-backend-module-gitlab",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-11-12T17:24:00.706Z",
-  "version": "0.8.10",
-  "version_count": 1675,
+  "updated": "2026-11-17T21:16:49.530Z",
+  "version": "0.8.11",
+  "version_count": 1676,
   "versions": [
+    {
+      "date": "2026-11-17T21:16:49.530Z",
+      "version": "0.8.11"
+    },
     {
       "date": "2026-11-12T17:24:00.706Z",
       "version": "0.8.10"
@@ -78,10 +82,6 @@
     {
       "date": "2026-09-29T12:34:11.973Z",
       "version": "0.8.9-next.1"
-    },
-    {
-      "date": "2026-09-28T03:12:32.541Z",
-      "version": "0.0.0-nightly-20260928023907"
     }
   ]
 }

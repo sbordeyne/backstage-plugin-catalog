@@ -25,10 +25,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/orchestrator/plugins/orchestrator",
   "role": "frontend-plugin",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-11-10T13:05:07.906Z",
-  "version": "6.3.2",
-  "version_count": 85,
+  "updated": "2026-11-17T13:13:21.045Z",
+  "version": "6.4.0",
+  "version_count": 86,
   "versions": [
+    {
+      "date": "2026-11-17T13:13:21.045Z",
+      "version": "6.4.0"
+    },
     {
       "date": "2026-11-10T13:05:07.906Z",
       "version": "6.3.2"
@@ -84,10 +88,6 @@
     {
       "date": "2026-07-30T06:43:47.521Z",
       "version": "5.7.14"
-    },
-    {
-      "date": "2026-07-27T06:11:00.925Z",
-      "version": "5.10.0"
     }
   ]
 }

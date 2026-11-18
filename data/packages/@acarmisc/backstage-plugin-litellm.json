@@ -11,14 +11,26 @@
   ],
   "name": "@acarmisc/backstage-plugin-litellm",
   "plugin_id": "litellm",
-  "readme": "# @acarmisc/backstage-plugin-litellm\n\nFrontend for the **Backstage LiteLLM Governance Plugin** — lets developers manage\ntheir LiteLLM virtual keys and follow their AI usage and budgets from Backstage.\n\nBuilt for the [New Frontend System](https://backstage.io/docs/frontend-system/)\n(`@backstage/frontend-plugin-api`). It needs the backend,\n[`@acarmisc/backstage-plugin-litellm-backend`](https://www.npmjs.com/package/@acarmisc/backstage-plugin-litellm-backend),\nwhich talks to LiteLLM and enforces every rule.\n\nFull documentation — adoption guide, configuration, permissions, security model\nand architecture — starts at the\n[project README](https://github.com/acarmisc/backstage-plugin-litellm-govai#readme).\n\n## Installation\n\n```bash\nyarn --cwd packages/app add @acarmisc/backstage-plugin-litellm\n```\n\nIf your app discovers features from its dependencies (`app.packages: all`),\nthe plugin is picked up automatically. Otherwise register it:\n\n```tsx\n// packages/app/src/App.tsx\nimport { createApp } from '@backstage/frontend-defaults';\nimport litellmPlugin from '@acarmisc/backstage-plugin-litellm';\n\nconst app = createApp({\n  features: [litellmPlugin],\n});\n```\n\nThis adds the `/litellm` page and the `liteLlmApiRef` API used by every\ncomponent below.\n\n## The `/litellm` page\n\nTabs: **Overview** (usage KPIs and charts), **Keys** (your virtual keys: edit,\nblock / unblock, reset spend, delete), **Teams** (team usage, and team\nmanagement for admins), **Models** (the proxy's model catalogue) and **Audit\nLog** (members of `litellm.audit.group` only). `?tab=<name>` opens a tab and\n`?generate=1` opens the Generate New Key dialog.\n\n![The /litellm page](https://raw.githubusercontent.com/acarmisc/backstage-plugin-litellm-govai/main/docs/images/overview.png)\n\n## Homepage components\n\n| Component | What it shows |\n|---|---|\n| `LiteLLMHomeWidget` | Spend and tokens for `Today` / `7d` / `30d` with a daily sparkline |\n| `LiteLLMBudgetWidget` | The budget hierarchy (key → personal → team → global) with a meter per limit |\n| `LiteLLMBudgetGauges` | A condensed budget card: one ring per level and a month-to-date chart |\n| `GenerateKeyButton` | The shared \"Generate New Key\" button (`onClick`, or `to=\"/litellm?generate=1\"`) |\n\n```tsx\nimport {\n  LiteLLMHomeWidget,\n  LiteLLMBudgetGauges,\n} from '@acarmisc/backstage-plugin-litellm';\n\n<LiteLLMHomeWidget defaultPeriod=\"7d\" />\n<LiteLLMBudgetGauges />\n```\n\nProps for each component are documented in\n[docs/frontend.md](https://github.com/acarmisc/backstage-plugin-litellm-govai/blob/main/docs/frontend.md).\n\n![LiteLLMBudgetGauges](https://raw.githubusercontent.com/acarmisc/backstage-plugin-litellm-govai/main/docs/images/budget-gauges.png)\n\nTo try it without a backend, run `npm start` in this package: it serves the\nplugin with mock data at `http://localhost:3000/litellm` (see\n[CONTRIBUTING.md](https://github.com/acarmisc/backstage-plugin-litellm-govai/blob/main/CONTRIBUTING.md#run-the-frontend-with-mock-data)).\n\n## Other exports\n\n- `litellmPlugin` (also the default export)\n- `LiteLLMPage`, and the building blocks it uses: `DashboardHeader`,\n  `KeysTable`, `UsageStats`, `TeamUsage`, `KeyFormDialog`, `ManageTeamDialog`.\n  Prefer `LiteLLMPage`; composing the pieces yourself means wiring their data\n  and callbacks the way the page does.\n- `LiteLlmApi`, `liteLlmApiRef`, the shared API types, and the\n  `litellmTeam*Permission` definitions.\n\n## License\n\nApache-2.0\n",
+  "readme": "# @acarmisc/backstage-plugin-litellm\n\nFrontend for the **Backstage LiteLLM Governance Plugin** — lets developers manage\ntheir LiteLLM virtual keys and follow their AI usage and budgets from Backstage.\n\nBuilt for the [New Frontend System](https://backstage.io/docs/frontend-system/)\n(`@backstage/frontend-plugin-api`). It needs the backend,\n[`@acarmisc/backstage-plugin-litellm-backend`](https://www.npmjs.com/package/@acarmisc/backstage-plugin-litellm-backend),\nwhich talks to LiteLLM and enforces every rule.\n\nFull documentation — adoption guide, configuration, permissions, security model\nand architecture — starts at the\n[project README](https://github.com/acarmisc/backstage-plugin-litellm-govai#readme).\n\n## Installation\n\n```bash\nyarn --cwd packages/app add @acarmisc/backstage-plugin-litellm\n```\n\nIf your app discovers features from its dependencies (`app.packages: all`),\nthe plugin is picked up automatically. Otherwise register it:\n\n```tsx\n// packages/app/src/App.tsx\nimport { createApp } from '@backstage/frontend-defaults';\nimport litellmPlugin from '@acarmisc/backstage-plugin-litellm';\n\nconst app = createApp({\n  features: [litellmPlugin],\n});\n```\n\nThis adds the `/litellm` page and the `liteLlmApiRef` API used by every\ncomponent below.\n\n## The `/litellm` page\n\nTabs: **Overview** (usage KPIs and charts), **Keys** (your virtual keys: edit,\nblock / unblock, reset spend, delete), **Teams** (team usage, and team\nmanagement for admins), **Models** (the proxy's model catalogue) and **Audit\nLog** (members of `litellm.audit.group` only) and **Users Monitoring** (audit\ngroup: all users; group managers: only their group's members). `?tab=<name>` opens a tab and\n`?generate=1` opens the Generate New Key dialog.\n\n![The /litellm page](https://raw.githubusercontent.com/acarmisc/backstage-plugin-litellm-govai/main/docs/images/overview.png)\n\n## Homepage components\n\n| Component | What it shows |\n|---|---|\n| `LiteLLMHomeWidget` | Spend and tokens for `Today` / `7d` / `30d` with a daily sparkline |\n| `LiteLLMBudgetWidget` | The budget hierarchy (key → personal → team → global) with a meter per limit |\n| `LiteLLMBudgetGauges` | A condensed budget card: one ring per level and a month-to-date chart |\n| `GenerateKeyButton` | The shared \"Generate New Key\" button (`onClick`, or `to=\"/litellm?generate=1\"`) |\n\n```tsx\nimport {\n  LiteLLMHomeWidget,\n  LiteLLMBudgetGauges,\n} from '@acarmisc/backstage-plugin-litellm';\n\n<LiteLLMHomeWidget defaultPeriod=\"7d\" />\n<LiteLLMBudgetGauges />\n```\n\nProps for each component are documented in\n[docs/frontend.md](https://github.com/acarmisc/backstage-plugin-litellm-govai/blob/main/docs/frontend.md).\n\n![LiteLLMBudgetGauges](https://raw.githubusercontent.com/acarmisc/backstage-plugin-litellm-govai/main/docs/images/budget-gauges.png)\n\nTo try it without a backend, run `npm start` in this package: it serves the\nplugin with mock data at `http://localhost:3000/litellm` (see\n[CONTRIBUTING.md](https://github.com/acarmisc/backstage-plugin-litellm-govai/blob/main/CONTRIBUTING.md#run-the-frontend-with-mock-data)).\n\n## Other exports\n\n- `litellmPlugin` (also the default export)\n- `LiteLLMPage`, and the building blocks it uses: `DashboardHeader`,\n  `KeysTable`, `UsageStats`, `TeamUsage`, `KeyFormDialog`, `ManageTeamDialog`.\n  Prefer `LiteLLMPage`; composing the pieces yourself means wiring their data\n  and callbacks the way the page does.\n- `LiteLlmApi`, `liteLlmApiRef`, the shared API types, and the\n  `litellmTeam*Permission` definitions.\n\n## License\n\nApache-2.0\n",
   "repository": "https://github.com/acarmisc/backstage-plugin-litellm-govai",
   "role": "frontend-plugin",
   "scope": "@acarmisc",
-  "updated": "2026-11-16T17:30:54.000Z",
-  "version": "0.55.0",
-  "version_count": 84,
+  "updated": "2026-11-17T10:09:23.810Z",
+  "version": "0.57.1",
+  "version_count": 87,
   "versions": [
+    {
+      "date": "2026-11-17T10:09:23.810Z",
+      "version": "0.57.1"
+    },
+    {
+      "date": "2026-11-17T08:27:41.099Z",
+      "version": "0.57.0"
+    },
+    {
+      "date": "2026-11-17T08:00:07.235Z",
+      "version": "0.56.0"
+    },
     {
       "date": "2026-11-16T17:30:54.000Z",
       "version": "0.55.0"
@@ -66,18 +78,6 @@
     {
       "date": "2026-10-25T13:02:10.338Z",
       "version": "0.44.0"
-    },
-    {
-      "date": "2026-10-18T16:39:44.417Z",
-      "version": "0.43.0"
-    },
-    {
-      "date": "2026-10-18T15:07:49.419Z",
-      "version": "0.42.0"
-    },
-    {
-      "date": "2026-10-18T07:24:30.496Z",
-      "version": "0.41.0"
     }
   ]
 }

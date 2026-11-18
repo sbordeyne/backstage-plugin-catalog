@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog-unprocessed-entities",
   "role": "frontend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T17:00:48.363Z",
-  "version": "0.2.36",
-  "version_count": 1117,
+  "updated": "2026-11-17T21:16:49.504Z",
+  "version": "0.2.37",
+  "version_count": 1118,
   "versions": [
+    {
+      "date": "2026-11-17T21:16:49.504Z",
+      "version": "0.2.37"
+    },
     {
       "date": "2026-11-11T03:02:53.839Z",
       "version": "0.2.37-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:15:07.646Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:09:04.570Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

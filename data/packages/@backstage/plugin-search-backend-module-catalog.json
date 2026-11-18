@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/search-backend-module-catalog",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T17:06:22.983Z",
-  "version": "0.3.20",
-  "version_count": 1204,
+  "updated": "2026-11-17T21:24:06.420Z",
+  "version": "0.3.21",
+  "version_count": 1205,
   "versions": [
+    {
+      "date": "2026-11-17T21:24:06.420Z",
+      "version": "0.3.21"
+    },
     {
       "date": "2026-11-11T03:13:35.167Z",
       "version": "0.3.21-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:24:38.903Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:18:59.223Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

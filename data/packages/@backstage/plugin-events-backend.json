@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/events-backend",
   "role": "backend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:56:21.729Z",
-  "version": "0.6.7",
-  "version_count": 1342,
+  "updated": "2026-11-17T21:16:53.971Z",
+  "version": "0.6.8",
+  "version_count": 1343,
   "versions": [
+    {
+      "date": "2026-11-17T21:16:53.971Z",
+      "version": "0.6.8"
+    },
     {
       "date": "2026-11-11T03:03:08.519Z",
       "version": "0.6.8-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-29T12:33:12.412Z",
       "version": "0.6.7-next.1"
-    },
-    {
-      "date": "2026-09-28T03:17:04.759Z",
-      "version": "0.0.0-nightly-20260928023907"
     }
   ]
 }

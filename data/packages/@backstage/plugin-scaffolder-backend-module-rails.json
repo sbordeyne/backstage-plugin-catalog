@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/scaffolder-backend-module-rails",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T17:04:36.781Z",
-  "version": "0.5.26",
-  "version_count": 1714,
+  "updated": "2026-11-17T21:25:53.054Z",
+  "version": "0.5.27",
+  "version_count": 1715,
   "versions": [
+    {
+      "date": "2026-11-17T21:25:53.054Z",
+      "version": "0.5.27"
+    },
     {
       "date": "2026-11-11T03:10:08.261Z",
       "version": "0.5.27-next.1"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-27T03:18:26.150Z",
       "version": "0.0.0-nightly-20260927023342"
-    },
-    {
-      "date": "2026-09-26T03:12:50.559Z",
-      "version": "0.0.0-nightly-20260926022852"
     }
   ]
 }

@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/notifications-backend-module-email",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T17:00:53.790Z",
-  "version": "0.3.26",
-  "version_count": 779,
+  "updated": "2026-11-17T21:21:01.912Z",
+  "version": "0.3.27",
+  "version_count": 780,
   "versions": [
+    {
+      "date": "2026-11-17T21:21:01.912Z",
+      "version": "0.3.27"
+    },
     {
       "date": "2026-11-11T03:06:29.877Z",
       "version": "0.3.27-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:19:17.648Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:13:05.807Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

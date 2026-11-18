@@ -15,13 +15,17 @@
   "name": "@backstage-community/plugin-scaffolder-backend-module-regex",
   "plugin_id": "scaffolder",
   "readme": "",
-  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/scaffolder-backend-module-regex/plugins/regex-actions",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/scaffolder-backend-module-regex/plugins/scaffolder-backend-module-regex",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-09-04T07:17:22.189Z",
-  "version": "2.18.0",
-  "version_count": 26,
+  "updated": "2026-11-17T20:04:33.637Z",
+  "version": "2.18.1",
+  "version_count": 27,
   "versions": [
+    {
+      "date": "2026-11-17T20:04:33.637Z",
+      "version": "2.18.1"
+    },
     {
       "date": "2026-09-04T07:17:22.189Z",
       "version": "2.18.0"
@@ -77,10 +81,6 @@
     {
       "date": "2025-07-14T11:40:01.691Z",
       "version": "2.7.1"
-    },
-    {
-      "date": "2025-06-23T17:29:12.599Z",
-      "version": "2.7.0"
     }
   ]
 }

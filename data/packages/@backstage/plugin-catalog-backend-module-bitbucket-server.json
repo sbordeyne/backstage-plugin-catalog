@@ -19,10 +19,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog-backend-module-bitbucket-server",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:57:51.738Z",
-  "version": "0.5.16",
-  "version_count": 1475,
+  "updated": "2026-11-17T21:13:59.926Z",
+  "version": "0.5.17",
+  "version_count": 1476,
   "versions": [
+    {
+      "date": "2026-11-17T21:13:59.926Z",
+      "version": "0.5.17"
+    },
     {
       "date": "2026-11-11T02:59:42.100Z",
       "version": "0.5.17-next.2"
@@ -78,10 +82,6 @@
     {
       "date": "2026-09-28T03:11:28.347Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:05:31.327Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

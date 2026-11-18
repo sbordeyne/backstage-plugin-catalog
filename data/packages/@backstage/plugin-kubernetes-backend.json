@@ -20,10 +20,18 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/kubernetes-backend",
   "role": "backend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T17:00:05.782Z",
-  "version": "0.21.12",
-  "version_count": 1877,
+  "updated": "2026-11-17T21:19:07.957Z",
+  "version": "0.21.13",
+  "version_count": 1879,
   "versions": [
+    {
+      "date": "2026-11-17T22:26:27.973Z",
+      "version": "0.21.14"
+    },
+    {
+      "date": "2026-11-17T21:19:07.957Z",
+      "version": "0.21.13"
+    },
     {
       "date": "2026-11-11T03:05:07.460Z",
       "version": "0.21.13-next.2"
@@ -75,14 +83,6 @@
     {
       "date": "2026-10-06T19:38:25.088Z",
       "version": "0.21.12-next.2"
-    },
-    {
-      "date": "2026-09-29T12:34:22.633Z",
-      "version": "0.21.12-next.1"
-    },
-    {
-      "date": "2026-09-28T03:19:19.270Z",
-      "version": "0.0.0-nightly-20260928023907"
     }
   ]
 }

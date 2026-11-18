@@ -15,13 +15,17 @@
   "name": "@backstage-community/plugin-scaffolder-backend-module-kubernetes",
   "plugin_id": "scaffolder",
   "readme": "",
-  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/scaffolder-backend-module-kubernetes/plugins/kubernetes-actions",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/scaffolder-backend-module-kubernetes/plugins/scaffolder-backend-module-kubernetes",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-09-07T07:52:52.513Z",
-  "version": "2.21.0",
-  "version_count": 25,
+  "updated": "2026-11-17T13:58:25.272Z",
+  "version": "2.21.1",
+  "version_count": 26,
   "versions": [
+    {
+      "date": "2026-11-17T13:58:25.272Z",
+      "version": "2.21.1"
+    },
     {
       "date": "2026-09-07T07:52:52.513Z",
       "version": "2.21.0"
@@ -77,10 +81,6 @@
     {
       "date": "2025-09-18T13:19:14.250Z",
       "version": "2.10.1"
-    },
-    {
-      "date": "2025-09-15T11:44:24.165Z",
-      "version": "2.10.0"
     }
   ]
 }

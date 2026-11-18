@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/scaffolder-backend-module-cookiecutter",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T17:03:25.330Z",
-  "version": "0.3.28",
-  "version_count": 1736,
+  "updated": "2026-11-17T21:21:11.187Z",
+  "version": "0.3.29",
+  "version_count": 1737,
   "versions": [
+    {
+      "date": "2026-11-17T21:21:11.187Z",
+      "version": "0.3.29"
+    },
     {
       "date": "2026-11-11T03:09:21.813Z",
       "version": "0.3.29-next.1"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-27T03:15:41.764Z",
       "version": "0.0.0-nightly-20260927023342"
-    },
-    {
-      "date": "2026-09-26T03:11:27.803Z",
-      "version": "0.0.0-nightly-20260926022852"
     }
   ]
 }

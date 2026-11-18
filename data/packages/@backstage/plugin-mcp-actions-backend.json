@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/mcp-actions-backend",
   "role": "backend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:59:34.139Z",
-  "version": "0.2.3",
-  "version_count": 424,
+  "updated": "2026-11-17T21:20:37.724Z",
+  "version": "0.2.4",
+  "version_count": 425,
   "versions": [
+    {
+      "date": "2026-11-17T21:20:37.724Z",
+      "version": "0.2.4"
+    },
     {
       "date": "2026-11-11T03:06:09.475Z",
       "version": "0.2.4-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:19:26.647Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:15:45.797Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

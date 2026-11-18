@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/events-backend-module-gitlab",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T17:00:32.675Z",
-  "version": "0.3.17",
-  "version_count": 1300,
+  "updated": "2026-11-17T21:19:06.279Z",
+  "version": "0.4.0",
+  "version_count": 1301,
   "versions": [
+    {
+      "date": "2026-11-17T21:19:06.279Z",
+      "version": "0.4.0"
+    },
     {
       "date": "2026-11-11T03:03:44.687Z",
       "version": "0.3.18-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-27T03:10:37.035Z",
       "version": "0.0.0-nightly-20260927023342"
-    },
-    {
-      "date": "2026-09-26T03:06:04.022Z",
-      "version": "0.0.0-nightly-20260926022852"
     }
   ]
 }

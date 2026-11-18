@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/auth",
   "role": "frontend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:47:29.898Z",
-  "version": "0.1.13",
-  "version_count": 329,
+  "updated": "2026-11-17T21:09:41.930Z",
+  "version": "0.1.14",
+  "version_count": 330,
   "versions": [
+    {
+      "date": "2026-11-17T21:09:41.930Z",
+      "version": "0.1.14"
+    },
     {
       "date": "2026-11-11T02:53:25.325Z",
       "version": "0.1.14-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:07:51.282Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:00:51.793Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

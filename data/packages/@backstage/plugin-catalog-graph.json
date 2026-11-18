@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/catalog-graph",
   "role": "frontend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:54:38.179Z",
-  "version": "0.6.9",
-  "version_count": 1742,
+  "updated": "2026-11-17T21:15:15.652Z",
+  "version": "0.6.10",
+  "version_count": 1743,
   "versions": [
+    {
+      "date": "2026-11-17T21:15:15.652Z",
+      "version": "0.6.10"
+    },
     {
       "date": "2026-11-11T03:01:07.983Z",
       "version": "0.6.10-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:14:15.069Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:09:26.829Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

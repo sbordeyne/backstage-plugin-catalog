@@ -27,10 +27,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/orchestrator/plugins/orchestrator-form-widgets",
   "role": "frontend-plugin",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-11-10T13:06:30.591Z",
-  "version": "2.4.1",
-  "version_count": 66,
+  "updated": "2026-11-17T13:13:47.816Z",
+  "version": "2.5.0",
+  "version_count": 67,
   "versions": [
+    {
+      "date": "2026-11-17T13:13:47.816Z",
+      "version": "2.5.0"
+    },
     {
       "date": "2026-11-10T13:06:30.591Z",
       "version": "2.4.1"
@@ -86,10 +90,6 @@
     {
       "date": "2026-06-22T08:50:32.889Z",
       "version": "1.6.10"
-    },
-    {
-      "date": "2026-06-18T05:27:27.543Z",
-      "version": "1.11.0"
     }
   ]
 }

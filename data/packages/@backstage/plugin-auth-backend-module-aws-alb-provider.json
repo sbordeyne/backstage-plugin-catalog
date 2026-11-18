@@ -19,10 +19,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/auth-backend-module-aws-alb-provider",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T16:48:34.269Z",
-  "version": "0.4.21",
-  "version_count": 910,
+  "updated": "2026-11-17T21:10:27.075Z",
+  "version": "0.4.22",
+  "version_count": 911,
   "versions": [
+    {
+      "date": "2026-11-17T21:10:27.075Z",
+      "version": "0.4.22"
+    },
     {
       "date": "2026-11-11T02:54:48.885Z",
       "version": "0.4.22-next.1"
@@ -78,10 +82,6 @@
     {
       "date": "2026-09-27T03:01:23.549Z",
       "version": "0.0.0-nightly-20260927023342"
-    },
-    {
-      "date": "2026-09-26T02:56:18.720Z",
-      "version": "0.0.0-nightly-20260926022852"
     }
   ]
 }

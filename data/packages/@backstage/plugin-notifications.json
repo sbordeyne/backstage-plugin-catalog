@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/notifications",
   "role": "frontend-plugin",
   "scope": "@backstage",
-  "updated": "2026-10-20T17:01:35.591Z",
-  "version": "0.6.1",
-  "version_count": 883,
+  "updated": "2026-11-17T21:19:50.246Z",
+  "version": "0.6.2",
+  "version_count": 884,
   "versions": [
+    {
+      "date": "2026-11-17T21:19:50.246Z",
+      "version": "0.6.2"
+    },
     {
       "date": "2026-11-11T03:07:06.287Z",
       "version": "0.6.2-next.2"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-28T03:20:13.563Z",
       "version": "0.0.0-nightly-20260928023907"
-    },
-    {
-      "date": "2026-09-27T03:12:50.396Z",
-      "version": "0.0.0-nightly-20260927023342"
     }
   ]
 }

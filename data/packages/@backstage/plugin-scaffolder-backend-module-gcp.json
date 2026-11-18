@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/scaffolder-backend-module-gcp",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-10-20T17:03:36.543Z",
-  "version": "0.2.26",
-  "version_count": 769,
+  "updated": "2026-11-17T21:21:16.341Z",
+  "version": "0.3.0",
+  "version_count": 770,
   "versions": [
+    {
+      "date": "2026-11-17T21:21:16.341Z",
+      "version": "0.3.0"
+    },
     {
       "date": "2026-11-11T03:10:20.005Z",
       "version": "0.3.0-next.1"
@@ -76,10 +80,6 @@
     {
       "date": "2026-09-27T03:15:50.193Z",
       "version": "0.0.0-nightly-20260927023342"
-    },
-    {
-      "date": "2026-09-26T03:12:46.817Z",
-      "version": "0.0.0-nightly-20260926022852"
     }
   ]
 }
