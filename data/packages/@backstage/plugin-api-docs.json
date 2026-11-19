@@ -19,10 +19,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/api-docs",
   "role": "frontend-plugin",
   "scope": "@backstage",
-  "updated": "2026-11-17T21:09:04.245Z",
-  "version": "0.14.7",
-  "version_count": 1971,
+  "updated": "2026-11-18T11:54:56.827Z",
+  "version": "0.14.9",
+  "version_count": 1972,
   "versions": [
+    {
+      "date": "2026-11-18T11:54:56.827Z",
+      "version": "0.14.9"
+    },
     {
       "date": "2026-11-17T22:23:59.130Z",
       "version": "0.14.8"
@@ -78,10 +82,6 @@
     {
       "date": "2026-10-20T16:48:37.620Z",
       "version": "0.14.6"
-    },
-    {
-      "date": "2026-10-13T16:14:28.819Z",
-      "version": "0.14.6-next.1"
     }
   ]
 }

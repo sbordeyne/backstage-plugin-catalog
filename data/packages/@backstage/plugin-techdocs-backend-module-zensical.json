@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/techdocs-backend-module-zensical",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-11-12T17:25:29.727Z",
-  "version": "0.1.1",
-  "version_count": 13,
+  "updated": "2026-11-18T11:58:13.518Z",
+  "version": "0.1.2",
+  "version_count": 14,
   "versions": [
+    {
+      "date": "2026-11-18T11:58:13.518Z",
+      "version": "0.1.2"
+    },
     {
       "date": "2026-11-12T17:25:29.727Z",
       "version": "0.1.1"

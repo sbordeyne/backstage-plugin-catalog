@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/argocd/plugins/argocd-node",
   "role": "node-library",
   "scope": "@backstage-community",
-  "updated": "2026-09-16T12:28:28.911Z",
-  "version": "1.4.1",
-  "version_count": 7,
+  "updated": "2026-11-18T10:59:26.953Z",
+  "version": "1.5.0",
+  "version_count": 8,
   "versions": [
+    {
+      "date": "2026-11-18T10:59:26.953Z",
+      "version": "1.5.0"
+    },
     {
       "date": "2026-09-16T12:28:28.911Z",
       "version": "1.4.1"

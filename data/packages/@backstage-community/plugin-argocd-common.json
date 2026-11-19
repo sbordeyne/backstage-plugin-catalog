@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/argocd/plugins/argocd-common",
   "role": "common-library",
   "scope": "@backstage-community",
-  "updated": "2026-09-16T12:27:00.809Z",
-  "version": "1.18.1",
-  "version_count": 11,
+  "updated": "2026-11-18T11:01:52.525Z",
+  "version": "1.19.0",
+  "version_count": 12,
   "versions": [
+    {
+      "date": "2026-11-18T11:01:52.525Z",
+      "version": "1.19.0"
+    },
     {
       "date": "2026-09-16T12:27:00.809Z",
       "version": "1.18.1"

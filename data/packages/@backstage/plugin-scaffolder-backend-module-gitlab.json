@@ -19,10 +19,18 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/scaffolder-backend-module-gitlab",
   "role": "backend-plugin-module",
   "scope": "@backstage",
-  "updated": "2026-11-17T21:22:07.433Z",
-  "version": "0.12.2",
-  "version_count": 1273,
+  "updated": "2026-11-18T11:59:45.392Z",
+  "version": "0.12.4",
+  "version_count": 1275,
   "versions": [
+    {
+      "date": "2026-11-18T15:30:05.043Z",
+      "version": "0.11.11"
+    },
+    {
+      "date": "2026-11-18T11:59:45.392Z",
+      "version": "0.12.4"
+    },
     {
       "date": "2026-11-17T22:26:17.789Z",
       "version": "0.12.3"
@@ -74,14 +82,6 @@
     {
       "date": "2026-10-20T17:04:18.969Z",
       "version": "0.12.1"
-    },
-    {
-      "date": "2026-10-06T19:42:38.114Z",
-      "version": "0.12.1-next.2"
-    },
-    {
-      "date": "2026-09-29T12:38:54.959Z",
-      "version": "0.12.1-next.1"
     }
   ]
 }

@@ -20,10 +20,14 @@
   "repository": "https://github.com/drodil/backstage-plugin-qeta",
   "role": "backend-plugin-module",
   "scope": "@drodil",
-  "updated": "2026-11-12T04:15:00.082Z",
-  "version": "4.1.3",
-  "version_count": 243,
+  "updated": "2026-11-18T13:31:27.482Z",
+  "version": "4.1.4",
+  "version_count": 244,
   "versions": [
+    {
+      "date": "2026-11-18T13:31:27.482Z",
+      "version": "4.1.4"
+    },
     {
       "date": "2026-11-12T04:15:00.082Z",
       "version": "4.1.3"
@@ -79,10 +83,6 @@
     {
       "date": "2026-04-15T10:27:14.279Z",
       "version": "3.59.6"
-    },
-    {
-      "date": "2026-04-15T06:34:42.504Z",
-      "version": "3.59.5"
     }
   ]
 }

@@ -23,10 +23,14 @@
   "repository": "https://github.com/drewswiredin/backstage-assistants/tree/HEAD/packages/assistants",
   "role": "frontend-plugin",
   "scope": "@drewswiredin",
-  "updated": "2026-11-15T15:14:48.895Z",
-  "version": "0.27.0",
-  "version_count": 62,
+  "updated": "2026-11-18T15:40:36.948Z",
+  "version": "0.28.0",
+  "version_count": 63,
   "versions": [
+    {
+      "date": "2026-11-18T15:40:36.948Z",
+      "version": "0.28.0"
+    },
     {
       "date": "2026-11-15T15:14:48.895Z",
       "version": "0.27.0"
@@ -82,10 +86,6 @@
     {
       "date": "2026-10-23T04:21:27.116Z",
       "version": "0.21.1"
-    },
-    {
-      "date": "2026-10-23T03:04:38.694Z",
-      "version": "0.21.0"
     }
   ]
 }
