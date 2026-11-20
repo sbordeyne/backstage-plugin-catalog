@@ -15,10 +15,14 @@
   "repository": "",
   "role": "frontend-plugin",
   "scope": "@spotify",
-  "updated": "2026-10-23T12:25:16.587Z",
-  "version": "0.12.2",
-  "version_count": 45,
+  "updated": "2026-11-19T14:34:22.361Z",
+  "version": "0.12.3",
+  "version_count": 46,
   "versions": [
+    {
+      "date": "2026-11-19T14:34:22.361Z",
+      "version": "0.12.3"
+    },
     {
       "date": "2026-10-23T12:25:16.587Z",
       "version": "0.12.2"
@@ -74,10 +78,6 @@
     {
       "date": "2025-11-21T18:02:45.922Z",
       "version": "0.8.3"
-    },
-    {
-      "date": "2025-11-04T15:58:17.829Z",
-      "version": "0.8.2"
     }
   ]
 }

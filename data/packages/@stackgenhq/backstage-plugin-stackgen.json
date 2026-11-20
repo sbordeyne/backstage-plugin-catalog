@@ -16,10 +16,18 @@
   "repository": "https://github.com/appcd-dev/backstage-plugin-stackgen",
   "role": "frontend-plugin",
   "scope": "@stackgenhq",
-  "updated": "2026-09-23T13:24:08.239Z",
-  "version": "0.2.3",
-  "version_count": 3,
+  "updated": "2026-11-19T12:29:21.673Z",
+  "version": "0.2.4",
+  "version_count": 5,
   "versions": [
+    {
+      "date": "2026-11-19T12:29:21.673Z",
+      "version": "0.2.4"
+    },
+    {
+      "date": "2026-11-18T12:49:45.573Z",
+      "version": "0.2.4-beta.1"
+    },
     {
       "date": "2026-09-23T13:24:08.239Z",
       "version": "0.2.3"

@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/acs/plugins/acs",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-09-17T19:14:55.645Z",
-  "version": "0.3.0",
-  "version_count": 9,
+  "updated": "2026-11-19T16:51:00.656Z",
+  "version": "0.3.1",
+  "version_count": 10,
   "versions": [
+    {
+      "date": "2026-11-19T16:51:00.656Z",
+      "version": "0.3.1"
+    },
     {
       "date": "2026-09-17T19:14:55.645Z",
       "version": "0.3.0"
