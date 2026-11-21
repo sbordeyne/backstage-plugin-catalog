@@ -1,0 +1,1183 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Backstage frontend plugin for Odoo: a live Runbot (CI for Odoo repositories, with the odoo-runbot backend), an instance form with code sources, shared PostgreSQL and odoo.conf validation, and the Ansible playbooks for Proxmox, LXD or Docker and runbot bui">
+      
+      
+      
+        <link rel="canonical" href="https://sbordeyne.github.io/backstage-plugin-catalog/plugins/%40iswesolutions/odoo-proxmox-runbot/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>@iswesolutions/odoo-proxmox-runbot - Backstage Plugin Catalog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/catalog.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#iswesolutionsodoo-proxmox-runbot" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-header__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Backstage Plugin Catalog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              @iswesolutions/odoo-proxmox-runbot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../roles/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../scopes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Scopes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-nav__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Backstage Plugin Catalog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scopes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scopes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:ansible" class="md-tag">ansible</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:docker" class="md-tag">docker</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:lxd" class="md-tag">lxd</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:odoo" class="md-tag">odoo</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:proxmox" class="md-tag">proxmox</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:runbot" class="md-tag">runbot</a>
+      
+    
+  </nav>
+
+
+
+<h1 id="iswesolutionsodoo-proxmox-runbot">@iswesolutions/odoo-proxmox-runbot<a class="headerlink" href="#iswesolutionsodoo-proxmox-runbot" title="Permanent link">&para;</a></h1>
+<p>Backstage frontend plugin for Odoo: a live Runbot (CI for Odoo repositories, with the odoo-runbot backend), an instance form with code sources, shared PostgreSQL and odoo.conf validation, and the Ansible playbooks for Proxmox, LXD or Docker and runbot bui</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/app<span class="w"> </span>add<span class="w"> </span>@iswesolutions/odoo-proxmox-runbot
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td><code>0.3.0</code> (2026-10-27)</td>
+</tr>
+<tr>
+<td>Role</td>
+<td><a href="../../../roles/frontend-plugin/">Frontend plugin</a></td>
+</tr>
+<tr>
+<td>Scope</td>
+<td><a href="../../../scopes/iswesolutions/">@iswesolutions</a></td>
+</tr>
+<tr>
+<td>Plugin ID</td>
+<td><code>odoo</code></td>
+</tr>
+<tr>
+<td>Weekly downloads</td>
+<td>20</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Apache-2.0</td>
+</tr>
+<tr>
+<td>Repository</td>
+<td><a href="https://github.com/ISWE-Solutions/backstage-plugins/tree/HEAD/plugins/odoo-proxmox-runbot">https://github.com/ISWE-Solutions/backstage-plugins/tree/HEAD/plugins/odoo-proxmox-runbot</a></td>
+</tr>
+<tr>
+<td>Homepage</td>
+<td><a href="https://github.com/ISWE-Solutions/backstage-plugins/tree/main/plugins/odoo-proxmox-runbot#readme">https://github.com/ISWE-Solutions/backstage-plugins/tree/main/plugins/odoo-proxmox-runbot#readme</a></td>
+</tr>
+<tr>
+<td>npm</td>
+<td><a href="https://www.npmjs.com/package/@iswesolutions/odoo-proxmox-runbot">https://www.npmjs.com/package/@iswesolutions/odoo-proxmox-runbot</a></td>
+</tr>
+<tr>
+<td>Maintainers</td>
+<td>csiwale</td>
+</tr>
+<tr>
+<td>First published</td>
+<td>2026-10-15</td>
+</tr>
+</tbody>
+</table>
+<h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h2>
+<p>4 versions published. Latest releases:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.3.0</code></td>
+<td>2026-10-27</td>
+</tr>
+<tr>
+<td><code>0.2.0</code></td>
+<td>2026-10-27</td>
+</tr>
+<tr>
+<td><code>0.1.0</code></td>
+<td>2026-10-15</td>
+</tr>
+<tr>
+<td><code>0.0.0-stage</code></td>
+<td>2026-10-15</td>
+</tr>
+</tbody>
+</table>
+<h2 id="readme">README<a class="headerlink" href="#readme" title="Permanent link">&para;</a></h2>
+<section class="catalog-readme" data-search-exclude>
+<h3>@iswesolutions/odoo-proxmox-runbot</h3>
+<p>A Backstage page for running <a href="https://www.odoo.com" rel="noopener noreferrer">Odoo</a> on Proxmox VE. It
+brings together three things an Odoo hosting team juggles:</p>
+<ul>
+<li><strong>Odoo instances</strong>, each in its own Proxmox LXC container</li>
+<li><strong><a href="https://github.com/odoo/runbot" rel="noopener noreferrer">Runbot</a> CI builds</strong> for the Odoo,
+  Enterprise and custom-addon repositories</li>
+<li><strong>Ansible playbooks</strong> that install, configure, back up and upgrade those
+  instances</li>
+</ul>
+<blockquote>
+<p><strong>Preview.</strong> The page and its services are a working UI, but the services
+return built-in sample data, except the <strong>Runbot</strong> tab, which is live (see
+below). Nothing is sent to Proxmox or Ansible
+yet, and the plugin reads no configuration. Use it to evaluate the
+workflow, not to manage real instances. See <a href="#status" rel="noopener noreferrer">Status</a>.</p>
+</blockquote>
+<h4>The page</h4>
+<p>The page has five tabs.</p>
+<table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dashboard</strong></td>
+<td>Counts of instances, running instances, Runbot builds and Proxmox nodes; cluster CPU, memory and storage usage; recent builds; and a table of instances to open</td>
+</tr>
+<tr>
+<td><strong>Instances</strong></td>
+<td>Every instance with its status (running, stopped, provisioning), version, edition, node and resources. Actions: start, stop, back up, clone, settings and delete</td>
+</tr>
+<tr>
+<td><strong>Runbot</strong></td>
+<td><strong>Live</strong>, from the <code>odoo-runbot</code> backend: projects, bundles (branches and pull requests across repositories) with their latest batch and one build per trigger, builds with live logs, repositories and triggers, and builders. Add repositories, rebuild, kill, force a batch</td>
+</tr>
+<tr>
+<td><strong>Ansible</strong></td>
+<td>Playbooks and their execution history: status, duration and per-host stats (ok, changed, failed, unreachable). Run a playbook from here</td>
+</tr>
+<tr>
+<td><strong>Proxmox</strong></td>
+<td>Each cluster node's CPU, memory and storage usage</td>
+</tr>
+</tbody>
+</table>
+<h5>Creating an instance</h5>
+<p><strong>New instance</strong> opens a five-step form. The <strong>Review</strong> step lists anything
+that must be fixed, and <strong>Create instance</strong> stays disabled until it's
+clean.</p>
+<ol>
+<li><strong>Basics:</strong>
+   - name: gives the container hostname
+   - domain
+   - <strong>environment:</strong> production, staging or development
+   - <strong>Odoo version</strong> and <strong>operating system</strong>: only valid pairs are offered
+     (see below)
+   - edition and Proxmox node
+   - CPU cores, memory and storage</li>
+<li><strong>Sources:</strong> where the code comes from.
+   - Odoo's repository and branch, tag or commit.
+   - For Enterprise, its repository, or your mirror of it.
+   - Any number of <strong>addons repositories</strong>, each with a revision and an
+     optional sub-folder. Their order is the search order.
+   - Repositories can be <strong>picked from the catalog</strong>: any Component tagged
+     <code>odoo</code> that has a <code>github.com/project-slug</code> annotation.
+   - The resulting <code>addons_path</code> is shown below the list: Enterprise, then
+     the addons repositories in order, then Odoo's own addons.</li>
+<li><strong>Database:</strong> a <strong>shared PostgreSQL cluster</strong> (recommended) or a local
+   server in the container.
+   - The cluster follows the environment: production uses <code>prod</code>, staging
+     <code>stg</code>, development <code>dev</code>.
+   - The role is <code>&lt;database&gt;_app</code>, with a generated password.
+   - The connection uses <code>sslmode=verify-full</code>.</li>
+<li><strong>Configuration:</strong> <code>odoo.conf</code>, in groups: performance, security, email,
+   logging and other, plus free-form options.
+   - The settings are <strong>suggested from the container's size and the
+     environment</strong> until you edit them. <strong>Suggest from size</strong> recalculates
+     them.</li>
+<li><strong>Review:</strong> problems, then the resulting <code>odoo.conf</code>. Secrets appear as
+   placeholders.</li>
+</ol>
+<p><strong>Versions and operating systems:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Odoo</th>
+<th>Runs on</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>19.0</td>
+<td>Ubuntu 24.04 (Python 3.12)</td>
+<td></td>
+</tr>
+<tr>
+<td>18.0, 17.0</td>
+<td>Ubuntu 24.04 or 22.04</td>
+<td></td>
+</tr>
+<tr>
+<td>16.0</td>
+<td>Ubuntu 22.04 (Python 3.10)</td>
+<td>No longer supported by Odoo S.A.; allowed with a warning</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Suggested settings:</strong></p>
+<ul>
+<li><strong>Workers:</strong> 2 × cores + 1, capped by memory: 512 MB is kept for the
+  system, and each worker is allowed about 400 MB on average.
+  Development runs threaded (0 workers), which is simpler to debug.</li>
+<li><strong>Memory limits:</strong> 80% of the container's memory, shared across workers
+  and cron threads, between 640 MB and 2 GB each. The hard limit is 1.25 ×
+  the soft limit.</li>
+<li><strong>Time limits:</strong> 600 s CPU and 1,200 s real, so large imports and reports
+  finish.</li>
+<li><strong>Connections:</strong> 16 per process on a shared cluster, 64 on a local server.</li>
+</ul>
+<p><strong>Safe defaults, and what the form enforces:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Production</th>
+<th>Staging</th>
+<th>Development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>list_db</code> (database manager)</td>
+<td>off; <strong>error</strong> if on</td>
+<td>off; warning if on</td>
+<td>on</td>
+</tr>
+<tr>
+<td><code>dbfilter</code></td>
+<td><code>^%d$</code>; <strong>error</strong> if <code>.*</code></td>
+<td><code>^%d$</code>; warning if <code>.*</code></td>
+<td><code>.*</code></td>
+</tr>
+<tr>
+<td>Demo data</td>
+<td>none; <strong>error</strong> if loaded</td>
+<td>none</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>proxy_mode</code></td>
+<td>on (behind nginx); warning if off</td>
+<td>on</td>
+<td>on</td>
+</tr>
+<tr>
+<td>Master password</td>
+<td>generated and stored, never shown. A typed one must be at least 16 characters</td>
+<td>same</td>
+<td>same</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Database names on a shared cluster</strong> follow <code>&lt;owner&gt;_&lt;app&gt;[_&lt;part&gt;]</code>:</p>
+<ul>
+<li>lowercase snake_case, at most 40 characters</li>
+<li>no environment in the name (<code>_prod</code>, <code>_test</code>, <code>_dev</code>…): the cluster is
+  the environment</li>
+<li>no version or year; <code>_demo</code> and <code>_training</code> never in production</li>
+</ul>
+<p>These are errors on a cluster, and only advice for a local database.</p>
+<p><strong>Other checks:</strong></p>
+<ul>
+<li>an addons branch for a different Odoo version</li>
+<li>a cluster that belongs to another environment</li>
+<li>memory limits that overcommit the container</li>
+<li>the Enterprise edition without an Enterprise repository</li>
+</ul>
+<p>Creating an instance is meant to run these steps in order:</p>
+<ol>
+<li>Take the next free VMID from Proxmox.</li>
+<li>Create an unprivileged container from the chosen OS's template.</li>
+<li>Run the <code>odoo-install</code> playbook. Its variables come from
+   <code>installPlaybookVars()</code>:
+   - <code>odoo_version</code>, <code>odoo_repo_url</code>/<code>_rev</code>, <code>odoo_enterprise_repo_url</code>/<code>_rev</code>
+   - <code>odoo_addons_repos</code> and <code>odoo_config_addons_path</code>
+   - the database connection, with <code>odoo_install_postgresql</code> true only for
+     a local server
+   - one <code>odoo_config_&lt;option&gt;</code> per <code>odoo.conf</code> setting</li>
+<li>Run the <code>nginx-proxy</code> playbook to put the instance behind nginx with TLS
+   (port 8069, WebSocket/longpolling on 8072).</li>
+</ol>
+<p>If a step fails after the container exists, the error names the container so
+it can be cleaned up or provisioning retried.</p>
+<p>The rules live in <code>src/odooConfig.ts</code> as pure functions, and are exported
+for reuse:</p>
+<ul>
+<li><code>ODOO_VERSIONS</code>, <code>OS_INFO</code></li>
+<li><code>computeAddonsPath</code>, <code>suggestServerConfig</code></li>
+<li><code>checkDatabaseName</code>, <code>validateCreateRequest</code></li>
+<li><code>renderOdooConf</code>, <code>installPlaybookVars</code></li>
+</ul>
+<h5>Playbooks</h5>
+<p>The Ansible playbooks ship in this package, in <a href="https://github.com/ISWE-Solutions/backstage-plugins/blob/HEAD/plugins/odoo-proxmox-runbot/ansible/README.md" rel="noopener noreferrer"><code>ansible/</code></a>,
+and work with or without Backstage. <code>odoo_platform</code> chooses where an instance
+runs:</p>
+<table>
+<thead>
+<tr>
+<th><code>odoo_platform</code></th>
+<th>The guest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>proxmox</code></td>
+<td>An LXC container on a Proxmox VE cluster</td>
+</tr>
+<tr>
+<td><code>lxd</code></td>
+<td>An LXD container</td>
+</tr>
+<tr>
+<td><code>docker</code></td>
+<td>A Docker container running systemd</td>
+</tr>
+<tr>
+<td><code>ssh</code></td>
+<td>An existing machine</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Playbook</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>odoo-install</code></td>
+<td>Create the guest, then install Odoo: code, Python, wkhtmltopdf, database, <code>odoo.conf</code>, service</td>
+</tr>
+<tr>
+<td><code>odoo-configure</code></td>
+<td>Rewrite <code>odoo.conf</code> and the service unit; restart if they changed</td>
+</tr>
+<tr>
+<td><code>nginx-proxy</code></td>
+<td>nginx with WebSocket; TLS from Let's Encrypt, your own certificate, or none</td>
+</tr>
+<tr>
+<td><code>odoo-backup</code></td>
+<td>Database, filestore, <code>odoo.conf</code> and code revisions</td>
+</tr>
+<tr>
+<td><code>odoo-restore</code></td>
+<td>Restore a backup, after a safety backup</td>
+</tr>
+<tr>
+<td><code>odoo-upgrade</code></td>
+<td>Update the code and modules within one major version</td>
+</tr>
+<tr>
+<td><code>odoo-remove</code></td>
+<td>Delete the guest; needs a confirmation naming the instance</td>
+</tr>
+</tbody>
+</table>
+<p><code>installPlaybookVars()</code> sends the guest's settings with each request: name,
+OS, cores, memory, disk, node and domain. The platform and its credentials
+belong to the backend's inventory, not to the request.</p>
+<h4>Runbot</h4>
+<p>The Runbot tab is a client of the <strong>ISWE Runbot</strong> backend
+(<code>@iswesolutions/plugin-odoo-runbot-backend</code>): continuous integration for Odoo
+repositories after <a href="https://github.com/odoo/runbot" rel="noopener noreferrer">odoo/runbot</a>. Install the
+backend and at least one builder (<code>ansible/playbooks/runbot-builder.yml</code>);
+see the backend's README.</p>
+<p>To test a repository:</p>
+<ol>
+<li><strong>New project</strong>, e.g. <em>ISWE Odoo 19</em>, base branch <code>19.0</code>.</li>
+<li><strong>Add repository</strong> <code>odoo/odoo</code>, as the one providing <code>odoo-bin</code>.</li>
+<li><strong>Add repository</strong> for each addons repository, for example
+   <code>ISWE-Solutions/iswe_meal_addons</code>, <code>ISWE-Solutions/iswe_sdp_addons</code> and
+   <code>ISWE-Solutions/ZRA-Smart-Invoice-Odoo19</code>. You can pick them from catalog
+   components tagged <code>odoo</code>. Leave <strong>install and test</strong> on: that creates a
+   trigger which installs its modules with odoo 19.0 and runs their tests on
+   every push and pull request.</li>
+</ol>
+<p>Each repository's <code>main</code> joins the <code>19.0</code> base bundle. A feature branch or
+pull request gets its own bundle, built on <code>19.0</code>. Results show as GitHub
+commit statuses (<code>ci/runbot-&lt;repository&gt;</code>) that link back to the build here
+(<code>/odoo?runbotBuild=&lt;id&gt;</code>).</p>
+<h4>Installation</h4>
+<p>The package is a frontend plugin for the legacy (non-<code>/alpha</code>) Backstage
+frontend system.</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/app<span class="w"> </span>add<span class="w"> </span>@iswesolutions/odoo-proxmox-runbot
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// packages/app/src/App.tsx</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">OdooPage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@iswesolutions/odoo-proxmox-runbot'</span><span class="p">;</span>
+
+<span class="p">&lt;</span><span class="nt">Route</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s">"/odoo"</span><span class="w"> </span><span class="na">element</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">OdooPage</span><span class="w"> </span><span class="p">/&gt;}</span><span class="w"> </span><span class="p">/&gt;;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// packages/app/src/components/Root/Root.tsx</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">CloudIcon</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@material-ui/icons/Cloud'</span><span class="p">;</span>
+
+<span class="p">&lt;</span><span class="nt">SidebarItem</span><span class="w"> </span><span class="na">icon</span><span class="o">=</span><span class="p">{</span><span class="nx">CloudIcon</span><span class="p">}</span><span class="w"> </span><span class="na">to</span><span class="o">=</span><span class="s">"odoo"</span><span class="w"> </span><span class="na">text</span><span class="o">=</span><span class="s">"Odoo"</span><span class="w"> </span><span class="p">/&gt;;</span>
+</code></pre></div>
+<p>No <code>app-config.yaml</code> settings, backend plugin or proxy endpoints are needed. The create form reads the software catalog
+(<code>catalogApiRef</code>, present in every Backstage app) for addons repository
+suggestions; if the catalog can't be read, repositories are typed in.</p>
+<h4>Exports</h4>
+<table>
+<thead>
+<tr>
+<th>Export</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OdooPage</code></td>
+<td>The full page</td>
+</tr>
+<tr>
+<td><code>OdooInstancesPanel</code>, <code>OdooAnsiblePanel</code>, <code>OdooProxmoxClusterPanel</code>, <code>RunbotView</code>, <code>BuildDialog</code></td>
+<td>The individual panels, to embed elsewhere (an entity page, say)</td>
+</tr>
+<tr>
+<td><code>odooService</code>, <code>ansibleService</code>, <code>proxmoxService</code>, <code>runbotApiRef</code>, <code>RunbotClient</code></td>
+<td>Service instances (sample data) and the runbot backend client</td>
+</tr>
+<tr>
+<td><code>OdooService</code>, <code>AnsibleService</code>, <code>ProxmoxService</code></td>
+<td>The service classes</td>
+</tr>
+<tr>
+<td><code>CreateInstanceDialog</code></td>
+<td>The new-instance form, on its own</td>
+</tr>
+<tr>
+<td><code>ODOO_VERSIONS</code>, <code>OS_INFO</code>, <code>computeAddonsPath</code>, <code>suggestServerConfig</code>, <code>checkDatabaseName</code>, <code>validateCreateRequest</code>, <code>renderOdooConf</code>, <code>installPlaybookVars</code></td>
+<td>The instance rules (see <a href="#creating-an-instance" rel="noopener noreferrer">Creating an instance</a>)</td>
+</tr>
+<tr>
+<td><code>odooPlugin</code> (also exported as <code>plugin</code>)</td>
+<td>The plugin instance, id <code>odoo</code></td>
+</tr>
+<tr>
+<td>Types</td>
+<td>See <a href="#data-model" rel="noopener noreferrer">Data model</a></td>
+</tr>
+</tbody>
+</table>
+<h5>Services</h5>
+<p>All methods are <code>async</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>odooService</code></td>
+<td><code>getInstances</code>, <code>getInstance</code>, <code>createInstance</code>, <code>updateInstance</code>, <code>deleteInstance</code>, <code>startInstance</code>, <code>stopInstance</code>, <code>restartInstance</code>, <code>backupInstance</code>, <code>restoreInstance</code>, <code>upgradeInstance</code>, <code>cloneInstance</code>, <code>getInstanceModules</code>, <code>installModule</code>, <code>uninstallModule</code>, <code>getAvailableVersions</code>, <code>getDashboardStats</code></td>
+</tr>
+<tr>
+<td><code>ansibleService</code></td>
+<td><code>getPlaybooks</code>, <code>getPlaybook</code>, <code>executePlaybook</code>, <code>getExecutions</code>, <code>getExecution</code>, <code>cancelExecution</code>, <code>getInventoryHosts</code>, <code>getRoles</code>, <code>validatePlaybook</code>, <code>testConnection</code></td>
+</tr>
+<tr>
+<td><code>proxmoxService</code></td>
+<td><code>getNodes</code>, <code>getContainers</code>, <code>getNodeContainers</code>, <code>getContainer</code>, <code>createContainer</code>, <code>startContainer</code>, <code>stopContainer</code>, <code>restartContainer</code>, <code>deleteContainer</code>, <code>cloneContainer</code>, <code>resizeDisk</code>, <code>getTaskStatus</code>, <code>getTemplates</code>, <code>getNextVmid</code>, <code>execCommand</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>odooService</code> orchestrates the other three: creating, cloning or upgrading an
+instance calls <code>proxmoxService</code> and <code>ansibleService</code>.</p>
+<h5>Data model</h5>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Odoo</td>
+<td><code>OdooInstance</code>, <code>OdooInstanceStatus</code>, <code>OdooEdition</code>, <code>OdooEnvironment</code>, <code>OdooOs</code>, <code>OdooSources</code>, <code>OdooRepoSource</code>, <code>OdooAddonsRepo</code>, <code>OdooDatabaseSettings</code>, <code>OdooDatabasePlacement</code>, <code>PostgresCluster</code>, <code>PgSslMode</code>, <code>OdooServerConfig</code>, <code>OdooLogLevel</code>, <code>CreateOdooInstanceRequest</code>, <code>UpdateOdooInstanceRequest</code>, <code>OdooModule</code>, <code>OdooDashboardStats</code></td>
+</tr>
+<tr>
+<td>Runbot</td>
+<td>From <code>@iswesolutions/plugin-odoo-runbot-common</code>: projects, repos, triggers, bundles, batches, builds, logs</td>
+</tr>
+<tr>
+<td>Ansible</td>
+<td><code>AnsiblePlaybook</code>, <code>AnsiblePlaybookStatus</code>, <code>AnsiblePlaybookExecution</code>, <code>AnsibleInventoryHost</code>, <code>AnsibleRole</code></td>
+</tr>
+<tr>
+<td>Proxmox</td>
+<td><code>ProxmoxNode</code>, <code>LXCContainer</code>, <code>LXCConfig</code>, <code>ProxmoxTask</code></td>
+</tr>
+<tr>
+<td>Generic</td>
+<td><code>ApiResponse&lt;T&gt;</code>, <code>PaginatedResponse&lt;T&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h4>Status</h4>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page, tabs, panels and create form</td>
+<td>Built; the create form checks the request (see above)</td>
+</tr>
+<tr>
+<td>Data model and service interfaces</td>
+<td>Built</td>
+</tr>
+<tr>
+<td>Runbot</td>
+<td>Live, through <code>@iswesolutions/plugin-odoo-runbot-backend</code></td>
+</tr>
+<tr>
+<td>Proxmox and Ansible calls</td>
+<td>Not built: those services return sample data</td>
+</tr>
+<tr>
+<td>Backend plugin and configuration</td>
+<td>Not built</td>
+</tr>
+<tr>
+<td>Permissions</td>
+<td>None: anyone who can open the page can use it</td>
+</tr>
+<tr>
+<td>Tests</td>
+<td>The instance rules and the create form</td>
+</tr>
+</tbody>
+</table>
+<p>Connecting it to real systems needs a backend plugin that holds the Proxmox
+API token, Runbot credentials and Ansible inventory, with the frontend
+services calling that backend instead of returning sample data.</p>
+<h4>Development</h4>
+<p>From the repository root:</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>install
+yarn<span class="w"> </span>tsc
+yarn<span class="w"> </span>--cwd<span class="w"> </span>plugins/odoo-proxmox-runbot<span class="w"> </span>build
+yarn<span class="w"> </span>--cwd<span class="w"> </span>plugins/odoo-proxmox-runbot<span class="w"> </span>lint
+</code></pre></div>
+<h4>License</h4>
+<p><a href="https://github.com/ISWE-Solutions/backstage-plugins/blob/HEAD/plugins/odoo-proxmox-runbot/../../LICENSE" rel="noopener noreferrer">Apache-2.0</a></p>
+</section>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../javascripts/catalog.js"></script>
+      
+    
+  </body>
+</html>

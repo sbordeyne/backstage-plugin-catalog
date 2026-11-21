@@ -1,0 +1,923 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Entity history for the Backstage new frontend system.">
+      
+      
+      
+        <link rel="canonical" href="https://sbordeyne.github.io/backstage-plugin-catalog/plugins/%40kunickiaj/backstage-plugin-catalog-history/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>@kunickiaj/backstage-plugin-catalog-history - Backstage Plugin Catalog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/catalog.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kunickiajbackstage-plugin-catalog-history" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-header__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Backstage Plugin Catalog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              @kunickiaj/backstage-plugin-catalog-history
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../roles/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../scopes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Scopes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-nav__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Backstage Plugin Catalog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scopes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scopes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:catalog" class="md-tag">catalog</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:history" class="md-tag">history</a>
+      
+    
+  </nav>
+
+
+
+<h1 id="kunickiajbackstage-plugin-catalog-history">@kunickiaj/backstage-plugin-catalog-history<a class="headerlink" href="#kunickiajbackstage-plugin-catalog-history" title="Permanent link">&para;</a></h1>
+<p>Entity history for the Backstage new frontend system.</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/app<span class="w"> </span>add<span class="w"> </span>@kunickiaj/backstage-plugin-catalog-history
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td><code>0.5.0</code> (2026-10-27)</td>
+</tr>
+<tr>
+<td>Role</td>
+<td><a href="../../../roles/frontend-plugin/">Frontend plugin</a></td>
+</tr>
+<tr>
+<td>Scope</td>
+<td><a href="../../../scopes/kunickiaj/">@kunickiaj</a></td>
+</tr>
+<tr>
+<td>Plugin ID</td>
+<td><code>catalog-history</code></td>
+</tr>
+<tr>
+<td>Weekly downloads</td>
+<td>26</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Apache-2.0</td>
+</tr>
+<tr>
+<td>Repository</td>
+<td><a href="https://github.com/kunickiaj/backstage-plugin-catalog-module-history/tree/HEAD/packages/catalog-history">https://github.com/kunickiaj/backstage-plugin-catalog-module-history/tree/HEAD/packages/catalog-history</a></td>
+</tr>
+<tr>
+<td>Homepage</td>
+<td><a href="https://github.com/kunickiaj/backstage-plugin-catalog-module-history#readme">https://github.com/kunickiaj/backstage-plugin-catalog-module-history#readme</a></td>
+</tr>
+<tr>
+<td>npm</td>
+<td><a href="https://www.npmjs.com/package/@kunickiaj/backstage-plugin-catalog-history">https://www.npmjs.com/package/@kunickiaj/backstage-plugin-catalog-history</a></td>
+</tr>
+<tr>
+<td>Maintainers</td>
+<td>kunickiaj</td>
+</tr>
+<tr>
+<td>First published</td>
+<td>2026-10-23</td>
+</tr>
+</tbody>
+</table>
+<h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h2>
+<p>5 versions published. Latest releases:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.5.0</code></td>
+<td>2026-10-27</td>
+</tr>
+<tr>
+<td><code>0.4.0</code></td>
+<td>2026-10-26</td>
+</tr>
+<tr>
+<td><code>0.3.0</code></td>
+<td>2026-10-26</td>
+</tr>
+<tr>
+<td><code>0.2.0</code></td>
+<td>2026-10-23</td>
+</tr>
+<tr>
+<td><code>0.0.0-stage</code></td>
+<td>2026-10-23</td>
+</tr>
+</tbody>
+</table>
+<h2 id="readme">README<a class="headerlink" href="#readme" title="Permanent link">&para;</a></h2>
+<section class="catalog-readme" data-search-exclude>
+<h3>@kunickiaj/backstage-plugin-catalog-history</h3>
+<p>Backstage New Frontend System (NFS) plugin that adds a <strong>History</strong> tab to catalog entity pages and a <strong>Catalog history</strong> page at <code>/catalog-history</code>. It reads recorded entity events from the catalog backend; it does not record history itself.</p>
+<h4>Features introduced in <code>0.2.0</code></h4>
+<p>The History tab, catalog-history page, and NFS default-plugin registration are introduced in <code>0.2.0</code>. The setup below works from the workspace preview and from an installed package.</p>
+<h4>Run the local preview</h4>
+<p>From the workspace root:</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>install<span class="w"> </span>--immutable
+yarn<span class="w"> </span>workspace<span class="w"> </span>@kunickiaj/backstage-plugin-catalog-history<span class="w"> </span>start
+</code></pre></div>
+<p>Open <a href="http://localhost:3000" rel="noopener noreferrer">http://localhost:3000</a>. The start script uses only <code>dev/app-config.yaml</code>,
+which binds the preview to localhost. No backend or sign-in setup is required.</p>
+<p>The preview uses <code>createDevApp</code>, the real NFS plugin registration and History
+components, and an in-memory API override. Its banner identifies synthetic entities,
+including <code>component:default/example-service</code>. Ten October 2026 events cover provider,
+processing, and reconciler sources, owner/lifecycle/status changes, repeated
+A → B → A snapshots with distinct event IDs, update changes, and a delete with a
+prior saved state. Open <code>/catalog-history</code> to browse multiple entities, including a
+deleted entity. Pages contain at most five events so <strong>Load older</strong> can be exercised.
+Nothing contacts a live catalog.</p>
+<p>Fixtures and the API factory live under <code>dev/</code>, outside the published package.
+They are demonstration data, not an alternative backend implementation.</p>
+<h4>Add the plugin to an NFS app</h4>
+<p>From the host repository root, install the package in the app workspace:</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/app<span class="w"> </span>add<span class="w"> </span><span class="s1">'@kunickiaj/backstage-plugin-catalog-history@^0.2.0'</span>
+</code></pre></div>
+<p>Replace <code>packages/app</code> when the app workspace is elsewhere. Use the published package version in a host app; do not use <code>workspace:^</code> for this dependency.</p>
+<p>Enable the backend read API first:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">catalog</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">history</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">api</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Then register the default export alongside the app's existing features:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createApp</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@backstage/frontend-defaults'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">catalogHistoryPlugin</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@kunickiaj/backstage-plugin-catalog-history'</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">createApp</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">features</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="c1">// Keep the app's existing features here.</span>
+<span class="w">    </span><span class="nx">catalogHistoryPlugin</span><span class="p">,</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The plugin contributes the entity-content extension at <code>history</code> with the title <strong>History</strong>, so the catalog entity page renders it as an entity tab. It also registers the <code>/catalog-history</code> page with navigation metadata and the title <strong>Catalog history</strong>.</p>
+<p>To place the History tab after your other entity tabs, list those <code>entity-content</code> extensions in <code>app.extensions</code> and put <code>entity-content:catalog-history</code> last. Backstage orders extensions named in app config by their position in that list:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">app</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">extensions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">entity-content:catalog/overview</span>
+<span class="w">    </span><span class="c1"># Your other entity tabs, in display order.</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">entity-content:catalog-history</span>
+</code></pre></div>
+<p>If the tab belongs to an entity page group, Backstage sorts the group's tabs by title unless the group sets <code>contentOrder: natural</code>. Check the rendered entity page after changing the order. To remove the tab, set <code>entity-content:catalog-history: false</code>.</p>
+<p>The default plugin registers <code>catalogHistoryApiRef</code> with Backstage discovery and fetch APIs, so no separate API factory wiring is required.</p>
+<p>This plugin uses Backstage UI (BUI), with a dependency on <code>@backstage/ui@^0.19.0</code>. If the host app does not already declare BUI, add a version compatible with both the host and that range rather than upgrading arbitrarily.</p>
+<p>If BUI styles are not already loaded, import the stylesheet once in the app entry point:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="s1">'@backstage/ui/css/styles.css'</span><span class="p">;</span>
+</code></pre></div>
+<p>Do not use legacy <code>EntityLayout.Route</code> or Material UI setup for this package.</p>
+<h4>Synthetic preview screenshots</h4>
+<p>These fixture-based previews show the UI only. They do not prove a live host-app installation, authentication flow, or end-to-end backend integration.</p>
+<p><img alt="Catalog history page browsing events for multiple entities, including a deleted team" src="https://raw.githubusercontent.com/kunickiaj/backstage-plugin-catalog-module-history/v0.2.0/docs/catalog-history-browse.png"></p>
+<ul>
+<li><a href="https://raw.githubusercontent.com/kunickiaj/backstage-plugin-catalog-module-history/v0.2.0/docs/catalog-history-preview.png" rel="noopener noreferrer">Entity History tab preview</a></li>
+<li><a href="https://raw.githubusercontent.com/kunickiaj/backstage-plugin-catalog-module-history/v0.2.0/docs/catalog-history-deletion.png" rel="noopener noreferrer">Deletion inspector preview</a></li>
+</ul>
+<h4>Browse entity and catalog history</h4>
+<p>The <strong>History</strong> tab lists recorded events for the current entity, newest first. Its event table identifies the affected kind, namespace, and name. It can filter by capture source, provider, operation, and recorded-after or recorded-before time, then load older pages. It deliberately has no entity-reference or kind filter.</p>
+<p>The <strong>Catalog history</strong> page lists retained events across all entities, including entities deleted from the live catalog. Its event table identifies the affected kind, namespace, and name. Readers can filter by exact entity reference, kind, capture source, provider, operation, and recorded time. An entity short name is interpreted as <code>Component:default/&lt;name&gt;</code>; a canonical reference remains exact. Kind matching is case-insensitive and custom kinds are valid.</p>
+<p>Text filters apply after 300 ms. Dropdowns and valid local date-and-time values apply immediately; valid dates convert to ISO instants. An invalid date or range leaves the current results in place and shows an error. Filter changes reset to the first page. <strong>Reset filters</strong> clears all filters and cancels pending text input.</p>
+<p>Select a row by pointer or keyboard to open its exact event in the inspector; there is no separate inspect button. The inspector uses the selected event's entity reference and ID, so it opens the correct record from either view. The responsive timeline and inspector panels show provenance and raw JSON separately. For updates with a comparable prior saved snapshot, the inspector also shows field paths with before and after values. Arrays are compared as whole values, and identity and etag fields are excluded. If no prior saved snapshot is available, the view says so; an empty change list means there were no saved field differences.</p>
+<p>Snapshots are stored entity states. The displayed update changes compare the retained current and immediately preceding snapshots for the same entity, source, and provider, ordered by recorded time and event ID. They are not necessarily the delta from the original capture source.</p>
+<p>Delete events are tombstones and do not contain a current entity snapshot. When the immediately preceding saved event from the same source and provider has a snapshot, the inspector displays it as <strong>Last recorded snapshot before deletion</strong>, with that record's provenance and a note that it is not the deletion payload.</p>
+<p>Direct catalog deletion and location unregistration do not guarantee a recorded delete event, even though earlier retained events can remain visible on the <strong>Catalog history</strong> page. Read the <a href="https://github.com/kunickiaj/backstage-plugin-catalog-module-history/blob/HEAD/packages/catalog-history/../../README.md#known-deletion-capture-limitation" rel="noopener noreferrer">known deletion-capture limitation</a> before treating retained history as a complete deletion audit.</p>
+<p><code>Recorded at</code> is when the selected capture source recorded the event. It is not necessarily when the upstream provider changed the entity, so events from different sources may not reflect ingestion order.</p>
+<p>Capture sources describe where the record came from:</p>
+<ul>
+<li><code>provider</code> records the entity supplied by a catalog provider.</li>
+<li><code>processing</code> records catalog processor output.</li>
+<li><code>reconciler</code> records the served catalog view observed by reconciliation.</li>
+</ul>
+<h5>Structured snapshots in <code>0.3.0</code></h5>
+<p>The current workspace adds read-only sections for recorded entity fields, metadata, spec, relations, and status items. Owner, memberships, parent, and orphan status come from the selected saved snapshot, without filling gaps from spec fields or the current catalog entity.</p>
+<p>Missing fields show <strong>Not recorded</strong> or a category-specific missing message. Recorded empty lists and objects have explicit empty states; an orphan value of <code>false</code> shows <strong>No</strong>. JSON scalars preserve their types, and nested values appear as keyboard-focusable JSON blocks within their fields. The complete raw snapshot remains available separately.</p>
+<p>For a deletion, these sections appear only within <strong>Last recorded snapshot before deletion</strong> when that earlier snapshot exists. They do not describe a deletion payload or a current entity state.</p>
+<h5>Timeline badges in <code>0.3.0</code></h5>
+<p>Update rows can show <strong>Owner changed</strong>, <strong>Relations changed</strong>, <strong>Status changed</strong>, and <strong>Orphan changed</strong> beneath the operation. Each badge requires an explicit <code>true</code> summary flag from the API; missing or false flags render no badge and do not imply that the event has no other changes. Inserts and deletes do not show these comparison badges.</p>
+<p>The default Postgres backend supplies summaries for the entity timeline and current event detail. Its global feed and version lists still return empty summaries; older and custom APIs can also omit them. The UI does not fetch each event or compare loaded rows to fill those gaps. Badge comparisons describe known fields in adjacent saved events from the same source and provider, not the original upstream mutation.</p>
+<h5>Provider suggestions in <code>0.3.0</code></h5>
+<p>Open <strong>Provider</strong> to discover names represented in retained history for the applied filters. Suggestions come from the server across retained rows, not only the loaded event page or current provider registrations. Names from deleted entities can still appear. With no unfinished search, opening the picker shows the first names in scope, even when a provider is already selected.</p>
+<p>Typing searches by a case-insensitive literal prefix after 300 ms; <code>%</code>, <code>_</code>, and backslash are ordinary characters. This is not fuzzy or substring matching. Choose a returned full name to apply the existing exact provider filter. Its case and whitespace remain unchanged, including when other filters are applied. While editing, the previous provider stays applied and is identified below the field; clearing removes it. Only the first 25 suggestions are shown. <strong>Type more to narrow</strong> means more matching names exist, not that the current suggestions are the complete set.</p>
+<p>Missing optional <code>getProviders</code> support or a <code>404</code>/<code>501</code> discovery response switches to <strong>Exact provider name; suggestions unavailable.</strong> That textbox retains the original exact-entry debounce behavior. A successful empty search is supported discovery with no matches, not a reason to switch modes. <code>401</code>/<code>403</code> remain access errors, and other failures show a retry action. Reset clears the editor and pending work; stale responses after typing, context changes, API replacement, or unmount are ignored. Ignoring a response does not cancel its server SQL.</p>
+<p>Stored empty provider names are displayed but cannot be selected because the existing history API rejects an empty <code>provider</code> parameter. Nonempty whitespace names have escaped labels for readability and retain their original value when selected.</p>
+<h5>Entity and Kind pickers in <code>0.3.0</code></h5>
+<p>The standalone page's <strong>Entity</strong> picker searches retained entity names by literal, case-insensitive prefix after 300 ms. Choose a returned identity to apply its exact reference without typing the reference yourself. Options show name, kind, and namespace so equal names remain distinguishable. Retained delete-only identities are included; the picker does not query the live catalog or infer current/deleted status.</p>
+<p>Selecting an Entity also sets its Kind in one filter update. Choosing an incompatible Kind clears Entity; <strong>All kinds</strong> removes only the kind predicate and keeps Entity. Clearing Entity leaves Kind selected. While editing either search, the previous selection stays applied. Enter or blur does not turn unfinished search text into a filter.</p>
+<p>Entity suggestions use only the applied kind, source, exact provider, operation, and valid time filters, never the selected reference or unfinished drafts. Only the first 25 suggestions are shown; a narrowing hint means more matches exist. <strong>Kind</strong> searches all retained kinds independently of those filters and uses <strong>Load more kinds</strong> to reach later pages. Loading kind suggestions does not page the event list.</p>
+<p>Each control handles compatibility independently. Missing <code>getEntities</code> or <code>getKinds</code>, or its <code>404</code>/<code>501</code> response, retains the corresponding legacy textbox. Entity-reference text keeps its exact-match and default-Component/default-namespace behavior; Kind text keeps its existing matching behavior. A discovery prefix is not automatically applied on fallback. <code>401</code>/<code>403</code> remain access errors, successful empty responses remain supported discovery, and other failures offer Retry. Reset clears selections and pending work; stale results cannot restore an old selection or append an obsolete kind page.</p>
+<p>The entity-scoped History tab does not show or call these global discovery controls. Existing provider selections preserve their original case and whitespace through Entity and Kind changes.</p>
+<h5>Recording cycle navigation in <code>0.3.0</code></h5>
+<p>Choose an inspector's <strong>Cycle ID</strong> to open its <strong>Recording cycle</strong>, meaning one recorded capture run or batch. The view shows the saved provider, capture source, mutation type, start/finish times, and recorded totals. <strong>Changed entities</strong> lists retained event metadata across the cycle; choose a row by pointer or keyboard to inspect that row's exact entity reference and event ID. It fetches a snapshot only after selection.</p>
+<p><strong>Load more changes</strong> follows the cycle's opaque change cursor. A failed later page keeps the header and loaded rows, and Retry repeats the failed page. Recorded totals do not become page totals. An empty change page says that no retained changed events are available; it does not imply that the capture run recorded no activity. Refresh restarts the page and clears inspector selection. Old results from a different cycle, API instance, or refresh are ignored.</p>
+<p>Links resolve through the plugin's public history route, so hosts can override the page mount. Direct <code>?cycleId=…</code> URLs work on that page. A missing ID shows an error without making a request. <strong>Back to catalog history</strong> removes only <code>cycleId</code>; the existing filter form stays mounted but hidden in cycle mode, preserving its values and exact selections. It does not load the global event feed while viewing a cycle. Browser Back also works.</p>
+<p>An API without optional <code>getCycle</code>, or an unresolved public history route, keeps the cycle ID as plain text. Missing event cycle context shows <strong>Not recorded</strong>. A <code>501</code> cycle response shows unsupported-cycle guidance; <code>404</code> shows an unavailable-cycle message without guessing whether the row or route is absent. Access failures remain sign-in or permission messages, and other failures offer Retry. The pre-deletion saved snapshot links to its own cycle, preserving that record's source and provider.</p>
+<h5>Compare two recorded events in <code>0.5.0</code></h5>
+<p>Select an event, then choose <strong>Compare with another event</strong> in the inspector and select a second event of the same entity. The inspector shows both events' provenance and the saved fields that differ, from the older event to the newer one. <strong>Swap</strong> reverses the direction, <strong>Exit comparison</strong> returns to the selected event, and <strong>Cancel comparison</strong> stops picking. Selecting another row leaves the comparison and shows that row. On the <strong>Catalog history</strong> page, only events of the first event's entity can be picked.</p>
+<p>The two events can come from different capture sources or providers. In that case the inspector warns that each layer records different fields, so fields that only one layer stores appear as added or removed. A deletion record has no snapshot, so comparing with one shows every saved field of the other event as added or removed.</p>
+<p>On the <strong>Catalog history</strong> page, the comparison is kept in the URL as <code>?compare=&lt;from&gt;..&lt;to&gt;&amp;compareRef=&lt;entityRef&gt;</code>, so the link opens the same comparison. Opening a recording cycle from a compared event leaves the comparison. The entity <strong>History</strong> tab keeps the comparison only while the tab is open and its filters stay the same.</p>
+<p>The action appears only when the history API provides optional <code>getEntityDiff</code>. A <code>501</code> response says the backend does not support comparison. A <code>404</code> means an event is no longer available or the backend has no comparison route.</p>
+<h4>SDK: retained entity and Kind discovery</h4>
+<p><code>0.3.0</code> adds optional <code>getEntities</code> and <code>getKinds</code> methods to
+<code>CatalogHistoryApi</code> and <code>CatalogHistoryClient</code>. The standalone page uses them
+for the pickers above. Custom consumers can also call them through an injected
+API instance named <code>api</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">getEntities</span><span class="o">?</span><span class="p">.({</span>
+<span class="w">  </span><span class="nx">prefix</span><span class="o">:</span><span class="w"> </span><span class="s1">'pay'</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">kind</span><span class="o">:</span><span class="w"> </span><span class="s1">'Component'</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s1">'provider'</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">limit</span><span class="o">:</span><span class="w"> </span><span class="kt">25</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="c1">// page?.items[0]</span>
+<span class="c1">// { entityRef: 'component:default/payment-api', kind: 'Component',</span>
+<span class="c1">//   namespace: 'default', name: 'payment-api' }</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">kinds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">getKinds</span><span class="o">?</span><span class="p">.({</span><span class="w"> </span><span class="nx">prefix</span><span class="o">:</span><span class="w"> </span><span class="s1">'com'</span><span class="p">,</span><span class="w"> </span><span class="nx">limit</span><span class="o">:</span><span class="w"> </span><span class="kt">25</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<p>Entity discovery accepts <code>prefix</code>, <code>kind</code>, <code>source</code>, <code>provider</code>, <code>op</code>,
+<code>changedAfter</code>, <code>changedBefore</code>, <code>limit</code>, and <code>cursor</code>. It returns only
+identity metadata from the latest matching retained row per canonical reference,
+including delete-only history. Kind discovery accepts only <code>prefix</code>, <code>limit</code>,
+and <code>cursor</code>, and returns one stored spelling per folded retained kind.</p>
+<p>Both methods are optional for custom API implementations. The client forwards
+HTTP failures by status without caching or compatibility fallback: <code>404</code> means
+the route is absent, <code>501</code> means the store lacks that method, and <code>401</code>/<code>403</code>
+remain authentication or authorization failures. Treat cursors as opaque and
+reset them when changing a bound prefix or entity-search filter.</p>
+<h5>Cycle SDK methods in <code>0.3.0</code></h5>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">cycles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">listCycles</span><span class="o">?</span><span class="p">.({</span><span class="w"> </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s1">'provider'</span><span class="p">,</span><span class="w"> </span><span class="nx">limit</span><span class="o">:</span><span class="w"> </span><span class="kt">25</span><span class="w"> </span><span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">cycle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">getCycle</span><span class="o">?</span><span class="p">.({</span>
+<span class="w">  </span><span class="nx">cycleId</span><span class="o">:</span><span class="w"> </span><span class="s1">'00000000-0000-4000-8000-000000000001'</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">limit</span><span class="o">:</span><span class="w"> </span><span class="kt">25</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><code>listCycles</code> and <code>getCycle</code> are also optional. They return recorded cycle
+metadata and a retained change page, respectively. The client URI-encodes
+cycle IDs and filter values, uses the same
+authenticated fetch API, and has no fallback or cache.</p>
+<h5>Diff SDK method in <code>0.5.0</code></h5>
+<p><code>getEntityDiff</code> is optional for custom API implementations. It compares two recorded events by row ID:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">getEntityDiff</span><span class="o">?</span><span class="p">.({</span>
+<span class="w">  </span><span class="nx">entityRef</span><span class="o">:</span><span class="w"> </span><span class="s1">'component:default/payment-api'</span><span class="p">,</span>
+<span class="w">  </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">kind</span><span class="o">:</span><span class="w"> </span><span class="s1">'history-row'</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">'1042'</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">kind</span><span class="o">:</span><span class="w"> </span><span class="s1">'history-row'</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">'1187'</span><span class="w"> </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<h5>As-of SDK method in <code>0.3.0</code></h5>
+<p><code>getEntityAsOf</code> is optional for custom API implementations. It reads one
+retained observation at or before the requested timestamp:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">getEntityAsOf</span><span class="o">?</span><span class="p">.({</span>
+<span class="w">  </span><span class="nx">entityRef</span><span class="o">:</span><span class="w"> </span><span class="s1">'component:default/payment-api'</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="s1">'2026-10-24T12:00:00.123456Z'</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s1">'provider'</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">provider</span><span class="o">:</span><span class="w"> </span><span class="s1">'example-provider'</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The client URI-encodes the entity path and sends only <code>timestamp</code>, <code>source</code>,
+and <code>provider</code>. It preserves the requested timestamp and provider string,
+including provider case and whitespace, and returns server JSON unchanged.
+HTTP failures propagate by status without caching or automatic fallback.
+A successful result can omit
+<code>version</code> and <code>snapshot</code> when no eligible retained observation exists; a
+selected delete has a version but no snapshot. An older backend without the
+route returns <code>404</code>; a custom store without the method returns <code>501</code> after
+authorization. <code>401</code>/<code>403</code> remain access failures.</p>
+<h4>Access and unavailable history</h4>
+<p>The backend requires an authenticated user. When the Backstage permission framework is enabled, the policy must explicitly allow <code>catalog-history.read</code>; otherwise the tab reports an access error.</p>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Likely cause</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No recorded events match these filters</td>
+<td>No matching retained events, or filters exclude them</td>
+<td>Reset or adjust the filters.</td>
+</tr>
+<tr>
+<td>Sign-in error (<code>401</code>)</td>
+<td>The session is missing or expired</td>
+<td>Sign in again and retry.</td>
+</tr>
+<tr>
+<td>Permission error (<code>403</code>)</td>
+<td><code>catalog-history.read</code> was not explicitly allowed</td>
+<td>Ask an administrator to update the permission policy.</td>
+</tr>
+<tr>
+<td>History unavailable (<code>404</code>)</td>
+<td>The API is disabled, unreachable, or the backend is older and lacks the route</td>
+<td>Enable <code>catalog.history.api.enabled</code>, then check the catalog backend version and URL.</td>
+</tr>
+<tr>
+<td>Catalog history unavailable (<code>501</code>)</td>
+<td>A custom history API does not implement the cross-entity change feed</td>
+<td>Upgrade the custom API. The entity tab can still work.</td>
+</tr>
+<tr>
+<td>Recorded event unavailable (<code>404</code>)</td>
+<td>The selected retained event no longer exists</td>
+<td>Refresh the timeline and select an available event.</td>
+</tr>
+</tbody>
+</table>
+<p>The tab is available only on an entity page that the catalog can load. The <strong>Catalog history</strong> page can browse retained events for deleted entities. When permissions are enabled, an explicit allow for <code>catalog-history.read</code> grants access to all retained history; it is not limited to current catalog visibility.</p>
+<h4>Public exports</h4>
+<p>This NFS- and BUI-only package exports:</p>
+<ul>
+<li>the default <code>catalogHistoryPlugin</code> plugin and named <code>catalogHistoryPlugin</code>;</li>
+<li><code>EntityCatalogHistoryContent</code> for composing the tab in an NFS extension;</li>
+<li><code>catalogHistoryApiRef</code> and <code>CatalogHistoryClient</code> for API integration or tests.</li>
+</ul>
+<p>It also exports the plugin's API and entity-content blueprints for NFS composition. The default plugin automatically registers the standalone page. There are no statistics, facets, or as-of views.</p>
+<p><code>0.3.0</code> also exposes optional <code>CatalogHistoryApi.getProviders(request)</code> and the corresponding <code>CatalogHistoryClient</code> method for <a href="https://github.com/kunickiaj/backstage-plugin-catalog-module-history/blob/HEAD/packages/catalog-history/../../README.md#provider-discovery-in-030" rel="noopener noreferrer">retained-provider discovery</a>. Custom APIs can omit it. It returns server-matched names for suggestions; consumers still apply a selected full name through the existing exact <code>provider</code> filter. HTTP <code>404</code> and <code>501</code> identify unavailable discovery, while <code>401</code> and <code>403</code> are authentication/access errors. The HTTP client forwards failures without caching; the provider picker handles compatibility fallback.</p>
+<p>For API configuration, permissions, routes, and retention behavior, read the <a href="https://github.com/kunickiaj/backstage-plugin-catalog-module-history/blob/HEAD/packages/catalog-history/../../README.md#read-history-over-http-in-020" rel="noopener noreferrer">workspace README</a>.</p>
+<h4>License</h4>
+<p>Apache-2.0</p>
+</section>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../javascripts/catalog.js"></script>
+      
+    
+  </body>
+</html>

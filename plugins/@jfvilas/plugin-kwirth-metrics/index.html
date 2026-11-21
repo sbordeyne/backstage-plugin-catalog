@@ -1,0 +1,1022 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Frontend plugin for viewing Kubernetes resource usage (metrics) in Backstage">
+      
+      
+      
+        <link rel="canonical" href="https://sbordeyne.github.io/backstage-plugin-catalog/plugins/%40jfvilas/plugin-kwirth-metrics/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>@jfvilas/plugin-kwirth-metrics - Backstage Plugin Catalog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/catalog.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jfvilasplugin-kwirth-metrics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-header__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Backstage Plugin Catalog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              @jfvilas/plugin-kwirth-metrics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../roles/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../scopes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Scopes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-nav__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Backstage Plugin Catalog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scopes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scopes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:kubernetes" class="md-tag">kubernetes</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:kwirth" class="md-tag">kwirth</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:metrics" class="md-tag">metrics</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:observability" class="md-tag">observability</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:resource" class="md-tag">resource</a>
+      
+    
+  </nav>
+
+
+
+<h1 id="jfvilasplugin-kwirth-metrics">@jfvilas/plugin-kwirth-metrics<a class="headerlink" href="#jfvilasplugin-kwirth-metrics" title="Permanent link">&para;</a></h1>
+<p>Frontend plugin for viewing Kubernetes resource usage (metrics) in Backstage</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/app<span class="w"> </span>add<span class="w"> </span>@jfvilas/plugin-kwirth-metrics
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td><code>0.14.2</code> (2026-03-27)</td>
+</tr>
+<tr>
+<td>Role</td>
+<td><a href="../../../roles/frontend-plugin/">Frontend plugin</a></td>
+</tr>
+<tr>
+<td>Scope</td>
+<td><a href="../../../scopes/jfvilas/">@jfvilas</a></td>
+</tr>
+<tr>
+<td>Plugin ID</td>
+<td><code>kwirt</code></td>
+</tr>
+<tr>
+<td>Weekly downloads</td>
+<td>6</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Apache-2.0</td>
+</tr>
+<tr>
+<td>Repository</td>
+<td><a href="https://github.com/jfvilas/plugin-kwirth-metrics">https://github.com/jfvilas/plugin-kwirth-metrics</a></td>
+</tr>
+<tr>
+<td>Homepage</td>
+<td><a href="https://github.com/jfvilas/plugin-kwirth-metrics#readme">https://github.com/jfvilas/plugin-kwirth-metrics#readme</a></td>
+</tr>
+<tr>
+<td>npm</td>
+<td><a href="https://www.npmjs.com/package/@jfvilas/plugin-kwirth-metrics">https://www.npmjs.com/package/@jfvilas/plugin-kwirth-metrics</a></td>
+</tr>
+<tr>
+<td>Author</td>
+<td>Julio Fernandez</td>
+</tr>
+<tr>
+<td>Maintainers</td>
+<td>jfvilas</td>
+</tr>
+<tr>
+<td>First published</td>
+<td>2025-07-28</td>
+</tr>
+</tbody>
+</table>
+<h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h2>
+<p>12 versions published. Latest releases:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.14.2</code></td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td><code>0.13.10</code></td>
+<td>2025-11-23</td>
+</tr>
+<tr>
+<td><code>0.13.5</code></td>
+<td>2025-11-20</td>
+</tr>
+<tr>
+<td><code>0.13.4</code></td>
+<td>2025-11-08</td>
+</tr>
+<tr>
+<td><code>0.13.3</code></td>
+<td>2025-11-08</td>
+</tr>
+<tr>
+<td><code>0.13.2</code></td>
+<td>2025-11-02</td>
+</tr>
+<tr>
+<td><code>0.13.1</code></td>
+<td>2025-11-02</td>
+</tr>
+<tr>
+<td><code>0.12.9</code></td>
+<td>2025-11-02</td>
+</tr>
+<tr>
+<td><code>0.12.8</code></td>
+<td>2025-08-28</td>
+</tr>
+<tr>
+<td><code>0.12.7</code></td>
+<td>2025-08-27</td>
+</tr>
+<tr>
+<td><code>0.12.6</code></td>
+<td>2025-07-28</td>
+</tr>
+<tr>
+<td><code>0.12.5</code></td>
+<td>2025-07-28</td>
+</tr>
+</tbody>
+</table>
+<h2 id="readme">README<a class="headerlink" href="#readme" title="Permanent link">&para;</a></h2>
+<section class="catalog-readme" data-search-exclude>
+<h3>KwirthMetrics Plugin</h3>
+<p>This package is a Backstage plugin for <strong>showing real-time streamed Kubernetes objects' metrics</strong> and perform <strong>some basic pod operations</strong> via <a href="https://jfvilas.github.io/kwirth" rel="noopener noreferrer">Kwirth</a>.</p>
+<h4>Version compatibility</h4>
+<p>KwirthMetrics is compatible with Kwirth core server versions according to following table.</p>
+<table>
+<thead>
+<tr>
+<th>Plugin Kwirth version</th>
+<th>Kwirth version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.13.0</td>
+<td>0.4.131</td>
+</tr>
+<tr>
+<td>0.12.8</td>
+<td>0.4.45</td>
+</tr>
+<tr>
+<td>0.12.5</td>
+<td>0.4.20</td>
+</tr>
+</tbody>
+</table>
+<h4>What for?</h4>
+<p>This Backstage plugin allows you viewing <strong>Kubernetes metrics</strong> in real time that are linked to your Backstage entities. It's very important to understand that for this plugin to work you need to install Kwirth on your Kubernetes cluster (aside from Kwirth Backstage backend plugin), that is, this plugin is just another frontend for <a href="https://jfvilas.github.io/kwirth" rel="noopener noreferrer">Kwirth</a>.</p>
+<p>In this very first versoin of KwirthMetrics you will be able to perform at least this actions:
+  - Show real-time metrics of a source container (you can select which containers to view)
+  - Show real-time metrics of a source pod (including all its containers)
+  - Show real-time metrics of a set of pods (you can select what pods to chart)
+  - Restarting a kubernetes object (pod, set of pods or just a simple container). This capability is not designed to substitute your operation tools, it is just a way for your developers, for example, to self-solve restarting-pod needs without the complexity of giving them access to Lens, K9s, Headlamp or kubectl.</p>
+<p>Kwirth is a really-easy-to-use data-exporting platform for Kubernetes that runs in only one pod (<strong>no database is needed</strong>). Refer to Kwirth GitHub project for <a href="https://github.com/jfvilas/kwirth?tab=readme-ov-file#installation" rel="noopener noreferrer">info on installation</a>. Kwirth installation is <em>one command away</em> from you!!.</p>
+<p>In addition, you can access <a href="https://github.com/jfvilas/kwirth" rel="noopener noreferrer">Kwirth project here</a>.</p>
+<h4>What is this plugin for?</h4>
+<p>This Backstage plugin adds Backstage a feature for showing <strong>real-time charts showing of metrics</strong> about your Kubernetes objects and its <strong>resource consumption</strong>.You can show this charts <em>directly inside your Backstage frontend</em> application. The plugin will be enabled for any entity that is correctly tagged (according to Backstage Kubernetes core feature) and its correpsonding Kubernetes resources are found on any of the clusters that have been added to Backstage.</p>
+<p>In addition, Backstage users can <strong>restart pods</strong> if they are allowed to (according to KwirthMetrics and KwirthOps permissions).</p>
+<p>When KwirthMetrics is correctly installed and configured, it is possible to stream and chart real-time Kubernetes metrics to your Backstage like in this sample we show here:</p>
+<p><img alt="kwirthmetrics-running" src="https://raw.githubusercontent.com/jfvilas/plugin-kwirth-metrics/master/images/kwirthmetrics-running.png"></p>
+<p>This frontend plugin <strong>includes just the visualization of metrics</strong> charts. All needed configuration, and specially all <strong>permission settings</strong> are done in the backend plugin and the app-config YAML. You can restrict access to pods, namespaces, clusters, etc. by configuring permissions to be applied by the backend plugin.</p>
+<p>The ability to restart pods is also configured in the app-config (YAML, env or whatever), and <strong>restartig permissions are set independently than chart streaming permissions</strong>.
+The backend plugin is the only responsible for configuration and permissionism, all the capabilities related with showing charts are implemented in the frontend plugin, which is in charge of establishing the connections to the corresponding Kwirth instances (running inside your Kubernetes clusters).</p>
+<h4>How does it work?</h4>
+<p>Let's explain this by following a user working sequence:</p>
+<ol>
+<li>A Backstage user searchs for an entity in the Backstage.</li>
+<li>In the entity page there will be a new tab named 'KWIRTHMETRICS'.</li>
+<li>When the user clicks on KWIRTHMETRICS the frontend plugin sends a request to the backend plugin asking for metrics information on several Kubernetes clusters.</li>
+<li>Next step is to identify the Kubernetes objects that match requested entity. As well as it occurs with other Backstage Kwirth plugins, Kwirth implements two strategies for getting the listo of kubernetes objects that match:
+  - <em>Option 1</em>. Your catalog-info contains an annotation of this type: <strong>backstage.io/kubernetes-id</strong>. In this case, the Backstage Kwirth backend plugin sends requests to the Kwirth instances that are running inside all the clusters previously added to Backstage (via app-config YAML). These requests ask for the following: <em>'Tell me all the pods that are labeled with the kubernetes-id label and do correspond with the entity I'm looking for'</em>. In response to this query, each Kwirth instance answers with a list of pods and the namespaces where they are running.
+  - <em>Option 2</em>. Your catalog-info contains an annotation of this type: <strong>backstage.io/kubernetes-label-selector</strong>. In this case, the Backstage Kwirth backend plugin sends requests to the Kwirth instances that are running inside all the clusters previously added to Backstage (via app-config YAML). These requests ask for the following: <em>'Tell me all the pods whose labels match with the kubernetes-label-selector label selector</em>. In response to this query, each Kwirth instance answers with a list of pods and the namespaces where they are running.</li>
+<li>The backend plugin checks the permissions of the connected user and prunes the pods list removing the ones that the user has not access to.</li>
+<li>With the final pod list, the backend plugin sends requests to the Kwirth instances on the clusters asking for specific API Keys for streaming metrics and/or restarting Kubernetes objects.</li>
+<li>The backend plugin then asks for a metrics list, that is, a list of the metrics the Kubernetes cluster can offer (the ones managed by the kubelet)</li>
+<li>With all this information, the backend builds a unique response containing all the pods the user have access to, all the API keys needed to access (wherever it be streaming metrics information for charting or pod-restarting) those pods, and all the metrics available at each cluster.</li>
+</ol>
+<p>If everyting is correctly configured and tagged, the user should see a list of clusters similar to the one we show bellow. When selecting a cluster, the user should see a list of namespaces where the entity is running and is elligible for showing metrics charts.</p>
+<p><img alt="kwirthmetrics-clusterslist" src="https://raw.githubusercontent.com/jfvilas/plugin-kwirth-metrics/master/images/kwirthmetrics-clusterslist.png"></p>
+<h4>Installation</h4>
+<ol>
+<li>
+<p>Install corresponding Backstage backend plugin <a href="https://www.npmjs.com/package/@jfvilas/plugin-kwirth-backend" rel="noopener noreferrer">more information here</a>. The backend plugin of Kwirth is <strong>shared with all front end plugins</strong>, so you only need to install backend plugin once.</p>
+</li>
+<li>
+<p>Install this KwirthMetrics Backstage frontend plugin:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># From your Backstage root directory</span>
+yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/app<span class="w"> </span>add<span class="w"> </span>@jfvilas/plugin-kwirth-metrics<span class="w"> </span>@jfvilas/plugin-kwirth-common<span class="w"> </span>@jfvilas/plugin-kwirth-frontend<span class="w"> </span>@jfvilas/kwirth-common
+</code></pre></div>
+</li>
+<li>
+<p>Make sure the <a href="https://www.npmjs.com/package/@jfvilas/plugin-kwirth-backend#configure" rel="noopener noreferrer">Kwirth backend plugin</a> is installed and configured.</p>
+</li>
+<li>
+<p>Restart your Backstage instance.</p>
+</li>
+</ol>
+<h4>Configuration: Entity Pages</h4>
+<h6>1. Add the KwirthMetrics plugin as a tab in your Entity pages:</h6>
+<p>Firstly, import the plugin module.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// In packages/app/src/components/catalog/EntityPage.tsx</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">EntityKwirthMetricsContent</span><span class="p">,</span><span class="w"> </span><span class="nx">isKwirthAvailable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@jfvilas/plugin-kwirth-metrics'</span><span class="p">;</span>
+</code></pre></div>
+<p>Then, add a tab to your EntityPage (the 'if' is optional, you can keep the 'KwirthMetrics' tab always visible if you prefer to do it that way).</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Note: Add to any other Pages as well (e.g. defaultEntityPage or webSiteEntityPage, for example)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">serviceEntityPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="p">&lt;</span><span class="nt">EntityLayout</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">{</span><span class="cm">/* other tabs... */</span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">EntityLayout</span><span class="p">.</span><span class="na">Route</span><span class="w"> </span><span class="na">if</span><span class="o">=</span><span class="p">{</span><span class="nx">isKwirthAvailable</span><span class="p">}</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s">"/kwirthmetrics"</span><span class="w"> </span><span class="na">title</span><span class="o">=</span><span class="s">"KwirthMetrics"</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">EntityKwirthMetricsContent</span><span class="w"> </span><span class="na">allMetrics</span><span class="o">=</span><span class="p">{</span><span class="kc">true</span><span class="p">}</span><span class="w"> </span><span class="na">enableRestart</span><span class="o">=</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">EntityLayout</span><span class="p">.</span><span class="na">Route</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">EntityLayout</span><span class="p">&gt;</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>You can setup some default <em>viewing</em> options on the <code>EntityKwirthMetricsContent</code> component, so, when the entity loads the default options will be set. These options are:
+    - <code>depth</code>
+    - <code>width</code>
+    - <code>interval</code>
+    - <code>chart</code>
+(The meaning of these properties are explained at the end of this document)</p>
+<p>If you want to setup a long-running histogram as a default chart for your entities you should setup your entity page like this:</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="p">&lt;</span><span class="nt">EntityLayout</span><span class="p">.</span><span class="na">Route</span><span class="w"> </span><span class="na">if</span><span class="o">=</span><span class="p">{</span><span class="nx">isKwirthAvailable</span><span class="p">}</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s">"/kwirthmetrics"</span><span class="w"> </span><span class="na">title</span><span class="o">=</span><span class="s">"KwirthMetrics"</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">EntityKwirthMetricsContent</span><span class="w"> </span><span class="na">allMetrics</span><span class="o">=</span><span class="p">{</span><span class="kc">true</span><span class="p">}</span><span class="w"> </span><span class="na">enableRestart</span><span class="o">=</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span><span class="w"> </span><span class="na">depth</span><span class="o">=</span><span class="p">{</span><span class="mf">100</span><span class="p">}</span><span class="w"> </span><span class="na">chart</span><span class="o">=</span><span class="p">{</span><span class="s1">'bar'</span><span class="p">}/&gt;</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">EntityLayout</span><span class="p">.</span><span class="na">Route</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">...</span>
+</code></pre></div>
+<p>You can also set some behaviour options for the plugin:
+  - <code>hideVersion</code> (optional <code>boolean</code>) if set to <code>true</code>, version information updates will not be shown.
+  - <code>excludeContainers</code> (optional <code>string[]</code>), an array of container names that will be excluded from visualization. For example, if you have pods that include sidecars, you can exclude sidecard log messages using this property. What follows is an example on how to use these properties:
+  - <code>defaultMetrics</code> (optional <code>boolean</code>) if set to <code>true</code>, version information updates will not be shown.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="p">&lt;</span><span class="nt">EntityLayout</span><span class="p">.</span><span class="na">Route</span><span class="w"> </span><span class="na">if</span><span class="o">=</span><span class="p">{</span><span class="nx">isKwirthAvailable</span><span class="p">}</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s">"/kwirthlog"</span><span class="w"> </span><span class="na">title</span><span class="o">=</span><span class="s">"KwirthLog"</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">EntityKwirthLogContent</span><span class="w"> </span><span class="na">hideVersion</span><span class="w"> </span><span class="na">excludeContainers</span><span class="o">=</span><span class="p">{[</span><span class="s1">'istio-proxy'</span><span class="p">,</span><span class="w"> </span><span class="s1">'nginx'</span><span class="p">]}</span><span class="w"> </span><span class="na">defaultMetrics</span><span class="o">=</span><span class="p">{[</span><span class="s1">'kwirth_container_cpu_percentage'</span><span class="p">,</span><span class="w"> </span><span class="s1">'kwirth_container_memory_percentage'</span><span class="p">]}</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">EntityLayout</span><span class="p">.</span><span class="na">Route</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">...</span>
+</code></pre></div>
+<h6>2. Label your catalog-info</h6>
+<p>Use one of these startegies:</p>
+<ul>
+<li>
+<p><strong>Strategy 1: one-to-one</strong>. Add <code>backstage.io/kubernetes-id</code> annotation to your <code>catalog-info.yaml</code> for the entities deployed to Kubernetes you want to work with on Backstage. This is the same annotation that the Kubernetes core plugin uses, so, maybe you already have added it to your components. Exmaple:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">backstage.io/kubernetes-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">entity001</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Strategy 2: use selectors</strong>. Add <code>backstage.io/kubernetes-label-selector</code> annotation to your <code>catalog-info.yaml</code> for the entities you want to work with. This is the same annotation that the Kubernetes core plugin uses, so, maybe you already have added it to your components. The label selector value follows Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/" rel="noopener noreferrer">label selector semantics</a>. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">backstage.io/kubernetes-id</span><span class="p">:</span><span class="w"> </span><span class="s">'app=core,artifact=backend'</span>
+</code></pre></div>
+</li>
+</ul>
+<ol start="3">
+<li>Add proper <strong>labels</strong> to your Kubernetes objects so Backstage can <em>link</em> forward and backward the Backstage entities with the Kubernetes objects. To do this, you need to add <code>labels</code> to your Kubernetes YAML objects (please, don't get confused: <strong>annotations in Backstage YAML, labels in Kubernetes YAML</strong>).</li>
+</ol>
+<ul>
+<li>
+<p><strong><em>VERY IMPORTANT NOTE:</em></strong> If you opted for using label selectors <strong>you have nothing new to add to your pods</strong>.</p>
+</li>
+<li>
+<p>If you use labels (no label selectors), please note that the kubernetes-id label is <strong>on the deployment</strong> and on the <strong>spec pod template</strong> also. This is an example of a typical Kubernetes deployment with the required label:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ijkl</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">backstage.io/kubernetes-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ijkl</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ijkl</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">'ijkl-pod'</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ijkl</span>
+<span class="w">        </span><span class="nt">backstage.io/kubernetes-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ijkl</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ijkl</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-OCI-image</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w">    </span>
+</code></pre></div>
+</li>
+</ul>
+<h4>Ready, set, go!</h4>
+<p>If you performed all these steps you would see a 'KwirthMetrics' tab in your <strong>Entity Page</strong>, like this one:</p>
+<p><img alt="kwirthmetrics-tab" src="https://raw.githubusercontent.com/jfvilas/plugin-kwirth-metrics/master/images/kwirthmetrics-tab.png"></p>
+<p>When you access the tab, if you have not yet tagged your entities you would see a message like this one explaning how to do that:</p>
+<p><img alt="kwirthmetrics-notfound" src="https://raw.githubusercontent.com/jfvilas/plugin-kwirth-metrics/master/images/kwirthmetrics-notfound.png"></p>
+<p>Once you tag your entities and your Kubernetes objects, you should see something similar to this:</p>
+<p><img alt="kwirthmetrics-available" src="https://raw.githubusercontent.com/jfvilas/plugin-kwirth-metrics/master/images/kwirthmetrics-available.png"></p>
+<p>KwirthMetrics is ready to show your favourite charts!!</p>
+<p>Just <em>select the cluster</em> on the cluster card and eventually set the <em>options</em> you want for the charts (we will explain them later). On the new card that will appear on right, you will see all the Kubernetes namespaces available and a control section (restart, play, pause and stop). <em>Select a namespace</em>, <em>click PLAY</em> button and your charts will start to show <strong>in real-time</strong>.</p>
+<p><img alt="kwirthmetrics-running" src="https://raw.githubusercontent.com/jfvilas/plugin-kwirth-metrics/master/images/kwirthmetrics-running.png"></p>
+<p>Feel free to open issues and ask for more features.</p>
+<h4>Status information</h4>
+<p>When the metrics stream starts, and all along the life of the stream (until it gets stopped or the window is closed), you will receive status information regarding the pods and containers you are watching. This status information is shown on the top of the card (just at the immediate right of the cluster name) including 3 kinds of information:</p>
+<ul>
+<li>Info. Information regarding pod management at Kubernetes cluster level (new pod, pod ended or pod modified).</li>
+<li>Warning. Warnings related to the metrics stream.</li>
+<li>Error. If there is an error in the stream, like invalid key use, or erroneous pod tagging, errors will be shown here.</li>
+</ul>
+<p>The icons will light up in its corresponding color when a new event takes place.</p>
+<p>This is how it feels:</p>
+<p><img alt="status info" src="https://raw.githubusercontent.com/jfvilas/plugin-kwirth-metrics/master/images/kwirthmetrics-status.png"></p>
+<h4>Restarting pods</h4>
+<p>If your Backstage administrator has configured <strong>Restarting</strong> permissions and you are permitted, you would see a "Restart Pod" button just on the left of the "Play" button.</p>
+<p><img alt="restart-pod" src="https://raw.githubusercontent.com/jfvilas/plugin-kwirth-metrics/master/images/kwirthmetrics-restart-pod.png"></p>
+<p>When you are not allowed to restart a pod, you can see the icon but you cannot click it. Conversely, if you are allowed, you can click the button and the pod (in the <em>namespace you have selected</em>) will be restarted.</p>
+<p>Please take into account that you may be allowed in one namespace but not in another one, or you may be allowed to restart pods on a cluster but not on another one. The restart icon will be enabled or disabled according to your pod, namespace and cluster permissions.</p>
+<p>Please rememebr, "Pod restarting" is an optional feature that must be configured in two different points:
+  - At the app-config YAML, enabling/disabling the feature and adding restrictions (pod, namespace, cluster...)
+  - At the EntityPage, adding a property to KwithMetrics component that enables or disables restarting. If restarting is disabled on front component, the restarting icon will not appear.</p>
+<p>Let's see an example.</p>
+<h5>Enable restaring on Backstage front</h5>
+<p>You must edit the EntityPage page and modify your EntityKwirthMetricsContent for adding the "enableRestart" property as shown in following example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Note: Add to any other Pages as well (e.g. defaultEntityPage or webSiteEntityPage, for example)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">serviceEntityPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="p">&lt;</span><span class="nt">EntityLayout</span><span class="p">&gt;</span>
+
+<span class="w">    </span><span class="p">{</span><span class="cm">/* other tabs... */</span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">EntityLayout</span><span class="p">.</span><span class="na">Route</span><span class="w"> </span><span class="na">if</span><span class="o">=</span><span class="p">{</span><span class="nx">isKwirthAvailable</span><span class="p">}</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s">"/kwirthmetrics"</span><span class="w"> </span><span class="na">title</span><span class="o">=</span><span class="s">"KwirthMetrics"</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">EntityKwirthMetricsContent</span><span class="w"> </span><span class="na">enableRestart</span><span class="o">=</span><span class="p">{</span><span class="kc">true</span><span class="p">}/&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">EntityLayout</span><span class="p">.</span><span class="na">Route</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">EntityLayout</span><span class="p">&gt;</span>
+<span class="p">)</span>
+</code></pre></div>
+<h5>Enable restart on Backend</h5>
+<p>Restarting capabilities are always present in Backstage Kwirth Backend plugin, but they must be enabled (and permsssioned if needed) by tailoring your app-config file. Object restarting permissions works exactly the same as metrics-streaming or log-viewing permissions (namespace permission, pod permissions, and a set of allow/deny/except/unless rules). The only difference is the specific part of the app-config where restarting permissions must be set.</p>
+<p>The following example shows a simple sample containing:
+  - Metrics streaming permissions for charting in all namespaces for all users.
+  - Pod restarting permissions enabled only for admins in 'production' namespace.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">serviceLocatorMethod</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'multiTenant'</span>
+<span class="w">  </span><span class="nt">clusterLocatorMethods</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'config'</span>
+<span class="w">      </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Customer D (Kwirth Local)</span>
+<span class="w">          </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">'k3s'</span>
+<span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://host.docker.internal:64506</span>
+<span class="w">          </span><span class="nt">kwirthHome</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost/kwirth</span>
+<span class="w">          </span><span class="nt">kwirthApiKey</span><span class="p">:</span><span class="w"> </span><span class="s">'144892e3-aa8d-4b15-a5ab-fd3789721ebe|permanent|cluster::::'</span>
+<span class="w">          </span><span class="nt">kwirthmetrics</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">namespacePermissions</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">podPermissions</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">kwirthops</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">namespacePermissions</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">production</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'group:default/administrators'</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>As you can see:
+  - There are no namespace nor pod restrictions for streaming metrics data ('kwirthmetrics' section)
+  - Operations permissions ('ops' channel, 'kwirthops' section) is restricted to group 'administrators' fro namespace 'production', and is free for the rest of users and goups.</p>
+<h4>Chart options</h4>
+<p>The charting system implemented in KwirthMetrics has some configuration options whose meaning is explained below.</p>
+<h5>Width</h5>
+<p>Set the number of charts you want to be shown on each line. If you have selected more than one asset (pod, container...), each asset will start showing charts on a new line, so KwirthMetrics will adjust each asset's charts to end on a whole line. For example, let's suppose you select 2 pods and select 4 metrics for each pod:</p>
+<ul>
+<li>If you set width to 4, you will see two lines, each line containing 4 charts (one for each metric), each line showing charts for each pod.</li>
+<li>If you set width to 3, you will see 4 lines:<ul>
+<li>First line will contain first 3 metrics of first pod.</li>
+<li>Second line will show the last metric of firt pod.</li>
+<li>Third line will contain first 3 metrics of second pod.</li>
+<li>Fourth line will contain last metric of second pod.</li>
+</ul>
+</li>
+<li>If you set width to a number larger than the number of selected metrics it will have no impact: the number of charts per line will be the number of selected metrics.</li>
+</ul>
+<h5>Interval</h5>
+<p>Number of seconds between samples. Take into account that this interval is not the real cluster metrics smple rate, which must be set inside Kwirth core for each cluster.</p>
+<h5>Depth</h5>
+<p>Number of values to hold on screen.</p>
+<h5>Chart</h5>
+<p>Select the cart type to use:
+  - Value chart, shows a number with the last read value.
+  - Line chart, shows a line chart with 'depth' values.
+  - Area chart, shows an area chart with 'depth' values.
+  - Bar chart, shows a bar chart chart with 'depth' values.</p>
+<h5>Aggregate / Merge / Stack</h5>
+<p>When you select more than one asset, <strong>and the chart type is set to Bar or Area</strong>, you can decide how to manage metrics that come from different sources:</p>
+<ul>
+<li><strong>Aggregte</strong>, values of different sources will be added up, no matter the chart type you've selected.</li>
+<li><strong>Merge</strong>, values of differnte sources (same metric but different source object) will be shonw in the same chart.</li>
+<li><strong>Stack</strong>, if you've selected 'merge', you can decide to show stacked original values, or just show a sum of all the values on each sample.</li>
+</ul>
+<p>Please check the examples below to understand how each one of these will behave:</p>
+<p><strong>Aggregate</strong>
+<img alt="kwirthmetrics-aggregate" src="https://raw.githubusercontent.com/jfvilas/plugin-kwirth-metrics/master/images/kwirthmetrics-aggregate.png"></p>
+<p><strong>Merge</strong>
+<img alt="kwirthmetrics-merge" src="https://raw.githubusercontent.com/jfvilas/plugin-kwirth-metrics/master/images/kwirthmetrics-merge.png"></p>
+<p><strong>Merge and Stack</strong>
+<img alt="kwirthmetrics-merge-stack" src="https://raw.githubusercontent.com/jfvilas/plugin-kwirth-metrics/master/images/kwirthmetrics-merge-stack.png"></p>
+</section>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../javascripts/catalog.js"></script>
+      
+    
+  </body>
+</html>

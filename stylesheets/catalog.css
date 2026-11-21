@@ -1,0 +1,159 @@
+.catalog-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 1rem 0 0.5rem;
+}
+
+.catalog-controls input[type="search"] {
+  flex: 1 1 16rem;
+}
+
+.catalog-controls input[type="search"],
+.catalog-controls select {
+  padding: 0.4rem 0.6rem;
+  font: inherit;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.2rem;
+}
+
+.catalog-toggle {
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.md-typeset .catalog-count {
+  margin: 0.5rem 0;
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 0.8rem;
+}
+
+.md-typeset a.catalog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.8rem;
+  color: var(--md-default-fg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.3rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.md-typeset a.catalog-card:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: var(--md-shadow-z2);
+}
+
+.catalog-card--flagged {
+  opacity: 0.7;
+}
+
+.catalog-card__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.catalog-card__name {
+  font-weight: 700;
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.catalog-card__version,
+.catalog-card__stat {
+  font-size: 0.65rem;
+  color: var(--md-default-fg-color--light);
+  white-space: nowrap;
+}
+
+.md-typeset .catalog-card__desc {
+  flex: 1;
+  margin: 0;
+  font-size: 0.7rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.catalog-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.catalog-chip {
+  padding: 0.05rem 0.4rem;
+  font-size: 0.6rem;
+  border-radius: 1rem;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+.catalog-chip--danger {
+  background: #c62828;
+  color: #fff;
+}
+
+.catalog-chip--warn {
+  background: #ef6c00;
+  color: #fff;
+}
+
+.catalog-more {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.catalog-sentinel {
+  height: 1px;
+}
+
+.catalog-spinner {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 0.2rem solid var(--md-default-fg-color--lightest);
+  border-top-color: var(--md-accent-fg-color);
+  border-radius: 50%;
+  animation: catalog-spin 0.8s linear infinite;
+}
+
+#catalog > .catalog-spinner {
+  display: block;
+  margin: 2rem auto;
+}
+
+/* Material's .md-button sets display, which would override the hidden attribute. */
+#catalog [hidden] {
+  display: none !important;
+}
+
+@keyframes catalog-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catalog-spinner {
+    animation-duration: 2.4s;
+  }
+}
+
+.md-typeset .catalog-error {
+  color: var(--md-default-fg-color--light);
+}
