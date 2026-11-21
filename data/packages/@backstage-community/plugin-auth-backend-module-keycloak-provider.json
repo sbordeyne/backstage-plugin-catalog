@@ -12,13 +12,17 @@
   "name": "@backstage-community/plugin-auth-backend-module-keycloak-provider",
   "plugin_id": "auth",
   "readme": "",
-  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/keycloak/plugins/auth-backend-module-keycloak",
+  "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/keycloak/plugins/auth-backend-module-keycloak-provider",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-09-16T12:15:49.486Z",
-  "version": "0.6.0",
-  "version_count": 8,
+  "updated": "2026-11-20T13:18:39.734Z",
+  "version": "0.6.1",
+  "version_count": 9,
   "versions": [
+    {
+      "date": "2026-11-20T13:18:39.734Z",
+      "version": "0.6.1"
+    },
     {
       "date": "2026-09-16T12:15:49.486Z",
       "version": "0.6.0"

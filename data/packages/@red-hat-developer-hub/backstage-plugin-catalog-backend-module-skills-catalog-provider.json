@@ -20,10 +20,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/ai-integrations/plugins/catalog-backend-module-skills-catalog-provider",
   "role": "backend-plugin-module",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-10-26T14:16:24.835Z",
-  "version": "1.1.0",
-  "version_count": 7,
+  "updated": "2026-11-20T17:21:08.434Z",
+  "version": "1.2.0",
+  "version_count": 8,
   "versions": [
+    {
+      "date": "2026-11-20T17:21:08.434Z",
+      "version": "1.2.0"
+    },
     {
       "date": "2026-10-26T14:16:24.835Z",
       "version": "1.1.0"

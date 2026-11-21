@@ -25,10 +25,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/theme/plugins/theme",
   "role": "frontend-plugin",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-11-04T05:11:50.927Z",
-  "version": "1.5.1",
-  "version_count": 60,
+  "updated": "2026-11-20T17:06:25.080Z",
+  "version": "1.5.2",
+  "version_count": 61,
   "versions": [
+    {
+      "date": "2026-11-20T17:06:25.080Z",
+      "version": "1.5.2"
+    },
     {
       "date": "2026-11-04T05:11:50.927Z",
       "version": "1.5.1"
@@ -84,10 +88,6 @@
     {
       "date": "2026-07-22T22:16:26.189Z",
       "version": "0.15.0"
-    },
-    {
-      "date": "2026-07-17T19:49:44.220Z",
-      "version": "0.14.11"
     }
   ]
 }

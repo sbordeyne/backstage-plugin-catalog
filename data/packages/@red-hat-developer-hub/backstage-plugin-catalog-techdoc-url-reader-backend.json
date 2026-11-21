@@ -20,10 +20,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/ai-integrations/plugins/catalog-techdoc-url-reader-backend",
   "role": "backend-plugin",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-11-04T14:52:45.494Z",
-  "version": "0.8.1",
-  "version_count": 10,
+  "updated": "2026-11-20T17:20:27.675Z",
+  "version": "0.9.0",
+  "version_count": 11,
   "versions": [
+    {
+      "date": "2026-11-20T17:20:27.675Z",
+      "version": "0.9.0"
+    },
     {
       "date": "2026-11-04T14:52:45.494Z",
       "version": "0.8.1"

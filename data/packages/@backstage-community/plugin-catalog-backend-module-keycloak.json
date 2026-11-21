@@ -23,10 +23,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/keycloak/plugins/catalog-backend-module-keycloak",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-09-17T12:54:44.542Z",
-  "version": "3.23.1",
-  "version_count": 47,
+  "updated": "2026-11-20T13:19:00.854Z",
+  "version": "3.24.0",
+  "version_count": 48,
   "versions": [
+    {
+      "date": "2026-11-20T13:19:00.854Z",
+      "version": "3.24.0"
+    },
     {
       "date": "2026-09-17T12:54:44.542Z",
       "version": "3.23.1"
@@ -82,10 +86,6 @@
     {
       "date": "2026-02-12T10:05:12.348Z",
       "version": "3.17.1"
-    },
-    {
-      "date": "2026-02-06T15:49:50.702Z",
-      "version": "3.17.0"
     }
   ]
 }

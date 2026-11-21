@@ -26,10 +26,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/boost/plugins/ai-catalog",
   "role": "frontend-plugin",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-11-17T14:46:22.439Z",
-  "version": "1.2.2",
-  "version_count": 7,
+  "updated": "2026-11-20T17:31:53.675Z",
+  "version": "1.2.3",
+  "version_count": 8,
   "versions": [
+    {
+      "date": "2026-11-20T17:31:53.675Z",
+      "version": "1.2.3"
+    },
     {
       "date": "2026-11-17T14:46:22.439Z",
       "version": "1.2.2"

@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/graphiql/plugins/graphiql",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:32:18.539Z",
-  "version": "0.22.0",
-  "version_count": 26,
+  "updated": "2026-11-20T21:06:41.656Z",
+  "version": "0.22.1",
+  "version_count": 27,
   "versions": [
+    {
+      "date": "2026-11-20T21:06:41.656Z",
+      "version": "0.22.1"
+    },
     {
       "date": "2026-11-03T14:32:18.539Z",
       "version": "0.22.0"
@@ -76,10 +80,6 @@
     {
       "date": "2025-11-27T17:09:51.584Z",
       "version": "0.10.0"
-    },
-    {
-      "date": "2025-11-17T15:36:42.418Z",
-      "version": "0.9.1"
     }
   ]
 }

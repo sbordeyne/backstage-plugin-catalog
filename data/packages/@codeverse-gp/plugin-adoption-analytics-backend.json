@@ -21,10 +21,14 @@
   "repository": "https://github.com/CodeVerse-GP/adoption-analytics/tree/HEAD/plugins/adoption-analytics-backend",
   "role": "backend-plugin",
   "scope": "@codeverse-gp",
-  "updated": "2026-11-03T02:44:39.113Z",
-  "version": "1.1.1",
-  "version_count": 3,
+  "updated": "2026-11-20T15:16:02.258Z",
+  "version": "1.1.2",
+  "version_count": 4,
   "versions": [
+    {
+      "date": "2026-11-20T15:16:02.258Z",
+      "version": "1.1.2"
+    },
     {
       "date": "2026-11-03T02:44:39.113Z",
       "version": "1.1.1"

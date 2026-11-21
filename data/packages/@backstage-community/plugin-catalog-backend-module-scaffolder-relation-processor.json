@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/scaffolder-relation-processor/plugins/catalog-backend-module-scaffolder-relation-processor",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-09-11T12:31:20.614Z",
-  "version": "2.17.1",
-  "version_count": 37,
+  "updated": "2026-11-20T13:53:07.644Z",
+  "version": "2.17.2",
+  "version_count": 38,
   "versions": [
+    {
+      "date": "2026-11-20T13:53:07.644Z",
+      "version": "2.17.2"
+    },
     {
       "date": "2026-09-11T12:31:20.614Z",
       "version": "2.17.1"
@@ -74,10 +78,6 @@
     {
       "date": "2025-09-17T12:15:13.540Z",
       "version": "2.7.0"
-    },
-    {
-      "date": "2025-09-05T10:30:12.631Z",
-      "version": "2.6.1"
     }
   ]
 }

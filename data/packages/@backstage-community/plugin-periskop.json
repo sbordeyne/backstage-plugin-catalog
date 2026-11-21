@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/periskop/plugins/periskop",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-10-31T16:39:28.371Z",
-  "version": "0.23.0",
-  "version_count": 29,
+  "updated": "2026-11-20T21:08:55.578Z",
+  "version": "0.23.1",
+  "version_count": 30,
   "versions": [
+    {
+      "date": "2026-11-20T21:08:55.578Z",
+      "version": "0.23.1"
+    },
     {
       "date": "2026-10-31T16:39:28.371Z",
       "version": "0.23.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-08-30T14:22:44.095Z",
       "version": "0.10.0"
-    },
-    {
-      "date": "2025-07-24T12:16:40.219Z",
-      "version": "0.9.0"
     }
   ]
 }

@@ -20,10 +20,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/extensions/plugins/catalog-backend-module-extensions",
   "role": "backend-plugin-module",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-11-06T11:40:53.876Z",
-  "version": "1.1.2",
-  "version_count": 24,
+  "updated": "2026-11-20T17:05:11.511Z",
+  "version": "1.2.0",
+  "version_count": 25,
   "versions": [
+    {
+      "date": "2026-11-20T17:05:11.511Z",
+      "version": "1.2.0"
+    },
     {
       "date": "2026-11-06T11:40:53.876Z",
       "version": "1.1.2"
@@ -79,10 +83,6 @@
     {
       "date": "2026-05-08T14:32:32.336Z",
       "version": "0.17.1"
-    },
-    {
-      "date": "2026-05-06T13:07:12.268Z",
-      "version": "0.17.0"
     }
   ]
 }

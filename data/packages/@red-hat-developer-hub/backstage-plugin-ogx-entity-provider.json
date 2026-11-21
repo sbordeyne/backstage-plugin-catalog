@@ -20,10 +20,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/boost/plugins/ogx-entity-provider",
   "role": "backend-plugin-module",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-11-11T18:15:30.939Z",
-  "version": "1.2.1",
-  "version_count": 13,
+  "updated": "2026-11-20T16:57:05.416Z",
+  "version": "1.2.2",
+  "version_count": 14,
   "versions": [
+    {
+      "date": "2026-11-20T16:57:05.416Z",
+      "version": "1.2.2"
+    },
     {
       "date": "2026-11-11T18:15:30.939Z",
       "version": "1.2.1"
