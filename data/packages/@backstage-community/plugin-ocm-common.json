@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/ocm/plugins/ocm-common",
   "role": "common-library",
   "scope": "@backstage-community",
-  "updated": "2026-09-23T16:32:09.426Z",
-  "version": "5.22.0",
-  "version_count": 29,
+  "updated": "2026-11-21T23:54:58.301Z",
+  "version": "5.22.1",
+  "version_count": 30,
   "versions": [
+    {
+      "date": "2026-11-21T23:54:58.301Z",
+      "version": "5.22.1"
+    },
     {
       "date": "2026-09-23T16:32:09.426Z",
       "version": "5.22.0"
@@ -77,10 +81,6 @@
     {
       "date": "2025-12-19T13:18:59.187Z",
       "version": "3.15.0"
-    },
-    {
-      "date": "2025-11-03T10:20:16.414Z",
-      "version": "3.14.0"
     }
   ]
 }

@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/ocm/plugins/ocm",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-09-23T16:32:45.271Z",
-  "version": "5.22.0",
-  "version_count": 37,
+  "updated": "2026-11-21T23:53:48.613Z",
+  "version": "5.22.1",
+  "version_count": 38,
   "versions": [
+    {
+      "date": "2026-11-21T23:53:48.613Z",
+      "version": "5.22.1"
+    },
     {
       "date": "2026-09-23T16:32:45.271Z",
       "version": "5.22.0"
@@ -77,10 +81,6 @@
     {
       "date": "2025-12-19T20:00:51.469Z",
       "version": "5.11.1"
-    },
-    {
-      "date": "2025-12-19T13:18:49.210Z",
-      "version": "5.11.0"
     }
   ]
 }

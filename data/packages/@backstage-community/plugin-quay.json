@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/quay/plugins/quay",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-09-29T10:00:55.042Z",
-  "version": "1.38.3",
-  "version_count": 49,
+  "updated": "2026-11-21T23:47:59.436Z",
+  "version": "1.39.0",
+  "version_count": 50,
   "versions": [
+    {
+      "date": "2026-11-21T23:47:59.436Z",
+      "version": "1.39.0"
+    },
     {
       "date": "2026-09-29T10:00:55.042Z",
       "version": "1.38.3"
@@ -77,10 +81,6 @@
     {
       "date": "2026-03-15T20:47:41.385Z",
       "version": "1.31.2"
-    },
-    {
-      "date": "2026-03-10T21:45:32.154Z",
-      "version": "1.31.1"
     }
   ]
 }

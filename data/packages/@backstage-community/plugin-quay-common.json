@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/quay/plugins/quay-common",
   "role": "common-library",
   "scope": "@backstage-community",
-  "updated": "2026-09-15T00:01:06.672Z",
-  "version": "1.23.1",
-  "version_count": 31,
+  "updated": "2026-11-21T23:48:08.172Z",
+  "version": "1.24.0",
+  "version_count": 32,
   "versions": [
+    {
+      "date": "2026-11-21T23:48:08.172Z",
+      "version": "1.24.0"
+    },
     {
       "date": "2026-09-15T00:01:06.672Z",
       "version": "1.23.1"
@@ -77,10 +81,6 @@
     {
       "date": "2025-12-12T23:44:49.728Z",
       "version": "1.14.0"
-    },
-    {
-      "date": "2025-10-29T11:32:35.498Z",
-      "version": "1.13.0"
     }
   ]
 }
