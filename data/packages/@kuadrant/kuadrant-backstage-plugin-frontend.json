@@ -18,10 +18,14 @@
   "repository": "https://github.com/Kuadrant/kuadrant-backstage-plugin/tree/HEAD/plugins/kuadrant",
   "role": "frontend-plugin",
   "scope": "@kuadrant",
-  "updated": "2026-09-24T14:58:19.333Z",
-  "version": "0.5.0",
-  "version_count": 79,
+  "updated": "2026-11-23T17:39:16.154Z",
+  "version": "0.5.1",
+  "version_count": 80,
   "versions": [
+    {
+      "date": "2026-11-23T17:39:16.154Z",
+      "version": "0.5.1"
+    },
     {
       "date": "2026-09-24T14:58:19.333Z",
       "version": "0.5.0"
@@ -77,10 +81,6 @@
     {
       "date": "2026-02-12T17:14:28.971Z",
       "version": "0.0.2-dev-8189c1c"
-    },
-    {
-      "date": "2026-02-12T15:54:59.351Z",
-      "version": "0.0.2-dev-9be93a3"
     }
   ]
 }

@@ -20,10 +20,14 @@
   "repository": "",
   "role": "frontend-plugin",
   "scope": "@drodil",
-  "updated": "2026-09-01T06:44:45.645Z",
-  "version": "2.1.1",
-  "version_count": 78,
+  "updated": "2026-11-23T10:25:06.813Z",
+  "version": "2.2.0",
+  "version_count": 79,
   "versions": [
+    {
+      "date": "2026-11-23T10:25:06.813Z",
+      "version": "2.2.0"
+    },
     {
       "date": "2026-09-01T06:44:45.645Z",
       "version": "2.1.1"
@@ -79,10 +83,6 @@
     {
       "date": "2025-10-15T08:24:24.938Z",
       "version": "1.33.4"
-    },
-    {
-      "date": "2025-10-15T07:18:35.307Z",
-      "version": "1.33.3"
     }
   ]
 }

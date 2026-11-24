@@ -1,0 +1,38 @@
+{
+  "author": "Moataz Nabil",
+  "created": "2026-11-23T08:53:20.124Z",
+  "deprecated": "",
+  "description": "",
+  "homepage": "https://github.com/moatazeldebsy/claude-metrics-viewer/tree/main/backstage#readme",
+  "keywords": [
+    "anthropic",
+    "backend-plugin",
+    "backstage",
+    "backstage-plugin",
+    "claude",
+    "claude-code"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    "moatazeldebsy"
+  ],
+  "name": "@moatazeldebsy/backstage-plugin-claude-metrics-backend",
+  "plugin_id": "claude-metrics",
+  "readme": "",
+  "repository": "https://github.com/moatazeldebsy/claude-metrics-viewer/tree/HEAD/backstage/plugins/claude-metrics-backend",
+  "role": "backend-plugin",
+  "scope": "@moatazeldebsy",
+  "updated": "2026-11-23T08:55:58.249Z",
+  "version": "0.1.0",
+  "version_count": 2,
+  "versions": [
+    {
+      "date": "2026-11-23T08:55:58.249Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-11-23T08:53:20.124Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

@@ -20,10 +20,14 @@
   "repository": "https://github.com/marble-sh/backstage-plugins-grafana/tree/HEAD/plugins/catalog-backend-module-grafana",
   "role": "backend-plugin-module",
   "scope": "@marble-sh",
-  "updated": "2026-09-24T21:58:06.989Z",
-  "version": "1.2.2",
-  "version_count": 8,
+  "updated": "2026-11-23T21:38:35.077Z",
+  "version": "1.2.3",
+  "version_count": 9,
   "versions": [
+    {
+      "date": "2026-11-23T21:38:35.077Z",
+      "version": "1.2.3"
+    },
     {
       "date": "2026-09-24T21:58:06.989Z",
       "version": "1.2.2"

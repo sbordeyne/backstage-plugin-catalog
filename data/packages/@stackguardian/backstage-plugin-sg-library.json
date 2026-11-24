@@ -3,7 +3,7 @@
   "created": "2025-10-27T12:03:21.425Z",
   "deprecated": "",
   "description": "Welcome to the sg-library plugin!",
-  "homepage": "",
+  "homepage": "https://github.com/StackGuardian/sg-backstage-plugins#readme",
   "keywords": [],
   "license": "Apache-2.0",
   "maintainers": [
@@ -13,14 +13,22 @@
   ],
   "name": "@stackguardian/backstage-plugin-sg-library",
   "plugin_id": "sg-library",
-  "readme": "# Overview\n\nWelcome to the sg-library plugin!\n\nThis plugin can be used to deploy stacks and workflows using templates present on SG platform directly from backstage app.\n\n# Installation & Usage\n\n1. To install this plugin into your backstage app run following command at root of your project.\n\n```bash\nyarn --cwd packages/app add @stackguardian/backstage-plugin-sg-library\n```\n\n2. In order to use this plugin please update config.yaml to have following information.\n\n```yaml\nintegrations:\n  stackguardian:\n    organization: '' # StackGuardian Organization name\nbackend:\n  baseUrl: '' # Backstage Backend URL\n  listen:\n    port: 7007\nproxy:\n  '/stackguardian':\n    target: 'https://api.app.stackguardian.io/api/v1'\n    headers:\n      Authorization: 'apikey {SG_API_KEY}'\n    allowedHeaders:\n      - x-sg-orgid\n    changeOrigin: true\n```\n\nSet SG_API_KEY env var by getting your API Key from StackGuardian platform. Please check our [docs](https://docs.stackguardian.io/docs/api/overview/#steps-to-generate-an-api-key) to view how to get API Token from stackguardian platform.\n\nNOTE - This plugin will use backstage proxy server to communicate to StackGuardian APIs (Mostly to avoid CORS error and to prevent exposing of API Key in the browser's network tab).\n\n\n3. Now you can import `SgLibraryPage` component from `@stackguardian/backstage-plugin-sg-library` and your APP will start showing SG Library plugin.\n\n# Screenshots\n\n![light-bg-1](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-1.png)\n\n![light-bg-2](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-2.png)\n\n![light-bg-3](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-3.png)\n\n![dark-bg-1](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-4.png)\n\n![dark-bg-2](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-5.png)\n\n![dark-bg-3](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-6.png)\n",
-  "repository": "",
+  "readme": "# Overview\n\nWelcome to the sg-library plugin!\n\nThis plugin can be used to deploy stacks and workflows using templates present on SG platform directly from backstage app.\n\n# Compatibility\n\n- Backstage `1.57` or later (legacy frontend system, `@backstage/core-plugin-api`)\n- React 17 or 18\n\n# Installation & Usage\n\n1. Add the plugin to your Backstage frontend package:\n\n```bash\n# Yarn 4 (Backstage default)\nyarn workspace app add @stackguardian/backstage-plugin-sg-library\n\n# Yarn 1\nyarn --cwd packages/app add @stackguardian/backstage-plugin-sg-library\n```\n\n2. Configure the StackGuardian organization and the backend proxy in `app-config.yaml`:\n\n```yaml\nintegrations:\n  stackguardian:\n    organization: ${SG_ORG} # StackGuardian organization name\n\nproxy:\n  endpoints:\n    '/stackguardian':\n      target: https://api.app.stackguardian.io/api/v1\n      headers:\n        Authorization: apikey ${SG_API_KEY}\n      allowedHeaders:\n        - x-sg-orgid\n      changeOrigin: true\n```\n\n**Regions:** set `target` to your organization's region. The plugin links to the matching dashboard automatically:\n\n| Region | `target`                                     | Dashboard                           |\n| ------ | -------------------------------------------- | ----------------------------------- |\n| EU     | `https://api.app.stackguardian.io/api/v1`    | `https://app.stackguardian.io/`     |\n| US     | `https://api.us.stackguardian.io/api/v1`     | `https://us.stackguardian.io/`      |\n\nFor other API hosts, set `integrations.stackguardian.dashboardUrl`. The plugin's config schema exposes only the proxy `target` URL to the frontend. Headers such as the API key stay on the backend.\n\nSet `SG_ORG` and `SG_API_KEY` in the backend's environment. See the [StackGuardian docs](https://docs.stackguardian.io/docs/api/overview/#steps-to-generate-an-api-key) to create an API key.\n\nThe plugin calls StackGuardian through the Backstage proxy (`@backstage/plugin-proxy-backend`), so the API key stays on the server and the browser doesn't hit CORS errors.\n\n3. Mount `SgLibraryPage`, either as a page route in `packages/app/src/App.tsx`:\n\n```tsx\nimport { SgLibraryPage } from '@stackguardian/backstage-plugin-sg-library';\n\n<Route path=\"/sg-library\" element={<SgLibraryPage />} />;\n```\n\nor as an entity tab in `packages/app/src/components/catalog/EntityPage.tsx`:\n\n```tsx\n<EntityLayout.Route path=\"/sg-library\" title=\"SG Templates\">\n  <SgLibraryPage />\n</EntityLayout.Route>\n```\n\nTemplate cards have a copy-link button. The copied URL (`?templateId=...&templateType=...`) opens the deployment form for that template directly.\n\n# Screenshots\n\n![light-bg-1](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-1.png)\n\n![light-bg-2](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-2.png)\n\n![light-bg-3](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-3.png)\n\n![dark-bg-1](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-4.png)\n\n![dark-bg-2](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-5.png)\n\n![dark-bg-3](https://stack-guardian-branding.s3.eu-central-1.amazonaws.com/backstage-assets/backstage-6.png)\n",
+  "repository": "https://github.com/StackGuardian/sg-backstage-plugins/tree/HEAD/plugins/sg-library",
   "role": "frontend-plugin",
   "scope": "@stackguardian",
-  "updated": "2025-11-18T10:23:01.718Z",
-  "version": "0.1.2-beta.24",
-  "version_count": 28,
+  "updated": "2026-11-23T06:46:30.621Z",
+  "version": "1.0.0",
+  "version_count": 30,
   "versions": [
+    {
+      "date": "2026-11-23T06:46:30.621Z",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-11-19T19:51:21.621Z",
+      "version": "0.2.0-beta.0"
+    },
     {
       "date": "2025-11-18T10:23:01.718Z",
       "version": "0.1.2-beta.24"
@@ -72,14 +80,6 @@
     {
       "date": "2025-11-03T11:53:56.601Z",
       "version": "0.1.2-beta.12"
-    },
-    {
-      "date": "2025-10-31T08:42:24.656Z",
-      "version": "0.1.2-beta.11"
-    },
-    {
-      "date": "2025-10-30T08:01:53.299Z",
-      "version": "0.1.2-beta.10"
     }
   ]
 }

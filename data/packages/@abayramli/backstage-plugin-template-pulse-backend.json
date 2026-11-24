@@ -17,14 +17,22 @@
   ],
   "name": "@abayramli/backstage-plugin-template-pulse-backend",
   "plugin_id": "template-pulse",
-  "readme": "# Template Pulse backend\n\nAnalytics for Scaffolder runs, controlled by Backstage permissions.\n\nRequires Backstage's new backend system and Node.js 22 or 24.\n\n```sh\nyarn workspace backend add @abayramli/backstage-plugin-template-pulse-backend @abayramli/backstage-plugin-template-pulse-common\n```\n\nRegister it alongside your Scaffolder and permission backends:\n\n```ts\nbackend.add(import('@abayramli/backstage-plugin-template-pulse-backend'));\n```\n\nFollow the [installation guide](https://github.com/alibayramli/template-pulse#add-to-backstage) to enable permissions and choose who can view their own runs or runs across the organization. Team filters require organization access and use the catalog group's current direct members.\n\nBy default, the backend reads the latest 200 Scaffolder runs through its public API (`templatePulse.historySource: service`). Add the optional [database history module](https://github.com/alibayramli/template-pulse/tree/main/plugins/scaffolder-backend-module-template-pulse) and set `templatePulse.historySource: database` to include all runs still stored in Scaffolder's database.\n",
+  "readme": "# Template Pulse backend\n\nProvides template usage, success rates, and run times. Backstage permissions control who can view runs.\n\nRequires Backstage's new backend system and Node.js 22 or 24.\n\n```sh\nyarn workspace backend add @abayramli/backstage-plugin-template-pulse-backend @abayramli/backstage-plugin-template-pulse-common\n```\n\nAdd it alongside your Scaffolder and permission backends:\n\n```ts\nbackend.add(import('@abayramli/backstage-plugin-template-pulse-backend'));\n```\n\nFollow the [installation guide](https://github.com/alibayramli/template-pulse#add-to-backstage) to set permissions. Team filters use each group's current direct members and require `template-pulse.read-all`.\n\nBy default, it reads the latest 200 Scaffolder runs (`templatePulse.historySource: service`). For older saved runs, add the [database history module](https://github.com/alibayramli/template-pulse/tree/main/plugins/scaffolder-backend-module-template-pulse) and set `templatePulse.historySource: database`.\n\nLarge task logs can leave run times blank in service mode. If a search is too large or the service is busy, narrow the filters and try again.\n\nUpdate all Template Pulse packages together.\n",
   "repository": "https://github.com/alibayramli/template-pulse/tree/HEAD/plugins/template-pulse-backend",
   "role": "backend-plugin",
   "scope": "@abayramli",
-  "updated": "2026-11-14T10:48:15.834Z",
-  "version": "0.1.1",
-  "version_count": 3,
+  "updated": "2026-11-23T19:38:48.852Z",
+  "version": "0.1.3",
+  "version_count": 5,
   "versions": [
+    {
+      "date": "2026-11-23T19:38:48.852Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2026-11-23T19:10:47.854Z",
+      "version": "0.1.2"
+    },
     {
       "date": "2026-11-14T10:48:15.834Z",
       "version": "0.1.1"

@@ -17,14 +17,22 @@
   ],
   "name": "@abayramli/backstage-plugin-template-pulse",
   "plugin_id": "template-pulse",
-  "readme": "# Template Pulse frontend\n\nSee template usage, success rates, run times, and past runs at `/template-pulse`. Filter by date, template, user, or team, and share filtered views with **Copy link**.\n\nRequires Backstage's new frontend system, React 18, Node.js 22 or 24, and the Template Pulse backend.\n\n```sh\nyarn workspace app add @abayramli/backstage-plugin-template-pulse\n```\n\nAdd the plugin to your app's features and import the Backstage UI stylesheet once:\n\n```tsx\nimport '@backstage/ui/css/styles.css';\nimport { createApp } from '@backstage/frontend-defaults';\nimport templatePulse from '@abayramli/backstage-plugin-template-pulse';\n\ncreateApp({ features: [/* existing features, */ templatePulse] });\n```\n\nFollow the [installation guide](https://github.com/alibayramli/template-pulse#add-to-backstage) to register the backend and configure permissions for personal and organization analytics.\n\n[Live demo](https://alibayramli.github.io/template-pulse-demo/)\n",
+  "readme": "# Template Pulse frontend\n\nSee template usage, success rates, and run times at `/template-pulse`. Filter runs by date, template, user, or team. Use **Copy link** to share a view.\n\nRequires Backstage's new frontend system, React 18, Node.js 22 or 24, and the Template Pulse backend.\n\n```sh\nyarn workspace app add @abayramli/backstage-plugin-template-pulse\n```\n\nAdd the plugin to your app and import the Backstage UI stylesheet once:\n\n```tsx\nimport '@backstage/ui/css/styles.css';\nimport { createApp } from '@backstage/frontend-defaults';\nimport templatePulse from '@abayramli/backstage-plugin-template-pulse';\n\ncreateApp({ features: [/* existing features, */ templatePulse] });\n```\n\nFollow the [installation guide](https://github.com/alibayramli/template-pulse#add-to-backstage) to add the backend and choose who can view runs.\n\nUpdate all Template Pulse packages together. For older saved runs and searchable filters, add the [database history module](https://github.com/alibayramli/template-pulse/tree/main/plugins/scaffolder-backend-module-template-pulse).\n\n[Live demo](https://alibayramli.github.io/template-pulse-demo/)\n",
   "repository": "https://github.com/alibayramli/template-pulse/tree/HEAD/plugins/template-pulse",
   "role": "frontend-plugin",
   "scope": "@abayramli",
-  "updated": "2026-11-14T10:48:51.462Z",
-  "version": "0.1.1",
-  "version_count": 3,
+  "updated": "2026-11-23T19:36:00.206Z",
+  "version": "0.1.3",
+  "version_count": 5,
   "versions": [
+    {
+      "date": "2026-11-23T19:36:00.206Z",
+      "version": "0.1.3"
+    },
+    {
+      "date": "2026-11-23T19:11:43.629Z",
+      "version": "0.1.2"
+    },
     {
       "date": "2026-11-14T10:48:51.462Z",
       "version": "0.1.1"
