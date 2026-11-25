@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/azure-devops/plugins/scaffolder-backend-module-dotnet",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:19:58.778Z",
-  "version": "0.19.0",
-  "version_count": 20,
+  "updated": "2026-11-24T17:00:11.898Z",
+  "version": "0.20.0",
+  "version_count": 21,
   "versions": [
+    {
+      "date": "2026-11-24T17:00:11.898Z",
+      "version": "0.20.0"
+    },
     {
       "date": "2026-11-03T14:19:58.778Z",
       "version": "0.19.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-10-17T20:49:54.416Z",
       "version": "0.8.0"
-    },
-    {
-      "date": "2025-09-29T11:32:42.836Z",
-      "version": "0.7.0"
     }
   ]
 }

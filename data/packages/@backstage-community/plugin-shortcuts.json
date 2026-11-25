@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/shortcuts/plugins/shortcuts",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-10-31T16:39:26.260Z",
-  "version": "0.26.0",
-  "version_count": 34,
+  "updated": "2026-11-24T17:01:48.455Z",
+  "version": "0.27.0",
+  "version_count": 35,
   "versions": [
+    {
+      "date": "2026-11-24T17:01:48.455Z",
+      "version": "0.27.0"
+    },
     {
       "date": "2026-10-31T16:39:26.260Z",
       "version": "0.26.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-11-26T13:23:11.770Z",
       "version": "0.15.0"
-    },
-    {
-      "date": "2025-11-20T11:59:07.088Z",
-      "version": "0.14.1"
     }
   ]
 }

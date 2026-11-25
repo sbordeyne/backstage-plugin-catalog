@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/sonarqube/plugins/sonarqube-backend",
   "role": "backend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-04T08:44:11.964Z",
-  "version": "1.4.0",
-  "version_count": 32,
+  "updated": "2026-11-24T17:03:24.829Z",
+  "version": "1.5.0",
+  "version_count": 33,
   "versions": [
+    {
+      "date": "2026-11-24T17:03:24.829Z",
+      "version": "1.5.0"
+    },
     {
       "date": "2026-11-04T08:44:11.964Z",
       "version": "1.4.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-08-01T19:36:16.983Z",
       "version": "0.11.0"
-    },
-    {
-      "date": "2025-07-04T12:26:35.366Z",
-      "version": "0.10.0"
     }
   ]
 }

@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/catalog/plugins/catalog-backend-module-annotate-scm-slug",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:26:52.612Z",
-  "version": "0.8.0",
-  "version_count": 10,
+  "updated": "2026-11-24T16:59:36.502Z",
+  "version": "0.9.0",
+  "version_count": 11,
   "versions": [
+    {
+      "date": "2026-11-24T16:59:36.502Z",
+      "version": "0.9.0"
+    },
     {
       "date": "2026-11-03T14:26:52.612Z",
       "version": "0.8.0"

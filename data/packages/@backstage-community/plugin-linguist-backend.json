@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/linguist/plugins/linguist-backend",
   "role": "backend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-17T00:20:02.720Z",
-  "version": "0.33.1",
-  "version_count": 44,
+  "updated": "2026-11-24T17:02:19.129Z",
+  "version": "0.34.0",
+  "version_count": 45,
   "versions": [
+    {
+      "date": "2026-11-24T17:02:19.129Z",
+      "version": "0.34.0"
+    },
     {
       "date": "2026-11-17T00:20:02.720Z",
       "version": "0.33.1"
@@ -74,10 +78,6 @@
     {
       "date": "2025-11-28T20:50:52.086Z",
       "version": "0.21.1"
-    },
-    {
-      "date": "2025-11-27T15:33:42.781Z",
-      "version": "0.21.0"
     }
   ]
 }

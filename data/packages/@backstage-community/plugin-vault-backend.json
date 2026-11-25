@@ -18,10 +18,18 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/vault/plugins/vault-backend",
   "role": "backend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T15:01:11.558Z",
-  "version": "0.28.0",
-  "version_count": 38,
+  "updated": "2026-11-24T17:05:30.029Z",
+  "version": "0.29.0",
+  "version_count": 40,
   "versions": [
+    {
+      "date": "2026-11-24T17:05:30.029Z",
+      "version": "0.29.0"
+    },
+    {
+      "date": "2026-11-24T14:06:30.707Z",
+      "version": "0.28.1"
+    },
     {
       "date": "2026-11-03T15:01:11.558Z",
       "version": "0.28.0"
@@ -73,14 +81,6 @@
     {
       "date": "2025-12-24T22:09:08.826Z",
       "version": "0.17.0"
-    },
-    {
-      "date": "2025-11-27T17:02:07.822Z",
-      "version": "0.16.0"
-    },
-    {
-      "date": "2025-10-17T17:38:42.654Z",
-      "version": "0.15.0"
     }
   ]
 }

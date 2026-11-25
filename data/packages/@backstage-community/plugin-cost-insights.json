@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/cost-insights/plugins/cost-insights",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:33:19.389Z",
-  "version": "0.33.0",
-  "version_count": 32,
+  "updated": "2026-11-24T17:01:39.098Z",
+  "version": "0.34.0",
+  "version_count": 33,
   "versions": [
+    {
+      "date": "2026-11-24T17:01:39.098Z",
+      "version": "0.34.0"
+    },
     {
       "date": "2026-11-03T14:33:19.389Z",
       "version": "0.33.0"
@@ -76,10 +80,6 @@
     {
       "date": "2025-11-13T15:16:26.223Z",
       "version": "0.22.1"
-    },
-    {
-      "date": "2025-10-17T20:42:43.171Z",
-      "version": "0.22.0"
     }
   ]
 }

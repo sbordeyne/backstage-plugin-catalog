@@ -22,10 +22,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/azure-resources/plugins/catalog-backend-module-azure-resources",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-10-21T05:52:43.652Z",
-  "version": "0.12.1",
-  "version_count": 13,
+  "updated": "2026-11-24T15:37:12.705Z",
+  "version": "0.13.0",
+  "version_count": 14,
   "versions": [
+    {
+      "date": "2026-11-24T15:37:12.705Z",
+      "version": "0.13.0"
+    },
     {
       "date": "2026-10-21T05:52:43.652Z",
       "version": "0.12.1"

@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/gcalendar/plugins/gcalendar",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:32:19.994Z",
-  "version": "0.25.0",
-  "version_count": 30,
+  "updated": "2026-11-24T14:46:59.456Z",
+  "version": "0.26.0",
+  "version_count": 31,
   "versions": [
+    {
+      "date": "2026-11-24T14:46:59.456Z",
+      "version": "0.26.0"
+    },
     {
       "date": "2026-11-03T14:32:19.994Z",
       "version": "0.25.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-10-17T17:42:27.879Z",
       "version": "0.14.0"
-    },
-    {
-      "date": "2025-10-06T07:55:54.589Z",
-      "version": "0.13.0"
     }
   ]
 }

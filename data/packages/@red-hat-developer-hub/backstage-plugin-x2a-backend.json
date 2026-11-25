@@ -20,10 +20,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/x2a/plugins/x2a-backend",
   "role": "backend-plugin",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-09-22T11:43:38.921Z",
-  "version": "2.0.1",
-  "version_count": 13,
+  "updated": "2026-11-24T10:07:48.576Z",
+  "version": "2.1.0",
+  "version_count": 14,
   "versions": [
+    {
+      "date": "2026-11-24T10:07:48.576Z",
+      "version": "2.1.0"
+    },
     {
       "date": "2026-09-22T11:43:38.921Z",
       "version": "2.0.1"

@@ -15,10 +15,18 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/explore/plugins/search-backend-module-explore",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-07-24T13:26:15.356Z",
-  "version": "0.11.0",
-  "version_count": 8,
+  "updated": "2026-11-24T17:02:54.485Z",
+  "version": "0.13.0",
+  "version_count": 10,
   "versions": [
+    {
+      "date": "2026-11-24T17:02:54.485Z",
+      "version": "0.13.0"
+    },
+    {
+      "date": "2026-11-24T14:05:34.710Z",
+      "version": "0.12.0"
+    },
     {
       "date": "2026-07-24T13:26:15.356Z",
       "version": "0.11.0"

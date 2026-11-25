@@ -20,10 +20,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/x2a/plugins/x2a-dcr",
   "role": "frontend-plugin",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-07-30T12:06:30.955Z",
-  "version": "1.0.0",
-  "version_count": 2,
+  "updated": "2026-11-24T10:05:23.713Z",
+  "version": "1.1.0",
+  "version_count": 3,
   "versions": [
+    {
+      "date": "2026-11-24T10:05:23.713Z",
+      "version": "1.1.0"
+    },
     {
       "date": "2026-07-30T12:06:30.955Z",
       "version": "1.0.0"

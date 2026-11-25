@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/linkerd/plugins/linkerd-backend",
   "role": "backend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:58:18.767Z",
-  "version": "0.25.0",
-  "version_count": 36,
+  "updated": "2026-11-24T14:48:52.543Z",
+  "version": "0.25.1",
+  "version_count": 37,
   "versions": [
+    {
+      "date": "2026-11-24T14:48:52.543Z",
+      "version": "0.25.1"
+    },
     {
       "date": "2026-11-03T14:58:18.767Z",
       "version": "0.25.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-10-02T14:38:12.470Z",
       "version": "0.13.0"
-    },
-    {
-      "date": "2025-08-30T15:10:14.317Z",
-      "version": "0.12.0"
     }
   ]
 }

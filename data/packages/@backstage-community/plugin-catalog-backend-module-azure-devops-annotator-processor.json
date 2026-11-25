@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/azure-devops/plugins/catalog-backend-module-azure-devops-annotator-processor",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:19:24.279Z",
-  "version": "0.24.0",
-  "version_count": 33,
+  "updated": "2026-11-24T17:00:05.467Z",
+  "version": "0.25.0",
+  "version_count": 34,
   "versions": [
+    {
+      "date": "2026-11-24T17:00:05.467Z",
+      "version": "0.25.0"
+    },
     {
       "date": "2026-11-03T14:19:24.279Z",
       "version": "0.24.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-11-27T15:35:41.814Z",
       "version": "0.14.0"
-    },
-    {
-      "date": "2025-10-17T20:49:44.271Z",
-      "version": "0.13.0"
     }
   ]
 }

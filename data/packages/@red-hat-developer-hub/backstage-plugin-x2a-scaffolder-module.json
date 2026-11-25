@@ -20,10 +20,14 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/x2a/plugins/scaffolder-backend-module-x2a",
   "role": "backend-plugin-module",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-09-22T11:43:57.312Z",
-  "version": "2.0.1",
-  "version_count": 2,
+  "updated": "2026-11-24T10:05:06.133Z",
+  "version": "2.1.0",
+  "version_count": 3,
   "versions": [
+    {
+      "date": "2026-11-24T10:05:06.133Z",
+      "version": "2.1.0"
+    },
     {
       "date": "2026-09-22T11:43:57.312Z",
       "version": "2.0.1"

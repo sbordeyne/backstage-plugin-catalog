@@ -17,10 +17,14 @@
   "repository": "https://github.com/StackGuardian/sg-backstage-plugins/tree/HEAD/plugins/sg-library",
   "role": "frontend-plugin",
   "scope": "@stackguardian",
-  "updated": "2026-11-23T06:46:30.621Z",
-  "version": "1.0.0",
-  "version_count": 30,
+  "updated": "2026-11-24T19:03:31.859Z",
+  "version": "1.0.1",
+  "version_count": 31,
   "versions": [
+    {
+      "date": "2026-11-24T19:03:31.859Z",
+      "version": "1.0.1"
+    },
     {
       "date": "2026-11-23T06:46:30.621Z",
       "version": "1.0.0"
@@ -76,10 +80,6 @@
     {
       "date": "2025-11-04T12:16:18.623Z",
       "version": "0.1.2-beta.13"
-    },
-    {
-      "date": "2025-11-03T11:53:56.601Z",
-      "version": "0.1.2-beta.12"
     }
   ]
 }

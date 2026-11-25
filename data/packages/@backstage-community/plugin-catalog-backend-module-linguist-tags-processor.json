@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/linguist/plugins/catalog-backend-module-linguist-tags-processor",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:30:58.271Z",
-  "version": "0.26.0",
-  "version_count": 33,
+  "updated": "2026-11-24T17:04:06.792Z",
+  "version": "0.27.0",
+  "version_count": 34,
   "versions": [
+    {
+      "date": "2026-11-24T17:04:06.792Z",
+      "version": "0.27.0"
+    },
     {
       "date": "2026-11-03T14:30:58.271Z",
       "version": "0.26.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-10-17T20:44:20.857Z",
       "version": "0.14.0"
-    },
-    {
-      "date": "2025-09-26T11:46:59.695Z",
-      "version": "0.13.0"
     }
   ]
 }

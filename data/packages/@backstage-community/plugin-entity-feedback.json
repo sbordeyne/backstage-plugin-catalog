@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/entity-feedback/plugins/entity-feedback",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-10-30T15:07:04.650Z",
-  "version": "0.25.0",
-  "version_count": 35,
+  "updated": "2026-11-25T04:24:15.598Z",
+  "version": "0.25.1",
+  "version_count": 36,
   "versions": [
+    {
+      "date": "2026-11-25T04:24:15.598Z",
+      "version": "0.25.1"
+    },
     {
       "date": "2026-10-30T15:07:04.650Z",
       "version": "0.25.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-12-23T14:48:56.657Z",
       "version": "0.14.0"
-    },
-    {
-      "date": "2025-12-04T16:11:08.090Z",
-      "version": "0.13.0"
     }
   ]
 }
