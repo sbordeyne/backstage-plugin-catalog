@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/sentry/plugins/sentry",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-10-31T16:43:11.498Z",
-  "version": "1.23.0",
-  "version_count": 35,
+  "updated": "2026-11-25T17:32:48.958Z",
+  "version": "1.24.0",
+  "version_count": 36,
   "versions": [
+    {
+      "date": "2026-11-25T17:32:48.958Z",
+      "version": "1.24.0"
+    },
     {
       "date": "2026-10-31T16:43:11.498Z",
       "version": "1.23.0"
@@ -77,10 +81,6 @@
     {
       "date": "2026-01-07T02:27:24.745Z",
       "version": "1.13.0"
-    },
-    {
-      "date": "2025-12-24T22:20:07.050Z",
-      "version": "1.12.1"
     }
   ]
 }

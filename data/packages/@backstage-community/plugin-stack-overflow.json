@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/stack-overflow/plugins/stack-overflow",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:57:35.518Z",
-  "version": "0.23.0",
-  "version_count": 28,
+  "updated": "2026-11-25T17:33:09.196Z",
+  "version": "0.24.0",
+  "version_count": 29,
   "versions": [
+    {
+      "date": "2026-11-25T17:33:09.196Z",
+      "version": "0.24.0"
+    },
     {
       "date": "2026-11-03T14:57:35.518Z",
       "version": "0.23.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-10-17T12:54:41.015Z",
       "version": "0.11.0"
-    },
-    {
-      "date": "2025-09-26T11:55:09.338Z",
-      "version": "0.10.0"
     }
   ]
 }

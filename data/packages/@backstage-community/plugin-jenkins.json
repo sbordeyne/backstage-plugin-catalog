@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/jenkins/plugins/jenkins",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-02T19:46:07.623Z",
-  "version": "0.36.0",
-  "version_count": 37,
+  "updated": "2026-11-25T13:55:55.494Z",
+  "version": "0.37.0",
+  "version_count": 38,
   "versions": [
+    {
+      "date": "2026-11-25T13:55:55.494Z",
+      "version": "0.37.0"
+    },
     {
       "date": "2026-11-02T19:46:07.623Z",
       "version": "0.36.0"
@@ -77,10 +81,6 @@
     {
       "date": "2025-10-17T18:00:18.838Z",
       "version": "0.25.0"
-    },
-    {
-      "date": "2025-09-29T07:49:21.360Z",
-      "version": "0.24.0"
     }
   ]
 }

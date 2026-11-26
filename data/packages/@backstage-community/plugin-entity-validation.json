@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/entity-validation/plugins/entity-validation",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-02T16:20:44.423Z",
-  "version": "0.25.0",
-  "version_count": 35,
+  "updated": "2026-11-25T13:47:13.238Z",
+  "version": "0.26.0",
+  "version_count": 36,
   "versions": [
+    {
+      "date": "2026-11-25T13:47:13.238Z",
+      "version": "0.26.0"
+    },
     {
       "date": "2026-11-02T16:20:44.423Z",
       "version": "0.25.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-12-24T22:03:38.803Z",
       "version": "0.15.0"
-    },
-    {
-      "date": "2025-11-27T17:09:21.424Z",
-      "version": "0.14.0"
     }
   ]
 }

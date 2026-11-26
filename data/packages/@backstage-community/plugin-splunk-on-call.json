@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/splunk/plugins/splunk-on-call",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T15:02:47.987Z",
-  "version": "0.28.0",
-  "version_count": 31,
+  "updated": "2026-11-25T17:39:17.088Z",
+  "version": "0.29.0",
+  "version_count": 32,
   "versions": [
+    {
+      "date": "2026-11-25T17:39:17.088Z",
+      "version": "0.29.0"
+    },
     {
       "date": "2026-11-03T15:02:47.987Z",
       "version": "0.28.0"
@@ -77,10 +81,6 @@
     {
       "date": "2025-11-26T13:23:52.732Z",
       "version": "0.16.0"
-    },
-    {
-      "date": "2025-10-17T17:38:46.189Z",
-      "version": "0.15.0"
     }
   ]
 }

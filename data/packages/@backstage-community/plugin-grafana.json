@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/grafana/plugins/grafana",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-02T19:45:08.922Z",
-  "version": "1.2.0",
-  "version_count": 36,
+  "updated": "2026-11-25T15:14:16.690Z",
+  "version": "1.3.0",
+  "version_count": 37,
   "versions": [
+    {
+      "date": "2026-11-25T15:14:16.690Z",
+      "version": "1.3.0"
+    },
     {
       "date": "2026-11-02T19:45:08.922Z",
       "version": "1.2.0"
@@ -77,10 +81,6 @@
     {
       "date": "2025-12-24T22:03:21.463Z",
       "version": "0.13.0"
-    },
-    {
-      "date": "2025-12-24T16:25:13.439Z",
-      "version": "0.12.0"
     }
   ]
 }

@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/github/plugins/search-backend-module-github-discussions",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:32:27.743Z",
-  "version": "0.18.0",
-  "version_count": 20,
+  "updated": "2026-11-25T13:52:07.561Z",
+  "version": "0.19.0",
+  "version_count": 21,
   "versions": [
+    {
+      "date": "2026-11-25T13:52:07.561Z",
+      "version": "0.19.0"
+    },
     {
       "date": "2026-11-03T14:32:27.743Z",
       "version": "0.18.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-10-07T00:09:31.252Z",
       "version": "0.7.0"
-    },
-    {
-      "date": "2025-08-30T13:47:12.806Z",
-      "version": "0.6.0"
     }
   ]
 }

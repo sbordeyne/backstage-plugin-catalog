@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/bazaar/plugins/bazaar",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:36:19.240Z",
-  "version": "0.28.0",
-  "version_count": 36,
+  "updated": "2026-11-25T13:44:23.286Z",
+  "version": "0.29.0",
+  "version_count": 37,
   "versions": [
+    {
+      "date": "2026-11-25T13:44:23.286Z",
+      "version": "0.29.0"
+    },
     {
       "date": "2026-11-03T14:36:19.240Z",
       "version": "0.28.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-12-24T16:34:24.759Z",
       "version": "0.18.0"
-    },
-    {
-      "date": "2025-11-26T13:28:14.860Z",
-      "version": "0.17.0"
     }
   ]
 }

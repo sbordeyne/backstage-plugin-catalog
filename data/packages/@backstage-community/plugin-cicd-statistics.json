@@ -17,10 +17,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/cicd-statistics/plugins/cicd-statistics",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:28:33.892Z",
-  "version": "0.22.0",
-  "version_count": 31,
+  "updated": "2026-11-25T13:45:36.231Z",
+  "version": "0.23.0",
+  "version_count": 32,
   "versions": [
+    {
+      "date": "2026-11-25T13:45:36.231Z",
+      "version": "0.23.0"
+    },
     {
       "date": "2026-11-03T14:28:33.892Z",
       "version": "0.22.0"
@@ -76,10 +80,6 @@
     {
       "date": "2025-11-27T17:10:19.425Z",
       "version": "0.13.0"
-    },
-    {
-      "date": "2025-11-12T19:52:24.234Z",
-      "version": "0.12.1"
     }
   ]
 }

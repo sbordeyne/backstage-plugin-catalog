@@ -19,10 +19,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/cicd-statistics/plugins/cicd-statistics-module-buildkite",
   "role": "frontend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:29:01.026Z",
-  "version": "0.21.0",
-  "version_count": 31,
+  "updated": "2026-11-25T13:46:34.382Z",
+  "version": "0.22.0",
+  "version_count": 32,
   "versions": [
+    {
+      "date": "2026-11-25T13:46:34.382Z",
+      "version": "0.22.0"
+    },
     {
       "date": "2026-11-03T14:29:01.026Z",
       "version": "0.21.0"
@@ -78,10 +82,6 @@
     {
       "date": "2025-11-27T17:10:27.415Z",
       "version": "0.12.0"
-    },
-    {
-      "date": "2025-11-12T19:52:32.250Z",
-      "version": "0.11.1"
     }
   ]
 }

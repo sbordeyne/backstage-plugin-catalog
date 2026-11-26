@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/ilert/plugins/ilert",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-09-24T17:22:45.437Z",
-  "version": "0.25.0",
-  "version_count": 32,
+  "updated": "2026-11-25T15:17:16.905Z",
+  "version": "0.26.0",
+  "version_count": 33,
   "versions": [
+    {
+      "date": "2026-11-25T15:17:16.905Z",
+      "version": "0.26.0"
+    },
     {
       "date": "2026-09-24T17:22:45.437Z",
       "version": "0.25.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-10-17T17:31:43.026Z",
       "version": "0.14.0"
-    },
-    {
-      "date": "2025-10-08T09:05:38.197Z",
-      "version": "0.13.0"
     }
   ]
 }

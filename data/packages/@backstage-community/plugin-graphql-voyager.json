@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/graphql-voyager/plugins/graphql-voyager",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:32:28.117Z",
-  "version": "0.22.0",
-  "version_count": 29,
+  "updated": "2026-11-25T13:48:33.363Z",
+  "version": "0.23.0",
+  "version_count": 30,
   "versions": [
+    {
+      "date": "2026-11-25T13:48:33.363Z",
+      "version": "0.23.0"
+    },
     {
       "date": "2026-11-03T14:32:28.117Z",
       "version": "0.22.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-08-30T13:47:06.624Z",
       "version": "0.10.0"
-    },
-    {
-      "date": "2025-07-24T13:30:29.966Z",
-      "version": "0.9.0"
     }
   ]
 }

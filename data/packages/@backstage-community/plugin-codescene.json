@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/codescene/plugins/codescene",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-02T19:40:37.808Z",
-  "version": "0.23.0",
-  "version_count": 32,
+  "updated": "2026-11-25T13:45:23.438Z",
+  "version": "0.24.0",
+  "version_count": 33,
   "versions": [
+    {
+      "date": "2026-11-25T13:45:23.438Z",
+      "version": "0.24.0"
+    },
     {
       "date": "2026-11-02T19:40:37.808Z",
       "version": "0.23.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-10-17T17:27:33.492Z",
       "version": "0.11.0"
-    },
-    {
-      "date": "2025-10-03T07:17:56.728Z",
-      "version": "0.10.0"
     }
   ]
 }

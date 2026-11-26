@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/github/plugins/github-deployments",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:31:51.705Z",
-  "version": "1.6.0",
-  "version_count": 37,
+  "updated": "2026-11-25T13:52:19.510Z",
+  "version": "1.7.0",
+  "version_count": 38,
   "versions": [
+    {
+      "date": "2026-11-25T13:52:19.510Z",
+      "version": "1.7.0"
+    },
     {
       "date": "2026-11-03T14:31:51.705Z",
       "version": "1.6.0"
@@ -74,10 +78,6 @@
     {
       "date": "2026-01-28T22:34:36.157Z",
       "version": "0.16.0"
-    },
-    {
-      "date": "2026-01-27T00:48:05.411Z",
-      "version": "0.15.2"
     }
   ]
 }

@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/airbrake/plugins/airbrake-backend",
   "role": "backend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-01T15:33:38.346Z",
-  "version": "0.27.0",
-  "version_count": 33,
+  "updated": "2026-11-25T13:48:10.619Z",
+  "version": "0.28.0",
+  "version_count": 34,
   "versions": [
+    {
+      "date": "2026-11-25T13:48:10.619Z",
+      "version": "0.28.0"
+    },
     {
       "date": "2026-11-01T15:33:38.346Z",
       "version": "0.27.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-11-26T13:25:15.772Z",
       "version": "0.16.0"
-    },
-    {
-      "date": "2025-10-17T14:04:49.166Z",
-      "version": "0.15.0"
     }
   ]
 }

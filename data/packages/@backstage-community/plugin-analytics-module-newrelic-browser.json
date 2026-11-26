@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/analytics/plugins/analytics-module-newrelic-browser",
   "role": "frontend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-11-06T09:04:23.988Z",
-  "version": "0.23.0",
-  "version_count": 32,
+  "updated": "2026-11-25T18:59:06.243Z",
+  "version": "0.24.0",
+  "version_count": 33,
   "versions": [
+    {
+      "date": "2026-11-25T18:59:06.243Z",
+      "version": "0.24.0"
+    },
     {
       "date": "2026-11-06T09:04:23.988Z",
       "version": "0.23.0"
@@ -74,10 +78,6 @@
     {
       "date": "2026-01-08T23:00:52.117Z",
       "version": "0.14.0"
-    },
-    {
-      "date": "2025-12-15T14:07:33.309Z",
-      "version": "0.13.0"
     }
   ]
 }

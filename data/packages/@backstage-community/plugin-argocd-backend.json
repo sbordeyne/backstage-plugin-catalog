@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/argocd/plugins/argocd-backend",
   "role": "backend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-18T10:58:47.349Z",
-  "version": "1.8.0",
-  "version_count": 16,
+  "updated": "2026-11-25T10:42:13.131Z",
+  "version": "1.8.1",
+  "version_count": 17,
   "versions": [
+    {
+      "date": "2026-11-25T10:42:13.131Z",
+      "version": "1.8.1"
+    },
     {
       "date": "2026-11-18T10:58:47.349Z",
       "version": "1.8.0"
@@ -77,10 +81,6 @@
     {
       "date": "2026-01-16T13:40:58.245Z",
       "version": "1.0.2"
-    },
-    {
-      "date": "2026-01-13T06:22:03.218Z",
-      "version": "1.0.1"
     }
   ]
 }

@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/pingidentity/plugins/catalog-backend-module-pingidentity",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-09-02T21:44:41.109Z",
-  "version": "0.15.0",
-  "version_count": 22,
+  "updated": "2026-11-25T20:10:12.184Z",
+  "version": "0.16.0",
+  "version_count": 23,
   "versions": [
+    {
+      "date": "2026-11-25T20:10:12.184Z",
+      "version": "0.16.0"
+    },
     {
       "date": "2026-09-02T21:44:41.109Z",
       "version": "0.15.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-03-17T14:33:47.118Z",
       "version": "0.3.0"
-    },
-    {
-      "date": "2025-02-25T18:32:00.235Z",
-      "version": "0.2.1"
     }
   ]
 }

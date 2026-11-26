@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/gcp-projects/plugins/gcp-projects",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-10-31T16:35:04.719Z",
-  "version": "0.22.0",
-  "version_count": 27,
+  "updated": "2026-11-25T13:48:49.223Z",
+  "version": "0.23.0",
+  "version_count": 28,
   "versions": [
+    {
+      "date": "2026-11-25T13:48:49.223Z",
+      "version": "0.23.0"
+    },
     {
       "date": "2026-10-31T16:35:04.719Z",
       "version": "0.22.0"
@@ -77,10 +81,6 @@
     {
       "date": "2025-07-24T12:18:01.010Z",
       "version": "0.11.0"
-    },
-    {
-      "date": "2025-07-04T09:13:36.293Z",
-      "version": "0.10.0"
     }
   ]
 }

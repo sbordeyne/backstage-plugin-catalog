@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/bookmarks/plugins/bookmarks",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-09T19:54:59.257Z",
-  "version": "0.16.0",
-  "version_count": 25,
+  "updated": "2026-11-25T21:36:05.997Z",
+  "version": "1.0.0",
+  "version_count": 26,
   "versions": [
+    {
+      "date": "2026-11-25T21:36:05.997Z",
+      "version": "1.0.0"
+    },
     {
       "date": "2026-11-09T19:54:59.257Z",
       "version": "0.16.0"
@@ -77,10 +81,6 @@
     {
       "date": "2026-01-14T21:52:26.192Z",
       "version": "0.6.0"
-    },
-    {
-      "date": "2025-11-21T09:50:02.989Z",
-      "version": "0.5.0"
     }
   ]
 }

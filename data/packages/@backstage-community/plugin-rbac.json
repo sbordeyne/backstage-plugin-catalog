@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/rbac/plugins/rbac",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-16T15:15:12.722Z",
-  "version": "2.4.0",
-  "version_count": 80,
+  "updated": "2026-11-25T11:04:48.987Z",
+  "version": "2.5.0",
+  "version_count": 81,
   "versions": [
+    {
+      "date": "2026-11-25T11:04:48.987Z",
+      "version": "2.5.0"
+    },
     {
       "date": "2026-11-16T15:15:12.722Z",
       "version": "2.4.0"
@@ -77,10 +81,6 @@
     {
       "date": "2026-08-20T09:19:33.109Z",
       "version": "2.1.2"
-    },
-    {
-      "date": "2026-08-07T12:22:59.280Z",
-      "version": "2.1.1"
     }
   ]
 }

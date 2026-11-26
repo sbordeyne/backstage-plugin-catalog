@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/pingidentity/plugins/auth-backend-module-pingfederate-provider",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-09-02T21:44:34.770Z",
-  "version": "0.4.0",
-  "version_count": 4,
+  "updated": "2026-11-25T20:10:06.674Z",
+  "version": "0.5.0",
+  "version_count": 5,
   "versions": [
+    {
+      "date": "2026-11-25T20:10:06.674Z",
+      "version": "0.5.0"
+    },
     {
       "date": "2026-09-02T21:44:34.770Z",
       "version": "0.4.0"

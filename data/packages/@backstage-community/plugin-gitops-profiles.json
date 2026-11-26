@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/gitops-profiles/plugins/gitops-profiles",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-02T16:16:03.293Z",
-  "version": "0.26.0",
-  "version_count": 31,
+  "updated": "2026-11-25T13:52:22.789Z",
+  "version": "0.27.0",
+  "version_count": 32,
   "versions": [
+    {
+      "date": "2026-11-25T13:52:22.789Z",
+      "version": "0.27.0"
+    },
     {
       "date": "2026-11-02T16:16:03.293Z",
       "version": "0.26.0"
@@ -77,10 +81,6 @@
     {
       "date": "2025-10-17T17:34:33.934Z",
       "version": "0.14.0"
-    },
-    {
-      "date": "2025-10-03T07:32:36.521Z",
-      "version": "0.13.0"
     }
   ]
 }

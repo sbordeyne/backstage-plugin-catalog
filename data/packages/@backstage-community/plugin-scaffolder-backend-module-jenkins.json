@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/jenkins/plugins/scaffolder-backend-module-jenkins",
   "role": "backend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-11-02T19:43:19.196Z",
-  "version": "0.26.0",
-  "version_count": 26,
+  "updated": "2026-11-25T13:53:17.911Z",
+  "version": "0.27.0",
+  "version_count": 27,
   "versions": [
+    {
+      "date": "2026-11-25T13:53:17.911Z",
+      "version": "0.27.0"
+    },
     {
       "date": "2026-11-02T19:43:19.196Z",
       "version": "0.26.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-10-17T18:00:35.140Z",
       "version": "0.14.0"
-    },
-    {
-      "date": "2025-09-29T07:49:36.343Z",
-      "version": "0.13.0"
     }
   ]
 }

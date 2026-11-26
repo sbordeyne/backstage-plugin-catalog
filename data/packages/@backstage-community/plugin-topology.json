@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/topology/plugins/topology",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-21T23:47:40.147Z",
-  "version": "3.1.0",
-  "version_count": 63,
+  "updated": "2026-11-25T10:47:11.365Z",
+  "version": "3.1.1",
+  "version_count": 64,
   "versions": [
+    {
+      "date": "2026-11-25T10:47:11.365Z",
+      "version": "3.1.1"
+    },
     {
       "date": "2026-11-21T23:47:40.147Z",
       "version": "3.1.0"
@@ -77,10 +81,6 @@
     {
       "date": "2026-07-01T13:13:05.049Z",
       "version": "2.15.0"
-    },
-    {
-      "date": "2026-05-26T16:22:00.963Z",
-      "version": "2.14.0"
     }
   ]
 }

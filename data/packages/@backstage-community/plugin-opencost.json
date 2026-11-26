@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/opencost/plugins/opencost",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-24T14:06:57.681Z",
-  "version": "0.25.1",
-  "version_count": 32,
+  "updated": "2026-11-25T17:10:03.552Z",
+  "version": "0.26.0",
+  "version_count": 33,
   "versions": [
+    {
+      "date": "2026-11-25T17:10:03.552Z",
+      "version": "0.26.0"
+    },
     {
       "date": "2026-11-24T14:06:57.681Z",
       "version": "0.25.1"
@@ -74,10 +78,6 @@
     {
       "date": "2025-10-17T17:41:30.836Z",
       "version": "0.13.0"
-    },
-    {
-      "date": "2025-10-03T07:17:20.116Z",
-      "version": "0.12.0"
     }
   ]
 }

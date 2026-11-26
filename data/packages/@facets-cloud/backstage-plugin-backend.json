@@ -7,7 +7,8 @@
   "keywords": [],
   "license": "Apache-2.0",
   "maintainers": [
-    "facetsdev"
+    "facetsdev",
+    "pramodh-facets"
   ],
   "name": "@facets-cloud/backstage-plugin-backend",
   "plugin_id": "facets-cloud",

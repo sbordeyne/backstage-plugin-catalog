@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/apollo-explorer/plugins/apollo-explorer",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:19:53.241Z",
-  "version": "0.26.0",
-  "version_count": 31,
+  "updated": "2026-11-25T13:41:27.043Z",
+  "version": "0.27.0",
+  "version_count": 32,
   "versions": [
+    {
+      "date": "2026-11-25T13:41:27.043Z",
+      "version": "0.27.0"
+    },
     {
       "date": "2026-11-03T14:19:53.241Z",
       "version": "0.26.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-11-26T13:24:10.393Z",
       "version": "0.14.0"
-    },
-    {
-      "date": "2025-10-17T17:59:06.293Z",
-      "version": "0.13.0"
     }
   ]
 }

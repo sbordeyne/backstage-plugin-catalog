@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/todo/plugins/todo-backend",
   "role": "backend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-22T02:15:55.158Z",
-  "version": "0.27.1",
-  "version_count": 35,
+  "updated": "2026-11-25T17:34:42.268Z",
+  "version": "0.28.0",
+  "version_count": 36,
   "versions": [
+    {
+      "date": "2026-11-25T17:34:42.268Z",
+      "version": "0.28.0"
+    },
     {
       "date": "2026-11-22T02:15:55.158Z",
       "version": "0.27.1"
@@ -74,10 +78,6 @@
     {
       "date": "2026-01-28T22:26:13.342Z",
       "version": "0.17.0"
-    },
-    {
-      "date": "2025-12-24T22:08:11.220Z",
-      "version": "0.16.0"
     }
   ]
 }

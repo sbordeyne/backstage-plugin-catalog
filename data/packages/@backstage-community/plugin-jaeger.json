@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/jaeger/plugins/jaeger",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:56:32.415Z",
-  "version": "0.20.0",
-  "version_count": 23,
+  "updated": "2026-11-25T17:10:02.567Z",
+  "version": "0.21.0",
+  "version_count": 24,
   "versions": [
+    {
+      "date": "2026-11-25T17:10:02.567Z",
+      "version": "0.21.0"
+    },
     {
       "date": "2026-11-03T14:56:32.415Z",
       "version": "0.20.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-08-30T20:23:53.226Z",
       "version": "0.9.0"
-    },
-    {
-      "date": "2025-07-24T12:12:55.114Z",
-      "version": "0.8.0"
     }
   ]
 }

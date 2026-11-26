@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/bitrise/plugins/bitrise",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-24T16:04:04.161Z",
-  "version": "0.14.0",
-  "version_count": 21,
+  "updated": "2026-11-25T13:47:49.301Z",
+  "version": "0.15.0",
+  "version_count": 22,
   "versions": [
+    {
+      "date": "2026-11-25T13:47:49.301Z",
+      "version": "0.15.0"
+    },
     {
       "date": "2026-11-24T16:04:04.161Z",
       "version": "0.14.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-02-02T16:50:11.065Z",
       "version": "0.3.0"
-    },
-    {
-      "date": "2024-12-23T16:09:59.966Z",
-      "version": "0.2.0"
     }
   ]
 }

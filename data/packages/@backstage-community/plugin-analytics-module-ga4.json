@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/analytics/plugins/analytics-module-ga4",
   "role": "frontend-plugin-module",
   "scope": "@backstage-community",
-  "updated": "2026-11-06T09:02:48.618Z",
-  "version": "0.23.0",
-  "version_count": 33,
+  "updated": "2026-11-25T18:59:43.701Z",
+  "version": "0.24.0",
+  "version_count": 34,
   "versions": [
+    {
+      "date": "2026-11-25T18:59:43.701Z",
+      "version": "0.24.0"
+    },
     {
       "date": "2026-11-06T09:02:48.618Z",
       "version": "0.23.0"
@@ -74,10 +78,6 @@
     {
       "date": "2026-01-08T23:00:39.591Z",
       "version": "0.14.0"
-    },
-    {
-      "date": "2025-12-15T14:07:22.704Z",
-      "version": "0.13.0"
     }
   ]
 }

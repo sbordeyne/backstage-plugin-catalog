@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/fossa/plugins/fossa",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-24T16:04:05.945Z",
-  "version": "0.13.0",
-  "version_count": 18,
+  "updated": "2026-11-25T13:49:23.113Z",
+  "version": "0.14.0",
+  "version_count": 19,
   "versions": [
+    {
+      "date": "2026-11-25T13:49:23.113Z",
+      "version": "0.14.0"
+    },
     {
       "date": "2026-11-24T16:04:05.945Z",
       "version": "0.13.0"
@@ -77,10 +81,6 @@
     {
       "date": "2024-10-19T01:24:03.824Z",
       "version": "0.2.71"
-    },
-    {
-      "date": "2024-09-28T16:33:51.180Z",
-      "version": "0.2.70"
     }
   ]
 }

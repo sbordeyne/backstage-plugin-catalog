@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/microsoft-calendar/plugins/microsoft-calendar",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-02T16:16:53.967Z",
-  "version": "0.24.0",
-  "version_count": 31,
+  "updated": "2026-11-25T17:35:07.765Z",
+  "version": "0.25.0",
+  "version_count": 32,
   "versions": [
+    {
+      "date": "2026-11-25T17:35:07.765Z",
+      "version": "0.25.0"
+    },
     {
       "date": "2026-11-02T16:16:53.967Z",
       "version": "0.24.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-11-26T13:16:56.363Z",
       "version": "0.13.0"
-    },
-    {
-      "date": "2025-10-17T16:27:52.523Z",
-      "version": "0.12.0"
     }
   ]
 }

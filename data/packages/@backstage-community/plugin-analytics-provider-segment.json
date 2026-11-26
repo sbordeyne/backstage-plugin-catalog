@@ -15,10 +15,18 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/analytics/plugins/analytics-provider-segment",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-06T09:02:48.783Z",
-  "version": "2.1.0",
-  "version_count": 40,
+  "updated": "2026-11-25T19:00:33.528Z",
+  "version": "2.2.0",
+  "version_count": 42,
   "versions": [
+    {
+      "date": "2026-11-25T19:00:33.528Z",
+      "version": "2.2.0"
+    },
+    {
+      "date": "2026-11-25T18:32:24.329Z",
+      "version": "2.1.1"
+    },
     {
       "date": "2026-11-06T09:02:48.783Z",
       "version": "2.1.0"
@@ -70,14 +78,6 @@
     {
       "date": "2026-03-10T19:03:59.789Z",
       "version": "1.25.0"
-    },
-    {
-      "date": "2026-01-31T06:15:20.458Z",
-      "version": "1.24.0"
-    },
-    {
-      "date": "2026-01-08T23:00:57.664Z",
-      "version": "1.23.0"
     }
   ]
 }

@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/nomad/plugins/nomad-backend",
   "role": "backend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T15:01:41.016Z",
-  "version": "0.25.0",
-  "version_count": 32,
+  "updated": "2026-11-25T18:18:38.769Z",
+  "version": "0.26.0",
+  "version_count": 33,
   "versions": [
+    {
+      "date": "2026-11-25T18:18:38.769Z",
+      "version": "0.26.0"
+    },
     {
       "date": "2026-11-03T15:01:41.016Z",
       "version": "0.25.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-11-26T13:16:54.094Z",
       "version": "0.13.0"
-    },
-    {
-      "date": "2025-10-17T17:37:41.129Z",
-      "version": "0.12.0"
     }
   ]
 }

@@ -15,10 +15,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/newrelic/plugins/newrelic-dashboard",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-03T14:55:18.986Z",
-  "version": "0.29.0",
-  "version_count": 35,
+  "updated": "2026-11-25T18:19:44.648Z",
+  "version": "0.30.0",
+  "version_count": 36,
   "versions": [
+    {
+      "date": "2026-11-25T18:19:44.648Z",
+      "version": "0.30.0"
+    },
     {
       "date": "2026-11-03T14:55:18.986Z",
       "version": "0.29.0"
@@ -74,10 +78,6 @@
     {
       "date": "2025-11-27T17:07:24.318Z",
       "version": "0.17.0"
-    },
-    {
-      "date": "2025-11-12T19:50:58.754Z",
-      "version": "0.16.1"
     }
   ]
 }
