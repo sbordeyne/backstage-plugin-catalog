@@ -1,0 +1,42 @@
+{
+  "author": "",
+  "created": "2026-11-26T22:59:54.290Z",
+  "deprecated": "",
+  "description": "Catalog module for kind: Tailscale entities: validation and relations for tailnet policies kept in the Backstage catalog.",
+  "homepage": "https://github.com/SpechtLabs/backstage-plugin-tailscale/tree/main/plugins/catalog-backend-module-tailscale#readme",
+  "keywords": [
+    "acl",
+    "backstage",
+    "backstage-plugin",
+    "policy",
+    "tailnet",
+    "tailscale"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "c3di1"
+  ],
+  "name": "@spechtlabs/backstage-plugin-catalog-backend-module-tailscale",
+  "plugin_id": "catalog",
+  "readme": "# @spechtlabs/backstage-plugin-catalog-backend-module-tailscale\n\nCatalog module of [Tailscale for Backstage](https://github.com/SpechtLabs/backstage-plugin-tailscale):\nadds `kind: Tailscale` (apiVersion `specht-labs.de/v1alpha1`) to the catalog,\nvalidates it, and relates each entity to its policy, owner, system and the\nentities it applies to.\n\n```sh\nyarn --cwd packages/backend add @spechtlabs/backstage-plugin-catalog-backend-module-tailscale\n```\n\n```ts\nbackend.add(\n  import('@spechtlabs/backstage-plugin-catalog-backend-module-tailscale'),\n);\n```\n\nAllow the kind from the one location your policy lives in (catalog rules\nmatch an entity's origin location):\n\n```yaml\ncatalog:\n  locations:\n    - type: url\n      target: https://github.com/acme/network/blob/main/tailscale/policy/*.yaml\n      rules:\n        - allow: [Tailscale]\n```\n\nNot made or endorsed by Tailscale Inc.\n",
+  "repository": "https://github.com/SpechtLabs/backstage-plugin-tailscale/tree/HEAD/plugins/catalog-backend-module-tailscale",
+  "role": "backend-plugin-module",
+  "scope": "@spechtlabs",
+  "updated": "2026-11-26T23:35:46.724Z",
+  "version": "0.1.1",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-11-26T23:35:46.724Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-11-26T23:01:10.153Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-11-26T22:59:54.290Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

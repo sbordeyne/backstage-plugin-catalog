@@ -21,8 +21,12 @@
   "scope": "@backstage",
   "updated": "2026-11-17T21:12:11.968Z",
   "version": "2.1.0",
-  "version_count": 2072,
+  "version_count": 2073,
   "versions": [
+    {
+      "date": "2026-11-25T13:20:43.129Z",
+      "version": "2.1.1-next.0"
+    },
     {
       "date": "2026-11-17T21:12:11.968Z",
       "version": "2.1.0"
@@ -78,10 +82,6 @@
     {
       "date": "2026-10-13T16:18:25.196Z",
       "version": "2.0.10-next.3"
-    },
-    {
-      "date": "2026-10-06T19:36:18.241Z",
-      "version": "2.0.10-next.2"
     }
   ]
 }

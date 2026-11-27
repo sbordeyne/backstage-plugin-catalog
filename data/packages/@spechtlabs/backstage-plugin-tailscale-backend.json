@@ -1,0 +1,42 @@
+{
+  "author": "",
+  "created": "2026-11-26T23:00:10.293Z",
+  "deprecated": "",
+  "description": "Renders Tailscale tailnet policies from the Backstage catalog, serves them to the Tailscale frontend plugin, and publishes them to GitHub as a pull request or a push.",
+  "homepage": "https://github.com/SpechtLabs/backstage-plugin-tailscale/tree/main/plugins/tailscale-backend#readme",
+  "keywords": [
+    "acl",
+    "backstage",
+    "backstage-plugin",
+    "policy",
+    "tailnet",
+    "tailscale"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "c3di1"
+  ],
+  "name": "@spechtlabs/backstage-plugin-tailscale-backend",
+  "plugin_id": "tailscale",
+  "readme": "# @spechtlabs/backstage-plugin-tailscale-backend\n\nThe backend of [Tailscale for Backstage](https://github.com/SpechtLabs/backstage-plugin-tailscale):\nrenders each tailnet policy from the catalog's `kind: Tailscale` entities,\nUsers and Groups, and the services' `specht-labs.de/tailnet-*` annotations;\nserves it under `/api/tailscale`; and publishes the policy file to GitHub as\na pull request or a push.\n\n```sh\nyarn --cwd packages/backend add @spechtlabs/backstage-plugin-tailscale-backend\n```\n\n```ts\nbackend.add(import('@spechtlabs/backstage-plugin-tailscale-backend'));\n```\n\n```yaml\ntailscale:\n  # The repositories a policy's spec.publish may name.\n  allowedRepos: [acme/network]\n```\n\nIt also ships `backstage-tailscale-diff`, which renders a policy from local\ncatalog checkouts and compares it with a policy file:\n\n```sh\nnpx -p @spechtlabs/backstage-plugin-tailscale-backend backstage-tailscale-diff \\\n  path/to/policy.hujson path/to/catalog-repo...\n```\n\nSee the [repository's README](https://github.com/SpechtLabs/backstage-plugin-tailscale#readme).\nNot made or endorsed by Tailscale Inc.\n",
+  "repository": "https://github.com/SpechtLabs/backstage-plugin-tailscale/tree/HEAD/plugins/tailscale-backend",
+  "role": "backend-plugin",
+  "scope": "@spechtlabs",
+  "updated": "2026-11-26T23:35:45.118Z",
+  "version": "0.1.1",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-11-26T23:35:45.118Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-11-26T23:01:26.596Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-11-26T23:00:10.293Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

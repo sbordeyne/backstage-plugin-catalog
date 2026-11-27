@@ -21,10 +21,14 @@
   "repository": "https://github.com/alibayramli/template-pulse/tree/HEAD/plugins/template-pulse-backend",
   "role": "backend-plugin",
   "scope": "@abayramli",
-  "updated": "2026-11-25T16:41:17.798Z",
-  "version": "0.1.4",
-  "version_count": 6,
+  "updated": "2026-11-26T20:21:29.496Z",
+  "version": "0.1.5",
+  "version_count": 7,
   "versions": [
+    {
+      "date": "2026-11-26T20:21:29.496Z",
+      "version": "0.1.5"
+    },
     {
       "date": "2026-11-25T16:41:17.798Z",
       "version": "0.1.4"

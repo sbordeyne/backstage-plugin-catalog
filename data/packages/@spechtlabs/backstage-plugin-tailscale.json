@@ -1,0 +1,46 @@
+{
+  "author": "",
+  "created": "2026-11-26T23:00:02.160Z",
+  "deprecated": "",
+  "description": "Tailscale for Backstage: a tailnet policy console with an access map and access preview, a Policy tab on policy entities, and tailnet access cards on catalog entity pages.",
+  "homepage": "https://github.com/SpechtLabs/backstage-plugin-tailscale/tree/main/plugins/tailscale#readme",
+  "keywords": [
+    "acl",
+    "backstage",
+    "backstage-plugin",
+    "policy",
+    "tailnet",
+    "tailscale"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "c3di1"
+  ],
+  "name": "@spechtlabs/backstage-plugin-tailscale",
+  "plugin_id": "tailscale",
+  "readme": "# @spechtlabs/backstage-plugin-tailscale\n\nThe frontend of [Tailscale for Backstage](https://github.com/SpechtLabs/backstage-plugin-tailscale)\n(new frontend system): a tailnet policy console at `/tailscale` (access map,\ngrants, SSH, access preview, groups, tags, tests and the rendered policy\nfile), a _Policy_ tab on policy entities, and cards on Component, API,\nResource, Group, User and Tailscale entity pages.\n\n```sh\nyarn --cwd packages/app add @spechtlabs/backstage-plugin-tailscale\n```\n\nWith feature discovery there is nothing else to do; otherwise add the default\nexport to `createApp({ features })`. It needs the backend plugin,\n`@spechtlabs/backstage-plugin-tailscale-backend`. See the\n[repository's README](https://github.com/SpechtLabs/backstage-plugin-tailscale#readme)\nfor modelling a tailnet in the catalog.\n\nNot made or endorsed by Tailscale Inc.\n",
+  "repository": "https://github.com/SpechtLabs/backstage-plugin-tailscale/tree/HEAD/plugins/tailscale",
+  "role": "frontend-plugin",
+  "scope": "@spechtlabs",
+  "updated": "2026-11-27T00:19:31.234Z",
+  "version": "0.1.2",
+  "version_count": 4,
+  "versions": [
+    {
+      "date": "2026-11-27T00:19:31.234Z",
+      "version": "0.1.2"
+    },
+    {
+      "date": "2026-11-26T23:37:26.854Z",
+      "version": "0.1.1"
+    },
+    {
+      "date": "2026-11-26T23:02:10.628Z",
+      "version": "0.1.0"
+    },
+    {
+      "date": "2026-11-26T23:00:02.160Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

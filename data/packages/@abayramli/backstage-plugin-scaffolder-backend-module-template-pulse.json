@@ -21,10 +21,14 @@
   "repository": "https://github.com/alibayramli/template-pulse/tree/HEAD/plugins/scaffolder-backend-module-template-pulse",
   "role": "backend-plugin-module",
   "scope": "@abayramli",
-  "updated": "2026-11-25T16:41:14.346Z",
-  "version": "0.1.4",
-  "version_count": 6,
+  "updated": "2026-11-26T20:21:25.902Z",
+  "version": "0.1.5",
+  "version_count": 7,
   "versions": [
+    {
+      "date": "2026-11-26T20:21:25.902Z",
+      "version": "0.1.5"
+    },
     {
       "date": "2026-11-25T16:41:14.346Z",
       "version": "0.1.4"
