@@ -19,10 +19,18 @@
   "repository": "https://github.com/backstage/backstage/tree/HEAD/plugins/scaffolder-backend",
   "role": "backend-plugin",
   "scope": "@backstage",
-  "updated": "2026-11-17T21:21:58.961Z",
-  "version": "4.3.0",
-  "version_count": 2175,
+  "updated": "2026-11-27T12:22:26.531Z",
+  "version": "4.3.1",
+  "version_count": 2177,
   "versions": [
+    {
+      "date": "2026-11-27T12:22:26.531Z",
+      "version": "4.3.1"
+    },
+    {
+      "date": "2026-11-25T13:28:38.144Z",
+      "version": "4.3.1-next.0"
+    },
     {
       "date": "2026-11-17T22:38:07.575Z",
       "version": "4.2.4"
@@ -74,14 +82,6 @@
     {
       "date": "2026-10-29T03:07:25.277Z",
       "version": "0.0.0-nightly-20261029022347"
-    },
-    {
-      "date": "2026-10-28T03:04:20.238Z",
-      "version": "0.0.0-nightly-20261028022344"
-    },
-    {
-      "date": "2026-10-27T17:38:20.552Z",
-      "version": "4.2.2-next.0"
     }
   ]
 }

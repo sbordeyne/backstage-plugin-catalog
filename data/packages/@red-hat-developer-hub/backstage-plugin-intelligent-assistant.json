@@ -23,10 +23,18 @@
   "repository": "https://github.com/redhat-developer/rhdh-plugins/tree/HEAD/workspaces/intelligent-assistant/plugins/intelligent-assistant",
   "role": "frontend-plugin",
   "scope": "@red-hat-developer-hub",
-  "updated": "2026-10-15T14:19:22.003Z",
-  "version": "5.3.10",
-  "version_count": 26,
+  "updated": "2026-11-27T15:10:38.957Z",
+  "version": "5.4.0",
+  "version_count": 28,
   "versions": [
+    {
+      "date": "2026-11-27T20:08:35.037Z",
+      "version": "5.3.11"
+    },
+    {
+      "date": "2026-11-27T15:10:38.957Z",
+      "version": "5.4.0"
+    },
     {
       "date": "2026-10-15T14:19:22.003Z",
       "version": "5.3.10"
@@ -78,14 +86,6 @@
     {
       "date": "2026-09-15T14:42:04.987Z",
       "version": "5.1.0"
-    },
-    {
-      "date": "2026-09-11T14:47:09.074Z",
-      "version": "5.0.2"
-    },
-    {
-      "date": "2026-09-09T14:01:08.091Z",
-      "version": "5.0.1"
     }
   ]
 }

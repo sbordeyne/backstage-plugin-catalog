@@ -18,10 +18,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/kiali/plugins/kiali",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-11-11T11:35:18.631Z",
-  "version": "1.52.0",
-  "version_count": 31,
+  "updated": "2026-11-27T16:03:37.989Z",
+  "version": "1.53.0",
+  "version_count": 32,
   "versions": [
+    {
+      "date": "2026-11-27T16:03:37.989Z",
+      "version": "1.53.0"
+    },
     {
       "date": "2026-11-11T11:35:18.631Z",
       "version": "1.52.0"
@@ -77,10 +81,6 @@
     {
       "date": "2025-11-17T09:00:15.908Z",
       "version": "1.45.0"
-    },
-    {
-      "date": "2025-10-21T21:16:59.783Z",
-      "version": "1.44.0"
     }
   ]
 }

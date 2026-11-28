@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2026-11-27T12:44:34.332Z",
+  "deprecated": "",
+  "description": "Singleton provider for the Portal plugin extension system. Must be loaded before any portal content plugin in RHDH so that @ansible/portal-extension-api is available as a shared module federation singleton.",
+  "homepage": "https://github.com/ansible/ansible-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "kgaevski",
+    "omaciel",
+    "rh-abanand"
+  ],
+  "name": "@ansible/portal-core",
+  "plugin_id": "portal-core",
+  "readme": "",
+  "repository": "https://github.com/ansible/ansible-backstage-plugins/tree/HEAD/workspaces/portal-core/plugins/portal-core",
+  "role": "frontend-plugin",
+  "scope": "@ansible",
+  "updated": "2026-11-27T12:46:41.074Z",
+  "version": "0.1.0-alpha.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-11-27T14:46:09.139Z",
+      "version": "0.1.0-alpha.1"
+    },
+    {
+      "date": "2026-11-27T12:46:41.074Z",
+      "version": "0.1.0-alpha.0"
+    },
+    {
+      "date": "2026-11-27T12:44:34.332Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

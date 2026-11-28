@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2026-11-27T12:57:47.347Z",
+  "deprecated": "",
+  "description": "Backstage backend plugin that aggregates portal plugin health statuses and exposes them at GET /api/portal-health/status. Reads from the push-based HealthRegistry populated by portal-plugin-node's pushHealthStatus().",
+  "homepage": "https://github.com/ansible/ansible-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "kgaevski",
+    "omaciel",
+    "rh-abanand"
+  ],
+  "name": "@ansible/portal-health-backend",
+  "plugin_id": "portal-health",
+  "readme": "",
+  "repository": "https://github.com/ansible/ansible-backstage-plugins/tree/HEAD/workspaces/portal-core/plugins/portal-health-backend",
+  "role": "backend-plugin",
+  "scope": "@ansible",
+  "updated": "2026-11-27T12:59:54.819Z",
+  "version": "0.1.0-alpha.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-11-27T14:45:54.580Z",
+      "version": "0.1.0-alpha.1"
+    },
+    {
+      "date": "2026-11-27T12:59:54.819Z",
+      "version": "0.1.0-alpha.0"
+    },
+    {
+      "date": "2026-11-27T12:57:47.347Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

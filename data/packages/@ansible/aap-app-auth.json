@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2026-11-27T13:03:42.151Z",
+  "deprecated": "",
+  "description": "Independent AAP authentication module for the Portal app",
+  "homepage": "https://github.com/ansible/ansible-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "kgaevski",
+    "omaciel",
+    "rh-abanand"
+  ],
+  "name": "@ansible/aap-app-auth",
+  "plugin_id": "app",
+  "readme": "",
+  "repository": "https://github.com/ansible/ansible-backstage-plugins/tree/HEAD/workspaces/aap/plugins/aap-app-auth",
+  "role": "frontend-plugin-module",
+  "scope": "@ansible",
+  "updated": "2026-11-27T13:05:19.400Z",
+  "version": "0.1.0-alpha.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-11-27T14:45:28.578Z",
+      "version": "0.1.0-alpha.1"
+    },
+    {
+      "date": "2026-11-27T13:05:19.400Z",
+      "version": "0.1.0-alpha.0"
+    },
+    {
+      "date": "2026-11-27T13:03:42.151Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}

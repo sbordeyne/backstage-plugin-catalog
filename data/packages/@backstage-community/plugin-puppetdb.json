@@ -19,10 +19,14 @@
   "repository": "https://github.com/backstage/community-plugins/tree/HEAD/workspaces/puppetdb/plugins/puppetdb",
   "role": "frontend-plugin",
   "scope": "@backstage-community",
-  "updated": "2026-10-31T16:35:13.896Z",
-  "version": "0.24.0",
-  "version_count": 29,
+  "updated": "2026-11-27T16:06:32.401Z",
+  "version": "0.25.0",
+  "version_count": 30,
   "versions": [
+    {
+      "date": "2026-11-27T16:06:32.401Z",
+      "version": "0.25.0"
+    },
     {
       "date": "2026-10-31T16:35:13.896Z",
       "version": "0.24.0"
@@ -78,10 +82,6 @@
     {
       "date": "2025-10-06T11:22:43.168Z",
       "version": "0.11.0"
-    },
-    {
-      "date": "2025-08-30T15:08:12.330Z",
-      "version": "0.10.0"
     }
   ]
 }

@@ -1,0 +1,37 @@
+{
+  "author": "",
+  "created": "2026-11-27T12:53:22.538Z",
+  "deprecated": "",
+  "description": "Backend operation dispatch and authorization for Portal plugin contributions",
+  "homepage": "https://github.com/ansible/ansible-backstage-plugins#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "kgaevski",
+    "omaciel",
+    "rh-abanand"
+  ],
+  "name": "@ansible/portal-operations-backend",
+  "plugin_id": "portal-operations",
+  "readme": "",
+  "repository": "https://github.com/ansible/ansible-backstage-plugins/tree/HEAD/workspaces/portal-core/plugins/portal-operations-backend",
+  "role": "backend-plugin",
+  "scope": "@ansible",
+  "updated": "2026-11-27T12:57:30.516Z",
+  "version": "0.1.0-alpha.0",
+  "version_count": 3,
+  "versions": [
+    {
+      "date": "2026-11-27T14:46:19.529Z",
+      "version": "0.1.0-alpha.1"
+    },
+    {
+      "date": "2026-11-27T12:57:30.516Z",
+      "version": "0.1.0-alpha.0"
+    },
+    {
+      "date": "2026-11-27T12:53:22.538Z",
+      "version": "0.0.0-stage"
+    }
+  ]
+}
