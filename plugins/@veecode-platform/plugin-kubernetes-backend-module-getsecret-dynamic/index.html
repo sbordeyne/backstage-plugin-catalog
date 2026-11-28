@@ -1,0 +1,1516 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The getsecret backend module for the kubernetes plugin.">
+      
+      
+      
+        <link rel="canonical" href="https://sbordeyne.github.io/backstage-plugin-catalog/plugins/%40veecode-platform/plugin-kubernetes-backend-module-getsecret-dynamic/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>@veecode-platform/plugin-kubernetes-backend-module-getsecret-dynamic - Backstage Plugin Catalog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/catalog.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#veecode-platformplugin-kubernetes-backend-module-getsecret-dynamic" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-header__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Backstage Plugin Catalog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              @veecode-platform/plugin-kubernetes-backend-module-getsecret-dynamic
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../roles/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../scopes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Scopes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-nav__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Backstage Plugin Catalog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scopes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scopes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="veecode-platformplugin-kubernetes-backend-module-getsecret-dynamic">@veecode-platform/plugin-kubernetes-backend-module-getsecret-dynamic<a class="headerlink" href="#veecode-platformplugin-kubernetes-backend-module-getsecret-dynamic" title="Permanent link">&para;</a></h1>
+<p>The getsecret backend module for the kubernetes plugin.</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/backend<span class="w"> </span>add<span class="w"> </span>@veecode-platform/plugin-kubernetes-backend-module-getsecret-dynamic
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td><code>1.1.0</code> (2026-03-20)</td>
+</tr>
+<tr>
+<td>Role</td>
+<td><a href="../../../roles/backend-plugin-module/">Backend plugin module</a></td>
+</tr>
+<tr>
+<td>Scope</td>
+<td><a href="../../../scopes/veecode-platform/">@veecode-platform</a></td>
+</tr>
+<tr>
+<td>Plugin ID</td>
+<td><code>kubernetes</code></td>
+</tr>
+<tr>
+<td>Weekly downloads</td>
+<td>7</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Apache-2.0</td>
+</tr>
+<tr>
+<td>npm</td>
+<td><a href="https://www.npmjs.com/package/@veecode-platform/plugin-kubernetes-backend-module-getsecret-dynamic">https://www.npmjs.com/package/@veecode-platform/plugin-kubernetes-backend-module-getsecret-dynamic</a></td>
+</tr>
+<tr>
+<td>Maintainers</td>
+<td>andrevtg, giovanicorrea</td>
+</tr>
+<tr>
+<td>First published</td>
+<td>2026-03-06</td>
+</tr>
+</tbody>
+</table>
+<h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h2>
+<p>2 versions published. Latest releases:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1.1.0</code></td>
+<td>2026-03-20</td>
+</tr>
+<tr>
+<td><code>1.0.3</code></td>
+<td>2026-03-06</td>
+</tr>
+</tbody>
+</table>
+<h2 id="readme">README<a class="headerlink" href="#readme" title="Permanent link">&para;</a></h2>
+<section class="catalog-readme" data-search-exclude>
+<h3>@veecode-platform/plugin-kubernetes-backend-module-getsecret</h3>
+<p>A Backstage backend module that extends the Kubernetes plugin with a more flexible authentication strategy and allows clusters to be totally defined by the catalog (i.e. no need to change <code>app-config</code> to add a new cluster).</p>
+<h4>Features (authentication)</h4>
+<p>The module provides an alternate Kubernetes authentication module that extends the regular Kubernetes <code>serviceAccount</code> token connection method, by allowing its value to be fetched in runtime in several ways. <strong>This way a cluster can have its access token mantained outside the <code>app-config</code> file.</strong></p>
+<p>A token can be obtained in runtime from the <code>authMetadata</code> field:</p>
+<ul>
+<li><code>secret</code>: fetches the token from a Kubernetes secret</li>
+<li><code>env</code>: fetches the token from an environment variable</li>
+<li><code>file</code>: fetches the token from a file</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">clusterLocatorMethods</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'config'</span>
+<span class="w">      </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-cluster</span>
+<span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://somecluster.somewhere.com</span>
+<span class="w">          </span><span class="nt">authProvider</span><span class="p">:</span><span class="w"> </span><span class="s">'serviceAccount'</span>
+<span class="w">          </span><span class="c1"># ...</span>
+<span class="w">          </span><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span><span class="w">            </span><span class="c1"># Options: 'secret', 'env', 'file'</span>
+<span class="w">            </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/some/path</span><span class="w">  </span><span class="c1"># Name contains the file path</span>
+</code></pre></div>
+<p>These features extend the original behavior of the standard core <code>kubernetes</code> plugin authentication:</p>
+<ul>
+<li><strong>Multiple Token Sources</strong>: Fetch authentication tokens from Kubernetes Secrets, environment variables or files</li>
+<li><strong>Fallback Support</strong>: Falls back to standard ServiceAccount authentication when custom auth is not configured</li>
+<li><strong>Per-Cluster Configuration</strong>: Configure different token sources for each Kubernetes cluster</li>
+<li><strong>Detailed Logging</strong>: Comprehensive debug and error logging for troubleshooting</li>
+<li><strong>Merged Configuration</strong>: Clusters can be defined partially in both ways ("config" and "catalog")</li>
+</ul>
+<h4>Features (catalog)</h4>
+<p>The module also provides a custom cluster locator that enhances the default catalog-based cluster discovery with additional features, allowing clusters to define authentication from annotations. When used together, a cluster can be completely defined in the catalog (without any <code>app-config</code> entry).</p>
+<h5>Architecture</h5>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
+│   Backstage Kubernetes Plugin           │
+└───────────────┬─────────────────────────┘
+                │
+                │ uses
+                ▼
+┌─────────────────────────────────────────┐
+│  VeecodeEnhancedCatalogSupplier         │
+│  (wraps default catalog supplier)       │
+└───────────────┬─────────────────────────┘
+                │
+                │ delegates to
+                ▼
+┌─────────────────────────────────────────┐
+│  Default Catalog Cluster Locator        │
+│  (queries catalog for Resource entities)│
+└─────────────────────────────────────────┘
+                │
+                │ queries
+                ▼
+┌─────────────────────────────────────────┐
+│  Backstage Catalog                      │
+│  (Resource entities)                    │
+└─────────────────────────────────────────┘
+</code></pre></div>
+<h5>Benefits</h5>
+<ol>
+<li><strong>Flexibility</strong>: Enhance cluster details without modifying catalog entities</li>
+<li><strong>Validation</strong>: Catch configuration issues early with custom validation</li>
+<li><strong>Defaults</strong>: Apply sensible defaults to reduce catalog entity verbosity</li>
+<li><strong>Unified View</strong>: Combine multiple cluster sources seamlessly</li>
+<li><strong>Custom Metadata</strong>: Add Veecode-specific fields to clusters</li>
+</ol>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resource</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vkdr-yet-another-cluster</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># the annotation below works only in singleTenant</span>
+<span class="w">    </span><span class="nt">backstage.io/kubernetes-cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vkdr-yet-another-cluster</span>
+<span class="w">    </span><span class="c1"># Required for catalog cluster locator - uses kubernetes.io/ prefix</span>
+<span class="w">    </span><span class="nt">kubernetes.io/api-server</span><span class="p">:</span><span class="w"> </span><span class="s">'https://127.0.0.1:9000'</span>
+<span class="w">    </span><span class="nt">kubernetes.io/auth-provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serviceAccount</span>
+<span class="w">    </span><span class="nt">kubernetes.io/skip-tls-verify</span><span class="p">:</span><span class="w"> </span><span class="s">'true'</span>
+<span class="w">    </span><span class="nt">kubernetes.io/service-account-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IGNORE</span>
+<span class="w">    </span><span class="nt">kubernetes.io/api-server-certificate-authority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LS0tLS1...</span>
+<span class="w">    </span><span class="c1"># Optional: Filter resources by label</span>
+<span class="w">    </span><span class="nt">backstage.io/kubernetes-label-selector</span><span class="p">:</span><span class="w"> </span><span class="s">"vee.codes/cluster=some-cluster"</span>
+<span class="w">    </span><span class="c1"># Custom auth metadata (using vee.codes/ prefix)</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-name</span><span class="p">:</span><span class="w"> </span><span class="s">"mysecret"</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-source</span><span class="p">:</span><span class="w"> </span><span class="s">"secret"</span><span class="w">  </span><span class="c1"># Options: secret (k8s secret), env (env var), file (file)</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"default"</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-cluster</span>
+<span class="w">  </span><span class="nt">lifecycle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experimental</span>
+<span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">group:default/admins</span>
+<span class="w">  </span><span class="nt">system</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">examples</span>
+</code></pre></div>
+<ul>
+<li><strong>Wraps Default Catalog Locator</strong>: Uses the standard Backstage catalog cluster discovery as a base</li>
+<li><strong>Cluster Enhancement</strong>: Adds default values and custom metadata to clusters</li>
+<li><strong>Config Merging</strong>: Optionally merges catalog clusters with config-based clusters</li>
+<li><strong>Validation</strong>: Validates cluster configurations and logs warnings</li>
+<li><strong>Flexible Configuration</strong>: Supports multiple config options for customization</li>
+</ul>
+<h4>Auth Metadata Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Annotation</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>secretName</code></td>
+<td><code>vee.codes/kubernetes-secret-name</code></td>
+<td>Name of the Kubernetes secret, environment variable, or file</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>vee.codes/kubernetes-secret-source</code></td>
+<td>Source type: <code>secret</code>, <code>env</code>, or <code>file</code></td>
+<td><code>secret</code></td>
+</tr>
+<tr>
+<td><code>namespace</code></td>
+<td><code>vee.codes/kubernetes-secret-namespace</code></td>
+<td>Kubernetes namespace (only for source=secret)</td>
+<td><code>default</code></td>
+</tr>
+<tr>
+<td><code>tokenName</code></td>
+<td><code>vee.codes/kubernetes-token-name</code></td>
+<td>Key name in the secret (only for source=secret)</td>
+<td><code>token</code></td>
+</tr>
+</tbody>
+</table>
+<h4>Installation</h4>
+<p>This plugin supports both <strong>static linking</strong> (traditional Backstage) and <strong>dynamic plugin loading</strong> (VeeCode DevPortal and Red Hat Developer Hub).</p>
+<h5>Static Installation</h5>
+<p>Install the package in your Backstage backend:</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>workspace<span class="w"> </span>backend<span class="w"> </span>add<span class="w"> </span>@veecode-platform/plugin-kubernetes-backend-module-getsecret
+</code></pre></div>
+<p>Add the module to your backend in <code>packages/backend/src/index.ts</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createBackend</span><span class="p">();</span>
+<span class="c1">// ... other plugins</span>
+<span class="nx">backend</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">import</span><span class="p">(</span><span class="s1">'@veecode-platform/plugin-kubernetes-backend-module-getsecret'</span><span class="p">));</span>
+</code></pre></div>
+<h5>Dynamic Installation</h5>
+<p>Dynamic plugin installation is available for both <strong>VeeCode DevPortal</strong> and <strong>Red Hat Developer Hub (RHDH)</strong>.</p>
+<h6>VeeCode DevPortal</h6>
+<p>The plugin is <strong>bundled in the file system</strong> and ready to use. Enable it in <code>dynamic-plugins.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./dynamic-plugins/dist/veecode-platform-plugin-kubernetes-backend-module-getsecret-dynamic</span>
+<span class="w">    </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<h6>Red Hat Developer Hub (RHDH)</h6>
+<p>RHDH can <strong>download the plugin at runtime</strong> using NPM. Add it to <code>dynamic-plugins.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="s">'@veecode-platform/plugin-kubernetes-backend-module-getsecret-dynamic@&lt;version&gt;'</span>
+<span class="w">    </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">integrity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sha512-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+</code></pre></div>
+<p><strong>Tip</strong>: Check the <a href="https://www.npmjs.com/package/@veecode-platform/plugin-kubernetes-backend-module-getsecret-dynamic" rel="noopener noreferrer">npm registry</a> for the latest version and integrity hash.</p>
+<h4>Configuration</h4>
+<h5>Config-Based Clusters</h5>
+<p>Configure your Kubernetes clusters in <code>app-config.yaml</code> with <code>authMetadata</code> to specify the token source:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">serviceLocatorMethod</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'singleTenant'</span>
+<span class="w">  </span><span class="nt">clusterLocatorMethods</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'config'</span>
+<span class="w">      </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-cluster</span>
+<span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://somecluster.somewhere.com</span>
+<span class="w">          </span><span class="nt">authProvider</span><span class="p">:</span><span class="w"> </span><span class="s">'serviceAccount'</span>
+<span class="w">          </span><span class="nt">skipTLSVerify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">caData</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${K8S_CA_DATA}</span>
+<span class="w">          </span><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret</span><span class="w">        </span><span class="c1"># Options: 'secret', 'env', 'file'</span>
+<span class="w">            </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-token</span><span class="w">  </span><span class="c1"># Name meaning depends on source (see below)</span>
+<span class="w">            </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span><span class="w">    </span><span class="c1"># Required for 'secret' source only</span>
+<span class="w">            </span><span class="nt">tokenName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">token</span><span class="w">      </span><span class="c1"># Optional, defaults to 'token'</span>
+</code></pre></div>
+<h5>Catalog-Based Clusters</h5>
+<p>For catalog-based clusters, use <strong>prefixed annotations</strong> with the <code>vee.codes/</code> domain prefix for the <code>authMetadata</code> fields:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resource</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-cluster</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Standard Kubernetes cluster annotations</span>
+<span class="w">    </span><span class="nt">kubernetes.io/api-server</span><span class="p">:</span><span class="w"> </span><span class="s">'https://my-cluster.example.com'</span>
+<span class="w">    </span><span class="nt">kubernetes.io/auth-provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serviceAccount</span>
+<span class="w">    </span><span class="nt">kubernetes.io/skip-tls-verify</span><span class="p">:</span><span class="w"> </span><span class="s">'true'</span>
+<span class="w">    </span><span class="nt">kubernetes.io/api-server-certificate-authority</span><span class="p">:</span><span class="w"> </span><span class="s">'&lt;base64-ca-cert&gt;'</span>
+
+<span class="w">    </span><span class="c1"># Backstage annotations</span>
+<span class="w">    </span><span class="nt">backstage.io/kubernetes-cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-cluster</span>
+<span class="w">    </span><span class="nt">backstage.io/kubernetes-label-selector</span><span class="p">:</span><span class="w"> </span><span class="s">"env=prod"</span>
+
+<span class="w">    </span><span class="c1"># Veecode custom auth metadata (prefixed with vee.codes/)</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-name</span><span class="p">:</span><span class="w"> </span><span class="s">"my-k8s-secret"</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-source</span><span class="p">:</span><span class="w"> </span><span class="s">"secret"</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"default"</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-token-name</span><span class="p">:</span><span class="w"> </span><span class="s">"token"</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-cluster</span>
+<span class="w">  </span><span class="nt">lifecycle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
+<span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">platform-team</span>
+</code></pre></div>
+<h5>Source Types</h5>
+<h6>1. Kubernetes Secret (<code>source: secret</code>)</h6>
+<p>Fetches the token from a Kubernetes secret in the same cluster where Backstage is running:</p>
+<p><strong>Config:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="s">"my-k8s-secret"</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">  </span><span class="nt">tokenName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">token</span>
+</code></pre></div>
+<p><strong>Catalog:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">vee.codes/kubernetes-secret-name</span><span class="p">:</span><span class="w"> </span><span class="s">"my-k8s-secret"</span>
+<span class="nt">vee.codes/kubernetes-secret-source</span><span class="p">:</span><span class="w"> </span><span class="s">"secret"</span>
+<span class="nt">vee.codes/kubernetes-secret-namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"default"</span>
+<span class="nt">vee.codes/kubernetes-token-name</span><span class="p">:</span><span class="w"> </span><span class="s">"token"</span>
+</code></pre></div>
+<h6>2. Environment Variable (<code>source: env</code>)</h6>
+<p>Reads the token from an environment variable:</p>
+<p><strong>Config:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="s">"MY_CLUSTER_TOKEN"</span><span class="w">  </span><span class="c1"># env var name</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">env</span>
+</code></pre></div>
+<p><strong>Catalog:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">vee.codes/kubernetes-secret-name</span><span class="p">:</span><span class="w"> </span><span class="s">"MY_CLUSTER_TOKEN"</span>
+<span class="nt">vee.codes/kubernetes-secret-source</span><span class="p">:</span><span class="w"> </span><span class="s">"env"</span>
+</code></pre></div>
+<h6>3. File (<code>source: file</code>)</h6>
+<p>Reads the token from a file path:</p>
+<p><strong>Config:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="s">"/var/secrets/my-cluster-token"</span><span class="w">  </span><span class="c1"># file path</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+</code></pre></div>
+<p><strong>Catalog:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">vee.codes/kubernetes-secret-name</span><span class="p">:</span><span class="w"> </span><span class="s">"/var/secrets/my-cluster-token"</span>
+<span class="nt">vee.codes/kubernetes-secret-source</span><span class="p">:</span><span class="w"> </span><span class="s">"file"</span>
+</code></pre></div>
+<h4>Backward Compatibility</h4>
+<p>The auth strategy supports <strong>both prefixed and unprefixed keys</strong> for maximum compatibility:</p>
+<ul>
+<li><strong>Prefixed keys</strong> (catalog): <code>vee.codes/kubernetes-secret-name</code>, <code>vee.codes/kubernetes-secret-source</code>, etc.</li>
+<li><strong>Unprefixed keys</strong> (config): <code>secretName</code>, <code>source</code>, <code>namespace</code>, <code>tokenName</code></li>
+</ul>
+<p>The strategy checks for prefixed keys first, then falls back to unprefixed keys. This means:</p>
+<ul>
+<li>Old config-based clusters continue to work without changes</li>
+<li>New catalog-based clusters use the recommended prefixed annotations</li>
+<li>You can mix both approaches if needed</li>
+</ul>
+<h5>Why Use Prefixed Annotations?</h5>
+<ul>
+<li><strong>Namespace collision prevention</strong>: Avoid conflicts with future Backstage or Kubernetes annotations</li>
+<li><strong>Clear ownership</strong>: Makes it obvious these are Veecode-specific fields</li>
+<li><strong>Kubernetes convention</strong>: Follows the standard pattern used by Kubernetes and Backstage</li>
+<li><strong>Consistency</strong>: Matches your existing <code>vee.codes/</code> labels and annotations</li>
+</ul>
+<h4>Migration Guide</h4>
+<p>Please understand <strong>you do not need to migrate</strong> anything. This is voluntary, just in case you want to stop using <code>app-config</code> editing to add new clusters.</p>
+<h5>From Config to Catalog</h5>
+<p><strong>Before (app-config.yaml):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'config'</span>
+<span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-cluster</span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://my-cluster.example.com</span>
+<span class="w">      </span><span class="nt">authProvider</span><span class="p">:</span><span class="w"> </span><span class="s">'serviceAccount'</span>
+<span class="w">      </span><span class="nt">skipTLSVerify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">caData</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LS0tLS...</span>
+<span class="w">      </span><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="s">"my-secret"</span>
+<span class="w">        </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+</code></pre></div>
+<p><strong>After (catalog entity):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resource</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-cluster</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kubernetes.io/api-server</span><span class="p">:</span><span class="w"> </span><span class="s">'https://my-cluster.example.com'</span>
+<span class="w">    </span><span class="nt">kubernetes.io/auth-provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serviceAccount</span>
+<span class="w">    </span><span class="nt">kubernetes.io/skip-tls-verify</span><span class="p">:</span><span class="w"> </span><span class="s">'true'</span>
+<span class="w">    </span><span class="nt">kubernetes.io/api-server-certificate-authority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LS0tLS...</span>
+<span class="w">    </span><span class="nt">backstage.io/kubernetes-cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-cluster</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-name</span><span class="p">:</span><span class="w"> </span><span class="s">"my-secret"</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-source</span><span class="p">:</span><span class="w"> </span><span class="s">"secret"</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"default"</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-cluster</span>
+</code></pre></div>
+<h4>Other Configuration Options</h4>
+<p>Add these to your <code>app-config.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">veecode</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Enable enhanced catalog cluster supplier ( default: true)</span>
+<span class="w">    </span><span class="nt">enableEnhancedCatalogSupplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="c1"># Enable merging catalog and config-based clusters (default: true)</span>
+<span class="w">    </span><span class="nt">mergeCatalogWithConfig</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="c1"># Default skipTLSVerify for clusters without this setting (default: false)</span>
+<span class="w">    </span><span class="nt">defaultSkipTLSVerify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="c1"># Default skipMetricsLookup for clusters without this setting (default: false)</span>
+<span class="w">    </span><span class="nt">defaultSkipMetricsLookup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="c1"># Require authMetadata on all clusters (default: false)</span>
+<span class="w">    </span><span class="nt">requireAuthMetadata</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="c1"># Add default Kubernetes auth strategies (default: false)</span>
+<span class="w">    </span><span class="nt">addDefaultKubernetesAuthStrategies</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="c1"># Use raw HTTPS for secret fetching (default: false)</span>
+<span class="w">    </span><span class="nt">fetchSecretWithRawHttps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<h5>Configuration Details</h5>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Default</th>
+<th>When to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enableEnhancedCatalogSupplier</code></td>
+<td>Enable/disable the enhanced catalog cluster supplier</td>
+<td><code>true</code></td>
+<td>Set to <code>false</code> to use only custom auth without catalog enhancements</td>
+</tr>
+<tr>
+<td><code>mergeCatalogWithConfig</code></td>
+<td>Merge catalog clusters with config-based clusters</td>
+<td><code>true</code></td>
+<td>Set to <code>false</code> to use only catalog clusters</td>
+</tr>
+<tr>
+<td><code>defaultSkipTLSVerify</code></td>
+<td>Default TLS verification for clusters</td>
+<td><code>false</code></td>
+<td>Set to <code>true</code> for development environments</td>
+</tr>
+<tr>
+<td><code>defaultSkipMetricsLookup</code></td>
+<td>Skip metrics collection by default</td>
+<td><code>false</code></td>
+<td>Set to <code>true</code> to reduce cluster load</td>
+</tr>
+<tr>
+<td><code>requireAuthMetadata</code></td>
+<td>Force all clusters to have auth metadata</td>
+<td><code>false</code></td>
+<td>Set to <code>true</code> for security compliance</td>
+</tr>
+<tr>
+<td><code>addDefaultKubernetesAuthStrategies</code></td>
+<td>Include default Kubernetes auth strategies</td>
+<td><code>false</code></td>
+<td>Set to <code>true</code> to use multiple auth providers</td>
+</tr>
+<tr>
+<td><code>fetchSecretWithRawHttps</code></td>
+<td>Use raw HTTPS for secret fetching</td>
+<td><code>false</code></td>
+<td>Set to <code>true</code> if in-cluster secret fetching fails</td>
+</tr>
+</tbody>
+</table>
+<h5>Usage Examples</h5>
+<h6>Catalog-Based Clusters Only</h6>
+<div class="highlight"><pre><span></span><code><span class="nt">veecode</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enableEnhancedCatalogSupplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">mergeCatalogWithConfig</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># Don't merge with config clusters</span>
+</code></pre></div>
+<p>Define clusters in your catalog:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resource</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-cluster</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Required annotations for catalog cluster locator</span>
+<span class="w">    </span><span class="nt">kubernetes.io/api-server</span><span class="p">:</span><span class="w"> </span><span class="s">'https://my-cluster.example.com'</span>
+<span class="w">    </span><span class="nt">kubernetes.io/api-server-certificate-authority</span><span class="p">:</span><span class="w"> </span><span class="s">'&lt;base64-ca-cert&gt;'</span>
+<span class="w">    </span><span class="nt">kubernetes.io/auth-provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serviceAccount</span>
+<span class="w">    </span><span class="nt">kubernetes.io/skip-tls-verify</span><span class="p">:</span><span class="w"> </span><span class="s">'false'</span>
+
+<span class="w">    </span><span class="c1"># Optional: Filter resources by label</span>
+<span class="w">    </span><span class="nt">backstage.io/kubernetes-label-selector</span><span class="p">:</span><span class="w"> </span><span class="s">"env=prod"</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-cluster</span>
+<span class="w">  </span><span class="nt">lifecycle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
+<span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">platform-team</span>
+</code></pre></div>
+<h6>Mixed Config and Catalog Clusters</h6>
+<div class="highlight"><pre><span></span><code><span class="nt">veecode</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enableEnhancedCatalogSupplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">mergeCatalogWithConfig</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">  </span><span class="c1"># Both sources</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">clusterLocatorMethods</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'catalog'</span><span class="w">  </span><span class="c1"># Load from catalog</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'config'</span><span class="w">   </span><span class="c1"># Also load from config</span>
+<span class="w">      </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-cluster</span>
+<span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://127.0.0.1:9000</span>
+<span class="w">          </span><span class="nt">authProvider</span><span class="p">:</span><span class="w"> </span><span class="s">'serviceAccount'</span>
+<span class="w">          </span><span class="nt">skipTLSVerify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="s">"my-secret"</span>
+<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret</span>
+<span class="w">            </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+</code></pre></div>
+<h6>Custom Auth Only (No Catalog Enhancements)</h6>
+<div class="highlight"><pre><span></span><code><span class="nt">veecode</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enableEnhancedCatalogSupplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># Disable catalog supplier</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">clusterLocatorMethods</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'config'</span>
+<span class="w">      </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-cluster</span>
+<span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://my-cluster.example.com</span>
+<span class="w">          </span><span class="nt">authProvider</span><span class="p">:</span><span class="w"> </span><span class="s">'serviceAccount'</span>
+<span class="w">          </span><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="s">"my-secret"</span>
+<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret</span>
+<span class="w">            </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+</code></pre></div>
+<h5>How It Works</h5>
+<ol>
+<li><strong>Custom Strategy</strong>: When a cluster has <code>authMetadata.secretName</code> configured, the custom authentication strategy is used</li>
+<li><strong>Token Retrieval</strong>: Based on the <code>source</code> field, the token is fetched from:
+   - Kubernetes Secret (with automatic base64 decoding)
+   - Environment variable
+   - File (with automatic whitespace trimming)</li>
+<li><strong>Fallback</strong>: If <code>authMetadata.secretName</code> is not set, it falls back to the standard Backstage ServiceAccount authentication</li>
+</ol>
+<h5>Option 1: Kubernetes Secret (Recommended)</h5>
+<p>Retrieve tokens from Kubernetes Secrets in the cluster where Backstage is running:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret</span>
+<span class="w">  </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysecret</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">  </span><span class="nt">tokenName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">token</span><span class="w">  </span><span class="c1"># Optional, defaults to 'token'</span>
+</code></pre></div>
+<p><strong>Create the secret:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># From a service account token</span>
+kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>mysecret<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">token</span><span class="o">=</span><span class="s2">"eyJhbGciOiJSUzI1NiIsImtp..."</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="o">=</span>default
+
+<span class="c1"># Or from a file</span>
+kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>mysecret<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--from-file<span class="o">=</span><span class="nv">token</span><span class="o">=</span>./token.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="o">=</span>default
+</code></pre></div>
+<p>Please notice that the plugin connection when reading the secret is usually to the kubernetes cluster where backstage itself is running, not to the cluster the config refers to.</p>
+<h5>Option 2: Environment Variable</h5>
+<p>Retrieve tokens from environment variables:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">env</span>
+<span class="w">  </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">K8S_CLUSTER_TOKEN</span><span class="w">  </span><span class="c1"># Environment variable name</span>
+</code></pre></div>
+<p><strong>Set the environment variable:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">K8S_CLUSTER_TOKEN</span><span class="o">=</span><span class="s2">"eyJhbGciOiJSUzI1NiIsImtp..."</span>
+</code></pre></div>
+<p>Or in your deployment:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">K8S_CLUSTER_TOKEN</span>
+<span class="w">    </span><span class="nt">valueFrom</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">secretKeyRef</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-credentials</span>
+<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">token</span>
+</code></pre></div>
+<h5>Option 3: File</h5>
+<p>Retrieve tokens from files on the filesystem:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+<span class="w">  </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/secrets/kubernetes.io/serviceaccount/token</span>
+</code></pre></div>
+<p><strong>Note:</strong> The file path must be accessible by the Backstage backend process.</p>
+<h4>Extra settings</h4>
+<h5>Optional: Enable Default Auth Strategies</h5>
+<p>By default, this module replaces the default <code>serviceAccount</code> strategy, but as a side effect it also desables all other Kubernetes authentication strategies (not sure if this is expected behavior). To keep all default Backstage Kubernetes auth strategies, add this setting:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">veecode</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">addDefaultKubernetesAuthStrategies</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>This enables: <code>google</code>, <code>googleServiceAccount</code>, <code>aws</code>, <code>aks</code>, <code>azureIdentity</code>, <code>oidc</code>, and <code>localKubectlProxy</code>.</p>
+<h4>Additional Notes</h4>
+<h5>What is hard to understand</h5>
+<p>When using the <code>secret</code> source, this plugin will fetch secrets from a cluster in runtime (usually the one itself is running), in order to get a serviceAccount token to authenticate against <strong>another cluster</strong> (the one listed in <code>app-config.yaml</code>).</p>
+<p>In short: you are reading a secret from your current cluster containing a token that allows Backstage to connect to the remote cluster listed in <code>app-config.yaml</code> (or read from the catalog). <em>Don't confuse how the code connects to fetch a secret from a cluster (usually the same cluster DevPortal runs) with how the code uses the fetched token to connect to another cluster.</em></p>
+<h5>Secret fetching</h5>
+<p>Please understand there is a <em>kube config resolution order</em> in place. When fetching secrets, the plugin uses the following code:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">kc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">KubeConfig</span><span class="p">();</span>
+<span class="c1">// Explicitly handle KUBECONFIG environment variable</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">KUBERNETES_SERVICE_HOST</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span>
+<span class="w">    </span><span class="s1">'VEECODE: Detected in-cluster environment, using loadFromCluster()'</span><span class="p">,</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="nx">kc</span><span class="p">.</span><span class="nx">loadFromCluster</span><span class="p">();</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">KUBECONFIG</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="sb">`VEECODE: Loading kubeconfig from KUBECONFIG env var: </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">KUBECONFIG</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">kc</span><span class="p">.</span><span class="nx">loadFromFile</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">KUBECONFIG</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="sb">`VEECODE: Loading kubeconfig from default location`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">kc</span><span class="p">.</span><span class="nx">loadFromDefault</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>loadFromDefault()</code> method attempts to load Kubernetes configuration in the following priority order:</p>
+<ol>
+<li><strong><code>KUBECONFIG</code> environment variable</strong> - If set, loads configuration from the file(s) specified</li>
+<li><strong>In-cluster configuration</strong> - If running inside a Kubernetes pod, uses:
+   - Service account token from <code>/var/run/secrets/kubernetes.io/serviceaccount/token</code>
+   - Namespace from <code>/var/run/secrets/kubernetes.io/serviceaccount/namespace</code>
+   - CA certificate from <code>/var/run/secrets/kubernetes.io/serviceaccount/ca.crt</code></li>
+<li><strong><code>~/.kube/config</code> file</strong> - Falls back to the default kubeconfig file in the user's home directory</li>
+</ol>
+<p><strong>Important:</strong> This configuration determines which cluster the plugin connects to for reading the secret source, which is probably NOT the target cluster specified in the Backstage configuration itself. In most production deployments where Backstage runs inside Kubernetes, it will use the in-cluster configuration (option 2), in which case the secrets are read from the same cluster where backstage is running.</p>
+<h5>RBAC Permissions (fetching secrets)</h5>
+<p>The DevPortal pod's ServiceAccount needs these permissions to read secrets:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Role</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage-secret-reader</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="nt">rules</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"secrets"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">]</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RoleBinding</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage-secret-reader</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="nt">subjects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="nt">roleRef</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Role</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage-secret-reader</span>
+<span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io</span>
+</code></pre></div>
+<h5>RBAC Permissions (kubernetes plugin)</h5>
+<p>The kubernetes plugins itself needs read-only permissions to query the remote clusters. Each token must belong to a serviceAccount with the permissions listed in <a href="https://backstage.io/docs/features/kubernetes/configuration/#role-based-access-control" rel="noopener noreferrer">Role Based Access Control</a> page from the plugin's documentation.</p>
+<h4>Complete Configuration Example (config-based)</h4>
+<p>This shows how each cluster can choose a different strategy.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">serviceLocatorMethod</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'singleTenant'</span>
+<span class="w">  </span><span class="nt">clusterLocatorMethods</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'config'</span>
+<span class="w">      </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Production cluster - token from K8s secret</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod-cluster</span>
+<span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://prod.k8s.example.com</span>
+<span class="w">          </span><span class="nt">authProvider</span><span class="p">:</span><span class="w"> </span><span class="s">'serviceAccount'</span>
+<span class="w">          </span><span class="nt">skipTLSVerify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">caData</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${PROD_CA_DATA}</span>
+<span class="w">          </span><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret</span>
+<span class="w">            </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod-cluster-token</span>
+<span class="w">            </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage</span>
+
+<span class="w">        </span><span class="c1"># Staging cluster - token from environment</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging-cluster</span>
+<span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://staging.k8s.example.com</span>
+<span class="w">          </span><span class="nt">authProvider</span><span class="p">:</span><span class="w"> </span><span class="s">'serviceAccount'</span>
+<span class="w">          </span><span class="nt">skipTLSVerify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">caData</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${STAGING_CA_DATA}</span>
+<span class="w">          </span><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">env</span>
+<span class="w">            </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STAGING_K8S_TOKEN</span>
+
+<span class="w">        </span><span class="c1"># Dev cluster - token from file</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-cluster</span>
+<span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://dev.k8s.example.com</span>
+<span class="w">          </span><span class="nt">authProvider</span><span class="p">:</span><span class="w"> </span><span class="s">'serviceAccount'</span>
+<span class="w">          </span><span class="nt">skipTLSVerify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">caData</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${DEV_CA_DATA}</span>
+<span class="w">          </span><span class="nt">authMetadata</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+<span class="w">            </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/kubernetes/dev-token.txt</span>
+
+<span class="nt">veecode</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">addDefaultKubernetesAuthStrategies</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<h4>Complete Production Example (catalog-based)</h4>
+<h5>app-config.yaml</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">veecode</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enableEnhancedCatalogSupplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">mergeCatalogWithConfig</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">defaultSkipTLSVerify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">requireAuthMetadata</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">  </span><span class="c1"># Security requirement</span>
+
+<span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">serviceLocatorMethod</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'singleTenant'</span>
+<span class="w">  </span><span class="nt">clusterLocatorMethods</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'catalog'</span><span class="w">  </span><span class="c1"># Primary source</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'config'</span><span class="w">   </span><span class="c1"># Bootstrap/admin clusters only</span>
+<span class="w">      </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin-cluster</span>
+<span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://admin.k8s.internal</span>
+<span class="w">          </span><span class="nt">authProvider</span><span class="p">:</span><span class="w"> </span><span class="s">'serviceAccount'</span>
+<span class="w">          </span><span class="nt">skipTLSVerify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">caData</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${ADMIN_CA_DATA}</span>
+</code></pre></div>
+<h5>Catalog Entity - Production Cluster</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resource</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production-cluster</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Production Kubernetes Cluster</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Required for catalog cluster locator</span>
+<span class="w">    </span><span class="nt">kubernetes.io/api-server</span><span class="p">:</span><span class="w"> </span><span class="s">'https://prod-k8s.example.com'</span>
+<span class="w">    </span><span class="nt">kubernetes.io/auth-provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serviceAccount</span>
+<span class="w">    </span><span class="nt">kubernetes.io/skip-tls-verify</span><span class="p">:</span><span class="w"> </span><span class="s">'false'</span>
+<span class="w">    </span><span class="nt">kubernetes.io/api-server-certificate-authority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LS0tLS1CRUdJTi...</span>
+
+<span class="w">    </span><span class="c1"># Backstage configuration</span>
+<span class="w">    </span><span class="nt">backstage.io/kubernetes-cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production-cluster</span>
+<span class="w">    </span><span class="nt">backstage.io/kubernetes-label-selector</span><span class="p">:</span><span class="w"> </span><span class="s">"env=production"</span>
+
+<span class="w">    </span><span class="c1"># Optional: Dashboard integration</span>
+<span class="w">    </span><span class="nt">kubernetes.io/dashboard-url</span><span class="p">:</span><span class="w"> </span><span class="s">'https://dashboard.prod-k8s.example.com'</span>
+<span class="w">    </span><span class="nt">kubernetes.io/dashboard-app</span><span class="p">:</span><span class="w"> </span><span class="s">'standard'</span>
+
+<span class="w">    </span><span class="c1"># Veecode custom auth (fetch token from K8s secret)</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-name</span><span class="p">:</span><span class="w"> </span><span class="s">"prod-cluster-token"</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-source</span><span class="p">:</span><span class="w"> </span><span class="s">"secret"</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"backstage-system"</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-token-name</span><span class="p">:</span><span class="w"> </span><span class="s">"token"</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-cluster</span>
+<span class="w">  </span><span class="nt">lifecycle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
+<span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">platform-team</span>
+<span class="w">  </span><span class="nt">system</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-infrastructure</span>
+</code></pre></div>
+<h5>Catalog Entity - Development Cluster</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resource</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">development-cluster</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Development Kubernetes Cluster</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kubernetes.io/api-server</span><span class="p">:</span><span class="w"> </span><span class="s">'https://dev-k8s.example.com'</span>
+<span class="w">    </span><span class="nt">kubernetes.io/auth-provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serviceAccount</span>
+<span class="w">    </span><span class="nt">kubernetes.io/skip-tls-verify</span><span class="p">:</span><span class="w"> </span><span class="s">'true'</span>
+<span class="w">    </span><span class="nt">backstage.io/kubernetes-cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">development-cluster</span>
+
+<span class="w">    </span><span class="c1"># Dev cluster uses file-based token for easier local development</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-name</span><span class="p">:</span><span class="w"> </span><span class="s">"/etc/kubernetes/dev-token"</span>
+<span class="w">    </span><span class="nt">vee.codes/kubernetes-secret-source</span><span class="p">:</span><span class="w"> </span><span class="s">"file"</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-cluster</span>
+<span class="w">  </span><span class="nt">lifecycle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">development</span>
+<span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">platform-team</span>
+<span class="w">  </span><span class="nt">system</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-infrastructure</span>
+</code></pre></div>
+<h5>Kubernetes Secrets for Authentication</h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># Production cluster token</span>
+kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>prod-cluster-token<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">token</span><span class="o">=</span><span class="s2">"eyJhbGciOiJSUzI1NiIsImtp..."</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="o">=</span>backstage-system
+
+<span class="c1"># Staging cluster token (environment variable approach)</span>
+kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>staging-credentials<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">STAGING_K8S_TOKEN</span><span class="o">=</span><span class="s2">"eyJhbGciOiJSUzI1NiIsImtp..."</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="o">=</span>backstage-system
+</code></pre></div>
+<h4>Troubleshooting</h4>
+<h5>Enable Debug Logging</h5>
+<p>Set log level to debug in <code>app-config.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">backend</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">logging</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span>
+</code></pre></div>
+<p>Look for <code>VEECODE:</code> prefixed log messages.</p>
+<h5>Common Issues</h5>
+<h6>Authentication Issues</h6>
+<h6>"Secret has no data field"</h6>
+<ul>
+<li><strong>Cause</strong>: The Kubernetes secret doesn't have a <code>data</code> field or the specified <code>tokenName</code></li>
+<li><strong>Solution</strong>: Check the secret with <code>kubectl get secret &lt;name&gt; -n &lt;namespace&gt; -o yaml</code></li>
+<li><strong>Example</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>my-secret<span class="w"> </span>-n<span class="w"> </span>default<span class="w"> </span>-o<span class="w"> </span>yaml
+<span class="c1"># Ensure the secret has data.token field</span>
+</code></pre></div>
+<h6>"Failed to fetch Kubernetes secret: 403 Forbidden"</h6>
+<ul>
+<li><strong>Cause</strong>: Backstage's ServiceAccount lacks RBAC permissions to read secrets</li>
+<li><strong>Solution</strong>: Apply the RBAC configuration shown in the RBAC Permissions section</li>
+<li><strong>Verification</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>get<span class="w"> </span>secrets<span class="w"> </span>--as<span class="o">=</span>system:serviceaccount:default:backstage
+</code></pre></div>
+<h6>"Failed to fetch Kubernetes secret: 404 Not Found"</h6>
+<ul>
+<li><strong>Cause</strong>: Secret doesn't exist in the specified namespace</li>
+<li><strong>Solution</strong>: Verify the secret exists and check namespace</li>
+<li><strong>Verification</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>&lt;name&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;
+</code></pre></div>
+<h6>Authentication fails with valid token</h6>
+<ul>
+<li><strong>Cause</strong>: Token encoding issues or incorrect token format</li>
+<li><strong>Solution</strong>:</li>
+<li>For Kubernetes secrets: Ensure token is base64 encoded (plugin auto-decodes)</li>
+<li>For files/env vars: Ensure token is in plain JWT format (not base64 encoded)</li>
+<li><strong>Debug</strong>: Check the token format with <code>echo "token" | base64 -d</code> if needed</li>
+</ul>
+<h6>Catalog Cluster Issues</h6>
+<h6>Clusters not appearing from catalog</h6>
+<ul>
+<li><strong>Cause</strong>: Enhanced catalog supplier disabled or catalog entities not found</li>
+<li><strong>Solution</strong>:
+  1. Check <code>enableEnhancedCatalogSupplier</code> is <code>true</code>
+  2. Verify catalog entities have correct <code>type: kubernetes-cluster</code>
+  3. Check required annotations are present</li>
+<li><strong>Debug</strong>: Look for "VEECODE: Retrieved X clusters from catalog" messages</li>
+</ul>
+<h6>"Cluster missing authMetadata" warnings</h6>
+<ul>
+<li><strong>Cause</strong>: <code>requireAuthMetadata: true</code> but cluster lacks auth metadata</li>
+<li><strong>Solution</strong>: Either add auth metadata or set <code>requireAuthMetadata: false</code></li>
+<li><strong>Example</strong>: Add <code>vee.codes/kubernetes-secret-name</code> annotation to catalog entity</li>
+</ul>
+<h6>Config clusters not appearing when merging</h6>
+<ul>
+<li><strong>Cause</strong>: <code>mergeCatalogWithConfig: false</code> or duplicate cluster names</li>
+<li><strong>Solution</strong>:
+  1. Set <code>mergeCatalogWithConfig: true</code>
+  2. Ensure config and catalog clusters have different names
+  3. Check cluster locator methods include both 'catalog' and 'config'</li>
+</ul>
+<h6>Configuration Issues</h6>
+<h6>"No implementation available for apiRef{plugin.notifications.service}"</h6>
+<ul>
+<li><strong>Cause</strong>: Missing notifications API in plugin configuration</li>
+<li><strong>Solution</strong>: This is unrelated to this module - check other plugin configurations</li>
+</ul>
+<h6>Module not loading</h6>
+<ul>
+<li><strong>Cause</strong>: Module not properly registered in backend</li>
+<li><strong>Solution</strong>: Ensure module is added to <code>packages/backend/src/index.ts</code></li>
+<li><strong>Example</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nx">backend</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">import</span><span class="p">(</span><span class="s1">'@veecode-platform/plugin-kubernetes-backend-module-getsecret'</span><span class="p">));</span>
+</code></pre></div>
+<h6>Secret Fetching Issues</h6>
+<h6>In-cluster secret fetching fails</h6>
+<ul>
+<li><strong>Cause</strong>: Running outside Kubernetes or incorrect service account</li>
+<li><strong>Solution</strong>: 
+  1. Set <code>fetchSecretWithRawHttps: true</code> if needed
+  2. Check KUBECONFIG environment variable
+  3. Verify service account permissions</li>
+<li><strong>Debug</strong>: Check for "VEECODE: Detected in-cluster environment" messages</li>
+</ul>
+<h6>Environment variable not found</h6>
+<ul>
+<li><strong>Cause</strong>: Environment variable not set or incorrect name</li>
+<li><strong>Solution</strong>: 
+  1. Set the environment variable in Backstage deployment
+  2. Check for typos in variable name
+  3. Verify variable is available to backend process</li>
+<li><strong>Example</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">MY_CLUSTER_TOKEN</span><span class="o">=</span><span class="s2">"eyJhbGciOiJSUzI1NiIsImtp..."</span>
+</code></pre></div>
+<h6>File not found or not readable</h6>
+<ul>
+<li><strong>Cause</strong>: File path incorrect or permissions issue</li>
+<li><strong>Solution</strong>: 
+  1. Verify file exists and is readable by Backstage process
+  2. Check absolute vs relative paths
+  3. Ensure file is mounted in container (if running in Kubernetes)</li>
+<li><strong>Debug</strong>: Check file permissions with <code>ls -la /path/to/token</code></li>
+</ul>
+<h5>Debug Commands</h5>
+<h6>Check Kubernetes Configuration</h6>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check current kubeconfig context</span>
+kubectl<span class="w"> </span>config<span class="w"> </span>current-context
+
+<span class="c1"># Test cluster access</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>nodes
+
+<span class="c1"># Check service account permissions</span>
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>get<span class="w"> </span>secrets<span class="w"> </span>--as<span class="o">=</span>system:serviceaccount:default:&lt;your-pod-serviceaccount&gt;
+</code></pre></div>
+<h6>Verify Catalog Entities</h6>
+<div class="highlight"><pre><span></span><code><span class="c1"># get guest token</span>
+<span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:7007/api/auth/guest/refresh<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.backstageIdentity.token'</span><span class="k">)</span>
+
+<span class="c1"># Use Backstage API to check catalog</span>
+curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"http://localhost:7007/api/catalog/entities"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq
+
+<span class="c1"># Check specific entity</span>
+curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"http://localhost:7007/api/catalog/entities/by-name/resource/default/my-cluster"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq
+</code></pre></div>
+<h6>Test Secret Access</h6>
+<p>Check if Backstage pod can read secrets:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Test secret reading (in-cluster)</span>
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>get<span class="w"> </span>secrets<span class="w"> </span>--as<span class="o">=</span>system:serviceaccount:default:backstage
+
+<span class="c1"># Check secret contents</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>my-secret<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.data.token}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d
+</code></pre></div>
+<h5>Performance Issues</h5>
+<h6>Slow cluster discovery</h6>
+<ul>
+<li><strong>Cause</strong>: Large catalog or many clusters</li>
+<li><strong>Solution</strong>:
+  1. Enable debug logging to identify bottlenecks
+  2. Consider using <code>requireAuthMetadata: false</code> if validation is slow
+  3. Optimize catalog queries with proper labels</li>
+</ul>
+<h6>Memory usage high</h6>
+<ul>
+<li><strong>Cause</strong>: Too many clusters or large configurations</li>
+<li><strong>Solution</strong>:
+  1. Reduce number of clusters per configuration
+  2. Use <code>skipMetricsLookup: true</code> for clusters that don't need metrics
+  3. Monitor cluster resource usage</li>
+</ul>
+<h5>Getting Help</h5>
+<ol>
+<li><strong>Enable debug logging</strong> and collect logs</li>
+<li><strong>Check GitHub Issues</strong> for similar problems</li>
+<li><strong>Provide configuration details</strong> (remove sensitive data)</li>
+<li><strong>Include environment details</strong> (Kubernetes version, Backstage version)</li>
+<li><strong>Share specific error messages</strong> and steps to reproduce</li>
+</ol>
+<h4>License</h4>
+<p>Apache-2.0</p>
+<h4>Support</h4>
+<p>For issues and questions:</p>
+<ul>
+<li>GitHub Issues: <a href="https://github.com/veecode-platform/devportal-plugins" rel="noopener noreferrer">veecode-platform/devportal-plugins</a></li>
+<li>Documentation: <a href="https://docs.veecode.platform" rel="noopener noreferrer">VeeCode Platform Docs</a></li>
+</ul>
+</section>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../javascripts/catalog.js"></script>
+      
+    
+  </body>
+</html>

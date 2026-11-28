@@ -1,0 +1,1021 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Backstage backend plugin for Kubelog">
+      
+      
+      
+        <link rel="canonical" href="https://sbordeyne.github.io/backstage-plugin-catalog/plugins/%40jfvilas/plugin-kubelog-backend/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>@jfvilas/plugin-kubelog-backend - Backstage Plugin Catalog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/catalog.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jfvilasplugin-kubelog-backend" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-header__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Backstage Plugin Catalog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              @jfvilas/plugin-kubelog-backend
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../roles/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../scopes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Scopes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-nav__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Backstage Plugin Catalog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scopes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scopes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:kubernetes" class="md-tag">kubernetes</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:kwirth" class="md-tag">kwirth</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:log" class="md-tag">log</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:observability" class="md-tag">observability</a>
+      
+    
+  </nav>
+
+
+
+<h1 id="jfvilasplugin-kubelog-backend">@jfvilas/plugin-kubelog-backend<a class="headerlink" href="#jfvilasplugin-kubelog-backend" title="Permanent link">&para;</a></h1>
+<p>Backstage backend plugin for Kubelog</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/backend<span class="w"> </span>add<span class="w"> </span>@jfvilas/plugin-kubelog-backend
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td><code>0.14.2</code> (2026-03-27)</td>
+</tr>
+<tr>
+<td>Role</td>
+<td><a href="../../../roles/backend-plugin/">Backend plugin</a></td>
+</tr>
+<tr>
+<td>Scope</td>
+<td><a href="../../../scopes/jfvilas/">@jfvilas</a></td>
+</tr>
+<tr>
+<td>Plugin ID</td>
+<td><code>kubelog</code></td>
+</tr>
+<tr>
+<td>Weekly downloads</td>
+<td>29</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Apache-2.0</td>
+</tr>
+<tr>
+<td>Repository</td>
+<td><a href="https://github.com/jfvilas/kubelog-backend">https://github.com/jfvilas/kubelog-backend</a></td>
+</tr>
+<tr>
+<td>Homepage</td>
+<td><a href="https://github.com/jfvilas/kubelog-backend#readme">https://github.com/jfvilas/kubelog-backend#readme</a></td>
+</tr>
+<tr>
+<td>npm</td>
+<td><a href="https://www.npmjs.com/package/@jfvilas/plugin-kubelog-backend">https://www.npmjs.com/package/@jfvilas/plugin-kubelog-backend</a></td>
+</tr>
+<tr>
+<td>Author</td>
+<td>Julio Fernandez</td>
+</tr>
+<tr>
+<td>Maintainers</td>
+<td>jfvilas</td>
+</tr>
+<tr>
+<td>First published</td>
+<td>2024-08-22</td>
+</tr>
+</tbody>
+</table>
+<h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h2>
+<p>25 versions published. Latest releases:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.14.2</code></td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td><code>0.11.7</code></td>
+<td>2025-11-02</td>
+</tr>
+<tr>
+<td><code>0.11.6</code></td>
+<td>2025-08-08</td>
+</tr>
+<tr>
+<td><code>0.11.3</code></td>
+<td>2025-04-02</td>
+</tr>
+<tr>
+<td><code>0.11.2</code></td>
+<td>2025-04-01</td>
+</tr>
+<tr>
+<td><code>0.11.1</code></td>
+<td>2025-04-01</td>
+</tr>
+<tr>
+<td><code>0.10.2</code></td>
+<td>2025-01-17</td>
+</tr>
+<tr>
+<td><code>0.10.1</code></td>
+<td>2025-01-17</td>
+</tr>
+<tr>
+<td><code>0.9.6</code></td>
+<td>2024-09-22</td>
+</tr>
+<tr>
+<td><code>0.9.5</code></td>
+<td>2024-09-21</td>
+</tr>
+<tr>
+<td><code>0.9.3</code></td>
+<td>2024-09-16</td>
+</tr>
+<tr>
+<td><code>0.9.2</code></td>
+<td>2024-09-13</td>
+</tr>
+<tr>
+<td><code>0.9.1</code></td>
+<td>2024-09-12</td>
+</tr>
+<tr>
+<td><code>0.9.0</code></td>
+<td>2024-09-12</td>
+</tr>
+<tr>
+<td><code>0.8.36</code></td>
+<td>2024-08-30</td>
+</tr>
+</tbody>
+</table>
+<h2 id="readme">README<a class="headerlink" href="#readme" title="Permanent link">&para;</a></h2>
+<section class="catalog-readme" data-search-exclude>
+<h3>Backstage Kubelog plugin backend</h3>
+<p>This Backstage plugin is the backend for the Kubelog (Kubernetes log viewing) frontend plugin.</p>
+<p><strong>Please refer to <a href="https://github.com/jfvilas/kubelog" rel="noopener noreferrer">Kubelog Plugin</a> general info to understand what is Kubelog, what are its requirements and how does it work.</strong></p>
+<p>This <a href="https://github.com/jfvilas/kubelog-backend/blob/HEAD/(https://backstage.io)" rel="noopener noreferrer">Backstage</a> backend plugin is primarily responsible for the following tasks:</p>
+<ul>
+<li>Reading Kueblog config from app-config</li>
+<li>Validating login processes to remote Kwirth instances, and thus obtaining valid API keys for users to view logs or restart pods.</li>
+</ul>
+<h4>Version compatibility</h4>
+<p>Following table shows version compatibility between Kubelog and Kwirth Core.</p>
+<table>
+<thead>
+<tr>
+<th>Plugin Kwirth version</th>
+<th>Kwirth version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.14.2</td>
+<td>0.5.21</td>
+</tr>
+<tr>
+<td>0.11.7</td>
+<td>0.4.131</td>
+</tr>
+<tr>
+<td>0.11.6</td>
+<td>0.4.20</td>
+</tr>
+<tr>
+<td>0.11.1</td>
+<td>0.3.160</td>
+</tr>
+<tr>
+<td>0.10.1</td>
+<td>0.2.213</td>
+</tr>
+<tr>
+<td>0.9.5</td>
+<td>0.2.8</td>
+</tr>
+</tbody>
+</table>
+<h4>Install</h4>
+<h5>Up and Running</h5>
+<p>Here's how to get the backend up and running quickly. First we need to add the <code>@jfvilas/plugin-kubelog-backend</code> package to your backend:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># From your Backstage root directory</span>
+yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/backend<span class="w"> </span>add<span class="w"> </span>@jfvilas/plugin-kubelog-backend<span class="w"> </span>@jfvilas/plugin-kubelog-common
+</code></pre></div>
+<h5>New Backend System (old backend system has been omitted)</h5>
+<p>Next you need to modify your backend index file. In your <code>packages/backend/src/index.ts</code> make the following change:
+</p><div class="highlight"><pre><span></span><code><span class="w"> </span>   const backend = createBackend();
+
+<span class="w"> </span>   // ... other feature additions
+
+<span class="gi">+   backend.add(import('@jfvilas/plugin-kubelog-backend'));</span>
+
+<span class="w"> </span>   // ... other feature additions
+
+<span class="w"> </span>   backend.start();
+</code></pre></div><p></p>
+<h4>Configure</h4>
+<p>To have a Kubelog up and running you must perform some previous additional tasks, like deploying Kwirth, creating API Keys, defining clusters, etc... In this section we cover all this needs in a structured way.</p>
+<p>Remember, Backstage Kubelog plugin helps you in showing logs inside Backstage to ease your develoment teams work, but this plugin has no access to the logs in itself, it relies on Kwirth to act as a "log proxy", that is, Kwirth (a component that runs inside your Kubernetes clusters) has access to logs and can "export" them outside the cluster in a secure way, so logs can be consumed anywhere. For example, logs can be shown on Backstage entity pages.</p>
+<h5>1. Kwirth installation</h5>
+<p>We will not cover this subject here, we refer you to <a href="https://jfvilas.github.io/kwirth/#/installation" rel="noopener noreferrer">Kwirth installation documentation</a> where you will find more information on how Kwirth works and how to install it. We show here just a summary of what is Kwirth:</p>
+<ol>
+<li>Kwirth is built around the <strong>one-only-pod concept</strong>.</li>
+<li>Kwirth doesn't need any persistenace layer (no database, no network storage, no block storage, no file storage). It uses only Kubernetes storage.</li>
+<li>Kwirth provides user management, API security and multi-cluster access.</li>
+<li>Kwirth can export <strong>log information in real-time</strong> wherever you need it.</li>
+</ol>
+<h5>2. Kwirth customization</h5>
+<p>Once you have a Kubernetes cluster with a Kwirth installation in place (to export logs Kwirth must be accesible from outside your cluster, so you will need to install any flavour of Ingress Controller and an Ingress for publishing Kwirth access). Please <strong>write down your Kwirt external access</strong> (we will need it for configuring Kubelog). For this tutorial we will assume your Kwirth is published on: <strong>http://your-external.dns.name/kwirth</strong>.</p>
+<p>Once Kwirth is running perform there two simple actions:
+1. Login to your Kwirth and access to the <a href="https://jfvilas.github.io/kwirth/#/apimanagement?id=api-management" rel="noopener noreferrer">API Key section</a> to create an API Key that we need for enabling Kubelog to access Kwirth.
+2. The API Key should be 'permanent', the scope has to be 'cluster' and set the expire term long enough. When the API Key has been created, copy the API Key that Kwirth will create for you and is displayed at the API Key list.</p>
+<p>This is all you need to do inside Kwirth.</p>
+<h5>3. Backstage configuration</h5>
+<p>For finishing Kubelog config you need to edit your app-config.yaml in order to add Kwirth information to your Kubernetes cluster. Kubelog doesn't have a specific section in the app-config, it just uses the Backstage Kubernetes core component configuration vitamined with some additional properties. Let's suppose you have a Kubernetes configuration like this in your current app-config:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kubernetes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">serviceLocatorMethod</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'multiTenant'</span>
+<span class="w">  </span><span class="nt">clusterLocatorMethods</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">'config'</span>
+<span class="w">      </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://kuebeapi.your-cluster.com</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d-cluster</span>
+<span class="w">          </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">'Kubernetes</span><span class="nv"> </span><span class="s">local'</span>
+<span class="w">          </span><span class="nt">authProvider</span><span class="p">:</span><span class="w"> </span><span class="s">'serviceAccount'</span>
+<span class="w">          </span><span class="nt">skipTLSVerify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">skipMetricsLookup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>We need to add 2 properties to the cluster configuration:
+- kubelogKwirthHome: the home URL of the Kwirth installation.
+- kubelogKwirthApiKey: The API key we created before.</p>
+<p>The kubernetes section should look something like this:
+</p><div class="highlight"><pre><span></span><code>kubernetes:
+<span class="w"> </span> serviceLocatorMethod:
+<span class="w"> </span>   type: 'multiTenant'
+<span class="w"> </span> clusterLocatorMethods:
+<span class="w"> </span>   - type: 'config'
+<span class="w"> </span>     clusters:
+<span class="w"> </span>       - url: https://kuebeapi.your-cluster.com
+<span class="w"> </span>         name: k3d-cluster
+<span class="w"> </span>         title: 'Kubernetes local'
+<span class="gi">+         kubelogKwirthHome: http://your-external.dns.name/kwirth</span>
+<span class="gi">+         kubelogKwirthApiKey: '40f5ea6c-bac3-df2f-d184-c9f3ab106ba9|permanent|cluster::::'</span>
+<span class="w"> </span>         authProvider: 'serviceAccount'
+<span class="w"> </span>         skipTLSVerify: true
+<span class="w"> </span>         skipMetricsLookup: true
+</code></pre></div><p></p>
+<h5>4. Permissions</h5>
+<h6>Introduction to the permission system</h6>
+<p>The permission system of Kubelog has been designed with these main ideas in mind:</p>
+<ul>
+<li><strong>Keep it simple</strong>, that is, people that don't want to get complicated should be able to configure permissions without a headache, using just a few lines (in some cases even with 0 lines)</li>
+<li>It must be <strong>flexible</strong>. Because <em>every house is a world</em>, the system should be flexible enough to accomodate every single permission need whatever its size be.</li>
+</ul>
+<p>So, the permission system has been build using (right now) two layers:</p>
+<ol>
+<li><strong>Namespace layer</strong>. Assigning permissions to whole namespaces can be done in a extremely simple way using this layer.</li>
+<li><strong>Pod layer</strong>. If namespace permission layer is not coarse enough for you, you can refine your permissions by using the pod permission layer which, in addition, adds scopes to the different permissions you can assign.</li>
+</ol>
+<h6>Namespace layer</h6>
+<p>Let's suppose that in your clusters you have 3 namespaces:
+  - dev, for development workloads
+  - stage: for canary deployments, a/b testing and so on 
+  - production: for productive workloads</p>
+<p>Typically you would restrict access to logs in such a way that:
+  - Everybody should be able to view developoment (dev) logs.
+  - Only Operations teams and administrators can view preproduction (stage) logs.
+  - Only administrators can see production logs. In addition to administrators, production can also be accesseed by Nicklaus Wirth.</p>
+<p>The way you can manage this in Kubelog is via Group entities of Backstage. That is:
+  - You create a group where you add all your developers.
+  - Another group with your devops team.
+  - And a group containing just the administrators.</p>
+<p><strong>NOTE</strong>: for simplicity we assume all your User refs and Group refs live in a Backstage namespace named 'default'</p>
+<p>Once you have created the groups you can configure the namespace permission adding one additional property to the cluster definition, it is named '<strong>kubelogNamespacePermissions</strong>'. This is an array of namespaces, where for each namespace you can declare an array of identity refs (that is, users or groups). The example below is self-explaining.</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>     clusters:
+<span class="w"> </span>       - url: https://kuebeapi.your-cluster.com
+<span class="w"> </span>         name: k3d-cluster
+<span class="w"> </span>         title: 'Kubernetes local'
+<span class="w"> </span>         kubelogKwirthHome: http://your-external.dns.name/kwirth
+<span class="w"> </span>         kubelogKwirthApiKey: '40f5ea6c-bac3-df2f-d184-c9f3ab106ba9|permanent|cluster::::'
+<span class="gi">+         kubelogNamespacePermissions:</span>
+<span class="gi">+           - stage: ['group:default/devops', 'group:default/admin']</span>
+<span class="gi">+           - production: ['group:default/admin', 'user:default/nicklaus-wirth']</span>
+<span class="w"> </span>         authProvider: 'serviceAccount'
+<span class="w"> </span>         skipTLSVerify: true
+<span class="w"> </span>         skipMetricsLookup: true
+</code></pre></div>
+<p>It's easy to understand:
+  1. Everybody can access 'dev' namespace, since we have stated no restrictions at all.
+  2. 'stage' namespace can be accessed by group 'devops' and group 'admin'.
+  3. The 'production' namespace can be accesed by the group of administrators ('admin') and the user Nicklaus Wirth.</p>
+<p>Remember, if you don't want to restrict a namespace, just do not add it to the configuration in app-config file, like we have done with 'dev' namespace.</p>
+<p>When a user working with Backstage enters Kubelog tab (in the entity page) he will see a list of clusters. If he selects a cluster a list of namespaces will be shown, that is, all namespaces that do contain pods tagged with the current entity id. If the user has no permission to a specific namespace, the namespace will be shown in <span>red</span> and will not be accesible. Allowed namespaced will be shown in <span><strong>primary color</strong></span> and will be 'clickable'.</p>
+<h6>Pod permissions</h6>
+<p>In addition to namespace permissions, Kubelog has added on version 0.9 a pod permission layer in which you can refine your permissions. Currently <strong>2 scopes</strong> have been defined:</p>
+<ul>
+<li><strong>View</strong> scope, for viewing logs.</li>
+<li><strong>Restart</strong> scope, for restarting pods.</li>
+</ul>
+<p>Each scope has a configuration section in the app-config, but both work exactly the same way, so we will explain just how 'view' scope permissions would be defined.</p>
+<p>Let's consider a simple view-scoped pod permission sample based on previously defined namespaces: 'dev', 'stage', 'production':</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>     clusters:
+<span class="w"> </span>       - url: https://kuebeapi.your-cluster.com
+<span class="w"> </span>         name: k3d-cluster
+<span class="w"> </span>         title: 'Kubernetes local'
+<span class="w"> </span>         kubelogKwirthHome: http://your-external.dns.name/kwirth
+<span class="w"> </span>         kubelogKwirthApiKey: '40f5ea6c-bac3-df2f-d184-c9f3ab106ba9|permanent|cluster::::'
+<span class="w"> </span>        kubelogNamespacePermissions:
+<span class="w"> </span>          - stage: ['group:default/devops', 'group:default/admin']
+<span class="w"> </span>          - production: ['group:default/admin', 'user:default/nicklaus-wirth']
+<span class="w"> </span>         authProvider: 'serviceAccount'
+<span class="w"> </span>         skipTLSVerify: true
+<span class="w"> </span>         skipMetricsLookup: true
+<span class="gi">+         kubelogPodViewPermissions:</span>
+<span class="gi">+           - stage:</span>
+<span class="gi">+               allow:</span>
+<span class="gi">+               - pods: [^common-]</span>
+<span class="gi">+               - pods: [keys]</span>
+<span class="gi">+                 refs: []</span>
+<span class="gi">+               - pods: [^ef.*]</span>
+<span class="gi">+                 refs: [group:.+/admin, group:test/.+]</span>
+<span class="gi">+               - pods: [th$]</span>
+<span class="gi">+                 refs: [.*]</span>
+<span class="gi">+               except:</span>
+<span class="gi">+               - pods: [kwirth]</span>
+<span class="gi">+                 refs: [group:default/admin, user:defualt:nicklaus-wirth]</span>
+<span class="gi">+           - production</span>
+<span class="gi">+               deny:</span>
+<span class="gi">+               - refs: [.*]</span>
+<span class="gi">+           - others</span>
+<span class="gi">+               allow:</span>
+<span class="gi">+               - refs: []</span>
+<span class="w"> </span>         ...
+</code></pre></div>
+<p><strong><em>VERY IMPORTANT NOTE:</em></strong> <strong>All strings defined in the pod permission layer are regular expressions.</strong></p>
+<p>About this example and about 'how to configure kubelog pod permissions':</p>
+<ul>
+<li><strong>kubelogPodViewPermissions</strong> is the section name for refining pod permission for viewing logs.</li>
+<li>The main content of this section is a list of namespaces (like 'dev' in the sample).</li>
+<li>The content of each namespace is a rule system that works this way:<ul>
+<li>Rules can be defined following a fixed schema by which you can <strong>allow</strong> or <strong>deny</strong> access to a set of pods to a set of identity references (users or groups)</li>
+<li>'allow' can be refined by adding exceptions by means of 'except' keyword.</li>
+<li>'deny' can be refined by adding exceptions by means of 'unless' keyword.</li>
+<li>The order of evaluation of rules is:
+   1. Search for a pod name match in the allow section.
+   2. If a match is found, look for any exception that may be applied, by searching for matches in the 'except' section.
+   3. If no 'allow' is found, or an allow rule is found but there exists an except rule that matches, the access is not granted and the process finishes here.
+   4. If the user is granted, Kubelog then looks for a match in the 'deny' section.
+   5. If there are no deny rules that match, the user is granted and the process finsihes here.
+   6. If a deny rule matches, then Kueblog will search for any 'unless' rule that matches. I no unless rule match exists, the access is denied and the process finishes here.
+   7. If there exists an 'unless' rule then the access is granted.</li>
+<li>It's important to note that 'allow' and 'deny' are optional, but if you dont specify them, they will match anything.</li>
+</ul>
+</li>
+<li>It is most important to know that if a namespace is not spscified, the access is granted.</li>
+</ul>
+<p>So, in our example:
+  - Access to 'dev' is granted, since 'dev' namespace is not specified.
+  - Access to 'stage' works this way:
+    - <em>Everybody can access pods whose name starts with 'common-'</em> (remember, <strong>we always use regexes</strong>). We have added no 'refs', so any identity ref matches.
+    - <em>Nobody can access pod named 'keys'</em> (pay attention to the refs set to '[]', that is no identity ref can access)
+    - <em>Admins and people on namespace 'test' can access any pod whose name starts with 'ef'</em>. The 'pods' contians a regex with '^ef.<em>' (starts with 'ef' and contain any number of characters afterwards). The identity refs that can access pods that match with this pod regex are the group of admins on any Backstage namespace ('group:.+/admin') and all the people that belongs to Backstage group 'test' (group:test/.+).
+    - <em>'Everybody can access pods whose name ends with 'th'</em>. That is, the regex in pods is 'th$' (names ending with 'th'), and the refs contains '.</em>', that is, any number of characters, so there are no limits on the refs, everybody is included.
+    - <em>But... if the pod name is 'kwirth' only admis can access</em>. This refers to the 'except' section, which is a refinement of the allow. Although the previous rule says <em>everybody acan access pods ending with 'th'</em>, this is true <strong>except</strong> for the pod name 'kwirth', which can only be accesed by 'admins in the default' group or 'Nicklaus Wirth'.</p>
+<p>Let's complete the example with the other namespaces declared:
+  - <em>Nobody can access pods in 'production' namespace</em>. The 'production' namespace doesn't have an 'allow' section, it ony contains a 'deny'. In addition, the 'deny' section only contains a 'refs' section (all pod names would match, since no 'pods' section means 'pods: [.*]', that is, all pod names match). The 'refs' inside the 'deny' contains '.*', what means every ref would match, so, finally, <em>nobody can access a pod</em>.
+  - <em>Nobody can access pods in 'others' namespace</em>. The 'others' namespace contains just an 'allow' rule, which have no pods (so all pod names would match), and it contains in the 'refs' this expression: '[]', so no identity ref would match. Finally, <em>nobody can access a pod</em>, the same as 'production' but achieved in other way.</p>
+<p>Please be aware that not declaring 'pods' or 'refs' means using a <strong>match-all</strong> approach (by using ['.*']), what is completely different than declaring '[]', what <strong>matches nothing</strong>.</p>
+<h6>Pod permission scopes</h6>
+<p>Starting with <strong>Kubelog 0.9.5</strong>, there exist two scopes (that are consistent with Kwirth scopes):</p>
+<ul>
+<li>'view' scope, for viewing logs</li>
+<li>'restart' scope, for restarting pods</li>
+</ul>
+<p>The permissions related with this two scopes can be declared in app-config using these tow sections:</p>
+<ul>
+<li><strong>kubelogPodViewPermissions</strong>, the same as the sample we show before, it's for viewing logs.</li>
+<li><strong>kubelogPodRestartPermissions</strong>, for restarting pods.</li>
+</ul>
+<p>The way the permissions are declared is the one explained before, with this general structure inside app-config YAML:</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">SCOPE</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">NAMESPACE</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">allow</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pods</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">refs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">except</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">deny</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">unless</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">NAMESPACE</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">allow</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">SCOPE</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">NAMESPACE</span><span class="p">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>Where:
+  - SCOPE is one of 'kubelogPodViewPermissions' or 'kubelogPodRestartPermissions'.
+  - NAMESPACE is the name (not a regex, I mean exactly the name) of a namespace.
+  - 'allow', 'except', 'deny' and 'unless' contain arrays of objects, where each one object has only two properties: 'pods' and 'refs'.
+    - 'pods' is an array of regex that will be evaluated against pod names.
+    - 'refs' is an array of regex that will be evaluated against Backstage identity references, where the format is '<strong>type:namespace/id</strong>', where:
+      - 'type' is one of 'user' or 'group',
+      - 'namespace' is a Backstage namespace (not Kubernetes namespace).
+      - 'id' is a reference id, like a user name or a group name.
+  - You can repeat NAMESPACE, in order to have different sections make your config readable if you have lots of rules.</p>
+</section>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../javascripts/catalog.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1362 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="StackGen Backstage backend plugin — scaffolder actions, UI proxies, templates">
+      
+      
+      
+        <link rel="canonical" href="https://sbordeyne.github.io/backstage-plugin-catalog/plugins/%40stackgenhq/backstage-plugin-stackgen-backend/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>@stackgenhq/backstage-plugin-stackgen-backend - Backstage Plugin Catalog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/catalog.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stackgenhqbackstage-plugin-stackgen-backend" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-header__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Backstage Plugin Catalog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              @stackgenhq/backstage-plugin-stackgen-backend
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../roles/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../scopes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Scopes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-nav__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Backstage Plugin Catalog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scopes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scopes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="stackgenhqbackstage-plugin-stackgen-backend">@stackgenhq/backstage-plugin-stackgen-backend<a class="headerlink" href="#stackgenhqbackstage-plugin-stackgen-backend" title="Permanent link">&para;</a></h1>
+<p>StackGen Backstage backend plugin — scaffolder actions, UI proxies, templates</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/backend<span class="w"> </span>add<span class="w"> </span>@stackgenhq/backstage-plugin-stackgen-backend
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td><code>0.3.10</code> (2026-11-19)</td>
+</tr>
+<tr>
+<td>Role</td>
+<td><a href="../../../roles/backend-plugin/">Backend plugin</a></td>
+</tr>
+<tr>
+<td>Scope</td>
+<td><a href="../../../scopes/stackgenhq/">@stackgenhq</a></td>
+</tr>
+<tr>
+<td>Plugin ID</td>
+<td><code>stackgen</code></td>
+</tr>
+<tr>
+<td>Weekly downloads</td>
+<td>218</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Apache-2.0</td>
+</tr>
+<tr>
+<td>Repository</td>
+<td><a href="https://github.com/appcd-dev/backstage-plugin-stackgen-backend">https://github.com/appcd-dev/backstage-plugin-stackgen-backend</a></td>
+</tr>
+<tr>
+<td>Homepage</td>
+<td><a href="https://github.com/appcd-dev/backstage-plugin-stackgen-backend#readme">https://github.com/appcd-dev/backstage-plugin-stackgen-backend#readme</a></td>
+</tr>
+<tr>
+<td>npm</td>
+<td><a href="https://www.npmjs.com/package/@stackgenhq/backstage-plugin-stackgen-backend">https://www.npmjs.com/package/@stackgenhq/backstage-plugin-stackgen-backend</a></td>
+</tr>
+<tr>
+<td>Author</td>
+<td>StackGen</td>
+</tr>
+<tr>
+<td>Maintainers</td>
+<td>sandeep_stackgen, stackgen-bot</td>
+</tr>
+<tr>
+<td>First published</td>
+<td>2026-09-17</td>
+</tr>
+</tbody>
+</table>
+<h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h2>
+<p>9 versions published. Latest releases:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.3.10</code></td>
+<td>2026-11-19</td>
+</tr>
+<tr>
+<td><code>0.3.10-beta.1</code></td>
+<td>2026-11-18</td>
+</tr>
+<tr>
+<td><code>0.3.9</code></td>
+<td>2026-11-05</td>
+</tr>
+<tr>
+<td><code>0.3.9-beta.1</code></td>
+<td>2026-11-05</td>
+</tr>
+<tr>
+<td><code>0.3.8</code></td>
+<td>2026-09-23</td>
+</tr>
+<tr>
+<td><code>0.3.8-beta.3</code></td>
+<td>2026-09-22</td>
+</tr>
+<tr>
+<td><code>0.3.8-beta.2</code></td>
+<td>2026-09-21</td>
+</tr>
+<tr>
+<td><code>0.3.7</code></td>
+<td>2026-09-21</td>
+</tr>
+<tr>
+<td><code>0.3.6-beta.1</code></td>
+<td>2026-09-17</td>
+</tr>
+</tbody>
+</table>
+<h2 id="readme">README<a class="headerlink" href="#readme" title="Permanent link">&para;</a></h2>
+<section class="catalog-readme" data-search-exclude>
+<h3>Backstage Plugin StackGen Backend</h3>
+<p>Published to <strong><a href="https://www.npmjs.com/package/@stackgenhq/backstage-plugin-stackgen-backend" rel="noopener noreferrer">npmjs.org</a></strong> as <code>@stackgenhq/backstage-plugin-stackgen-backend</code>. Install works without a GitHub PAT. Release process: <a href="https://github.com/appcd-dev/backstage-plugin-stackgen-backend/blob/HEAD/docs/PUBLISH.md" rel="noopener noreferrer">docs/PUBLISH.md</a>.</p>
+<h4>Installation</h4>
+<p>This plugin is installed via the <code>@stackgenhq/backstage-plugin-stackgen-backend</code> package. To install it to your backend package, run the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># From your root directory</span>
+yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/backend<span class="w"> </span>add<span class="w"> </span>@stackgenhq/backstage-plugin-stackgen-backend
+</code></pre></div>
+<p>No <code>.yarnrc.yml</code> GitHub Packages scope is required if you install from npmjs. The same version is also published to GitHub Packages.
+Then add the plugin to your backend in <code>packages/backend/src/index.ts</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createBackend</span><span class="p">();</span>
+<span class="c1">// ...</span>
+<span class="nx">backend</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">import</span><span class="p">(</span><span class="s1">'@stackgenhq/backstage-plugin-stackgen-backend'</span><span class="p">));</span>
+</code></pre></div>
+<p>add configuration required for plugin in backstage app-config.yaml
+</p><div class="highlight"><pre><span></span><code><span class="nt">stackGen</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># The base URL for the StackGen API. Default: `https://cloud.stackgen.com`</span>
+<span class="w">  </span><span class="nt">baseUrl</span><span class="p">:</span><span class="w"> </span><span class="s">"${BACKSTAGE_ADAPTER_URL}"</span>
+<span class="w">  </span><span class="nt">apiToken</span><span class="p">:</span><span class="w"> </span><span class="s">"${STACKGEN_PAT}"</span>
+<span class="w">  </span><span class="c1"># Optional: role assigned when createAppStack auto-adds PAT user to project</span>
+<span class="w">  </span><span class="c1"># Defaults to admin role 00000000-0000-0000-0000-000000000002</span>
+<span class="w">  </span><span class="nt">projectMemberRoleId</span><span class="p">:</span><span class="w"> </span><span class="s">"${STACKGEN_PROJECT_MEMBER_ROLE_ID}"</span>
+<span class="w">  </span><span class="c1"># Preferred allowlist of project UUIDs (comma-separated). Alias: allowedTeams</span>
+<span class="w">  </span><span class="nt">allowedProjects</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">  </span><span class="c1"># Optional default project scope. Alias: orgId</span>
+<span class="w">  </span><span class="c1"># projectId: ""</span>
+</code></pre></div><p></p>
+<p><code>allowedProjects</code> is optional; by default all projects the STACKGEN_PAT can access are available.
+Restrict access by listing project UUIDs. Deprecated alias: <code>allowedTeams</code> (same comma-separated list).</p>
+<div class="highlight"><pre><span></span><code><span class="nt">stackGen</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">baseUrl</span><span class="p">:</span><span class="w"> </span><span class="s">"${BACKSTAGE_ADAPTER_URL}"</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">apiToken</span><span class="p">:</span><span class="w"> </span><span class="s">"${STACKGEN_PAT}"</span>
+<span class="w">  </span><span class="nt">allowedProjects</span><span class="p">:</span><span class="w"> </span><span class="s">"20f0e211-15ce-4d2c-1e12-0555bffee7bd,20f0e211-15ce-4d2c-2e22-0555bffee7bd"</span>
+</code></pre></div>
+<h4>API specification</h4>
+<p>The canonical Integrations Gateway API spec is maintained in the <a href="https://github.com/appcd-dev/integrations" rel="noopener noreferrer">integrations</a> repo:</p>
+<p><strong>https://github.com/appcd-dev/integrations/blob/main/api-docs/api-spec.yml</strong></p>
+<p>Use that spec as the source of truth for request/response schemas and endpoints. This plugin is not generated from the spec; implementation is in code and may be updated independently.</p>
+<h4>Compatibility</h4>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Tested / required notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@backstage/plugin-scaffolder-node</code></td>
+<td>Declared dependency <strong><code>^0.12.5</code></strong> (tested). Schema declarations use the <strong>function form</strong> (<code>schema.input: () =&gt; zodObject</code> or <code>(z) =&gt; z.object(…)</code>) required by <code>parseSchemas</code>. Do not pass raw <code>ZodObject</code> instances — modern scaffolder-node ignores them and leaves <code>schema.input</code> / <code>schema.output</code> undefined. Older scaffolder-node <strong>0.6.x</strong> accepted raw Zod objects via <code>safeParseAsync</code> detection; that path is obsolete.</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td><code>&gt;=20</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>ENG-3394:</strong> Releases <strong>≤0.3.2</strong> (built against scaffolder-node 0.6.x with raw ZodObject schemas) show blank input fields on Backstage “Installed actions” when paired with scaffolder-node <strong>≥0.8</strong> (including <strong>0.12.5</strong>) and skip scaffolder upfront validation. Fixed in <strong>0.3.3</strong> (package track <code>0.3.3-beta.3+</code>): function-form schemas + scaffolder-node <code>^0.12.5</code>.</p>
+<h4>Available Actions</h4>
+<h5>Setup</h5>
+<p>To use these actions, add the following code in your backend in <code>packages/backend/src/index.ts</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createAppStackAction</span><span class="p">,</span><span class="w"> </span><span class="nx">createProjectAction</span><span class="p">,</span><span class="w"> </span><span class="nx">downloadIaCAction</span><span class="p">,</span><span class="w"> </span><span class="nx">exportAppStackToGitAction</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@stackgenhq/backstage-plugin-stackgen-backend'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">scaffolderActionsExtensionPoint</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@backstage/plugin-scaffolder-node'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">coreServices</span><span class="p">,</span><span class="w"> </span><span class="nx">createBackendModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@backstage/backend-plugin-api'</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">scaffolderCustomExtension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createBackendModule</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">pluginId</span><span class="o">:</span><span class="w"> </span><span class="s1">'scaffolder'</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">moduleId</span><span class="o">:</span><span class="w"> </span><span class="s1">'custom-extensions'</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">register</span><span class="p">(</span><span class="nx">env</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">env</span><span class="p">.</span><span class="nx">registerInit</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">deps</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">scaffolder</span><span class="o">:</span><span class="w"> </span><span class="kt">scaffolderActionsExtensionPoint</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">config</span><span class="o">:</span><span class="w"> </span><span class="kt">coreServices.rootConfig</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">logger</span><span class="o">:</span><span class="w"> </span><span class="kt">coreServices.logger</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="k">async</span><span class="w"> </span><span class="nx">init</span><span class="p">({</span><span class="w"> </span><span class="nx">scaffolder</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">,</span><span class="w"> </span><span class="nx">logger</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">scaffolder</span><span class="p">.</span><span class="nx">addActions</span><span class="p">(</span>
+<span class="w">          </span><span class="nx">createProjectAction</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span><span class="w"> </span><span class="nx">logger</span><span class="p">),</span>
+<span class="w">          </span><span class="nx">createAppStackAction</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span><span class="w"> </span><span class="nx">logger</span><span class="p">),</span>
+<span class="w">          </span><span class="nx">downloadIaCAction</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span><span class="w"> </span><span class="nx">logger</span><span class="p">),</span>
+<span class="w">          </span><span class="nx">exportAppStackToGitAction</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span><span class="w"> </span><span class="nx">logger</span><span class="p">),</span>
+<span class="w">          </span><span class="c1">// ...other actions</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+
+<span class="p">...</span>
+
+<span class="nx">backend</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">scaffolderCustomExtension</span><span class="p">);</span>
+</code></pre></div>
+<h5>stackGen:createProject</h5>
+<p>Creates a Project in StackGen with optional git and environment configuration.</p>
+<p>A StackGen project is identified by <strong><code>projectId</code></strong> (UUID). After creation, pass <code>projectId</code> to <code>stackGen:createAppStack</code> as <code>appstack.projectId</code>. Deprecated output alias: <code>teamId</code> (same UUID).</p>
+<p><strong>Inputs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>project.name</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Project name</td>
+</tr>
+<tr>
+<td><code>project.description</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Project description</td>
+</tr>
+<tr>
+<td><code>project.gitConfig</code></td>
+<td>object</td>
+<td>no</td>
+<td>Default git configuration (scmType, repoUrl, targetBranch, path, vaultReference)</td>
+</tr>
+<tr>
+<td><code>project.environmentConfig</code></td>
+<td>object</td>
+<td>no</td>
+<td>Default environment configuration (templates, variables, overrides)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Outputs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>projectId</code></td>
+<td>string</td>
+<td>UUID of the created project</td>
+</tr>
+<tr>
+<td><code>projectName</code></td>
+<td>string</td>
+<td>Name of the project</td>
+</tr>
+<tr>
+<td><code>teamId</code></td>
+<td>string</td>
+<td><strong>Deprecated</strong> alias of <code>projectId</code> (same UUID)</td>
+</tr>
+<tr>
+<td><code>alreadyExisted</code></td>
+<td>boolean</td>
+<td><code>true</code> if a project with this name already existed (409), <code>false</code> if newly created (201)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Status code handling:</strong></p>
+<ul>
+<li><strong>201</strong> -- Project created. Outputs <code>projectId</code>, <code>projectName</code>, <code>teamId</code> (alias), <code>alreadyExisted: false</code>.</li>
+<li><strong>409</strong> -- Project already exists. Treated as success. Outputs <code>projectId</code>, <code>projectName</code>, <code>teamId</code> (alias), <code>alreadyExisted: true</code>.</li>
+<li><strong>403</strong> -- Throws error: invalid token permissions.</li>
+<li><strong>400</strong> -- Throws error: invalid project name.</li>
+</ul>
+<p>Important behavior for project initialization:</p>
+<ul>
+<li>Auxiliary initialization settings (for example environment templates, variables, overrides, default configs like <code>gitConfig</code>/<code>environmentConfig</code>) are only applied when the plugin actually creates a new project.</li>
+<li>If the requested project already exists (<code>409</code> path), the action returns that project identifiers and proceeds, but it does <strong>not</strong> patch/update the existing project with those extra settings.</li>
+<li>Updating existing projects with those parameters is planned for a future update.</li>
+</ul>
+<p>Example:
+</p><div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">create-project</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create StackGen Project</span>
+<span class="w">    </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stackGen:createProject</span>
+<span class="w">    </span><span class="nt">input</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">project</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ parameters.projectName }}</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Project</span><span class="nv"> </span><span class="s">created</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">Backstage"</span>
+</code></pre></div><p></p>
+<p>Example with git and environment config:
+</p><div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">create-project</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create StackGen Project</span>
+<span class="w">    </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stackGen:createProject</span>
+<span class="w">    </span><span class="nt">input</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">project</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ parameters.projectName }}</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Project</span><span class="nv"> </span><span class="s">created</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">Backstage"</span>
+<span class="w">        </span><span class="nt">gitConfig</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"default-git-config"</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"git"</span>
+<span class="w">          </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">scmType</span><span class="p">:</span><span class="w"> </span><span class="s">"GITHUB"</span>
+<span class="w">            </span><span class="nt">repoUrl</span><span class="p">:</span><span class="w"> </span><span class="s">"https://github.com/org/repo.git"</span>
+<span class="w">            </span><span class="nt">targetBranch</span><span class="p">:</span><span class="w"> </span><span class="s">"main"</span>
+<span class="w">          </span><span class="nt">vaultReference</span><span class="p">:</span><span class="w"> </span><span class="s">"550e8400-e29b-41d4-a716-446655440000"</span>
+<span class="w">          </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">environmentConfig</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"default-env-config"</span>
+<span class="w">          </span><span class="nt">environmentTemplates</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"production"</span>
+<span class="w">              </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">"#FF0000"</span>
+<span class="w">              </span><span class="nt">stateBackendTemplate</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"S3"</span>
+<span class="w">                </span><span class="nt">configJson</span><span class="p">:</span><span class="w"> </span><span class="s">'{"bucket":</span><span class="nv"> </span><span class="s">"my-terraform-state"}'</span>
+<span class="w">          </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"region"</span>
+<span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span>
+<span class="w">              </span><span class="nt">defaultValueJson</span><span class="p">:</span><span class="w"> </span><span class="s">'"us-east-1"'</span>
+<span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"AWS</span><span class="nv"> </span><span class="s">region</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">deployment"</span>
+<span class="w">          </span><span class="nt">variableOverrides</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">variableName</span><span class="p">:</span><span class="w"> </span><span class="s">"region"</span>
+<span class="w">              </span><span class="nt">environmentTemplateName</span><span class="p">:</span><span class="w"> </span><span class="s">"production"</span>
+<span class="w">              </span><span class="nt">valueJson</span><span class="p">:</span><span class="w"> </span><span class="s">'"us-west-2"'</span>
+</code></pre></div><p></p>
+<p>Environment variable value types (<code>defaultValueJson</code> and <code>valueJson</code>):</p>
+<ul>
+<li>These fields are <strong>JSON literals encoded as strings</strong> in YAML.</li>
+<li>The plugin passes them through to StackGen, so you can use non-string JSON values.</li>
+<li>Set <code>variables[].type</code> to match your intended semantic type in StackGen.</li>
+</ul>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"region"</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span>
+<span class="w">    </span><span class="nt">defaultValueJson</span><span class="p">:</span><span class="w"> </span><span class="s">'"us-east-1"'</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"replicas"</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"number"</span>
+<span class="w">    </span><span class="nt">defaultValueJson</span><span class="p">:</span><span class="w"> </span><span class="s">'3'</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"enableAutoscaling"</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"boolean"</span>
+<span class="w">    </span><span class="nt">defaultValueJson</span><span class="p">:</span><span class="w"> </span><span class="s">'true'</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"subnetIds"</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"list"</span>
+<span class="w">    </span><span class="nt">defaultValueJson</span><span class="p">:</span><span class="w"> </span><span class="s">'["subnet-1","subnet-2"]'</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"extraTags"</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"object"</span>
+<span class="w">    </span><span class="nt">defaultValueJson</span><span class="p">:</span><span class="w"> </span><span class="s">'{"team":"platform","env":"dev"}'</span>
+
+<span class="nt">variableOverrides</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">variableName</span><span class="p">:</span><span class="w"> </span><span class="s">"replicas"</span>
+<span class="w">    </span><span class="nt">environmentTemplateName</span><span class="p">:</span><span class="w"> </span><span class="s">"prod"</span>
+<span class="w">    </span><span class="nt">valueJson</span><span class="p">:</span><span class="w"> </span><span class="s">'5'</span>
+</code></pre></div>
+<h5>stackGen:createAppStack</h5>
+<p>Creates an AppStack in StackGen for a given project with specified resources and configurations.</p>
+<p>Behavior by input type:</p>
+<ul>
+<li><strong>Before appstack creation</strong>: action resolves the PAT user via <code>GET /appcd/api/v1/auth/me</code> and attempts to assign that user to the target project (<code>appstack.projectId</code>) via <code>POST /appcd/api/v1/orgs/{projectId}/users</code> using role <code>projectMemberRoleId</code> (default admin). If this preflight assignment fails, appstack creation still proceeds and the membership error is logged as a warning—this usually happens if the PAT user was already a member of the project. If the PAT was newly added, it <strong>stays</strong> a project member after the action completes (no automatic removal).</li>
+<li><strong>When no <code>resourcePackId</code> is present</strong>: uses the legacy create path <code>POST /stackgen/v1/appstacks</code> with payload shape <code>name</code>, <code>coreConfig</code> (provider, targetCompute), <code>resources</code>, and team/project id.</li>
+<li><strong>When <code>templateAppstackId</code> is set</strong> (and <code>resources</code> is empty): loads the source AppStack via <code>GET /appcd/api/v1/appstacks/{uuid}</code>, creates a blank appstack through integrations, then clones topology with <code>POST /iac-gen/v1/topologies?orgId=…</code> (<code>appstackRefId</code>). Deployment type and IaC type come from the source <code>coreConfig</code> (defaults: <code>k8s</code>, <code>Terraform</code> if missing).</li>
+<li><strong>When any <code>resourcePackId</code> is present</strong>: uses a two-step integrations-compatible flow:
+  1. Create a blank appstack via <code>POST /integrations/api/v1/projects/{projectId}/appstacks</code> (empty topology)
+  2. Add each resource pack into that topology via <code>POST /iac-gen/v1/topologies/{topologyId}/resources?orgId={orgScope}</code>, preserving <code>resourcePackId</code> semantics.</li>
+</ul>
+<p><strong>Inputs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>appstack.name</code> or <code>appstack.appstackName</code></td>
+<td>string</td>
+<td>yes</td>
+<td>AppStack name</td>
+</tr>
+<tr>
+<td><code>appstack.projectId</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Project UUID (use <code>projectId</code> output from <code>stackGen:createProject</code>). Deprecated alias: <code>appstack.teamId</code></td>
+</tr>
+<tr>
+<td><code>appstack.cloudProvider</code></td>
+<td>string</td>
+<td>conditional</td>
+<td>Required unless <code>templateAppstackId</code> is set (then read from appcd <code>coreConfig.provider</code>)</td>
+</tr>
+<tr>
+<td><code>appstack.templateAppstackId</code></td>
+<td>string (UUID)</td>
+<td>no</td>
+<td>If set: load source AppStack from appcd, then clone topology via iac-gen (<code>appstackRefId</code>). Cannot be used with a non-empty <code>resources</code> array</td>
+</tr>
+<tr>
+<td><code>appstack.resources</code></td>
+<td>array</td>
+<td>yes</td>
+<td>List of resources (can be empty <code>[]</code>)</td>
+</tr>
+<tr>
+<td><code>ignoreIfExists</code></td>
+<td>boolean</td>
+<td>no</td>
+<td>Default <code>true</code>. When the name already exists, return the existing appstack (id/name/URL) instead of failing. Set <code>false</code> to fail with a message that includes the existing URL.</td>
+</tr>
+</tbody>
+</table>
+<p>Integrations <code>POST …/appstacks</code> only accepts <code>name</code>, <code>cloudProvider</code>, and <code>topology</code> (no extra metadata fields).</p>
+<p>Each resource in the array:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resourceType</code></td>
+<td>string</td>
+<td>yes</td>
+<td>Valid StackGen resource type</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>object</td>
+<td>no</td>
+<td>Resource configuration (mutually exclusive with <code>resourcePackId</code>)</td>
+</tr>
+<tr>
+<td><code>tfVars</code></td>
+<td>object</td>
+<td>no</td>
+<td>Terraform variables</td>
+</tr>
+<tr>
+<td><code>resourcePackId</code></td>
+<td>string</td>
+<td>no</td>
+<td>Resource pack ID (mutually exclusive with <code>configuration</code>)</td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td>array</td>
+<td>no</td>
+<td>Child resources for group resource types</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Outputs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>appstackId</code></td>
+<td>string</td>
+<td>UUID of the created (or existing) appstack</td>
+</tr>
+<tr>
+<td><code>appstackName</code></td>
+<td>string</td>
+<td>Name of the created (or existing) appstack</td>
+</tr>
+<tr>
+<td><code>appStackURL</code></td>
+<td>string</td>
+<td>Direct URL to the appstack in StackGen</td>
+</tr>
+<tr>
+<td><code>alreadyExisted</code></td>
+<td>boolean</td>
+<td><code>true</code> when the name already existed and <code>ignoreIfExists</code> returned that appstack</td>
+</tr>
+</tbody>
+</table>
+<p>Example (chained with project creation):
+</p><div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">create-project</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create StackGen Project</span>
+<span class="w">    </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stackGen:createProject</span>
+<span class="w">    </span><span class="nt">input</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">project</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ parameters.projectName }}</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Project</span><span class="nv"> </span><span class="s">created</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">Backstage"</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stackGen</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create AppStack</span>
+<span class="w">    </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stackGen:createAppStack</span>
+<span class="w">    </span><span class="nt">input</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">appstack</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"MyAppStack"</span>
+<span class="w">        </span><span class="nt">projectId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps['create-project'].output.projectId }}</span>
+<span class="w">        </span><span class="nt">cloudProvider</span><span class="p">:</span><span class="w"> </span><span class="s">"aws"</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">resourceType</span><span class="p">:</span><span class="w"> </span><span class="s">"aws_s3"</span>
+<span class="w">            </span><span class="c1"># Only one of 'configuration' or 'resourcePackId' should be provided</span>
+<span class="w">            </span><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">bucket_name</span><span class="p">:</span><span class="w"> </span><span class="s">"mybucket"</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">resourceType</span><span class="p">:</span><span class="w"> </span><span class="s">"resourcePack"</span>
+<span class="w">            </span><span class="nt">resourcePackId</span><span class="p">:</span><span class="w"> </span><span class="s">"20f0e212-15ce-4d2c-1e12-0555bffee7bd"</span>
+<span class="w">            </span><span class="c1"># No configuration here because resourcePackId is used (legacy path preserves resourcePackId)</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">resourceType</span><span class="p">:</span><span class="w"> </span><span class="s">"helm_workload"</span>
+<span class="w">            </span><span class="nt">children</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">resourceType</span><span class="p">:</span><span class="w"> </span><span class="s">"helm_workload"</span>
+<span class="w">                </span><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-workload</span>
+<span class="w">                  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-image</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">resourceType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm_service</span>
+<span class="w">                </span><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-service</span>
+</code></pre></div><p></p>
+<p>Example output:
+</p><div class="highlight"><pre><span></span><code><span class="nt">output</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">links</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">'View</span><span class="nv"> </span><span class="s">Created</span><span class="nv"> </span><span class="s">AppStack</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">StackGen'</span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">'${{</span><span class="nv"> </span><span class="s">steps.stackGen.output.appStackURL</span><span class="nv"> </span><span class="s">}}'</span>
+</code></pre></div><p></p>
+<h4>Example templates walkthrough</h4>
+<p>The templates in <code>examples/template/</code> demonstrate end-to-end StackGen scaffolding flows:</p>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stackgen-export-iac</code></td>
+<td>Manually fetch IaC from an AppStack and push it to GitHub via Backstage — useful when you prefer Backstage to handle the git push instead of StackGen's native git integration.</td>
+</tr>
+<tr>
+<td><code>stackgen-appstack-with-resources</code></td>
+<td>Creates a project with environments, then an AppStack with a resource pack, standalone S3 bucket, and custom Terraform module (via <code>templateId</code>).</td>
+</tr>
+<tr>
+<td><code>stackgen-full-setup</code></td>
+<td>The most comprehensive template: project + Git config + AppStack (resource pack + S3 + custom module) + production/staging environments with per-environment TF variables + S3 state backends.</td>
+</tr>
+<tr>
+<td><code>stackgen-project-basic</code></td>
+<td>Creates an empty project — a blank starting point.</td>
+</tr>
+<tr>
+<td><code>stackgen-project-advanced</code></td>
+<td>Creates a project with Git integration, environments, variables, and per-environment overrides.</td>
+</tr>
+</tbody>
+</table>
+<p>Project initialization in these templates can include:</p>
+<ul>
+<li>Environment templates (for example <code>dev</code>, <code>stage</code>, <code>prod</code>).</li>
+<li>Default variables and per-environment variable overrides.</li>
+<li>Git configuration via <code>project.gitConfig</code>.</li>
+<li>Per-environment storage backend configuration via <code>stateBackendTemplate</code>.</li>
+</ul>
+<h4>Disabling the Frontend Plugin</h4>
+<p>The StackGen plugin includes an optional frontend component that adds a "StackGen" item to the Backstage sidebar. If you only need the backend scaffolder actions (templates) and don't want the sidebar entry, you can toggle it off by commenting out two lines:</p>
+<p><strong>1. Remove the sidebar item</strong> in <code>packages/app/src/components/Root/Root.tsx</code>:
+</p><div class="highlight"><pre><span></span><code><span class="c1">// Comment out this line:</span>
+<span class="p">{</span><span class="cm">/* &lt;SidebarItem icon={StackGenIcon} to="stackgen" text="StackGen"/&gt; */</span><span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>2. Remove the route</strong> in <code>packages/app/src/App.tsx</code>:
+</p><div class="highlight"><pre><span></span><code><span class="c1">// Comment out this line:</span>
+<span class="p">{</span><span class="cm">/* &lt;Route path="/stackgen" element={&lt;StackGenPage /&gt;} /&gt; */</span><span class="p">}</span>
+</code></pre></div><p></p>
+<p>The imports can remain in place — they'll be unused but won't cause errors. To re-enable the frontend later, simply uncomment both lines and restart Backstage.</p>
+<h5>stackGen:downloadIaC</h5>
+<p>This action downloads and extracts the Infrastructure as Code (IaC) files for a specified AppStack from StackGen.</p>
+<p>Example input:
+</p><div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download-iac</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Download IaC</span>
+<span class="w">    </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stackGen:downloadIaC</span>
+<span class="w">    </span><span class="nt">input</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">appstackName</span><span class="p">:</span><span class="w"> </span><span class="s">"MyAppStack"</span>
+<span class="w">      </span><span class="nt">projectId</span><span class="p">:</span><span class="w"> </span><span class="s">"project-uuid"</span>
+<span class="w">      </span><span class="c1"># Deprecated alias: teamId</span>
+<span class="w">      </span><span class="c1"># Optional: path where IaC files should be extracted, defaults to "./"</span>
+<span class="w">      </span><span class="nt">extractedIaCPath</span><span class="p">:</span><span class="w"> </span><span class="s">"./infrastructure"</span>
+</code></pre></div><p></p>
+<h5>stackGen:exportToGit</h5>
+<p>This action is a compatibility wrapper over the new stack-exporter flow.
+It resolves topology for <code>projectId + appstackName</code>, selects an existing git exporter
+config for the project (or uses an explicit id), and triggers exporter <code>POST /export</code>.</p>
+<p><strong>Inputs (high level)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>appstackName</code>, <code>projectId</code></td>
+<td>yes</td>
+<td>AppStack and project id (<code>teamId</code> deprecated alias)</td>
+</tr>
+<tr>
+<td><code>configId</code></td>
+<td>no</td>
+<td>When set (non-empty), used as stack-exporter git <code>config_id</code>; skips listing, <code>chooseConfig</code>, and bootstrap. <strong>Precedence:</strong> <code>configId</code> overrides <code>gitConfig</code>. In Software Templates, map from the frontend field <strong><code>existingExporterConfigId</code></strong> (<code>ExporterGitConfigSelect</code>).</td>
+</tr>
+<tr>
+<td><code>topologyId</code>, <code>appstackId</code></td>
+<td>no</td>
+<td>Optional topology / appstack hints for resolution</td>
+</tr>
+<tr>
+<td><code>gitConfig</code></td>
+<td>no</td>
+<td>Bootstrap shape (same as <code>createProject.project.gitConfig</code>). Ignored when <code>configId</code> is set.</td>
+</tr>
+<tr>
+<td><code>baseBranch</code></td>
+<td>no</td>
+<td>Branch to base the change on (PR base / commit destination). Maps to the exporter <code>target_branch</code> override. Blank uses the git config default. Prefill via <code>ExporterBaseBranch</code>.</td>
+</tr>
+<tr>
+<td><code>pushBranch</code></td>
+<td>no</td>
+<td>Branch StackGen pushes the generated IaC to (source/head branch). Maps to the exporter <code>branch_format</code> override. Blank creates a new one. Prefill via <code>ExporterPushBranch.branch</code>.</td>
+</tr>
+<tr>
+<td><code>useSameBranch</code></td>
+<td>no</td>
+<td>When <code>true</code>, sets exporter <code>use_same_branch=true</code> (reuse previous export head). Set by <code>ExporterPushBranch</code> when the history suggestion is left unchanged.</td>
+</tr>
+<tr>
+<td><code>createPr</code></td>
+<td>no</td>
+<td>Boolean, default <code>true</code>. When <code>false</code>, changes are committed directly to the branch without opening a PR (exporter <code>commit_only</code>).</td>
+</tr>
+<tr>
+<td><code>ignoreIfUnchanged</code></td>
+<td>no</td>
+<td>Boolean, default <code>true</code>. When stack-exporter returns "No files to commit" (HTTP 422), treat as success with <code>unchanged: true</code> instead of failing. Set <code>false</code> to fail.</td>
+</tr>
+<tr>
+<td><code>overrides</code></td>
+<td>no</td>
+<td>Raw exporter overrides (e.g. <code>pr_title</code>, <code>commit_msg</code>). An explicit entry wins over the derived key for the same override.</td>
+</tr>
+</tbody>
+</table>
+<p>These give the Backstage plugin parity with the StackGen UI git export (base branch, push branch, create PR). <code>baseBranch</code>, <code>pushBranch</code>, <code>useSameBranch</code>, and <code>createPr</code> are translated to exporter override keys in one place (<code>buildExportOverrides</code>), so templates do not need to know the internal keys.</p>
+<p><strong>Outputs</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>When present</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pullRequestUrl</code>, <code>externalLink</code></td>
+<td>PR created (<code>createPr</code> true)</td>
+<td>URL of the opened pull request</td>
+</tr>
+<tr>
+<td><code>committedBranch</code></td>
+<td>commit-only (<code>createPr</code> false)</td>
+<td>Branch StackGen committed the changes to</td>
+</tr>
+<tr>
+<td><code>notes</code></td>
+<td>always (when returned)</td>
+<td>Human-readable export notes (e.g. "committed to branch X", or unchanged message)</td>
+</tr>
+<tr>
+<td><code>unchanged</code></td>
+<td>always</td>
+<td><code>true</code> when there was nothing to commit and <code>ignoreIfUnchanged</code> returned success; otherwise <code>false</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>A commit-only export (<code>createPr: false</code>) does not open a pull request, so <code>pullRequestUrl</code> is absent; use <code>committedBranch</code> / <code>notes</code> in that case.</p>
+</blockquote>
+<p>Notes:
+- <strong>Explicit <code>configId</code>:</strong> Use when the user picks a config in Backstage (<code>ExporterGitConfigSelect</code> writes the config uuid to <code>existingExporterConfigId</code>; pass it as <code>configId</code> in the action input). <strong>Precedence:</strong> <code>configId</code> overrides <code>gitConfig</code>.
+- <strong>Listing configs:</strong> If <code>configId</code> and <code>gitConfig</code> are omitted, <code>GET .../exporter/.../config?orgId={projectId}&amp;type=git&amp;appstackId={appstackId}</code> — if a single/default git config exists for that AppStack, it is used for <code>POST .../export</code>. Multiple configs require <code>configId</code>.
+- <strong>Bootstrap (no git config for the AppStack yet):</strong> Project-level <code>gitConfig</code> from <code>stackGen:createProject</code> is stored as stack-exporter <strong>templates</strong> (<code>GET .../exporter/.../config/template?orgId={projectId}</code>). When the list step finds nothing usable, this action loads that template and <code>POST .../exporter/.../config?orgId={projectId}</code> <strong>with <code>appstack_id</code></strong> so the config is scoped to the AppStack.
+- <strong>Optional <code>gitConfig</code> on this action:</strong> Same shape as <code>createProject.project.gitConfig</code>. When provided (and <code>configId</code> is not set), creates a new appstack-scoped config from that input and uses it. Not used when <code>configId</code> is set.
+- <strong><code>appstackId</code>:</strong> Optional. When omitted, resolved from <code>projectId</code> + <code>appstackName</code> via appcd <code>GET /appstacks</code> (<code>appstackId</code> for exporter binding, <code>uuid</code> for topology).</p>
+<p>Example input:
+</p><div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exportToGit</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Export AppStack to Git via StackGen</span>
+<span class="w">      </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stackGen:exportToGit</span>
+<span class="w">      </span><span class="nt">input</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">appstackName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ parameters.appstackName }}</span>
+<span class="w">        </span><span class="nt">projectId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ parameters.projectId }}</span>
+<span class="w">        </span><span class="c1"># Optional: explicit exporter git config (from ExporterGitConfigSelect → existingExporterConfigId)</span>
+<span class="w">        </span><span class="nt">configId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ parameters.existingExporterConfigId }}</span>
+<span class="w">        </span><span class="c1"># gitConfig omitted: uses project template from createProject when no appstack config exists</span>
+<span class="w">        </span><span class="c1"># First-class git export controls (parity with the StackGen UI):</span>
+<span class="w">        </span><span class="nt">baseBranch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ parameters.baseBranch }}</span><span class="w">   </span><span class="c1"># PR base / commit destination (target_branch)</span>
+<span class="w">        </span><span class="nt">pushBranch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ parameters.pushBranch.branch }}</span><span class="w">   </span><span class="c1"># branch StackGen pushes to (branch_format)</span>
+<span class="w">        </span><span class="nt">useSameBranch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ parameters.pushBranch.useSameBranch }}</span><span class="w">  </span><span class="c1"># reuse history head when unchanged</span>
+<span class="w">        </span><span class="nt">createPr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ parameters.createPr }}</span><span class="w">       </span><span class="c1"># false =&gt; commit_only (no PR)</span>
+<span class="w">        </span><span class="nt">overrides</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr_title</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Export IaC from Backstage</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">commit_msg</span>
+<span class="w">            </span><span class="nt">value: chore</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export iac</span>
+</code></pre></div><p></p>
+<p>Example output:
+</p><div class="highlight"><pre><span></span><code>output:
+  links:
+    - title: 'Pull Request'
+      url: '${{ steps.exportToGit.output.pullRequestUrl }}'
+</code></pre></div><p></p>
+<h4>Development</h4>
+<p>Use the <a href="https://github.com/appcd-dev/stackgen-backstage" rel="noopener noreferrer">stackgen-backstage</a> app to run Backstage with your local backend plugin build.</p>
+<ol>
+<li><strong>Lay out repositories</strong> so the backend plugin and the Backstage app are siblings (adjust paths below if yours differ):</li>
+</ol>
+<div class="highlight"><pre><span></span><code>&lt;workspace&gt;/
+  stackgen-backstage/
+  backstage-plugin-stackgen-backend/
+</code></pre></div>
+<ol start="2">
+<li><strong>Point the backend at your local plugin</strong> in <code>stackgen-backstage/packages/backend/package.json</code>:</li>
+</ol>
+<p>Set the dependency to a Yarn link relative to <code>packages/backend</code> (three levels up to the parent of <code>stackgen-backstage</code>, then into the backend plugin repo):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">"@stackgenhq/backstage-plugin-stackgen-backend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link:../../../backstage-plugin-stackgen-backend"</span>
+</code></pre></div>
+<p>If your clone lives elsewhere, change the <code>link:</code> path accordingly (it must resolve from <code>packages/backend</code> to the root of <code>backstage-plugin-stackgen-backend</code>).</p>
+<ol start="3">
+<li><strong>Build the backend plugin</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>install
+yarn<span class="w"> </span>tsc<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>yarn<span class="w"> </span>build
+</code></pre></div>
+<ol start="4">
+<li><strong>Install and run stackgen-backstage</strong> from the Backstage repo root:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>install
+</code></pre></div>
+<p>Configure <code>app-config.yaml</code> (or local overrides) with <code>stackGen.baseUrl</code>, <code>stackGen.apiToken</code>, and any optional keys you need (see <a href="#installation" rel="noopener noreferrer">Installation</a>). The stackgen-backstage README also documents env vars such as <code>STACKGEN_API_TOKEN</code> if you wire config that way.</p>
+<ol start="5">
+<li><strong>Start the app</strong> (frontend + backend in parallel):</li>
+</ol>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>dev
+</code></pre></div>
+<p>Alternatively, run workspaces separately: <code>yarn start-backend</code> and <code>yarn start</code> (app only), as described in the stackgen-backstage <code>package.json</code> scripts.</p>
+<ol start="6">
+<li><strong>After backend plugin code changes</strong>, rebuild the plugin (<code>yarn tsc &amp;&amp; yarn build</code> in <code>backstage-plugin-stackgen-backend</code>), then install the dependencies again.</li>
+</ol>
+</section>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../javascripts/catalog.js"></script>
+      
+    
+  </body>
+</html>

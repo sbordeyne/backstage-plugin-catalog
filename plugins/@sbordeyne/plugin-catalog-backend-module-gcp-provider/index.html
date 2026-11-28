@@ -1,0 +1,1814 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The gcp-provider backend module for the catalog plugin.">
+      
+      
+      
+        <link rel="canonical" href="https://sbordeyne.github.io/backstage-plugin-catalog/plugins/%40sbordeyne/plugin-catalog-backend-module-gcp-provider/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>@sbordeyne/plugin-catalog-backend-module-gcp-provider - Backstage Plugin Catalog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/catalog.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sbordeyneplugin-catalog-backend-module-gcp-provider" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-header__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Backstage Plugin Catalog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              @sbordeyne/plugin-catalog-backend-module-gcp-provider
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../roles/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../scopes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Scopes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-nav__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Backstage Plugin Catalog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scopes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scopes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:catalog" class="md-tag">catalog</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:entity-provider" class="md-tag">entity-provider</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:gcp" class="md-tag">gcp</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:google-cloud" class="md-tag">google-cloud</a>
+      
+    
+  </nav>
+
+
+
+<h1 id="sbordeyneplugin-catalog-backend-module-gcp-provider">@sbordeyne/plugin-catalog-backend-module-gcp-provider<a class="headerlink" href="#sbordeyneplugin-catalog-backend-module-gcp-provider" title="Permanent link">&para;</a></h1>
+<p>The gcp-provider backend module for the catalog plugin.</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/backend<span class="w"> </span>add<span class="w"> </span>@sbordeyne/plugin-catalog-backend-module-gcp-provider
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td><code>0.3.2</code> (2026-08-24)</td>
+</tr>
+<tr>
+<td>Role</td>
+<td><a href="../../../roles/backend-plugin-module/">Backend plugin module</a></td>
+</tr>
+<tr>
+<td>Scope</td>
+<td><a href="../../../scopes/sbordeyne/">@sbordeyne</a></td>
+</tr>
+<tr>
+<td>Plugin ID</td>
+<td><code>catalog</code></td>
+</tr>
+<tr>
+<td>Weekly downloads</td>
+<td>26</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Apache-2.0</td>
+</tr>
+<tr>
+<td>Repository</td>
+<td><a href="https://github.com/sbordeyne/backstage-plugins/tree/HEAD/plugins/catalog-backend-module-gcp-provider">https://github.com/sbordeyne/backstage-plugins/tree/HEAD/plugins/catalog-backend-module-gcp-provider</a></td>
+</tr>
+<tr>
+<td>Homepage</td>
+<td><a href="https://sbordeyne.github.io/backstage-plugins/dev/plugins/gcp-catalog-provider/">https://sbordeyne.github.io/backstage-plugins/dev/plugins/gcp-catalog-provider/</a></td>
+</tr>
+<tr>
+<td>npm</td>
+<td><a href="https://www.npmjs.com/package/@sbordeyne/plugin-catalog-backend-module-gcp-provider">https://www.npmjs.com/package/@sbordeyne/plugin-catalog-backend-module-gcp-provider</a></td>
+</tr>
+<tr>
+<td>Maintainers</td>
+<td>dogeek0</td>
+</tr>
+<tr>
+<td>First published</td>
+<td>2026-08-03</td>
+</tr>
+</tbody>
+</table>
+<h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h2>
+<p>5 versions published. Latest releases:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.3.2</code></td>
+<td>2026-08-24</td>
+</tr>
+<tr>
+<td><code>0.3.1</code></td>
+<td>2026-08-24</td>
+</tr>
+<tr>
+<td><code>0.3.0</code></td>
+<td>2026-08-14</td>
+</tr>
+<tr>
+<td><code>0.2.2</code></td>
+<td>2026-08-13</td>
+</tr>
+<tr>
+<td><code>0.1.0</code></td>
+<td>2026-08-03</td>
+</tr>
+</tbody>
+</table>
+<h2 id="readme">README<a class="headerlink" href="#readme" title="Permanent link">&para;</a></h2>
+<section class="catalog-readme" data-search-exclude>
+<h3>@sbordeyne/plugin-catalog-backend-module-gcp-provider</h3>
+<p>Catalog backend module that ingests GCP resources as <code>Resource</code> entities and, from IAM, the edges
+between them — so a microservice in the catalog can be walked down to the database, secret and topic
+it actually depends on.</p>
+<div class="highlight"><pre><span></span><code>Component:auth
+  └─ Resource:prod-auth-authsa          (kubernetes-service-account, via Workload Identity)
+       ├─ Resource:prod-cluster         (kubernetes-cluster — where it can run)
+       └─ Resource:auth-sa              (google-service-account — the identity it assumes)
+            ├─ Resource:auth-db         (cloudsql-instance)      roles/cloudsql.client
+            ├─ Resource:auth-jwks       (secret)                 roles/secretmanager.secretAccessor
+            └─ Resource:auth-events     (pubsub-topic)           roles/pubsub.publisher
+                 └─ Resource:audit-sa   (google-service-account) roles/pubsub.subscriber
+                      └─ Component:audit
+</code></pre></div>
+<p>Every edge there except the two <code>Component</code> ones comes from IAM policy. See
+<a href="#the-access-graph" rel="noopener noreferrer">the access graph</a> for how to attach a Component to it.</p>
+<table>
+<thead>
+<tr>
+<th>Config key</th>
+<th>Ingests</th>
+<th><code>spec.type</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bigquery</code></td>
+<td>BigQuery datasets</td>
+<td><code>bigquery-dataset</code></td>
+</tr>
+<tr>
+<td><code>storage</code></td>
+<td>Cloud Storage buckets</td>
+<td><code>bucket</code></td>
+</tr>
+<tr>
+<td><code>cloudsql</code></td>
+<td>Cloud SQL instances</td>
+<td><code>cloudsql-instance</code></td>
+</tr>
+<tr>
+<td><code>pubsub</code></td>
+<td>Pub/Sub topics and subscriptions</td>
+<td><code>pubsub-topic</code>, <code>pubsub-subscription</code></td>
+</tr>
+<tr>
+<td><code>secretmanager</code></td>
+<td>Secret Manager secrets</td>
+<td><code>secret</code></td>
+</tr>
+<tr>
+<td><code>service-account</code></td>
+<td>IAM service accounts</td>
+<td><code>google-service-account</code></td>
+</tr>
+<tr>
+<td><code>clusters</code></td>
+<td>GKE clusters</td>
+<td><code>kubernetes-cluster</code></td>
+</tr>
+<tr>
+<td><code>vpc</code></td>
+<td>VPC networks, with peerings as relations</td>
+<td><code>vpc-network</code></td>
+</tr>
+<tr>
+<td><code>subnets</code></td>
+<td>Subnetworks</td>
+<td><code>subnetwork</code></td>
+</tr>
+<tr>
+<td><code>firewall</code></td>
+<td>Firewall rules</td>
+<td><code>firewall-rule</code></td>
+</tr>
+<tr>
+<td><code>routers</code></td>
+<td>Cloud Routers and their NAT gateways</td>
+<td><code>cloud-router</code>, <code>cloud-nat</code></td>
+</tr>
+<tr>
+<td><code>dns</code></td>
+<td>Cloud DNS managed zones</td>
+<td><code>dns-zone</code></td>
+</tr>
+<tr>
+<td><code>instances</code></td>
+<td>Compute Engine instances</td>
+<td><code>compute-instance</code></td>
+</tr>
+<tr>
+<td><code>instance-groups</code></td>
+<td>Managed instance groups</td>
+<td><code>instance-group</code></td>
+</tr>
+<tr>
+<td><code>images</code></td>
+<td>Custom Compute Engine images</td>
+<td><code>compute-image</code></td>
+</tr>
+<tr>
+<td><code>spanner</code></td>
+<td>Spanner instances and databases</td>
+<td><code>spanner-instance</code>, <code>spanner-database</code></td>
+</tr>
+<tr>
+<td><code>redis</code></td>
+<td>Memorystore for Redis instances</td>
+<td><code>redis-instance</code></td>
+</tr>
+<tr>
+<td><code>alloydb</code></td>
+<td>AlloyDB clusters and instances</td>
+<td><code>alloydb-cluster</code>, <code>alloydb-instance</code></td>
+</tr>
+<tr>
+<td><code>bigtable</code></td>
+<td>Bigtable instances</td>
+<td><code>bigtable-instance</code></td>
+</tr>
+<tr>
+<td><code>firestore</code></td>
+<td>Firestore databases</td>
+<td><code>firestore-database</code></td>
+</tr>
+<tr>
+<td><code>managedkafka</code></td>
+<td>Managed Kafka clusters and topics</td>
+<td><code>kafka-cluster</code>, <code>kafka-topic</code></td>
+</tr>
+<tr>
+<td><code>eventarc</code></td>
+<td>Eventarc triggers</td>
+<td><code>eventarc-trigger</code></td>
+</tr>
+<tr>
+<td><code>cloudtasks</code></td>
+<td>Cloud Tasks queues</td>
+<td><code>cloud-tasks-queue</code></td>
+</tr>
+<tr>
+<td><code>scheduler</code></td>
+<td>Cloud Scheduler jobs</td>
+<td><code>scheduler-job</code></td>
+</tr>
+<tr>
+<td><code>run</code></td>
+<td>Cloud Run services and jobs</td>
+<td><code>cloud-run-service</code>, <code>cloud-run-job</code></td>
+</tr>
+<tr>
+<td><code>functions</code></td>
+<td>Cloud Functions, both generations</td>
+<td><code>cloud-function</code></td>
+</tr>
+<tr>
+<td><code>artifactregistry</code></td>
+<td>Artifact Registry repositories</td>
+<td><code>artifact-repository</code></td>
+</tr>
+</tbody>
+</table>
+<p>IAM, load balancing, CI/CD, security, observability and the data platform:</p>
+<table>
+<thead>
+<tr>
+<th>Config key</th>
+<th>Ingests</th>
+<th><code>spec.type</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>workload-identity</code></td>
+<td>Kubernetes accounts bound to Google ones</td>
+<td><code>kubernetes-service-account</code></td>
+</tr>
+<tr>
+<td><code>iam-roles</code></td>
+<td>Custom IAM roles</td>
+<td><code>iam-role</code></td>
+</tr>
+<tr>
+<td><code>loadbalancers</code></td>
+<td>Forwarding rules, URL maps, backend services</td>
+<td><code>load-balancer</code>, <code>url-map</code>, <code>backend-service</code></td>
+</tr>
+<tr>
+<td><code>sslcertificates</code></td>
+<td>Compute SSL certificates</td>
+<td><code>ssl-certificate</code></td>
+</tr>
+<tr>
+<td><code>armor</code></td>
+<td>Cloud Armor policies</td>
+<td><code>security-policy</code></td>
+</tr>
+<tr>
+<td><code>addresses</code></td>
+<td>Reserved IP addresses</td>
+<td><code>ip-address</code></td>
+</tr>
+<tr>
+<td><code>vpn</code></td>
+<td>VPN gateways and tunnels</td>
+<td><code>vpn-gateway</code>, <code>vpn-tunnel</code></td>
+</tr>
+<tr>
+<td><code>cloudbuild</code></td>
+<td>Build triggers</td>
+<td><code>build-trigger</code></td>
+</tr>
+<tr>
+<td><code>clouddeploy</code></td>
+<td>Delivery pipelines and targets</td>
+<td><code>delivery-pipeline</code>, <code>deploy-target</code></td>
+</tr>
+<tr>
+<td><code>workflows</code></td>
+<td>Workflows</td>
+<td><code>workflow</code></td>
+</tr>
+<tr>
+<td><code>composer</code></td>
+<td>Composer environments</td>
+<td><code>composer-environment</code></td>
+</tr>
+<tr>
+<td><code>dataproc</code></td>
+<td>Dataproc clusters</td>
+<td><code>dataproc-cluster</code></td>
+</tr>
+<tr>
+<td><code>kms</code></td>
+<td>KMS key rings and keys</td>
+<td><code>kms-key-ring</code>, <code>kms-key</code></td>
+</tr>
+<tr>
+<td><code>certificatemanager</code></td>
+<td>Certificate Manager certificates and maps</td>
+<td><code>certificate</code>, <code>certificate-map</code></td>
+</tr>
+<tr>
+<td><code>binaryauthorization</code></td>
+<td>Binary Authorization policy and attestors</td>
+<td><code>binauthz-policy</code>, <code>binauthz-attestor</code></td>
+</tr>
+<tr>
+<td><code>alerts</code></td>
+<td>Alert policies and uptime checks</td>
+<td><code>alert-policy</code>, <code>uptime-check</code></td>
+</tr>
+<tr>
+<td><code>slos</code></td>
+<td>Monitoring services and SLOs</td>
+<td><code>monitoring-service</code>, <code>slo</code></td>
+</tr>
+<tr>
+<td><code>logsinks</code></td>
+<td>Log sinks</td>
+<td><code>log-sink</code></td>
+</tr>
+<tr>
+<td><code>filestore</code></td>
+<td>Filestore instances</td>
+<td><code>filestore-instance</code></td>
+</tr>
+<tr>
+<td><code>vpcconnectors</code></td>
+<td>Serverless VPC Access connectors</td>
+<td><code>vpc-connector</code></td>
+</tr>
+<tr>
+<td><code>memcache</code></td>
+<td>Memorystore for Memcached</td>
+<td><code>memcache-instance</code></td>
+</tr>
+<tr>
+<td><code>appengine</code></td>
+<td>App Engine services</td>
+<td><code>appengine-service</code></td>
+</tr>
+<tr>
+<td><code>disks</code></td>
+<td>Persistent disks and snapshots</td>
+<td><code>disk</code>, <code>snapshot</code></td>
+</tr>
+<tr>
+<td><code>bqtransfers</code></td>
+<td>BigQuery transfers and scheduled queries</td>
+<td><code>bigquery-transfer</code></td>
+</tr>
+<tr>
+<td><code>bqreservations</code></td>
+<td>BigQuery slot reservations</td>
+<td><code>bigquery-reservation</code></td>
+</tr>
+<tr>
+<td><code>analyticshub</code></td>
+<td>Analytics Hub exchanges and listings</td>
+<td><code>analytics-hub-exchange</code>, <code>analytics-hub-listing</code></td>
+</tr>
+<tr>
+<td><code>datastream</code></td>
+<td>Datastream streams</td>
+<td><code>datastream-stream</code></td>
+</tr>
+<tr>
+<td><code>dataplex</code></td>
+<td>Dataplex lakes</td>
+<td><code>dataplex-lake</code></td>
+</tr>
+<tr>
+<td><code>dataflow</code></td>
+<td>Dataflow jobs</td>
+<td><code>dataflow-job</code></td>
+</tr>
+<tr>
+<td><code>vertex</code></td>
+<td>Vertex endpoints and models</td>
+<td><code>vertex-endpoint</code>, <code>vertex-model</code></td>
+</tr>
+<tr>
+<td><code>workbench</code></td>
+<td>Vertex AI Workbench instances</td>
+<td><code>workbench-instance</code></td>
+</tr>
+</tbody>
+</table>
+<p>Three of these are worth narrowing before enabling: <code>instances</code> and <code>disks</code> churn constantly, and
+<code>dataflow</code> creates an entity per job execution unless <code>states</code> limits it. <code>vertex</code> <strong>requires
+<code>locations</code></strong> — its API is served from regional hosts with no cross-region listing.</p>
+<p>Each provider needs its API enabled in every project it enumerates. A project whose API is off, or
+that the credentials cannot read, is logged and skipped rather than failing the whole refresh.</p>
+<h4>Installation</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// packages/backend/src/index.ts</span>
+<span class="nx">backend</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">import</span><span class="p">(</span><span class="s1">'@sbordeyne/plugin-catalog-backend-module-gcp-provider'</span><span class="p">));</span>
+</code></pre></div>
+<p>Authentication uses Application Default Credentials. Set <code>GOOGLE_APPLICATION_CREDENTIALS</code> to a
+service account key file, or rely on the ambient credentials of the environment.</p>
+<h4>Configuration</h4>
+<p>Each provider is enabled by the presence of its config key under <code>catalog.providers.gcp</code>. Every
+provider needs a <code>projects</code> list and a <code>schedule</code> block, both of which can be set once on
+<code>catalog.providers.gcp</code> and shared, and accepts the optional <code>enabled</code>, <code>owner</code>, <code>system</code>,
+<code>namespace</code>, <code>region</code>, <code>locations</code>, <code>links</code>, <code>tags</code>, <code>descriptions</code> and <code>extraLinks</code> described
+below.</p>
+<p>A provider that sets its own <code>projects</code> or <code>schedule</code> overrides the shared one rather than adding to
+it, so narrowing one resource type to a single project, or refreshing the ones that churn more
+often, stays a local edit. A provider with neither its own nor a shared value fails loudly rather
+than ingesting nothing.</p>
+<p><code>enabled</code> defaults to <code>true</code>, so a provider runs as soon as its block exists. Setting it to <code>false</code>
+stops that resource type from being ingested without deleting the configuration you would have to
+put back to turn it on again, and its projects stop counting towards the IAM sweep.</p>
+<blockquote>
+<p><strong>Write <code>storage: {}</code>, not a bare <code>storage:</code>.</strong> A provider is enabled by a <em>mapping</em> under its key.
+A key with nothing under it is null, and Backstage's config loader discards null keys before any
+plugin reads them — so a bare key is indistinguishable from no key at all and the provider is
+never registered. This only comes up for a block that takes everything from the shared <code>projects</code>
+and <code>schedule</code>; the module warns at startup if a <code>gcp</code> block is configured but no provider was
+registered.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nt">catalog</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gcp</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"> </span><span class="c1"># ✅ enabled, on the shared projects and schedule</span>
+<span class="w">      </span><span class="nt">vpc</span><span class="p">:</span><span class="w"> </span><span class="c1"># ❌ silently ignored</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">catalog</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gcp</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Projects and refresh schedule for every provider below unless it sets its own.</span>
+<span class="w">      </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">my-other-project</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">        </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="c1"># Applied to every provider below unless it sets its own</span>
+<span class="w">      </span><span class="c1"># `owner` / `ownerLabel` / `system` / `systemLabel` / `namespace` / `region`.</span>
+<span class="w">      </span><span class="nt">defaultOwner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">group:default/platform</span>
+<span class="w">      </span><span class="nt">defaultRegion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">europe-west1</span>
+<span class="w">      </span><span class="c1"># Label read off each resource to find its owner.</span>
+<span class="w">      </span><span class="c1"># Defaults to 'backstage_io_owner-ref'.</span>
+<span class="w">      </span><span class="nt">ownerLabel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage_io_owner-ref</span>
+<span class="w">      </span><span class="c1"># Label read off each resource to find the system it belongs to.</span>
+<span class="w">      </span><span class="c1"># Defaults to 'backstage_io_system-ref'.</span>
+<span class="w">      </span><span class="nt">systemLabel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage_io_system-ref</span>
+<span class="w">      </span><span class="c1"># System for resources whose labels name none. Omitted by default.</span>
+<span class="w">      </span><span class="nt">defaultSystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:default/infrastructure</span>
+<span class="w">      </span><span class="c1"># Namespace template for every ingested entity. Defaults to 'gcp-{{projectId}}'.</span>
+<span class="w">      </span><span class="nt">defaultNamespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp-{{projectId}}</span>
+<span class="w">      </span><span class="c1"># Link families written onto every entity.</span>
+<span class="w">      </span><span class="nt">links</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># default</span>
+<span class="w">        </span><span class="nt">docs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># default</span>
+<span class="w">        </span><span class="nt">logs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># default</span>
+<span class="w">      </span><span class="c1"># Tag sources. Every one defaults to false.</span>
+<span class="w">      </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">fromLabels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="c1"># Generated description when the API reports none. Defaults to true.</span>
+<span class="w">      </span><span class="nt">descriptions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">      </span><span class="nt">service-account</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">          </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">bigquery</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">pubsub</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="c1"># Pub/Sub resources belong to a different team than the rest.</span>
+<span class="w">        </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">group:default/back-end</span>
+<span class="w">        </span><span class="c1"># Prefixes stripped from topic and subscription names before they become</span>
+<span class="w">        </span><span class="c1"># entity names. Applied repeatedly until no prefix matches, so</span>
+<span class="w">        </span><span class="c1"># 'myorg-prod-orders' with ['myorg-', 'prod-'] becomes 'orders'.</span>
+<span class="w">        </span><span class="c1"># Defaults to [] — names are used as-is.</span>
+<span class="w">        </span><span class="nt">stripPrefixes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'myorg-'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'prod-'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'preprod-'</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">cloudsql</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="c1"># Databases are kept apart from the rest of the catalog.</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">databases-{{projectId}}</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">storage</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">secretmanager</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Kept configured, but not ingested for now.</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+
+<span class="w">      </span><span class="nt">vpc</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">6</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">subnets</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="c1"># Only sweep the regions actually in use.</span>
+<span class="w">        </span><span class="nt">locations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">europe-west1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">europe-west9</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">6</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">instances</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="c1"># Instances churn, and each refresh rewrites the whole set — ingest the</span>
+<span class="w">        </span><span class="c1"># long-lived ones on a slower schedule than the rest.</span>
+<span class="w">        </span><span class="nt">states</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">RUNNING</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">6</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">15</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">images</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="c1"># Old image versions accumulate; off by default.</span>
+<span class="w">        </span><span class="nt">includeDeprecated</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">12</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">spanner</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">extraLinks</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Runbook</span>
+<span class="w">            </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://wiki.example.com/db/{{name}}</span>
+<span class="w">            </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">6</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="nt">eventarc</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my-project</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> frequency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> hours</span><span class="p">:</span><span class="w"> </span><span class="nv">6</span><span class="w"> </span><span class="p p-Indicator">},</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minutes</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<h5>Ownership</h5>
+<p><code>spec.owner</code> is taken from a label on the GCP resource itself, so a team that relabels a resource
+moves it in the catalog without anyone editing Backstage config. The label key is <code>ownerLabel</code>,
+defaulting to <code>backstage_io_owner-ref</code>, and is resolved per provider as <code>ownerLabel</code> →
+<code>catalog.providers.gcp.ownerLabel</code> → the default.</p>
+<p>Two GCP restrictions shape how the label is written:</p>
+<ul>
+<li><strong>Keys</strong> are 1-63 characters, open with a lowercase letter and hold only lowercase letters,
+  digits, dashes and underscores — so a Backstage-style <code>backstage.io/owner-ref</code> is rejected by the
+  API and cannot be set on a resource at all. The default is spelled <code>backstage_io_owner-ref</code> for
+  that reason. Configure <code>ownerLabel</code> if you prefer a plain key such as <code>backstage-owner-ref</code>.</li>
+</ul>
+<p>A key configured here that GCP would reject is <strong>logged as an error</strong> and read under its folded
+  spelling, so the label is still found while the misconfiguration stays visible. One that cannot be
+  folded into a legal key — starting with a digit, say — <strong>stops the provider from starting</strong>, since
+  no resource could ever carry it.</p>
+<ul>
+<li><strong>Values</strong> are restricted the same way, so a full entity ref does not fit. A bare value like
+  <code>platform-team</code> is read as <code>group:default/platform-team</code>. A value that does name a kind or
+  namespace is parsed as the ref it already is.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>gcloud<span class="w"> </span>storage<span class="w"> </span>buckets<span class="w"> </span>update<span class="w"> </span>gs://my-bucket<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--update-labels<span class="o">=</span>backstage_io_owner-ref<span class="o">=</span>platform-team
+</code></pre></div>
+<p>A resource with no such label — and every IAM service account, since those carry no labels at all —
+falls back to <code>owner</code> → <code>defaultOwner</code> → <code>unknown</code>. The <code>unknown</code> fallback is a valid ref, so the
+catalog still accepts the entities, and an obviously wrong one, so unlabelled resources are visible
+instead of silently misfiled. A label whose value is not a usable entity ref is logged and treated
+as absent, rather than emitting an entity the catalog would reject.</p>
+<h5>Systems</h5>
+<p><code>spec.system</code> works the same way as the owner: it is read from a label on the resource, under the
+key <code>systemLabel</code> → <code>catalog.providers.gcp.systemLabel</code> → <code>backstage_io_system-ref</code>, with the same
+two GCP restrictions and the same validation. The label you put on a resource is therefore <code>backstage_io_system-ref</code>, and a
+bare value such as <code>payments</code> is read as <code>system:default/payments</code>.</p>
+<div class="highlight"><pre><span></span><code>gcloud<span class="w"> </span>storage<span class="w"> </span>buckets<span class="w"> </span>update<span class="w"> </span>gs://my-bucket<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--update-labels<span class="o">=</span>backstage_io_system-ref<span class="o">=</span>payments
+</code></pre></div>
+<p>A resource whose labels name no system falls back to <code>system</code> → <code>defaultSystem</code>. Unlike the owner
+there is no catch-all: when neither key is set, <code>spec.system</code> is left off entirely, because a
+resource that belongs to no system is a normal thing to have and an invented one would be a ref
+pointing at nothing. A label whose value is not a usable ref is logged and treated as absent.</p>
+<h5>Namespaces</h5>
+<p>Every ingested entity lands in the namespace given by <code>namespace</code> → <code>defaultNamespace</code> →
+<code>gcp-{{projectId}}</code>, which is a template over the resource being ingested:</p>
+<table>
+<thead>
+<tr>
+<th>Placeholder</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{{projectId}}</code></td>
+<td>GCP project the resource lives in</td>
+</tr>
+<tr>
+<td><code>{{type}}</code></td>
+<td><code>spec.type</code> of the entity, e.g. <code>bucket</code>, <code>pubsub-topic</code></td>
+</tr>
+<tr>
+<td><code>{{provider}}</code></td>
+<td>Provider that ingested it, e.g. <code>gcp-bucket</code></td>
+</tr>
+<tr>
+<td><code>{{region}}</code></td>
+<td>Region or location, empty when the API reported none</td>
+</tr>
+<tr>
+<td><code>{{name}}</code></td>
+<td>Entity name of the resource</td>
+</tr>
+</tbody>
+</table>
+<p>The rendered value is lowercased with anything outside <code>[a-z0-9-]</code> folded to <code>-</code> and truncated to
+63 characters, so <code>gcp-{{projectId}}</code> becomes <code>gcp-my-project</code> and <code>{{provider}}</code> becomes
+<code>gcp-bucket</code>. A template naming an unknown placeholder is logged and ignored, and its entities land
+in <code>default</code> — visibly wrong, but still ingested.</p>
+<p>The default namespaces by project because GCP names are only unique <em>within</em> a project: every
+project has a <code>default</code> VPC network and subnet, and firewall rules, service accounts and secrets
+repeat across projects by convention. Putting two projects in one namespace gives their resources
+the same entity ref, and a provider applies a <code>full</code> mutation, so the catalog keeps one of them and
+loses the other. Set <code>defaultNamespace: default</code> to go back to a single namespace, which is safe
+only for a single-project installation.</p>
+<blockquote>
+<p><strong>Use <code>{{…}}</code>, not <code>${…}</code>.</strong> Backstage's own config loader substitutes <code>${VAR}</code> with an
+<strong>environment variable</strong> before any plugin reads the value, and when the variable is unset it
+discards the whole key. <code>defaultNamespace: gcp-${projectId}</code> therefore silently becomes no
+<code>defaultNamespace</code> at all, and entities fall back to the built-in <code>gcp-{{projectId}}</code> — which
+happens to look right, so a custom template can go missing without anything showing it.
+<code>{{projectId}}</code> is untouched by the loader. The dollar spelling is still understood if it reaches the provider, so an existing config
+can also be fixed by escaping it as <code>gcp-$${projectId}</code> — but <code>{{…}}</code> is the one to write.</p>
+</blockquote>
+<p>Relations between entities follow the namespaces: each ref is built from the namespace of the
+provider that ingests the target, so namespacing providers differently keeps them resolving.</p>
+<p><code>locations</code> narrows the sweep for providers that would otherwise ask about every region — the
+aggregated Compute listings and the <code>locations/-</code> listings. It is not the same key as <code>region</code>,
+which is the fallback recorded when the API reports no location at all. A region also matches its
+zones, so <code>europe-west1</code> keeps an instance in <code>europe-west1-b</code>.</p>
+<h5>Entity names</h5>
+<p>An entity is named after the GCP resource, lowercased with anything outside <code>[a-z0-9-]</code> folded to
+<code>-</code>. Two cases change the name further, both so that two resources cannot end up sharing one entity:</p>
+<ul>
+<li><strong>Pub/Sub subscriptions</strong> get a <code>-sub</code> suffix. Topics and subscriptions are separate namespaces in
+  Pub/Sub and naming a subscription after the topic it reads is a common convention, but both become
+  <code>Resource</code> entities in the same catalog namespace.</li>
+<li><strong>Names longer than 63 characters</strong>, the catalog's limit, keep a short digest of the original
+  instead of being cut. Generated names carry their distinguishing part at the end, so plain
+  truncation would give a set of them one entity between them.</li>
+</ul>
+<p>Refs built towards these entities apply the same rules, so a relation pointing at a subscription or
+at a long-named resource resolves.</p>
+<h4>The access graph</h4>
+<p>IAM is what turns the catalog from an inventory into something walkable. Every role a service
+account holds on a resource becomes a <code>dependsOn</code> relation <strong>on the service account entity</strong>, and
+because Backstage derives the reverse relation automatically, the bucket, database and topic each
+gain their <code>dependencyOf</code> edge without their own providers doing anything.</p>
+<p>Policies are read through <strong>Cloud Asset Inventory</strong>: one <code>searchAllIamPolicies</code> call per project
+covers every resource in it, cached and shared by every provider. Enable <code>cloudasset.googleapis.com</code>
+and grant <code>roles/cloudasset.viewer</code>; without them, everything still ingests and the graph is simply
+flat.</p>
+<h5>Attaching a Component</h5>
+<p>A Google service account reached through GKE has a Kubernetes service account bound to it by
+Workload Identity, and the <code>workload-identity</code> provider ingests that binding as an entity. It is
+what a Component attaches to, and its name is deterministic —
+<code>&lt;poolProject&gt;-&lt;k8sNamespace&gt;-&lt;ksaName&gt;</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># catalog-info.yaml, in the auth service's own repo</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Component</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auth</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">group:default/platform</span>
+<span class="w">  </span><span class="nt">dependsOn</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resource:gcp-prod/prod-auth-auth-sa</span><span class="w"> </span><span class="c1"># &lt;poolProject&gt;-&lt;namespace&gt;-&lt;ksa&gt;</span>
+</code></pre></div>
+<p>That single line connects the Component to the whole chain in the diagram at the top of this file.
+No cluster credentials are involved: the binding is discovered from the Google service account's own
+IAM policy, where members are written <code>serviceAccount:PROJECT.svc.id.goog[namespace/ksa]</code>.</p>
+<p>A Kubernetes account bound to several Google accounts is one entity depending on each of them, and
+it relates to every Workload-Identity-enabled cluster in the pool's project — the pool is
+project-scoped, so naming one cluster would be a guess.</p>
+<h5>What IAM does not give you</h5>
+<p><strong>Project-level grants produce no edges.</strong> A service account holding <code>roles/editor</code> on the project
+can reach everything and names nothing, so there is no resource to point at. Those roles are
+recorded on the account as <code>cloud.google.com/iam-project-roles</code> instead. A project managed largely
+through project-level grants therefore produces a sparse graph — which is a fact about the estate
+worth knowing.</p>
+<p><strong>Edges only exist for accounts that are ingested.</strong> Keep the <code>service-account</code> provider enabled;
+a service account from an unconfigured project holding a role on your bucket produces nothing.
+Setting <code>iam.annotateResources: true</code> adds a <code>cloud.google.com/iam-members</code> annotation to each
+resource for that audit view. It covers every resource type that has an IAM policy of its own;
+types that hold none — a Cloud NAT gateway, a Dataflow job — carry no annotation whatever the
+setting, and <code>memberTypes</code> decides which kinds of principal are listed.</p>
+<p><strong>Bindings are not entities.</strong> One entity per (resource, role) would multiply the catalog several
+times over on the fastest-changing data in GCP, and put an extra hop in every path. The role is kept
+on the account, in <code>cloud.google.com/iam-roles</code> and <code>cloud.google.com/iam-access</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">catalog</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gcp</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">iam</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># default</span>
+<span class="w">        </span><span class="c1"># Which principals are paid attention to. Relations are unaffected by widening this —</span>
+<span class="w">        </span><span class="c1"># only service accounts are ingested as entities — but `annotateResources` lists the</span>
+<span class="w">        </span><span class="c1"># kinds named here, so adding `user` or `group` surfaces human grants there.</span>
+<span class="w">        </span><span class="nt">memberTypes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">serviceAccount</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># default</span>
+<span class="w">        </span><span class="nt">excludeRoles</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">roles/viewer</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># noisy blanket grants</span>
+<span class="w">        </span><span class="nt">maxEdgesPerMember</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span><span class="w"> </span><span class="c1"># default</span>
+<span class="w">        </span><span class="nt">annotateResources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># default</span>
+</code></pre></div>
+<h5>Relation vocabulary</h5>
+<p>By default every edge is <code>dependsOn</code> / <code>dependencyOf</code>, which is what the catalog and its graph views
+have always understood. Setting <code>iam.relations: gcp</code> names each edge after what it actually is:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">catalog</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gcp</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">iam</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">relations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp</span><span class="w"> </span><span class="c1"># builtin (default) | gcp</span>
+<span class="w">      </span><span class="c1"># Or per provider, to move one resource type over at a time.</span>
+<span class="w">      </span><span class="nt">spanner</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">relations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp</span>
+</code></pre></div>
+<p>A provider's own <code>relations</code> wins over the shared <code>iam.relations</code>, so an installation can adopt the
+vocabulary one resource type at a time rather than across the whole catalog at once.</p>
+<p>IAM edges take the verb the role grants, classified by role suffix so a role this module has never
+heard of still lands somewhere sensible:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>On the service account</th>
+<th>On the resource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>roles/pubsub.publisher</code></td>
+<td><code>publisherTo</code></td>
+<td><code>publishedToBy</code></td>
+</tr>
+<tr>
+<td><code>roles/pubsub.subscriber</code></td>
+<td><code>subscriberOf</code></td>
+<td><code>subscribedBy</code></td>
+</tr>
+<tr>
+<td><code>roles/run.invoker</code></td>
+<td><code>invokerOf</code></td>
+<td><code>invokedBy</code></td>
+</tr>
+<tr>
+<td><code>roles/cloudsql.client</code></td>
+<td><code>clientOf</code></td>
+<td><code>connectedToBy</code></td>
+</tr>
+<tr>
+<td><code>roles/cloudkms.cryptoKeyEncrypter…</code></td>
+<td><code>encrypterOf</code></td>
+<td><code>encryptedBy</code></td>
+</tr>
+<tr>
+<td><code>roles/secretmanager.secretAccessor</code></td>
+<td><code>accessorOf</code></td>
+<td><code>accessedBy</code></td>
+</tr>
+<tr>
+<td>anything <code>.admin</code> or <code>.owner</code></td>
+<td><code>adminOf</code></td>
+<td><code>administeredBy</code></td>
+</tr>
+<tr>
+<td>anything <code>.editor</code>, <code>.writer</code>, <code>.dataEditor</code></td>
+<td><code>writerOf</code></td>
+<td><code>writtenBy</code></td>
+</tr>
+<tr>
+<td>anything <code>.viewer</code> or <code>.reader</code></td>
+<td><code>readerOf</code></td>
+<td><code>readBy</code></td>
+</tr>
+<tr>
+<td>anything else</td>
+<td><code>userOf</code></td>
+<td><code>usedBy</code></td>
+</tr>
+</tbody>
+</table>
+<p>An account holding several roles on one resource gets <strong>one</strong> relation, the strongest: <code>adminOf</code> and
+<code>readerOf</code> on the same bucket says nothing that <code>adminOf</code> does not.</p>
+<p>Structural edges are typed too. Containment reuses Backstage's own <code>partOf</code> / <code>hasPart</code> — a Spanner
+database really is part of its instance — and attachment gets a pair of its own, because a GKE
+cluster is plugged into its subnet rather than being part of it:</p>
+<table>
+<thead>
+<tr>
+<th>Edge</th>
+<th>In <code>gcp</code> mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spanner database → instance, AlloyDB instance → cluster</td>
+<td><code>partOf</code> / <code>hasPart</code></td>
+</tr>
+<tr>
+<td>Kafka topic → cluster, KMS key → ring, SLO → service</td>
+<td><code>partOf</code> / <code>hasPart</code></td>
+</tr>
+<tr>
+<td>Cloud NAT → router, Analytics Hub listing → exchange</td>
+<td><code>partOf</code> / <code>hasPart</code></td>
+</tr>
+<tr>
+<td>GKE cluster, VM, Composer, Dataproc → VPC or subnet</td>
+<td><code>attachedTo</code> / <code>hasAttached</code></td>
+</tr>
+<tr>
+<td>Redis, Memcached, Filestore, VPC connector → VPC</td>
+<td><code>attachedTo</code> / <code>hasAttached</code></td>
+</tr>
+<tr>
+<td>VPC → its peers, subnet and firewall rule → VPC</td>
+<td><code>attachedTo</code> / <code>hasAttached</code></td>
+</tr>
+</tbody>
+</table>
+<p>Everything else — a scheduler job and its topic, a log sink and its destination, a load balancer and
+its backends — stays <code>dependsOn</code>, because that is what those genuinely are.</p>
+<p><strong>The trade.</strong> These types have no spec field to live in, so they are emitted by a <code>CatalogProcessor</code>
+the module registers. That is the supported way to add relation types, and it means the edges no
+longer appear as <code>dependsOn</code>: anything filtering on it, including some default Catalog Graph card
+configurations, stops showing them. Check your entity page's graph card before switching an existing
+installation over.</p>
+<p>The module exports the vocabulary so a graph card can be pointed at it without the names being
+copied out by hand:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">allRelationTypes</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@sbordeyne/plugin-catalog-backend-module-gcp-provider'</span><span class="p">;</span>
+
+<span class="p">&lt;</span><span class="nt">EntityCatalogGraphCard</span><span class="w"> </span><span class="na">relations</span><span class="o">=</span><span class="p">{</span><span class="nx">allRelationTypes</span><span class="p">()}</span><span class="w"> </span><span class="p">/&gt;;</span>
+</code></pre></div>
+<h5>Relations</h5>
+<p>Providers relate their entities to the resources GCP says they depend on, provided the target's own
+provider is configured:</p>
+<table>
+<thead>
+<tr>
+<th>From</th>
+<th>Depends on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subnet, firewall rule, router</td>
+<td>its VPC network</td>
+</tr>
+<tr>
+<td>VPC network</td>
+<td>the networks it is peered with</td>
+</tr>
+<tr>
+<td>Cloud NAT</td>
+<td>its Cloud Router</td>
+</tr>
+<tr>
+<td>Compute instance</td>
+<td>its subnet and its service accounts</td>
+</tr>
+<tr>
+<td>Redis, AlloyDB cluster</td>
+<td>the VPC they are attached to</td>
+</tr>
+<tr>
+<td>Kafka cluster</td>
+<td>the subnets its brokers are reachable through</td>
+</tr>
+<tr>
+<td>Spanner / AlloyDB / Kafka child</td>
+<td>its instance, cluster or topic parent</td>
+</tr>
+<tr>
+<td>Pub/Sub subscription</td>
+<td>its topic</td>
+</tr>
+<tr>
+<td>Eventarc trigger</td>
+<td>its Pub/Sub topic; it is a dependency of its Cloud Run destination</td>
+</tr>
+<tr>
+<td>Scheduler job, Cloud Function</td>
+<td>the Pub/Sub topic it publishes to or reads</td>
+</tr>
+<tr>
+<td>Cloud Run, Functions, Workflows</td>
+<td>the service account it runs as, and its VPC connector</td>
+</tr>
+<tr>
+<td>Kubernetes service account</td>
+<td>the Google account it impersonates, and its GKE clusters</td>
+</tr>
+<tr>
+<td>Google service account</td>
+<td>every resource it holds a resource-level role on</td>
+</tr>
+<tr>
+<td>GKE cluster</td>
+<td>its VPC and subnet</td>
+</tr>
+<tr>
+<td>Cloud SQL instance</td>
+<td>the VPC it is peered with, when it has a private address</td>
+</tr>
+<tr>
+<td>Load balancer</td>
+<td>its URL map → backend services → instance groups</td>
+</tr>
+<tr>
+<td>Delivery pipeline</td>
+<td>its deploy targets → the GKE cluster they deploy to</td>
+</tr>
+<tr>
+<td>Build trigger</td>
+<td>the service account the build runs as</td>
+</tr>
+<tr>
+<td>KMS key</td>
+<td>its key ring</td>
+</tr>
+<tr>
+<td>Log sink</td>
+<td>the bucket, dataset or topic it exports to</td>
+</tr>
+<tr>
+<td>SLO</td>
+<td>its Monitoring service → the Cloud Run service behind it</td>
+</tr>
+<tr>
+<td>BigQuery transfer</td>
+<td>the dataset it loads into</td>
+</tr>
+<tr>
+<td>Analytics Hub listing</td>
+<td>its exchange and the dataset it publishes</td>
+</tr>
+</tbody>
+</table>
+<p>Refs to Pub/Sub topics apply the same <code>stripPrefixes</code> the <code>pubsub</code> provider does, so a topic
+ingested as <code>orders</code> is still found by a trigger that names it <code>myorg-orders</code>.</p>
+<h5>Region</h5>
+<p>Not every API reports a location for every resource. The region is resolved as the value the API
+returned → this provider's <code>region</code> → <code>defaultRegion</code>. If none of those yields a value, the
+<code>cloud.google.com/region</code> annotation is left off rather than filled with a guess.</p>
+<h4>Labels</h4>
+<p>Every GCP label on a resource is copied onto the entity as a Backstage label, so the catalog can be
+filtered on the same vocabulary teams already tag their infrastructure with. This includes the owner
+and system labels, which stay visible on the entity rather than only being consumed.</p>
+<p>Labels the catalog would reject are dropped rather than mangled: an empty value, or a key or value
+outside <code>[a-zA-Z0-9]([-a-zA-Z0-9_.]{0,61}[a-zA-Z0-9])?</code> (keys may carry one <code>prefix/</code> segment).
+GCP's own label rules are stricter than this, so labels set through GCP always survive.</p>
+<h4>Titles, descriptions and links</h4>
+<p><code>metadata.title</code> is the display name the API reports, or the GCP name whenever normalizing it into
+an entity name changed it — a bucket ingested as <code>my-bucket-name</code> still shows the <code>My_Bucket.Name</code>
+you would search the console for.</p>
+<p><code>metadata.description</code> is the resource's own description where the API has one, and otherwise a
+generated one-liner: <code>POSTGRES_15 instance in europe-west1</code>, <code>Delivers
+google.cloud.pubsub.topic.v1.messagePublished to Cloud Run service orders-api</code>. Set
+<code>descriptions: false</code> to leave entities without a description instead.</p>
+<p><code>metadata.links</code> carries up to four families, resolved per key as <code>links.&lt;family&gt;</code> →
+<code>catalog.providers.gcp.links.&lt;family&gt;</code> → the default:</p>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Link</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>console</code></td>
+<td>the resource in the GCP console</td>
+<td>on</td>
+</tr>
+<tr>
+<td><code>docs</code></td>
+<td>the product documentation for its type</td>
+<td>on</td>
+</tr>
+<tr>
+<td><code>logs</code></td>
+<td>a Logs Explorer query filtered to the resource</td>
+<td>off</td>
+</tr>
+<tr>
+<td>—</td>
+<td>resource-specific: a Cloud Run service or function URL</td>
+<td>always</td>
+</tr>
+</tbody>
+</table>
+<p><code>logs</code> is off because the filter is an assumption about how the resource logs, and a link to a
+query returning nothing is worse than no link. <code>extraLinks</code> adds links of your own, with the same
+<code>{{projectId}}</code> / <code>{{type}}</code> / <code>{{provider}}</code> / <code>{{region}}</code> / <code>{{name}}</code> placeholders as the namespace
+template:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">extraLinks</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Runbook</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://wiki.example.com/db/{{name}}</span>
+<span class="w">    </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">runbook</span>
+</code></pre></div>
+<h4>Tags</h4>
+<p><code>metadata.tags</code> is off entirely by default — an existing catalog should not sprout tags on upgrade —
+and each source is enabled independently:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">fromLabels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># every GCP label as a `key-value` tag</span>
+<span class="w">  </span><span class="nt">labelKeys</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"> </span><span class="c1"># values of these label keys, as bare tags</span>
+<span class="w">  </span><span class="nt">resourceType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># the entity's spec.type</span>
+<span class="w">  </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">attributes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># state, engine version, machine type, tier</span>
+</code></pre></div>
+<p>Values are lowercased with anything outside <code>[a-z0-9+#]</code> folded to <code>-</code>, deduplicated, and capped at
+25 tags per entity so a heavily labelled resource cannot bury its own entity page.</p>
+<h4>Failure behaviour</h4>
+<p>A provider applies a <code>full</code> mutation: the entities it returns become the complete set for that
+provider, and anything missing from them is deleted from the catalog. That single fact decides how
+every failure is handled — a short answer and a correct one are indistinguishable to the catalog, so
+anything that might be short has to stop rather than be applied.</p>
+<p><strong>Stops the backend from starting.</strong> Configuration that could never work:</p>
+<ul>
+<li>no <code>projects</code> and no shared <code>projects</code>, or the same for <code>schedule</code></li>
+<li>an <code>ownerLabel</code>, <code>systemLabel</code> or <code>tags.labelKeys</code> entry that cannot be folded into a legal GCP
+  label key</li>
+</ul>
+<p><strong>Aborts the refresh, changing nothing.</strong> The catalog keeps what it already has:</p>
+<ul>
+<li>any API error other than 403/404 — a timeout, a 500, a quota error</li>
+<li>a listing that hits the pagination cap, since ingesting it would delete everything past the last
+  page read</li>
+<li>an IAM sweep truncated at <code>iam.maxBindingsPerProject</code>, which would delete every relation past the
+  cap</li>
+</ul>
+<p><strong>Skipped, with a warning, keeping everything else.</strong> One resource lost, not the set:</p>
+<ul>
+<li>a resource whose name normalizes to nothing an entity name can be built from</li>
+<li>a relation whose target name does the same — the edge is dropped, the resource is kept</li>
+</ul>
+<p><strong>Logged and carried on.</strong> Degraded but not wrong:</p>
+<ul>
+<li>a project answering 403 or 404: the API is disabled, the project is gone, or the credentials
+  cannot read it</li>
+<li>a project whose Cloud Asset API is off, which contributes no IAM edges</li>
+<li>a namespace or link template naming an unknown variable, which falls back to <code>default</code> or is
+  dropped</li>
+<li>an owner or system label whose value is not a usable entity ref</li>
+</ul>
+<h4>What the module exports</h4>
+<p>The default export is the module itself. Alongside it, the pieces something else may need to read
+what this module writes:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">catalogModuleGcpProvider</span><span class="p">,</span><span class="w"> </span><span class="c1">// also the default export</span>
+<span class="w">  </span><span class="nx">ANNOTATION_GCP_PROJECT_ID</span><span class="p">,</span><span class="w"> </span><span class="c1">// every annotation above, by name</span>
+<span class="w">  </span><span class="nx">allRelationTypes</span><span class="p">,</span><span class="w"> </span><span class="c1">// every relation type the gcp vocabulary emits</span>
+<span class="w">  </span><span class="nx">IAM_RELATIONS</span><span class="p">,</span><span class="w"> </span><span class="c1">// the role → verb pairs</span>
+<span class="w">  </span><span class="nx">STRUCTURAL_RELATIONS</span><span class="p">,</span><span class="w"> </span><span class="c1">// partOf / attachedTo pairs</span>
+<span class="w">  </span><span class="nx">classifyRole</span><span class="p">,</span><span class="w"> </span><span class="c1">// what verb a role maps to</span>
+<span class="w">  </span><span class="nx">RESOURCE_TYPES</span><span class="p">,</span><span class="w"> </span><span class="c1">// every ingested type, with its docs url and asset type</span>
+<span class="w">  </span><span class="nx">RESOURCE_CONFIG_KEYS</span><span class="p">,</span><span class="w"> </span><span class="c1">// the config keys those types belong to</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@sbordeyne/plugin-catalog-backend-module-gcp-provider'</span><span class="p">;</span>
+</code></pre></div>
+<p>A frontend card filtering on <code>cloud.google.com/project-id</code>, or a graph view listing the custom
+relation types, should take them from here rather than repeating the strings — a copied constant is
+a dependency on this module that nothing checks.</p>
+<h4>Annotations</h4>
+<p>Ingested entities carry the following annotations:</p>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cloud.google.com/project-id</code></td>
+<td>GCP project owning the resource</td>
+</tr>
+<tr>
+<td><code>cloud.google.com/region</code></td>
+<td>Region, zone or location of the resource</td>
+</tr>
+<tr>
+<td><code>cloud.google.com/self-link</code></td>
+<td>Canonical GCP URL of the resource</td>
+</tr>
+<tr>
+<td><code>cloud.google.com/service-account</code></td>
+<td>Service account email</td>
+</tr>
+<tr>
+<td><code>cloud.google.com/status</code></td>
+<td>State the API reports, e.g. <code>RUNNING</code>, <code>READY</code></td>
+</tr>
+<tr>
+<td><code>cloud.google.com/vpc-peerings</code></td>
+<td>Names of the peerings configured on a VPC network</td>
+</tr>
+<tr>
+<td><code>cloud.google.com/machine-type</code></td>
+<td>Machine type of a Compute Engine instance</td>
+</tr>
+</tbody>
+</table>
+<p>Service accounts carry what IAM says about them, and Kubernetes accounts what Workload Identity
+says:</p>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cloud.google.com/iam-roles</code></td>
+<td>Distinct roles the account holds on resources</td>
+</tr>
+<tr>
+<td><code>cloud.google.com/iam-access</code></td>
+<td>Which role on which resource, as <code>resource=role;…</code></td>
+</tr>
+<tr>
+<td><code>cloud.google.com/iam-project-roles</code></td>
+<td>Roles held at project level, which produce no edges</td>
+</tr>
+<tr>
+<td><code>cloud.google.com/iam-permissions</code></td>
+<td>Permissions a custom IAM role includes</td>
+</tr>
+<tr>
+<td><code>cloud.google.com/workload-identity-pool</code></td>
+<td>Identity pool a Kubernetes account belongs to</td>
+</tr>
+<tr>
+<td><code>cloud.google.com/ksa-namespace</code></td>
+<td>Kubernetes namespace of an ingested Kubernetes account</td>
+</tr>
+</tbody>
+</table>
+<p>Two more appear only when Cloud Asset Inventory has been read for the resource:</p>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cloud.google.com/asset-name</code></td>
+<td>Name Cloud Asset Inventory knows the resource by</td>
+</tr>
+<tr>
+<td><code>cloud.google.com/iam-members</code></td>
+<td>Who holds which role on it, written only under <code>iam.annotateResources</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>asset-name</code> is written only where that name is certain: one the provider spells out, or a derived
+one that a policy lookup has just matched. The name is derived from the resource's self link, and
+several services name their assets by project <em>number</em>, which a self link does not carry — so an
+unconfirmed derivation is used for the lookup, where a miss costs nothing, and never published as
+though it were fact.</p>
+<p>Resource types add their own on top: <code>cloud.google.com/ip-cidr-range</code> on a subnet,
+<code>cloud.google.com/dns-name</code> on a DNS zone, <code>cloud.google.com/schedule</code> on a Scheduler job,
+<code>cloud.google.com/registry-uri</code> on an Artifact Registry repository, and so on.</p>
+<p><code>cloud.google.com/self-link</code> is the <code>selfLink</code> the API reported. The APIs that report none — Secret
+Manager, Pub/Sub, IAM and every <code>projects/…/locations/…</code> service — get the canonical REST URL of the
+resource instead, which is the same URL the API would have returned.</p>
+</section>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../javascripts/catalog.js"></script>
+      
+    
+  </body>
+</html>

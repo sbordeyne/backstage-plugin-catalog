@@ -1,0 +1,871 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This Backstage backend plugin provides REST API endpoint for the notifications.">
+      
+      
+      
+        <link rel="canonical" href="https://sbordeyne.github.io/backstage-plugin-catalog/plugins/%40batzionrotman123/plugin-notifications-backend-dynamic/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>@batzionrotman123/plugin-notifications-backend-dynamic - Backstage Plugin Catalog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/catalog.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#batzionrotman123plugin-notifications-backend-dynamic" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-header__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Backstage Plugin Catalog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              @batzionrotman123/plugin-notifications-backend-dynamic
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../roles/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../scopes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Scopes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Backstage Plugin Catalog" class="md-nav__button md-logo" aria-label="Backstage Plugin Catalog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Backstage Plugin Catalog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sbordeyne/backstage-plugin-catalog" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sbordeyne/backstage-plugin-catalog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scopes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scopes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="batzionrotman123plugin-notifications-backend-dynamic">@batzionrotman123/plugin-notifications-backend-dynamic<a class="headerlink" href="#batzionrotman123plugin-notifications-backend-dynamic" title="Permanent link">&para;</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Stale</p>
+<p>No release in over two years.</p>
+</div>
+<p>This Backstage backend plugin provides REST API endpoint for the notifications.</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>--cwd<span class="w"> </span>packages/backend<span class="w"> </span>add<span class="w"> </span>@batzionrotman123/plugin-notifications-backend-dynamic
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td><code>1.0.0-redhat-0002</code> (2024-03-31)</td>
+</tr>
+<tr>
+<td>Role</td>
+<td><a href="../../../roles/backend-plugin/">Backend plugin</a></td>
+</tr>
+<tr>
+<td>Scope</td>
+<td><a href="../../../scopes/batzionrotman123/">@batzionrotman123</a></td>
+</tr>
+<tr>
+<td>Weekly downloads</td>
+<td>10</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Apache-2.0</td>
+</tr>
+<tr>
+<td>npm</td>
+<td><a href="https://www.npmjs.com/package/@batzionrotman123/plugin-notifications-backend-dynamic">https://www.npmjs.com/package/@batzionrotman123/plugin-notifications-backend-dynamic</a></td>
+</tr>
+<tr>
+<td>Maintainers</td>
+<td>batzionrotman123</td>
+</tr>
+<tr>
+<td>First published</td>
+<td>2024-03-31</td>
+</tr>
+</tbody>
+</table>
+<h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h2>
+<p>2 versions published. Latest releases:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1.0.0-redhat-0002</code></td>
+<td>2024-03-31</td>
+</tr>
+<tr>
+<td><code>1.0.0-redhat-0001</code></td>
+<td>2024-03-31</td>
+</tr>
+</tbody>
+</table>
+<h2 id="readme">README<a class="headerlink" href="#readme" title="Permanent link">&para;</a></h2>
+<section class="catalog-readme" data-search-exclude>
+<h3>Notifications</h3>
+<p>This Backstage backend plugin provides REST API endpoint for the notifications.</p>
+<p>It's backed by a relational database, so far tested with PostgreSQL.</p>
+<h4>Deploying as a dynamic plugin</h4>
+<p>The notifications backend plugin can be loaded either as a static or a dynamic plugin.</p>
+<p>To install it as a dynamic plugin, please follow instructions here: https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/dynamic-plugins.md#installing-a-dynamic-plugin-package-in-the-showcase</p>
+<p>To install it as a static plugin, several steps are required as described below for both the legacy backend and the new backend system.</p>
+<p>In any case, do not miss the info about configuration and especially about creating entities <a href="#important-user-entities-in-catalog" rel="noopener noreferrer">in the Catalog as described below</a>.</p>
+<h4>Getting started</h4>
+<p>The plugin uses a relational database to persist messages, it has been tested with the SQLite and PostgreSQL.</p>
+<p>Upon the backend's plugin start, the <code>backstage_plugin_notifications</code> database and its tables are created automatically.</p>
+<h5>Optional: PostgreSQL setup</h5>
+<p><strong>To use the Backstage's default SQLite database, no specific configuration is needed.</strong></p>
+<p>The following steps describe requirements for PostgreSQL:</p>
+<ul>
+<li>Install <a href="https://www.postgresql.org/download/" rel="noopener noreferrer">PostgresSQL DB</a></li>
+<li>Configure Postgres for tcp/ip
+  Open Postgres conf file for editing:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>vi<span class="w"> </span>/var/lib/pgsql/data/pg_hba.conf
+</code></pre></div>
+<p>Add this line:</p>
+<div class="highlight"><pre><span></span><code>host<span class="w">   </span>all<span class="w">             </span>postgres<span class="w">       </span><span class="m">127</span>.0.0.1/32<span class="w">                          </span>password
+</code></pre></div>
+<ul>
+<li>Start Postgres server:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>postgresql.service
+</code></pre></div>
+<h6>Backstage configuration for PostgreSQL</h6>
+<p>If PostgreSQL is used, additional configuration in the <code>app-config.yaml</code> file or <code>app-config.local.yaml</code> file is needed. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">backend</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">client</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pg</span>
+<span class="w">    </span><span class="nt">connection</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
+<span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your_secret</span>
+<span class="w">    </span><span class="nt">knexConfig</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">pool</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">        </span><span class="nt">max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span>
+<span class="w">        </span><span class="nt">acquireTimeoutMillis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60000</span>
+<span class="w">        </span><span class="nt">idleTimeoutMillis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60000</span>
+<span class="w">  </span><span class="nt">cache</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">store</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span>
+</code></pre></div>
+<h4>Deploy as a static plugin</h4>
+<h5>Add NPM dependency</h5>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>packages/backend
+yarn<span class="w"> </span>add<span class="w"> </span>@janus-idp/plugin-notifications-backend
+</code></pre></div>
+<h5>Add the backend-plugin for the legacy backend</h5>
+<p>Create a <code>packages/backend/src/plugins/notifications.ts</code> file with the following content:</p>
+<div class="highlight"><span class="filename">packages/backend/src/plugins/notifications.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatalogClient</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@backstage/catalog-client'</span><span class="p">;</span>
+
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Router</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'express'</span><span class="p">;</span>
+
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createRouter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@janus-idp/plugin-notifications-backend'</span><span class="p">;</span>
+
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PluginEnvironment</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'../types'</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createPlugin</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">env</span><span class="o">:</span><span class="w"> </span><span class="kt">PluginEnvironment</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Router</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">createRouter</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">identity</span><span class="o">:</span><span class="w"> </span><span class="kt">env.identity</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">logger</span><span class="o">:</span><span class="w"> </span><span class="kt">env.logger</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">permissions</span><span class="o">:</span><span class="w"> </span><span class="kt">env.permissions</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">tokenManager</span><span class="o">:</span><span class="w"> </span><span class="kt">env.tokenManager</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="kt">env.database</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">discovery</span><span class="o">:</span><span class="w"> </span><span class="kt">env.discovery</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">config</span><span class="o">:</span><span class="w"> </span><span class="kt">env.config</span><span class="p">,</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In the <code>packages/backend/src/index.ts</code>, add the following:</p>
+<div class="highlight"><span class="filename">packages/backend/src/index.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">notifications</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./plugins/notifications'</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="c1">// Existing code for reference:</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">apiRouter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Router</span><span class="p">();</span>
+<span class="p">...</span>
+<span class="c1">// New code:</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">notificationsEnv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useHotMemoize</span><span class="p">(</span><span class="nx">module</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">  </span><span class="nx">createEnv</span><span class="p">(</span><span class="s1">'notifications'</span><span class="p">),</span>
+<span class="p">);</span>
+<span class="nx">apiRouter</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">'/notifications'</span><span class="p">,</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">notifications</span><span class="p">(</span><span class="nx">notificationsEnv</span><span class="p">));</span>
+</code></pre></div>
+<h5>Installing the plugin for the new backend system</h5>
+<p>Add the following code to the <code>packages/backend/src/index.ts</code>:</p>
+<div class="highlight"><span class="filename">packages/backend/src/index.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createBackend</span><span class="p">();</span>
+
+<span class="cm">/* highlight-add-next-line */</span>
+<span class="nx">backend</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">import</span><span class="p">(</span><span class="s1">'@janus-idp/backstage-plugin-notifications-backend/alpha'</span><span class="p">));</span>
+
+<span class="nx">backend</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</code></pre></div>
+<h4>Configuration</h4>
+<h5>Optional: Plugin configuration</h5>
+<p>If you have issues to create valid JWT tokens by an external caller, use following option to bypass the service-to-service configuration for them:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">notifications</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Workaround for issues with external caller JWT token creation.</span>
+<span class="w">  </span><span class="c1"># When following config option is not provided and the request "authentication" header is missing, the request is ALLOWED by default</span>
+<span class="w">  </span><span class="c1"># When following option is present, the request must contain either a valid JWT token or that provided shared secret in the "notifications-secret" header</span>
+<span class="w">  </span><span class="nt">externalCallerSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-secret-token-shared-with-external-services</span>
+</code></pre></div>
+<p>We suggest using HTTPS to help prevent leaking the shared secret.</p>
+<p>Example Request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:7007/api/notifications/notifications<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"notifications-secret: your-secret-token-shared-with-external-services"</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"title":"my-title","origin":"my-origin","message":"message one","topic":"my-topic"}'</span>
+</code></pre></div>
+<p>Notes:</p>
+<ul>
+<li>The <code>externalCallerSecret</code> is an workaround, exclusive use of JWT tokens will probably be required in the future.</li>
+<li>Sharing the same shared secret with the "auth.secret" option is not recommended.</li>
+</ul>
+<h4>Authentication</h4>
+<p>Please refer to https://backstage.io/docs/auth/ to set-up authentication.</p>
+<p>The Notifications flows are based on the identity of the user.</p>
+<p>All <code>targetUsers</code>, `targetGroups`` or signed-in users receiving notifications must have corresponding entities created in the Catalog.
+Refer to https://backstage.io/docs/auth/identity-resolver for details.</p>
+<p>For the purpose of development, there is a <code>users.yaml</code> file listing example data to create a Guest user entity.</p>
+<h4>Authorization</h4>
+<p>Every service endpoint is guarded by a permission check, enabled by default.</p>
+<p>It is up to particular deployment to provide corresponding permission policies based on https://backstage.io/docs/permissions/writing-a-policy. To register your permission policies, refer to https://backstage.io/docs/permissions/getting-started#integrating-the-permission-framework-with-your-backstage-instance.</p>
+<h5>Service-to-service and External Calls</h5>
+<p>The notifications-backend is expected to be called by frontend plugins (including the Notifications frontend plugin), other backend plugins or external services.</p>
+<p>To configure those two flows, refer to:</p>
+<ul>
+<li>https://backstage.io/docs/auth/service-to-service-auth.</li>
+<li>https://backstage.io/docs/auth/service-to-service-auth#usage-in-external-callers</li>
+</ul>
+<h5>Important: User entities in Catalog</h5>
+<p><em>The notifications require target users or groups (as receivers) to be listed in the Catalog.</em></p>
+<p>As an example how to do it, add following to the config:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">catalog</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">import</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">entityFilename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">catalog-info.yaml</span>
+<span class="w">    </span><span class="nt">pullRequestBranchName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage-integration</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># *** Here is a new change:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">allow</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Component</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">System</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">API</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Resource</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Location</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">User</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Group</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">locations</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Local example data, file locations are relative to the backend process, typically `packages/backend`</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+<span class="w">      </span><span class="c1"># *** Here is a new change, refers to a file stored in the root of the Backstage:</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../../plugins/notifications-backend/users.yaml</span>
+</code></pre></div>
+<h4>REST API</h4>
+<p>See <code>src/openapi.yaml</code> for full OpenAPI spec.</p>
+<h5>Posting a notification</h5>
+<p>A notification without target users or groups is considered a system notification. That means it is intended for all users (listed among Updates in the UI).</p>
+<p>Request (User message and then system message):</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:7007/api/notifications/notifications<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"title": "My message title", "message": "I have nothing to say", "origin": "my-origin", "topic":"my topic", "targetUsers": ["default/guest"], "actions": [{"title": "my-title", "url": "http://foo.bar"}, {"title": "another action", "url": "https://foo.foo.bar"}]}'</span>
+</code></pre></div>
+<p>Optionally add <code>-H "Authorization: Bearer eyJh.....</code> with a valid JWT token if the service-to-service authorization is enabled (see above).</p>
+<p>Response:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"msgid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2daac6ff-3aaa-420d-b755-d94e54248310"</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h5>Get notifications</h5>
+<p>Page number starts at '1'. Page number '0' along with page size '0' means no paging.
+User parameter is mandatory because it is needed for message status and filtering (read/unread).</p>
+<p>Query parameters:</p>
+<ul>
+<li><code>pageSize</code>. 0 means no paging.</li>
+<li><code>pageNumber</code>. first page is 1. 0 means no paging.</li>
+<li><code>orderBy</code>.</li>
+<li><code>orderByDirec</code>. asc/desc</li>
+<li><code>containsText</code>. filter title and message containing this text (case insensitive)</li>
+<li><code>createdAfter</code>. fetch notifications created after this point in time</li>
+<li><code>messageScope</code>. all/user/system. fetch notifications intended for specific user or system notifications or both</li>
+<li><code>read</code>. true/false (read/unread)</li>
+</ul>
+<p>Request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span><span class="s1">'http://localhost:7007/api/notifications/notifications?read=false&amp;pageNumber=0&amp;pageSize=0'</span>
+</code></pre></div>
+<p>Response:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2daac6ff-3aaa-420d-b755-d94e54248310"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-10-30T13:48:34.931Z"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"isSystem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"readByUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-origin"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My title"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I have nothing to tell"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-topic"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<h5>Get count of notifications</h5>
+<p>User parameter is mandatory because it is needed for filtering (read/unread).</p>
+<p><strong>Important: Logged-in user:</strong></p>
+<p>The query requires a signed-in user whose entity is listed in the Catalog.
+With this condition is met, the HTTP <code>Authorization</code> header contains a JWT token with the user's identity.</p>
+<p>Optionally add <code>-H "Authorization: Bearer eyJh.....</code> with a valid JWT token to the <code>curl</code> commands bellow.</p>
+<p>Query parameters:</p>
+<ul>
+<li><code>containsText</code>. filter title and message containing this text (case insensitive)</li>
+<li><code>createdAfter</code>. fetch notifications created after this point in time</li>
+<li><code>messageScope</code>. all/user/system. fetch notifications intended for specific user or system notifications or both</li>
+<li><code>read</code>. true/false (read/unread)</li>
+</ul>
+<p>Request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:7007/api/notifications/notifications/count
+</code></pre></div>
+<p>Response:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h5>Set notification as read/unread</h5>
+<p>Request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="s1">'http://localhost:7007/api/notifications/notifications/read?messageId=48bbf896-4b7c-4b68-a446-246b6a801000&amp;read=true'</span>
+</code></pre></div>
+<p>Response: A HTTP Status Code</p>
+<h4>Building a client for the API</h4>
+<p>We supply an Open API spec YAML file at <code>src/openapi.yaml</code>.</p>
+</section>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../javascripts/catalog.js"></script>
+      
+    
+  </body>
+</html>
